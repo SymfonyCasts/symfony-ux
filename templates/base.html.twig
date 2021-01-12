@@ -4,13 +4,16 @@
         <meta charset="UTF-8">
         <title>{% block title %}MVP Office Supplies{% endblock %}</title>
         {% block stylesheets %}
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+            <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
     </head>
     <body>
         <header class="header">
             <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
                 <a class="navbar-brand" href="/">
-                    <img src="{{ asset('build/images/mvp-logo-light.png' ) }}"
+                    <img src="{{ asset('images/mvp-logo-light.png' ) }}"
                             width="50"
                             height="50"
                             alt="MVP Office Supplies Logo"
