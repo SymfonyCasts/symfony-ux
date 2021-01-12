@@ -2,6 +2,7 @@
 
 namespace App\Repository;
 
+use App\Entity\Category;
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -20,14 +21,25 @@ class ProductRepository extends ServiceEntityRepository
     }
 
     /**
-     * Fake "most popular" method
+     * Search by category and/or term
      *
      * @return Product[]
      */
-    public function findAllMostPopular()
+    public function search(?Category $category, ?string $term)
     {
-        return $this->createQueryBuilder('product')
-            ->setMaxResults(15)
+        $qb = $this->createQueryBuilder('product');
+
+        if ($category) {
+            $qb->andWhere('product.category = :category')
+                ->setParameter('category', $category);
+        }
+
+        if ($term) {
+            $qb->andWhere('product.name LIKE :term OR product.description LIKE :term')
+                ->setParameter('term', '%'.$term.'%');
+        }
+
+        return $qb
             ->getQuery()
             ->execute();
     }

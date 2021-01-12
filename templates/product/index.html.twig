@@ -4,35 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <aside class="col-xs-12 col-3">
-                <div class="p-3 mb-5 component-light">
-                    <h5 class="text-center">
-                        Categories
-                    </h5>
-                    <ul class="nav flex-column mb4">
-                        <li class="nav-item">
-                            <a href="{{ path('app_homepage') }}" class="nav-link {{ app.request.attributes.get('_route') == 'app_homepage' ? 'selected' : null }}">
-                                All Products
-                            </a>
-                        </li>
-                        {% for category in categories %}
-                            <li class="nav-item">
-                                <a
-                                    href="{{ path('app_category', { id: category.id }) }}"
-                                    class="nav-link"
-                                >
-                                    {{ category.name }}
-                                </a>
-                            </li>
-                        {% endfor %}
-                    </ul>
-                    <hr>
-
-                    <div class="d-flex justify-content-end">
-                        <button class="btn btn-secondary btn-sm">
-                            Collapse
-                        </button>
-                    </div>
-                </div>
+                {{ include('product/_categoriesSidebar.html.twig') }}
             </aside>
 
             <div class="col-xs-12 col-9">
@@ -40,16 +12,25 @@
                 <div class="row">
                     <div class="col-3">
                         <h1>
-                            All Products
+                            {% if currentCategory %}
+                                {{ currentCategory.name }}
+                            {% else %}
+                                All Products
+                            {% endif %}
                         </h1>
                     </div>
                     <div class="col-9">
-                        <div class="input-group">
-                            <input
-                                placeholder="Search products..."
-                                type="search" class="form-control"
-                            >
-                        </div>
+                        <form>
+                            <div class="input-group">
+                                <input
+                                    name="q"
+                                    value="{{ searchTerm }}"
+                                    placeholder="Search products..."
+                                    type="search"
+                                    class="form-control"
+                                >
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="row mt-4">

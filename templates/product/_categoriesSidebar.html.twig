@@ -1,0 +1,29 @@
+<div class="p-3 mb-5 component-light">
+    <h5 class="text-center">
+        Categories
+    </h5>
+    <ul class="nav flex-column mb4">
+        <li class="nav-item">
+            <a href="{{ path('app_homepage') }}" class="nav-link {{ currentCategory is null ? 'selected' }}">
+                All Products
+            </a>
+        </li>
+        {% for category in categories %}
+            <li class="nav-item">
+                <a
+                    href="{{ path('app_category', { id: category.id }) }}"
+                    class="nav-link {{ currentCategory is same as category ? 'selected' }}"
+                >
+                    {{ category.name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+    <hr>
+
+    <div class="d-flex justify-content-end">
+        <button class="btn btn-secondary btn-sm">
+            Collapse
+        </button>
+    </div>
+</div>
