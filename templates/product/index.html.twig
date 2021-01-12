@@ -1,5 +1,103 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="app"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-xs-12 col-3">
+                <div class="p-3 mb-5 component-light">
+                    <h5 class="text-center">
+                        Categories
+                    </h5>
+                    <ul class="nav flex-column mb4">
+                        <li class="nav-item">
+                            <a href="{{ path('app_homepage') }}" class="nav-link {{ app.request.attributes.get('_route') == 'app_homepage' ? 'selected' : null }}">
+                                All Products
+                            </a>
+                        </li>
+                        {% for category in categories %}
+                            <li class="nav-item">
+                                <a
+                                    href="{{ path('app_category', { id: category.id }) }}"
+                                    class="nav-link"
+                                >
+                                    {{ category.name }}
+                                </a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <hr>
+
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-secondary btn-sm">
+                            Collapse
+                        </button>
+                    </div>
+                </div>
+            </aside>
+
+            <div class="col-xs-12 col-9">
+
+                <div class="row">
+                    <div class="col-3">
+                        <h1>
+                            All Products
+                        </h1>
+                    </div>
+                    <div class="col-9">
+                        <div class="input-group">
+                            <input
+                                placeholder="Search products..."
+                                type="search" class="form-control"
+                            >
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-4">
+                    {% for product in products %}
+                        <div class="col-xs-12 col-6 mb-2 pb-2">
+                            <div class="component-light">
+                                <div class="product-image">
+                                    <a href="{{ path('app_product', { id: product.id }) }}">
+                                        <img
+                                            alt="{{ product.name }}"
+                                            src="{{ asset('/uploads/products/'~product.imageFilename) }}"
+                                            class="d-block mb-2"
+                                        >
+                                    </a>
+                                    <h3 class="font-weight-bold mb-2 px-2">
+                                        <a href="{{ path('app_product', { id: product.id }) }}">
+                                            {{ product.name }}
+                                        </a>
+                                    </h3>
+                                </div>
+                                <div
+                                    class="p-2 my-3 d-md-flex justify-content-between">
+                                    <p class="p-0 d-inline">
+                                        <strong>{{ product.price|format_currency('USD') }}</strong></p>
+                                    <button class="btn btn-info btn-sm">
+                                        View Product
+                                    </button>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="px-2 pb-2"><small>brought to you by Rest
+                                    at Work</small></div>
+                        </div>
+                    {% else %}
+                        <div class="col-12">
+                            <h5 class="ml-4 mt-4" >
+                                Whoopsie Daisy, no products found!
+                            </h5>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="row">
+                    <span class="p-3">
+                        Shipping takes 10-13 weeks, and products probably won't work
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

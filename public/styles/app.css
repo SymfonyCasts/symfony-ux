@@ -8,10 +8,14 @@ a, a:hover  {
     color: #000;
 }
 
+h1 {
+    font-size: 1.7rem;
+}
+
 .header {
     background-color: #343a40;
     margin-bottom: 30px;
-    border-bottom: 2px solid #efefee;
+    border-bottom: 2px solid #BA1414;
     padding: 0;
 }
 
@@ -46,13 +50,30 @@ a, a:hover  {
     border: 1px solid #efefee;
     box-shadow: 0 0 7px 4px #efefee;
     border-radius: 5px;
-    margin-top: 25px;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
+}
+
+.component-light ul li a:hover {
+    background: #add8e6;
+}
+.component-light ul li a.selected {
+    background: #efefee;
 }
 
 .aside-collapsed {
     padding: 0 15px;
+}
+
+/**
+ * Products
+ */
+.product-image img {
+    width: 100%;
+    height: auto;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.product-image h3 {
+    font-size: 1.2rem;
 }
 
