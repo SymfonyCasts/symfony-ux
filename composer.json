@@ -63,5 +63,13 @@
             "allow-contrib": false,
             "require": "5.2.*"
         }
+    },
+    "require-dev": {
+        "symfony/debug-bundle": "^5.2",
+        "symfony/maker-bundle": "^1.27",
+        "symfony/monolog-bundle": "^3.0",
+        "symfony/stopwatch": "^5.2",
+        "symfony/var-dumper": "^5.2",
+        "symfony/web-profiler-bundle": "^5.2"
     }
 }
