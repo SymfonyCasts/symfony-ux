@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-xs-12 col-3">
+                {{ include('product/_categoriesSidebar.html.twig') }}
+            </aside>
+
+            <div class="col-xs-12 col-9 product-show">
+                <h1>{{ product.name }}</h1>
+                <div class="row component-light">
+                    <div class="col-4 pt-3">
+                        <img
+                            alt="{{ product.name }}"
+                            src="{{ asset('/uploads/products/'~product.imageFilename) }}"
+                            class="d-block"
+                        >
+                        <div class="p-2">
+                            <small>brought to you by </small>
+                            <small class="d-inline">{{ product.brand }}</small>
+                        </div>
+                    </div>
+                    <div class="col-8 p-3">
+                        <div>
+                            {{ product.description }}
+                        </div>
+                        <div class="row mt-4 align-items-center">
+                            <div class="col-4">
+                                Price: <strong>{{ product.price|format_currency('USD') }}</strong>
+                            </div>
+                            <div class="col-8 p-3">
+                                <div class="cart-add-controls d-flex align-items-center justify-content-center">
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        class="form-control mx-3"
+                                    >
+                                    <button class="btn btn-info btn-sm">
+                                        Add to Cart
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
