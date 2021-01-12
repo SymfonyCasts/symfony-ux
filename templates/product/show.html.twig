@@ -31,14 +31,16 @@
                             </div>
                             <div class="col-8 p-3">
                                 <div class="cart-add-controls d-flex align-items-center justify-content-center">
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        class="form-control mx-3"
-                                    >
-                                    <button class="btn btn-info btn-sm">
-                                        Add to Cart
-                                    </button>
+                                    {{ form_start(addToCartForm) }}
+                                        {{ form_row(addToCartForm.quantity) }}
+
+                                        {% if addToCartForm.color is defined %}
+                                            {{ form_row(addToCartForm.color) }}
+                                        {% endif %}
+                                        <button class="btn btn-info btn-sm" formnovalidate>
+                                            Add to Cart
+                                        </button>
+                                    {{ form_end(addToCartForm) }}
                                 </div>
                             </div>
                         </div>

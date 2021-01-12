@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Category;
 use App\Entity\Product;
+use App\Form\AddItemToCartFormType;
 use App\Repository\CategoryRepository;
 use App\Repository\ProductRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -38,9 +39,14 @@ class ProductController extends AbstractController
      */
     public function showProduct(Product $product, CategoryRepository $categoryRepository): Response
     {
+        $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
+            'product' => $product
+        ]);
+
         return $this->render('product/show.html.twig', [
             'product' => $product,
             'categories' => $categoryRepository->findAll(),
+            'addToCartForm' => $addToCartForm->createView()
         ]);
     }
 }

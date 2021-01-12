@@ -184,6 +184,11 @@ class Product
         return $this;
     }
 
+    public function hasColors(): bool
+    {
+        return count($this->colors) > 0;
+    }
+
     public function getImageFilename(): ?string
     {
         return $this->imageFilename;
