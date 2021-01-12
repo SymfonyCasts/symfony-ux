@@ -10,45 +10,53 @@
         {% endblock %}
     </head>
     <body>
-        <header class="header">
-            <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
-                <a class="navbar-brand" href="/">
-                    <img src="{{ asset('images/mvp-logo-light.png' ) }}"
-                            width="50"
-                            height="50"
-                            alt="MVP Office Supplies Logo"
-                    >
+        <div class="page-top">
+            <header class="header">
+                <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
+                    <a class="navbar-brand" href="/">
+                        <img src="{{ asset('images/mvp-logo-light.png' ) }}"
+                                width="50"
+                                height="50"
+                                alt="MVP Office Supplies Logo"
+                        >
 
-                    <span class="p-3">MVP Office Supplies</span>
-                </a>
+                        <span class="p-3">MVP Office Supplies</span>
+                    </a>
 
-                <ul class="navbar-nav">
-                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <ul class="navbar-nav">
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_logout') }}">
+                                    Log out
+                                </a>
+                            </li>
+                        {% else %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_login') }}">
+                                    Log in
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('app_register') }}">
+                                    Register
+                                </a>
+                            </li>
+                        {% endif %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_logout') }}">
-                                Log out
+                            <a class="nav-link" href="{{ path('app_cart') }}">
+                                Shopping Cart ({{ count_cart_items() }})
                             </a>
                         </li>
-                    {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_login') }}">
-                                Log in
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_register') }}">
-                                Register
-                            </a>
-                        </li>
-                    {% endif %}
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ path('app_cart') }}">
-                            Shopping Cart ({{ count_cart_items() }})
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+                    </ul>
+                </nav>
+            </header>
+
+            {% for flash in app.session.flashBag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flash }}
+                </div>
+            {% endfor %}
+        </div>
 
         {% block body %}{% endblock %}
 

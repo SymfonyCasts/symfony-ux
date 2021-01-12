@@ -14,7 +14,6 @@ h1 {
 
 .header {
     background-color: #343a40;
-    margin-bottom: 30px;
     border-bottom: 2px solid #BA1414;
     padding: 0;
 }
@@ -22,6 +21,10 @@ h1 {
 .header .logo {
     width: 50px;
     height: auto;
+}
+
+.page-top {
+    margin-bottom: 30px;
 }
 
 .footer {

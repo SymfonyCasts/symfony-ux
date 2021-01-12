@@ -19,9 +19,9 @@ class Cart
 
     public function addItem(CartItem $cartItem)
     {
-        foreach ($this->items as $key => $item) {
+        foreach ($this->items as $item) {
             if ($cartItem->matches($item)) {
-                $this->items[$key] = $cartItem;
+                $item->increaseQuantity($cartItem->getQuantity());
 
                 return;
             }

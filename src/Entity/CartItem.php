@@ -21,8 +21,8 @@ class CartItem
     private $color;
 
     /**
-     * @Assert\Type("number", message="Enter a valid number")
      * @Assert\GreaterThanOrEqual(1)
+     * @Assert\NotBlank
      * @var int
      */
     private $quantity = 1;
@@ -47,14 +47,19 @@ class CartItem
         $this->color = $color;
     }
 
-    public function getQuantity(): int
+    public function getQuantity(): ?int
     {
         return $this->quantity;
     }
 
-    public function setQuantity(int $quantity)
+    public function setQuantity(?int $quantity)
     {
         $this->quantity = $quantity;
+    }
+
+    public function increaseQuantity(int $quantity)
+    {
+        $this->quantity += $quantity;
     }
 
     public function matches(CartItem $cartItem)

@@ -5,17 +5,18 @@ namespace App\Twig;
 use App\ApiPlatform\CartDataPersister;
 use App\Entity\Cart;
 use App\Entity\CartItem;
+use App\Service\CartStorage;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFunction;
 
 class CartExtension extends AbstractExtension
 {
-    private $session;
+    private $cartStorage;
 
-    public function __construct(SessionInterface $session)
+    public function __construct(CartStorage $cartStorage)
     {
-        $this->session = $session;
+        $this->cartStorage = $cartStorage;
     }
 
     public function getFunctions()
@@ -27,20 +28,14 @@ class CartExtension extends AbstractExtension
 
     public function countCartItems(): int
     {
-        $cartId = $this->session->get('_cart_id');
-        if (!$cartId) {
+        $cart = $this->cartStorage->getCart();
+
+        if (!$cart) {
             return 0;
         }
-
-        $key = CartDataPersister::getKey($cartId);
-        if (!$this->session->has($key)) {
-            return 0;
-        }
-
-        /** @var Cart $cart */
-        $cart = $this->session->get($key);
 
         return array_reduce($cart->getItems(), function($accumulator, CartItem $item) {
+            dump($item);
             return $accumulator + $item->getQuantity();
         }, 0);
     }

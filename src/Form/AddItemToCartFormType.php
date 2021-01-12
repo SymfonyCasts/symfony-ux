@@ -5,17 +5,16 @@ namespace App\Form;
 use App\Entity\CartItem;
 use App\Entity\Color;
 use App\Entity\Product;
-use App\Repository\ColorRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\NumberType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Routing\RouterInterface;
 
 class AddItemToCartFormType extends AbstractType
 {
-    private RouterInterface $router;
+    private $router;
 
     public function __construct(RouterInterface $router)
     {
@@ -41,7 +40,7 @@ class AddItemToCartFormType extends AbstractType
         ));
 
         $builder
-            ->add('quantity', NumberType::class)
+            ->add('quantity', IntegerType::class)
         ;
 
         if ($product->hasColors()) {

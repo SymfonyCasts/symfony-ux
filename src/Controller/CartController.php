@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\AddItemToCartFormType;
 use App\Repository\CategoryRepository;
+use App\Service\CartStorage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +25,7 @@ class CartController extends AbstractController
     /**
      * @Route("/cart/add/{id}", name="app_cart_add_item", methods={"POST"})
      */
-    public function addItemToCart(Product $product, Request $request, CategoryRepository $categoryRepository)
+    public function addItemToCart(Product $product, Request $request, CategoryRepository $categoryRepository, CartStorage $cartStorage)
     {
         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
             'product' => $product
@@ -32,7 +33,15 @@ class CartController extends AbstractController
 
         $addToCartForm->handleRequest($request);
         if ($addToCartForm->isSubmitted() && $addToCartForm->isValid()) {
-            dd($addToCartForm->getData());
+            $cart = $cartStorage->getOrCreateCart();
+            $cart->addItem($addToCartForm->getData());
+            $cartStorage->save($cart);
+
+            $this->addFlash('success', 'Item added!');
+
+            return $this->redirectToRoute('app_product', [
+                'id' => $product->getId(),
+            ]);
         }
 
         return $this->render('product/show.html.twig', [
