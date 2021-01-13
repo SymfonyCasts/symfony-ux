@@ -60,4 +60,15 @@ class Cart
             return $accumulator + $item->getQuantity();
         }, 0);
     }
+
+    public function findItem(Product $product, ?Color $color): ?CartItem
+    {
+        foreach ($this->items as $item) {
+            if ($item->getProduct() === $product && $item->getColor() === $color) {
+                return $item;
+            }
+        }
+
+        return null;
+    }
 }

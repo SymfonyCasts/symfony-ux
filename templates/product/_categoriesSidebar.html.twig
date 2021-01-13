@@ -4,7 +4,7 @@
     </h5>
     <ul class="nav flex-column mb4">
         <li class="nav-item">
-            <a href="{{ path('app_homepage') }}" class="nav-link {{ currentCategory|default is null ? 'selected' }}">
+            <a href="{{ path('app_homepage') }}" class="nav-link {{ not currentCategory|default ? 'selected' }}">
                 All Products
             </a>
         </li>

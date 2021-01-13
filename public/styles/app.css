@@ -88,9 +88,13 @@ h1 {
     border-bottom: 1px solid #efefee;
 }
 
-.cart-item .color-square {
+.cart .cart-item .color-square {
     display: inline-block;
     width: 25px;
     height: 25px;
     border-radius: 4px;
+}
+
+.cart .cart-item input {
+    width: 60px;
 }

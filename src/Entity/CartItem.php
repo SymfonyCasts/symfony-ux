@@ -27,9 +27,11 @@ class CartItem
      */
     private $quantity = 1;
 
-    public function __construct(Product $product)
+    public function __construct(Product $product, int $quantity = 1, Color $color = null)
     {
         $this->product = $product;
+        $this->quantity = $quantity;
+        $this->color = $color;
     }
 
     public function getProduct(): Product

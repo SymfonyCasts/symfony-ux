@@ -36,15 +36,30 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-3">
-                                    <input type="number" min="1" class="form-control">
+                                    <input
+                                        type="number"
+                                        min="1"
+                                        class="form-control"
+                                        value="{{ item.quantity }}"
+                                    >
                                 </div>
                                 <div class="col-3">
                                     {{ item.totalString|format_currency('USD') }}
                                 </div>
                                 <div class="col-3">
-                                    <button class="btn btn-info btn-sm">
-                                        Remove
-                                    </button>
+                                    <form
+                                        action="{{ path('app_cart_remove_item', {
+                                            productId: item.product.id,
+                                            colorId: item.color ? item.color.id: null,
+                                        }) }}"
+                                        method="POST"
+                                    >
+                                        <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />
+
+                                        <button class="btn btn-info btn-sm">
+                                            Remove
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                         {% endfor %}

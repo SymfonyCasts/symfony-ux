@@ -3,14 +3,17 @@
 namespace App\Controller;
 
 
+use App\Entity\Color;
 use App\Entity\Product;
 use App\Form\AddItemToCartFormType;
 use App\Repository\CategoryRepository;
+use App\Repository\ColorRepository;
 use App\Repository\ProductRepository;
 use App\Service\CartStorage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 class CartController extends AbstractController
@@ -53,5 +56,35 @@ class CartController extends AbstractController
             'categories' => $categoryRepository->findAll(),
             'addToCartForm' => $addToCartForm->createView()
         ]);
+    }
+
+    /**
+     * @Route("/cart/remove/{productId}/{colorId?}", name="app_cart_remove_item", methods={"POST"})
+     */
+    public function removeItemToCart($productId, $colorId, Request $request, CartStorage $cartStorage, ProductRepository $productRepository, ColorRepository $colorRepository)
+    {
+        /** @var Product|null $product */
+        $product = $productRepository->find($productId);
+        /** @var Color|null $color */
+        $color = $colorId ? $colorRepository->find($colorId) : null;
+
+        if (!$product) {
+            $this->createNotFoundException();
+        }
+
+        if (!$this->isCsrfTokenValid('remove_item', $request->request->get('_token'))) {
+            throw new BadRequestHttpException('Invalid CSRF token');
+        }
+
+        $cart = $cartStorage->getOrCreateCart();
+        $cartItem = $cart->findItem($product, $color);
+        if ($cartItem) {
+            $cart->removeItem($cartItem);
+        }
+        $cartStorage->save($cart);
+
+        $this->addFlash('success', 'Item removed!');
+
+        return $this->redirectToRoute('app_cart');
     }
 }
