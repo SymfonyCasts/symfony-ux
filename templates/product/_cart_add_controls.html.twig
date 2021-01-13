@@ -1,0 +1,21 @@
+{{ form_start(addToCartForm, {
+    attr: { class: 'cart-add-controls d-flex align-items-center justify-content-baseline' }
+}) }}
+    {% if addToCartForm.color is defined %}
+        {{ form_widget(addToCartForm.color) }}
+    {% endif %}
+
+    {{ form_widget(addToCartForm.quantity, {
+        attr: { class: 'mx-3' }
+    }) }}
+
+    <button class="btn btn-info btn-sm" formnovalidate>
+        {{ addButtonText|default('Add to Cart') }}
+    </button>
+{{ form_end(addToCartForm) }}
+
+<div>
+    {{ form_errors(addToCartForm) }}
+    {{ form_errors(addToCartForm.color) }}
+    {{ form_errors(addToCartForm.quantity) }}
+</div>

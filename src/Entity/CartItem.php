@@ -21,8 +21,8 @@ class CartItem
     private $color;
 
     /**
-     * @Assert\GreaterThanOrEqual(1)
-     * @Assert\NotBlank
+     * @Assert\GreaterThanOrEqual(1, message="Enter a quantity greater than 0")
+     * @Assert\NotBlank(message="Please enter a valid quantity")
      * @var int
      */
     private $quantity = 1;

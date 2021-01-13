@@ -36,7 +36,7 @@ class CartController extends AbstractController
     }
 
     /**
-     * @Route("/cart/add/{id}", name="app_cart_add_item", methods={"POST"})
+     * @Route("/product/{id}", name="app_cart_add_item", methods={"POST"})
      */
     public function addItemToCart(Product $product, Request $request, CategoryRepository $categoryRepository, CartStorage $cartStorage)
     {

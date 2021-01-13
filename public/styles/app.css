@@ -84,6 +84,13 @@ h1 {
     max-height:100%;
 }
 
+.cart-add-controls input {
+    width: 80px;
+}
+.cart-add-controls select {
+    max-width: 190px;
+}
+
 .cart .cart-item {
     border-bottom: 1px solid #efefee;
 }

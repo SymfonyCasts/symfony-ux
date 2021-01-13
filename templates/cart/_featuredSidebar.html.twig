@@ -11,18 +11,10 @@
 
             {{ featuredProduct.priceString|format_currency('USD') }}
         </h6>
-        <div
-            class="d-flex align-items-center justify-content-center">
-            {{ form_start(addToCartForm) }}
-                {{ form_row(addToCartForm.quantity) }}
-
-                {% if addToCartForm.color is defined %}
-                    {{ form_row(addToCartForm.color) }}
-                {% endif %}
-                <button class="btn btn-info btn-sm" formnovalidate>
-                    +
-                </button>
-            {{ form_end(addToCartForm) }}
+        <div class="cart-add-controls d-flex align-items-center justify-content-center">
+            {{ include('product/_cart_add_controls.html.twig', {
+                addButtonText: '+'
+            }) }}
         </div>
     </div>
 </div>

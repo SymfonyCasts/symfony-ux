@@ -36,12 +36,7 @@
                                     {% endif %}
                                 </div>
                                 <div class="col-3">
-                                    <input
-                                        type="number"
-                                        min="1"
-                                        class="form-control"
-                                        value="{{ item.quantity }}"
-                                    >
+                                    {{ item.quantity }}
                                 </div>
                                 <div class="col-3">
                                     {{ item.totalString|format_currency('USD') }}

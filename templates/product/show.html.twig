@@ -26,22 +26,11 @@
                             {{ product.description }}
                         </div>
                         <div class="row mt-4 align-items-center">
-                            <div class="col-4">
+                            <div class="col-3">
                                 Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
                             </div>
-                            <div class="col-8 p-3">
-                                <div class="cart-add-controls d-flex align-items-center justify-content-center">
-                                    {{ form_start(addToCartForm) }}
-                                        {{ form_row(addToCartForm.quantity) }}
-
-                                        {% if addToCartForm.color is defined %}
-                                            {{ form_row(addToCartForm.color) }}
-                                        {% endif %}
-                                        <button class="btn btn-info btn-sm" formnovalidate>
-                                            Add to Cart
-                                        </button>
-                                    {{ form_end(addToCartForm) }}
-                                </div>
+                            <div class="col-9 p-3">
+                                {{ include('product/_cart_add_controls.html.twig') }}
                             </div>
                         </div>
                     </div>
