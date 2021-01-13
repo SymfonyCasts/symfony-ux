@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+
+{% macro renderFormField(field, class) %}
+    <div class="form-group {{ class }}">
+
+    </div>
+{% endmacro %}
+
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-xs-12 col-lg-3">
+                {% if featuredProduct %}
+                    {{ include('cart/_featuredSidebar.html.twig') }}
+                {% endif %}
+            </aside>
+
+            <div class="col-xs-12 col-lg-9 cart">
+                <h1>Checkout</h1>
+                <div class="component-light p-3">
+
+                    {{ form_start(checkoutForm) }}
+                        <div class="form-row">
+                            {{ form_row(checkoutForm.customerName, {
+                                row_attr: { class: 'col' }
+                            }) }}
+                            {{ form_row(checkoutForm.customerEmail, {
+                                row_attr: { class: 'col' }
+                            }) }}
+                        </div>
+
+                        {{ form_row(checkoutForm.customerAddress) }}
+
+                        <div class="form-row">
+                            {{ form_row(checkoutForm.customerCity, {
+                                row_attr: { class: 'col' }
+                            }) }}
+
+                            {{ form_row(checkoutForm.customerZip, {
+                                row_attr: { class: 'col' }
+                            }) }}
+
+                            {{ form_row(checkoutForm.customerPhone, {
+                                row_attr: { class: 'col' }
+                            }) }}
+                        </div>
+
+                        <div class="form-row justify-content-end align-items-center">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-info btn-lg" formnovalidate>
+                                    Order!
+                                </button>
+                            </div>
+                        </div>
+                    {{ form_end(checkoutForm) }}
+
+                    <div>
+                        <a href="{{ path('app_cart') }}" class="btn btn-primary">
+                            &lt;&lt; Go Back
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

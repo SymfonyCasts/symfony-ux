@@ -90,4 +90,14 @@ class PurchaseItem
 
         return $this;
     }
+
+    public function getTotal(): int
+    {
+        return $this->getProduct()->getPrice() * $this->getQuantity();
+    }
+
+    public function getTotalString(): string
+    {
+        return (string) ($this->getTotal() / 100);
+    }
 }

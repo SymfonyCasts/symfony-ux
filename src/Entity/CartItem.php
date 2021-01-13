@@ -95,4 +95,14 @@ class CartItem
     {
         return (string) ($this->getTotal() / 100);
     }
+
+    public function createPurchaseItem(): PurchaseItem
+    {
+        $purchaseItem = new PurchaseItem();
+        $purchaseItem->setProduct($this->product);
+        $purchaseItem->setQuantity($this->quantity);
+        $purchaseItem->setColor($this->color);
+
+        return $purchaseItem;
+    }
 }

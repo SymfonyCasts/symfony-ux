@@ -15,7 +15,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="component-light purchase">
+                        <div class="component-light p-4">
                             <p>
                                 To complete the transaction, please print this page and mail it together
                                 with a check or money order to the following address:
@@ -25,7 +25,7 @@
                                 10443 Vintage City, MI<br />
                                 USA
                             </code>
-                            <p>
+                            <p class="mt-2">
                                 Your products will arrive within 12-24 weeks... or probably later.
                             </p>
 
@@ -40,9 +40,8 @@
                                 City: {{ purchase.customerCity }}<br />
                                 Phone: {{ purchase.customerPhone }}<br />
                             </code>
-                            <hr />
 
-                            <table class="table">
+                            <table class="table mt-4">
                                 <tbody>
                                     {% for item in purchase.purchaseItems %}
                                         <tr>
@@ -54,7 +53,7 @@
                                                 {{ item.quantity }}
                                             </td>
                                             <td>
-                                                ${{ (item.product.price / 100)|number_format(2) }} <br />
+                                                {{ item.totalString|format_currency('USD') }} <br>
                                             </td>
                                         </tr>
                                     {% endfor %}
@@ -67,7 +66,7 @@
                                         </td>
                                         <td></td>
                                         <td>
-                                        ${{ (totalPrice / 100)|number_format(2) }}
+                                            {{ purchase.totalString|format_currency('USD') }}
                                         </td>
                                     </tr>
                                 </tfoot>

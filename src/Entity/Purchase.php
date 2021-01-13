@@ -208,4 +208,23 @@ class Purchase
 
         return $this;
     }
+
+    public function addItemsFromCart(Cart $cart)
+    {
+        foreach ($cart->getItems() as $item) {
+            $this->addPurchaseItem($item->createPurchaseItem());
+        }
+    }
+
+    public function getTotal(): int
+    {
+        return array_reduce($this->purchaseItems->toArray(), function($accumulator, PurchaseItem $item) {
+            return $accumulator + $item->getTotal();
+        }, 0);
+    }
+
+    public function getTotalString(): string
+    {
+        return (string) ($this->getTotal() / 100);
+    }
 }

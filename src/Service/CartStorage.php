@@ -58,7 +58,12 @@ class CartStorage
         $this->session->set(self::getKey(), $cart);
     }
 
-    public static function getKey(): string
+    public function clearCart()
+    {
+        $this->session->remove(self::getKey());
+    }
+
+    private static function getKey(): string
     {
         return sprintf('_cart_storage');
     }
