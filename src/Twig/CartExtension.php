@@ -34,9 +34,6 @@ class CartExtension extends AbstractExtension
             return 0;
         }
 
-        return array_reduce($cart->getItems(), function($accumulator, CartItem $item) {
-            dump($item);
-            return $accumulator + $item->getQuantity();
-        }, 0);
+        return $cart->countTotalItems();
     }
 }

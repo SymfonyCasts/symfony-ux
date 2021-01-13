@@ -41,4 +41,23 @@ class Cart
             }
         }
     }
+
+    public function getTotal(): int
+    {
+        return array_reduce($this->getItems(), function($accumulator, CartItem $item) {
+            return $accumulator + $item->getTotal();
+        }, 0);
+    }
+
+    public function getTotalString(): string
+    {
+        return (string) ($this->getTotal() / 100);
+    }
+
+    public function countTotalItems(): int
+    {
+        return array_reduce($this->getItems(), function($accumulator, CartItem $item) {
+            return $accumulator + $item->getQuantity();
+        }, 0);
+    }
 }

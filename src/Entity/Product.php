@@ -127,6 +127,11 @@ class Product
         return $this->price;
     }
 
+    public function getPriceString(): string
+    {
+        return (string) $this->price / 100;
+    }
+
     public function setPrice(int $price): self
     {
         $this->price = $price;

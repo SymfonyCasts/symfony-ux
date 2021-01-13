@@ -60,4 +60,19 @@ class Color
 
         return $this;
     }
+
+    public function getRed(): string
+    {
+        return hexdec(substr($this->hexColor, 0, 2));
+    }
+
+    public function getGreen(): string
+    {
+        return hexdec(substr($this->hexColor, 2, 2));
+    }
+
+    public function getBlue(): string
+    {
+        return hexdec(substr($this->hexColor, 4, 2));
+    }
 }

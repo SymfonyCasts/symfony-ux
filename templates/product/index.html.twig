@@ -54,10 +54,9 @@
                                 <div
                                     class="p-2 my-3 d-md-flex justify-content-between">
                                     <p class="p-0 d-inline">
-                                        <strong>{{ product.price|format_currency('USD') }}</strong></p>
-                                    <button class="btn btn-info btn-sm">
-                                        View Product
-                                    </button>
+                                        <strong>{{ product.priceString|format_currency('USD') }}</strong>
+                                    </p>
+                                    <a href="{{ path('app_product', { id: product.id }) }}" class="btn btn-info">View Product</a>
                                 </div>
                             </div>
                             <hr>

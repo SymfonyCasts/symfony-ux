@@ -1,0 +1,34 @@
+<div class="component-light product-show p-3 mb-5">
+    <h5 class="text-center">Featured Product!</h5>
+    <img
+        alt="{{ featuredProduct.name }}"
+        src="{{ asset('/uploads/products/'~featuredProduct.imageFilename) }}"
+        class="d-block"
+    >
+    <div class="pt-3">
+        <h6>
+            {{ featuredProduct.name }}
+
+            {{ featuredProduct.priceString|format_currency('USD') }}
+        </h6>
+        <div
+            class="d-flex align-items-center justify-content-center">
+            <div>
+                {% for color in featuredProduct.colors %}
+                    <span
+                        title="{{ color.name }}"
+                        style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});">
+                    </span>
+                {% endfor %}
+            </div>
+            <input
+                type="number"
+                min="1"
+                class="form-control mx-3"
+            >
+            <button class="btn btn-info btn-sm">
+                +
+            </button>
+        </div>
+    </div>
+</div>

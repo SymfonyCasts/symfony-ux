@@ -6,6 +6,7 @@ namespace App\Controller;
 use App\Entity\Product;
 use App\Form\AddItemToCartFormType;
 use App\Repository\CategoryRepository;
+use App\Repository\ProductRepository;
 use App\Service\CartStorage;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -17,9 +18,12 @@ class CartController extends AbstractController
     /**
      * @Route("/cart", name="app_cart")
      */
-    public function shoppingCart(): Response
+    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository): Response
     {
-        return $this->render('cart/cart.html.twig');
+        return $this->render('cart/cart.html.twig', [
+            'cart' => $cartStorage->getOrCreateCart(),
+            'featuredProduct' => $productRepository->findFeatured(),
+        ]);
     }
 
     /**

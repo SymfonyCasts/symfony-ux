@@ -1,6 +1,66 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div id="app"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-xs-12 col-lg-3">
+                {% if featuredProduct %}
+                    {{ include('cart/_featuredSidebar.html.twig') }}
+                {% endif %}
+            </aside>
+
+            <div class="col-xs-12 col-lg-9 cart">
+                <h1>Shopping Cart</h1>
+                <div class="component-light p-3">
+                    <div>
+                        <div class="row p-3">
+                            <div class="col-3">
+                                Item Name
+                            </div>
+                            <div class="col-3">
+                                Quantity
+                            </div>
+                            <div class="col-3">
+                                Price
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                        {% for item in cart.items %}
+                            <div class="cart-item row p-3">
+                                <div class="col-2">
+                                    {{ item.product.name }}
+                                </div>
+                                <div class="col-1">
+                                    {% if item.color %}
+                                        <span class="color-square" style="background-color: rgb({{ item.color.red }}, {{ item.color.green }}, {{ item.color.blue }});"></span>
+                                    {% endif %}
+                                </div>
+                                <div class="col-3">
+                                    <input type="number" min="1" class="form-control">
+                                </div>
+                                <div class="col-3">
+                                    {{ item.totalString|format_currency('USD') }}
+                                </div>
+                                <div class="col-3">
+                                    <button class="btn btn-info btn-sm">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                        <div class="p-3">
+                            Total: <strong>{{ cart.totalString|format_currency('USD') }}</strong>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-primary">
+                            Check Out &gt;&gt;
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
 

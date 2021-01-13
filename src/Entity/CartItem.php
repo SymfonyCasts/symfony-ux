@@ -83,4 +83,14 @@ class CartItem
                 ->addViolation();
         }
     }
+
+    public function getTotal(): int
+    {
+        return $this->getProduct()->getPrice() * $this->getQuantity();
+    }
+
+    public function getTotalString(): string
+    {
+        return (string) ($this->getTotal() / 100);
+    }
 }
