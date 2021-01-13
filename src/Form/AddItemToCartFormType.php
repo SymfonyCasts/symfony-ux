@@ -47,7 +47,7 @@ class AddItemToCartFormType extends AbstractType
             $builder->add('color', EntityType::class, [
                 'class' => Color::class,
                 'choices' => $product->getColors(),
-                'placeholder' => 'Choose a color',
+                'placeholder' => 'Color',
                 'choice_label' => 'name',
             ]);
         }
