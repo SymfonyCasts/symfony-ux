@@ -16,6 +16,8 @@
 
 <div>
     {{ form_errors(addToCartForm) }}
-    {{ form_errors(addToCartForm.color) }}
+    {% if addToCartForm.color is defined %}
+        {{ form_errors(addToCartForm.color) }}
+    {% endif %}
     {{ form_errors(addToCartForm.quantity) }}
 </div>
