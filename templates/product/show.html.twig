@@ -30,7 +30,9 @@
                                 Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
                             </div>
                             <div class="col-9 p-3">
-                                {{ include('product/_cart_add_controls.html.twig') }}
+                                {{ include('product/_cart_add_controls.html.twig', {
+                                    addButtonText: 'Add to Cart'
+                                }) }}
                             </div>
                         </div>
                     </div>

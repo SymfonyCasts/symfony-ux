@@ -14,8 +14,6 @@
             {{ featuredProduct.priceString|format_currency('USD') }}
         </h6>
 
-        {{ include('product/_cart_add_controls.html.twig', {
-            addButtonText: '+'
-        }) }}
+        {{ include('product/_cart_add_controls.html.twig') }}
     </div>
 </div>
