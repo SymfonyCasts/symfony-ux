@@ -57,17 +57,26 @@
                                     </form>
                                 </div>
                             </div>
+                        {% else %}
+                            <div class="col-12">
+                                Your cart is empty! Get to shopping!
+                            </div>
                         {% endfor %}
 
+                        {% if cart.items|length > 0 %}
                         <div class="p-3">
                             Total: <strong>{{ cart.totalString|format_currency('USD') }}</strong>
                         </div>
+                        {% endif %}
                     </div>
+
+                    {% if cart.items|length > 0 %}
                     <div>
                         <a href="{{ path('app_checkout') }}" class="btn btn-primary">
                             Check Out &gt;&gt;
                         </a>
                     </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
