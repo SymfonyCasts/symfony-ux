@@ -17,17 +17,19 @@ class Cart
         return $this->items;
     }
 
-    public function addItem(CartItem $cartItem)
+    public function addItem(CartItem $cartItem): CartItem
     {
         foreach ($this->items as $item) {
             if ($cartItem->matches($item)) {
                 $item->increaseQuantity($cartItem->getQuantity());
 
-                return;
+                return $item;
             }
         }
 
         $this->items[] = $cartItem;
+
+        return $cartItem;
     }
 
     public function removeItem(CartItem $cartItem)
@@ -70,5 +72,10 @@ class Cart
         }
 
         return null;
+    }
+
+    public function hasItem(CartItem $cartItem)
+    {
+        return (bool) $this->findItem($cartItem->getProduct(), $cartItem->getColor());
     }
 }

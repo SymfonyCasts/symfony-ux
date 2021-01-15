@@ -105,4 +105,12 @@ class CartItem
 
         return $purchaseItem;
     }
+
+    public function getIdentifier()
+    {
+        return sprintf('%s_%s',
+            $this->product->getId(),
+            $this->color ? $this->color->getId() : ''
+        );
+    }
 }
