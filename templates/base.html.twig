@@ -8,6 +8,8 @@
 
             <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
         {% endblock %}
+
+        {% block javascripts %}{% endblock %}
     </head>
     <body>
         <div class="page-top">
@@ -66,8 +68,5 @@
                 SymfonyCasts
             </a>
         </p>
-
-        {% block javascripts %}
-        {% endblock %}
     </body>
 </html>
