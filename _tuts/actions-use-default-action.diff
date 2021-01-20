@@ -1,0 +1,13 @@
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 8eccd2e..23bf5dd 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -11,7 +11,7 @@
+ 
+                 <div data-controller="counter">
+                     <button
+-                        data-action="click->counter#increment"
++                        data-action="counter#increment"
+                         class="btn btn-primary btn-sm"
+                     >
+                         Click me!

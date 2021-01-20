@@ -1,0 +1,13 @@
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index acb2341..30c396d 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -9,6 +9,8 @@
+ 
+             <div class="col-xs-12 col-9">
+ 
++                <div data-controller="counter"></div>
++
+                 <div class="row">
+                     <div class="col-3">
+                         <h1>

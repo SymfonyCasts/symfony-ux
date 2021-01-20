@@ -1,0 +1,13 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+new file mode 100644
+index 0000000..221f524
+--- /dev/null
++++ b/assets/controllers/counter_controller.js
+@@ -0,0 +1,7 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    connect() {
++        this.element.innerHTML = 'You have clicked me 0 times 😢';
++    }
++}

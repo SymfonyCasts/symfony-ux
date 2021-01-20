@@ -1,0 +1,100 @@
+{
+    "steps": [
+        {
+            "id": "start",
+            "name": "start",
+            "description": null
+        },
+        {
+            "id": "installencore-install-encore",
+            "name": "InstallEncore: install encore",
+            "description": null
+        },
+        {
+            "id": "installencore-yarn-install",
+            "name": "InstallEncore: yarn install",
+            "description": null
+        },
+        {
+            "id": "installencore-add-encore-twig-functions",
+            "name": "InstallEncore: add Encore Twig functions",
+            "description": null
+        },
+        {
+            "id": "installencore-move-styles",
+            "name": "InstallEncore: move styles",
+            "description": null
+        },
+        {
+            "id": "installencore-add-bootstrap",
+            "name": "InstallEncore: add Bootstrap",
+            "description": null
+        },
+        {
+            "id": "installencore-import-bootstrap",
+            "name": "InstallEncore: import bootstrap",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-delete-hello-controller",
+            "name": "ControllerBasics: delete hello controller",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-create-first-controller",
+            "name": "ControllerBasics: create first controller",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-add-first-element",
+            "name": "ControllerBasics: add first element",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-add-2nd-element",
+            "name": "ControllerBasics: add 2nd element",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-increment-on-click",
+            "name": "ControllerBasics: increment on click",
+            "description": null
+        },
+        {
+            "id": "targets-remove-2nd-element",
+            "name": "Targets: remove 2nd element",
+            "description": null
+        },
+        {
+            "id": "targets-add-span-element",
+            "name": "Targets: add span element",
+            "description": null
+        },
+        {
+            "id": "targets-add-target",
+            "name": "Targets: add target",
+            "description": null
+        },
+        {
+            "id": "actions-add-button",
+            "name": "Actions: add button",
+            "description": null
+        },
+        {
+            "id": "actions-add-data-action",
+            "name": "Actions: add data-action",
+            "description": null
+        },
+        {
+            "id": "actions-use-default-action",
+            "name": "Actions: use default action",
+            "description": null
+        },
+        {
+            "id": "actions-remove-connect",
+            "name": "Actions: remove connect()",
+            "description": null
+        }
+    ],
+    "sha": "f0a986e3da170be0a9e38754e8c80686676e1876"
+}

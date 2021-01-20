@@ -1,0 +1,36 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+index 320d85e..1a95704 100644
+--- a/assets/controllers/counter_controller.js
++++ b/assets/controllers/counter_controller.js
+@@ -1,15 +1,14 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
++    static targets = ['count'];
++
+     connect() {
+         this.count = 0;
+ 
+-        const counterNumberElement = this.element
+-            .getElementsByClassName('counter-count')[0];
+-
+         this.element.addEventListener('click', () => {
+             this.count++;
+-            counterNumberElement.innerText = this.count;
++            this.countTarget.innerText = this.count;
+         });
+     }
+ }
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 3d8b725..f448d8d 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -11,7 +11,7 @@
+ 
+                 <div data-controller="counter">
+                     I have been clicked
+-                    <span class="counter-count">0</span>
++                    <span data-counter-target="count">0</span>
+                     times!
+                 </div>
+ 

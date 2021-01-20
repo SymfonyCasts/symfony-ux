@@ -1,0 +1,12 @@
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 4bc4499..30c396d 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -4,7 +4,6 @@
+     <div class="container-fluid">
+         <div class="row">
+             <aside class="col-xs-12 col-3">
+-                <div data-controller="counter"></div>
+                 {{ include('product/_categoriesSidebar.html.twig') }}
+             </aside>
+ 
