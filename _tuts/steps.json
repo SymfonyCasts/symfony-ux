@@ -94,7 +94,122 @@
             "id": "actions-remove-connect",
             "name": "Actions: remove connect()",
             "description": null
+        },
+        {
+            "id": "colorselector-loop-and-print-out-hex",
+            "name": "ColorSelector: loop and print out hex",
+            "description": null
+        },
+        {
+            "id": "colorselector-render-color-boxes",
+            "name": "ColorSelector: render color boxes",
+            "description": null
+        },
+        {
+            "id": "colorselector-bootstrap-controller",
+            "name": "ColorSelector: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-action-to-squares",
+            "name": "ColorSelector: add action to squares",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-click",
+            "name": "ColorSelector: add click->",
+            "description": null
+        },
+        {
+            "id": "colorselector-change-to-buttons",
+            "name": "ColorSelector: change to buttons",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-selected-class",
+            "name": "ColorSelector: add \"selected\" class",
+            "description": null
+        },
+        {
+            "id": "colorselector-colorsquare-target",
+            "name": "ColorSelector: colorSquare target",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-missing-static",
+            "name": "ColorSelector: add missing static",
+            "description": null
+        },
+        {
+            "id": "colorselector-removing-border-on-others",
+            "name": "ColorSelector: removing border on others",
+            "description": null
+        },
+        {
+            "id": "dataset-add-data-color-id",
+            "name": "Dataset: add data-color-id",
+            "description": null
+        },
+        {
+            "id": "dataset-set-selected-option",
+            "name": "Dataset: set selected option",
+            "description": null
+        },
+        {
+            "id": "dataset-hide-select-on-load",
+            "name": "Dataset: hide select on load",
+            "description": null
+        },
+        {
+            "id": "state-add-this-selectedcolorid",
+            "name": "State: add this.selectedColorId",
+            "description": null
+        },
+        {
+            "id": "state-unselect-on-2nd-click",
+            "name": "State: unselect on 2nd click",
+            "description": null
+        },
+        {
+            "id": "organization-create-setselectedcolor-method",
+            "name": "Organization: create setSelectedColor method",
+            "description": null
+        },
+        {
+            "id": "values-add-data-color-id-attribute",
+            "name": "Values: add data-color-id attribute",
+            "description": null
+        },
+        {
+            "id": "values-hello-values-api",
+            "name": "Values: hello values api",
+            "description": null
+        },
+        {
+            "id": "values-setting-initial-selected",
+            "name": "Values: setting initial selected",
+            "description": null
+        },
+        {
+            "id": "values-fixing-type-problem",
+            "name": "Values: fixing type problem",
+            "description": null
+        },
+        {
+            "id": "values-add-changed-hook",
+            "name": "Values: add \"changed\" hook",
+            "description": null
+        },
+        {
+            "id": "values-doing-all-the-work-in-the-hook",
+            "name": "Values: doing all the work in the hook",
+            "description": null
+        },
+        {
+            "id": "values-use-value-exclusively",
+            "name": "Values: use value exclusively",
+            "description": null
         }
     ],
-    "sha": "f0a986e3da170be0a9e38754e8c80686676e1876"
+    "sha": "55e36ac54db8d346a86a210be06a34368d9e9787"
 }

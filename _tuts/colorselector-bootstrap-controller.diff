@@ -1,0 +1,41 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+new file mode 100644
+index 0000000..8f84eb4
+--- /dev/null
++++ b/assets/controllers/color-square_controller.js
+@@ -0,0 +1,7 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    connect() {
++        console.log(this.element.innerHTML);
++    }
++}
+diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
+index 7131b2b..feeeafd 100644
+--- a/templates/product/_cart_add_controls.html.twig
++++ b/templates/product/_cart_add_controls.html.twig
+@@ -2,14 +2,16 @@
+     attr: { class: 'cart-add-controls d-flex align-items-center justify-content-baseline' }
+ }) }}
+     {% if addToCartForm.color is defined %}
+-        {{ form_widget(addToCartForm.color) }}
++        <div data-controller="color-square">
++            {{ form_widget(addToCartForm.color) }}
+ 
+-        {% for color in addToCartForm.vars.data.product.colors %}
+-            <span
+-                class="color-square"
+-                style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+-            ></span>
+-        {% endfor %}
++            {% for color in addToCartForm.vars.data.product.colors %}
++                <span
++                    class="color-square"
++                    style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
++                ></span>
++            {% endfor %}
++        </div>
+     {% endif %}
+ 
+     {{ form_widget(addToCartForm.quantity, {

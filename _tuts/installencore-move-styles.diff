@@ -1,8 +1,8 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index cb33b13..bbd1985 100644
+index cb33b13..4dbf83f 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
-@@ -1,3 +1,107 @@
+@@ -1,3 +1,112 @@
 +@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 +
  body {
@@ -101,11 +101,16 @@ index cb33b13..bbd1985 100644
 +    border-bottom: 1px solid #efefee;
 +}
 +
-+.cart .cart-item .color-square {
++.color-square {
 +    display: inline-block;
 +    width: 25px;
 +    height: 25px;
 +    border-radius: 4px;
++    border: 2px solid transparent;
++    transition: border-color 500ms linear;
++}
++.color-square.selected {
++    border: 2px solid black
 +}
 +
 +.cart .cart-item input {
@@ -113,10 +118,10 @@ index cb33b13..bbd1985 100644
  }
 diff --git a/public/styles/app.css b/public/styles/app.css
 deleted file mode 100644
-index bbd1985..0000000
+index 4dbf83f..0000000
 --- a/public/styles/app.css
 +++ /dev/null
-@@ -1,107 +0,0 @@
+@@ -1,112 +0,0 @@
 -@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
 -
 -body {
@@ -214,11 +219,16 @@ index bbd1985..0000000
 -    border-bottom: 1px solid #efefee;
 -}
 -
--.cart .cart-item .color-square {
+-.color-square {
 -    display: inline-block;
 -    width: 25px;
 -    height: 25px;
 -    border-radius: 4px;
+-    border: 2px solid transparent;
+-    transition: border-color 500ms linear;
+-}
+-.color-square.selected {
+-    border: 2px solid black
 -}
 -
 -.cart .cart-item input {
