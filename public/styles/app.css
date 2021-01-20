@@ -100,7 +100,8 @@ h1 {
     width: 25px;
     height: 25px;
     border-radius: 4px;
-    border: 2px solid transparent
+    border: 2px solid transparent;
+    transition: border-color 500ms linear;
 }
 .color-square.selected {
     border: 2px solid black
