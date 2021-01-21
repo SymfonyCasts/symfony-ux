@@ -110,3 +110,13 @@ h1 {
 .cart .cart-item input {
     width: 60px;
 }
+
+.search-preview {
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+    top: 44px;
+}
+.search-preview img {
+    width: 50px;
+}
