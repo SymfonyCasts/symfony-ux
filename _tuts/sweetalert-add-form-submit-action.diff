@@ -14,7 +14,7 @@ index f7862ab..5ea0ca2 100644
      }
  }
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 196f60a..8941e88 100644
+index 30c3269..915bc80 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -49,6 +49,7 @@

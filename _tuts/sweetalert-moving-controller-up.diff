@@ -32,7 +32,7 @@ index 7e021c0..76891a5 100644
  
          this.element.remove();
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 8941e88..3593d26 100644
+index 915bc80..09f6751 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -26,7 +26,10 @@

@@ -1,0 +1,21 @@
+diff --git a/assets/controllers/admin-chartjs_controller.js b/assets/controllers/admin-chartjs_controller.js
+index 505064f..5ad9b66 100644
+--- a/assets/controllers/admin-chartjs_controller.js
++++ b/assets/controllers/admin-chartjs_controller.js
+@@ -8,6 +8,15 @@ export default class extends Controller {
+     }
+ 
+     onChartConnect(event) {
+-        console.log(event);
++        this.chart = event.detail.chart;
++
++        setTimeout(() => {
++            this.setNewData();
++        }, 5000)
++    }
++
++    setNewData() {
++        this.chart.data.datasets[0].data[2] = 3000;
++        this.chart.update();
+     }
+ }

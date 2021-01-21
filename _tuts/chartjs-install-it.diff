@@ -1,0 +1,147 @@
+diff --git a/assets/controllers.json b/assets/controllers.json
+index a1c6e90..ae51529 100644
+--- a/assets/controllers.json
++++ b/assets/controllers.json
+@@ -1,4 +1,11 @@
+ {
+-    "controllers": [],
++    "controllers": {
++        "@symfony/ux-chartjs": {
++            "chart": {
++                "enabled": true,
++                "webpackMode": "eager"
++            }
++        }
++    },
+     "entrypoints": []
+ }
+diff --git a/composer.json b/composer.json
+index 64f25a9..61ff2e1 100644
+--- a/composer.json
++++ b/composer.json
+@@ -21,6 +21,7 @@
+         "symfony/proxy-manager-bridge": "5.2.*",
+         "symfony/security-bundle": "5.2.*",
+         "symfony/twig-bundle": "5.2.*",
++        "symfony/ux-chartjs": "^1.1",
+         "symfony/validator": "5.2.*",
+         "symfony/webpack-encore-bundle": "^1.9",
+         "symfony/yaml": "5.2.*",
+diff --git a/composer.lock b/composer.lock
+index 897851a..393f7d1 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "054bad88fd0b7aabca04911dbb93f650",
++    "content-hash": "b48f81c32bf293fa70560cd2a59cb53b",
+     "packages": [
+         {
+             "name": "composer/package-versions-deprecated",
+@@ -5555,6 +5555,80 @@
+             ],
+             "time": "2020-12-08T16:43:38+00:00"
+         },
++        {
++            "name": "symfony/ux-chartjs",
++            "version": "v1.1.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/symfony/ux-chartjs.git",
++                "reference": "0d53205fa56b3129fb0579e9cd9306d3972c1553"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/symfony/ux-chartjs/zipball/0d53205fa56b3129fb0579e9cd9306d3972c1553",
++                "reference": "0d53205fa56b3129fb0579e9cd9306d3972c1553",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=7.2.5",
++                "symfony/config": "^4.4.17|^5.0",
++                "symfony/dependency-injection": "^4.4.17|^5.0",
++                "symfony/http-kernel": "^4.4.17|^5.0"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^8.5",
++                "symfony/framework-bundle": "^4.4.17|^5.0",
++                "symfony/twig-bundle": "^4.4.17|^5.0",
++                "symfony/var-dumper": "^4.4.17|^5.0"
++            },
++            "type": "symfony-bundle",
++            "autoload": {
++                "psr-4": {
++                    "Symfony\\UX\\Chartjs\\": "."
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Titouan Galopin",
++                    "email": "galopintitouan@gmail.com"
++                },
++                {
++                    "name": "Symfony Community",
++                    "homepage": "https://symfony.com/contributors"
++                }
++            ],
++            "description": "Chart.js integration for Symfony",
++            "homepage": "https://symfony.com",
++            "keywords": [
++                "Chart.js",
++                "chart",
++                "chartjs",
++                "symfony",
++                "ux"
++            ],
++            "support": {
++                "source": "https://github.com/symfony/ux-chartjs/tree/v1.1.0"
++            },
++            "funding": [
++                {
++                    "url": "https://symfony.com/sponsor",
++                    "type": "custom"
++                },
++                {
++                    "url": "https://github.com/fabpot",
++                    "type": "github"
++                },
++                {
++                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
++                    "type": "tidelift"
++                }
++            ],
++            "time": "2020-12-05T19:56:39+00:00"
++        },
+         {
+             "name": "symfony/validator",
+             "version": "v5.2.1",
+diff --git a/config/bundles.php b/config/bundles.php
+index b0ce84c..f8d5509 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -14,4 +14,5 @@ return [
+     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
+     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
++    Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
+ ];
+diff --git a/package.json b/package.json
+index 315a06a..88f8809 100644
+--- a/package.json
++++ b/package.json
+@@ -8,7 +8,8 @@
+         "stimulus": "^2.0.0",
+         "stimulus-use": "^0.22.1",
+         "sweetalert2": "^10.13.0",
+-        "webpack-notifier": "^1.6.0"
++        "webpack-notifier": "^1.6.0",
++        "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets"
+     },
+     "license": "UNLICENSED",
+     "private": true,

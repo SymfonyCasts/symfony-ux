@@ -309,7 +309,42 @@
             "id": "sweetalert-moving-controller-up",
             "name": "SweetAlert: Moving controller up",
             "description": null
+        },
+        {
+            "id": "chartjs-install-it",
+            "name": "ChartJs: install it",
+            "description": null
+        },
+        {
+            "id": "chartjs-yarn-install-force",
+            "name": "ChartJs: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "chartjs-render-chart",
+            "name": "ChartJs: render chart",
+            "description": null
+        },
+        {
+            "id": "chartjs-set-option",
+            "name": "ChartJs: set option",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-add-custom-controller",
+            "name": "ChartJsExtend: add custom controller",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-listen-to-connect-event",
+            "name": "ChartJsExtend: listen to connect event",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-change-chart-in-5-seconds",
+            "name": "ChartJsExtend: change chart in 5 seconds",
+            "description": null
         }
     ],
-    "sha": "e66096777dbde1d8af529021acf99c3b6d6c1a85"
+    "sha": "d9060495e0a1899f3664ad85177d19623c4e87c4"
 }

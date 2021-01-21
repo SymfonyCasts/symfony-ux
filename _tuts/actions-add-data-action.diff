@@ -18,7 +18,7 @@ index 1a95704..b814859 100644
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 76db29a..8eccd2e 100644
+index 90b523f..ff702cd 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -10,7 +10,10 @@
