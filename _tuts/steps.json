@@ -209,7 +209,107 @@
             "id": "values-use-value-exclusively",
             "name": "Values: use value exclusively",
             "description": null
+        },
+        {
+            "id": "searchpreview-bootstrap-controller",
+            "name": "SearchPreview: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-keyup-action",
+            "name": "SearchPreview: add keyup action",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-url-value",
+            "name": "SearchPreview: add url value",
+            "description": null
+        },
+        {
+            "id": "searchpreview-create-ajax-endpoint",
+            "name": "SearchPreview: create AJAX endpoint",
+            "description": null
+        },
+        {
+            "id": "searchpreview-make-ajax-call",
+            "name": "SearchPreview: make AJAX call",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-target-and-fill-in",
+            "name": "SearchPreview: add target and fill in",
+            "description": null
+        },
+        {
+            "id": "searchpreview-make-it-prettier",
+            "name": "SearchPreview: make it prettier",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-install-it",
+            "name": "stimulus-use: install it",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-useclickoutside",
+            "name": "stimulus-use: useClickOutside",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-usedebounce",
+            "name": "stimulus-use: useDebounce",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-refactor-to-method",
+            "name": "stimulus-use: refactor to method",
+            "description": null
+        },
+        {
+            "id": "sweetalert-add-submit-confirm-controller",
+            "name": "SweetAlert: add submit-confirm controller",
+            "description": null
+        },
+        {
+            "id": "sweetalert-install-sweetalert2",
+            "name": "SweetAlert: install sweetalert2",
+            "description": null
+        },
+        {
+            "id": "sweetalert-add-form-submit-action",
+            "name": "SweetAlert: add form submit action",
+            "description": null
+        },
+        {
+            "id": "sweetalert-paste-in-swal",
+            "name": "SweetAlert: paste in swal()",
+            "description": null
+        },
+        {
+            "id": "sweetalert-resubmit-on-success",
+            "name": "SweetAlert: resubmit on success",
+            "description": null
+        },
+        {
+            "id": "sweetalert-use-preconfirm",
+            "name": "SweetAlert: use preConfirm",
+            "description": null
+        },
+        {
+            "id": "sweetalert-ajax-submit-form",
+            "name": "SweetAlert: AJAX submit form",
+            "description": null
+        },
+        {
+            "id": "sweetalert-remove-button-on-submit",
+            "name": "SweetAlert: remove button on submit",
+            "description": null
+        },
+        {
+            "id": "sweetalert-moving-controller-up",
+            "name": "SweetAlert: Moving controller up",
+            "description": null
         }
     ],
-    "sha": "55e36ac54db8d346a86a210be06a34368d9e9787"
+    "sha": "e66096777dbde1d8af529021acf99c3b6d6c1a85"
 }

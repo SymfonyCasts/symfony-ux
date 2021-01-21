@@ -1,0 +1,28 @@
+diff --git a/package.json b/package.json
+index c68e8b7..0657950 100644
+--- a/package.json
++++ b/package.json
+@@ -6,6 +6,7 @@
+         "core-js": "^3.0.0",
+         "regenerator-runtime": "^0.13.2",
+         "stimulus": "^2.0.0",
++        "stimulus-use": "^0.22.1",
+         "webpack-notifier": "^1.6.0"
+     },
+     "license": "UNLICENSED",
+diff --git a/yarn.lock b/yarn.lock
+index fa0382b..3fde647 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -5668,6 +5668,11 @@ static-extend@^0.1.1:
+   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
+   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
+ 
++stimulus-use@^0.22.1:
++  version "0.22.1"
++  resolved "https://registry.yarnpkg.com/stimulus-use/-/stimulus-use-0.22.1.tgz#a46381fb31b7047910556862d2025ed19a7d068a"
++  integrity sha512-kmye/OHND5JLsKfryodJTCk0ALWAlCvfJRsHs2I2eXbhNbn1wb7zkSZfI0u0EuJPsUiZVl/SPmeVIOre1PqeLw==
++
+ stimulus@^2.0.0:
+   version "2.0.0"
+   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-2.0.0.tgz#713c8b91a72ef90914b90955f0e705f004403047"

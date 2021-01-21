@@ -1,0 +1,30 @@
+diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
+index 8afbd9c..7bdbb28 100644
+--- a/assets/controllers/search-preview_controller.js
++++ b/assets/controllers/search-preview_controller.js
+@@ -1,4 +1,5 @@
+ import { Controller } from 'stimulus';
++import { useClickOutside } from 'stimulus-use';
+ 
+ export default class extends Controller {
+     static values = {
+@@ -7,6 +8,10 @@ export default class extends Controller {
+ 
+     static targets = ['results'];
+ 
++    connect() {
++        useClickOutside(this);
++    }
++
+     async onSearchKeyUp(event) {
+         const params = new URLSearchParams({
+             q: event.currentTarget.value,
+@@ -16,4 +21,8 @@ export default class extends Controller {
+ 
+         this.resultsTarget.innerHTML = await response.text();
+     }
++
++    clickOutside(event) {
++        this.resultsTarget.innerHTML = '';
++    }
+ }

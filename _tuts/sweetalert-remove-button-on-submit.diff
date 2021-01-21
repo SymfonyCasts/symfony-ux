@@ -1,0 +1,19 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index 14fab06..7e021c0 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -20,10 +20,12 @@ export default class extends Controller {
+         });
+     }
+ 
+-    removeFromCart() {
+-        return fetch(this.element.action, {
++    async removeFromCart() {
++        await fetch(this.element.action, {
+             method: this.element.method,
+             body: new URLSearchParams(new FormData(this.element)),
+         });
++
++        this.element.remove();
+     }
+ }

@@ -1,0 +1,23 @@
+diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
+index 7bdbb28..6216772 100644
+--- a/assets/controllers/search-preview_controller.js
++++ b/assets/controllers/search-preview_controller.js
+@@ -1,5 +1,5 @@
+ import { Controller } from 'stimulus';
+-import { useClickOutside } from 'stimulus-use';
++import { useClickOutside, useDebounce } from 'stimulus-use';
+ 
+ export default class extends Controller {
+     static values = {
+@@ -7,9 +7,11 @@ export default class extends Controller {
+     }
+ 
+     static targets = ['results'];
++    static debounces = ['onSearchKeyUp'];
+ 
+     connect() {
+         useClickOutside(this);
++        useDebounce(this);
+     }
+ 
+     async onSearchKeyUp(event) {

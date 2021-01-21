@@ -1,0 +1,29 @@
+diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
+index f665400..c6ba42d 100644
+--- a/assets/controllers/search-preview_controller.js
++++ b/assets/controllers/search-preview_controller.js
+@@ -1,7 +1,11 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
++    static values = {
++        url: String,
++    }
++
+     onSearchKeyUp(event) {
+-        console.log(event);
++        console.log(this.urlValue);
+     }
+ }
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 7a56538..5feccfb 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -39,6 +39,7 @@
+                             <div
+                                 class="input-group"
+                                 data-controller="search-preview"
++                                data-search-preview-url-value="{{ app.request.pathInfo }}"
+                             >
+                                 <input
+                                     name="q"

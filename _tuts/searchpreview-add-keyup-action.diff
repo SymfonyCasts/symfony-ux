@@ -1,0 +1,26 @@
+diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
+index 66e3936..f665400 100644
+--- a/assets/controllers/search-preview_controller.js
++++ b/assets/controllers/search-preview_controller.js
+@@ -1,7 +1,7 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+-    connect() {
+-        console.log('connected!');
++    onSearchKeyUp(event) {
++        console.log(event);
+     }
+ }
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index c6b7ddb..7a56538 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -46,6 +46,7 @@
+                                     placeholder="Search products..."
+                                     type="search"
+                                     class="form-control"
++                                    data-action="keyup->search-preview#onSearchKeyUp"
+                                 >
+                             </div>
+                         </form>
