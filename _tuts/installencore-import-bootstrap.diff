@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 88dd369..946d27d 100644
+index 849b9eb..fb48bea 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -1,3 +1,4 @@
@@ -8,7 +8,7 @@ index 88dd369..946d27d 100644
  
  body {
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index d57b992..904df41 100644
+index 73307af..cbfb974 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -4,8 +4,6 @@

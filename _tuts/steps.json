@@ -344,7 +344,52 @@
             "id": "chartjsextend-change-chart-in-5-seconds",
             "name": "ChartJsExtend: change chart in 5 seconds",
             "description": null
+        },
+        {
+            "id": "react-enable-the-preset",
+            "name": "React: enable the preset",
+            "description": null
+        },
+        {
+            "id": "react-install-react-preset",
+            "name": "React: install react preset",
+            "description": null
+        },
+        {
+            "id": "react-install-react",
+            "name": "React: install react",
+            "description": null
+        },
+        {
+            "id": "react-copy-in-component",
+            "name": "React: copy in component",
+            "description": null
+        },
+        {
+            "id": "react-bootstrap-controller",
+            "name": "React: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "react-render-component",
+            "name": "React: render component",
+            "description": null
+        },
+        {
+            "id": "laziness-install-webpack-bundle-analyzer",
+            "name": "Laziness: install webpack-bundle-analyzer",
+            "description": null
+        },
+        {
+            "id": "laziness-dynamic-import-react-dom",
+            "name": "Laziness: dynamic import react-dom",
+            "description": null
+        },
+        {
+            "id": "laziness-set-lazy-in-controllers-json",
+            "name": "Laziness: set lazy in controllers.json",
+            "description": null
         }
     ],
-    "sha": "d9060495e0a1899f3664ad85177d19623c4e87c4"
+    "sha": "5ba20992b74b70d8af6e29462c91c3980f480a7c"
 }

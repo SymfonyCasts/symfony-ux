@@ -1,0 +1,79 @@
+diff --git a/package.json b/package.json
+index e78fc71..bc6d282 100644
+--- a/package.json
++++ b/package.json
+@@ -6,6 +6,8 @@
+         "@symfony/webpack-encore": "^0.32.0",
+         "bootstrap": "^4.6.0",
+         "core-js": "^3.0.0",
++        "react": "^17.0.1",
++        "react-dom": "^17.0.1",
+         "regenerator-runtime": "^0.13.2",
+         "stimulus": "^2.0.0",
+         "stimulus-use": "^0.22.1",
+diff --git a/yarn.lock b/yarn.lock
+index 3ff4a05..13f2f6b 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -3783,7 +3783,7 @@ isobject@^3.0.0, isobject@^3.0.1:
+   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
+   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+ 
+-js-tokens@^4.0.0:
++"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
+   version "4.0.0"
+   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
+   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+@@ -3946,6 +3946,13 @@ loglevel@^1.6.8:
+   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
+   integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
+ 
++loose-envify@^1.1.0:
++  version "1.4.0"
++  resolved "https://registry.yarnpkg.com/loose-envify/-/loose-envify-1.4.0.tgz#71ee51fa7be4caec1a63839f7e682d8132d30caf"
++  integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
++  dependencies:
++    js-tokens "^3.0.0 || ^4.0.0"
++
+ lru-cache@^5.1.1:
+   version "5.1.1"
+   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
+@@ -5137,6 +5144,23 @@ raw-body@2.4.0:
+     iconv-lite "0.4.24"
+     unpipe "1.0.0"
+ 
++react-dom@^17.0.1:
++  version "17.0.1"
++  resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
++  integrity sha512-6eV150oJZ9U2t9svnsspTMrWNyHc6chX0KzDeAOXftRa8bNeOKTTfCJ7KorIwenkHd2xqVTBTCZd79yk/lx/Ug==
++  dependencies:
++    loose-envify "^1.1.0"
++    object-assign "^4.1.1"
++    scheduler "^0.20.1"
++
++react@^17.0.1:
++  version "17.0.1"
++  resolved "https://registry.yarnpkg.com/react/-/react-17.0.1.tgz#6e0600416bd57574e3f86d92edba3d9008726127"
++  integrity sha512-lG9c9UuMHdcAexXtigOZLX8exLWkW0Ku29qPRU8uhF2R9BN96dLCt0psvzPLlHc5OWkgymP3qwTRgbnw5BKx3w==
++  dependencies:
++    loose-envify "^1.1.0"
++    object-assign "^4.1.1"
++
+ "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
+   version "2.3.7"
+   resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
+@@ -5415,6 +5439,14 @@ sax@~1.2.4:
+   resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+   integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
+ 
++scheduler@^0.20.1:
++  version "0.20.1"
++  resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.20.1.tgz#da0b907e24026b01181ecbc75efdc7f27b5a000c"
++  integrity sha512-LKTe+2xNJBNxu/QhHvDR14wUXHRQbVY5ZOYpOGWRzhydZUqrLb2JBvLPY7cAqFmqrWuDED0Mjk7013SZiOz6Bw==
++  dependencies:
++    loose-envify "^1.1.0"
++    object-assign "^4.1.1"
++
+ schema-utils@^1.0.0:
+   version "1.0.0"
+   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"

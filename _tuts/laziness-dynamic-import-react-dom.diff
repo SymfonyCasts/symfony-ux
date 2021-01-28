@@ -1,0 +1,24 @@
+diff --git a/assets/controllers/made-with-love_controller.js b/assets/controllers/made-with-love_controller.js
+index dbfe374..ca8dccb 100644
+--- a/assets/controllers/made-with-love_controller.js
++++ b/assets/controllers/made-with-love_controller.js
+@@ -1,13 +1,14 @@
+ import { Controller } from 'stimulus';
+-import ReactDOM from 'react-dom';
+ import React from 'react';
+ import MadeWithLove from '../components/MadeWithLove';
+ 
+ export default class extends Controller {
+     connect() {
+-        ReactDOM.render(
+-            <MadeWithLove />,
+-            this.element
+-        )
++        import('react-dom').then((ReactDOM) => {
++            ReactDOM.default.render(
++                <MadeWithLove />,
++                this.element
++            )
++        })
+     }
+ }
