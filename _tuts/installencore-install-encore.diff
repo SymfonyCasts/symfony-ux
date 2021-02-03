@@ -33,15 +33,18 @@ index 0000000..bb0a6aa
 +import './bootstrap';
 diff --git a/assets/bootstrap.js b/assets/bootstrap.js
 new file mode 100644
-index 0000000..9792e6a
+index 0000000..cb771d2
 --- /dev/null
 +++ b/assets/bootstrap.js
-@@ -0,0 +1,5 @@
+@@ -0,0 +1,8 @@
 +import { startStimulusApp } from '@symfony/stimulus-bridge';
-+import '@symfony/autoimport';
 +
 +// Registers Stimulus controllers from controllers.json and in the controllers/ directory
-+export const app = startStimulusApp(require.context('./controllers', true, /\.(j|t)sx?$/));
++export const app = startStimulusApp(require.context(
++    '@symfony/stimulus-bridge/lazy-controller-loader!./controllers',
++    true,
++    /\.(j|t)sx?$/
++));
 diff --git a/assets/controllers.json b/assets/controllers.json
 new file mode 100644
 index 0000000..a1c6e90
@@ -96,7 +99,7 @@ index ecf52e0..64f25a9 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index ee5b9c0..897851a 100644
+index 51c0fa7..ee77cf0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -110,7 +113,7 @@ index ee5b9c0..897851a 100644
              "name": "composer/package-versions-deprecated",
 @@ -5827,6 +5827,77 @@
              ],
-             "time": "2020-10-28T21:31:18+00:00"
+             "time": "2021-01-27T10:01:46+00:00"
          },
 +        {
 +            "name": "symfony/webpack-encore-bundle",
@@ -185,7 +188,7 @@ index ee5b9c0..897851a 100644
 +        },
          {
              "name": "symfony/yaml",
-             "version": "v5.2.1",
+             "version": "v5.2.3",
 diff --git a/config/bundles.php b/config/bundles.php
 index 484569d..b0ce84c 100644
 --- a/config/bundles.php
@@ -261,17 +264,17 @@ index 0000000..90f1a1d
 +    # cache: true
 diff --git a/package.json b/package.json
 new file mode 100644
-index 0000000..6ef11da
+index 0000000..ba0e4f4
 --- /dev/null
 +++ b/package.json
 @@ -0,0 +1,18 @@
 +{
 +    "devDependencies": {
-+        "@symfony/stimulus-bridge": "^1.1.0",
-+        "@symfony/webpack-encore": "^0.32.0",
++        "@symfony/stimulus-bridge": "^2.0.0",
++        "@symfony/webpack-encore": "^1.0.0",
 +        "core-js": "^3.0.0",
-+        "stimulus": "^2.0.0",
 +        "regenerator-runtime": "^0.13.2",
++        "stimulus": "^2.0.0",
 +        "webpack-notifier": "^1.6.0"
 +    },
 +    "license": "UNLICENSED",
@@ -284,7 +287,7 @@ index 0000000..6ef11da
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index 86a0c0b..92d0c54 100644
+index 86a0c0b..3583eec 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -414,6 +414,28 @@
@@ -295,9 +298,9 @@ index 86a0c0b..92d0c54 100644
 +        "version": "1.9",
 +        "recipe": {
 +            "repo": "github.com/symfony/recipes",
-+            "branch": "874",
++            "branch": "master",
 +            "version": "1.9",
-+            "ref": ""
++            "ref": "579d8de06df2ceb34d39e84e84c0c051b9b5ac68"
 +        },
 +        "files": [
 +            "assets/app.js",
@@ -318,11 +321,11 @@ index 86a0c0b..92d0c54 100644
      },
 diff --git a/webpack.config.js b/webpack.config.js
 new file mode 100644
-index 0000000..fbd2bb7
+index 0000000..056b04a
 --- /dev/null
 +++ b/webpack.config.js
 @@ -0,0 +1,75 @@
-+var Encore = require('@symfony/webpack-encore');
++const Encore = require('@symfony/webpack-encore');
 +
 +// Manually configure the runtime environment if not already configured yet by the "encore" command.
 +// It's useful when you use tools that rely on webpack.config.js file.

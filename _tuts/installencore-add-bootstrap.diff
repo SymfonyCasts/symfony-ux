@@ -1,24 +1,20 @@
 diff --git a/package.json b/package.json
-index 6ef11da..c68e8b7 100644
+index ba0e4f4..f95ee90 100644
 --- a/package.json
 +++ b/package.json
-@@ -2,9 +2,10 @@
+@@ -2,6 +2,7 @@
      "devDependencies": {
-         "@symfony/stimulus-bridge": "^1.1.0",
-         "@symfony/webpack-encore": "^0.32.0",
+         "@symfony/stimulus-bridge": "^2.0.0",
+         "@symfony/webpack-encore": "^1.0.0",
 +        "bootstrap": "^4.6.0",
          "core-js": "^3.0.0",
--        "stimulus": "^2.0.0",
          "regenerator-runtime": "^0.13.2",
-+        "stimulus": "^2.0.0",
-         "webpack-notifier": "^1.6.0"
-     },
-     "license": "UNLICENSED",
+         "stimulus": "^2.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index c493c7e..fa0382b 100644
+index 45e7cac..5f00c87 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1440,6 +1440,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
+@@ -1395,6 +1395,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
    resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
    integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
  

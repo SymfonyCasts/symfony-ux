@@ -1,9 +1,9 @@
 diff --git a/package.json b/package.json
-index e78fc71..bc6d282 100644
+index 82f4acb..ede0b53 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,8 @@
-         "@symfony/webpack-encore": "^0.32.0",
+         "@symfony/webpack-encore": "^1.0.0",
          "bootstrap": "^4.6.0",
          "core-js": "^3.0.0",
 +        "react": "^17.0.1",
@@ -12,21 +12,21 @@ index e78fc71..bc6d282 100644
          "stimulus": "^2.0.0",
          "stimulus-use": "^0.22.1",
 diff --git a/yarn.lock b/yarn.lock
-index 3ff4a05..13f2f6b 100644
+index e6dda80..67c38e6 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -3783,7 +3783,7 @@ isobject@^3.0.0, isobject@^3.0.1:
-   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
-   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
+@@ -3166,7 +3166,7 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:
+     merge-stream "^2.0.0"
+     supports-color "^7.0.0"
  
 -js-tokens@^4.0.0:
 +"js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
    version "4.0.0"
    resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
    integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
-@@ -3946,6 +3946,13 @@ loglevel@^1.6.8:
-   resolved "https://registry.yarnpkg.com/loglevel/-/loglevel-1.7.1.tgz#005fde2f5e6e47068f935ff28573e125ef72f197"
-   integrity sha512-Hesni4s5UkWkwCGJMQGAh71PaLUmKFM60dHvq0zi/vDhhrzuk+4GgNbTXJ12YYQJn6ZKBDNIjYcuQGKudvqrIw==
+@@ -3290,6 +3290,13 @@ lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20:
+   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
+   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
  
 +loose-envify@^1.1.0:
 +  version "1.4.0"
@@ -35,10 +35,19 @@ index 3ff4a05..13f2f6b 100644
 +  dependencies:
 +    js-tokens "^3.0.0 || ^4.0.0"
 +
- lru-cache@^5.1.1:
-   version "5.1.1"
-   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-5.1.1.tgz#1da27e6710271947695daf6848e847f01d84b920"
-@@ -5137,6 +5144,23 @@ raw-body@2.4.0:
+ lru-cache@^6.0.0:
+   version "6.0.0"
+   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
+@@ -3574,7 +3581,7 @@ nth-check@^1.0.2:
+   dependencies:
+     boolbase "~1.0.0"
+ 
+-object-assign@^4.0.1:
++object-assign@^4.0.1, object-assign@^4.1.1:
+   version "4.1.1"
+   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
+   integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
+@@ -4261,6 +4268,23 @@ raw-body@2.4.0:
      iconv-lite "0.4.24"
      unpipe "1.0.0"
  
@@ -59,10 +68,10 @@ index 3ff4a05..13f2f6b 100644
 +    loose-envify "^1.1.0"
 +    object-assign "^4.1.1"
 +
- "readable-stream@1 || 2", readable-stream@^2.0.0, readable-stream@^2.0.1, readable-stream@^2.0.2, readable-stream@^2.1.5, readable-stream@^2.2.2, readable-stream@^2.3.3, readable-stream@^2.3.6, readable-stream@~2.3.6:
+ readable-stream@^2.0.1:
    version "2.3.7"
    resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
-@@ -5415,6 +5439,14 @@ sax@~1.2.4:
+@@ -4492,6 +4516,14 @@ sax@~1.2.4:
    resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
    integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
  
@@ -74,6 +83,6 @@ index 3ff4a05..13f2f6b 100644
 +    loose-envify "^1.1.0"
 +    object-assign "^4.1.1"
 +
- schema-utils@^1.0.0:
-   version "1.0.0"
-   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-1.0.0.tgz#0b79a93204d7b600d4b2850d1f66c2a34951c770"
+ schema-utils@^2.6.5:
+   version "2.7.1"
+   resolved "https://registry.yarnpkg.com/schema-utils/-/schema-utils-2.7.1.tgz#1ca4f32d1b24c590c203b8e7a50bf0ea4cd394d7"

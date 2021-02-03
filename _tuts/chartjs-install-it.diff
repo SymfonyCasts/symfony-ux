@@ -28,7 +28,7 @@ index 64f25a9..61ff2e1 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.2.*",
 diff --git a/composer.lock b/composer.lock
-index 897851a..393f7d1 100644
+index ee77cf0..31b51d0 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -42,7 +42,7 @@ index 897851a..393f7d1 100644
              "name": "composer/package-versions-deprecated",
 @@ -5555,6 +5555,80 @@
              ],
-             "time": "2020-12-08T16:43:38+00:00"
+             "time": "2021-01-27T10:15:41+00:00"
          },
 +        {
 +            "name": "symfony/ux-chartjs",
@@ -120,7 +120,7 @@ index 897851a..393f7d1 100644
 +        },
          {
              "name": "symfony/validator",
-             "version": "v5.2.1",
+             "version": "v5.2.3",
 diff --git a/config/bundles.php b/config/bundles.php
 index b0ce84c..f8d5509 100644
 --- a/config/bundles.php
@@ -132,7 +132,7 @@ index b0ce84c..f8d5509 100644
 +    Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
  ];
 diff --git a/package.json b/package.json
-index 315a06a..88f8809 100644
+index eabc294..fa6638d 100644
 --- a/package.json
 +++ b/package.json
 @@ -8,7 +8,8 @@

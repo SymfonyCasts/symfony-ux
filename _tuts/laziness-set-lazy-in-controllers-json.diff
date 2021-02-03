@@ -1,13 +1,13 @@
 diff --git a/assets/controllers.json b/assets/controllers.json
-index ae51529..f28918c 100644
+index fb0dbf0..fbcedcd 100644
 --- a/assets/controllers.json
 +++ b/assets/controllers.json
 @@ -3,7 +3,7 @@
          "@symfony/ux-chartjs": {
              "chart": {
                  "enabled": true,
--                "webpackMode": "eager"
-+                "webpackMode": "lazy"
+-                "fetch": "eager"
++                "fetch": "lazy"
              }
          }
      },
