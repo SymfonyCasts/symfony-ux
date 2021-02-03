@@ -17,7 +17,15 @@ export default class extends Controller {
     }
 
     colorIdValueChanged() {
-        this.setSelectedColor(this.colorIdValue);
+        this.selectTarget.value = this.colorIdValue;
+
+        this.colorSquareTargets.forEach((element) => {
+            if (element.dataset.colorId == this.colorIdValue) {
+                element.classList.add('selected');
+            } else {
+                element.classList.remove('selected');
+            }
+        });
     }
 
     setSelectedColor(newColorId) {
