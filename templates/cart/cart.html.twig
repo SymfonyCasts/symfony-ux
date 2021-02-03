@@ -49,6 +49,7 @@
                                         }) }}"
                                         method="POST"
                                         data-controller="submit-confirm"
+                                        data-action="submit-confirm#onSubmit"
                                     >
                                         <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />
 
