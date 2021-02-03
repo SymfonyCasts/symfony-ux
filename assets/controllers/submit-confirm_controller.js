@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
 export default class extends Controller {
     onSubmit(event) {
         event.preventDefault();
+        const formElement = event.currentTarget;
 
         Swal.fire({
             title: 'Are you sure?',
@@ -15,15 +16,15 @@ export default class extends Controller {
             confirmButtonText: 'Yes, remove it!',
             showLoaderOnConfirm: true,
             preConfirm: () => {
-                return this.removeFromCart();
+                return this.removeFromCart(formElement);
             }
         });
     }
 
-    async removeFromCart() {
-        await fetch(this.element.action, {
-            method: this.element.method,
-            body: new URLSearchParams(new FormData(this.element)),
+    async removeFromCart(formElement) {
+        await fetch(formElement.action, {
+            method: formElement.method,
+            body: new URLSearchParams(new FormData(formElement)),
         });
 
         this.element.remove();
