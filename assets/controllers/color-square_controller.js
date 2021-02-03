@@ -1,7 +1,7 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-    targets = ['colorSquare']
+    static targets = ['colorSquare']
 
     selectColor(event) {
         console.log(this.colorSquareTargets);
