@@ -11,7 +11,9 @@ export default class extends Controller {
     connect() {
         this.selectTarget.classList.add('d-none');
 
-        console.log(this.colorIdValue);
+        if (this.colorIdValue) {
+            this.setSelectedColor(this.colorIdValue);
+        }
     }
 
     selectColor(event) {
