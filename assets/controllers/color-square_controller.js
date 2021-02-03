@@ -3,6 +3,10 @@ import { Controller } from 'stimulus';
 export default class extends Controller {
     static targets = ['colorSquare', 'select']
 
+    connect() {
+        this.selectTarget.classList.add('d-none');
+    }
+
     selectColor(event) {
         this.colorSquareTargets.forEach((element) => {
             element.classList.remove('selected');
