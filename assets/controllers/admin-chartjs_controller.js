@@ -8,6 +8,15 @@ export default class extends Controller {
     }
 
     onChartConnect(event) {
-        console.log(event);
+        this.chart = event.detail.chart;
+
+        setTimeout(() => {
+            this.setNewData();
+        }, 5000)
+    }
+
+    setNewData() {
+        this.chart.data.datasets[0].data[2] = 3000;
+        this.chart.update();
     }
 }
