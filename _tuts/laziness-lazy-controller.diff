@@ -1,0 +1,12 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index 76891a5..892033e 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -1,6 +1,7 @@
+ import { Controller } from 'stimulus';
+ import Swal from 'sweetalert2';
+ 
++/* stimulusFetch: 'lazy' */
+ export default class extends Controller {
+     onSubmit(event) {
+         event.preventDefault();

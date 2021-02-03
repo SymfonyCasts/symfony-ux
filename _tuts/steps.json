@@ -389,7 +389,12 @@
             "id": "laziness-set-lazy-in-controllers-json",
             "name": "Laziness: set lazy in controllers.json",
             "description": null
+        },
+        {
+            "id": "laziness-lazy-controller",
+            "name": "Laziness: lazy controller",
+            "description": null
         }
     ],
-    "sha": "8b00b3903f560ef719b85a6185b2687971ffd4d0"
+    "sha": "1957465547454c2938e2c53f4c953d63c9ac91ee"
 }
