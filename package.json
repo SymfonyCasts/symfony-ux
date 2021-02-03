@@ -8,7 +8,8 @@
         "stimulus": "^2.0.0",
         "stimulus-use": "^0.22.1",
         "sweetalert2": "^10.13.0",
-        "webpack-notifier": "^1.6.0"
+        "webpack-notifier": "^1.6.0",
+        "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets"
     },
     "license": "UNLICENSED",
     "private": true,
