@@ -20,10 +20,12 @@ export default class extends Controller {
         });
     }
 
-    removeFromCart() {
-        return fetch(this.element.action, {
+    async removeFromCart() {
+        await fetch(this.element.action, {
             method: this.element.method,
             body: new URLSearchParams(new FormData(this.element)),
         });
+
+        this.element.remove();
     }
 }
