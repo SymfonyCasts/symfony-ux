@@ -7,16 +7,20 @@ export default class extends Controller {
     }
 
     static targets = ['results'];
-    static debounces = ['onSearchKeyUp'];
+    static debounces = ['search'];
 
     connect() {
         useClickOutside(this);
         useDebounce(this);
     }
 
-    async onSearchKeyUp(event) {
+    onSearchKeyUp(event) {
+        this.search(event.currentTarget.value);
+    }
+
+    async search(term) {
         const params = new URLSearchParams({
-            q: event.currentTarget.value,
+            q: term,
             preview: 1,
         });
         const response = await fetch(`${this.urlValue}?${params.toString()}`);
