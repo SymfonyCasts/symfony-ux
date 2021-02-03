@@ -11,6 +11,16 @@ export default class extends Controller {
 
     selectColor(event) {
         const newColorId = event.currentTarget.dataset.colorId;
+
+        if (newColorId === this.selectedColorId) {
+            event.currentTarget.classList.remove('selected');
+
+            this.selectedColorId = null;
+            this.selectTarget.value = '';
+
+            return;
+        }
+
         this.selectedColorId = newColorId;
 
         this.colorSquareTargets.forEach((element) => {
