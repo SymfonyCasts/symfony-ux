@@ -5,7 +5,13 @@ export default class extends Controller {
         url: String,
     }
 
-    onSearchKeyUp(event) {
-        console.log(this.urlValue);
+    async onSearchKeyUp(event) {
+        const params = new URLSearchParams({
+            q: event.currentTarget.value,
+            preview: 1,
+        });
+        const response = await fetch(`${this.urlValue}?${params.toString()}`);
+
+        console.log(await response.text());
     }
 }
