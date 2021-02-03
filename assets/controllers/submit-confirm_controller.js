@@ -15,12 +15,15 @@ export default class extends Controller {
             confirmButtonText: 'Yes, remove it!',
             showLoaderOnConfirm: true,
             preConfirm: () => {
-                this.removeFromCart();
+                return this.removeFromCart();
             }
         });
     }
 
     removeFromCart() {
-        console.log('removing!');
+        return fetch(this.element.action, {
+            method: this.element.method,
+            body: new URLSearchParams(new FormData(this.element)),
+        });
     }
 }
