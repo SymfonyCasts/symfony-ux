@@ -3,7 +3,9 @@
 }) }}
     {% if addToCartForm.color is defined %}
         <div data-controller="color-square">
-            {{ form_widget(addToCartForm.color) }}
+            {{ form_widget(addToCartForm.color, {
+                attr: { 'data-color-square-target': 'select' }
+            }) }}
 
             {% for color in addToCartForm.vars.data.product.colors %}
                 <button
