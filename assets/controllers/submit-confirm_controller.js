@@ -13,11 +13,14 @@ export default class extends Controller {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: 'Yes, remove it!',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.element.submit();
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                this.removeFromCart();
             }
-        })
+        });
+    }
 
+    removeFromCart() {
+        console.log('removing!');
     }
 }
