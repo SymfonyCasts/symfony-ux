@@ -9,5 +9,6 @@ export default class extends Controller {
         });
 
         event.currentTarget.classList.add('selected');
+        console.log(event.currentTarget.dataset.colorId);
     }
 }
