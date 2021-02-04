@@ -1,1 +1,16 @@
-chapters: []
+chapters:
+    - ux
+    - encore
+    - first-controller
+    - targets
+    - actions
+    - color-selector
+    - values-api
+    - value-change-hook
+    - search-autocomplete
+    - stimulus-use
+    - sweert-alert
+    - chartjs-package
+    - extend-chartjs
+    - react
+    - laziness

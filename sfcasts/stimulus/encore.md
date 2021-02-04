@@ -1,0 +1,3 @@
+# Setting up Encore
+
+Coming soon...

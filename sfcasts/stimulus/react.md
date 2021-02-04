@@ -1,0 +1,3 @@
+# Rendering React inside Stimulus
+
+Coming soon...
