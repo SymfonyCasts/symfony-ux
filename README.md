@@ -45,7 +45,7 @@ error that you need to run `symfony server:ca:install` first).
 Now check out the site at `https://localhost:8000`. You'll see
 an error now - finish the setup instructions to get things working!
 
-** 3) Database Setup (with Docker)**
+**3) Database Setup (with Docker)**
 
 The easiest way to set up the database is to use the `docker-compose.yaml`
 file that's included in this project. First, make sure Docker is downloaded
@@ -62,7 +62,7 @@ no need to configure `.env`.
 
 For more information about this approach, see https://symfonycasts.com/screencast/symfony5-doctrine
 
-** 3 Alternative) Database Setup (without Docker)**
+**3 Alternative) Database Setup (without Docker)**
 
 If you do not want to use Docker, you can also just install and run
 MySQL manually. When you're done, open the `.env` file and make any

@@ -9,7 +9,7 @@ chapters:
     - value-change-hook
     - search-autocomplete
     - stimulus-use
-    - sweert-alert
+    - sweet-alert
     - chartjs-package
     - extend-chartjs
     - react
