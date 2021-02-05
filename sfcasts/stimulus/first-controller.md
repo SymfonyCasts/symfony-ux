@@ -1,3 +1,0 @@
-# First Stimulus Controller
-
-Coming soon...

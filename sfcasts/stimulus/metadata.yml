@@ -1,7 +1,7 @@
 chapters:
     - ux
     - encore
-    - first-controller
+    - controllers
     - targets
     - actions
     - color-selector
