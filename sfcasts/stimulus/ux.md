@@ -37,7 +37,7 @@ Ok: so what does this mean for us? Having a beautiful & interactive user interfa
 requires two things. First, we need a way to write professional JavaScript... not
 1000 line long jQuery files, or one-off scripts. And we need that JavaScript to
 work... *even* if we load some HTML via AJAX. That's a classic problem with JavaScript:
-behavior isn't necessarily applied to HTML elements that arrives later.
+behavior isn't necessarily applied to HTML elements that arrive on the page later.
 
 This is all solved with Stimulus: a tiny JavaScript library *and* the topic of
 this tutorial.
