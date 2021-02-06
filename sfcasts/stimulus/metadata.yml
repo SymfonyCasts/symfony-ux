@@ -1,6 +1,7 @@
 chapters:
     - ux
     - encore
+    - splitting-importing
     - controllers
     - targets
     - actions

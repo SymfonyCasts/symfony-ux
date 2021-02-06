@@ -1,0 +1,75 @@
+# encore watch & Code Splitting
+
+Let's get Encore to build our assets! Do that by going back to the
+terminal and saying:
+
+```terminal
+yarn watch
+```
+
+This reads our `app.js` file and outputs the final files into a `public/build`
+directory - you can see that here. Once its done, it sits and watches for more
+changes. If we modify any files, it will rebuild the assets.
+
+Let's try this! Find your browser and refresh! Woo! We have a gray background.
+That proves the CSS is being processed!
+
+## Seeing the Code Splitting
+
+If you view the page source, you'll see one `link` tag here for `build/app.css`
+and... cool! The JavaScript is already being split into three different files.
+The Twig function knows to render all of them. This is not something you really
+need to think or worry about - Webpack is doing this to help your users download
+the files faster and cache them better.
+
+## Moving our Styles
+
+Before we keep going, let's move our CSS - its currently in
+`public/styles/app.css` - into the new `app.css` file that's being processed by
+Webpack. Open that up, copy everything inside, then delete the file.
+
+Now go to the new `assets/styles/app.css`, remove the gray background and paste!
+
+In `base.html.twig`, remove the link tag that pointed to the old static file.
+
+Now... when we refresh, it still looks good! That's because, over at the terminal,
+Encore noticed that we changed the `app.css` file and automatically rebuilt things.
+
+## Installing Bootstrap CSS
+
+While we're here, we also have a `link` tag that points to Bootstrap CDN. That's
+okay, but we can now *properly* install `bootstrap` into our app. First, over at
+your terminal, open a new tab so `yarn watch` can keep running in the background.
+
+Run:
+
+```terminal
+yarn add bootstrap --dev
+```
+
+Two things. First, if you searched npmjs.com, you'd learn that the name of the
+package that gives you Bootstrap is... `bootstrap`! And second, that `--dev`
+flag isn't really important - it'd be fine if you didn't include that.
+
+This adds `bootstrap` to our `package.json` file and downloads it into the
+`node_modules/` directory. Delete the old `link` tag, which temporarily will make
+our site look *terrible*.
+
+Then go into our `app.css` file. On top, we can import this: `import` then
+`~bootstrap`.
+
+That's it. Webpack will magically load all the bootstrap CSS and include it in
+the final, built `app.css` file. The tilde here is a magic character that tells
+Webpack to look in `node_modules`. That's a special syntax you use in CSS files
+only.
+
+Let's check it! Refresh now and... all better! View the source again. Woh! Even
+the CSS is being split into two files. I normally don't even think about this,
+but I wanted you to see it once.
+
+Oh, and these really long ugly filenames? When you build Encore for production,
+those will be very simple names, usually a number - like `55.js`. It won't expose
+all these path details.
+
+Next let's figure out how and where stimulus is installed and build our very
+first stimulus controller!
