@@ -1,133 +1,100 @@
-# Controllers
+# Stimulus Controllers
 
-Coming soon...
+Ok: time for Stimulus! First stimulus is... a JavaScript library! If you start
+a new project and install Encore fresh, like we did, then thanks to the recipe,
+`stimulus` is already inside of your `package.json` file.
 
-Okay. Time for stimulus. First stimulus is, Hey, JavaScript library. If you start in
-a new project and install Encore fresh, like we did, then thanks to the recipe.
-Stimulus is already inside of your package, that JSON file,
+We also have an `@symfony/stimulus-bridge` library. This adds superpowers on top
+of stimulus. I'll tell you exactly what they are as we go along.
 
-We also have an ad Symfony /stimulus bridge library. This ads super powers on top of
-stimulus. I'll tell you exactly what they are as we go along. If you don't have these
-packages, go ahead and install them with yarn. Add stimulus at Symfony /stimulus
-bridge dash dash Def. Let me close a few tabs and then open up our assets /app dot JS
-file. This imports, a bootstrap that JS file that the recipe also gave us. And you
-will need this. If you don't have it in your project, you can get it from the code
-block on this page. And this line here starts stimulus by telling it to look for
-stimulus controllers. We'll learn all about those in this controllers directory,
-which is literally assets controllers. Symfony gives us one dummy controller to
-start, And that's the entire point of his file to say, Hey, stimulus, I have some
-controllers in this controller's directory. I'll explain all this weird lazy
-controller stuff a bit later, the best way to see how stimulus works is just to try
-it. I'm going to delete this hello controller file and what great one from scratch.
-Call it counter honors core controller digest. We're going to create a little element
-that tracks how many times you click it for our simple example to start. And by the
-way
+If you don't have these packages, go ahead and install them with:
 
-That
+```terminal
+yarn add stimulus @symfony/stimulus-bridge --dev
+```
 
-Naming that name, naming convention is important. All of our controllers will always
-be something_controller that JS. And you'll see why in a minute inside a controller
-always starts the same way, import curly curly from stimulus that I'll go back and
-fill in the curly curly. What we need is controller and then export default, a class
-that extends controller Inside the class. We'll learn a lot about what we can put in
-here, but to see how things work at a connect method.
+Let me close a few tabs and then open up our `assets/app.js` file. This imports
+a `bootstrap.js` file that the recipe *also* gave us. And you *will* need this:
+if you don't have it, you can get it from the code block on this page or the
+`stimulus-bridge` docs.
 
-Yeah,
+The *one* line in this file starts stimulus by telling it to look for stimulus
+controllers in this `controllers/` directory, which is literally `assets/controllers/`.
+Symfony gives us one dummy controller to start.
 
-With this.element that inner HTML = that I'll put a message here. You have clicked
-the zero times And that's it for now to see what this actually does. We need to add a
-matching element to one of our pages, open templates, product index dot age two
-months. Wait, this is the template for our homepage Down a bit about right here, I'm
-going to add a div data dash controller = counter, and then I can put something in
-the dead for I'm just going to keep it blank. For our example, this connects the data
-dash controller connects this element to the controller class that we just created.
-That happens because we call the, our controller con counter_controller dot JS. Now
-because we call the file counter on the score controller that JS it's named
-internally in stimulus becomes counter stimulus strips off the_controller part.
+And... yea, the entire point of this file is to say:
 
-So we connected with data dash controller = counter. All right, let's try this as a
-reminder, I still have a yarn watch going over here. So it's been rebuilding every
-time we make a change, I'm going to spend over click to the homepage and it works.
-You can see it actually took that empty element and added this inside of it all
-inspect elements. Yep. You can see data desk controller. And this is inside. This is
-magic of stimulus. As soon as it sees an element with data, dash controller =
-counter. It instantiates an instance of our controller Of our counter controller
-object in calls this connect method. As you can see, the element that it's bound to
-is available to us via this.element. So this, that element is the Dom element that
-corresponds with this diff right here. And so we're able to set its inner HTML.
+> Hey Stimulus! I have some controllers in this `controllers/` directory.
 
-The
+We'll learn what all this weird `lazy-controller` stuff is a bit later, it's not
+important for us yet.
 
-Beauty is that we can have as many of these elements on the page as we want. What's
-that another one I'll copy this and
+## Creating our First Controller
 
-I'll
+The best way to see how Stimulus works is just to try it. Delete the
+`hello_controller.js` file: let's create our first controller from scratch. Call
+it `counter_controller.js`. To learn the Stimulus basics, we're going to create
+an element that tracks how many times we click it.
 
-Add it up here inside the OSI.
+Oh and this naming convention *is* important. All of our controller files will
+be `something_controller.js`. And you'll see why in a minute.
 
-Now move over and refresh two elements.
+Inside the file, these always start the same way: `import {}` from `stimulus`
+and what we ant to import is `Controller`. Then, `export default`, a class
+that `extends Controller`. Inside the class, add a method called `connect()`
+with `this.element.innerHTML =` a message:
 
-A really cool part is that each element is connected to a separate instance of our
-object. This means we can write JavaScript code in a class. I control our class And
-store information about that specific element as properties on this object.
+> You have clicked zero times 😢
 
-Yep.
+## Adding the data-controller Element
 
-We get objects that are bound to individual HTML elements and are instantiated
-automatically. When those elements appear on the page, I would use stimulus just for
-that.
+That's all we need for now. To see what this *does*, we need to add a
+matching element to one of our pages. Open `templates/product/index.html.twig`.
 
-Okay.
+This is the template for our homepage. Down a bit, how about at the top of the
+main content, add `<div data-controller="counter"></div>`.
 
-What's that one more thing. Let's count the number of times, how many times each
-element is clicked and then print that inside the item, head over to our controller.
-I'm going to start by inventing a new property called count. I'll say this not count
-= zero. That's not a stimulus thing. That's just me making up a property and setting
-it to zero.
+We *can* put something *in* the `div`, but we don't need to for our example.
 
-Then
+The `data-controller` *connects* this element to the controller class that we
+just created. Because we named the file `counter_controller.js`, the controller's
+name internally in Stimulus is `counter`: it strips off the `_controller.js` part.
 
-Below this, I'm going to attach a click listener to our element. So this.element,
-that add event listener
+So we connected the element to that controller with `data-controller="counter"`.
+Thanks to that, this should work!
 
-Quick,
+As a reminder, I still have a `yarn watch` going over in my terminal, so it's
+been happily rebuilding each time we make a change.
 
-And then I'm going to pass this an->function, the hipster->function.
+Spin over to your browser and click to get to the homepage. Yes! It works!
+The empty div has our message inside! Inspect that element. Yep! We can see
+`data-controller` and the text inside.
 
-Oh,
+## Elements & Controller Objects
 
-That's mad. Cause I forgot my comma. There we go. And inside here, we'll say
-this.count plus, plus to increment it. And then I'm going to set this, that element
-that inner HTML = this.count. I'm not using jQuery because in a lot of cases it's
-really not needed, but if you're more comfortable with using jQuery, you can totally
-still use it. You would just always use it. Dollar sign open brand sees this.element
-before any methods you call on it like dollar sign, open parentheses of this.element
-dot on click anyways, move over refresh. Okay. They look the same now, but now I can
-click and boom. When I click up, it keeps track of it. And you can see they're
-independent of each other. That proves they're two separate objects that are tracking
-the value of that count property.
+This is magic of stimulus. As *soon* as it sees an element with
+`data-controller="counter"`, it *instantiates* an instance of our "counter"
+controller and calls the `connect()` method... named because Stimulus is
+"connecting" this object instance to a specific element on the page. And, as
+you can see, the element we just got connected to is *available* via `this.element`.
 
-[inaudible]
+That allowed us to easily set its inner HTML.
 
-This isn't even the best part of stimulus Down in my inspector for my browser. I'm
-going to right click on this div here and go edit as HTML. And I'm going to copy that
-dev data = controller, and I'm going to hack in a new one right above it. What I'm
-doing is mimicking. What happens when HTML is loaded to the page after it's, when
-HTML is added to the page after it's done loading like via Ajax, this is a classic
-problem with JavaScript. If you attach event listeners to some, to all classes, to
-all elements with some class on page load,
+## Multiple Controller Instances on the Page
 
-If you add, if you load new HTML later via Ajax, the event listeners, aren't
-automatically attached to it, unless you go to the hassle of manually recalling your
-function to reattach, uh, to, to, to add the event listeners to that element. So can
-stimulus handle this? Yup. When I click off to add the new element to the page, it
-worked behind the scenes. This is totally true. Stimulus noticed that a new element
-was added to the page and instantiated a brand new control object. You can see it
-right here. That's incredible. That is a game changer for me. And this controller
-works exactly like the other ones increments as I click on it. So like I said, if
-this were the end of stimuluses features, I've use it, but it's not. Let's learn
-about targets next and easy way to find the elements inside of the main, uh, inside
-your main controller element.
+The beauty is that we can have as *many* of these elements on the page at the
+same time as we want. I'll copy the `div` and, up in the `aside`, paste.
 
-Yeah.
+Go refresh now. *Two* messages! And the *really* cool part is that each element
+is connected to a separate *instance* of our controller object. This means we
+can write JavaScript code in a class and store information specific to *its*
+element as *properties* on that object. We'll do this very soon.
 
+So... with Stimulus, we get objects that are bound to individual HTML elements
+and are instantiated automatically when those elements appear on the page. I would
+use Stimulus *just* for that.
+
+But wait there's more! Next: let's add a `count` property and a click listener
+to *show* how each element's controller object operates independently. Then I'll
+show you the feature of Stimulus that absolutely knocked me out when I first saw
+it.

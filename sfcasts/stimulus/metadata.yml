@@ -3,6 +3,7 @@ chapters:
     - encore
     - splitting-importing
     - controllers
+    - properties-events
     - targets
     - actions
     - color-selector
