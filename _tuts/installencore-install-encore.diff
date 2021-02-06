@@ -87,7 +87,7 @@ index 0000000..cb33b13
 +    background-color: lightgray;
 +}
 diff --git a/composer.json b/composer.json
-index ecf52e0..64f25a9 100644
+index cab2c37..9cd2e61 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -22,6 +22,7 @@
@@ -99,19 +99,19 @@ index ecf52e0..64f25a9 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index 51c0fa7..ee77cf0 100644
+index db8e1a3..3ebde09 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "090a14a8ae8f011875dd03f11f7adb96",
-+    "content-hash": "054bad88fd0b7aabca04911dbb93f650",
+-    "content-hash": "6fe7ff875dc3515d7ea84e77ea9eabfd",
++    "content-hash": "723f58a0e21d8faff62394d0407a141a",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -5827,6 +5827,77 @@
+@@ -5821,6 +5821,77 @@
              ],
              "time": "2021-01-27T10:01:46+00:00"
          },
