@@ -1,53 +1,71 @@
 # Magic with Events, Properties & "AJAX"
 
-Okay.
+To show off the power of this simple, controller-instance-bound-to-HTML-element
+concept, let's count how many times each element is clicked and print that inside
+the element.
 
-What's that one more thing. Let's count the number of times, how many times each
-element is clicked and then print that inside the item, head over to our controller.
-I'm going to start by inventing a new property called count. I'll say this not count
-= zero. That's not a stimulus thing. That's just me making up a property and setting
-it to zero.
+## Adding a Controller Property
 
-Then
+Head over to the controller. I'm going to start by inventing a new property called
+count in `connect()`: `this.count = 0`.
 
-Below this, I'm going to attach a click listener to our element. So this.element,
-that add event listener
+That property isn't a `stimulus`... I'm just creating a a property for our own use
+and initializing it to zero.
 
-Quick,
+Below this, I'm going to attach a click listener to our element:
+`this.element.addEventListener()`, `click` then a hipster arrow function. Oh, that's
+mad because I forgot my comma!
 
-And then I'm going to pass this an->function, the hipster->function.
+Inside, say `this.count++` to increment that. And then
+`this.element.innerHTML = this.count`.
 
-Oh,
+## What about jQuery?
 
-That's mad. Cause I forgot my comma. There we go. And inside here, we'll say
-this.count plus, plus to increment it. And then I'm going to set this, that element
-that inner HTML = this.count. I'm not using jQuery because in a lot of cases it's
-really not needed, but if you're more comfortable with using jQuery, you can totally
-still use it. You would just always use it. Dollar sign open brand sees this.element
-before any methods you call on it like dollar sign, open parentheses of this.element
-dot on click anyways, move over refresh. Okay. They look the same now, but now I can
-click and boom. When I click up, it keeps track of it. And you can see they're
-independent of each other. That proves they're two separate objects that are tracking
-the value of that count property.
+If you're not super familiar with using the native DOM Element object methods, like
+`addEventListener()`, don't worry. I'm not using jQuery because. in a lot of cases.
+it's really not needed. But if you're more comfortable with using jQuery, awesome!
+You an *totally* still use it! Just install it - `yarn add jquery --dev`, then
+import it into any file that needs it - `import $ from 'jquery'`. Oh, and if you're
+migrating a legacy app where you have jquery already loaded via a `script` tag,
+that's something we talk about in our [Encore tutorial](https://symfonycasts.com/screencast/webpack-encore/external-libs).
 
-[inaudible]
+Anyways, if you *are* using jQuery, just use `$(this.element)` before you call any
+methods - like `$(this.element).on('click')`. But, we're going to learn a cooler
+way to attach event listeners soon anyways.
 
-This isn't even the best part of stimulus Down in my inspector for my browser. I'm
-going to right click on this div here and go edit as HTML. And I'm going to copy that
-dev data = controller, and I'm going to hack in a new one right above it. What I'm
-doing is mimicking. What happens when HTML is loaded to the page after it's, when
-HTML is added to the page after it's done loading like via Ajax, this is a classic
-problem with JavaScript. If you attach event listeners to some, to all classes, to
-all elements with some class on page load,
+I think this is ready! Move over and refresh. Now... click. Boom! The count increments
+and prints in the element. And, most importantly, we can see that each element
+is working independently. This proves that they're are two separate objects with
+two separate `count` properties.
 
-If you add, if you load new HTML later via Ajax, the event listeners, aren't
-automatically attached to it, unless you go to the hassle of manually recalling your
-function to reattach, uh, to, to, to add the event listeners to that element. So can
-stimulus handle this? Yup. When I click off to add the new element to the page, it
-worked behind the scenes. This is totally true. Stimulus noticed that a new element
-was added to the page and instantiated a brand new control object. You can see it
-right here. That's incredible. That is a game changer for me. And this controller
-works exactly like the other ones increments as I click on it. So like I said, if
-this were the end of stimuluses features, I've use it, but it's not. Let's learn
-about targets next and easy way to find the elements inside of the main, uh, inside
-your main controller element.
+## When data-controller Elements are Loaded via AJAX
+
+This isn't even my favorite part of Stimulus. Down in your browser's inspector,
+right click on any div and go to "Edit as HTML". Copy the `<div data-controller>`
+and paste to hack in a new one right above it.
+
+What I'm doing is imitating what happens when HTML is added to the page after
+it's done loading via AJAX. This is a *classic* problem with JavaScript. Suppose
+you have some jQuery code that attaches a `click` event listener to all elements
+that have some class. Usually, that code runs when the page finishes loading.
+
+Now, what happens if you load *new* HTML onto the page later via AJAX and that
+HTML contains an element with that class? Is the event listener automatically
+attached to it? Nope! It's not, unless you go to the hassle of manually re-calling
+your function to attach the event listener to the element.
+
+So: can stimulus handle this? Can it magically "notice" that a new element with
+`data-controller` was added to the page? The answer is.... yup!
+
+When I click off to add the new element to the page... it works! Behind the
+scenes Stimulus actually *did* notice that a new element was added to the page and
+instantiated a brand new control object for it. That's incredible. For me, it's
+a game-changer! I can write nice controller classes, return HTML via AJAX and *not*
+have to worry about re-initializing behavior on that new HTML.
+
+And, of course, the controller works exactly like the other ones: it increments as
+I click.
+
+If this were the end of Stimulus's features, I'd *absolutely* use it. But it's not!
+Let's learn about targets next: an easy way to find elements inside of the
+controller's main element.
