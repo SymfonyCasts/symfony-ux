@@ -69,6 +69,8 @@ Let's add those to our base layout: `templates/base.html.twig`.
 I already have a couple of link tags up here in the `stylesheets` block. Add
 `{{ encore_entry_link_tags() }}` and pass it `app`, which is name of that entry.
 
+[[[ code('cfa774c9aa') ]]]
+
 This will render the built version of the `app.css` file plus any other CSS that
 our JavaScript imports. And actually, for performance reasons, Webpack may split
 that built `app.css` into multiple files: we'll see that in a few minutes. This
@@ -76,6 +78,8 @@ function takes care of including *all* the link tags we need.
 
 Do the same thing in the `javascripts` block: `{{ encore_entry_script_tags() }}`
 and pass `app`.
+
+[[[ code('89159607b0') ]]]
 
 Like with the styles, this will render the built version of `app.js` plus any
 JavaScript it imports. And it may *also* be split into multiple files.
