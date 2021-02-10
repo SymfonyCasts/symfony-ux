@@ -30,6 +30,8 @@ Webpack. Open that up, copy everything inside, then delete the file entirely.
 
 Now go to the new `assets/styles/app.css`, remove the gray background and paste!
 
+[[[ code('8221768d9b') ]]]
+
 In `base.html.twig`, delete the `link` tag that pointed to the old static file.
 
 Now... when we refresh, it still looks good! That's because, over at the terminal,
@@ -55,6 +57,8 @@ This adds `bootstrap` to our `package.json` file and downloads it into the
 our site look *terrible*.
 
 Then go into `app.css`. On top, we can import this: `import` then `~bootstrap`.
+
+[[[ code('7ceeb7b703') ]]]
 
 That's it. Webpack will magically load all the bootstrap CSS and include it in
 the final, built `app.css` file. The tilde is a magic character that tells
