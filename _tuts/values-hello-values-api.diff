@@ -19,15 +19,20 @@ index 675e45b..8785abf 100644
  
      selectColor(event) {
 diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
-index 5addac0..781e52c 100644
+index 5addac0..9998acb 100644
 --- a/templates/product/_cart_add_controls.html.twig
 +++ b/templates/product/_cart_add_controls.html.twig
-@@ -4,7 +4,7 @@
+@@ -3,8 +3,11 @@
+ }) }}
      {% if addToCartForm.color is defined %}
          <div
-             data-controller="color-square"
+-            data-controller="color-square"
 -            data-color-id="{{ addToCartForm.vars.data.product.colors[1].id }}"
-+            data-color-square-color-id-value="{{ addToCartForm.vars.data.product.colors[1].id }}"
++            {{ stimulus_controller({
++                'color-square': {
++                    'color-id': addToCartForm.vars.data.product.colors[1].id
++                }
++            }) }}
          >
              {{ form_widget(addToCartForm.color, {
                  attr: { 'data-color-square-target': 'select' }

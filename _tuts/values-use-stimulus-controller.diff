@@ -1,0 +1,17 @@
+diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
+index 9998acb..bf1362a 100644
+--- a/templates/product/_cart_add_controls.html.twig
++++ b/templates/product/_cart_add_controls.html.twig
+@@ -3,10 +3,8 @@
+ }) }}
+     {% if addToCartForm.color is defined %}
+         <div
+-            {{ stimulus_controller({
+-                'color-square': {
+-                    'color-id': addToCartForm.vars.data.product.colors[1].id
+-                }
++            {{ stimulus_controller('color-square': {
++                'color-id': addToCartForm.vars.data.product.colors[1].id
+             }) }}
+         >
+             {{ form_widget(addToCartForm.color, {

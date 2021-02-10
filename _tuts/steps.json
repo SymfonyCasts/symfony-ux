@@ -186,6 +186,11 @@
             "description": null
         },
         {
+            "id": "values-use-stimulus-controller",
+            "name": "Values: use stimulus_controller",
+            "description": null
+        },
+        {
             "id": "values-setting-initial-selected",
             "name": "Values: setting initial selected",
             "description": null
@@ -396,5 +401,5 @@
             "description": null
         }
     ],
-    "sha": "05d5fbf6ee062283f13634006e1533fe120115ee"
+    "sha": "92f2a7fb42e38a6f05ee91e3069e378be44968e5"
 }
