@@ -14,13 +14,13 @@ index f7862ab..5ea0ca2 100644
      }
  }
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 30c3269..915bc80 100644
+index f1229d1..e2476da 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -49,6 +49,7 @@
                                          }) }}"
                                          method="POST"
-                                         data-controller="submit-confirm"
+                                         {{ stimulus_controller('submit-confirm') }}
 +                                        data-action="submit-confirm#onSubmit"
                                      >
                                          <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />

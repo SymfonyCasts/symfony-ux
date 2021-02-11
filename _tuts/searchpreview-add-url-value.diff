@@ -16,14 +16,17 @@ index f665400..c6ba42d 100644
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 88d0584..1b5e911 100644
+index b47203e..306e20b 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
-@@ -39,6 +39,7 @@
+@@ -38,7 +38,9 @@
+                         <form>
                              <div
                                  class="input-group"
-                                 data-controller="search-preview"
-+                                data-search-preview-url-value="{{ app.request.pathInfo }}"
+-                                {{ stimulus_controller('search-preview') }}
++                                {{ stimulus_controller('search-preview', {
++                                    url: app.request.pathInfo
++                                }) }}
                              >
                                  <input
                                      name="q"

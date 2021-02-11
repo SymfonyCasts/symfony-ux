@@ -32,7 +32,7 @@ index 7e021c0..76891a5 100644
  
          this.element.remove();
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 915bc80..09f6751 100644
+index e2476da..6692694 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -26,7 +26,10 @@
@@ -42,7 +42,7 @@ index 915bc80..09f6751 100644
 -                            <div class="cart-item row p-3">
 +                            <div
 +                                class="cart-item row p-3"
-+                                data-controller="submit-confirm"
++                                {{ stimulus_controller('submit-confirm') }}
 +                            >
                                  <div class="col-2">
                                      {{ item.product.name }}
@@ -51,7 +51,7 @@ index 915bc80..09f6751 100644
                                              colorId: item.color ? item.color.id: null,
                                          }) }}"
                                          method="POST"
--                                        data-controller="submit-confirm"
+-                                        {{ stimulus_controller('submit-confirm') }}
                                          data-action="submit-confirm#onSubmit"
                                      >
                                          <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />

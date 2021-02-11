@@ -12,7 +12,7 @@ index 0000000..ca0d704
 +    }
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index cbfb974..bc389bb 100644
+index cbfb974..0e06935 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -62,11 +62,10 @@
@@ -26,7 +26,7 @@ index cbfb974..bc389bb 100644
 -            </a>
 +        <div
 +            class="footer mb-0"
-+            data-controller="made-with-love"
++            {{ stimulus_controller('made-with-love') }}
 +        >
          </div>
      </body>

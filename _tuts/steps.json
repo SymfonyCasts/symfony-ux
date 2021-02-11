@@ -191,6 +191,11 @@
             "description": null
         },
         {
+            "id": "values-value-names-are-normalized",
+            "name": "Values: value names are normalized",
+            "description": null
+        },
+        {
             "id": "values-setting-initial-selected",
             "name": "Values: setting initial selected",
             "description": null
@@ -401,5 +406,5 @@
             "description": null
         }
     ],
-    "sha": "92f2a7fb42e38a6f05ee91e3069e378be44968e5"
+    "sha": "ff235a315e93c7a7d533cf438a678ac195520294"
 }

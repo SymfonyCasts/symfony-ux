@@ -20,10 +20,10 @@ index 25eb911..8afbd9c 100644
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 1b5e911..e868d73 100644
+index 306e20b..b1931d6 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
-@@ -49,6 +49,11 @@
+@@ -50,6 +50,11 @@
                                      class="form-control"
                                      data-action="keyup->search-preview#onSearchKeyUp"
                                  >
