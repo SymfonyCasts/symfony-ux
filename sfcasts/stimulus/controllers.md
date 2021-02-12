@@ -46,6 +46,8 @@ with `this.element.innerHTML =` a message:
 
 > You have clicked zero times 😢
 
+[[[ code('63f9ae80dc') ]]]
+
 ## Adding the data-controller Element
 
 That's all we need for now. To see what this *does*, we need to add a
@@ -53,6 +55,8 @@ matching element to one of our pages. Open `templates/product/index.html.twig`.
 
 This is the template for the homepage. Down a bit, how about at the top of the
 main content, add `<div data-controller="counter"></div>`.
+
+[[[ code('b556fbbd2d') ]]]
 
 We *can* put something *in* the `div`, but we don't need to for our example.
 
@@ -84,6 +88,8 @@ That allowed us to easily set its inner HTML.
 
 The beauty is that we can have as *many* of these elements on the page at the
 same time as we want. I'll copy the `div` and, up in the `aside`, paste.
+
+[[[ code('9e53f235a5') ]]]
 
 Go refresh now. *Two* messages! And the *really* cool part is that each element
 is connected to a separate *instance* of our controller class. This means we
