@@ -12,7 +12,7 @@ gives us some extra, optional, tools. The first helps us find elements
 *inside* of the controller element.
 
 Here's the new challenge: instead of replacing all of the HTML when we click, I
-want to find *just* change the number part.
+want to *just* change the number part.
 
 ## Moving the Starting HTML into the Template
 
