@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
-index 863c065..428edae 100644
+index 7c460bd..505a7d0 100644
 --- a/assets/controllers/color-square_controller.js
 +++ b/assets/controllers/color-square_controller.js
 @@ -10,16 +10,16 @@ export default class extends Controller {
@@ -20,6 +20,6 @@ index 863c065..428edae 100644
 +        this.setSelectedColor(this.colorIdValue);
 +    }
 +
-     setSelectedColor(newColorId) {
-         if (newColorId === this.selectedColorId) {
+     setSelectedColor(clickedColorId) {
+         if (clickedColorId === this.selectedColorId) {
              this.findSelectedColorSquare().classList.remove('selected');

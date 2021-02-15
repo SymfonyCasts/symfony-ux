@@ -221,6 +221,11 @@
             "description": null
         },
         {
+            "id": "values-unselect-on-click-again",
+            "name": "Values: unselect on click again",
+            "description": null
+        },
+        {
             "id": "searchpreview-bootstrap-controller",
             "name": "SearchPreview: bootstrap controller",
             "description": null
@@ -406,5 +411,5 @@
             "description": null
         }
     ],
-    "sha": "ff235a315e93c7a7d533cf438a678ac195520294"
+    "sha": "19b5b116d32c4e5e3b21c901b86bfd6dd3927889"
 }
