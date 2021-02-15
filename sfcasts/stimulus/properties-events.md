@@ -9,6 +9,8 @@ the element.
 Head over to the controller. I'm going to start by inventing a new property called
 count in `connect()`: `this.count = 0`.
 
+[[[ code('3d3123334a') ]]]
+
 That property isn't a `stimulus` thing... I'm just creating a property for our
 *own* use and initializing it to zero.
 
@@ -18,6 +20,8 @@ mad because I forgot my comma!
 
 Inside, say `this.count++` to increment and then
 `this.element.innerHTML = this.count`.
+
+[[[ code('14bb2b427d') ]]]
 
 ## What about jQuery?
 
