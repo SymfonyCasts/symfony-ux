@@ -7,8 +7,11 @@ chapters:
     - targets
     - actions
     - color-selector
-    - values-api
-    - value-change-hook
+    - current-target
+    - dataset
+    - state
+    - values
+    - value-change
     - search-autocomplete
     - stimulus-use
     - sweet-alert
