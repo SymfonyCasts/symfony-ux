@@ -1,79 +1,106 @@
-# Current Target
+# Actions & currentTarget
 
-Coming soon...
+When we click a square, we need to add a border around the square to show that
+it's currently selected. I've already created a CSS class for this... I'll hack
+it into the page so you can see it. It's called `selected`. It even comes with a
+nice little CSS transition. Ooooo.
 
-When we click a square, we need to add a border around the square to show which one
-is currently selected. I've already created a CSS class for this. I'll hack it in
-here so you can and see it's called select it. And it even comes with a nice little
-CSS transition on there. Ooh. Okay. So over the controller, in the select color
-method, can we figure out which of the color squares, which just quick, quick, the
-answer is always is event dot current target. So try this event, not current target
-dot classless dot add select it. Let's make sure it works before we chat about it.
-It's been over refreshed and beautiful and currently select multiple colors. So
-that's not ideal, but we'll fix that soon. Okay. There are two important things about
-this line. First, when you listen to an event or action in stimulus, the event object
-always has two similar properties event.target end event dot current target.
-Sometimes these are the same elements. Sometimes they're not take this example.
+Over the controller, in the `selectColor()` method, how can we figure out *which*
+of the color squares was just clicked? The answer is always: `event.currentTarget`.
 
-I'll just some dummy code inside of our temple over here. Imagine you have a button
-like this with an action on it. We'll pretend that this is our data dash goals,
-color, square, and inside. There is some texts and some of the texts for whatever
-reason we put in a split. No, I'll actually temporarily coming up a selective class
-on a console.log( event, got target and event dot current target. So you can see what
-this looks like. Now, if we go over and refresh, there's our button, I'm going to go
-to the console. If we, now I'm going to inspect the element, just remember, see what
-it looks like Erin is right there. She wouldn't do that. Yeah, let's just do this.
+Try this: `event.currentTarget.classList.add('selected')`.
 
-Nope. If the user clicks the text part, which is choose or, and this, you can see
-that both elements and this.L current current targeted current to target are the
-button element. But if the user clicks this word color here, which is actually the
-span, then suddenly the target is the span and the current target. But the current
-target is still the button. This is not a stimulus thing. This is just how Dom events
-work event that target will always be, will always receive the actual element that
-received the action. Like the click event dot current target will be the element that
-we actually add our listener or action to. So that's a long way of saying that event,
-doctor current target is your friend, because this will return the element that we've
-actually attached the listener to. So we always know what it's going to be.
+Before we chat about this, let's make sure it works. Refresh, click and... beautiful!
+We can currently select *multiple* colors... which isn't ideal, bu we'll fix that
+soon.
 
-Let me remove that weird extra button and then put our code back in the controller.
-The other interesting thing here is class list. This is a method on the native
-element objects. So we get the element object, call class list on it. And as you can
-see, it's just an easy way to add and remove classes, no jQuery or any other fancy
-tools needed. So this works great except for the problem that we can select multiple
-colors. We need to make sure that only one color has the selected class at, at, at
-once. So let's think when you click a square, we basically need to find all the other
-squares and remove the selected class. If they have one, one way to do this would be
-to look for the selected class. Like we could say this.element dot, get elements by
-class name selected. Basically find that element. If there is one, then remove the
-class from it. But another way more stimulus way is to use a target so that we can
-easily find all of these, uh, color square elements. So check this out in the
-controller, let's define a target. I will say targets = and I am making a mistake,
-right? Target = an array with color squared. And I am making a mistake here, but
-we'll fix soon.
+## currentTarget versus target
 
-I noticed the naming of my target. It's going to be in lower camel case. So I'm not
-using a color dash square or something here because remember the name of the target
-becomes a property. So we want it to be colored square. And then down here, let's
-console that log and use this.color square hard gets. Remember I put an S on the end,
-we can find the array of all of the matching targets. Finally, up in our template.
-We're going to add a day, uh, a target to our button. So remember the syntax for that
-is data dash the name of the controller. So color it dash square, the word target
-equals, and then the name of our target. So color square, and that name you can
-mention does take a little bit of getting used to all right. Let's try it. Refresh,
-click and Oh, undefined. Okay. You probably, you may have seen my mistake back on the
-controller, make this static targets. I made that mistake because I have made that
-mistake several times before. It's a good beginner's mistake. If you don't have
-these, it must be static. And if you don't have a static, there's no huge air. It's
-just not going to work. Now, when we move over and refresh, yes, you can see we get
-the three button elements.
+There are two important things about this line. First, when you listen to an event -
+or "action" in stimulus - the event object always has two similar properties:
+`event.target` and `event.currentTarget`. Sometimes these are the same element
+and sometimes they're *not*.
 
-So let's loop over these inside of our function. We can say this.color square targets
-dot for each, and this will get an element object. And then is that a fair? It's very
-simple. We have an element object. So we can say element. We can use that class list
-thing again, and this time it will be removed selected. So if it has that class, it
-will get removed. All right. Let's test this refresh. Okay. And, uh, it was works
-beautifully even with our little CSS transitions. Next let's put the finishing
-touches on our widget by finding an updating the select element. Whenever we click a
-square, then we'll finally hide the select elements that this is a beautiful, uh,
-fully functioning element.
+Let me show you an example with some dummy code in the template. Imagine you have
+a button with an action on it - I'll reuse our existing `data-action`. Inside the
+button we have some text... but some of that text is inside another element. Or,
+a more realistic example might be that you have an image or FontAwesome icon inside.
 
+In the controller, I'll temporarily comment-out our code and add instead
+`console.log()` first `event.target` and then `event.currentTarget`.
+
+Go refresh the page. There's our *stunning* button. Open up the console.
+
+First, click the text that's *directly* in the button. Nice! *both* `event.target`
+and `event.currentTarget` are the same thing: the `button` element.
+
+Now click the the *span* that's inside the button. Woh! This time they're different!
+The `target` is the `span` but `currentTarget` is *still* the button!
+
+This is not a Stimulus thing: this is just how DOM events work. `event.target`
+will always be the actual element that *received* the action, like the click.
+`event.currentTarget` will be the element that we added the listener or action to.
+
+So that's a long way of saying that `event.currentTarget` is your friend, because
+it will always return the element that we've attached our action to. So we *always*
+know what it's going to be. `event.target` *could* be that element... or it could
+be a child element.
+
+Let me remove that weird extra button and then put the code back in our controller.
+
+## Element.classList
+
+The other interesting thing on the line in our controller is `classList`. This is
+a method on the native Element object and... as you can see, it's just an easy
+way to add or remove class. No jQuery or other fancy tools needed.
+
+## Only Allowing One Selector
+
+So... our color selector works great so far. Oh, except for the problem that we
+can select *multiple* colors. We need to make sure that only *one* color has the
+selected class at a time.
+
+Let's think about how to solve this. One option would be to look for an element
+with the `selected` class inside `this.element`. And if we find one, remove that
+class.
+
+Another option is to use a *target*. We could make each color square a target,
+then, on click, loop over *all* of them and remove the `selected` class before
+re-adding it to the one that was just clicked.
+
+Let's do that. First, define the target with `targets = []` and let's call the
+target `colorSquare`. It *did* just make a mistake - see if you can spot it.
+
+Oh, and notice the naming of the target: it's lower camel case. I'm not using
+`color-square` because the name of the target becomes a property.
+
+Down in the method, let's `console.log(this.colorSquareTargets)`.
+
+I put an "s" on the end on purpose: this will return an array of *all* matching
+targets.
+
+Finally, in the template, we'll add the target to the button. Remember: the
+syntax for that is `data-` the name of the controller - so `color-square` - the
+word `target` equals, then the name of the target: `colorSquare`.
+
+Yes, you *do* need to write a few targets before you remember that by heart.
+
+Let's try it. Refresh, click and... oh! Undefined.
+
+Hopefully you saw my mistake. Back in the controller, make this *static* targets.
+I made that mistake because... in the real world... I've made that mistake more
+than a few times before. This must be static and... if you forget, there's no
+huge error, it's just *not* going to add your magic target properties for you.
+
+Try it now. Refresh, click and... yes! We see the 3 `button` elements.
+
+So let's loop over these inside of our method: `this.colorSquareTargets.forEach()`,
+the function will receive an `element`. Inside, remove the `selected` class...
+even though at most only one will have it: `element.classList.remove('selected')`.
+
+Let's try this one last time. Now when we click... yes! It works!
+
+Next: let's put the finishing touches on our color selector widget by finding
+and updating the `select` element's value whenever the user chooses a square.
+Then we'll finally *hide* the select element and let our color squares take
+center stage.
