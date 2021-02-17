@@ -5,6 +5,7 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProductRepository")
@@ -15,16 +16,19 @@ class Product
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Groups("product:read")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Groups("product:read")
      */
     private $name;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Groups("product:read")
      */
     private $description;
 
@@ -40,6 +44,7 @@ class Product
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("product:read")
      */
     private $price;
 
@@ -204,5 +209,13 @@ class Product
         $this->imageFilename = $imageFilename;
 
         return $this;
+    }
+
+    /**
+     * @Groups("product:read")
+     */
+    public function getImageUrl(): string
+    {
+        return sprintf('/uploads/products/'.$this->imageFilename);
     }
 }
