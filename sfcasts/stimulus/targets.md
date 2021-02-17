@@ -23,6 +23,8 @@ Inside the remaining element, let's add some HTML *inside* to start, like
 "I have been clicked" then `<span>` with `class="counter-count"`, the
 zero inside, and then "times".
 
+[[[ code('bb1094c2bf') ]]]
+
 You might already know what I'm doing: I'm adding an element around the *exact*
 thing we want to change with a class so that we can *use* that class to find the
 element.
@@ -45,6 +47,8 @@ by looking *inside* the controller's element - then `.getElementsByClassName()`
 and pass this `counter-count`. This will return an array of all the elements, so
 we need to get the `[0]` index.
 
+[[[ code('56ba5d8f97') ]]]
+
 So... kind of easy... but not *that* easy to find the element. But it *is* enough
 to get the job done. Inside the click callback, replace `this.element.innerHTML`
 with `counterNumberElement.innerHTML = this.count`.
@@ -62,8 +66,12 @@ property. You can do that with `static targets =` an array and add `count` insid
 `count` is the name of the new target we're creating and it could be *anything*:
 I just made that up.
 
+[[[ code('88297eea39') ]]]
+
 Now, in the template. replace the `class=""` with a special data attribute:
 `data-counter-target="count"`.
+
+[[[ code('e2a20edec7') ]]]
 
 So that is *very* specifically named. It's `data-`, the *name* of our controller,
 dash the word target, equals, and then the *name* of the target. In this case,
@@ -72,6 +80,8 @@ that's `count`.
 Thanks to this, back inside the controller, we don't need to find the element
 anymore: it's already available! Remove the `getElementsByClassName()` and down
 inside the click callback, all we need is: `this.countTarget.innerHTML = this.count`.
+
+[[[ code('d45a17cfd7') ]]]
 
 That's it. Before we chat, let's go test it! Refresh... and... it still works!
 
