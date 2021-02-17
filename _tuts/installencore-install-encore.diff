@@ -87,11 +87,11 @@ index 0000000..cb33b13
 +    background-color: lightgray;
 +}
 diff --git a/composer.json b/composer.json
-index cab2c37..9cd2e61 100644
+index 9ecd78a..45097ab 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -22,6 +22,7 @@
-         "symfony/security-bundle": "5.2.*",
+@@ -27,6 +27,7 @@
+         "symfony/serializer": "5.2.*",
          "symfony/twig-bundle": "5.2.*",
          "symfony/validator": "5.2.*",
 +        "symfony/webpack-encore-bundle": "^1.9",
@@ -99,34 +99,34 @@ index cab2c37..9cd2e61 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index db8e1a3..ef9da26 100644
+index 94dd3b3..630aaa8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6fe7ff875dc3515d7ea84e77ea9eabfd",
-+    "content-hash": "723f58a0e21d8faff62394d0407a141a",
+-    "content-hash": "edaa507ba2f3d0298be7c4a7d7baa53b",
++    "content-hash": "fbf197119fd4c1a0c1575d5a79f07c6d",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -5821,6 +5821,77 @@
+@@ -6081,6 +6081,77 @@
              ],
              "time": "2021-01-27T10:01:46+00:00"
          },
 +        {
 +            "name": "symfony/webpack-encore-bundle",
-+            "version": "v1.10.0",
++            "version": "v1.11.1",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/webpack-encore-bundle.git",
-+                "reference": "b302e3d5e306aa1985023cd96ed52d890f63a783"
++                "reference": "395b60a549ded8e7f77f0d551815d7555e2d9eb0"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/b302e3d5e306aa1985023cd96ed52d890f63a783",
-+                "reference": "b302e3d5e306aa1985023cd96ed52d890f63a783",
++                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/395b60a549ded8e7f77f0d551815d7555e2d9eb0",
++                "reference": "395b60a549ded8e7f77f0d551815d7555e2d9eb0",
 +                "shasum": ""
 +            },
 +            "require": {
@@ -168,7 +168,7 @@ index db8e1a3..ef9da26 100644
 +            "description": "Integration with your Symfony app & Webpack Encore!",
 +            "support": {
 +                "issues": "https://github.com/symfony/webpack-encore-bundle/issues",
-+                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v1.10.0"
++                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v1.11.1"
 +            },
 +            "funding": [
 +                {
@@ -184,7 +184,7 @@ index db8e1a3..ef9da26 100644
 +                    "type": "tidelift"
 +                }
 +            ],
-+            "time": "2021-02-10T19:53:24+00:00"
++            "time": "2021-02-17T13:45:51+00:00"
 +        },
          {
              "name": "symfony/yaml",
@@ -287,10 +287,10 @@ index 0000000..ba0e4f4
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index 86a0c0b..3583eec 100644
+index cb203f4..0689685 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -414,6 +414,28 @@
+@@ -429,6 +429,28 @@
              "config/routes/dev/web_profiler.yaml"
          ]
      },

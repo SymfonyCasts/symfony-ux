@@ -391,6 +391,31 @@
             "description": null
         },
         {
+            "id": "reactprops-copy-in-component",
+            "name": "ReactProps: copy in component",
+            "description": null
+        },
+        {
+            "id": "reactprops-add-controller",
+            "name": "ReactProps: add controller",
+            "description": null
+        },
+        {
+            "id": "reactprops-manually-pass-prop",
+            "name": "ReactProps: manually pass prop",
+            "description": null
+        },
+        {
+            "id": "reactprops-add-data-controller",
+            "name": "ReactProps: add data-controller",
+            "description": null
+        },
+        {
+            "id": "reactprops-pass-real-serialized-value",
+            "name": "ReactProps: pass real serialized value",
+            "description": null
+        },
+        {
             "id": "laziness-install-webpack-bundle-analyzer",
             "name": "Laziness: install webpack-bundle-analyzer",
             "description": null
@@ -411,5 +436,5 @@
             "description": null
         }
     ],
-    "sha": "19b5b116d32c4e5e3b21c901b86bfd6dd3927889"
+    "sha": "0fbfb9a65614cee8df210fb26338226d25e4a99a"
 }

@@ -1,0 +1,17 @@
+diff --git a/templates/registration/register.html.twig b/templates/registration/register.html.twig
+index acd4726..366e0a5 100644
+--- a/templates/registration/register.html.twig
++++ b/templates/registration/register.html.twig
+@@ -5,6 +5,12 @@
+ {% block body %}
+     <div class="container mt-4">
+         <div class="row">
++            <div
++                class="col-sm-3"
++                {{ stimulus_controller('featured-product-react', {
++                    product: { id: 5, name: 'Lightly used toothbrush' }
++                }) }}
++            ></div>
+             <div class="col-sm">
+                 <h1>Register</h1>
+ 

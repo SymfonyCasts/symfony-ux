@@ -1,0 +1,19 @@
+diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
+index 6baf261..ea338dc 100644
+--- a/assets/controllers/featured-product-react_controller.js
++++ b/assets/controllers/featured-product-react_controller.js
+@@ -4,9 +4,13 @@ import React from 'react';
+ import FeatureProduct from '../components/FeatureProduct';
+ 
+ export default class extends Controller {
++    static values = {
++        product: Object
++    }
++
+     connect() {
+         ReactDOM.render(
+-            <FeatureProduct />,
++            <FeatureProduct product={this.productValue} />,
+             this.element
+         )
+     }
