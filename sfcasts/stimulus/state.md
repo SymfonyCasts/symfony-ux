@@ -1,92 +1,98 @@
-# State
+# State in your Controller
 
-Coming soon...
+If we click a color multiple times, nothing happens. I now want this to *unselect*
+that color. To accomplish this, we don't need to do anything special. On click,
+we could look at the `currentTarget` to see if it *already* has the `selected`
+class.
 
-If we click a color multiple times, nothing happens. I want this to unselect that
-color to accomplish this. We don't need to do anything special on click. We could
-look at the current target to see if it already has the selected class to determine
-if it's already clicked or we could read the value of the select target to see if it
-already = the caller ID from the current target. What do these solutions mean? That
-we're sort of storing our state, which color is currently selected in HTML elements,
-like relying on the presence of this selected class to know that's okay. But people
-stimulus gives us an object and we can store stuff on it. We did this earlier with
-the current count on our counter controller. So on click let's start storing which
-color ID is currently selected. Let's start at the top. I'm just going to invent a
-new selected color ID = no property. I am totally just making that up Then down in
-select color, I'm going to create a variable constant clicked color ID equals. And
-then when we use the I'll go copy my event, that current target, that data set that
-caller ID.
+If you think about it, we're sort of storing "state" information - which color
+is currently selected - on an HTML element. Specifically, if we want to know
+what the currently-selected color is, we need to check for the `selected` class.
 
-Okay.
+That's okay... but people! Stimulus gives us an *object*, which means we can store
+info on it! We did this earlier with the "current count" on our counter controller.
 
-And then right below this, I'll say this.selected a color ID = click the color ID. I
-don't really need a variable yet. It's just going to make my life a little bit
-easier. In a second, of course, down here at the bottom, instead of referencing the
-event, we can say this, that selected color ID, this by itself doesn't really do
-anything or help us, but now we can more easily use this property to figure out if
-the color that's being clicked is all ready, selected. Check this out. Is that an if
-statement right near the top, we'll say if clicked color ID = = = this.selected
-caller ID, then we know that we're clicking on a color box that's already selected.
-So we can do in this case is I'll actually copy my class list code from below this
-time, it's going to event that car current target dot class list that remove
-selected,
+## Adding a new State Property
 
-And
+So on click, let's start storing which color id is currently selected. At the top
+of the class, invent a new property: how about `selectedColorId = null`.
 
-Then we'll set this.selected caller ID = no, and we need to make sure that we set the
-target value. So this.select target, that value = empty quotes. And then we won't
-return. So if we have quick one, we go into this. If we, if statement else we do the
-normal logic down here. All right. So let's try that. I'll refresh. And I'm actually
-going to inspect element here, find my select and temporarily just take off that the
-nuns that we can see our select element. All right. So if I click red, it works,
-click green works. If I click green again, perfect. It goes away and you can see that
-the select updates beautiful. But before we keep going, why don't reorganize things
-just a little bit in our controller, close up these select color method early and
-move. Most of the logic into a new set, selected color method with a clicked color ID
-argument. Then we can call this from above this.set, selected color. And then I'll
-actually just steal the event that target value. And we don't need the variable at
-all anymore.
+Then down in `selectColor`, create a variable `const clickedColorId =` set to the
+`event.currentTarget` code. Right below this, I'll say
+`this.selectedColorId = clickedColorId`.
 
-Not going to quite work yet, but I want to explain why I'm doing this because you
-don't have to, but I'd like to have as many re-usable methods in my controller as
-possible. The nice thing about set selected color is that it's not dependent on the,
-on the event before we reading event at that current target, that data set that color
-ID alphabet. Now anybody could call this method from anywhere passing a caller ID,
-and everything's just going to work well, it's going to work once we actually finish
-this function here, because we do need to fix things specifically, event that current
-target is not going to work anymore, but this is actually kind of cool. What we
-really need to find here is what is the color box that is currently selected, right?
-Because we're inside of this, if statement where we've determined that we're clicking
-a box that is already selected. So we need to find the element, the color element
-that was already selected so that we can remove the class from it. And we can do this
-really easily. Now that we have these selected color ID on our class. So down at the
-bottom, let's add a new fine selected color square method, because we're actually
-going to reuse this.
+We don't really need a variable yet, but it will make life a little bit easier in
+a minute. Down here at the bottom, instead of referencing the event code, just
+use `this.selectedColorId`.
 
-And then inside, we can say return, and we're going to do is actually look inside of
-our, this.color square targets array. And then I'm going to call find on it. And what
-we're going to do is we're going to look through all the colors for our targets to
-see which one has a data color ID that matches the current selected the selective
-color ID. So this is going to get past an element, and then I'm doing a super fancy
-single line, uh, statement here where we say element that data set that color ID = =
-= this, that selected color ID. So this is either going to return the element. This
-will return the element, if any, the color square element, if any, that is currently
-selected, actually put some documentation above that to basically say that this is
-going to return an element or
+This by itself.... doesn't really do anything to help us. But now we can more
+easily use this property to figure out if the color that's being clicked is
+*already* selected.
 
-No.
+Add an if statement right near the top: if
+`clickedColorId === this.selectedColorId`, then we know that we're clicking on a
+color box that is *already* selected.
 
-Now we can use this above. So we will say this.find selected color, square clot, not
-class dot removed selected. And we have one more spot down here. This is where we're
-adding the selected element, fortunately, but we've already set the new selected
-caller ID. So we can once again, use the, this.find, select the color square that
-class let's not add select it. So the nice thing about storing these selected color
-ID is that we can now have useful methods, like find selected color square. That's
-going to use that. So we can use that at any time to find which color square is
-selected. All right. Testing time,
+For this situation, copy the `classList` code from below, and this time make it
+`event.currentTarget.classList.remove('selected')`. Also set
+`this.selectedColorId = null` and `this.selectTarget.value = ''`, or `null` would
+be fine. And then return.
 
-Let's move over. Refresh. I'll click read, click it again.
+So when we click a selected color, we go here. Else we do the normal logic.
 
-And yes, we got it. So next there's one big feature of stimulus that we haven't
-talked about and it's actually brand new to stimulus. It's the value's API.
+Let's try it out! Refresh and let's inspect element, find the `select` and temporarily
+take off the `d-none` so we can see it.
 
+Now, if we click red, it works! Click green, it works. Click green again... yes!
+It loses the border *and* the `select` element updates.
+
+## Reusable Controller Methods
+
+Before we keep going, I want to reorganize things *just* a bit in our controller.
+End the `selectColor` method early and move most of the logic into a new
+`setSelectedColor()` method with a `clickedColorId` argument.
+
+Then, call this from above: `this.setSelectedColor()`... and steal the
+`event.currentTarget` code from above. We don't need a variable anymore.
+
+This isn't going to *quite* work yet, but I want to explain *why* we're doing
+this. This *is* optional, but I like to have as many re-usable methods in my
+controller as possible. The nice thing about `setSelectedColor()` is that it's
+not dependent on the `event`: before we reading `event.currentTarget`.
+
+Now, anyone can call this method from *anywhere*. pass a color id and everything
+will just work. Well, it's going to work once we finish refactoring!
+
+This `event.currentTarget` is *not* going to work anymore. But this is actually
+kind of cool! What we *really* need to find here is the *currently-selected*
+color box... since we're inside an if statement where we've determined that the
+user is tying to select a color that is already selected.
+
+And now, thanks to the `selectedColorId` property, we can find the "currently
+selected color box" really easily! Let's add a helper method to do this:
+`findSelectedColorSquare()`
+
+Inside `return this.colorSquareTargets.find()`. What we're going to do is loop
+over all the color square targets and return the one whose `data-color-id` attribute
+matches `this.selectedColorId`.
+
+Pass `find()` a function with an `element` argument. I'm going to use the super
+fancy single line syntax to return `element.dataset.colorId === this.selectedColorId`.
+
+So this method will either return the Element if one is selected or `null`. I'll
+add some docs above the method to advertise that.
+
+Let's go use this: `this.findSelectedColorSquare().classList.remove('selected')`.
+And... we have one more spot down here: where we *add* that class. Since we've
+already set the new `selectedColorId` property, this will find the new element:
+`this.findSelectedColorSquare().classList.add('selected')`.
+
+This shows off one of the nice thing about storing state like `selectedColorId`:
+we can create useful methods like `findSelectedColorSquare()` and call them
+whenever we want.
+
+Let's make sure I didn't break anything. Refresh, click red and click it again.
+All good!
+
+Next: there's one big feature of Stimulus that we haven't talked about and it's
+actually brand *new* to Stimulus! It's the value's API.
