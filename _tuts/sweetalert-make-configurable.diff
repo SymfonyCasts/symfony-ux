@@ -1,0 +1,21 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index 3ef1a46..bd2f05b 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -2,11 +2,15 @@ import { Controller } from 'stimulus';
+ import Swal from 'sweetalert2';
+ 
+ export default class extends Controller {
++    static values = {
++        title: String,
++    }
++
+     onSubmit(event) {
+         event.preventDefault();
+ 
+         Swal.fire({
+-            title: 'Are you sure?',
++            title: this.titleValue || 'Are you sure?',
+             text: "You won't be able to revert this!",
+             icon: 'warning',
+             showCancelButton: true,

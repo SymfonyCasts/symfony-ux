@@ -306,6 +306,11 @@
             "description": null
         },
         {
+            "id": "sweetalert-make-configurable",
+            "name": "SweetAlert: make configurable",
+            "description": null
+        },
+        {
             "id": "sweetalert-use-preconfirm",
             "name": "SweetAlert: use preConfirm",
             "description": null
@@ -436,5 +441,5 @@
             "description": null
         }
     ],
-    "sha": "0fbfb9a65614cee8df210fb26338226d25e4a99a"
+    "sha": "110f00c40e3b09ba3d17cb07920b64eace9b606e"
 }

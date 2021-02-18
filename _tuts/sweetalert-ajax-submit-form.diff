@@ -1,8 +1,8 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index 839b8ae..14fab06 100644
+index 7fb91b7..fcc4eea 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
-@@ -15,12 +15,15 @@ export default class extends Controller {
+@@ -19,12 +19,15 @@ export default class extends Controller {
              confirmButtonText: 'Yes, remove it!',
              showLoaderOnConfirm: true,
              preConfirm: () => {
