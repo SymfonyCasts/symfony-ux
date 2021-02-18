@@ -1,119 +1,135 @@
-# Value Change
+# On Value Change Callback
 
-Coming soon...
+Now that we've created a `colorId` value, we can pass that from the server into
+Stimulus and read it as `this.colorIdValue`. Let's use that to select the color
+square on load.
 
-Now that we've created a color ID value. We can pass that in from the server into
-simulate and read it in stimulus as this.color ID value. Let's use this to pre-select
-a color square, thanks to our organization. This is going to be no problem. And by
-the way, by the end, my end of this chapter, our controller is going to be about half
-the length you placed the log with if this, uh, color ID value, just in case maybe we
-reuse this color. Sometimes we don't set an initial color, say this.sets, select a
-color ID, this.color ID value.
+## Setting the Initial Color
 
-Let's try it. When I move over, it doesn't work in my console. I have a giant air.
-Can I read property class lists of undefined coming from our set selected color
-method. So let's go check that out. So I think it's coming from right here. So for
-some reason, our finest selected color square is suddenly returning. No, which is
-odd. If you look down here, the problem is actually our stronger types element.data
-set dot color ID, which just uses the normal dataset functionality of your browser is
-always going to be a string. But this, that selected color ID is now going to be a
-number. Because if I scroll up here, we are passing in our color ID value, which
-stimulus normalizes to a number. So our stronger types here actually caused us a
-problem. I'm going to fix this by just changing this to a double equals.
+Thanks to our organization, this will be no problemo. Replace the log with:
+if `this.colorIdValue`: just in case we want to make this value optional. Inside,
+call `this.setSelectedColor()` and pass `this.colorIdValue`.
 
-Now in refresh util, you can see it preselected the green number, and if your inspect
-element and unhide are select element yep. That updated to green as well. So there's
-one last feature about the values API that we haven't talked about yet. It is really
-going to help us here. In fact, it's going to make our, it's going to allow us to
-remove a lot of code from our controller. It's called a change callback. Very simply.
-We can tell stimulus to automatically call a function whenever a value changes like
-when our color ID value changes, how what they especially named method, check us out,
-make a new method called color ID value changed
+I *do* love that we created that re-usable `setSelectedColor()` method! Let's try
+this: fly over to the browser and... it... doesn't work? In the console, we have
+a giant error:
 
-And inside of here. Okay.
+> Cannot read property `classList` of undefined
 
-I'm actually just going to go steal my coat earlier. Just say this, that sets like
-the caller ID, caller ID value, and now it can actually remove the code inside of
-connect. Okay. So on low, the, the on load, the color ID value should be red from our
-data attribute that will change the color ID value and cause our callback to be
-changed. What's real. Then you run the rest of the normal magic. So let's try it. And
-yeah, it did. It was really fascinating. Let me ask you click read to make it more
-obvious. Onload it goes back to green. I love that feature. All right. Ready to have
-your mind blown. Check this out. Find your data controller element two is the ID of
-the green item. Let's change it to one, which is red. It changed. Yeah. Our callback
-is even co executed at one. The data attribute is updated. That's bonkers. If you
-look back at our controller now I'm kind of wondering something. Do we really need to
-have both a selected color ID property that stores the current selected color ID and
-a color ID value?
+... coming from `setSelectedColor()`.
 
-Nope.
+## Watch out for the Stronger Values Types
 
-A value is basically a property with extra superpowers, with the ability to read an
-initial value from your data attribute, if you want to, and the ability to have a
-change callback. So check this out inside the color ID value changed. Let's add all
-the logic. We need to get this to work on its own. In other words, replace this, that
-selected color ID with code that does the same thing. So for example, we'll say
-this.selected target that value = this.color ID value. That's the Lexi element. And
-the only other thing that we need to do inside of here is a loop over the color
-squares and make sure that only the S and set these selected class correctly. So we
-can do that by saying this.color square targets dot for each.
+Let's go take a look. I think it's coming from right here. For some reason, the
+`findSelectedColorSquare()` method is *not* finding the element... which is *odd*.
 
-And that will receive an element Auburn,
+Scroll down to it. Ahh. The problem is the stronger *type* that the
+values API gave us. `element.dataset.colorId`, which just uses the normal
+`dataset` functionality, will be a `String`. But `this.selectedColorId`
+will now be a `Number`... because if we scroll up, we set it to `this.colorIdValue`,
+which we know is a true `Number` type.
 
-Because on a multiple lines, then instead of here, we can use an if statement cause
-to figure out if we should be adding the class or not. Instead of here, we can say if
-element
+So our stronger type makes these not triple-equal each other. The easiest fix is
+to use double equals.
 
-That dataset dot color ID
+In case you're wondering, at this time, there isn't anything like the values API
+for individual elements *inside* our controller.
 
-= = this.color ID value,
+Anyways, let's try it. Refresh and... got it! The color green is pre-selected! And
+if you temporarily unhide the `select` element itself... yep! That updated too.
 
-Then we know
+## Value Change Callback
 
-That this element has just been selected.
+There's one last feature about the values API that we haven't talked about yet.
+And it's *really* going to help us. In fact, it's going to let us to delete a
+*lot* of code from our controller. It's called a change callback.
 
-So we can say element dot class thought, add selected else.
+Very simply, we can tell Stimulus to automatically call a function whenever a
+value changes, like when our `colorId` value changes. How? With a specially named
+method.
 
-This is not selected. So we're actually going to remove that selective class and
-select color. We don't have to call the set selected color method anymore. We could
-simply say, copy the event, current target spot, and replaces with just this.color ID
-value = event. That current target, that data set, that color ID. That's it. That's
-all we need to do. So when we click select how color will be called, all we need to
-do is change the color ID value, and that should trigger our color ID value changed.
-Let me try it on load. It works when we click it works again. I did lose my ability
-to like click a second time in it,
+Add a new method called `colorIdValueChanged()`. Inside, go steal the code from
+earlier: `this.setSelectedColor(this.colorIdValue)`.
 
-But I'll fix that in a second. Okay.
+And now we can *remove* the code inside `connect()`.
 
-Right now let's celebrate by removing odd ton of code. We don't need set, selected
-caller ID anymore or find selected color square. Awesome. And if you want to get back
-the ability to click again and unselect it, then we can just do a little of extra
-logic and select color
+Here's the flow: on load, the `colorId` value will be read from our data attribute.
+That will *change* the `colorId` value and cause our callback to be executed.
+The naming of the method *is* important: it must be *exactly* named like this
+for Stimulus to recognize it as a change callback.
 
-Cons quick color equals
+Let's give it a go! Refresh and... yea, it *did* work! To make it more obvious,
+click red, then reload. Back to green!
 
-Event. The event I current target code. And I'll say, if I clicked color = this.color
-ID value And election and say color, this.caller ID value = no,
+## Callbacks even Listen to Attribute Changes
 
-And
+Ready to have your mind blown? Find the `data-controller` element in your inspector.
+2 is the id of the green item. Let's change it to 1, which is red. Woh! The
+selected color square changed! Our callback is even executed when the value's
+`data-attribute` is updated! That's bonkers.
 
-I'll hit return after that. Otherwise we'll set it to
+## Using Values Instead of a Property
 
-The eclipse color
+Look back at our controller. Now, I'm wondering something: do we really need both
+a `selectedColorId` property *and* a `colorId` value? Don't they both... kinda
+store the currently selected color?
 
-Refresh and everything still works. Just make sure I'm going to unselect my slight
-hell element here. Perfect. Quick enclave change, click. It is beautiful. This is the
-final version of our controller. Actually, I can also remove the property, right?
+Yep! And the answer is that we do *not* need both.
 
-Fair.
+A value is basically a property with superpowers. Values have the ability to read
+an initial value from a data attribute, support change callbacks *and* wear a
+bright red cape.
 
-Check it out. It's about 30 lines of code and it's incredibly readable even with this
-extra complication in the middle here and selecting the color on click
+Check this out: in the `colorIdValueChanged()` method, let's add all the
+logic that we need to get this to work on its *own*. In other words, I want to
+replace `this.setSelectedColor()` with code that does the same thing.
 
-Next. Okay.
+Start by setting the value on the select:
+`this.selectTarget.value = this.colorIdValue`.
 
-If you flip over and go to the homepage, we have a functional search here, but it's
-incredibly boring. It just server-side submit. Let's make it. Let's add an Ajax
-powered quick search that shows results under the search box. As we typed and
-updates, as we type.
+The only other thing that we need to do inside  here is a loop over the color
+squares to set the `selected` class correctly. Do that with
+`this.colorSquareTargets.forEach()` and pass this an arrow function with an
+`element` argument. Inside, we can use an if statement to figure out if we should
+be adding the class or removing it: if `element.dataset.colorId == this.colorIdValue`
+then we know this element *is* now the current color. Add the class with
+`element.classList.add('selected')`. Else, remove the `selected` class.
 
+Nice! Up in `selectColor()`, we don't need to call `setSelectedColor()` anymore.
+Instead, just set the value! Copy the `event.currentTarget` code and say
+`this.colorIdValue = ` and paste.
+
+That's it! When we click a color square, `selectColor` will be called. Then we
+set `this.colorIdValue` and *that* triggers our `colorIdValueChanged()` method.
+Booya!
+
+Test drive time! When we refresh... the initial color *is* selected. And when
+we click... that works too! We *did* lose the ability to click a second time
+to *unselect* a color - but we'll fix that in a minute.
+
+Before we do, let's celebrate by removing a *ton* of code! We don't need
+`setSelectedColor()` anymore... or `findSelectedColorSquare()`... or the
+`selectedColorId` property. I'll remove that in a minute.
+
+If you want to get back the ability to click again to *unselect* a color, we
+can do that with a little extra logic in `selectColor`. Add `const clickedColor`
+equals the `event.currentTarget` code.
+
+For the next line, use the ternary syntax: `this.colorIdValue = `, *if*
+`clickedColor == this.colorIdValue` - so, if the clicked color is *already*
+selected - then set it to `null`. Otherwise set it to `clickedColor`.
+
+Test it out: refresh... then click green again. Gone!
+
+## Our Tiny Controller
+
+Go back to your editor. This is the *final* version of our controller. Oh,
+after I remove the unused `selectedColorId` property... *now* this is the final
+version of our controller.
+
+And look at it! It's less than *30* lines of code and is *incredibly* readable.
+*This* is how I want my JavaScript to look.
+
+Head back to the homepage of our site. This has a functional search... but it's
+*so* boring. Next: let's add an AJAX-powered "quick search" that shows
+matching results under the search box as we type.
