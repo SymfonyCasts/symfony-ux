@@ -6,6 +6,8 @@ anywhere on the element to increment the count, let's add a button.
 Easy enough! In the template, add `<button class="btn btn-primary btn-sm">` and
 then the excellent call to action: "Click me".
 
+[[[ code('2d3d98bf75') ]]]
+
 If we check it in the browser... amazing! It works! Ok, I'm kidding: of *course*
 it works. But that's the cool thing about Stimulus: we get to do *so* much of our
 work in Twig where life *is* quick and easy.
@@ -28,6 +30,8 @@ an action instead.
 Here's how it works: on the `button` element, I'll break this onto multiple lines
 for clarity. Now add `data-action="click->counter#increment"`.
 
+[[[ code('0012f9e932') ]]]
+
 This is another special syntax: `data-action=""`, then the name of the event, like
 `click`, `submit` or `keyup`, arrow, the name of the controller, a pound sign,
 and then the name of the *method* to call on our controller when this event happens.
@@ -42,6 +46,8 @@ the click callback, delete, and paste it here.
 
 And now we can remove the event listener entirely.
 
+[[[ code('34b2b440e0') ]]]
+
 I may not *love* the `data-action` syntax in the template, but I *do* love the
 result. This is gorgeous.
 
@@ -52,6 +58,8 @@ nothing happens. If I click on the button, it increments! Woo!
 
 But I *did* promise a simplification in the template. Remove `click` and the
 `->` after it.
+
+[[[ code('1721ddd40f') ]]]
 
 Try it again: it's still works just fine! How? Stimulus has a *default* event name
 for the most common elements. If you add `data-action` to an `a` tag or a
@@ -65,6 +73,8 @@ So most of the time, you don't need to specify the event name.
 Oh, and now, to celebrate, in the controller, we can remove the `connect()` method
 entirely! Move `this.count =` to a normal property: `count = 0`. Then delete
 `connect()`.
+
+[[[ code('d5140ed250') ]]]
 
 Let's make sure I didn't break anything. Nope! All is good!
 
