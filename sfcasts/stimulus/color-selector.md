@@ -45,6 +45,8 @@ that will give us the `CartItem` object - then `.product.colors`. And an `endfor
 then inside, we can say `{{ color.hexColor }}`: that's one of the properties on
 the `Color` object.
 
+[[[ code('7c2ef96883') ]]]
+
 Let's try that. Move over and... ah! It works, but it's *ugly*.
 
 To turn this into some schwweet color boxes, change the `div` to a `span`, clear
@@ -55,6 +57,8 @@ special thing *we* need to do is set the background color.
 Do that with `style="background-color: "` then I'll use the `rgb()` syntax, passing
 `color.red`, `color.green` and `color.blue` - three *more* properties, or more
 accurately, getter methods in my `Color` class.
+
+[[[ code('74d9457c8a') ]]]
 
 Awesome! Check it out now. They're so cute!
 
@@ -78,6 +82,8 @@ Inside the file, we always start the same way:
 I usually like to add a `connect()` method to make sure I've got everything
 hooked up correctly. Let's `console.log(this.element.innerHTML).`.
 
+[[[ code('1ebb14daf5') ]]]
+
 Now, go activate this in the template. But let's think: we need the controller
 to go around the three color boxes. But it also needs to go around the `select`
 element itself so that we can set its value when the user clicks a color box.
@@ -85,6 +91,8 @@ The `select` element is rendered by `form_widget()`.
 
 So let's add a new `<div data-controller="color-square">`, put that around
 everything and indent.
+
+[[[ code('96b5b859f1') ]]]
 
 Sweet! Let's take this puppy for a walk. Move over, refresh, and open up the
 console. Yes! Our controller is connected!
@@ -98,9 +106,13 @@ syntax for an action is the name of the controller - `color-square` - a `#`, the
 name of the method that should be called on our controller when this
 action happens. How about `selectColor`.
 
+[[[ code('bbdea10ff1') ]]]
+
 Now, over in the controller, replace the `connect()` method with `selectColor()`
 and, just like normal JavaScript, this will be passed an event object. Let's
 `console.log()` that `event` to see what it looks like.
+
+[[[ code('4204d03db4') ]]]
 
 Move over, refresh and... click! Uh... nothing happens? The action is *not* working!
 
@@ -117,6 +129,8 @@ makes sense: a `span` doesn't *do* anything in normal HTML.
 This means that if we want to add an action to a `span`, we need to specify it.
 Do this by adding `click->` in front of the rest of the action syntax.
 
+[[[ code('71ed322ab4') ]]]
+
 Now when I click... it works! And we can see that we're passed a normal event
 object.
 
@@ -127,6 +141,8 @@ squares *buttons* instead? That'll simplify the action syntax *and*... it's
 just more correct: these really *are* buttons that the user will click.
 
 Change the `span` to a `button`. And then add `type="button"`.
+
+[[[ code('d8bdf6111f') ]]]
 
 That will make sure that the button doesn't cause the form around it to
 *submit* when we click. And then, we do *not* need the `click` anymore: that
