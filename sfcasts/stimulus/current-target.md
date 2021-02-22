@@ -11,6 +11,8 @@ of the three color squares was just clicked? The answer is always:
 
 Try this: `event.currentTarget.classList.add('selected')`.
 
+[[[ code('12365e06c3') ]]]
+
 Before we chat about this, let's make sure it works. Refresh, click and... beautiful!
 We can currently select *multiple* colors... which isn't ideal, but we'll fix that
 soon.
@@ -77,10 +79,14 @@ Let's do that. First, define the target with `targets = []`. Let's call the
 new target, how about, `colorSquare`. I *did* just make a mistake: see if you can
 spot it.
 
+[[[ code('bf7e1111ef') ]]]
+
 Oh, and notice the naming of the target: it's lower camel case. I'm not using
 `color-square` because the name of the target becomes a property.
 
 Down in the method, let's `console.log(this.colorSquareTargets)`.
+
+[[[ code('30567415b4') ]]]
 
 I put an "s" on the end on purpose: this will return an array of *all* matching
 targets.
@@ -88,6 +94,8 @@ targets.
 Finally, in the template, let's add the target to the `button`. Remember: the
 syntax for that is `data-` the name of the controller - so `color-square` - the
 word `target` equals, then the name of the target: `colorSquare`.
+
+[[[ code('b350bda158') ]]]
 
 Yes, you *do* need to write a few targets before you remember this syntax by heart.
 But you'll get it.
@@ -99,11 +107,15 @@ I made that mistake because... in the real world... I've made that mistake more
 than a few times before. This must be static and... if you forget, there's no
 huge error: it just *won't* add the magic target properties.
 
+[[[ code('b481a31410') ]]]
+
 Try it now. Refresh, click and... yes! We see the 3 `button` elements.
 
 Let's loop over these inside of our method: `this.colorSquareTargets.forEach()`
 and the function will receive an `element`. Inside, remove the `selected` class
 from *all* of them for simplicity: `element.classList.remove('selected')`.
+
+[[[ code('6c63d48912') ]]]
 
 Let's try this one last time. Now when we click... yes! It works!
 
