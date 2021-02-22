@@ -1,12 +1,12 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index 6216772..eb82eb7 100644
+index f00b147..2817b5b 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -7,16 +7,20 @@ export default class extends Controller {
      }
  
-     static targets = ['results'];
--    static debounces = ['onSearchKeyUp'];
+     static targets = ['result'];
+-    static debounces = ['onSearchInput'];
 +    static debounces = ['search'];
  
      connect() {
@@ -14,15 +14,15 @@ index 6216772..eb82eb7 100644
          useDebounce(this);
      }
  
--    async onSearchKeyUp(event) {
-+    onSearchKeyUp(event) {
+-    async onSearchInput(event) {
++    onSearchInput(event) {
 +        this.search(event.currentTarget.value);
 +    }
 +
-+    async search(term) {
++    async search(query) {
          const params = new URLSearchParams({
 -            q: event.currentTarget.value,
-+            q: term,
++            q: query,
              preview: 1,
          });
          const response = await fetch(`${this.urlValue}?${params.toString()}`);

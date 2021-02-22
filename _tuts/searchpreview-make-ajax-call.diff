@@ -1,14 +1,14 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index c6ba42d..25eb911 100644
+index db5f97c..7a74b35 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -5,7 +5,13 @@ export default class extends Controller {
          url: String,
      }
  
--    onSearchKeyUp(event) {
+-    onSearchInput(event) {
 -        console.log(this.urlValue);
-+    async onSearchKeyUp(event) {
++    async onSearchInput(event) {
 +        const params = new URLSearchParams({
 +            q: event.currentTarget.value,
 +            preview: 1,

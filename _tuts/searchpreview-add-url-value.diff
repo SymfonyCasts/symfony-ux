@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index f665400..c6ba42d 100644
+index b91d717..db5f97c 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -1,7 +1,11 @@
@@ -10,13 +10,13 @@ index f665400..c6ba42d 100644
 +        url: String,
 +    }
 +
-     onSearchKeyUp(event) {
+     onSearchInput(event) {
 -        console.log(event);
 +        console.log(this.urlValue);
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index b47203e..306e20b 100644
+index f52c337..5cf1c10 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -38,7 +38,9 @@

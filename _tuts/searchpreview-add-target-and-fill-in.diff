@@ -1,14 +1,14 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index 25eb911..8afbd9c 100644
+index 7a74b35..a298f09 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -5,6 +5,8 @@ export default class extends Controller {
          url: String,
      }
  
-+    static targets = ['results'];
++    static targets = ['result'];
 +
-     async onSearchKeyUp(event) {
+     async onSearchInput(event) {
          const params = new URLSearchParams({
              q: event.currentTarget.value,
 @@ -12,6 +14,6 @@ export default class extends Controller {
@@ -16,21 +16,21 @@ index 25eb911..8afbd9c 100644
          const response = await fetch(`${this.urlValue}?${params.toString()}`);
  
 -        console.log(await response.text());
-+        this.resultsTarget.innerHTML = await response.text();
++        this.resultTarget.innerHTML = await response.text();
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 306e20b..b1931d6 100644
+index 5cf1c10..626cbe9 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -50,6 +50,11 @@
                                      class="form-control"
-                                     data-action="keyup->search-preview#onSearchKeyUp"
+                                     data-action="search-preview#onSearchInput"
                                  >
 +
 +                                <div
 +                                    class="search-preview"
-+                                    data-search-preview-target="results"
++                                    data-search-preview-target="result"
 +                                ></div>
                              </div>
                          </form>

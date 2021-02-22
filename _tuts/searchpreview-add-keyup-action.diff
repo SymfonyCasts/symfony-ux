@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index 66e3936..f665400 100644
+index 66e3936..b91d717 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -1,7 +1,7 @@
@@ -8,19 +8,19 @@ index 66e3936..f665400 100644
  export default class extends Controller {
 -    connect() {
 -        console.log('connected!');
-+    onSearchKeyUp(event) {
++    onSearchInput(event) {
 +        console.log(event);
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 00514db..b47203e 100644
+index 00514db..f52c337 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -46,6 +46,7 @@
                                      placeholder="Search products..."
                                      type="search"
                                      class="form-control"
-+                                    data-action="keyup->search-preview#onSearchKeyUp"
++                                    data-action="search-preview#onSearchInput"
                                  >
                              </div>
                          </form>

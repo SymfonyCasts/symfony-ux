@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index 8afbd9c..7bdbb28 100644
+index a298f09..d0af6df 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -1,4 +1,5 @@
@@ -10,21 +10,21 @@ index 8afbd9c..7bdbb28 100644
      static values = {
 @@ -7,6 +8,10 @@ export default class extends Controller {
  
-     static targets = ['results'];
+     static targets = ['result'];
  
 +    connect() {
 +        useClickOutside(this);
 +    }
 +
-     async onSearchKeyUp(event) {
+     async onSearchInput(event) {
          const params = new URLSearchParams({
              q: event.currentTarget.value,
 @@ -16,4 +21,8 @@ export default class extends Controller {
  
-         this.resultsTarget.innerHTML = await response.text();
+         this.resultTarget.innerHTML = await response.text();
      }
 +
 +    clickOutside(event) {
-+        this.resultsTarget.innerHTML = '';
++        this.resultTarget.innerHTML = '';
 +    }
  }

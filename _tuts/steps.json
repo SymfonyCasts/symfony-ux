@@ -281,6 +281,31 @@
             "description": null
         },
         {
+            "id": "searchpreview2-avoid-up-down-arrow-ajax",
+            "name": "SearchPreview2: avoid up\/down arrow AJAX",
+            "description": null
+        },
+        {
+            "id": "delete-me-1",
+            "name": "delete me 1",
+            "description": null
+        },
+        {
+            "id": "delete-me-2",
+            "name": "delete me 2",
+            "description": null
+        },
+        {
+            "id": "delete-me-3",
+            "name": "delete me 3",
+            "description": null
+        },
+        {
+            "id": "delete-me-4",
+            "name": "delete me 4",
+            "description": null
+        },
+        {
             "id": "sweetalert-add-submit-confirm-controller",
             "name": "SweetAlert: add submit-confirm controller",
             "description": null
@@ -441,5 +466,5 @@
             "description": null
         }
     ],
-    "sha": "110f00c40e3b09ba3d17cb07920b64eace9b606e"
+    "sha": "ef0fc72356aea523da5e77d25fe4d49f1299e4df"
 }
