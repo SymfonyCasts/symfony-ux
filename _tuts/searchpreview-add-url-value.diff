@@ -16,7 +16,7 @@ index b91d717..db5f97c 100644
      }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index f52c337..5cf1c10 100644
+index f52c337..3d5a68f 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -38,7 +38,9 @@
@@ -25,7 +25,7 @@ index f52c337..5cf1c10 100644
                                  class="input-group"
 -                                {{ stimulus_controller('search-preview') }}
 +                                {{ stimulus_controller('search-preview', {
-+                                    url: app.request.pathInfo
++                                    url: path('app_homepage')
 +                                }) }}
                              >
                                  <input

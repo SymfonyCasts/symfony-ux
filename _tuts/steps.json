@@ -231,8 +231,8 @@
             "description": null
         },
         {
-            "id": "searchpreview-add-keyup-action",
-            "name": "SearchPreview: add keyup action",
+            "id": "searchpreview-add-input-action",
+            "name": "SearchPreview: add input action",
             "description": null
         },
         {
@@ -248,6 +248,11 @@
         {
             "id": "searchpreview-make-ajax-call",
             "name": "SearchPreview: make AJAX call",
+            "description": null
+        },
+        {
+            "id": "searchpreview-adding-await",
+            "name": "SearchPreview: adding await",
             "description": null
         },
         {
@@ -446,5 +451,5 @@
             "description": null
         }
     ],
-    "sha": "ef0fc72356aea523da5e77d25fe4d49f1299e4df"
+    "sha": "4e7c8e3ccf1c6c214b4181378c079fa3a2e7cef7"
 }
