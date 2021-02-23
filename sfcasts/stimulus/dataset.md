@@ -15,6 +15,8 @@ data attributes!
 Over in the template, find the button and add a new data attribute:
 `data-color-id` equals `{{ color.id }}`.
 
+[[[ code('7da1a12889') ]]]
+
 This is the first time that we've used a data attribute that has *nothing* to do
 with Stimulus. We're just inventing this for our own purposes. The only rules
 about data attribute names is that they must, of course, start with `data-`
@@ -27,6 +29,8 @@ the `dataset` property.
 
 At the bottom of `selectColor()`, `console.log(event.currentTarget)` - to get
 the button - then `.dataset.colorId`.
+
+[[[ code('bb797c95f0') ]]]
 
 Notice that the `color-id` from the HTML becomes `colorId` inside this `dataset`
 property. This is... once again, *not* a Stimulus thing. This is just how data
@@ -41,15 +45,21 @@ Now that we've got that, the next step is to find the `select` element. And,
 
 Over in the controller, add a second target called, how about, `select`.
 
+[[[ code('d426543d00') ]]]
+
 Then, in the HTML, add that target. Oh... but this is trickier because the
 `form_widget()` function is rendering the `select` element *for* us. No problem:
 we can pass a custom attribute. Add a second argument to form widget, pass an
 associative array, give this an `attr` key set to another associative array with
 `data-color-square-target` set to `select`.
 
+[[[ code('833ca82a7c') ]]]
+
 Back over in the controller, assuming I haven't messed anything up, we *should*
 now be able to reference the select with `this.selectTarget`. Set its value
 with `.value = ` and then `event.currentTarget.dataset.colorId`.
+
+[[[ code('7643bcc1db') ]]]
 
 Ok! Let's try this thing! Refresh click and... awesome! As we click the colors,
 the `select` updates. This is fun!
@@ -63,6 +73,8 @@ in Stimulus.
 Anyways, in the controller, add a `connect()` method. Then hide it with
 `this.selectTarget.classList.add('d-none')`, which will add a `display: none`
 since we're using Bootstrap.
+
+[[[ code('51d8756a9d') ]]]
 
 Go refresh. Oh, that is *lovely*. Let's add a red sofa to the cart. When we submit...
 I think it worked! Go check out the shopping cart. It *did*!
