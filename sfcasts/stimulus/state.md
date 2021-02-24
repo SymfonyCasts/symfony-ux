@@ -18,13 +18,19 @@ info on it! We did this earlier with the "current count" on our counter controll
 So on click, let's start storing *which* color id is currently selected. At the top
 of the class, invent a new property: how about `selectedColorId = null`.
 
+[[[ code('808bdb62bb') ]]]
+
 Then, down in `selectColor()`, create a variable - `const clickedColorId =` set
 to the `event.currentTarget` code. Right below this, set the state property:
 `this.selectedColorId = clickedColorId`.
 
+[[[ code('8bf8c71863') ]]]
+
 We don't really need a variable yet, but it will make life a bit easier in
 a minute. Down at the bottom, instead of referencing the event code, just
 use `this.selectedColorId`.
+
+[[[ code('962c061830') ]]]
 
 This by itself.... doesn't really do anything to help us. But we can now more
 easily use the property to figure out if the color that's being clicked is
@@ -38,6 +44,8 @@ For this situation, copy the `classList` code from below, and make it
 `event.currentTarget.classList.remove('selected')`. Also set
 `this.selectedColorId = null` and `this.selectTarget.value = ''`, or `null` would
 be fine. Then return.
+
+[[[ code('1836c0ab3c') ]]]
 
 So when we click the already-selected color, we go here. Else we do the normal logic.
 
@@ -55,6 +63,8 @@ End the `selectColor` method early and move most of the logic into a new
 
 Then, call this from above: `this.setSelectedColor()`... and steal the
 `event.currentTarget` code. We don't need a variable anymore.
+
+[[[ code('fb1b62f9ae') ]]]
 
 This isn't going to *quite* work yet, but I want to explain *why* we're doing
 this. This *is* optional, but I like to have as many re-usable methods in my
@@ -74,6 +84,8 @@ Now, thanks to the `selectedColorId` property, we can find the "currently
 selected color square" really easily! Let's add a helper method to do this:
 `findSelectedColorSquare()`
 
+[[[ code('d3a409fd36') ]]]
+
 Inside `return this.colorSquareTargets.find()`. What we're going to do is loop
 over all the color square targets and return the *one* whose `data-color-id`
 attribute matches `this.selectedColorId`.
@@ -81,14 +93,20 @@ attribute matches `this.selectedColorId`.
 Pass `find()` a function with an `element` argument. I'm going to use the super
 fancy single line syntax to return `element.dataset.colorId === this.selectedColorId`.
 
+[[[ code('4803923f1d') ]]]
+
 So this method will either return the Element if one is selected or `null`. I'll
 add some docs above this to advertise that.
+
+[[[ code('c1e388a074') ]]]
 
 Let's go use the new method:
 `this.findSelectedColorSquare().classList.remove('selected')`.
 And... we have one more spot down here: where we *add* that class. Since we've
 already set the new `selectedColorId` property, this will find the *new* element:
 `this.findSelectedColorSquare().classList.add('selected')`.
+
+[[[ code('70e00da1f5') ]]]
 
 This shows off one of the nice things about storing state like `selectedColorId`:
 we can create useful methods - like `findSelectedColorSquare()` - and call them
