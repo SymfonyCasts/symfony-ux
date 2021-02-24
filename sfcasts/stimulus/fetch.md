@@ -1,146 +1,117 @@
-# Fetch
+# Loading HTML over Ajax with fetch()
 
-Coming soon...
+To make the Ajax request inside the controller, I'm going to use the `fetch()`
+function.
 
-To make the Ajax request inside of here. I'm going to use the `fetch()` function, which
-is a built in function for making Ajax calls that most prouder support. So basically
-everyone except for IE 11, if you do need a sport older browsers like IE 11, it's no
-problem. You can install a polyfill actually https://github.com/github/fetch
-So GitHub itself, maintains a polyfill for fetch and the relevant
-instructions are installing it. And then if I look for a Webpack, here we go for
-Webpack. You're gonna actually add an `entry`. So w in, um, Encore you'd actually say
-`addEntry()`, and then you would actually include this, um, before your first entry
+## fetch() for AJAX
 
-To
+If you don't know, `fetch()` is a built-in function for making Ajax calls tha
+*most* browsers support. So basically... pretty much all browsers except for IE 11.
 
-Make sure it's automatically included.
+If you *do* need to support IE 11, you have two options. First, the other library
+I really like for making AJAX requests is called. Axios, which you can install
+with `yarn add axios` - we use it in our Vue tutorial. It also has a few more
+features than fetch.
 
-I'm not going to worry about that. I'm just going to go use fetch. So the first thing
-we need to do is we're going to need to send two query parameters up to our
-controller. We're gonna need to send whatever the M the value of the box is as a `q`
-query parameter. And we're also gonna send a `preview` query parameter to indicate to
-our controller that we just want the shorter search preview result and not the full
-page of HTML to help kind of put those together. I am going to say 
-`const params = new URLSearchParams()` and pass that an object. And inside of here, I'll pass a
-`q` set two, and then the value of the, um, of the box, which we know is going to be
-`event.currentTarget` that will get us the input that we attach the action to.
-And then it's as easy as `.value`. The other thing we want to send is preview one.
-Now this URL search prams object is a built in JavaScript object that just helps you,
-um, create query strings like this. It is not supported in all browsers, but it's
-going to be, but it's automatically, but this one is actually automatically polyfill
-by babel.
+But if you *do* want to use `fetch()`, you can "polyfill" it so it works on all
+browsers. Github itself maintains a [polyfill for fetch](https://github.com/github/fetch).
 
-Okay?
+It's pretty simply to set up: `yarn add whatwg-fetch` then, in `webpack.config.js`,
+adapt your main entry to include it first:
 
-So we don't need to worry about, uh, manually adding a polyfill After this. Now I'll
-use the `fetch()` function fetch, and I'm going to use the fancy ticks. So we can
-basically, so we can concatenate `this.urlValue`, and then a question Mark, and then
-`${}`. And here I'll say `params.toString()`. And that builds the little Amper sand strings.
+```diff
+// webpack.config.js
 
-They're awesome.
+Encore
+    // ...
+-    .addEntry('app', './assets/app.js')
++    .addEntry('app', ['whatwg-fetch', './assets/app.js'])
+```
 
-Now fetch like all Ajax libraries returns a promise. So if you want it to use the
-value from it, you have two options. First, you can use the `.then()` syntax, or you
-pass it a Call back
-Like this, or you can use the slightly easier await syntax. So I'm going to remove
-that.
+## Using URLSearchParams() & its Polyfill
 
-And instead
+*Anyways*, let's make the AJAX call!
 
-They `const response = await fetch(...)` This. We'll wait for the AJAX call to finish,
-then set the result on the `response` variable. But as soon as you use `await`, you
-must add `async` before whatever function this is inside of, you can see that makes my
-bill happy. This `async` here is really just a marker that says that thanks to the
-`await`. This function will now automatically return a Promise.
+First, we need to do send 2 query parameters on the AJAX request: the value of
+the search box as a `q` query parameter and another one called `preview` so that
+our controller knows to render the preview HTML.
 
-That doesn't really matter unless you were calling this function directly, unless you
-call this function directly and want to use it's returned value. In that case, when
-you call this function, you would also need to await for the results
+To help create the query string, say `const params = new URLSearchParams()`
+and pass that an object. Inside set `q` to the value of the input, which we know
+will be `event.currentTarget` - to get the input Element that we attached the
+action to - then `.value`. Also pass `preview` set to 1.
 
-Anyways. Okay.
+This `URLSearchParams` object is a built-in JavaScript object that just helps you...
+basically create query strings like this. It is *also* not supported in all
+browsers... IE 11, cough. *But*, it will be polyfilled automatically by Babel,
+as long as you have the default Encore configuration:
 
-The response itself, isn't that interesting. What we really want is the response
-HTML. We can log that with `console.log(await response.text())` That's kind of a thing.
+```js
+// webpack.config.js
 
-Anything about `fetch()`. When you make the Ajax call, we of course, need to wait for
-that to finish, but even `response.text()`, getting the texts from their response
-returns a promise. And so you also need to await that Anyways, let's try this. Okay.
+Encore
+    .configureBabelPresetEnv((config) => {
+        config.useBuiltIns = 'usage';
+        config.corejs = 3;
+    })
+```
 
-By the way, the other library I use for JavaScript is Axios a little bigger, but
-easier to use.
+Yea, I know, it's a little confusing. The `@babel/preset-env` library that Encore
+uses will automatically detect when you use a feature that's not supported by the
+browsers that you want to support and add a polyfill. But... while Babel supports
+*most* polyfills, it doesn't support all of them. `fetch()` is one notable example
+of a polyfill it doesn't support... which is why you need to add it manually.
 
-That's refreshing,
+***TIP
+If you want to see a list of all the polyfills added by Babel, you can add a
+`debug` flag. A report will then be printed to the terminal when you build Encore:
 
-I'll type in a character, and yes, you can see every time I was having a character,
-I'm getting a new age call on the web or toolbar. And that console is dumping the
-full HTML. And you can see this really is the full HTML of the page, which isn't
-really what we want. We need just a little fragment of HTML that would represent the
-search results preview that would display below this box.
+```diff
+// webpack.config.js
 
-If you're using something like reactor view, you would probably return JSON from this
-Ajax end point and then build the HTML and JavaScript. But this is, it's all about
-building AIDS to file on the server. So that's what we're going to do. But instead of
-returning the whole page, we'll return just part of the page or in the controller B
-for the return statement, add an if statement, if `$request->query->get()`,
-and look for that `preview` query parameter. So if it has a query parameter and that's
-set up something like one, then we'll hit this if statement and here and let's return
-a new template. So all of a sudden return `$this->render()` and call this 
-`product/_searchPreview.html.twig`. Now this can be called anything. It doesn't
-matter. I put the_here, cause it's a common convention to prefix a template name
-with `_` when that template only renders part of a page instead of an entire page. So
-it's just there for clarity inside of here. We're just going to need a pass in the
-`products`, which will already be the filter products. All right, let's go create that
-template product. And I'll hit new file `_searchPreview.html.twig`
-And we're not going to extend anything because we don't want to base layout.
-We're just going to start putting some content here. So I'm going to 
-add a `<div class="list-group">` to give this a little bit of a sum list markup, and then 
-`{% for product in products %}{% endfor %}`
+Encore
+    .configureBabelPresetEnv((config) => {
+        // ...
++        config.debug = true;
+    })
+```
+***
 
-Then insider, I'm going to add an, `<a>` tag and for the `href=""` we'll use `path()`. And in
-the name of the route to the product page on our site is `app_product`. And it uses
-actually the `id`. So I'll say `id` set to `product.id`. And actually I'm going to put
-this ATF on a multiple lines for clarity, and I'm also going to add a 
-`class="list-group-item list-group-item-action"`
-Those Are just classes that bootstrap uses to make a nice list of format. Then inside the a
-for now, let's keep it simple. We'll say `{{ product.name }}`. Oh, and to be extra
-fancy, we'll even add an `{% else %}`  for. So if there are no results, we can add a
-`<div class="list-group-item">`
+Anyways, in this case, and in most cases, Babel has us covered.
 
-With No results Found. Awesome to see you
+## Making the AJAX Request with fetch()
 
-This, we can go back to our page and add a little `?preview=1` to the
-URL and Oh, variable products does not exist because I, my controller, I forgot my S
-now much better. It looks terrible here because we have no styling on this page, but
-it is working. So I have a back to the homepage. The last step in stimulus is just to
-dump that return to HTML onto the page to control exactly where it goes. Let's add a
-new target element. So an index that aged about twig. I want the content to go right
-after the input.
+Ok, let's make the AJAX call: say `fetch()` then pass it the fancy ticks so create
+a dynamic string. We need `${this.urlValue}` then a question mark and another
+`${}` with `params.toString()`. That builds the query string with the `&` symbols.
 
-So here, I'm going to add a `<div>`. I once again, use multiple lines for this can give
-us a `class="search-preview"`. And I that's another class that I already have some
-CSS for to make this feature look a little bit nice. And then for the target, I'm
-going to add `data-search-preview-target`, and let's have this be a new
-target called result. There we go. And I actually don't need any constant in here.
-We're going to fill that in via stimulus or in stimulus. Let's add this target. So
-I'll say `static targets = []` an array and our one new target called `result`. Then we'll
-set the inner HTML on this. So I'll copy the await response dot text. And then, so
-we'll say `this.resultTarget.innerHTML` equals, and then `await response.text()`
-done. Let's go check it. I'm actually going to click back to
-the homepage just to clear a search entirely and beautiful as I type. If I type
-something crazy, I got the no results found it's alive. So let's celebrate by making
-this even a little bit less, a little bit prettier.
+Like all Ajax libraries, `fetch()` returns a `Promise`. So if we want to get the
+response, we have two options. First, we can use the `.then()` syntax and pass
+a callback.
 
-Back over in the template, our `_searchPreview.html.twig`, instead of the name I'm
-going to paste some markup here, which you can get from the code block on this page.
+*Or*, we can use `await`... which I like because it looks a bit simpler. Remove
+the `.then()` and instead say `const response = await fetch(...)`.
 
-You can get that from the code block on this page, but it's pretty basic. Now move
-over. Don't even need to refresh, but I'll do it anyways. And Oh, that is gorgeous. I
-mean, you click on any of these to go there.
+This will *wait* for the AJAX call to finish and set the result to the `response`
+variable. But as *soon* as you use `await`, you must add `async` before whatever
+function this is inside of. Yup, that makes my build happy.
 
-That's gorgeous. And we're looking at our controller. This whole feature took about
-15 lines of JavaScript, only a couple of lines of PHP and a very simple template to
-actually render the results. Exactly like we want it to. So next one problem with
-this new feature is that when we type and then click off of this, it doesn't go away.
-Really. We really need that to close. How could we do that? These easiest way is by
-leveraging a third party library that I love that's full of tools for stimulus.
+The `async` is really just a marker that says that, thanks to the `await`, this
+function will now *automatically* return a Promise. That doesn't really matter
+unless you want to call this function directly and use its return value. If you
+*were* doing that, you would *also* need to `await` for this function to finish.
 
+But... the response itself, isn't that interesting. What we *really* want is the
+response *body*. We can log that with `console.log(await response.text())`.
+
+This shows off a... sort of weird thing about `fetch()`. When we make the Ajax
+call, we - of course - need to await for it to finish. But even getting the
+body of the response - with `response.text()` is an asynchronous operation that
+returns a `Promise`. That's... kind of odd... but ok: we just need to `await` it.
+
+Ok, testing time! Refresh and... type! Yes! I can already see new AJAX requests
+in the web debug toolbar. *And* the console is dumping the *full* HTML.
+
+The only problem is that this is the *full* HTML of the homepage... which isn't
+really what we want. What we *really* want is a "fragment" of HTML that represents
+the search suggestions. Let's get that hooked up next and render it onto the page!
