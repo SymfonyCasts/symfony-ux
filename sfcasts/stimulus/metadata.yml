@@ -12,7 +12,8 @@ chapters:
     - state
     - values
     - value-change
-    - search-autocomplete
+    - search-preview
+    - fetch
     - stimulus-use
     - sweet-alert
     - chartjs-package
