@@ -25,9 +25,13 @@ A fantastic suggestion! Break the element onto multiple lines and then add
 color is. To do that, copy this whole `addToCartForm.vars` thing from down here,
 paste, and at the very end, add `[1].id` to use the id of the second color.
 
+[[[ code('11c7ae3110') ]]]
+
 Done! Inside the controller... inside `connect()`, let's see if we can log
 this: `console.log()`, get the top-level element - `this.element` - and read
 its data: `.dataset.colorId`.
+
+[[[ code('5d61573f05') ]]]
 
 Let's give it a go! When we refresh... we can see the `data-color-id` in the
 HTML and... over in the log... there's the id!
@@ -44,13 +48,19 @@ Here's how it works. Step 1, add a `static values` property set to an object. Ea
 this object. So we want a `colorId` value. Set this to the *type* that this will
 be. In our case, `colorId` will be a `Number`.
 
+[[[ code('48745fcf82') ]]]
+
 As *soon* as we define this, we can magically access a `colorIdValue` property.
 Let's log it: `console.log(this.colorIdValue)`.
+
+[[[ code('b9764c6bef') ]]]
 
 Finally, to *pass* this value into the controller, we *will* use a data attribute,
 but with a special syntax. It's `data-` the name of the controller -
 `color-square` - the name of our value - `color-id` - the name is `colorId` in our
 controller, but it will be `color-id` in HTML - then `-value=` the actual *value*.
+
+[[[ code('30afa97760') ]]]
 
 I know what you're thinking: that is *ugly*! Don't worry, we're going to learn an
 *awesome* shortcut in a minute.
