@@ -1,84 +1,113 @@
-# Stimulus Use
+# Stimulus Behaviors: stimulus-use
 
-Coming soon...
+We have a little itty bitty problem. When we click off of our search area, the
+suggestion box... just sticks there. We need that to close. How can we do that?
 
-We have a little itty bitty problem. When we click off of our search area, this isn't
-the suggestion box. Just sticks there. We need that to close. Now, can we do this? We
-could do it manually. Probably we would register a click listener on the documents
-and then detect to see if any clicks were outside of our search element. But I have a
-way better solution. Google for search forks stimulus use to find a GitHub page. This
-is a library packed full of behaviors for your stimulus controllers. It's awesome.
-I'll click down here into the documentation. So check this out. Suppose you want to
-do something whenever your element appears in the viewport, like as the user is
-scrolling or disappears from the viewport, you can do that with one of the behaviors
-called use intersection.
+We *could* do it manually. We would register a click listener on the entire
+page `document` and then detect to see if a click was inside our search area or
+outside of it.
 
-Basically you set it up, give it some options if you want. And boom, the library will
-call up here and appear method on your controller when your element enters the
-viewport and it disappeared when it leaves the viewport. One of the other behaviors
-use click outside is exactly what we want. So let's get this installed. I'll go over
-to usage, actually getting started and let's see yarn add stimulus use. I'll copy
-this. I've used a fancy copy to clipboard, spin over to my browser paste. And
-actually let me add a little dash dash, actually, I'm going to recap that whole thing
-just so I can add the dash dash and dev on the end. Not really needed, but that's
-what I like to do. All right. While that's doing that, let's go over here and look at
-the documentation.
+## Hello stimulus-use
 
-Scroll down to the usage. All right. So step one is to activate the behavior on our
-connect method. Cool. I'm going to copy this line right here. Let me make sure that
-the library finished downloading it did. Then we'll go up to the top and import it
-import curly, curly. And the way that you import things is is you just grab the one
-behavior you need from the stimulus use library. So for us, it's going to be use
-click outside and actually features arm just completed the rest of it for me.
-Awesome. Then down to here, I'm going to add a connect method and paste that line
-from before. Use, click outside this. All right. Step two. If you look at the docs is
-to add a click outside method. All right, let's do this down here. How about on the
-bottom click outside? And what we'll do is inside. This is when the user clicks
-outside, we will set this.result, target that inner HTML = empty quotes and done back
-at the browser over on our site, refresh the page type a little bit, to get some
-search results And click off beautiful or a diamond type. Again, it's back. If I
-click off, it's gone. That was like four lines of code. Since that was so quick,
-let's do something else.
+But I have a *way* better solution. Search for "stimulus use" to find a
+[GitHub page](https://github.com/stimulus-use/stimulus-use). This is a library
+that's packed *full* of behaviors for Stimulus controllers. It's awesome.
 
-If I type
+I'll click down here to get into the [documentation](https://stimulus-use.github.io/stimulus-use).
 
-Really, really fast watch my little Ajax counter right here.
+Here's a great example of the power of this library. Suppose you want to do
+something whenever an element *appears* in the viewport - like as the user is
+scrolling - or *disappears* from the viewport. You can easily do that with one of
+the behaviors called `useIntersection`.
 
-Yeah.
+Basically, you activate it, give it some options if you want... and boom! The
+library will automatically call an `appear()` method on your controller when your
+element *enters* the viewport and `disappear()` when it *leaves* the viewport.
+How cool is that?
 
-We're making an Ajax call for every single letter. No matter how fast we type that's
-overkill. The fix for this is to wait for the user to pause maybe for 200
-milliseconds before making an HS call. That's called D bouncing. And there's a
-behavior for that use D bounce. All right, let's use it. So let's go up here to the
-example. So we're going to import now use D bounce.
+One of the other behaviors - `useClickOutside` - is exactly what *we* need.
 
-Yeah.
+## Installing & Activating useClickOutside
 
-An application controller thing there, you don't need that. They're just kind of
-mixing their examples. So at the top, I'll now import used amounts. And then if you
-look down at the other example, it's the same thing. Use the balanced this inside
-your connect method to activate that. So pretty simple. I'll add, semi-colons
-obviously not needed, but I like them.
+So let's get this installed. Over on "Usgae"... actually" Getting Started", the
+name of the library is `stimulus-use`. Spin over to your terminal and install it:
 
-So
+```terminal
+yarn add stimulus-use --dev
+```
 
-The way the D balance works is you add a static D balances property set to an array
-of methods that should not be called until a slight delay. It's 200 milliseconds by
-default. So for us, we want to D balance our on search input method. So I'll copy
-that name then up here, I'm going to say static D balances = an array with on search
-input inside. All right, let's try it back to the browser refresh type real fast. And
-it exploded. The reason this exploded is due to a limitation in the D bouncing. Since
-our browser is calling on search input, the D balancing behavior can't hook into it
-properly. Debouncing only works for methods that we call ourselves. And that's no
-problem. We just need to organize it a bit better. So let's try this. I'm going to
-close up on search input early and create a new method called async search.
+Again, the `--dev` part isn't really important - that's just how I like to install
+it.
 
-And we'll have this taken a query, uh, arguments. And again, we're making this async
-here because we have a wait there, and then I've been on search input. We don't need
-to have asynch anymore. And we're just going to call this.search and we'll pass it,
-that value, which is going to be event dot current target dot value. And down there
-we can price the queue with query. So really we're just refactoring things into a
-more reusable method. Anyways. Now change the balance from on search input to search
-testing, time, refresh type real fast and perfect. Only one AGS call. Once things
-finish a backspace a bit. Yes, it is waiting next. Let's do something different.
+While that's working, let's go look at the documentation for `useClickOutside`.
+I'll scroll down to "usage".
 
+Ok: step 1 is to activate the behavior in our `connect()` method. Cool. Copy this
+line... and let's make sure the library finished downloading. It did.
+
+Over in the controller, go to the top to import it the behavior:
+`import {}` and then the behavior we need - `useClickOutside`.
+
+Sweet! PhpStorm auto-completed the rest of that line for me.
+
+Below, add a `connect()` method and paste the line from the docs: `useClickOutside(this)`.
+
+For step 2: look at the docs: we need to add a `clickOutside()` method. Ok!
+Let's add it at the bottom: `clickOutside(event)`. When the user clicks outside
+of our controller element, we will set `this.resultTarget.innerHTML = ''`.
+
+Done. Let's test it! Head back to the browser and refresh. Type a little to get
+some suggestions, then click off. Beautiful! And if I type again... it's back,
+then click off and gone again.
+
+People: that was like four lines of code!
+
+## Debouncing with useDebounce
+
+Since that was *so* fast, let's do something else.
+
+If I type really, really fast - watch the Ajax counter right here - yup! We're
+making an Ajax call for *every* single letter no matter *how* fast we type. That's
+overkill. The fix for this is to wait for the user to pause for a moment - maybe
+for 200 milliseconds - before making an Ajax call. That's called debouncing. And
+there's a behavior for that: `useDebounce`.
+
+Let's use it! Scroll up to the example. Of course, we need start by importing it.
+Oh, and this `ApplicationController` thing? Don't worry about that - that's another,
+optional feature of this library - they're just mixing examples.
+
+Over in the controller, at the top, import `useDebounce`. Next, if you look at
+the other example, we activate it the same way. So, in `connect()`,
+`useDebounce(this)`. I'll add, semi-colons... but they're obviously not needed.
+
+Here's how this behavior works: we add a static `debounces` property set to an
+array of methods that should *not* be called until a slight pause. That pause
+is 200 milliseconds by default.
+
+So for us, we want to debounce the `onSearchInput` method. Copy the name then
+head up to the top of the controller: `static debounces = []` with `onSearchInput`
+inside.
+
+Let's try it! Back to the browser, refresh and... type real fast! Ah! It exploded!
+This is due to a limitation of this feature. Because our browser is calling
+`onSearchInput`, the behavior can't hook into it properly. Debouncing only works
+for methods that *we* call ourselves.
+
+But that's no problem! We just need to organize things a bit better. Try this:
+close up `onSearchInput` early and move most of the logic into a new method
+called `async search()` with a `query` argument.
+
+Again, we're making this `async` because we have an `await` inside.
+
+For `onSearchInput`, we now *don't* need the `async` anymore... and we will
+just call `this.search()` and pass it `event.currentTarget.value`. Below, set
+the `q` value with `query`.
+
+This is nice: we're just refactoring our code to have a nice, reusable `search()`
+method. *Now* change the `debounce` from `onSearchInput` to `search`.
+
+Testing, time! Refresh and... type real fast. Perfect. Only one Ajax call.
+
+Alright! This feature is *done*! Next, on the checkout page, let's add a confirmation
+modal when the user removes an item from the cart. In this, we'll leverage a
+great third party library from inside our controller:  SweetAlert.
