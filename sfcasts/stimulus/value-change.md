@@ -10,6 +10,8 @@ Thanks to our organization, this will be no problemo. Replace the log with:
 if `this.colorIdValue`: just in case we want to make this value optional. Inside,
 call `this.setSelectedColor()` and pass `this.colorIdValue`.
 
+[[[ code('ecc1e22e13') ]]]
+
 I *do* love that we created that re-usable `setSelectedColor()` method! Let's try
 this: fly over to the browser and... it... doesn't work? In the console, we have
 a giant error:
@@ -32,6 +34,8 @@ which we know is a true `Number` type.
 So our stronger type makes these not triple-equal each other. The easiest fix is
 to use double equals.
 
+[[[ code('c977b776e0') ]]]
+
 In case you're wondering, at this time, there isn't anything like the values API
 for individual elements *inside* our controller.
 
@@ -50,6 +54,8 @@ method.
 
 Add a new method called `colorIdValueChanged()`. Inside, go steal the code from
 earlier: `this.setSelectedColor(this.colorIdValue)`.
+
+[[[ code('359b6f6a38') ]]]
 
 And now we can *remove* the code inside `connect()`.
 
@@ -87,6 +93,8 @@ replace `this.setSelectedColor()` with code that does the same thing.
 Start by setting the value on the select:
 `this.selectTarget.value = this.colorIdValue`.
 
+[[[ code('28865772c7') ]]]
+
 The only other thing that we need to do inside  here is a loop over the color
 squares to set the `selected` class correctly. Do that with
 `this.colorSquareTargets.forEach()` and pass this an arrow function with an
@@ -95,9 +103,13 @@ be adding the class or removing it: if `element.dataset.colorId == this.colorIdV
 then we know this element *is* now the current color. Add the class with
 `element.classList.add('selected')`. Else, remove the `selected` class.
 
+[[[ code('a525c14155') ]]]
+
 Nice! Up in `selectColor()`, we don't need to call `setSelectedColor()` anymore.
 Instead, just set the value! Copy the `event.currentTarget` code and say
 `this.colorIdValue = ` and paste.
+
+[[[ code('cfae532906') ]]]
 
 That's it! When we click a color square, `selectColor` will be called. Then we
 set `this.colorIdValue` and *that* triggers our `colorIdValueChanged()` method.
@@ -118,6 +130,8 @@ equals the `event.currentTarget` code.
 For the next line, use the ternary syntax: `this.colorIdValue = `, *if*
 `clickedColor == this.colorIdValue` - so, if the clicked color is *already*
 selected - then set it to `null`. Otherwise set it to `clickedColor`.
+
+[[[ code('0c70993240') ]]]
 
 Test it out: refresh... then click green again. Gone!
 
