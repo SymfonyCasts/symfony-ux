@@ -1,4 +1,4 @@
-# Loading HTML over Ajax with fetch()
+# Ajax with fetch(), Polyfills & async/await
 
 To make the Ajax request inside the controller, I'm going to use the `fetch()`
 function.
