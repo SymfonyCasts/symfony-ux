@@ -1,10 +1,10 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index 2c60ed1..c8b05ef 100644
+index 14b0861..a611eb8 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
-@@ -1,6 +1,7 @@
- import { Controller } from 'stimulus';
+@@ -2,6 +2,7 @@ import { Controller } from 'stimulus';
  import Swal from 'sweetalert2';
+ import { useDispatch } from 'stimulus-use';
  
 +/* stimulusFetch: 'lazy' */
  export default class extends Controller {

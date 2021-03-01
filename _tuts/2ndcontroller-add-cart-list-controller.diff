@@ -1,0 +1,29 @@
+diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
+new file mode 100644
+index 0000000..7f38b5b
+--- /dev/null
++++ b/assets/controllers/cart-list_controller.js
+@@ -0,0 +1,7 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    connect() {
++        console.log('connected');
++    }
++}
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index b5b6372..17ccbc6 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -11,7 +11,10 @@
+ 
+             <div class="col-xs-12 col-lg-9 cart">
+                 <h1>Shopping Cart</h1>
+-                <div class="component-light p-3">
++                <div
++                    class="component-light p-3"
++                    {{ stimulus_controller('cart-list') }}
++                >
+                     <div>
+                         <div class="row p-3">
+                             <div class="col-3">

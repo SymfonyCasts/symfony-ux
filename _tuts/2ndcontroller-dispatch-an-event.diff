@@ -1,0 +1,45 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index cc8041f..b802bcb 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -1,5 +1,6 @@
+ import { Controller } from 'stimulus';
+ import Swal from 'sweetalert2';
++import { useDispatch } from 'stimulus-use';
+ 
+ export default class extends Controller {
+     static values = {
+@@ -7,6 +8,10 @@ export default class extends Controller {
+         submitAsync: Boolean
+     }
+ 
++    connect() {
++        useDispatch(this, { debug: true });
++    }
++
+     onSubmit(event) {
+         event.preventDefault();
+ 
+@@ -25,16 +30,20 @@ export default class extends Controller {
+         });
+     }
+ 
+-    submitForm() {
++    async submitForm() {
+         if (!this.submitAsyncValue) {
+             this.element.submit();
+ 
+             return;
+         }
+ 
+-        return fetch(this.element.action, {
++        const response = await fetch(this.element.action, {
+             method: this.element.method,
+             body: new URLSearchParams(new FormData(this.element)),
+         });
++
++        this.dispatch('async:submitted', {
++            response,
++        })
+     }
+ }

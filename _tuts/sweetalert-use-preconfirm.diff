@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index bd2f05b..7fb91b7 100644
+index bd2f05b..690a038 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
 @@ -17,11 +17,14 @@ export default class extends Controller {
@@ -11,13 +11,13 @@ index bd2f05b..7fb91b7 100644
 -                this.element.submit();
 +            showLoaderOnConfirm: true,
 +            preConfirm: () => {
-+                this.removeFromCart();
++                this.submitForm();
              }
 -        })
 +        });
 +    }
  
-+    removeFromCart() {
-+        console.log('removing!');
++    submitForm() {
++        console.log('submitting form!');
      }
  }

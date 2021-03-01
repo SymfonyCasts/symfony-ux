@@ -331,13 +331,63 @@
             "description": null
         },
         {
-            "id": "sweetalert-remove-button-on-submit",
-            "name": "SweetAlert: remove button on submit",
+            "id": "sweetalert-option-to-submit-async",
+            "name": "SweetAlert: option to submit async",
             "description": null
         },
         {
-            "id": "sweetalert-moving-controller-up",
-            "name": "SweetAlert: Moving controller up",
+            "id": "sweetalert-pass-value-to-submit-async",
+            "name": "SweetAlert: Pass value to submit async",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-add-cart-list-controller",
+            "name": "2ndController: add cart-list controller",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-dispatch-an-event",
+            "name": "2ndController: dispatch an event",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-remove-debug",
+            "name": "2ndController: remove debug",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-listen-to-event",
+            "name": "2ndController: listen to event",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-refactor-cart-to-partial",
+            "name": "2ndController: refactor cart to partial",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-route-controller-to-partial",
+            "name": "2ndController: route\/controller to partial",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-ajax-to-refresh-cart-list",
+            "name": "2ndController: AJAX to refresh cart list",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-css-fade-out",
+            "name": "2ndController: css fade out",
+            "description": null
+        },
+        {
+            "id": "delete-me-1",
+            "name": "delete me 1",
+            "description": null
+        },
+        {
+            "id": "delete-me-2",
+            "name": "delete me 2",
             "description": null
         },
         {
@@ -451,5 +501,5 @@
             "description": null
         }
     ],
-    "sha": "4e7c8e3ccf1c6c214b4181378c079fa3a2e7cef7"
+    "sha": "68e16b3766d87a84ba031fe4a766994c6236a032"
 }

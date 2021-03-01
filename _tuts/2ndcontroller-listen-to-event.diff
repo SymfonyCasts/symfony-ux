@@ -1,0 +1,30 @@
+diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
+index 7f38b5b..6856d39 100644
+--- a/assets/controllers/cart-list_controller.js
++++ b/assets/controllers/cart-list_controller.js
+@@ -1,7 +1,7 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+-    connect() {
+-        console.log('connected');
++    removeItem(event) {
++        console.log(event.currentTarget);
+     }
+ }
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index 17ccbc6..f3167db 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -29,7 +29,10 @@
+                             <div class="col-3"></div>
+                         </div>
+                         {% for item in cart.items %}
+-                            <div class="cart-item row p-3">
++                            <div
++                                class="cart-item row p-3"
++                                data-action="submit-confirm:async:submitted->cart-list#removeItem"
++                            >
+                                 <div class="col-2">
+                                     {{ item.product.name }}
+                                 </div>

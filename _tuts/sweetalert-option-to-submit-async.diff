@@ -1,0 +1,25 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index 0607bb8..cc8041f 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
+ export default class extends Controller {
+     static values = {
+         title: String,
++        submitAsync: Boolean
+     }
+ 
+     onSubmit(event) {
+@@ -25,6 +26,12 @@ export default class extends Controller {
+     }
+ 
+     submitForm() {
++        if (!this.submitAsyncValue) {
++            this.element.submit();
++
++            return;
++        }
++
+         return fetch(this.element.action, {
+             method: this.element.method,
+             body: new URLSearchParams(new FormData(this.element)),

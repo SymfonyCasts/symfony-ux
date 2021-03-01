@@ -1,0 +1,13 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index b802bcb..14b0861 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -9,7 +9,7 @@ export default class extends Controller {
+     }
+ 
+     connect() {
+-        useDispatch(this, { debug: true });
++        useDispatch(this);
+     }
+ 
+     onSubmit(event) {

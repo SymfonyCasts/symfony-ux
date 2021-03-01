@@ -1,0 +1,15 @@
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index e2476da..b5b6372 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -48,7 +48,9 @@
+                                             colorId: item.color ? item.color.id: null,
+                                         }) }}"
+                                         method="POST"
+-                                        {{ stimulus_controller('submit-confirm') }}
++                                        {{ stimulus_controller('submit-confirm', {
++                                            submitAsync: true,
++                                        }) }}
+                                         data-action="submit-confirm#onSubmit"
+                                     >
+                                         <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />

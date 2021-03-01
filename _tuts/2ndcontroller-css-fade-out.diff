@@ -1,0 +1,29 @@
+diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
+index 26abeaf..0460715 100644
+--- a/assets/controllers/cart-list_controller.js
++++ b/assets/controllers/cart-list_controller.js
+@@ -6,6 +6,8 @@ export default class extends Controller {
+     }
+ 
+     async removeItem(event) {
++        event.currentTarget.classList.add('removing');
++
+         const response = await fetch(this.cartRefreshUrlValue);
+         this.element.innerHTML = await response.text();
+     }
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index fb48bea..08cf130 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -86,6 +86,11 @@ h1 {
+ 
+ .cart .cart-item {
+     border-bottom: 1px solid #efefee;
++    transition: opacity 500ms;
++}
++
++.cart .cart-item.removing {
++    opacity: 0;
+ }
+ 
+ .color-square {

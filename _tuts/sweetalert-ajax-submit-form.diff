@@ -1,19 +1,19 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index 7fb91b7..fcc4eea 100644
+index 690a038..0607bb8 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
 @@ -19,12 +19,15 @@ export default class extends Controller {
              confirmButtonText: 'Yes, remove it!',
              showLoaderOnConfirm: true,
              preConfirm: () => {
--                this.removeFromCart();
-+                return this.removeFromCart();
+-                this.submitForm();
++                return this.submitForm();
              }
          });
      }
  
-     removeFromCart() {
--        console.log('removing!');
+     submitForm() {
+-        console.log('submitting form!');
 +        return fetch(this.element.action, {
 +            method: this.element.method,
 +            body: new URLSearchParams(new FormData(this.element)),
