@@ -1,8 +1,8 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index b802bcb..14b0861 100644
+index c28004c..ef3849e 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
-@@ -9,7 +9,7 @@ export default class extends Controller {
+@@ -12,7 +12,7 @@ export default class extends Controller {
      }
  
      connect() {

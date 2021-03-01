@@ -1,9 +1,9 @@
 diff --git a/templates/cart/_cartList.html.twig b/templates/cart/_cartList.html.twig
 new file mode 100644
-index 0000000..1385d12
+index 0000000..5da81fc
 --- /dev/null
 +++ b/templates/cart/_cartList.html.twig
-@@ -0,0 +1,72 @@
+@@ -0,0 +1,75 @@
 +<div>
 +    <div class="row p-3">
 +        <div class="col-3">
@@ -44,6 +44,9 @@ index 0000000..1385d12
 +                    }) }}"
 +                    method="POST"
 +                    {{ stimulus_controller('submit-confirm', {
++                        title: 'Remove this item?',
++                        icon: 'warning',
++                        confirmButtonText: 'Yes, remove it',
 +                        submitAsync: true,
 +                    }) }}
 +                    data-action="submit-confirm#onSubmit"
@@ -77,10 +80,10 @@ index 0000000..1385d12
 +</div>
 +{% endif %}
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index f3167db..4822828 100644
+index 8868958..4822828 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
-@@ -15,78 +15,7 @@
+@@ -15,81 +15,7 @@
                      class="component-light p-3"
                      {{ stimulus_controller('cart-list') }}
                  >
@@ -124,6 +127,9 @@ index f3167db..4822828 100644
 -                                        }) }}"
 -                                        method="POST"
 -                                        {{ stimulus_controller('submit-confirm', {
+-                                            title: 'Remove this item?',
+-                                            icon: 'warning',
+-                                            confirmButtonText: 'Yes, remove it',
 -                                            submitAsync: true,
 -                                        }) }}
 -                                        data-action="submit-confirm#onSubmit"

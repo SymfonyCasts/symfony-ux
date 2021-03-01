@@ -1,16 +1,16 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index 0607bb8..cc8041f 100644
+index ee62288..be60b0a 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
-@@ -4,6 +4,7 @@ import Swal from 'sweetalert2';
- export default class extends Controller {
-     static values = {
-         title: String,
-+        submitAsync: Boolean
+@@ -7,6 +7,7 @@ export default class extends Controller {
+         text: String,
+         icon: String,
+         confirmButtonText: String,
++        submitAsync: Boolean,
      }
  
      onSubmit(event) {
-@@ -25,6 +26,12 @@ export default class extends Controller {
+@@ -28,6 +29,12 @@ export default class extends Controller {
      }
  
      submitForm() {

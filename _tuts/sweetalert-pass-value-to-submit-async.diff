@@ -1,15 +1,14 @@
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index e2476da..b5b6372 100644
+index 27599a5..57bdc0e 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
-@@ -48,7 +48,9 @@
-                                             colorId: item.color ? item.color.id: null,
-                                         }) }}"
-                                         method="POST"
--                                        {{ stimulus_controller('submit-confirm') }}
-+                                        {{ stimulus_controller('submit-confirm', {
+@@ -51,7 +51,8 @@
+                                         {{ stimulus_controller('submit-confirm', {
+                                             title: 'Remove this item?',
+                                             icon: 'warning',
+-                                            confirmButtonText: 'Yes, remove it'
++                                            confirmButtonText: 'Yes, remove it',
 +                                            submitAsync: true,
-+                                        }) }}
+                                         }) }}
                                          data-action="submit-confirm#onSubmit"
                                      >
-                                         <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />

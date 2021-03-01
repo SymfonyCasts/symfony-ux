@@ -1,13 +1,16 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
-index 3ef1a46..bd2f05b 100644
+index 2309a92..5c272e2 100644
 --- a/assets/controllers/submit-confirm_controller.js
 +++ b/assets/controllers/submit-confirm_controller.js
-@@ -2,11 +2,15 @@ import { Controller } from 'stimulus';
+@@ -2,17 +2,24 @@ import { Controller } from 'stimulus';
  import Swal from 'sweetalert2';
  
  export default class extends Controller {
 +    static values = {
 +        title: String,
++        text: String,
++        icon: String,
++        confirmButtonText: String,
 +    }
 +
      onSubmit(event) {
@@ -15,7 +18,33 @@ index 3ef1a46..bd2f05b 100644
  
          Swal.fire({
 -            title: 'Are you sure?',
-+            title: this.titleValue || 'Are you sure?',
-             text: "You won't be able to revert this!",
-             icon: 'warning',
+-            text: "You won't be able to revert this!",
+-            icon: 'warning',
++            title: this.titleValue || null,
++            text: this.textValue || null,
++            icon: this.iconValue || null,
              showCancelButton: true,
+             confirmButtonColor: '#3085d6',
+             cancelButtonColor: '#d33',
+-            confirmButtonText: 'Yes, delete it!',
++            confirmButtonText: this.confirmButtonTextValue || 'Yes',
+         }).then((result) => {
+             if (result.isConfirmed) {
+                 this.element.submit();
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index e2476da..27599a5 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -48,7 +48,11 @@
+                                             colorId: item.color ? item.color.id: null,
+                                         }) }}"
+                                         method="POST"
+-                                        {{ stimulus_controller('submit-confirm') }}
++                                        {{ stimulus_controller('submit-confirm', {
++                                            title: 'Remove this item?',
++                                            icon: 'warning',
++                                            confirmButtonText: 'Yes, remove it'
++                                        }) }}
+                                         data-action="submit-confirm#onSubmit"
+                                     >
+                                         <input type="hidden" name="_token" value="{{ csrf_token('remove_item') }}" />
