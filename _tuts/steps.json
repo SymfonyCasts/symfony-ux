@@ -286,8 +286,8 @@
             "description": null
         },
         {
-            "id": "searchpreview2-avoid-up-down-arrow-ajax",
-            "name": "SearchPreview2: avoid up\/down arrow AJAX",
+            "id": "delete-me-3",
+            "name": "delete me 3",
             "description": null
         },
         {
@@ -501,5 +501,5 @@
             "description": null
         }
     ],
-    "sha": "68e16b3766d87a84ba031fe4a766994c6236a032"
+    "sha": "91e7ee30362c8b25035f03de199a0c31d1af7273"
 }
