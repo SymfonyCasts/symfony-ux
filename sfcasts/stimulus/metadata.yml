@@ -16,6 +16,8 @@ chapters:
     - fetch
     - ajax-html
     - stimulus-use
+    - delete-confirm
+    - options-form-ajax
     - sweet-alert
     - chartjs-package
     - extend-chartjs
