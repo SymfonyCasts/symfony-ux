@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
-index 7f38b5b..6856d39 100644
+index b3f6ff5..6856d39 100644
 --- a/assets/controllers/cart-list_controller.js
 +++ b/assets/controllers/cart-list_controller.js
 @@ -1,7 +1,7 @@
@@ -7,7 +7,7 @@ index 7f38b5b..6856d39 100644
  
  export default class extends Controller {
 -    connect() {
--        console.log('connected');
+-        console.log('🛒');
 +    removeItem(event) {
 +        console.log(event.currentTarget);
      }

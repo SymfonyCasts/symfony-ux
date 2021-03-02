@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
 new file mode 100644
-index 0000000..7f38b5b
+index 0000000..b3f6ff5
 --- /dev/null
 +++ b/assets/controllers/cart-list_controller.js
 @@ -0,0 +1,7 @@
@@ -8,7 +8,7 @@ index 0000000..7f38b5b
 +
 +export default class extends Controller {
 +    connect() {
-+        console.log('connected');
++        console.log('🛒');
 +    }
 +}
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
