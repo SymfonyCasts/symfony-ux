@@ -41,6 +41,8 @@ and pass that an object. Inside set `q` to the value of the input, which we know
 will be `event.currentTarget` - to get the input Element that we attached the
 action to - then `.value`. Also pass `preview` set to 1.
 
+[[[ code('698584085e') ]]]
+
 This `URLSearchParams` object is a built-in JavaScript object that helps you...
 basically create query strings. It is *also* not supported in all browsers...
 cough IE 11. *But*, it will be polyfilled automatically by Babel, as long as you
@@ -83,6 +85,8 @@ Ok, let's make the AJAX call: say `fetch()` then pass it the fancy ticks so we c
 create a dynamic string. We need `${this.urlValue}` then a question mark and another
 `${}` with `params.toString()`. That builds the query string with the `&` symbols.
 
+[[[ code('0ceed5b161') ]]]
+
 Like all Ajax libraries, `fetch()` returns a `Promise`. So if we want to get the
 response, we have two options. First, we can use the `.then()` syntax and pass
 a callback.
@@ -94,6 +98,8 @@ This will *wait* for the AJAX call to finish and set the result to the `response
 variable. But as *soon* as you use `await`, you must add `async` before whatever
 function that you're inside of. Yup, that makes my build happy.
 
+[[[ code('9e5e131f4d') ]]]
+
 The `async` is really just a marker that says that, thanks to the `await`, this
 function will now *automatically* return a Promise. That doesn't really matter
 unless you want to call this function directly and use its return value. If you
@@ -101,6 +107,8 @@ unless you want to call this function directly and use its return value. If you
 
 But... the response itself, isn't that interesting. What we *really* want is the
 response *body*. We can log that with `console.log(await response.text())`.
+
+[[[ code('1ac1886230') ]]]
 
 This shows off a... sort of weird thing about `fetch()`. When we make the Ajax
 call, we - of course - need to await for it to finish. But even getting the
