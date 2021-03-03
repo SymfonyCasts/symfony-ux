@@ -18,7 +18,8 @@ chapters:
     - stimulus-use
     - delete-confirm
     - options-form-ajax
-    - sweet-alert
+    - multi-controller-dispatch
+    - listen-reload-html
     - chartjs-package
     - extend-chartjs
     - react
