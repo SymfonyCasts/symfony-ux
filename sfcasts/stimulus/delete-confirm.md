@@ -1,18 +1,17 @@
 # Form Submit Confirmation Controller
 
 Let's add a few items to our cart, like a floppy disk - gotta have those - and
-maybe also some awesome CD's so I can burn a mixtape for Leanna. Now, head to
-the cart page.
+maybe also some CD's so I can burn a mixtape for Leanna. Now head to the cart page.
 
 A user can already remove an item from their cart. Open up the template to see
-how: `templates/cart/cart.html.twig`. If you scroll down a bit... here it is...
-around line 50. The "remove" button is inside of a form. When the user clicks it,
-the form submits and the controller removes the item from the cart. It's super
-smooth and super boring. I love it!
+how: `templates/cart/cart.html.twig`. Scroll down a bit... here it is... around
+line 50. The "remove" button is inside a form. When the user clicks, the form
+submits and the controller removes the item from the cart. It's super smooth and
+super boring. I love it!
 
 ## A Massively Re-usable "Submit Confirm" Controller
 
-But *now*, I need to add a feature to this. When the user clicks the button, I
+But *now*, I need to enhance this. When the user clicks "remove", I
 want to open a modal where the user can *confirm* that they want to remove the
 item. In fact, this is going to be even *cooler* than it sounds because the
 Stimulus controller we're about to create will be re-usable across *any* form
@@ -33,9 +32,9 @@ everything is hooked up: `console.log()`... a dinosaur (🦖).
 Next up, go activate this in the template. Adding it to the `form` tag should be
 fine: `{{ stimulus_controller('submit-confirm') }}`.
 
-Let's make sure this is connected! I'll re-open my console.. refresh and... roar!
-We even see *two* dinosaurs because there are two different controllers on this
-page.
+Let's make sure it's connected! I'll re-open my console.. refresh and... roar!
+We even see *two* dinosaurs because there are *two* different controllers on this
+page. My 4 year old son would be *thrilled*.
 
 ## Hello SweetAlert2
 
@@ -52,29 +51,29 @@ yarn add sweetalert2 --dev
 
 ## Adding the "submit" Action
 
-Before we use that new library, let's set up the *action* on our form: when the
+Before we *use* that new library, let's set up the *action* on our form: when the
 user submits the form, we want to run some code.
 
 In the template, on the form, add `data-action=""` then the name of our
 controller - `submit-confirm` - a `#` sign and... let's have this call a new
-method called `onSubmit`.
+method named `onSubmit`.
 
-Copy that then head over to our controller. Rename `connect()` to `onSubmit()`
+Copy that, then head over to our controller. Rename `connect()` to `onSubmit()`
 and give it an `event` argument. Start by calling `event.preventDefault()` so
 that the form doesn't submit immediately. Then let's `console.log(event)` so we
 can see this working.
 
-Head back over, refresh, hit remove and... awesome! We can see the submit event
-*is* being triggered. So far, so good.
+Head back over, refresh, hit remove and... awesome! The submit event *is* being
+triggered. Nothing can stop us... except, maybe typos!
 
 *Now* let's bring in SweetAlert. Back over on its docs, copy the entire delete
 example and, in the controller, remove the log and paste.
 
 Oh and this `Swal` variable needs to be imported: `import Swal from 'sweetalert2';`
 
-Yay! Let's try it. Head back over to our site, refresh and hit Remove. Tada!
-That's so awesome! If we click cancel, nothing happens. And if we click yes,
-delete it... we get this other message. But it's not *actually* removing the item
+Yay! Let's try it. Head back over to our site, refresh and hit remove. Tada!
+That's *so* cool! If we click cancel, nothing happens. And if we click yes,
+delete it... we get this other message. But it's not *actually* removing the item...
 yet.
 
 Look back at the code. Here's how this works: when you click a button, the
@@ -86,20 +85,23 @@ which will be the `form` - `.submit()`.
 
 That's it! Oh, and if you're thinking:
 
-> Hey! Won't this cause an infinite loop...where we call `submit()` and then
-> that triggers our `submit` action... which will then open SweetAlert again?
+> Hey! Won't this cause an infinite loop... where we call `submit()` and that
+> causes a `submit` event... that triggers our `submit` action... which will then
+> open SweetAlert again?
 
-Fortunately... that will *not* happen. When you call `.submit()` on a form, the
-form *does* submit, but the `submit` event is *not* dispatched. And so our action
-method will *not* be called again.
+Fortunately... that will *not* happen. When you call `.submit()` on a form element,
+the form *does* submit, but the `submit` event is *not* dispatched. And so, our
+action method will *not* be called again. That's just how JavaScript and the DOM
+work - not a Stimulus thing. I say that a lot.
 
-Ok: let's see if this works. Refresh, click remove and this time confirm. Woohoo!
-The form submitted, the page, reloaded and the item is gone!
+Anyways, let's see if this works! Refresh, click remove and this time confirm.
+Woohoo! The form submitted, the page reloaded and the item is gone!
 
 But I think we can make this even *more* awesome. How? By making our controller
 *configurable* - like the text that it displays - so we can *truly* reuse it
-across our app. Even in this situation, saying "yes, delete it" on the button
-when you're removing an item from the cart... doesn't really make sense.
+anywhere in our app. Even in this situation, saying "yes, delete it" on the button...
+when you're *actually* removing an item from a *cart*... it doesn't really make
+sense.
 
-And as an extra bonus, we're also going to add an option to make the form submit
+And as an extra bonus, we're going to add an option to make the form submit
 via Ajax. That's all next.
