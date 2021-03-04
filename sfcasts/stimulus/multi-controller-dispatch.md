@@ -1,118 +1,133 @@
-# Multi Controller Dispatch
+# Multi Controller Communication
 
-Coming soon...
+When we confirm the modal, the delete form now submits via Ajax. That's cool...
+but it created a problem. The row just sits there! And actually, it's more
+complicated than simply removing that row. The total at the bottom also needs to
+change... and if this is the *only* item in the cart, we need to show the
+"your cart is empty" message.
 
-When we confirm the delete form and now submits via Ajax. That's cool, but it graded
-a problem. The row just sits there. And actually it's more complicated than just
-removing that row. The total at the bottom has to change. And if this is the last
-item in the cart, we need to show the, your cart is empty message. If I refresh
-manually, now we see it. You might get the urge to start trying to do all of this in
-JavaScript. Removing the row would be pretty easy. May add back a couple of items
-here so we can get a more interesting cart.
+Let me add a couple items to the cart to keep things interesting.
 
-Okay.
+## Need to Update the Page? Make an HTML Ajax Request!
 
-You might be tempted to make it the urge to start trying to do all of this in
-JavaScript. Removing the row would be pretty easy though. We, we would need to move
-the `data-controller` from the form two around the entire row, but it would be doable,
-but updating the total and worse printing, the, your cart is empty message without
-duplicating the message we already have in twig. This is starting to look at kind of
-annoying. The solution for this is delightfully refreshing, stop trying to do
-everything in JavaScript and instead rely on your server side templates. So instead
-of removing the row and changing the total and rendering the, your cart is empty
-message. All in JavaScript, we could make a fresh Ajax call to an end point that
-returns the contest, the HTML of this entire area, and replace that on the page. That
-is what we're going to do. But wait a second. If we look over on our template right
-now, our stimulus controller is on the individual form element. So each row has its
-own stimulus controller. Does this mean that we're going to need to move that data
-controller element to a `<div>` that's around the entire cart area, like moving onto
-this div, because if we want to replace the HTML for this entire div, it needs to
-live inside of our controller. The answer is no, we don't need to move the 
-`data-controller` element. The element that `data-controller` is on. Let me clarify. We could
-move the `data-controller` from our individual form up to, uh, the Dave that's around
-the entire car area.
+Ok: you might be tempted to start trying to do all of this in JavaScript. Removing
+the row would be pretty easy... though, we *would* need to move the
+`data-controller` from the form to the div around the entire row.
 
-If we did that, we would need to do some refactoring in our controller specifically,
-instead of referencing `this.element` to get the form, we would need to reference 
-`event.current.target`. So that's kind of annoying, but not a huge deal. And it would
-give us the ability to replace the entire HTML of the cart area. After making that
-Ajax call. The real reason I don't want to move the controller up to this top level
-element is because, well, it doesn't really make sense for our `submit-confirm`
-controller to show a confirmation on submit and also make an Ajax call to refresh the
-data in the cart area. Those are two very different jobs. And if we did smash that
-code for making the Ajax call into this controller, we would not be able to reuse the
-`submit-confirm` controller for other forms in our site because they would hold code
-specific to the cart area. So what's the better solution. So what's the better
-solution to keep `submit-confirm` how it is. It does its small job perfectly. And
-instead add the new functionality to a new second controller, check it out and 
-`assets/controllers/` create a new `cart-list_controller.js`
+But updating the total and - worse - printing the "your cart is empty message"
+without duplicating the message we already have in Twig... this is starting to
+look pretty annoying! Is there an easier way?
 
-I'll actually
+There is! And it's delightfully refreshing. Stop trying to do everything in
+JavaScript and instead rely on your server-side templates. So instead of
+removing the row... and changing the total... and rendering the "your cart is empty"
+message all in JavaScript, we could make a single Ajax call to an endpoint that
+returns the new HTML for the entire cart area. Then we replace the cart div with
+the new HTML and... done!
 
-Cheat and copy the top of my `submit-confirm` and paste it in there, but we don't need
-sweetalert. Then I'll do my usual
+## The Case for Two Controllers
 
-`connect()` and we'll `console.log()`, of course, a shopping cart.
+But wait a second. Go look at the template. Right now, our `stimulus_controller()`
+is on the `form` element... so each row has its own Stimulus controller. To be able
+to replace the HTML for the *entire* cart area, does this mean we need to move
+the `data-controller` attribute to the `<div>` that's around the entire cart area?
+Because... in order to set that `innerHTML` on this element, it *does* need to
+live inside our Stimulus controller. So, do we need to move our controller here?
 
-The job of the controller will be to add any JavaScript to the cart list area. So
-basically this `<div>` right here, the entire cart list area on a high level, that means
-it's job is going to be to reload the cart HTML via Ajax. After one of the items is
-removed in the `templates/cart.html.twig`
+The answer is... no: we do *not* need to move the `data-controller` attribute
+onto this `div`. Well, let me clarify. We *could* move the `data-controller` from
+our `form` up to the div that's around the cart area.
 
-Find That `<div>` up here. There it is. And let's add our controller to this Curly curly
-`stimulus_controller()` and it's called `cart-list`. All right, let's make sure that's
-connected. I'll head over my console refresh and
+If we did that, we would need to do some refactoring in our controller. Specifically,
+instead of referencing `this.element` to get the form, we would need to reference
+`event.currentTarget`. So that's kind of annoying... but no huge deal and it would
+give us the ability to replace the entire HTML of the cart area after making the
+Ajax call.
 
-Perfect. We're good. All right.
+So why *aren't* we going to do this? The *real* reason I don't want to move the
+controller up to this top level element is because, well... it doesn't really
+make sense for our `submit-confirm` controller to both show a confirmation on
+submit *and* make an Ajax call to refresh the HTML for the cart area. Those are
+two *very* different jobs. If we *did* smash the code for making the Ajax call
+into this controller, we would *no* longer be able to reuse the `submit-confirm`
+controller for other forms on our site... because it would now hold code specific
+to the cart area.
 
-In stimulus, each controller acts independently. They're their own little independent
-units of code. And while it is possible to make two controllers talk directly to each
-other, you don't typically do
+So what's the better solution? First, keep `submit-confirm` exactly how it is.
+It does its small job *wonderfully*. I am so proud. Second, add the new
+functionality to a new, *second* controller.
 
-That. But in this
+## Creating the Second Controller
 
-Case, we have a problem inside our new controller. We need to run some code,
-specifically, make an Ajax call to get the fresh card HTML only after the other
-controller has finished submitting the form via Ajax. Somehow `submit-confirm`
-controller needs to notify `cart-list` controller that this has happened, that that
-Ajax call has finished. How do we do that? Oh, it's so nice
+Check it out: in `assets/controllers/` create a new `cart-list_controller.js`
+I'll cheat and copy the top of my `submit-confirm` controller... paste it here,
+but we don't need sweetalert. Then add the usual `connect()` method with
+`console.log()` a shopping cart.
 
-By doing exactly what, uh, Dom elements already do. Dispatching a custom event
+The job of the controller will be to add any JavaScript needed the cart area. So
+basically, any JavaScript for this `<div>`. On a high level, this means its job
+will be to reload the cart HTML via Ajax after an item is removed.
 
-from our form element and the stimulus use library we installed
-earlier. I haven't stocks right here has a behavior for that. It's called use
-dispatch.
+In the `templates/cart/cart.html.twig`, find the `<div>` around the entire cart
+area... here it is. Add `{{ stimulus_controller() }}` and pass `cart-list`.
 
-You can dispatch events without this behavior. This just makes it a lot easier.
-Here's how it works. Start the normal way. So in `submit-confirm` controller, we need
-to import the behavior. So `import { useDispatch } from 'stimulus-use';`
-and then make a `connect()` method and say, `useDispatch(this)`.
+Ok! Let's make sure that's connected. Head over and... refresh. Got it.
 
-Also add a `debug` option set to `true`. I'm adding the debug option temporarily all the
-stimulus use behaviors support this option When it's enabled most behaviors, log
-extra debug info to the console, which is pretty handy. We'll see that in a minute.
-Now, head down to submit form. Here's the plan. If the form is submitting via Ajax
-let's Oh, wait for it to finish. And then dispatch a custom event do that by setting
-`const response = await`,
+## Controllers Are Independent
 
-And Then we need to make the method `async` to dispatch the event. The use dispatch
-behavior gives us a handy new `dispatch()` method. So we can say `this.dispatch()` and then
-the name of our method. And this can be anything let's call it. How about `async:submitted`
-And if you want, you can pass a second argument with any extra information
-that you want to attach to the event. I'll add a `response`. We won't need that. But
-thanks to this, the `event` object will have an extra `response` property set to the
-`response` object, which might be handy in other cases. And that's it. It's a little
-technical, but thanks to the `async` on `submitForm()`. Our submit form method still
-returns a promise that resolves after this Ajax call finishes that's important because
-we returned that promise in `preConfirm()`, which is what tells sweetalert to stay open
-with the loading icon until that desk call finishes.
+In Stimulus, each controller acts in isolate. Each is its own little independent
+unit of code. And while it *is* possible to make one controller call methods directly
+on another controller, you don't typically do that.
 
-If that didn't make total sense, it's not that big of a deal. It's a little specific
-to promises and sweetalert. Anyways, let's try it. Spin over. Refresh, remove an
-item and confirm. Yes. Check out this log down here. We just dispatched a Dom event
-from our form called submit dash confirm colon async colon submitted by default that
-use dispatch behavior will prefix any event with the name of our controller, which is
-kinda nice. So next, let's listen to this in our other controller and use it to
-reload the cart HTML as a bonus, we'll add a CSS transition to make things look
-really smooth.
+But in this case, we have a problem. In our new controller, we need to run some
+code - specifically, make an Ajax request to get the fresh cart HTML - only
+*after* the other controller has finished submitting the delete form via Ajax.
+Somehow the `submit-confirm` controller needs to notify the `cart-list` controller
+that its Ajax call has finished.
 
+So the big question is: how do we do that?
+
+## Dispatching a Custom Event
+
+By doing *exactly* what native DOM elements already do: dispatch an event. Yup,
+we can dispatch a custom event in one controller and listen to it from another.
+*And*, the `stimulus-use` library we installed earlier has a behavior for this!
+It's called `useDispatch`. You can dispatch events *without* this behavior... it
+just makes it easier.
+
+Here's how it works. Start the normal way. In `submit-confirm_controller.js`,
+import the behavior - `import { useDispatch } from 'stimulus-use'` then make a
+`connect()` with `useDispatch(this)` inside. This time, pass an extra option
+via the second argument: `debug` set to `true`.
+
+I'm adding this `debug` option temporarily. All `stimulus-use` behaviors support
+this option. When it's enabled, most behaviors log extra debug info to the
+console, which handy for debugging. We'll see that in a minute.
+
+Now head down to `submitForm()`. Here's the plan: if the form is submits via Ajax,
+let's wait for it to finish and then dispatch a custom event. Do that by adding
+`const response = await`... and then we need to make the method `async`.
+
+To dispatch the event, the `useDispatch` behavior gives us a handy new
+`dispatch()` method. So we can say `this.dispatch()` and then the name of our
+custom event, which can be anything. Let's call it `async:submitted`.
+You can also pass a second argument with any extra information that you want to
+attach to the event. I'll add a `response`.
+
+We won't need that in *this* example... but thanks to this, the `event` object
+that's passed to any listeners will have an extra `response` property set to the
+`response` object... which might be handy in other cases.
+
+And... that's it! It's a bit technical, but thanks to the `async` on
+`submitForm()`, the `submitForm` method *still* returns a Promise that resolves
+after this Ajax call finishes. That's important because we return that `Promise`
+in `preConfirm()`... which is what tells SweetAlert to stay open with the
+loading icon until that call finishes.
+
+Anyways, let's try it! Spin over, refresh, remove an item and confirm. Yes!
+Check out the log! We just dispatched a normal DOM event from our `form` element
+called `submit-confirm:async:submitted`. By default, the `useDispatch` behavior
+prefixes the event name with the name of our controller, which is nice.
+
+Next: let's listen to this in our other controller and use it to reload the cart
+HTML. As a bonus, we'll add a CSS transition to make things look *really* smooth.

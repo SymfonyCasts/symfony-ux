@@ -20,6 +20,7 @@ chapters:
     - options-form-ajax
     - multi-controller-dispatch
     - listen-reload-html
+    - fresh-html
     - chartjs-package
     - extend-chartjs
     - react
