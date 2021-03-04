@@ -17,6 +17,8 @@ Head over to `ProductController` and, before the return, add an if statement: if
 Inside, render a new template: `return $this->render()` and call it
 `product/_searchPreview.html.twig`.
 
+[[[ code('0db35afee1') ]]]
+
 The template could be called *anything*. The `_` at the front of the name is just
 a nice convention: I like to use it for any templates that render only *part* of a
 page. These are sometimes called partials.
@@ -30,6 +32,8 @@ We're just going to start rendering content! I'll add a
 `<div class="list-group">` to give this some markup that looks good in Bootstrap.
 Then `{% for product in products %}` and `{% endfor %}`.
 
+[[[ code('1ff1b6b948') ]]]
+
 Inside, I want each result to be a link. Add an `a` with `href=""` `{{ path() }}`
 and the name of the route to the product page, which is `app_product`. This route
 has an `id` wildcard. So pass `id` set to `product.id`. I'm also going to add a
@@ -38,6 +42,8 @@ few more classes for styling... then inside the a, start with the simple
 
 Oh, and to be *extra* fancy, add an `{% else %}`. If there are no results, render
 a `<div class="list-group-item">` with "No results found".
+
+[[[ code('b4b628437b') ]]]
 
 I love that: the entire search preview HTML in a simple template.
 
@@ -58,11 +64,17 @@ CSS that will help style things.
 To make this a target, we need `data-search-preview-target=""` and... call the
 new target, how about, `result`. It doesn't need any content by default.
 
+[[[ code('87af1a9d84') ]]]
+
 Over in our Stimulus controller, set up the target: `static targets = []` an array
 with `result` inside.
 
+[[[ code('2a7381817b') ]]]
+
 Below, set the inner HTML on this. Copy the `await response.text` and replace
 it with `this.resultTarget.innerHTML` equals `await response.text()`.
+
+[[[ code('9047016e2f') ]]]
 
 Done! Let's go try it! I'll click to go back to the homepage... just to clear the
 search entirely. Moment of truth: type. Ha! We got it! And if I type something
@@ -75,6 +87,8 @@ Let's celebrate by making it prettier.
 Back over in the template - `_searchPreview.html.twig` - instead of rendering just
 the name, I'll paste in some markup. You can copy this from the code block on
 this page... but it's pretty basic.
+
+[[[ code('de2aba68d3') ]]]
 
 Move over and try it again. I actually didn't even need to refresh. Now type. Ah!
 *Gorgeous*! And you can click any of these to see that product.
