@@ -52,9 +52,13 @@ Sweet! PhpStorm auto-completed the rest of that line for me.
 
 Below, add a `connect()` method and paste: `useClickOutside(this)`.
 
+[[[ code('0fdf1d6f24') ]]]
+
 For step 2, look at the docs: we need to add a `clickOutside()` method. Ok!
 Let's add it at the bottom: `clickOutside(event)`. When the user clicks outside
 of our controller element, we will set `this.resultTarget.innerHTML = ''`.
+
+[[[ code('0d0512a77d') ]]]
 
 Done. Let's test it! Head back to the browser and refresh. Type a little to get
 some suggestions, then click off. Beautiful! And if I type again... it's back,
@@ -80,6 +84,8 @@ Over in the controller, at the top, import `useDebounce`. Next... if you look at
 the other example, we activate it the same way. So, in `connect()`,
 `useDebounce(this)`. I'll add semi-colons... but they're obviously not needed.
 
+[[[ code('fa52d9ab7a') ]]]
+
 Here's how this behavior works: we add a static `debounces` property set to an
 array of methods that should *not* be called until a slight pause. That pause
 is 200 milliseconds by default.
@@ -87,6 +93,8 @@ is 200 milliseconds by default.
 For us, we want to debounce the `onSearchInput` method. Copy the name then
 head up to the top of the controller: `static debounces = []` with `onSearchInput`
 inside.
+
+[[[ code('2f8fd8891e') ]]]
 
 Let's try it! Back to the browser, refresh and... type real fast! Ah! It exploded!
 This is due to a limitation of this feature. Because our browser is calling
@@ -100,11 +108,18 @@ called `async search()` with a `query` argument.
 Again, we're making this `async` because we have an `await` inside.
 
 For `onSearchInput`, we *don't* need the `async` anymore... and we can
-now call `this.search()` and pass it `event.currentTarget.value`. Below, set
-the `q` value to `query`.
+now call `this.search()` and pass it `event.currentTarget.value`. 
+
+[[[ code('ab87ca911c') ]]]
+
+Below, set the `q` value to `query`.
+
+[[[ code('d97f53d720') ]]]
 
 This is good: we've refactored our code to have a nice, reusable `search()`
 method. And *now* we can change the `debounce` from `onSearchInput` to `search`.
+
+[[[ code('4932d6c6c2') ]]]
 
 Testing time! Refresh and... type real fast. Yes! Only one Ajax call.
 
