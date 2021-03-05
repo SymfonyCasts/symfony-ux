@@ -93,6 +93,8 @@ the element where we want the `data-controller` to be, add
 Then, for the second *optional* argument, we can pass an array of *values*. We
 have one: `color-id` set to the long `addToCartForm.vars` line.
 
+[[[ code('05cf0c001a') ]]]
+
 Celebrate by deleting `data-controller` and the value.
 
 *This* will give us the *exact* same result as before. We can see it: inspect
