@@ -29,8 +29,12 @@ Start the normal way: `import { Controller } from 'stimulus'` and then
 `export default class extends Controller` with a `connect()` method to make sure
 everything is hooked up: `console.log()`... a dinosaur (🦖).
 
+[[[ code('575f934a09') ]]]
+
 Next up, go activate this in the template. Adding it to the `form` tag should be
 fine: `{{ stimulus_controller('submit-confirm') }}`.
+
+[[[ code('41d41ea60b') ]]]
 
 Let's make sure it's connected! I'll re-open my console.. refresh and... roar!
 We even see *two* dinosaurs because there are *two* different controllers on this
@@ -58,10 +62,14 @@ In the template, on the form, add `data-action=""` then the name of our
 controller - `submit-confirm` - a `#` sign and... let's have this call a new
 method named `onSubmit`.
 
+[[[ code('bdba7ee1b5') ]]]
+
 Copy that, then head over to our controller. Rename `connect()` to `onSubmit()`
 and give it an `event` argument. Start by calling `event.preventDefault()` so
 that the form doesn't submit immediately. Then let's `console.log(event)` so we
 can see this working.
+
+[[[ code('7e55ec1a64') ]]]
 
 Head back over, refresh, hit remove and... awesome! The submit event *is* being
 triggered. Nothing can stop us... except, maybe typos!
@@ -70,6 +78,8 @@ triggered. Nothing can stop us... except, maybe typos!
 example and, in the controller, remove the log and paste.
 
 Oh and this `Swal` variable needs to be imported: `import Swal from 'sweetalert2';`
+
+[[[ code('01d554bfda') ]]]
 
 Yay! Let's try it. Head back over to our site, refresh and hit remove. Tada!
 That's *so* cool! If we click cancel, nothing happens. And if we click yes,
@@ -83,6 +93,8 @@ it called `Swal` again.
 To make this actually *submit*, replace the `Swal.fire()` with `this.element` -
 which will be the `form` - `.submit()`.
 
+[[[ code('64017b801c') ]]]
+
 That's it! Oh, and if you're thinking:
 
 > Hey! Won't this cause an infinite loop... where we call `submit()` and that
@@ -95,7 +107,7 @@ action method will *not* be called again. That's just how JavaScript and the DOM
 work - not a Stimulus thing. I say that a lot.
 
 Anyways, let's see if this works! Refresh, click remove and this time confirm.
-Woohoo! The form submitted, the page reloaded and the item is gone!
+Woohoo! The form submitted, the page reloaded, and the item is gone!
 
 But I think we can make this even *more* awesome. How? By making our controller
 *configurable* - like the text that it displays - so we can *truly* reuse it
