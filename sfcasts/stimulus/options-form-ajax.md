@@ -1,4 +1,4 @@
-# Making a Configureable, Reusable Controller
+# Making a Configurable, Reusable Controller
 
 We can already reuse this new controller on any form where we want the user to
 confirm before submitting. That's awesome. But to *truly* unlock its potential,
