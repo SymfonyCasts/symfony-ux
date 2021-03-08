@@ -11,6 +11,8 @@ same keys that SweetAlert uses. So we'll say `title: String`, `text: String`,
 `icon: String` and `confirmButtonText: String`. We could configure more... but
 that's enough for me.
 
+[[[ code('e6cf5f98c9') ]]]
+
 Below, use these. Set `title` to `this.titleValue` or `null`. There's no built-in
 way to give a value a *default*... so it's common to use this "or" syntax. This
 means use `titleValue` if it's set and "truthy", else use `null`.
@@ -19,6 +21,8 @@ Let's do the others: `this.textValue` or `null`, `this.iconValue` or `null` and,
 down here  `this.confirmButtonTextValue` or *yes*... because if you have a confirm
 button with no text... it looks silly.
 
+[[[ code('7de8699693') ]]]
+
 I like this! Let's see how it looks if we don't pass *any* of these values. Refresh
 and... yup! It works... but *probably* we should configure those.
 
@@ -26,6 +30,8 @@ Head to the template - `cart.html.twig` - to pass them in. Do that by adding a
 2nd argument to `stimulus_controller()`. Let's see, pass `title` set to
 "remove this item?", `icon` set to `warning` - there are five built-in icon types
 you can choose from - and `confirmButtonText` set to "yes, remove it".
+
+[[[ code('ece6e5bcb5') ]]]
 
 Let's check it! Refresh and remove. That looks awesome! And more importantly, we
 can now properly re-use this on any form.
@@ -54,6 +60,8 @@ And... actually let's organize things a bit more: add a method down here
 called `submitForm()`. For now, just `console.log('submitting form')`. Then up in
 `preConfirm`, call `this.submitForm()`.
 
+[[[ code('c83041fb73') ]]]
+
 This deserves some explanation. When you use the `preConfirm` option in SweetAlert,
 its callback will be executed after the user *confirms* the dialog. The big
 difference between this and what we had before - with `.then()` - is that this
@@ -74,12 +82,16 @@ How do we get those? It's awesome! `new URLSearchParams()` - that's the object
 we used earlier - then `new FormData()` - that's *another* core JavaScript object...
 that even works in IE 11! - and pass this the form: `this.element`.
 
+[[[ code('a9079d7f7b') ]]]
+
 That's a really nice way to submit a form via Ajax and include all of its fields.
 Oh, and notice the `return`. We're *returning* the `Promise` from `fetch()`... so
 that we can return that same `Promise` from `preConfirm`. When you return a
 `Promise` from `preConfirm`, instead of closing the modal immediately after
 clicking the "Yes" button, SweetAlert will *wait* for that `Promise` to finish.
 So, it will wait for our Ajax call to finish before closing.
+
+[[[ code('8cf0f3bab2') ]]]
 
 And we can *now* see this in action! Refresh and click remove. Watch the confirm
 button: it should turn into a loading icon while the Ajax call finishes. And...
@@ -98,8 +110,12 @@ configurable.
 Over in the controller, up on values, add one more called `submitAsync` which
 will be a `Boolean`.
 
+[[[ code('be3a56ab16') ]]]
+
 Down in `submitForm()`, use that: if *not* `this.submitAsyncValue`,
 then `this.element.submit()` and `return`.
+
+[[[ code('d6553b9606') ]]]
 
 Let's make sure the Ajax call is gone. Actually... let me add a few more items
 to my cart... because it's getting kind of empty. Add the sofa in all three
@@ -108,6 +124,8 @@ back to the full page refresh.
 
 *Now* let's reactivate the Ajax submit on *just* this form by passing in the
 `submitAsync` value. In the template, set `submitAsync` to `true`.
+
+[[[ code('0f94c5934e') ]]]
 
 At this point, we have a clean submit confirm controller that can be reused on
 any form. As a bonus, you can even tell it to submit the form via Ajax.
