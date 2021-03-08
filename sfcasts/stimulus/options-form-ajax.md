@@ -125,7 +125,7 @@ back to the full page refresh.
 *Now* let's reactivate the Ajax submit on *just* this form by passing in the
 `submitAsync` value. In the template, set `submitAsync` to `true`.
 
-[[[ code('0f94c5934e') ]]]
+[[[ code('2f486e70c2') ]]]
 
 At this point, we have a clean submit confirm controller that can be reused on
 any form. As a bonus, you can even tell it to submit the form via Ajax.
