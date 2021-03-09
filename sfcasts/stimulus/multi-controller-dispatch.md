@@ -65,6 +65,8 @@ I'll cheat and copy the top of my `submit-confirm` controller... paste it here,
 but we don't need sweetalert. Add the usual `connect()` method with
 `console.log()`... a shopping cart.
 
+[[[ code('cafbd15664') ]]]
+
 The job of this controller will be to hold any JavaScript needed for the cart area.
 So basically, any JavaScript for this `<div>`. In practice, this means its job
 will be to replace the cart HTML with fresh HTML via an Ajax request after an
@@ -72,6 +74,8 @@ item is removed.
 
 In `templates/cart/cart.html.twig`, find the `<div>` around the entire cart
 area... here it is. Add `{{ stimulus_controller() }}` and pass `cart-list`.
+
+[[[ code('bb1e2b7e31') ]]]
 
 Ok! Let's make sure that's connected. Head over and... refresh. Got it.
 
@@ -102,6 +106,8 @@ import the behavior - `import { useDispatch } from 'stimulus-use'` then create a
 `connect()` method with `useDispatch(this)` inside. This time, pass an extra option
 via the second argument: `debug` set to `true`.
 
+[[[ code('b9918eaa69') ]]]
+
 I'm adding this `debug` option temporarily. All `stimulus-use` behaviors support
 this option. When it's enabled, *most* log extra debug info to the console, which
 is handy for debugging. We'll see that in a minute.
@@ -110,11 +116,15 @@ Head down to `submitForm()`. Here's the plan: if the form submits via Ajax,
 let's wait for it to finish and then dispatch a custom event. Do that by adding
 `const response = await`... and then we need to make the method `async`.
 
+[[[ code('e2adebc6d9') ]]]
+
 To dispatch the event, the `useDispatch` behavior gives us a handy new
 `dispatch()` method. So we can say `this.dispatch()` and then the name of our
 custom event, which can be anything. Let's call it `async:submitted`.
 You can also pass a second argument with any extra info that you want to
 attach to the event. I'll add  `response`.
+
+[[[ code('123a8b576c') ]]]
 
 We won't need that in *our* example... but thanks to this, the `event` object
 that's passed to any listeners will have a `detail` property with an extra
