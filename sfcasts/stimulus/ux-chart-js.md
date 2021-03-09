@@ -1,120 +1,142 @@
-# Ux Chart Js
+# Symfony UX & Chart.js
 
-Coming soon...
+We now know Stimulus pretty well, which is really just a nice JavaScript
+library that has nothing to do with Symfony. So then... what exactly is Symfony UX?
 
-We now know stimulus pretty well, which as we know is really just a nice JavaScript
-library that has nothing to do with Symfony. So then what exactly is Symfony UX to
-answer that head, to get out of that com class Symfony /UX at its most basic Symfony
-UX is a growing list of stimulus controllers that you can install into your app to
-get free functionality. One of them is a controller that integrates chart JS, which
-is a completely independent, really nice JavaScript power to chart library.
+To answer that, go to https://github.com/symfony/ux. At its most basic, Symfony
+UX is a growing list of pre-built Stimulus controllers that you can install to
+get free functionality. For example, one of them is a controller that integrates
+[Chart.js](https://www.chartjs.org/): a completely independent, lovely
+JavaScript-powered chart library.
 
-Since our
+This is perfect... because our sales are *really* starting to take off. People
+*love* our junk, uh, minimalist products! So let's install and use this UX package
+to build a sales graph on an admin page. I've already created that page at
+"/admin"... but it's not very interesting yet... and none of these links go anywhere.
 
-Sales are really starting to take off let's install and use this to build a sales
-graph on an admin page, I've already created a new page at /admin.
+## Installing symfony/ux-chartjs
 
-Okay.
+Ok: let's check out the docs for Symfony UX chartjs. Scroll down... Whoa.
+Stimulus and Chart.js are both pure JavaScript libraries. So it's a little
+interesting that the first step is to install a PHP package. Why are we doing
+that? Let's find out! Copy the `composer require` line and head over to your terminal.
 
-No, it's not very interesting yet. And none of these links actually go anywhere. All
-right, let's go and check out the docs for Symfony UX chart dot JS, scroll down.
-Whoa. Stimulus in chart JS are both pure JavaScript libraries. So it's a little
-interesting that the first step, I mean, installation is to run is to install a PHP
-package. Why are we doing that? Let's find out copy the composer require line and
-spin, or dear terminal. I committed all my changes before hitting record so that I
-can see exactly what any flex recipes do when I run this paste and go
+I committed all my changes before hitting record so I can easily see any
+changes that the Flex recipe for this package might make. Paste and go:
 
-[inaudible],
+```terminal
+composer require symfony/ux-chartjs
+```
 
-You'll see an error come up from Encore. Don't worry about that yet. When this
-finishes running gets status interesting. This modified composer.json and composer
-dot lock, which is totally normal, the PHP package we just installed is actually a
-Symfony bundle. So the flux recipe auto enabled that bundle and config bundles dot
-PHP, and updated the Symfony that lock file, but here's where things get interesting.
-Get really interesting and also updated our package that JSON file and some other
-file called assets /controllers that JSON let's see what changed in packaged at JSON,
-get diff package dot JSON, Interesting it, a new package, but instead of a version
-number over here, it's pointing to a directory inside of vendor. Let's go check out
-that path. It was vendor Symfony, UX chart, they resource assets and cool. It's a
-JavaScript package. It has a package dot JSON like all JavaScript libraries do
+While this loads, your Encore build may start failing: don't worry about that
+for now. When it finishes, run:
 
-And
+```terminal
+git status
+```
 
-Stimulus controller inside of the source directory. Ooh, the real file we'll actually
-use is a disc /controller dot JS. It's not really important. This one's a little bit
-less readable, but it works in all browsers. So what does this all mean? The Symfony
-UX libraries like UX chart JS are part PHP bundle in part and JavaScript library. And
-there's also some magic related to how this controller is registered in our
-application. But we'll talk about that in a few minutes. Anyways, we have a new PTP
-bundle in our vendor directory and a new JavaScript package registered in packaged
-dot JSON in our package that JSON, which I will open here, which actually points to
-that directory in that bundle back to the docs. The next step is to run yarn
-installed dash dash force. Let's copy that.
+Interesting! This modified `composer.json` and `composer.lock`, which is totally
+normal. AndtThe PHP package we just installed is actually a Symfony bundle, so
+its Flex recipe auto-enabled that bundle in `config/bundles.php` and updated the
+`symfony.lock` file.
 
-Normally, if you add a package to package that JSON, you need to run yarn install to
-actually install that package. And actually that did just happen to us. The flex
-recipe added in a new package to our package, that JSON move over, find the terminal
-with Encore in it. And let's actually say quit Encore and then run yarn install dash
-dash force. This command forces yarn to re-install your dependencies for us. The
-important part is that that this actually copies the new copies, this directory here
-into, and she copies the new, uh, package directory from vendors, Symfony UX chart JS
-into node modules. But check it out. I can now scroll up, let me close a couple of
-things. Open node modules we have at Symfony. We of course have Webpack Encore in
-there, but we now have a UX chart JS, which is a copy of that vendor directory.
+## UX PHP Packages Come with a JavaScript Package
 
-Hmm.
+But here's where things get interesting, *really* interesting. The recipe *also*
+updated our `package.json` file as well as some other file called
+`assets/controllers.json`.
 
-Things building again. Let's restart Encore,
+Let's see what changed in `package.json`:
 
-Yarn watch.
+```terminal
+git diff package.json
+```
 
-Okay. So how do we use the new stimulus controller that lives inside the package to
-answer that let's follow the docs, scroll down. Yep. To build the JavaScript powered
-chart. We're actually going to write PHP, copy the top half of this PHP code,
+Woh! It added a new package! But instead of a version number on the right, it's
+pointing to a directory inside of `vendor/`. Let's go check out that path. It was
+`vendor/symfony/ux-chartjs/` then `Resource/assets`. Cool! This directory is a
+JavaScript package! How can I tell? It has a `package.json` file like all JavaScript
+libraries and, in the `src/` directory, a Stimulus controller!
 
-Then
+Well, in reality, when we use this package, the compiled controller in the `dist/`
+directory is what will *truly* be used... but reading the one in `src/` is easier.
 
-Head over and open up our admin controller, which is source controller and the
-controller dot PHP. And I will paste that code onto the top here. And let's see, we
-also need this chart builder interface argument. So I'll say chart builder,
-interface, chart builder. And we need a use statement for this chart class here. So
-I'll delete the T re-type that hit tab. And that added the use statement up on top
-for me. Wait, where did these classes come from? Remember we did just install a new
-bundle and bundles typically give us new services. This chart builder interface gives
-us a new service that is really good at building charts in PHP. Pass this chart
-variable into the template chart set to chart.
+So: what does this mean for us? It means that each Symfony UX library - like
+ux-chartjs - is actually *two* things: a PHP bundle *and* a JavaScript package.
+There is also some magic related to *how* this controller is registered in our
+app... but we'll talk about that in a few minutes.
 
-Okay.
+Anyways, we have a new Symfony bundle in our `vendor/` directory *and* a new
+JavaScript package registered in `package.json` - let me open that - which points
+to a directory *in* that bundle.
 
-How do we run to the chart? Go back to the docs and scroll down one more time.
+## yarn install --force to Put the Package in node_modules/
 
-Oh,
+Ok, back to the docs! The next step is to run `yarn install --force`. Copy that.
 
-The bundle also gave us a new twig helper. Um, okay. Let's copy that.
+Normally, if you add a package to `package.json`, you need to run `yarn install` to
+actually *download* that into the `node_modules/` directory. And actually, that's
+exactly what just happened to us! The Flex recipe added a new package to our
+`package.json` file.
 
-Yeah.
+Move over to the terminal that's running Encore, hit Ctrl+C to quit, then paste
+this command:
 
-Go find the template for this page. So that's templates, admin dashboard that HTML
-that twig. And let me find the age
+```terminal
+yarn install --force
+```
 
-Here. There we go
+This command forces yarn to reinstall our dependencies. The important part is
+that it copies the directory from the bundle *into* `node_modules/` so that
+it looks and acts like any normal package.
 
-All the way at the bottom. We're just going to paste that this is the renter chart is
-part of that bundle and we're passing in our chart. Variable,
+Let's go find that: let me close a couple of things, then open `node_modules/`,
+and `@symfony/`. Cool! We of course have a `webpack-encore/` directory but we
+*also* have a package called `ux-chartjs`.
 
-I guess we're done. Hey, back to our site and refresh the admin page. Whoa,
+Let's go re-build our assets:
 
-It's a JavaScript powered graph. It already works. All we did was composer require.
-We package one to run yarn install to put the new package into our node modules,
-directory
+```terminal
+yarn watch
+```
 
-[inaudible]
+## Using the new Stimulus Controller
 
-And three, we wrote some PHP code that is the power of Symfony UX instant access to
-useful stimulus controllers, like one that renders a chart simply by installing a PHP
-package. But how exactly does this all work and connect together? If you're
-interested, I'll explain next. It's an exciting tale of a library called stimulus
-bridge.
+Ok: so how do we *use* the new Stimulus controller that lives in the package?
 
-Okay.
+To answer that... let's keep following the docs! Scroll down. To build the
+JavaScript-powered chart, we're... woh! We're going to write *PHP* code!
 
+Copy the top half of this code then head over and open up our admin controller,
+which is `src/Controller/AdminController.php`. Paste that code on top. And...
+let's see, we also need this `ChartBuilderInterface` argument. Add
+`ChartBuilderInterface $chartBuilder`. And... we need a `use` statement for this
+`Chart` class. I'll delete the "t", re-type, and hit tab to get it on top.
+
+But wait: where did these classes come from? Remember: we *did* just install a new
+bundle... and bundles give us new classes and services. Autowiring
+`ChartBuilderInterface` will give us a new service that's really good at building
+chart data in PHP. Pass the `$chart` variable into the template: `chart` set to
+`$chart`.
+
+Okay. How do we render the chart? Go back to the docs and scroll down one
+more time. Ah ha! The bundle also gave us a new Twig helper. Copy that and go
+find the template for this page: `templates/admin/dashboard.html.twig`.
+
+Then... all the way at the bottom, paste.
+
+This uses the new function `render_chart()` from the bundle to render our `chart`
+variable.
+
+I... guess we're done? Head back to our site and refresh the admin page. Whoa!
+We *are* done! We have a JavaScript-powered graph! That's extra amazing since all
+*we* did was `composer require` a PHP package, run `yarn install`, then write
+some PHP code!
+
+*That* is the power of Symfony UX.
+
+But... how exactly does this all work and connect together? What does `render_chart()`
+*actually* do? How is that Stimulus controller from the bundle being used? When
+will I find my car keys?
+
+Let's answer... most of those questions, next.
