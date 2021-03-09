@@ -21,7 +21,8 @@ chapters:
     - multi-controller-dispatch
     - listen-reload-html
     - fresh-html
-    - chartjs-package
+    - ux-chart-js
+    - stimulus-bridge
     - extend-chartjs
     - react
     - laziness
