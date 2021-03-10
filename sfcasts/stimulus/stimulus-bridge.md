@@ -42,7 +42,7 @@ If we ever added a `data-controller` to our page with a controller name that
 Stimulus does *not* know about like - `data-controller="eat-pizza"` - Stimulus
 will do nothing.
 
-The point is: 100% of the controllers that Stimulus is aware come from this line
+The point is: 100% of the controllers that Stimulus is aware of come from this line
 here, which means they come from the files in our `assets/controllers` directory.
 
 ## controllers.json: Automatically Registered Controllers
@@ -66,10 +66,10 @@ In reality, when we use that down here, that function does two things. First,
 it does what we already know: it finds all the files in our `controllers/`,
 directory and registers each as a Stimulus controller. Second, it reads our
 `controllers.json` file and also registers any controllers here as Stimulus
-controller.
+controllers.
 
 Let me show you how that works. When `startStimulusApp()` parses this files and
-sees the `symfony/ux-chartjs` key, it finds that package in `node_modules/` and
+sees the `@symfony/ux-chartjs` key, it finds that package in `node_modules/` and
 opens its `package.json`. Then it looks for a special key called `symfony` and
 then `controllers`.
 
@@ -78,7 +78,7 @@ controller file actually lives: the path under this `main` key. We'll talk about
 the "eager" stuff later.
 
 And that's it! For the controller name, it takes the package name -
-`@symfony/ux-charts` - then this controller nick name - `chart` and normalizes
+`@symfony/ux-chartjs` - then this controller nick name - `chart` and normalizes
 it into the long string that we see in the browser.
 
 ## tl;dr: UX Packages give you Stimulus Controllers

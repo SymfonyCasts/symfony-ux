@@ -36,7 +36,7 @@ git status
 ```
 
 Interesting! This modified `composer.json` and `composer.lock`, which is totally
-normal. AndtThe PHP package we just installed is actually a Symfony bundle, so
+normal. And the PHP package we just installed is actually a Symfony bundle, so
 its Flex recipe auto-enabled that bundle in `config/bundles.php` and updated the
 `symfony.lock` file.
 
@@ -54,7 +54,7 @@ git diff package.json
 
 Woh! It added a new package! But instead of a version number on the right, it's
 pointing to a directory inside of `vendor/`. Let's go check out that path. It was
-`vendor/symfony/ux-chartjs/` then `Resource/assets`. Cool! This directory is a
+`vendor/symfony/ux-chartjs/` then `Resources/assets`. Cool! This directory is a
 JavaScript package! How can I tell? It has a `package.json` file like all JavaScript
 libraries and, in the `src/` directory, a Stimulus controller!
 
@@ -139,4 +139,4 @@ But... how exactly does this all work and connect together? What does `render_ch
 *actually* do? How is that Stimulus controller from the bundle being used? When
 will I find my car keys?
 
-Let's answer... most of those questions, next.
+Let's answer... most of these questions, next.
