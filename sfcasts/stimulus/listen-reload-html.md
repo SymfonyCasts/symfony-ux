@@ -9,6 +9,8 @@ This is awesome because we can *listen* to that event from our *other* controlle
 so that we can run code whenever an item is removed. At the top, we can remove that
 `debug` flag now that we know the event *is* dispatching correctly.
 
+[[[ code('4490407eb3') ]]]
+
 ## Custom Events are just Normal Events
 
 So: how can we listen to the new event from inside `cart-list` controller? Well,
@@ -44,12 +46,16 @@ Add the action here. I'll pop things onto multiple lines... and then say
 an `->`, the name of our controller - `cart-list` - a `#` sign, and finally the
 name of the method to call when that event happens. How about `removeItem`.
 
+[[[ code('163e7c21af') ]]]
+
 Why am I adding the action to *this* exact div? Well, it won't matter at first.
 But in a few minutes, it'll give us the ability to access this `div` and add
 extra logic to make it fade out.
 
 Over in the controller, rename `connect()` to `removeItem()`, give it an event
 argument, and let's `console.log()` our very favorite `event.currentTarget`.
+
+[[[ code('8b562374a1') ]]]
 
 Ok team: let's find out if our controllers are communicating. Refresh, hit remove
 and confirm. Over in the console... yes! It hit our new log and the `currentTarget`
@@ -68,8 +74,12 @@ all the way down to the end. Yep, that looks right.
 Now create a new template in `templates/cart/` called, how about
 `_cartList.html.twig`, and paste.
 
+[[[ code('1f1e09c7de') ]]]
+
 Back in the original template, include that with
 `{{ include('cart/_cartList.html.twig') }}`.
+
+[[[ code('db55a29afb') ]]]
 
 This won't change anything yet: our page still works like it did before.
 
@@ -84,10 +94,14 @@ controllers that return a "fragment" of HTML - with an underscore. Above this,
 add `@Route()` and set the URL to be `/cart` - to match what's above - and then
 `/_list`. Name the route `_app_cart_list`.
 
+[[[ code('fe6cf4c592') ]]]
+
 Beautiful! To render the new template, we need one variable: `cart`... which we
 get via this `CartStorage` service that's custom to our project. Copy that
 argument, paste it down here, and return `$this->render('cart/_cartList.html.twig')`
 passing a `cart` variable set to `$cartStorage->getOrCreateCart()`.
+
+[[[ code('f88faf1d49') ]]]
 
 We're done! Go try it in the browser by going directly here. So `/cart/_list`
 and... got it! Hit back.
