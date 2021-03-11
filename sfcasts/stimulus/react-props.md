@@ -2,24 +2,24 @@
 
 Let's do *one* more React example. Head to the registration page. I just got word
 that the marketing team wants us to render a "featured product" on the sidebar to
-entice users to *definitely* want to sign up. We could do that entirely in PHP
+entice users to *definitely* want to sign up. We could build that entirely in PHP
 and Twig. But let's pretend that this featured product widget will have a *bunch*
 of cool, interactive functionality. So we've decided to build it in React.
 
 ## Rendering the New Component
 
-Back in the `tutorial/` directory, which you should have if you downloaded the
-course code on this page, you should also have a `FeaturedProduct.js`. Copy
+Back in the `tutorial/` directory, which you can get by downloading the
+course code from this page, you should *also* have a `FeaturedProduct.js`. Copy
 that into `assets/components/`.
 
 This React component receives a `product` prop and renders a featured product.
-It's actually *so* simple that I wouldn't normally use React, but it'll work
+It's actually *so* simple that I wouldn't normally use React... but it'll work
 perfectly for our example.
 
 To render this, let's create a new stimulus controller called, how about,
 `featured-product-react_controller.js`. I'll cheat and copy the contents of our
 `made-with-love_controller.js`, paste here, and then change the import to
-`FeatureProduct` from `FeaturedProduct` and then render `<FeatureProduct />` below.
+`FeatureProduct` from `FeaturedProduct`. Render `<FeatureProduct />` below.
 
 Super simple. The interesting part about this React component is that it requires
 a `product` prop, which is the data for whatever the featured product is. If we
@@ -27,20 +27,21 @@ wanted to, we could refactor this component to make an Ajax call to some endpoin
 that returns the featured product as JSON. That's often how you do things in
 React or Vue.
 
-But... I *don't* want to do that. Everything would load faster and be simpler if
-we avoided the Ajax call and instead, prepared the feature product data on the
-server and passed it directly into our React component on page load. And... we
-totally *can* do that.! How? With the handy values API.
+But... I *don't* want to do that. Everything would load faster and my life would
+be simpler if we could avoid creating that endpoint and making the Ajax call.
+How can we do that? By preparing the feature product data on the server and
+passing it directly into our React component on page load. That's easy thanks
+to the values API.
 
 ## Adding a Value for the Prop
 
 Check it out: we know that our component requires a `product` prop, which is an
 object. So in our Stimulus controller, add a `static values` set to an object
-with a `product` key set to `Object`. Then, pass this product value into the
+with a `product` key set to `Object`. We can pass this product value into the
 component as a prop: `product={this.productValue}`.
 
-Beautiful. Now, open the template for this page, which is
-`templates/registration/register.html.twig`. Above the h1, add a new div with
+Beautiful. Now open the template for this page, which is
+`templates/registration/register.html.twig`. Above the `h1`, add a new div with
 a col class... and bind the controller right here:
 `{{ stimulus_controller()` }} with `featured-product-react`.
 
@@ -50,20 +51,20 @@ object needs properties like `id` and `name` key. So let's just start with those
 I'll say `id: 5` and `name` set to one of our top-selling products.
 
 That should be enough to see if things are working. Let's go try it! In the browser,
-refresh and... got it!. It looks a little broken... because our product is missing
-some fields, but this proves that the `value` *is* being passed to our React
-component as a prop.
+refresh and... it is!. It looks a little broken... only because our product is
+missing some fields. But this proves that the `value` *is* being passed to our React
+component as a prop!
 
 ## Passing Serialized Objects to a Prop
 
 But what we *really* want to do is pass *real* `Product` data to this prop. We
 can do that by serializing a product object into JSON.
 
-Opened the controller for this page: `src/Controller/RegistrationController.php`.
-At the end of the method, add a new argument so that we can query for the feature
+Open the controller for this page: `src/Controller/RegistrationController.php`.
+At the end of the method, add a new argument so we can query for the featured
 product: `ProductRepository $productRepository`.
 
-Scroll down to where we render the template... and pass in a new variable called
+Scroll down to where we render the template... and pass a new variable called
 `featuredProduct` set to `$productRepository->findFeatured()`, which is a custom
 method that I already created.
 
@@ -75,23 +76,23 @@ serialization groups to this class to control exactly *which* fields are turned
 into JSON: that's this `product:read` group.
 
 The only missing piece is that... well.. there isn't a way in Twig to *use*
-Symfony's serializer to transform an object to JSON. So... I built one. You can
+Symfony's serializer to transform an object into JSON. So... I built one. You can
 see it in `src/Twig/SerializerExtension.php`. This adds a filter called `serialize`,
 which just calls the serializer and passes our data. Fun fact, in Symfony 5.3,
 this filter will come standard with Symfony: a pull request by my friend Jesse
-Rushlow has already been accepted.
+Rushlow has already been accepted. So, you soon won't need to build this.
 
-Anyways, back in the template, we can set the `product` value to `featuredProduct`
-pipe `serialize()` and pass this the form - `json` and... the 2nd argument is
-the serialization context. To serialize the fields in the group I set up, pass
-`groups` set to `product:read`.
+Anyways, back in the template, set the `product` value to `featuredProduct`
+pipe `serialize()` and then the format - `json` and... then any serialization
+context, which is kind of like serialization options. To serialize the fields in
+the group I set up, pass `groups` set to `product:read`.
 
-We're done!. We just passed a `Product` object *directly* from our server into
+We're done! We just passed a `Product` object *directly* from our server into
 a React component as a prop by converting it into JSON.
 
-Let's see... yea know... see if it *actually* works. Refresh and... there it is!
+Let's... ya know... see if it *actually* works. Refresh and... there it is!
 Inspect element on the sidebar. Look at that product value attribute! It's
-lovely! Our Twig serialize filter turned the `Product` object into JSON...
+lovely! Our Twig `serialize` filter turned the `Product` object into JSON...
 then Stimulus automatically parsed that JSON back into an object. Yep, Stimulus
 loves frontend frameworks. They're just another tool in your toolkit.
 
