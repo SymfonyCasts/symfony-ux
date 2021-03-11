@@ -25,4 +25,5 @@ chapters:
     - stimulus-bridge
     - extend-chartjs
     - react
+    - react-props
     - laziness
