@@ -1,0 +1,32 @@
+diff --git a/package.json b/package.json
+index 45e809b..a9ef887 100644
+--- a/package.json
++++ b/package.json
+@@ -4,7 +4,7 @@
+         "@symfony/stimulus-bridge": "^2.0.0",
+         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
+         "@symfony/webpack-encore": "^1.0.0",
+-        "bootstrap": "^4.6.0",
++        "bootstrap": "^5.0.0-beta2",
+         "core-js": "^3.0.0",
+         "react": "^17.0.1",
+         "react-dom": "^17.0.1",
+diff --git a/yarn.lock b/yarn.lock
+index 5984478..861cdb5 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -1461,10 +1461,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
+   resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
+   integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
+ 
+-bootstrap@^4.6.0:
+-  version "4.6.0"
+-  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-4.6.0.tgz#97b9f29ac98f98dfa43bf7468262d84392552fd7"
+-  integrity sha512-Io55IuQY3kydzHtbGvQya3H+KorS/M9rSNyfCGCg9WZ4pyT/lCxIlpJgG1GXW/PswzC84Tr2fBYi+7+jFVQQBw==
++bootstrap@^5.0.0-beta2:
++  version "5.0.0-beta2"
++  resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.0.0-beta2.tgz#ab1504a12807fa58e5e41408e35fcea42461e84b"
++  integrity sha512-e+uPbPHqTQWKyCX435uVlOmgH9tUt0xtjvyOC7knhKgOS643BrQKuTo+KecGpPV7qlmOyZgCfaM4xxPWtDEN/g==
+ 
+ brace-expansion@^1.1.7:
+   version "1.1.11"

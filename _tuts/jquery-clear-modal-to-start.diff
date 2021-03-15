@@ -1,0 +1,12 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 87d87f1..c16f75b 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -9,6 +9,7 @@ export default class extends Controller {
+     }
+ 
+     async openModal(event) {
++        this.modalBodyTarget.innerHTML = 'Loading...';
+         const modal = new Modal(this.modalTarget, {});
+         modal.show();
+ 

@@ -1,0 +1,28 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index c9de0a0..1fe0a70 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -2,7 +2,10 @@ import { Controller } from 'stimulus';
+ import { Modal } from 'bootstrap';
+ 
+ export default class extends Controller {
++    static targets = ['modal'];
++
+     openModal(event) {
+-        console.log(event);
++        const modal = new Modal(this.modalTarget, {});
++        modal.show();
+     }
+ }
+diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
+index fa7b04b..8b1b18f 100644
+--- a/templates/_modal.html.twig
++++ b/templates/_modal.html.twig
+@@ -2,6 +2,7 @@
+     class="modal fade"
+     tabindex="-1"
+     aria-hidden="true"
++    data-modal-form-target="modal"
+ >
+     <div class="modal-dialog">
+         <div class="modal-content">

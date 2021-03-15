@@ -1,0 +1,28 @@
+diff --git a/package.json b/package.json
+index 5fa1f17..ea4b8cc 100644
+--- a/package.json
++++ b/package.json
+@@ -7,6 +7,7 @@
+         "@symfony/webpack-encore": "^1.0.0",
+         "bootstrap": "^5.0.0-beta2",
+         "core-js": "^3.0.0",
++        "jquery": "^3.6.0",
+         "react": "^17.0.1",
+         "react-dom": "^17.0.1",
+         "regenerator-runtime": "^0.13.2",
+diff --git a/yarn.lock b/yarn.lock
+index 1926537..e5df9b4 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -3198,6 +3198,11 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:
+     merge-stream "^2.0.0"
+     supports-color "^7.0.0"
+ 
++jquery@^3.6.0:
++  version "3.6.0"
++  resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
++  integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
++
+ "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
+   version "4.0.0"
+   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"

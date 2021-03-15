@@ -484,7 +484,187 @@
             "id": "laziness-lazy-controller",
             "name": "Laziness: lazy controller",
             "description": null
+        },
+        {
+            "id": "modal-upgrade-to-bootstrap5",
+            "name": "Modal: upgrade to bootstrap5",
+            "description": null
+        },
+        {
+            "id": "modal-make-crud-product",
+            "name": "Modal: make:crud Product",
+            "description": null
+        },
+        {
+            "id": "modal-add-container-div",
+            "name": "Modal: add container div",
+            "description": null
+        },
+        {
+            "id": "modal-category-tostring",
+            "name": "Modal: Category::__toString",
+            "description": null
+        },
+        {
+            "id": "modal-make-form-smaller",
+            "name": "Modal: make form smaller",
+            "description": null
+        },
+        {
+            "id": "modal-sort-newest-first",
+            "name": "Modal: sort newest first",
+            "description": null
+        },
+        {
+            "id": "modal-add-new-button",
+            "name": "Modal: Add new button",
+            "description": null
+        },
+        {
+            "id": "modal-bootstrap-stimulus-controller",
+            "name": "Modal: bootstrap Stimulus controller",
+            "description": null
+        },
+        {
+            "id": "modal-add-action-method",
+            "name": "Modal: add action method",
+            "description": null
+        },
+        {
+            "id": "modal-import-modal",
+            "name": "Modal: import modal",
+            "description": null
+        },
+        {
+            "id": "modal-install-popper",
+            "name": "Modal: install popper",
+            "description": null
+        },
+        {
+            "id": "modal-add-modal-partial",
+            "name": "Modal: add _modal partial",
+            "description": null
+        },
+        {
+            "id": "modal-open-modal",
+            "name": "Modal: open modal",
+            "description": null
+        },
+        {
+            "id": "delete-me-1",
+            "name": "delete me 1",
+            "description": null
+        },
+        {
+            "id": "modal-customize-modal-header-buttons",
+            "name": "Modal: customize modal header\/buttons",
+            "description": null
+        },
+        {
+            "id": "modal-add-formurl-value",
+            "name": "Modal: add formUrl value",
+            "description": null
+        },
+        {
+            "id": "jquery-install-it",
+            "name": "jQuery: install it",
+            "description": null
+        },
+        {
+            "id": "jquery-make-ajax-call",
+            "name": "jQuery: Make AJAX call",
+            "description": null
+        },
+        {
+            "id": "jquery-clear-modal-to-start",
+            "name": "jQuery: clear modal to start",
+            "description": null
+        },
+        {
+            "id": "jquery-return-form-partial",
+            "name": "jQuery: Return form partial",
+            "description": null
+        },
+        {
+            "id": "jquery-hide-button",
+            "name": "jQuery: hide button",
+            "description": null
+        },
+        {
+            "id": "jquery-serialize-form-on-save",
+            "name": "jQuery: serialize form on save",
+            "description": null
+        },
+        {
+            "id": "jquery-submit-form-ajax",
+            "name": "jQuery: submit form AJAX",
+            "description": null
+        },
+        {
+            "id": "jquery-also-ajax-on-direct-form-submit",
+            "name": "jQuery: also AJAX on direct form submit",
+            "description": null
+        },
+        {
+            "id": "asyncform-return-422-or-200",
+            "name": "AsyncForm: return 422 or 200",
+            "description": null
+        },
+        {
+            "id": "asyncform-try-catch-on-ajax",
+            "name": "AsyncForm: try-catch on AJAX",
+            "description": null
+        },
+        {
+            "id": "asyncform-close-on-success",
+            "name": "AsyncForm: close on success",
+            "description": null
+        },
+        {
+            "id": "asyncform-listen-to-bs-event",
+            "name": "AsyncForm: listen to bs event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-bootstrap-controller",
+            "name": "ReloadController: Bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-list-into-partial",
+            "name": "ReloadController: list into partial",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-partial-value",
+            "name": "ReloadController: partial & value",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-make-ajax-call",
+            "name": "ReloadController: make AJAX call",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-dispatch-event",
+            "name": "ReloadController: dispatch event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-listen-to-event",
+            "name": "ReloadController: listen to event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-not-relying-on-xmlhttprequest",
+            "name": "ReloadController: not relying on XMLHttpRequest",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-opacity-trick",
+            "name": "ReloadController: opacity trick",
+            "description": null
         }
     ],
-    "sha": "31682a594ffa580253dd748f3a4239a4b34f23ae"
+    "sha": "2932c98e7d513eb4cd8ef372a473620b555bdd2d"
 }

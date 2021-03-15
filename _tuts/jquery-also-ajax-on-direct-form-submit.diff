@@ -1,0 +1,31 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 033d2bc..40ea3de 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -16,7 +16,8 @@ export default class extends Controller {
+         this.modalBodyTarget.innerHTML = await $.ajax(this.formUrlValue);
+     }
+ 
+-    async submitForm() {
++    async submitForm(event) {
++        event.preventDefault();
+         const $form = $(this.modalBodyTarget).find('form');
+         this.modalBodyTarget.innerHTML = await $.ajax({
+             url: this.formUrlValue,
+diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
+index 7568515..ae97d92 100644
+--- a/templates/_modal.html.twig
++++ b/templates/_modal.html.twig
+@@ -12,7 +12,11 @@
+                         data-bs-dismiss="modal"
+                         aria-label="Close"></button>
+             </div>
+-            <div class="modal-body" data-modal-form-target="modalBody">
++            <div
++                class="modal-body"
++                data-modal-form-target="modalBody"
++                data-action="submit->modal-form#submitForm"
++            >
+                 {{ modalContent|default('Loading...') }}
+             </div>
+             <div class="modal-footer">

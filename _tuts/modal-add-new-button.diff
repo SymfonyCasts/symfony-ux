@@ -1,0 +1,21 @@
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index edee434..a5493b9 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -4,7 +4,15 @@
+ 
+ {% block body %}
+ <div class="container-fluid mt-4">
+-    <h1>Product index</h1>
++    <div class="d-flex flex-row">
++        <h1 class="me-3">Product index</h1>
++
++        <div {{ stimulus_controller('modal-form') }}>
++            <button
++                class="btn btn-primary btn-sm"
++            >Add+</button>
++        </div>
++    </div>
+ 
+     <table class="table">
+         <thead>

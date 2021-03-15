@@ -1,0 +1,92 @@
+diff --git a/templates/product_admin/_list.html.twig b/templates/product_admin/_list.html.twig
+new file mode 100644
+index 0000000..b03c9c3
+--- /dev/null
++++ b/templates/product_admin/_list.html.twig
+@@ -0,0 +1,37 @@
++<table class="table">
++    <thead>
++        <tr>
++            <th>Id</th>
++            <th>Name</th>
++            <th>Description</th>
++            <th>Brand</th>
++            <th>Weight</th>
++            <th>Price</th>
++            <th>StockQuantity</th>
++            <th>ImageFilename</th>
++            <th>actions</th>
++        </tr>
++    </thead>
++    <tbody>
++    {% for product in products %}
++        <tr>
++            <td>{{ product.id }}</td>
++            <td>{{ product.name }}</td>
++            <td>{{ product.description }}</td>
++            <td>{{ product.brand }}</td>
++            <td>{{ product.weight }}</td>
++            <td>{{ product.price }}</td>
++            <td>{{ product.stockQuantity }}</td>
++            <td>{{ product.imageFilename }}</td>
++            <td>
++                <a href="{{ path('product_admin_show', {'id': product.id}) }}">show</a>
++                <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
++            </td>
++        </tr>
++    {% else %}
++        <tr>
++            <td colspan="9">no records found</td>
++        </tr>
++    {% endfor %}
++    </tbody>
++</table>
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index 18fe40f..2c53b56 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -27,43 +27,7 @@
+         </div>
+     </div>
+ 
+-    <table class="table">
+-        <thead>
+-            <tr>
+-                <th>Id</th>
+-                <th>Name</th>
+-                <th>Description</th>
+-                <th>Brand</th>
+-                <th>Weight</th>
+-                <th>Price</th>
+-                <th>StockQuantity</th>
+-                <th>ImageFilename</th>
+-                <th>actions</th>
+-            </tr>
+-        </thead>
+-        <tbody>
+-        {% for product in products %}
+-            <tr>
+-                <td>{{ product.id }}</td>
+-                <td>{{ product.name }}</td>
+-                <td>{{ product.description }}</td>
+-                <td>{{ product.brand }}</td>
+-                <td>{{ product.weight }}</td>
+-                <td>{{ product.price }}</td>
+-                <td>{{ product.stockQuantity }}</td>
+-                <td>{{ product.imageFilename }}</td>
+-                <td>
+-                    <a href="{{ path('product_admin_show', {'id': product.id}) }}">show</a>
+-                    <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
+-                </td>
+-            </tr>
+-        {% else %}
+-            <tr>
+-                <td colspan="9">no records found</td>
+-            </tr>
+-        {% endfor %}
+-        </tbody>
+-    </table>
++    {{ include('product_admin/_list.html.twig') }}
+ 
+     <a href="{{ path('product_admin_new') }}">Create new</a>
+ </div>
