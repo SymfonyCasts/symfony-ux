@@ -36,6 +36,7 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=20)
+     * @Assert\NotBlank
      */
     private $brand;
 
@@ -61,6 +62,7 @@ class Product
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank
      */
     private $category;
 
