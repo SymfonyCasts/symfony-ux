@@ -38,7 +38,7 @@ class Product
      * @ORM\Column(type="string", length=20)
      * @Assert\NotBlank
      */
-    private $brand;
+    private $brand = 'Low End Luxury';
 
     /**
      * @ORM\Column(type="float", nullable=true)
