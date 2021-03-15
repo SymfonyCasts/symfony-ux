@@ -19,7 +19,7 @@ perfectly for our example.
 To render this, let's create a new stimulus controller called, how about,
 `featured-product-react_controller.js`. I'll cheat and copy the contents of our
 `made-with-love_controller.js`, paste here, and then change the import to
-`FeatureProduct` from `FeaturedProduct`. Render `<FeatureProduct />` below.
+`FeaturedProduct` from `FeaturedProduct`. Render `<FeaturedProduct />` below.
 
 Super simple. The interesting part about this React component is that it requires
 a `product` prop, which is the data for whatever the featured product is. If we
@@ -28,8 +28,8 @@ that returns the featured product as JSON. That's often how you do things in
 React or Vue.
 
 But... I *don't* want to do that. Everything would load faster and my life would
-be simpler if we could avoid creating that endpoint and making the Ajax call.
-How can we do that? By preparing the feature product data on the server and
+be simpler if we could avoid creating that endpoint and making that Ajax call.
+How can we do that? By preparing the featured product data on the server and
 passing it directly into our React component on page load. That's easy thanks
 to the values API.
 
@@ -46,8 +46,8 @@ a col class... and bind the controller right here:
 `{{ stimulus_controller()` }} with `featured-product-react`.
 
 Give this a second argument so we can pass in the `product` value. Hmm, this will
-be an object. For now, let's hardcode some data. We know that our feature product
-object needs properties like `id` and `name` key. So let's just start with those.
+be an object. For now, let's hardcode some data. We know that our featured product
+object needs properties like `id` and `name`. So let's just start with those.
 I'll say `id: 5` and `name` set to one of our top-selling products.
 
 That should be enough to see if things are working. Let's go try it! In the browser,
@@ -83,7 +83,7 @@ this filter will come standard with Symfony: a pull request by my friend Jesse
 Rushlow has already been accepted. So, you soon won't need to build this.
 
 Anyways, back in the template, set the `product` value to `featuredProduct`
-pipe `serialize()` and then the format - `json` and... then any serialization
+pipe `serialize()`, the format - `json` and... then any serialization
 context, which is kind of like serialization options. To serialize the fields in
 the group I set up, pass `groups` set to `product:read`.
 

@@ -78,7 +78,7 @@ that heart state on click.
 So... how do we render React components if we're using Stimulus? With a custom
 Stimulus controller of course!
 
-In `assets/controllers/`, add create a new file called
+In `assets/controllers/`, add a new file called
 `made-with-love_controller.js`. Start the same as always... by cheating! Steal
 the code from `counter_controller`... add a `connect()` method and `console.log()`,
 this time, a heart.
@@ -110,7 +110,7 @@ Down in connect, say `ReactDOM.render()`, pass this our component -
 That's it! Go back to the page and try it. Yes! That text is coming from our React
 component! And if we click the heart, it multiplies!
 
-So... yeah! Stimulus and frontend frameworks... are... odddly enough... kind of
+So... yeah! Stimulus and frontend frameworks... are... oddly enough... kind of
 BFF's.
 
 Want to see something cooler? I'll inspect element on the footer and... hit
