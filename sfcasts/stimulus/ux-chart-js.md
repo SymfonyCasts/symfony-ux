@@ -113,17 +113,23 @@ let's see, we also need this `ChartBuilderInterface` argument. Add
 `ChartBuilderInterface $chartBuilder`. And... we need a `use` statement for this
 `Chart` class. I'll delete the "t", re-type, and hit tab to get it on top.
 
+[[[ code('49fe9e918a') ]]]
+
 But wait: where did these classes come from? Remember: we *did* just install a new
 bundle... and bundles give us new classes and services. Autowiring
 `ChartBuilderInterface` will give us a new service that's really good at building
 chart data in PHP. Pass the `$chart` variable into the template: `chart` set to
 `$chart`.
 
+[[[ code('4700f7122b') ]]]
+
 Okay. How do we render the chart? Go back to the docs and scroll down one
 more time. Ah ha! The bundle also gave us a new Twig helper. Copy that and go
 find the template for this page: `templates/admin/dashboard.html.twig`.
 
 Then... all the way at the bottom, paste.
+
+[[[ code('87f33b4849') ]]]
 
 This uses the new function `render_chart()` from the bundle to render our `chart`
 variable.
