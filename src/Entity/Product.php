@@ -57,7 +57,7 @@ class Product
      * @ORM\Column(type="integer")
      * @Assert\GreaterThanOrEqual(0)
      */
-    private $stockQuantity;
+    private $stockQuantity = 0;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="products")
@@ -73,8 +73,9 @@ class Product
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      */
-    private $imageFilename;
+    private $imageFilename = 'floppy-disc.png';
 
     public function __construct()
     {
