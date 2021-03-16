@@ -7,6 +7,7 @@
         "regenerator-runtime": "^0.13.2",
         "stimulus": "^2.0.0",
         "stimulus-use": "^0.22.1",
+        "sweetalert2": "^10.13.0",
         "webpack-notifier": "^1.6.0"
     },
     "license": "UNLICENSED",
