@@ -3,6 +3,10 @@
 }) }}
     {% if addToCartForm.color is defined %}
         {{ form_widget(addToCartForm.color) }}
+
+        {% for color in addToCartForm.vars.data.product.colors %}
+            <div>#{{ color.hexColor }}</div>
+        {% endfor %}
     {% endif %}
 
     {{ form_widget(addToCartForm.quantity, {
