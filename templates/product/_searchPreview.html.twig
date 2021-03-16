@@ -1,0 +1,12 @@
+<div class="list-group">
+    {% for product in products %}
+        <a
+            class="list-group-item list-group-item-action"
+            href="{{ path('app_product', { id: product.id }) }}"
+        >
+            {{ product.name }}
+        </a>
+    {% else %}
+        <div class="list-group-item">No results found!</div>
+    {% endfor %}
+</div>
