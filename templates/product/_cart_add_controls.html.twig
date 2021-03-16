@@ -4,7 +4,7 @@
     {% if addToCartForm.color is defined %}
         <div
             {{ stimulus_controller('color-square', {
-                'color-id': addToCartForm.vars.data.product.colors[1].id
+                colorId: addToCartForm.vars.data.product.colors[1].id
             }) }}
         >
             {{ form_widget(addToCartForm.color, {
