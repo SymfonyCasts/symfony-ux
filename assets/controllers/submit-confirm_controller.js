@@ -15,11 +15,7 @@ export default class extends Controller {
             confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
             if (result.isConfirmed) {
-                Swal.fire(
-                    'Deleted!',
-                    'Your file has been deleted.',
-                    'success',
-                )
+                this.element.submit();
             }
         })
 
