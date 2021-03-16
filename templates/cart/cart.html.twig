@@ -13,7 +13,9 @@
                 <h1>Shopping Cart</h1>
                 <div
                     class="component-light p-3"
-                    {{ stimulus_controller('cart-list') }}
+                    {{ stimulus_controller('cart-list', {
+                        cartRefreshUrl: path('_app_cart_list')
+                    }) }}
                 >
                     {{ include('cart/_cartList.html.twig') }}
                 </div>
