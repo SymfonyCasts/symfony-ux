@@ -86,6 +86,11 @@ h1 {
 
 .cart .cart-item {
     border-bottom: 1px solid #efefee;
+    transition: opacity 500ms;
+}
+
+.cart .cart-item.removing {
+    opacity: 0;
 }
 
 .color-square {
