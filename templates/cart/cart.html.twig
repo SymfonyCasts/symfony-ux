@@ -29,7 +29,10 @@
                             <div class="col-3"></div>
                         </div>
                         {% for item in cart.items %}
-                            <div class="cart-item row p-3">
+                            <div
+                                class="cart-item row p-3"
+                                data-action="submit-confirm:async:submitted->cart-list#removeItem"
+                            >
                                 <div class="col-2">
                                     {{ item.product.name }}
                                 </div>
