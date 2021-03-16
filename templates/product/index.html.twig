@@ -10,7 +10,10 @@
             <div class="col-xs-12 col-9">
 
                 <div data-controller="counter">
-                    <button class="btn btn-primary btn-sm">
+                    <button
+                        data-action="click->counter#increment"
+                        class="btn btn-primary btn-sm"
+                    >
                         Click me!
                     </button>
 
