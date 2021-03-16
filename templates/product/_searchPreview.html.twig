@@ -4,7 +4,17 @@
             class="list-group-item list-group-item-action"
             href="{{ path('app_product', { id: product.id }) }}"
         >
-            {{ product.name }}
+            <div class="d-flex align-items-center justify-content-between">
+                <div>
+                    <img
+                        alt="{{ product.name }}"
+                        src="{{ asset('/uploads/products/'~product.imageFilename) }}"
+                        class="rounded"
+                    >
+                    <span class="px-1">{{ product.name }}</span>
+                </div>
+                <em>{{ product.priceString|format_currency('USD') }}</em>
+            </div>
         </a>
     {% else %}
         <div class="list-group-item">No results found!</div>
