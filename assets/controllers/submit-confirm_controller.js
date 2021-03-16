@@ -20,11 +20,14 @@ export default class extends Controller {
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
             confirmButtonText: this.confirmButtonTextValue || 'Yes',
-        }).then((result) => {
-            if (result.isConfirmed) {
-                this.element.submit();
+            showLoaderOnConfirm: true,
+            preConfirm: () => {
+                this.submitForm();
             }
-        })
+        });
+    }
 
+    submitForm() {
+        console.log('submitting form!');
     }
 }
