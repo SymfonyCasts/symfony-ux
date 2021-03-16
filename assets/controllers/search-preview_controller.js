@@ -6,6 +6,10 @@ export default class extends Controller {
     }
 
     onSearchInput(event) {
-        console.log(this.urlValue);
+        const params = new URLSearchParams({
+            q: event.currentTarget.value,
+            preview: 1,
+        });
+        fetch(`${this.urlValue}?${params.toString()}`);
     }
 }
