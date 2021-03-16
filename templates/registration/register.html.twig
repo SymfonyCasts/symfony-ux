@@ -8,7 +8,7 @@
             <div
                 class="col-sm-3"
                 {{ stimulus_controller('featured-product-react', {
-                    product: { id: 5, name: 'Lightly used toothbrush' }
+                    product: featuredProduct|serialize('json', { groups: 'product:read'})
                 }) }}
             ></div>
             <div class="col-sm">
