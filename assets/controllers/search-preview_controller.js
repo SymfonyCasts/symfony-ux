@@ -1,5 +1,5 @@
 import { Controller } from 'stimulus';
-import { useClickOutside } from 'stimulus-use';
+import { useClickOutside, useDebounce } from 'stimulus-use';
 
 export default class extends Controller {
     static values = {
@@ -7,9 +7,11 @@ export default class extends Controller {
     }
 
     static targets = ['result'];
+    static debounces = ['onSearchInput'];
 
     connect() {
         useClickOutside(this);
+        useDebounce(this);
     }
 
     async onSearchInput(event) {
