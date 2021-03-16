@@ -4,9 +4,13 @@ import React from 'react';
 import FeatureProduct from '../components/FeatureProduct';
 
 export default class extends Controller {
+    static values = {
+        product: Object
+    }
+
     connect() {
         ReactDOM.render(
-            <FeatureProduct />,
+            <FeatureProduct product={this.productValue} />,
             this.element
         )
     }
