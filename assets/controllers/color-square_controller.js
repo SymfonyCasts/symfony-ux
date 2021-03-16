@@ -4,11 +4,14 @@ export default class extends Controller {
     selectedColorId = null;
 
     static targets = ['colorSquare', 'select']
+    static values = {
+        colorId: Number
+    }
 
     connect() {
         this.selectTarget.classList.add('d-none');
 
-        console.log(this.element.dataset.colorId);
+        console.log(this.colorIdValue);
     }
 
     selectColor(event) {
