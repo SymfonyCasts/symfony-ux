@@ -2,14 +2,16 @@
     attr: { class: 'cart-add-controls d-flex align-items-center justify-content-baseline' }
 }) }}
     {% if addToCartForm.color is defined %}
-        {{ form_widget(addToCartForm.color) }}
+        <div data-controller="color-square">
+            {{ form_widget(addToCartForm.color) }}
 
-        {% for color in addToCartForm.vars.data.product.colors %}
-            <span
-                class="color-square"
-                style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
-            ></span>
-        {% endfor %}
+            {% for color in addToCartForm.vars.data.product.colors %}
+                <span
+                    class="color-square"
+                    style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+                ></span>
+            {% endfor %}
+        </div>
     {% endif %}
 
     {{ form_widget(addToCartForm.quantity, {
