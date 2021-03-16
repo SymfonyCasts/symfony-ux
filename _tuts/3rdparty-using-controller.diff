@@ -1,0 +1,28 @@
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index c3cf015..cf3265a 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -38,7 +38,7 @@
+                         <form>
+                             <div
+                                 class="input-group"
+-                                {{ stimulus_controller('search-preview', {
++                                {{ stimulus_controller('autocomplete', {
+                                     url: path('app_homepage')
+                                 }) }}
+                             >
+@@ -48,12 +48,12 @@
+                                     placeholder="Search products..."
+                                     type="search"
+                                     class="form-control"
+-                                    data-action="search-preview#onSearchInput"
++                                    data-autocomplete-target="input"
+                                 >
+ 
+                                 <div
+                                     class="search-preview"
+-                                    data-search-preview-target="result"
++                                    data-autocomplete-target="results"
+                                 ></div>
+                             </div>
+                         </form>

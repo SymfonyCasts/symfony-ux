@@ -679,7 +679,32 @@
             "id": "transition-add-css",
             "name": "Transition: add CSS",
             "description": null
+        },
+        {
+            "id": "3rdparty-install-stimulus-autocomplete",
+            "name": "3rdParty: install stimulus-autocomplete",
+            "description": null
+        },
+        {
+            "id": "3rdparty-register-controller",
+            "name": "3rdParty: Register controller",
+            "description": null
+        },
+        {
+            "id": "3rdparty-using-controller",
+            "name": "3rdParty: using controller",
+            "description": null
+        },
+        {
+            "id": "3rdparty-sending-preview",
+            "name": "3rdParty: Sending ?preview=",
+            "description": null
+        },
+        {
+            "id": "3rdparty-role-option",
+            "name": "3rdParty: role=\"option\"",
+            "description": null
         }
     ],
-    "sha": "c503c633f9f7c3e81052b6c7e3d69d407fdf0778"
+    "sha": "ad0ef8362218c9d81e42e2251d6bf8b60906b1e2"
 }
