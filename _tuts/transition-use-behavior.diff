@@ -1,0 +1,40 @@
+diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
+index 2817b5b..e0c1cc8 100644
+--- a/assets/controllers/search-preview_controller.js
++++ b/assets/controllers/search-preview_controller.js
+@@ -1,5 +1,5 @@
+ import { Controller } from 'stimulus';
+-import { useClickOutside, useDebounce } from 'stimulus-use';
++import { useClickOutside, useDebounce, useTransition } from 'stimulus-use';
+ 
+ export default class extends Controller {
+     static values = {
+@@ -12,6 +12,16 @@ export default class extends Controller {
+     connect() {
+         useClickOutside(this);
+         useDebounce(this);
++        useTransition(this, {
++            element: this.resultTarget,
++            enterActive: 'fade-enter-active',
++            enterFrom: 'fade-enter-from',
++            enterTo: 'fade-enter-to',
++            leaveActive: 'fade-leave-active',
++            leaveFrom: 'fade-leave-from',
++            leaveTo: 'fade-leave-to',
++            hiddenClass: 'd-none',
++        });
+     }
+ 
+     onSearchInput(event) {
+@@ -26,9 +36,10 @@ export default class extends Controller {
+         const response = await fetch(`${this.urlValue}?${params.toString()}`);
+ 
+         this.resultTarget.innerHTML = await response.text();
++        this.enter();
+     }
+ 
+     clickOutside(event) {
+-        this.resultTarget.innerHTML = '';
++        this.leave();
+     }
+ }

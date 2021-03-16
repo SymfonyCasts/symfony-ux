@@ -664,7 +664,22 @@
             "id": "reloadcontroller-opacity-trick",
             "name": "ReloadController: opacity trick",
             "description": null
+        },
+        {
+            "id": "transition-upgrade-package",
+            "name": "Transition: upgrade package",
+            "description": null
+        },
+        {
+            "id": "transition-use-behavior",
+            "name": "Transition: use behavior",
+            "description": null
+        },
+        {
+            "id": "transition-add-css",
+            "name": "Transition: add CSS",
+            "description": null
         }
     ],
-    "sha": "2932c98e7d513eb4cd8ef372a473620b555bdd2d"
+    "sha": "c503c633f9f7c3e81052b6c7e3d69d407fdf0778"
 }
