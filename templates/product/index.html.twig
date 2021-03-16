@@ -38,7 +38,9 @@
                         <form>
                             <div
                                 class="input-group"
-                                {{ stimulus_controller('search-preview') }}
+                                {{ stimulus_controller('search-preview', {
+                                    url: path('app_homepage')
+                                }) }}
                             >
                                 <input
                                     name="q"
