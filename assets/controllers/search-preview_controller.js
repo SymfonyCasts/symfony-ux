@@ -5,6 +5,8 @@ export default class extends Controller {
         url: String,
     }
 
+    static targets = ['result'];
+
     async onSearchInput(event) {
         const params = new URLSearchParams({
             q: event.currentTarget.value,
@@ -12,6 +14,6 @@ export default class extends Controller {
         });
         const response = await fetch(`${this.urlValue}?${params.toString()}`);
 
-        console.log(await response.text());
+        this.resultTarget.innerHTML = await response.text();
     }
 }
