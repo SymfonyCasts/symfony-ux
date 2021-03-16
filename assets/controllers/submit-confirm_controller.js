@@ -1,7 +1,8 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
-    connect() {
-        console.log('🦖');
+    onSubmit(event) {
+        event.preventDefault();
+        console.log(event);
     }
 }
