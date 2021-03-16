@@ -2,6 +2,7 @@ import { Controller } from 'stimulus';
 import Swal from 'sweetalert2';
 import { useDispatch } from 'stimulus-use';
 
+/* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static values = {
         title: String,
