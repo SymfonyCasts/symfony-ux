@@ -11,7 +11,8 @@ export default class extends Controller {
     }
 
     selectColor(event) {
-        this.colorIdValue = event.currentTarget.dataset.colorId;
+        const clickedColor = event.currentTarget.dataset.colorId;
+        this.colorIdValue = clickedColor == this.colorIdValue ? null : clickedColor;
     }
 
     colorIdValueChanged() {
