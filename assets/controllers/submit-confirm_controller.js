@@ -12,7 +12,7 @@ export default class extends Controller {
     }
 
     connect() {
-        useDispatch(this, { debug: true });
+        useDispatch(this);
     }
 
     onSubmit(event) {
