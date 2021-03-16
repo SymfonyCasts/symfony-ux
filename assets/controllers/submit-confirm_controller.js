@@ -22,12 +22,15 @@ export default class extends Controller {
             confirmButtonText: this.confirmButtonTextValue || 'Yes',
             showLoaderOnConfirm: true,
             preConfirm: () => {
-                this.submitForm();
+                return this.submitForm();
             }
         });
     }
 
     submitForm() {
-        console.log('submitting form!');
+        return fetch(this.element.action, {
+            method: this.element.method,
+            body: new URLSearchParams(new FormData(this.element)),
+        });
     }
 }
