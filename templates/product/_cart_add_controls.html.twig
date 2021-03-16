@@ -8,6 +8,7 @@
             {% for color in addToCartForm.vars.data.product.colors %}
                 <span
                     class="color-square"
+                    data-action="color-square#selectColor"
                     style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
                 ></span>
             {% endfor %}
