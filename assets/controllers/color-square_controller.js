@@ -7,6 +7,8 @@ export default class extends Controller {
 
     connect() {
         this.selectTarget.classList.add('d-none');
+
+        console.log(this.element.dataset.colorId);
     }
 
     selectColor(event) {

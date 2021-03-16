@@ -2,7 +2,10 @@
     attr: { class: 'cart-add-controls d-flex align-items-center justify-content-baseline' }
 }) }}
     {% if addToCartForm.color is defined %}
-        <div data-controller="color-square">
+        <div
+            data-controller="color-square"
+            data-color-id="{{ addToCartForm.vars.data.product.colors[1].id }}"
+        >
             {{ form_widget(addToCartForm.color, {
                 attr: { 'data-color-square-target': 'select' }
             }) }}
