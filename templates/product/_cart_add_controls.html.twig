@@ -5,7 +5,10 @@
         {{ form_widget(addToCartForm.color) }}
 
         {% for color in addToCartForm.vars.data.product.colors %}
-            <div>#{{ color.hexColor }}</div>
+            <span
+                class="color-square"
+                style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+            ></span>
         {% endfor %}
     {% endif %}
 
