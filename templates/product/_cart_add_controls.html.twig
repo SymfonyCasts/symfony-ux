@@ -3,8 +3,9 @@
 }) }}
     {% if addToCartForm.color is defined %}
         <div
-            data-controller="color-square"
-            data-color-square-color-id-value="{{ addToCartForm.vars.data.product.colors[1].id }}"
+            {{ stimulus_controller('color-square', {
+                'color-id': addToCartForm.vars.data.product.colors[1].id
+            }) }}
         >
             {{ form_widget(addToCartForm.color, {
                 attr: { 'data-color-square-target': 'select' }
