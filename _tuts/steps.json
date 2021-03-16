@@ -704,7 +704,12 @@
             "id": "3rdparty-role-option",
             "name": "3rdParty: role=\"option\"",
             "description": null
+        },
+        {
+            "id": "3rdparty-make-controller-lazy",
+            "name": "3rdParty: make controller lazy",
+            "description": null
         }
     ],
-    "sha": "ad0ef8362218c9d81e42e2251d6bf8b60906b1e2"
+    "sha": "b56d6ca163b570c128e437f64db1d0f68c110671"
 }
