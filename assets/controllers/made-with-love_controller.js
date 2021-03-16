@@ -1,7 +1,13 @@
 import { Controller } from 'stimulus';
+import ReactDOM from 'react-dom';
+import React from 'react';
+import MadeWithLove from '../components/MadeWithLove';
 
 export default class extends Controller {
     connect() {
-        console.log('❤️');
+        ReactDOM.render(
+            <MadeWithLove />,
+            this.element
+        )
     }
 }
