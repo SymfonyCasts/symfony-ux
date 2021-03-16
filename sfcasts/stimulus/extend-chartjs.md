@@ -21,6 +21,8 @@ need to match the options structure: `scales` set to an array, then `yAxes`, thi
 is set to two arrays - you can see that in their JavaScript version - then `ticks`
 set to another array and `beginAtZero` set to `true`.
 
+[[[ code('f48ad9bdb1') ]]]
+
 Cool! Go back to our site. Our chart's y axis  *already* starts at zero...
 so we won't see any difference. Oh, bah! A syntax error. I forgot my semicolon.
 Refresh now and... got it! It doesn't look any different, but if you look at the
@@ -52,6 +54,8 @@ about, `admin-chartjs_controller.js`. We'll start the same way as always. In fac
 let's cheat: copy the inside of `counter_controller.js` and paste. Then add our
 normal `connect()` method with `console.log()` a chart.
 
+[[[ code('1febdc123d') ]]]
+
 ## Multiple Controllers on an Element
 
 Next, in the template, and a second controller to the element. But, hmm. The
@@ -63,7 +67,9 @@ additional attributes for the element. Pass `data-controller` set to the
 name of our controller, which is `admin-chartjs`. Oh, but I should probably write
 Twig code here... not PHP.
 
-Okay! Move over and hit rerfesh. The graph is still there and... yes! It looks
+[[[ code('edfeb32931') ]]]
+
+Okay! Move over and hit refresh. The graph is still there and... yes! It looks
 like our new controller is connected!
 
 Inspect the chart again. Interesting. You can't have two `data-controller`
@@ -91,8 +97,12 @@ the core controller, `chartjs:connect`, an arrow, the name of our custom
 controller - `admin-chartjs` - a pound sign and then the name of the method to
 call when this event happens. How about `onChartConnect`?
 
+[[[ code('1defd58a75') ]]]
+
 Copy that and head into our custom controller. Rename `connect()` to
 `onChartConnect()`, give it an `event` object, and `console.log(event)`.
+
+[[[ code('6fc2428d12') ]]]
 
 Alright! Let's see if it works! Refresh, check the console and... we got it!
 There's the custom event! Expand it. I love this: it has a `detail` property,
@@ -105,10 +115,14 @@ load, wait 5 seconds, then update some data.
 Start by assigning the chart to a property so we can use it anywhere:
 `this.chart = event.detail.chart`.
 
+[[[ code('e7c3f8d8c3') ]]]
+
 Then, at the bottom, and a new method that will, sort of, fake making an Ajax
 request for the new data and updating the chart. I'll call it `setNewData()`.
 Inside, say `this.chart.data.datasets[0].data[2] = 30` and then
 `this.chart.update()`.
+
+[[[ code('c381e356c2') ]]]
 
 This first line might look a little crazy... but if you look at their docs,
 this is how you can access your `datasets`. Let me go to the data we created in
@@ -118,6 +132,8 @@ with index 2, and changing it to 30. So that should change the 5 up to 30.
 
 Back in the Stimulus controller, up in `onChartConnect()` call `setTimeout()`,
 pass that an arrow function, wait 5 seconds and then call `this.setNewData()`.
+
+[[[ code('78e95c90b0') ]]]
 
 Moment of truth. Head over, go back to our site and reload the page. Here's the
 chart. Waiting... ha! It updated! March jumped up to 30!
