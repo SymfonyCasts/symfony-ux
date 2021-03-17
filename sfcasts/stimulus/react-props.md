@@ -101,6 +101,6 @@ is added to the JavaScript that's downloaded on every page. That makes Stimulus
 *super* easy to use: add a `data-controller` to any page or any Ajax response
 and it *will* work.
 
-But how can we make sure our JavaScript isn't getting too big? Next, let's learn
+But how can we make sure our JavaScript isn't getting too big? Let's learn
 how we can visualize the size of our JavaScript files and some amazing tricks
 with laziness to make them smaller.
