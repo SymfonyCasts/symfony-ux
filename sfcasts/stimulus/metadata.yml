@@ -26,4 +26,5 @@ chapters:
     - extend-chartjs
     - react
     - react-props
-    - laziness
+    - analyze
+    - lazy
