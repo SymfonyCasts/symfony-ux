@@ -122,7 +122,7 @@ request for the new data and updating the chart. I'll call it `setNewData()`.
 Inside, say `this.chart.data.datasets[0].data[2] = 30` and then
 `this.chart.update()`.
 
-[[[ code('c381e356c2') ]]]
+[[[ code('3e23a15fde') ]]]
 
 This first line might look a little crazy... but if you look at their docs,
 this is how you can access your `datasets`. Let me go to the data we created in
