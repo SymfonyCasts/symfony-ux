@@ -27,5 +27,5 @@ chapters:
     - react
     - react-props
     - analyze
-    - async-import
+    - async-imports
     - lazy
