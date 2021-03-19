@@ -39,6 +39,10 @@ class ProductAdminController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
+            if ($request->isXmlHttpRequest()) {
+                return new Response(null, 204);
+            }
+
             return $this->redirectToRoute('product_admin_index');
         }
 
@@ -47,7 +51,10 @@ class ProductAdminController extends AbstractController
         return $this->render('product_admin/' . $template, [
             'product' => $product,
             'form' => $form->createView(),
-        ]);
+        ], new Response(
+            null,
+            $form->isSubmitted() && !$form->isValid() ? 422 : 200,
+        ));
     }
 
     /**
