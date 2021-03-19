@@ -16,7 +16,7 @@ index 8c13edf..55530b4 100644
  
      async removeItem(event) {
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index 8ddd2ad..24d1091 100644
+index 6a80f86..b46735d 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -18,9 +18,11 @@ class ProductAdminController extends AbstractController
