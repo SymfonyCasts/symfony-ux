@@ -39,6 +39,8 @@ So enough talk! Let's see an example by building a mini React app. To add suppor
 for react in Encore, open `webpack.config.js`. You should have a spot in here
 that says `enableReactPreset()`. Uncomment that.
 
+[[[ code('357dab8a50') ]]]
+
 Whenever you change `webpack.config.js`, you need to restart Encore. Head over
 to your terminal, find the tab with Encore, stop it with Ctrl+C and re-run:
 
@@ -70,6 +72,8 @@ directory with a `MadeWithLove.js` React component inside. Copy that. Go to
 `assets/`. Let's create a new directory called `components/` and paste the new
 file there.
 
+[[[ code('4f6947480b') ]]]
+
 This simple component renders the text, manages a `hearts` state and increases
 that heart state on click.
 
@@ -83,10 +87,14 @@ In `assets/controllers/`, add a new file called
 the code from `counter_controller`... add a `connect()` method and `console.log()`,
 this time, a heart.
 
+[[[ code('18efee37ec') ]]]
+
 Next open up `templates/base.html.twig` and scroll down to find the footer...
 here it is. Let's replace all of this with our controller. I'll keep the footer
 `<div>`... break it onto multiple lines and then add
 `stimulus_controller('made-with-love')`.
+
+[[[ code('a47d4a18c2') ]]]
 
 Let's make sure that's connected. Oh, before I do that, I think I forgot to
 restart Encore:
@@ -104,8 +112,12 @@ First, we need to import a few things: we need `ReactDOM` from `react-dom`,
 `react` from `react` and then our component:
 `import MadeWithLove from '../components/MadeWithLove'`.
 
+[[[ code('4fafc78145') ]]]
+
 Down in connect, say `ReactDOM.render()`, pass this our component -
 `<MadeWithLove />` - and then `this.element`.
+
+[[[ code('29bc419de0') ]]]
 
 That's it! Go back to the page and try it. Yes! That text is coming from our React
 component! And if we click the heart, it multiplies!
