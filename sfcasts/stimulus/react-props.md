@@ -16,10 +16,14 @@ This React component receives a `product` prop and renders a featured product.
 It's actually *so* simple that I wouldn't normally use React... but it'll work
 perfectly for our example.
 
+[[[ code('bab26034e5') ]]]
+
 To render this, let's create a new stimulus controller called, how about,
 `featured-product-react_controller.js`. I'll cheat and copy the contents of our
 `made-with-love_controller.js`, paste here, and then change the import to
 `FeaturedProduct` from `FeaturedProduct`. Render `<FeaturedProduct />` below.
+
+[[[ code('83ebbff441') ]]]
 
 Super simple. The interesting part about this React component is that it requires
 a `product` prop, which is the data for whatever the featured product is. If we
@@ -40,6 +44,8 @@ object. So in our Stimulus controller, add a `static values` set to an object
 with a `product` key set to `Object`. We can pass this product value into the
 component as a prop: `product={this.productValue}`.
 
+[[[ code('f32ed7257d') ]]]
+
 Beautiful. Now open the template for this page, which is
 `templates/registration/register.html.twig`. Above the `h1`, add a new div with
 a col class... and bind the controller right here:
@@ -49,6 +55,8 @@ Give this a second argument so we can pass in the `product` value. Hmm, this wil
 be an object. For now, let's hardcode some data. We know that our featured product
 object needs properties like `id` and `name`. So let's just start with those.
 I'll say `id: 5` and `name` set to one of our top-selling products.
+
+[[[ code('b4c97fc954') ]]]
 
 That should be enough to see if things are working. Let's go try it! In the browser,
 refresh and... it is!. It looks a little broken... only because our product is
@@ -64,9 +72,13 @@ Open the controller for this page: `src/Controller/RegistrationController.php`.
 At the end of the method, add a new argument so we can query for the featured
 product: `ProductRepository $productRepository`.
 
+[[[ code('66b4d7cf84') ]]]
+
 Scroll down to where we render the template... and pass a new variable called
 `featuredProduct` set to `$productRepository->findFeatured()`, which is a custom
 method that I already created.
+
+[[[ code('3c4ee6a27d') ]]]
 
 Back in the template, let's think. We somehow want to transform that
 `featuredProduct` object into JSON so we can pass it to the product value. Open
@@ -82,10 +94,14 @@ which just calls the serializer and passes our data. Fun fact, in Symfony 5.3,
 this filter will come standard with Symfony: a pull request by my friend Jesse
 Rushlow has already been accepted. So, you soon won't need to build this.
 
+[[[ code('76a1bafdd4') ]]]
+
 Anyways, back in the template, set the `product` value to `featuredProduct`
 pipe `serialize()`, the format - `json` and... then any serialization
 context, which is kind of like serialization options. To serialize the fields in
 the group I set up, pass `groups` set to `product:read`.
+
+[[[ code('89045f58cd') ]]]
 
 We're done! We just passed a `Product` object *directly* from our server into
 a React component as a prop by converting it into JSON.
@@ -101,6 +117,6 @@ is added to the JavaScript that's downloaded on every page. That makes Stimulus
 *super* easy to use: add a `data-controller` to any page or any Ajax response
 and it *will* work.
 
-But how can we make sure our JavaScript isn't getting too big? Next, let's learn
+But how can we make sure our JavaScript isn't getting too big? Let's learn
 how we can visualize the size of our JavaScript files and some amazing tricks
 with laziness to make them smaller.
