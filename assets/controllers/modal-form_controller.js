@@ -32,4 +32,8 @@ export default class extends Controller {
             this.modalBodyTarget.innerHTML = e.responseText;
         }
     }
+
+    modalHidden() {
+        console.log('it was hidden!');
+    }
 }

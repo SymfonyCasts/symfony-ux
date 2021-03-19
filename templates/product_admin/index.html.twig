@@ -7,9 +7,12 @@
     <div class="d-flex flex-row">
         <h1 class="me-3">Product index</h1>
 
-        <div {{ stimulus_controller('modal-form', {
-            formUrl: path('product_admin_new')
-        }) }}>
+        <div
+            {{ stimulus_controller('modal-form', {
+                formUrl: path('product_admin_new')
+            }) }}
+            data-action="hidden.bs.modal->modal-form#modalHidden"
+        >
             <button
                 class="btn btn-primary btn-sm"
                 data-action="modal-form#openModal"
