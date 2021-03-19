@@ -12,7 +12,11 @@
                         data-bs-dismiss="modal"
                         aria-label="Close"></button>
             </div>
-            <div class="modal-body" data-modal-form-target="modalBody">
+            <div
+                class="modal-body"
+                data-modal-form-target="modalBody"
+                data-action="submit->modal-form#submitForm"
+            >
                 {{ modalContent|default('Loading...') }}
             </div>
             <div class="modal-footer">
