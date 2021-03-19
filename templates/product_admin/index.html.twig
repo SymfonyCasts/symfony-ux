@@ -5,7 +5,9 @@
 {% block body %}
 <div
     class="container-fluid mt-4"
-    {{ stimulus_controller('reload-content') }}
+    {{ stimulus_controller('reload-content', {
+        url: path('product_admin_index')
+    }) }}
 >
     <div class="d-flex flex-row">
         <h1 class="me-3">Product index</h1>

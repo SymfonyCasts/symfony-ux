@@ -2,11 +2,7 @@ import { Controller } from 'stimulus';
 
 export default class extends Controller {
     static values = {
-        cartRefreshUrl: String,
-    }
-
-    connect() {
-        console.log('🔁');
+        url: String,
     }
 
     async removeItem(event) {
