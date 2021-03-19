@@ -38,6 +38,8 @@ play. When Stimulus sees a file called `counter_controller`, it registers that
 controller under the name `counter`. Then when a `data-controller="counter"`
 element appears on the page, it knows which controller to use.
 
+[[[ code('a7bcd9dadd') ]]]
+
 If we ever added a `data-controller` to our page with a controller name that
 Stimulus does *not* know about like - `data-controller="eat-pizza"` - Stimulus
 will do nothing.
@@ -56,6 +58,8 @@ get registered as a Stimulus controller with this name?
 The answer to that question lives in a file that we haven't really looked at yet:
 `assets/controllers.json`. This file was also automatically updated by the recipe
 when we composer required `symfony/ux-chartjs`. It was basically empty before.
+
+[[[ code('b88f3d6750') ]]]
 
 When we first installed Webpack Encore, our `package.json` file came pre-filled
 with a few libraries. One of them is called `@symfony/stimulus-bridge`. If you
