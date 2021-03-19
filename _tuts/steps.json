@@ -496,6 +496,11 @@
             "description": null
         },
         {
+            "id": "modal-change-url",
+            "name": "Modal: change URL",
+            "description": null
+        },
+        {
             "id": "modal-add-container-div",
             "name": "Modal: add container div",
             "description": null
@@ -711,5 +716,5 @@
             "description": null
         }
     ],
-    "sha": "b56d6ca163b570c128e437f64db1d0f68c110671"
+    "sha": "4d213e493e601ea8b40647a4a369111815abc738"
 }
