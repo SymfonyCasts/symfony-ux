@@ -1,6 +1,7 @@
 {
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
+        "@popperjs/core": "^2.9.1",
         "@symfony/stimulus-bridge": "^2.0.0",
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
         "@symfony/webpack-encore": "^1.0.0",
