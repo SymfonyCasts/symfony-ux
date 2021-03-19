@@ -1,14 +1,13 @@
 import { Controller } from 'stimulus';
 
 export default class extends Controller {
+    static targets = ['content'];
     static values = {
         url: String,
     }
 
-    async removeItem(event) {
-        event.currentTarget.classList.add('removing');
-
-        const response = await fetch(this.cartRefreshUrlValue);
-        this.element.innerHTML = await response.text();
+    async refreshContent(event) {
+        const response = await fetch(this.urlValue);
+        this.contentTarget.innerHTML = await response.text();
     }
 }

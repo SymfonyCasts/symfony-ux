@@ -29,7 +29,9 @@
         </div>
     </div>
 
-    {{ include('product_admin/_list.html.twig') }}
+    <div data-reload-content-target="content">
+        {{ include('product_admin/_list.html.twig') }}
+    </div>
 
     <a href="{{ path('product_admin_new') }}">Create new</a>
 </div>
