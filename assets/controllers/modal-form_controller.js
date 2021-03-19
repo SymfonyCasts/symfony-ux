@@ -11,7 +11,7 @@ export default class extends Controller {
     modal = null;
 
     connect() {
-        useDispatch(this, {debug: true});
+        useDispatch(this);
     }
 
     async openModal(event) {
