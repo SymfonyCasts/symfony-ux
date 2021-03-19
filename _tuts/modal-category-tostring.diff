@@ -12,17 +12,3 @@ index f999ce8..4536c95 100644
 +        return (string) $this->getName();
 +    }
  }
-diff --git a/src/Entity/Color.php b/src/Entity/Color.php
-index 9366e6e..dd36f62 100644
---- a/src/Entity/Color.php
-+++ b/src/Entity/Color.php
-@@ -75,4 +75,9 @@ class Color
-     {
-         return hexdec(substr($this->hexColor, 4, 2));
-     }
-+
-+    public function __toString(): string
-+    {
-+        return (string) $this->getName();
-+    }
- }
