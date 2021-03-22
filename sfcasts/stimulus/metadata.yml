@@ -29,6 +29,7 @@ chapters:
     - analyze
     - async-imports
     - lazy
+    - stimulus-fetch-lazy
     - product-crud
     - bootstrap-modal
     - submit-ajax

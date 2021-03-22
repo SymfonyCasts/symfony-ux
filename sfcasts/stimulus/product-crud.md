@@ -1,48 +1,60 @@
-# Product Crud
+# Product CRUD
 
-Coming soon...
+I've mentioned a few times that Stimulus has a sister technology called Turbo...
+both of which live under this brand called "Hotwire", which, as we've learned,
+is *all* about returning HTML from your server.
 
-I've mentioned a few times that stimulus is stimulus has a sister technology called
-turbo. They're both kind of under this brand called Hotwire.
+## Turbo: You'll Write Less Custom JavaScript
 
-Okay.
+We're going to discuss to Turbo in the next tutorial in the series. But in a
+nutshell, Turbo allows you to instantly turn all of the clicks *and* form submits
+on your site into Ajax calls automatically. It also has several other pretty neat
+super powers.
 
-And we're going to discuss to turbo in the next tutorial in the series, in a
-nutshell, turbo allows you to instantly turn all of the clicks on your website, into
-Ajax. Call clicks on your website and form submits into Ajax calls as well as some
-other really neat super powers right now on the cart page. If we remove an item, we
-put in some extra, more work so that when we confirm it submits the form via Ajax and
-then reloads the car area also via Ajax. Once you start using turbo, you can still
-totally do stuff like this, but you'll find that it's less necessary in this case. If
-turbo were active after confirming the removal, we could just let the form submit
-normally, which would automatically happen via Ajax. So my point is turbo will allow
-you to have a slick user interface while writing less custom JavaScript.
+Right now, on the cart page, when we remove an item, we did some extra to submit
+the delete form via Ajax and reload the cart area *also* via Ajax. Once you start
+using Turbo, you absolutely *can* still do stuff like this... but you'll find
+that it's less necessary. In this case, if Turbo were active, after confirming
+in the modal, we could just let the form submit normally... which would
+automatically happen via Ajax. My point is: Turbo will allow you to have a slick
+user interface while writing less custom JavaScript. But if you want to do
+something extra custom, you are *completely* free to write custom JavaScript.
 
-But if you want to do something custom, you are totally free to do that in that
-spirit. After talking with a few of you, I thought it might be good to show how we
-could submit a full form via Ajax handle validation, errors, and reload part of the
-page after that Ajax call finishes. So here's the plan where you're going to generate
-a new product admin section on the list page. We'll add a new product button that on
-quick, opens a muddle with a form inside. We'll submit that form B we'll submit that
-form via Ajax in the model And reload the list after the Ajax is successful. Sound
-good? Let's go to start find your terminal. Okay.
+## Let's Build an AJAX Form Modal!
 
-Right.
+In that spirit, after talking with a few of you lovely people, I thought it might
+be good to show how we could submit a full form via Ajax, including handling
+validation errors and reloading part of the page after that Ajax call finishes.
 
-The project is currently using bootstrap version four. I'm going to upgrade to
-bootstrap five because I like it's JavaScript integration, better run
+So here's the plan: we're going to generate a new product admin section. Then, on
+the list page. we'll add a "new product" button that, on click opens a modal with
+a form inside. We'll submit that form via Ajax in the modal, show validation errors
+on the modal and, finally, reload the product list on the page after the Ajax call
+is successful. It's going to be an *epic* example of Stimulus. We're also going to
+do *part* of this using jQuery, just in case you prefer using it over vanilla
+JavaScript.
+
+## Upgrading to Bootstrap 5
+
+Ok, let's get going! To start find your terminal.
+
+The project is currently using Bootstrap version 4. I'm going to upgrade to
+Bootstrap 5 because I like it's JavaScript components better. Run:
 
 ```terminal
 yarn add bootstrap@5 --dev
 ```
 
-at this exact moment. Bootstrap five is only in beta. So I'll
-select that version and it'll work perfectly By the way. See this peer dependency
-thing down here.
+At this exact moment, Bootstrap 5 is only in beta. So I'll select that version.
 
-If you ever see these errors like up here that are related to a Webpack or even some
-Babel preset stuff, it's probably fine. It's because Encore handles so much stuff for
-us. But in this case, this popper thing is going to be a problem, but we can wait to
+## Peer Dependency Warnings?
+
+See this "peer dependency" warning? If you ever see these errors - like up here -
+are they mention Webpack or Babel, it's probably fine. This happens because Encore
+handles *so* much stuff for us. These libraries that it's complaining about
+*are* installed... but they're installed
+
+But in this case, this popper thing is going to be a problem, but we can wait to
 see what air it causes later. Now, bootstrap five does change some styling versus
 bootstrap four, but it's minor enough that I'm going to ignore it. And if you look,
 our page mostly works, our page still looks just fine. You will notice a couple of
