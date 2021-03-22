@@ -30,3 +30,5 @@ chapters:
     - async-imports
     - lazy
     - product-crud
+    - bootstrap-modal
+    - submit-ajax
