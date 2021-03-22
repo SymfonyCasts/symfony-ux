@@ -25,6 +25,8 @@ These are the two files that use `react-dom`.
 module as an argument. Move the `ReactDOM.render()` stuff into this function...
 and the last thing we need to do is add `.default`.
 
+[[[ code('87eb4e848d') ]]]
+
 That's it! This is called an async or dynamic import and we've talked about this
 a few times before on Symfonycasts. This allows Webpack to isolate the `react-dom`
 code into its own file. Then, that code won't be downloaded *until* this import
@@ -49,6 +51,8 @@ Let's repeat this in the other controller so that `react-dom` isn't imported by
 remove the `import` on top, paste the new code below... then bring up our original
 `ReactDOM.render()` code. Don't forget to add the `.default` and... we don't need
 this `import`: PhpStorm added that when I pasted the code.
+
+[[[ code('8a4cce4ae3') ]]]
 
 Beautiful! First, let's make sure we didn't break anything. Head back to your
 terminal. You can see that the `webpack-bundle-analyzer` server is still running.
