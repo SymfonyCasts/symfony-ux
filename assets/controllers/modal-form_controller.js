@@ -5,7 +5,7 @@ export default class extends Controller {
     static targets = ['modal'];
 
     openModal(event) {
-        const modal = new Modal(this.modalTarget, {});
+        const modal = new Modal(this.modalTarget);
         modal.show();
     }
 }
