@@ -10,7 +10,7 @@ export default class extends Controller {
 
     async openModal(event) {
         this.modalBodyTarget.innerHTML = 'Loading...';
-        const modal = new Modal(this.modalTarget, {});
+        const modal = new Modal(this.modalTarget);
         modal.show();
 
         this.modalBodyTarget.innerHTML = await $.ajax(this.formUrlValue);
@@ -22,7 +22,7 @@ export default class extends Controller {
 
         try {
             await $.ajax({
-                url: this.formUrlValue,
+                url: $form.prop('action'),
                 method: $form.prop('method'),
                 data: $form.serialize(),
             });
