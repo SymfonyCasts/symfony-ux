@@ -122,7 +122,7 @@ Refresh the edit page now and... it works! If we change something and hit
 update - yes our buttons *do* need some styling - that works too.
 
 Oh, but there's one more change I want to make: this will help our example.
-Back over in a `ProductAdminController::index()`, change the query to sort
+Back over in `ProductAdminController::index()`, change the query to sort
 the *newest* on top. Do that by changing this `findAll()` to `findBy()`, pass it
 an empty criteria - so it still returns everything - and then sort by `id` `DESC`.
 You could also use a `createdAt` column if you want.
