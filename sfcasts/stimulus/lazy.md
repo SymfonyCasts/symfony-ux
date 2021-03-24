@@ -20,6 +20,8 @@ Flex whenever we download a new UX package. But we are *totally* free to tweak
 this. For example, we could change `enable` to `false` if we didn't need that
 controller. Or we could change fetch to `lazy`.
 
+[[[ code('d92d5c345d') ]]]
+
 What does that do? At your terminal, hit Ctrl+C to stop the analyzer and let's
 dump a new stats file. But this time, I'm going to switch to do a `dev` build...
 just because it's a little bit faster... though less realistic than profiling
