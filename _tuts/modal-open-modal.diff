@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index c9de0a0..1fe0a70 100644
+index c9de0a0..172e3b7 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -2,7 +2,10 @@ import { Controller } from 'stimulus';
@@ -10,7 +10,7 @@ index c9de0a0..1fe0a70 100644
 +
      openModal(event) {
 -        console.log(event);
-+        const modal = new Modal(this.modalTarget, {});
++        const modal = new Modal(this.modalTarget);
 +        modal.show();
      }
  }
