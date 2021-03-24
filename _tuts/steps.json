@@ -606,6 +606,11 @@
             "description": null
         },
         {
+            "id": "jquery-use-formurlvalue",
+            "name": "jQuery: use formUrlValue",
+            "description": null
+        },
+        {
             "id": "jquery-also-ajax-on-direct-form-submit",
             "name": "jQuery: also AJAX on direct form submit",
             "description": null
@@ -671,6 +676,16 @@
             "description": null
         },
         {
+            "id": "reloadcontroller-re-use-on-cart",
+            "name": "ReloadController: re-use on cart",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-make-target-optional",
+            "name": "ReloadController: make target optional",
+            "description": null
+        },
+        {
             "id": "transition-upgrade-package",
             "name": "Transition: upgrade package",
             "description": null
@@ -716,5 +731,5 @@
             "description": null
         }
     ],
-    "sha": "4bf69277d02f3d5ce17202c716346f2f131e90ca"
+    "sha": "ed3cfd3c889507174323cc8e187736c578234ec3"
 }
