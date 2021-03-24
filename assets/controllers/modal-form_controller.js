@@ -10,7 +10,7 @@ export default class extends Controller {
 
     async openModal(event) {
         this.modalBodyTarget.innerHTML = 'Loading...';
-        const modal = new Modal(this.modalTarget, {});
+        const modal = new Modal(this.modalTarget);
         modal.show();
 
         this.modalBodyTarget.innerHTML = await $.ajax(this.formUrlValue);
