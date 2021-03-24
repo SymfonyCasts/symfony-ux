@@ -18,6 +18,8 @@ Totally! Open `assets/controllers/submit-confirm_controller.js`. This is the one
 file that imports SweetAlert. Above the controller class, add a special *comment*:
 `stimulusFetch` colon then `lazy` in quotes.
 
+[[[ code('aa6bdf4698') ]]]
+
 This is a special syntax and feature from `stimulus-bridge`. The text inside the
 comments will be parsed as JSON, which is why we have the colon and quotes. The
 result of this is that... yea! Our controller will be lazy - just like the `chartjs`
