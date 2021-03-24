@@ -59,56 +59,69 @@ see what air it causes later. Now, bootstrap five does change some styling versu
 bootstrap four, but it's minor enough that I'm going to ignore it. And if you look,
 our page mostly works, our page still looks just fine. You will notice a couple of
 things that don't look quite right on our form later. Well, I'm not going to worry
-about that right now. Now we need to generate our product admin section back at your
-terminal, run
+about that right now.
+
+## make:crud
+
+Now we need to generate our product admin section back at your terminal, run
 
 ```terminal
 php bin/console make:crud
 ```
 
-Let's say we want to generate a CRUD for
-our `Product` entity and make a bundle. One that 30 now asks you the name of your
-controller class. We already have a class called product controller. So let's call
-our new one product admin controller. Awesome. This created a new product admin
-controller, a form class, and a bunch of templates. Let's go check out the controller
-source controller, product admin controller, that PHP, ah, let's actually change
-this. You were out before. Do you have anything to `/admin/product`? Cool. Let's go
-see what it looks like. Head over. Let's go to `/admin/product`
+We want to generate a CRUD for our `Product` entity. MakerBundle 1.30 now asks
+you the name of your controller class. We already have a class called
+`ProductController`, so let's call this new one `ProductAdminController`.
 
-And
+And.. done! This created the new `ProductAdminController`, a form class, and a
+bunch of templates. Let's go check out the controller:
+`src/Controller/ProductAdminController.php`. Oh, let's change the URL to
+`/admin/product`. That's probably a better URL.
 
-Okay. That's a good start. It's got everything we need. No, it doesn't really fit
-into our design yet. Let's change that. Open up the pages template, which is that
-`templates/product_admin/index.html.twig` now, right on top, I'm going to add a
-`<div>` class `container-fluid` and `mt-4` for some margin. And then I'm
-going to put the D any dev all the way at the end. I'm actually going to copy that
-because we'll need this on all of our templates. So I'll go to edit, do that same
-thing and put the closing div
+Let's go see what it looks like. Head over to `/admin/product`.
 
-New and finally the show template. Awesome.
+And... okay! Good start: this has everything we need... though, it doesn't really
+fit into our design super well. Let's improve that a *tiny* bit. Open up this
+page's template, which is `templates/product_admin/index.html.twig`. On top, add
+a `<div>` class `container-fluid` and `mt-4` for some margin. All the way at the
+bottom, add the ending `div`.
 
-Let's try the list page again now. Okay. A little bit better. You could still use
-some margin over here, but I'm not going to worry about it, but good enough for us.
-All right. Let's try that. Click to edit. One of these error class category could not
-be converted to string. This is because the form is trying to make a category drop
-down and it needs to know how to render each category in that dropdown. So we need to
-do is go into the `src/Entity/Category.php` and anywhere in here, I'll put it
-at the bottom. Let's make a `public function __toString()` method that returns
-`$this->name`. And actually I'm going to type hint that to a string just in case the
-name is no, that will return an empty string. And while we're talking about the form,
-let's make it a bit smaller in source form product type, it renders with all the
-fields by default to make our life a little simpler. Let's remove `brand` `weight`,
-`stockQuantity`, `imageFilename`, and also `colors`. A lot of nice small focused form.
-Okay. Refresh the edit page now and got it. And if we change something and hit
-update, yes, our buttons do need some styling. It works.
+Let's copy this... because we'll need it on all of our templates. Open edit, do
+that same thing... add the closing div... `new.html.twig`... and finally
+`show.html.twig`.
 
-Oh, there's one more change I want to make. That'll make our whole example a lot
-easier to see back over in a `ProductAdminController::index()`, change the query to sort
-of, to the two sorts, the newest on top. We can do that by changing this at `findAll()`
-to `findBy()` pass it. No an empty criteria. So it still returns everything. And then ID
-the sending, or it could use a creative that column if you want. All right now,
-refresh and perfect. I can see the highest IDs are on top. Okay. Our setup is ready
-next. Let's create an add button right here on the page that on click opens a
-bootstrap modal with our form inside. We'll accomplish that with a stimulus
-controller and an Ajax call. Okay.
+Refresh the list page again. Okay: it's a bit better: it could still use some
+margin over here, but it's good enough for now.
 
+## Adding __toString to Make the Select Field Work
+
+Click to edit a product. Ah!
+
+> Error class Category could not be converted to string.
+
+Rude! This is because the form is trying to make a category select drop down...
+and it needs to know what text to use for each option. Go into
+`src/Entity/Category.php` and, anywhere in here - I'll put it at the bottom - add
+a `public function __toString()` method that returns `$this->name`. I'm going to
+cast that to a string... just in case the name is null.
+
+Oh, and while we're thinking about the form, I want to make it a bit smaller. In
+`src/Form/ProductType/php`, the form contains *every* field. To make life simpler,
+remove `brand` `weight`, `stockQuantity`, `imageFilename`, and also `colors`.
+
+Very nice.
+
+Refresh the edit page now and... it works! If we change something and hit
+update - yes our buttons *do* need some styling - that works too.
+
+Oh, but there's one more change I want to make. that will help our example.
+Back over in a `ProductAdminController::index()`, change the query to sort
+the *newest* on top. Do that by changing this `findAll()` to `findBy()`, pass it
+an empty criteria - so it still returns everything - and then sort by `id` `DESC`.
+You could also use a `createdAt` column if you want.
+
+Head over and refresh now. Perfect: the highest ids are on top.
+
+Our setup is complete! Next: let's create an "add" button right here on the list
+page that, on click, opens a Bootstrap modal with our form inside. We'll
+accomplish that with a Stimulus controller and an Ajax call.
