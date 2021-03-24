@@ -22,7 +22,7 @@ export default class extends Controller {
 
         try {
             await $.ajax({
-                url: $form.prop('action'),
+                url: this.formUrlValue,
                 method: $form.prop('method'),
                 data: $form.serialize(),
             });
