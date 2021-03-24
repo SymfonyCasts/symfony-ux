@@ -9,7 +9,7 @@ export default class extends Controller {
 
     openModal(event) {
         console.log(this.formUrlValue);
-        const modal = new Modal(this.modalTarget, {});
+        const modal = new Modal(this.modalTarget);
         modal.show();
     }
 }
