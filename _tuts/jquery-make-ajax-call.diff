@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index 5dcfa4a..87d87f1 100644
+index 10fa04d..bdbe49e 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -1,15 +1,17 @@
@@ -17,7 +17,7 @@ index 5dcfa4a..87d87f1 100644
 -    openModal(event) {
 -        console.log(this.formUrlValue);
 +    async openModal(event) {
-         const modal = new Modal(this.modalTarget, {});
+         const modal = new Modal(this.modalTarget);
          modal.show();
 +
 +        this.modalBodyTarget.innerHTML = await $.ajax(this.formUrlValue);
