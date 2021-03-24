@@ -20,7 +20,7 @@ export default class extends Controller {
         event.preventDefault();
         const $form = $(this.modalBodyTarget).find('form');
         this.modalBodyTarget.innerHTML = await $.ajax({
-            url: $form.prop('action'),
+            url: this.formUrlValue,
             method: $form.prop('method'),
             data: $form.serialize(),
         });
