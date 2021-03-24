@@ -33,7 +33,7 @@ export default class extends Controller {
                 data: $form.serialize(),
             });
             this.modal.hide();
-            this.dispatch('modal-form-success');
+            this.dispatch('success');
         } catch (e) {
             this.modalBodyTarget.innerHTML = e.responseText;
         }
