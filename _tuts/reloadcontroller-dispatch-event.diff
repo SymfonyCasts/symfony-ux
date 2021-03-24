@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index 2514bd3..e97cc5a 100644
+index 5267dd5..c708cae 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -1,6 +1,7 @@
@@ -20,7 +20,7 @@ index 2514bd3..e97cc5a 100644
 +
      async openModal(event) {
          this.modalBodyTarget.innerHTML = 'Loading...';
-         this.modal = new Modal(this.modalTarget, {});
+         this.modal = new Modal(this.modalTarget);
 @@ -28,6 +33,7 @@ export default class extends Controller {
                  data: $form.serialize(),
              });
