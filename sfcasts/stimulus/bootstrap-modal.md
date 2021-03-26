@@ -1,3 +1,0 @@
-# Opening a Modal
-
-Coming soon...
