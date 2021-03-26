@@ -726,10 +726,15 @@
             "description": null
         },
         {
+            "id": "3rdparty-delete-old-controller",
+            "name": "3rdParty: delete old controller",
+            "description": null
+        },
+        {
             "id": "3rdparty-make-controller-lazy",
             "name": "3rdParty: make controller lazy",
             "description": null
         }
     ],
-    "sha": "6426e4fd920c8868eb035d0c11cd3e5df5e1b6a2"
+    "sha": "2ebd5ca21f55332310903d2fdf0f99e6b750263c"
 }
