@@ -85,6 +85,8 @@ bunch of templates. Go check out the controller:
 `src/Controller/ProductAdminController.php`. Oh, let's change the URL to
 `/admin/product`... that's probably a better URL.
 
+[[[ code('f9ea1cf2a8') ]]]
+
 Let's go see what it looks like! Head over to `/admin/product`.
 
 And... okay! Good start: this has everything we need... though, it doesn't really
@@ -92,6 +94,8 @@ fit into our design super well. Let's improve that a *tiny* bit. Open up this
 page's template, which is `templates/product_admin/index.html.twig`. On top, add
 a `<div>` class `container-fluid` and `mt-4` for some margin. All the way at the
 bottom, add the ending `div`.
+
+[[[ code('be3d516912') ]]]
 
 Copy this... because we need it in all of our templates. Open edit, do
 that same thing... add the closing div... `new.html.twig`... and finally
@@ -112,9 +116,13 @@ and it needs to know what text to use for each Category option. Go into
 a `public function __toString()` method that returns `$this->name`. I'm going to
 cast that to a string... just in case the name is `null`.
 
+[[[ code('fd56b0b529') ]]]
+
 Oh, and while we're thinking about the form, I want to make it a bit smaller. In
 `src/Form/ProductType.php`, the form contains *every* field. To make life simpler,
 remove `brand`, `weight`, `stockQuantity`, `imageFilename`, and also `colors`.
+
+[[[ code('d5c641829b') ]]]
 
 Very nice.
 
@@ -126,6 +134,8 @@ Back over in `ProductAdminController::index()`, change the query to sort
 the *newest* on top. Do that by changing this `findAll()` to `findBy()`, pass it
 an empty criteria - so it still returns everything - and then sort by `id` `DESC`.
 You could also use a `createdAt` column if you want.
+
+[[[ code('b469f87258') ]]]
 
 Head over and refresh now. Perfect: the highest ids are on top.
 
