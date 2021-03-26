@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index 5267dd5..c708cae 100644
+index 5267dd5..df510cd 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -1,6 +1,7 @@
@@ -25,7 +25,7 @@ index 5267dd5..c708cae 100644
                  data: $form.serialize(),
              });
              this.modal.hide();
-+            this.dispatch('modal-form-success');
++            this.dispatch('success');
          } catch (e) {
              this.modalBodyTarget.innerHTML = e.responseText;
          }
