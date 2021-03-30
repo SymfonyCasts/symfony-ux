@@ -38,3 +38,5 @@ chapters:
     - form-responses
     - reload-controller
     - dispatch-event
+    - reuse-controller
+    - css-transitions
