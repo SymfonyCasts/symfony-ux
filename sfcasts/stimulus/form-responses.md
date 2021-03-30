@@ -1,144 +1,144 @@
-# Form Responses
+# Ajax Form Response Status Codes
 
-Coming soon...
+Open the modal and fill out the name and price fields: the only two required fields.
+I want to see what happens if we submit the form successfully.
 
-No
+And... whoa! That was weird. On success, our controller currently redirects back
+to `/admin/product`. When jQuery's Ajax hits a redirect, it *follows* it and makes
+a *second* Ajax request. We can see this in the Network tab: here's the original
+request and here's the request from the redirect. And because that redirects to
+the list page, it grabbed the *full* HTML for that page and jammed it into the modal.
 
-Modal and fill out the
+That's... *probably* not what we want. Instead, I want to close the modal. But to
+do that, we need to be able to determine - from JavaScript - whether a form submit
+was successful *or* had a validation error.
 
-Name
+But, at the very least, if we refresh the page, we *do* see the new product in
+the list. So, yay! We know the save part is working.
 
-And price fields. The only two required fields. I want to see what happens if we
-submit this form successfully. And Whoa, that was weird on success. Our controller
-currently redirects them back to Slack. The pro uh, currently redirects, when an Ajax
-call from jQuery hits a redirect, it follows that redirect. There's the first
-redirect. And there's the second, since that redirect is for the list page, it
-grabbed that HTML, that full HTML for that page and jammed it into the modal. So, um,
-okay. That's not what we want instead of on success. I w I want to detect that the
-form,
+## On Success: 204 Empty Response
 
-I want to say,
+Over in the controller, if the form is submitted via Ajax, instead of a redirect,
+what *should* we return? How about an empty, successful response. We can do that
+with if `$request->isXmlHttpRequest()` - or you might instead be looking for a
+query parameter if you decided to use that strategy - then return
+`new Response()` - the one from HttpFoundation - passing it `null` for the
+content and `204` for the status code.
 
-What was the model to do that? We're going to need to be able to detect whether or
-not a form submit was successful or had a validation error. And the very least, if we
-refresh the page, we do see the new product in the list. So, yay. We know that's
-working back over in the controller. If the form is being submitted via Ajax, instead
-of a redirect, we can return an empty, successful response. We can do that with if
-request arrow is XML HTTP request, Or you could be looking for a query parameter. If
-you did it that way, then return new response. The one from HTTP foundation, no, and
-two Oh four,
+204 is a special status code that means:
 
-Two Oh four is a special status code. That means this was successful, but I have no
-information I need to send back. So it's an empty response, but there's still one
-problem. When the form hasn't validation errors, we're currently returning it to 100
-status code. And that's what this error render does by the fault. In other words,
-whether the form submit is successful or not successful, both situations return a
-successful response that doesn't make our life very easy in JavaScript to figure out
-which B which situation we're in. What can we do return an error response when the
-form fails validation, this will not only make our life easier in JavaScript. It's
-more correct. And it'll still work fine if you're submitting a form normally without
-JavaScript, check it out. The third argument to render
+> This response was successful! Yay! But... I have no content that I want to return.
 
-Is a response object that the HTML from the template should be put into when this is
-not passed. The response object with a 200 status code is automatically created. So
-now let's pass our own response, new response, the same one from HTTP foundation.
-They don't pass this Knoll for the first argument for the content, uh, because that's
-going to be replaced by the HTML from the template anyways. And the really important
-thing for us is the status code. Now this render method is called both when the form
-is originally loaded and when it's submitted, uh, with invalid data. So we need to
-figure out whether w which situation we're in. So I'll use the ternary syntax here to
-say, form arrow is, is submitted.
+So: an empty - but successful - response. That'll fix the redirect issue.
 
-Yeah,
+## On Error: 422 Error Response
 
-Four 22 L's 200. Again, if the form was submitted and successful, we would already be
-inside this loop here, and we'd never get down there. So if the form is submitted, we
-definitely know it's an invalid submit. So we can use this four 22 status code for 22
-means unprocessed unprocessable entity. And it's a standard status code for
-validation errors. As a bonus, doing this on your forms will play super nicely with
-stimulus's sister technology turbo. Oh, and by the way, in symphony 5.3, there is a
-new render form shortcut in your controller, which will automatically set the four 22
-status code for you just like this. That'll make this much cleaner.
+But there's still one problem. When the form has validation errors, we're
+currently returning a 200 success status code: that's what `$this->render()`
+uses by default.
 
-Okay.
+In other words, whether the form submit is successful or not, *both* situations
+return a successful status code. That... doesn't make our life very easy in JavaScript
+where we need to figure out which situation we're in! Sure, we could look *exactly*
+for a 200 versus 204 status code... but... there's a better way.
 
-Back in our stimulus controller. Now we have the info we need. When the SIM form
-submit fails validation, the await dollar sign dot Ajax will now throw in exception.
-Thanks to that four 22 status code. So let's wrap this in a try catch block.
+What is it? Return an *error* status code when the form fails validation. This will
+not only make our life easier in JavaScript... it's also more correct! And it will
+still work *fine* if you're submitting a form *normally* without JavaScript: the
+error status code won't confuse old browsers or anything like that.
 
-I'll say, try catch.
+The third argument to `render()` is a `Response` object that the HTML from the
+template will be put *into*. When this is *not* passed, a `Response` object with
+a 200 status code is automatically created. Let's pass our *own*:
+`new Response()` - the same one from HttpFoundation - passing `null` for the
+for the content... because that's going to be replaced by the HTML from the template
+anyways.
 
-And what we want to do here is actually Take out the Vista modal body.target. I enter
-HTML because we only want to do that on air. So down in the air will say this, that
-mold about by target to enter HTML and to get the response tax, you can actually get
-it off of the air. Object is E dot response text. If you look at the documentation in
-the successful situation, let's just say, console that log success
+The really important thing is the status code. But this `render()` method
+is called both when the form is *originally* loaded *and* when it's submitted with
+invalid data. So we need to figure out which situation we're in. Use the ternary
+syntax here to say: if `$form->isSubmitted()`, then use `422` else `200`.
 
-For now. All right, let's try this
+This works because - if the form was submitted *and* was successful - we would already
+be inside the first `if` statement... and we would never get down here. So if the
+form is submitted, we definitely know it's an *invalid* submit.
 
-Refresh open the modal and let's first submit this empty. Beautiful. We have the
-heirs now fill in a name and price
+The `422` status code means "unprocessable entity". And it's a pretty standard
+status code for validation errors. As a bonus, doing this on your forms will play
+*super* nicely with Stimulus's sister technology Turbo. Oh, and by the way, in
+Symfony 5.3, there is a new `renderForm()` shortcut in your controller, which will
+automatically set the `422` status code for you on error. That'll make this much
+cleaner.
 
-And submit, okay. Nothing happened. Okay.
+## Try/Catch the Ajax Call
 
-But if we check the console, yes, we do see the log. All we need to do now is close
-the modal on success.
+Back in our Stimulus controller, now we have the info we need. When the form
+submit fails validation, the 422 status code will cause the `await $.ajax()`
+to throw an exception. So let's wrap this in a try catch block.
 
-Okay.
+Say, `try`, `catch`... and what we want to do is take out
+`this.modalBodyTarget.innerHTML` because we *only* want to do that on error. In
+the catch, say `this.modalBodyTarget.innerHTML` and the response text is available
+on the error object as `e.responseText`.
 
-We do that by calling hide on this modal object. The only problem is that we don't
-have access to that modal object from down here in our submit form method. That's
-okay. Let's send it on a pro as a property
+In the successful situation, for now, just `console.log('success')`.
 
-Up here,
+Ok team - let's see what happens! Refresh. Open the modal and let's first submit
+the form empty. Beautiful! We have errors! Fill in name and price... and submit
+again. Okay.... nothing happened. But if we check the console... yes! There's our
+log! All we need to do *now* is close the modal on success.
 
-Uh, up at the top of the class. I don't have to do this, but I'm going to say modal
-equals no to initialize that property. Then down here, we'll say this stop modal
-equals new modal And this dot modal that show down then replaced concert log of
-success with this dot modal
+## Closing the Modal on Success
 
-Doc hide. Let's try it again.
+We can do that by calling `hide()` on this modal object. The only problem is that...
+we don't have *access* to that object from down here in `submitForm()`! That's ok:
+this is where having a controller object comes in handy! We can set that modal on
+a property.
 
-Refresh. You can see my awesome zip drive. Is there,
+Up at the top of the class... we don't have to do this because JavaScript is friendly,
+but I'm going to say `modal` equals `null` to initialize the property. Then down
+in `connect()`, update to `this.modal` equals `new Modal()` and
+`this.modal.show()`.
 
-Fill out the fields and submit, Oh God,
+Now, after the Ajax call, replace `console.log('success')` with
+`this.modal.hide()`.
 
-We have a fully functioning Ajax modal system that is reusable. The only imperfect
-thing is that we don't see the new item on the page, unless we refresh let's handle
-that in the next chapter.
+Let's try it now. Refresh - there's my awesome zip drive from the last submit - open
+the modal, fill out the field and... submit! OMG! We have a fully-functioning
+Ajax modal system. *And*... it's *completely* reusable!
 
-But before we do
+The only *imperfect* thing is that we don't see the new item on the page, until
+we refresh. No worries: we'll handle that in the next chapter.
 
-Search for bootstrap five modal click into its docs, and then go down to the events
-section at the bottom, Total opens and closes the modal itself, dispatches some
-events. What if we needed to listen to those? Like, what if we need to run some
-custom code? Whenever a modal is closed, how can we do that? This is the beauty of
-stimulus. We already know how, if something is dispatching an event, all we need to
-do is add in action for that event. Check it out over in index that HTML that twig
-I'll break This div. The steam has controller and a multiple lines, and then add a
-data dash action here. What we're going to do is we're going to listen to this
-hidden, that BS dot mole event, which happens after the modal is finished being
+## Listening to Bootstrap Modal Events
+
+But before we do, search for "bootstrap 5 modal", click into its docs, and then go
+down to the "Events" section at the bottom. As the modal opens and closes, the
+modal *itself* dispatches some events. What if we needed to listen to those? Like,
+what if we need to run some custom code whenever a modal is closed. How can we do
+that? This is the beauty of Stimulus. We already know how! If something dispatches
+an event, all *we* need to do is add an *action* for that event.
+
+Check it out: over in `index.html.twig`, I'll break this
+onto multiple lines and then add a `data-action=""`. What we're going to do is listen
+to this `hidden.bs.modal` event, which happens after the modal is finished being
 hidden.
 
-Okay.
+Use that event name, then `->`, the name of our controller - `modal-form` - a
+`#` sign and then call the new method `modalHidden`.
 
-So I'll say that. And then we'll say arrow, the name of our controller modal dash
-form pound sign, and then let's call the new method modal hidden.
+Now, the `hidden.bs.modal` event *won't* be dispatched directly on *this*
+`<div>`. It will be dispatched on the modal element. But we already know that's okay!
+The event will bubble *up* to *this* `<div>`.
 
-Okay.
+Copy `modalHidden` and head into our Stimulus controller. At the bottom add that
+method and let's just `console.log('it was hidden')`.
 
-Now the hidden BS modal event, won't be dispatch dispatched directly on this dip. It
-will be dispatched on the modal element, but we already know that's okay. The event
-will bubble up to this diff competent model, hidden name, go into our stimulus
-controller at the bottom. Add that method and let's just console dot log. It was
-hidden.
+Try it out! Go back to our site, refresh, open the modal and hit cancel. There's
+the log! Open it again, hit "X" and... *another* log. I love that.
 
-Try it out, go back to our site, refresh over there,
-
-Model and hit, cancel. There's the log opening again, hit X there's the another log.
-I love that next to make this a truly smooth user experience after a successful form
-summit, what we should really do is make an Ajax call to reload the product list so
-that the user can see the new product. Let's do that by once again, making a re
-usable stimulus controller, this controller will be capable. We'll be able to reload
-the HTML for any element.
-
+Next: to make this a truly smooth user experience, after a successful form
+submit, what we should *really* do is make another Ajax call to reload the product
+list... so that the user can *see* the new product. Let's do that by, once again,
+making a reusable Stimulus controller. This controller will be able to reload the
+HTML for *any* element.
