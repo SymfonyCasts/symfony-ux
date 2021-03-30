@@ -7,15 +7,15 @@ Specifically, `reload-content_controller` needs to know when it should refresh t
 content. To help it know that, we're going to dispatch a custom event from
 `modal-form` after the form submits successfully.
 
-So since we did this before, let's jump straight in. First at the top
+So since we did this before, let's jump straight in. First, at the top,
 `import { useDispatch } from 'stimulus-use'`. Then activate that with a new
-`connect()` method, `useDispatch(this)`. Temporary temporarily pass this
+`connect()` method: `useDispatch(this)`. Temporarily pass this
 `debug: true` so we can see the event being dispatched in the log.
 
 Now, down after success, say `this.dispatch('success')`.
 
 Try it: reload... and try selling some rotted, I mean, reclaimed wood at our store.
-Submit and... awesome! That *did* just dispatch an event. And its name is
+Submit and... awesome! That *did* just dispatch an event... and its name is
 `modal-form:success`.
 
 # Listening to the Custom Event
@@ -24,42 +24,43 @@ Copy that. Now that we've seen the event name, go back over and remove the `debu
 option. Here's the last magic piece to make this work. In `index.html.twig`, up on
 the `reload-content` controller `<div>`, add an action for the new event:
 `data-action=""` the name of the event - `modal-form:success` - arrow, the name of
-the controller - `reload-content` pound sign and name of the method: `refreshContent`.
+the controller - `reload-content` - a pound sign and the name of the method:
+`refreshContent`.
 
 That's it! When the `modal-form:success` event is dispatched, it will bubble up to
-this element and we will call `refreshContent`. Then... that'll take care of
-everything!
+this element and we will call `refreshContent()`. Then... that'll take care of
+the rest!
 
-Let's test it. Reload the page, open the model and let's sell some avocado peels.
-Submit. Ah! It kinda seemed to have worked... but the Ajax endpoint apparently
+Let's test it. Reload the page, open the modal and let's sell some avocado peels.
+Submit. Ah! It... kinda seems like it worked? Except that the Ajax endpoint apparently
 returned the entire page, *not* just the template partial.
 
 ## Using a Query Param instead of isXmlHttpRequest()
 
 Let's go look at the controller. Ah... I warned about this and then did it anyways!
-We're using `fetch(` to make the Ajax call... and `fetch()` does *not* send the
-header needed for `isXmlHttpRequest()` to work. And so, this *always* rendrs
+We're using `fetch()` to make the Ajax call... and `fetch()` does *not* send the
+header needed for `isXmlHttpRequest()` to work. And so, this *always* renders
 `index.html.twig`.
 
 That's okay! Let's just add a query parameter to the end of the URL. I like that
 better anyways.
 
-Replace this code with `$request->query->get('ajax')`. So we'll be looking for a
+Replace this code with `$request->query->get('ajax')`. So, we'll be looking for a
 `?ajax=1` on the end of the URL.
 
-In the template - `index.html.twig` - we can add that to the end of the URL as an
-object with `ajax: 1`.
+In the template - `index.html.twig` - add that to the URL by passing extra params
+with `ajax` set to `1`.
 
-Try the form again. Refresh, we'll sell some salsa to go with those avocados and
+Try the form again. Refresh! We'll sell some salsa to go with those avocados... and
 this time... perfect! The section reloaded. We're done!
 
 If we want to make this a bit fancier, we could even add some classes and use those
 to force CSS transitions. Or we can do an even simpler trick. When it first starts
-loading, let's say  `this.contentTarget.style.opacity = .5`.
+loading, let's say `this.contentTarget.style.opacity = .5`.
 
 Copy that, and then, *after* it finishes loading, set the opacity back to 1.
 
-Add one more product: this time, a mystery box of donuts. Watch closely on the table
+Add one more product: this time, a mystery box of donuts. Watch the table closely
 when I hit save. Yes! It was quick, but the table had less transparency for *just*
 a moment while it reloaded.
 
