@@ -1,57 +1,71 @@
 # CSS Transition Classes
 
-Coming soon...
+Right now, the search preview results are hiding and showing correctly... but there
+are *no* CSS transitions yet. Why not?
 
-back. So that's great book. Where does the transition come from? That's up to us
-to add and CSS Go back to assets styles at CSS, and I'll go to the bottom at the
-bottom. I'm going to paste in three CSS classes.
+Adding the *transition* is... actually up to us! By defining it in CSS.
 
-This 2000 milliseconds here is probably too slope, but it will make it easy for us to
-see how the feature works. Before we talk about what's going on here. It should
-already work. Whoever want to do a fourth refresh just to be sure and type beautiful.
-It faded in. And when I click off, it fades out. This deserves some explanation.
-First back in the controller, we defined it. Six classes that use transition should
-use. I totally made up these names over here. They have obvious names like
-interactive corresponds to interactive. And since this transition is going to be a
-fade in, fade out, I called it fate, but these class names could be anything, but
-they correspond to what we did in our CSS file. So here's the magic. When we call
-this.enter, use transition immediately adds the fade, enter active class. That
-doesn't cause a transition, but it establishes that if the opacity changes, we want
-it to happen slowly.
+## Adding the Transition Classes
 
-Over 2000 milliseconds, one frame later, it adds another class fade enter from and it
-removes the D dash non-class. This shows the element, but within opacity set to zero
-one frame, after that it removes fade enter from, but adds, fade, enter to the
-results your browser starts transitioning, you know, pasty from zero to one. What
-happens next? Use transition is smart. It detects that a transition is currently
-happening and will take 2000 milliseconds. So it waits. Yup. It literally waits for
-two seconds for the transition to finish. Then it removes both. Fade enter two and
-fade enter active because it's work is done. The element is now fully visible. The
-element faded in and is now fully visible. Isn't that amazing stimulus used. Didn't
-invent this idea. You'll see it in other libraries like view, but it is handy
+Go back to `assets/styles/app.css`, and head to the bottom. I'm going to paste
+in three new CSS rules.
 
-In
+This 2000 milliseconds here is probably too slow... but it will make it easy to
+see how the feature works.
 
-Our controller. When we call this.leave to hide the element, the process happens in
-reverse. First fade leave active is added to the element which establishes that we
-want a 2000 millisecond transition on a pasty. Next it adds fade leave from,
+Before we talk about what's going on here... it should already work! Move over a
+refresh the page. Type and... beautiful! It faded in! When I click off, it fades
+out! Amazing!
 
-Um,
+## The Class Lifecycle of Showing an Element
 
-Which makes sure that the opacity is definitely set to one, which it already was.
-Anyways. One frame later, it removes fade lead from and replaces it with fade. Leave
-to The results. The transit, the opacity transitions from one to zero over two
-seconds. After the transition has finished use transient use transition adds the D
-dash non-class and removes both failed leave too. And fade leave active since they're
-not needed anymore.
+This... deserves some explanation. Back in the controller, we defined six classes
+that `useTransition` should use. The option keys come from `useTransition` but I
+*totally* made up thee class names on the right. But, they make sense: since we're
+going to make a "fade" transition, each option starts with `fade` and then matches
+the option it relates to.
 
-Phew. Learning how this works is pretty cool,
+*Anyways*, move back to the CSS file where we define the style for these classes.
+Here's the magic. When we call `this.enter()`, `useTransition` immediately adds
+the `fade-enter-active` class. That doesn't cause a transition, but it establishes
+that, if the opacity changes, we *want* it to happen over 2000 milliseconds.
 
-But the result is even better. And in your day to day use, it's really simple. Now
-that we have these three CSS classes defined, we could reuse this exact use
-transition in other controllers, in any other controller to add, fade in and fade out
-functionality to it. Next there's one last thing I want to talk about stimulus is
-used by a lot of people, including the Ruby on rails world. And so it turns out that
-there are a bunch of pre-made stimulus controllers that you can download and use
-directly in your app. Yay. Let's install one and learn how to register it with our
-stimulus instance.
+*One* frame later, it adds *another* class - `fade-enter-from` *and* it removes
+the `d-none` class. The result is that the element is now "shown"... but with an
+opacity set to 0. One frame after that, it removes `.fade-enter-from` but adds
+`fade-enter-to`. Thanks to this, our browser starts transitioning the opacity
+from 0 to 1! Awesome!
+
+So.. what happens next? `useTransition` is smart. It *detects* that a transition
+is currently happening and will take 2000 milliseconds. So, it waits. Yup! It
+literally waits for two seconds for the transition to finish. And *then* it removes
+both `fade-enter-to` and `fade-enter-active` because its work is done. The element
+faded in and is now fully visible.
+
+Isn't that amazing? `stimulus-use` didn't invent this idea - you'll see it in other
+libraries like Vue, but it is *so* handy.
+
+## The Class Lifecycle of Hiding an Element
+
+In or controller, when we call `this.leave()` to hide the element, the process happens
+in reverse. First, `fade-leave-active` is added to the element, which establishes
+that we *want* a 2000 millisecond transition on `opacity`. Next it, adds
+`fade-leave-from`, which makes sure that the opacity is definitely set to `one`,
+which it already was. One frame later, it *removes* `fade-leave-from` and replaces
+it with `fade-leave-to` The result is that the element starts a 2 second opacity
+transition from `one` to 0. Two seconds later, after the transition has finished,
+`useTransition` adds the `d-none` class and removes both `fade-leave-to` and
+`fade-leave-active`, since they're not needed anymore.
+
+Phew! Learning how this works is pretty cool. But the result is even better. And
+in your day-to-day use, it's really simple. Now that we have these three CSS classes
+defined, we could reuse this exact `useTransition` in any other controller to add,
+fade in and fade out functionality to it. Heck, you could even create a re-usable
+JavaScript module that sets up the behavior and these options automatically for
+you.
+
+Next: there's one last thing I want to talk about. Stimulus is used by a lot of
+people, including the Ruby on Rails world. And so, it turns out that there are a
+bunch of pre-made Stimulus controllers that you can download and use directly in
+your app! Yay! Let's install one and learn how to register it with our Stimulus
+application.
