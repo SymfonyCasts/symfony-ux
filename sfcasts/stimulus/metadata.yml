@@ -40,3 +40,5 @@ chapters:
     - dispatch-event
     - reuse-controller
     - css-transitions
+    - 3rd-party-controllers
+    - autocomplete-controller
