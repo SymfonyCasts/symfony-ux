@@ -1,99 +1,140 @@
 # Using the autocomplete-controller
 
-Now that we have a new `autocomplete` controller registered, let's try to use it instead of
-our custom `search_preview` controller to power our search preview functionality, to
-see how look back at the docs. Let's see, looking at this example here, we need to
-add the `data-controller` attribute around the text input and the `<div>` where the
-results will go. We also need to pass a `url` value to where the Ajax calls should be
-made. The input needs a target called `input`, and the results go into a target called
-`results`. We don't need to worry about this hidden element, this hidden input thing.
-That's only if you need to save a value in a form element after the user selects an
-option, which doesn't apply to us, open the template for the homepage
-`templates/product/index.html.twig`
+Now that we have a new `autocomplete` controller registered, let's try to use it
+instead of our custom `search-preview` controller to power the search preview
+functionality.
 
-And let's see first changed the name of the controller from `search-preview` to
-`autocomplete`, and nice. We're already passing a value called `url`. Next on the input. We
-don't need this `action` anymore. The controller handles setting that up for us, but we
-do need to add a target to this call to `input`. So the controller knows this is our
-text element `data-autocomplete-target="input"`. Finally update the results
-target to use the new controller name `autocomplete`, and the target name is now
-`results` with an S and done. Let's try it, move over. Find our site hit refresh type D
-I and nothing happened. Well, not nothing I can see in the web debug toolbar, Whoever
-had back to our spot refresh type in D I nothing happened well, not nothing. I can
-see that there was an Ajax call. In fact, two Ajax calls down in the web Debo. Two of
-our what's check one of these out in our network tool. Look at the preview. Whoa,
-it's a little small down here, but this is the full HTML page. I make that a little
-bit bigger. It's not just the results,
+## Setting up the Controller in HTML
+
+To see how, go back at the docs. Hmm... looking at this example, we need to add the
+`data-controller` attribute around the to an element that's both around the `input`
+that we type into and the div where the results will go. We also need to pass a `url`
+*value* set to where the Ajax calls should be made. The input needs a target called
+`input`... and the results go into a target called `results`. We don't need to worry
+about this hidden element: that's only needed if you're building a form and want
+to update a form field when the user selects an option.
+
+Open the template for the homepage: `templates/product/index.html.twig`. First,
+change the name of the controller from `search-preview` to `autocomplete`. Then...
+nice! We were *already* passing a value called `url`, so that's done.
+
+Next, on the input, we don't need the "action" anymore - the controller handles
+setting that up for us. But we do need to *identity* this as the text input by
+adding a target: `data-autocomplete-target="input"`.
+
+Finally update the "results" target to use the new controller name `autocomplete`,
+and the target name is now `results` with an "S".
+
+Done. Let's try it! Move over, find our site, refresh type "di" and... nothing
+happened! Well, not *nothing*. I can see that there *was* an Ajax call. In fact,
+*two* Ajax calls: I can see that down in the web debug toolbar.
+
+Let's check out one of these in our Network tool. Look at the "Preview". Whoa! It's
+a little small... but this is the *full* HTML page. Let's make this bigger. Yep,
+this didn't render just the results *partial*, it returned the full page!
 
 What happened?
 
-Okay. A few things to notice first by complete chance, the `autocomplete` controller
-sends the contents of our input as a `q` query parameter, which is exactly what we
-were using. Before. You can see that in `src/Controller/ProductController.php`
-we use `q` to get our search term, but we also look for a question Mark `preview`,
-query parameter. To know if we should render a page partial before in `search-preview`
-controller, we actually added that in, in a JavaScript manually in JavaScript. Now we
-should add it to our value in `index.html.twig` back up on the URL at a second
-arguments path and past `preview: 1` that will fix the full page problem. But
-if you try it now,
+## How the autocomplete Ajax Works
 
-Same thing in Ajax call was made, but no results and the network tab. Yeah, it is now
-returning the partial, not the full page. So why don't we actually see them right
-here? One other rule to this library, which I would have noticed if I had read the
-documentation a bit more closely is that each result should be identified by a
-`role="option"` attribute. Okay? We don't need this data out of place value, cause that
-applies only if you need the hidden input thing, but we definitely always need this
-`role="option"` thing. No problem. The template for that partial is over in
-`templates/product/_searchPreview.html.twig` on the `<a>` tag, which represents a single
-option I'll add `role="option"`
+Okay. I notice a few things. To start, by *complete* chance, the `autocomplete`
+controller sends the contents of our input as a query parameter called `q`... which
+is *exactly* what we were using before! You can see that in
+`src/Controller/ProductController.php`: we read `q` as our search term. Awesome!
 
-And actually down here on the no results and we need to do the same thing,
-`role="option"`. And if you look again at the documentation, if you want to make it not
-something not clickable, you can add an `area-disabled="true"` options. So that will make it
-show up on the list, but it's not something I'm going to actually be able to select
+But we *also* look for a `?preview` query parameter to know if we should render
+a page *partial*. Previously, in `search-preview` controller, we added that query
+parameter manually in JavaScript. We can't do that now... but that's ok! We can
+add it to our `url` *value*.
 
-This time, back in our site, we don't even need to refresh the page I can type and
-boom, there it is. It looks exactly like before. And as a bonus, this controller has
-something that ours never did. The ability to hit up and down to go through the
-results and the hitting enter selects it. Let's celebrate by deleting our old
-`search-preview` controller. Thanks for teaching us how to use stimulus. Now we will use less
-custom code, but I have one last question. Could we make this `autocomplete`
-controller load laser only earlier we made the whole chart-js controller lazy in
-controllers by JSON by sending `fetch: 'lazy'`. We also made the submit confirm
-controller lazy by adding this special comment on top. But what about third-party
-controller? We don't register this in controllers that JSON and we can't exactly open
-up this file and add a comment.
+In `index.html.twig`, back up on the `url`, add a second argument to `path` and
+pass `preview: 1`. That will fix the full page problem.
 
-So can we make it lazy? We can though, due to some rigidness in how Webpack works,
-the syntax, it's not amazing in `bootstrap.js`. We need to change the import to
-pass through this special stimulus bridge, lazy controller loader. You can do that by
-literally saying `import { Autocomplete } from...` the name of that loader exclamation
-points, and then the name of the module that you want to import. So this module will
-now be passed through this loader, but also before the exclamation point at
-`?lazy=true` that that `lazy=true` basically fills in for the missing lazy
-comment that in the file and tells the loader to load this controller lazy. Now,
-normally this would be all you need ugly, but not that ugly, but since this stimulus
-auto-complete module export a exports eight named export instead of a default export,
-we needed to do a little bit more. So by name to export. I mean, the fact that we had
-to say import `{ Autocomplete }`, that's a named export versus being able to
-just say in four out of the plate, from the name of that library, if we tried this,
-it would not work. So since it exports a named export, we need to tell the stimulus
-letter, the name of that export. We do that by adding one more loader option here as
-a query parameter called `&export=Autocomplete`
+But if you try it now... the same thing happened again! An Ajax call was made...
+but no results are showing up! On the network tab... yeah! It *is* now
+returning the partial - not the full page. So... why don't we actually *see* the
+results below the input?
 
-So literally whatever it is that we're using, Yeah, that's not the
-prettiest thing right there, but if you had over and reload the page and check the
-network tools, it filtered for JavaScript.
+## Adding the role="option" Attribute
 
-If you remember now refresh and then go down to the filter for on your network tools,
-filter for JS. Yes. Look at this. You can look at this name here. This one here
-stimulus complete is being downloaded.
+Because.. the *other* rule of this library - which I *totally* would have noticed
+if I had read the documentation a bit more closely - sorry - is that each result
+must be identified by a `role="option"` attribute. But we don't need this
+`data-autocomplete-value` attribute: that controls the value that should go into
+the hidden `input`... which we don't need. But we *definitely* always need this
+`role="option"` thing.
 
-This script file here today is a new controller and was only loaded after the
-`data-controller="autocomplete"` was found on the page. If we want to any other page,
-you would see that that is never downloaded. This new controller allowed us to have
-cut less custom code in our app and added the ability to press up and down on the
-search results to choose things in the list. But we did lose one thing, the nice CSS
-transitions. Can we somehow add those to this third-party controller? As long as the
-controller dispatches the right events, we totally can. Let's learn how next.
+Let's go add it! The template for the partial is over in
+`templates/product/_searchPreview.html.twig`. On the `<a>` tag, which represents
+a single option add `role="option"`.
 
+Oh, and down here on the "no results", we need to do the same thing: `role="option"`.
+And if you look again at the documentation, to have an option but make it *not*
+selectable, you can add `aria-disabled="true"`. That will make it show up on the
+list... but I won't be able to select it.
+
+This time, back on the site, we don't even need to refresh the page: I can type and
+boom! There it is! It looks *exactly* like before! And as a bonus, the controller
+has a feature that ours never did: the ability to hit up and down on your keyboard
+to go through the results. And, pressing enter, activates it.
+
+Oh, and by the way, *technically*, we did *not* need to make our controller for
+the Ajax call return a *partial*. If we returned the *whole* page from the Ajax
+call... it would still work *exactly* like it does now... because the `autocomplete`
+controller looks for the `role="option"` attributes and only renders *those*.
+Rendering just the *partial* is a bit faster... but it's technically *not* needed...
+which is kind of amazing!
+
+Let's celebrate by deleting our old `search-preview` controller. Thanks for teaching
+us how to use Stimulus! But now it's time for us to have less custom code.
+
+## Making third-Party Controllers Lazy
+
+I have *one* more wish... or question: could we make this `autocomplete` controller
+load lazily? Earlier we made the whole `chart-js` controller "lazy" in
+`controllers.json` By setting `fetch: 'lazy'`. We also made our own
+`submit-confirm_controller` lazy by adding this special comment above the class.
+
+But what about third-party controller? We don't register this in `controllers.json`
+and... we can't exactly open up the file and add a comment in it. So, can we make
+it lazy?
+
+We can! Though, due to some rigidness in how Webpack works, the syntax... isn't
+amazing. In `bootstrap.js`, we need to change the `import` to pass through the
+special `@symfony/stimulus-bridge/lazy-controller-loader`. You can do that by
+literally saying `import { Autocomplete } from...` - the name of that loader -
+an exclamation point, and then the name of the module that you want to import.
+
+So this module will now be passed *through* this loader. That... by itself, won't
+change anything. But now, before the exclamation point, add `?lazy=true`.
+
+The `lazy-controller-loader` is what looks for the `stimulusFetch` comment above
+the controller. Since that won't be there, this `?lazy=true` is our way to *force*
+laziness.
+
+Now, normally, this would be *all* you need. It's a bit ugly, but not too bad!
+And we get the laziness we want.
+
+However, notice that the `stimulus-autocomplete` module uses a *named* export
+instead of a *default* export. What I mean is, to use this, we had to say
+`import { Autocomplete }` - that's a *named* export - versus just being able
+to say `import Autocomplete`. If we tried this, it would not work.
+
+*Anyways*, since this uses a named export, we need to tell the loader the *name*
+of that. We do that by adding one more loader option: `&export=Autocomplete`.
+
+Ok, *now* we're done. It's ugly, but it gets the job done *when* you need a 3rd
+party controller to load lazily.
+
+Let's see it in action. Move over, refresh the page... and go down to your Network
+tools filtered for JavaScript. Yes! Look at this long name: this is the file that
+contains `stimulus-autocomplete`. The "Initiator" proves that it's being downloaded
+lazily, only *after* the `data-controller="autocomplete"` was found on the page.
+
+If we go to *any* other page... that code is *never* downloaded.
+
+The new `stimulus-autocomplete` controller allowed us to have *less* custom code
+*and* better functionality, with the ability to press up and down on the search
+results. But we did lose one thing: the nice CSS transitions! Can we somehow add
+those to this third-party controller? As long as the controller dispatches the right
+events, we totally can. Let's learn how next
