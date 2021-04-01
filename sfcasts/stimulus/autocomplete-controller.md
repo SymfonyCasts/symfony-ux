@@ -1,6 +1,4 @@
-# Autocomplete Controller
-
-Coming soon...
+# Using the autocomplete-controller
 
 Now that we have a new `autocomplete` controller registered, let's try to use it instead of
 our custom `search_preview` controller to power our search preview functionality, to
@@ -10,10 +8,10 @@ results will go. We also need to pass a `url` value to where the Ajax calls shou
 made. The input needs a target called `input`, and the results go into a target called
 `results`. We don't need to worry about this hidden element, this hidden input thing.
 That's only if you need to save a value in a form element after the user selects an
-option, which doesn't apply to us, open the template for the homepage 
+option, which doesn't apply to us, open the template for the homepage
 `templates/product/index.html.twig`
 
-And let's see first changed the name of the controller from `search-preview` to 
+And let's see first changed the name of the controller from `search-preview` to
 `autocomplete`, and nice. We're already passing a value called `url`. Next on the input. We
 don't need this `action` anymore. The controller handles setting that up for us, but we
 do need to add a target to this call to `input`. So the controller knows this is our
@@ -31,7 +29,7 @@ What happened?
 
 Okay. A few things to notice first by complete chance, the `autocomplete` controller
 sends the contents of our input as a `q` query parameter, which is exactly what we
-were using. Before. You can see that in `src/Controller/ProductController.php` 
+were using. Before. You can see that in `src/Controller/ProductController.php`
 we use `q` to get our search term, but we also look for a question Mark `preview`,
 query parameter. To know if we should render a page partial before in `search-preview`
 controller, we actually added that in, in a JavaScript manually in JavaScript. Now we
@@ -42,14 +40,14 @@ if you try it now,
 Same thing in Ajax call was made, but no results and the network tab. Yeah, it is now
 returning the partial, not the full page. So why don't we actually see them right
 here? One other rule to this library, which I would have noticed if I had read the
-documentation a bit more closely is that each result should be identified by a 
+documentation a bit more closely is that each result should be identified by a
 `role="option"` attribute. Okay? We don't need this data out of place value, cause that
 applies only if you need the hidden input thing, but we definitely always need this
-`role="option"` thing. No problem. The template for that partial is over in 
+`role="option"` thing. No problem. The template for that partial is over in
 `templates/product/_searchPreview.html.twig` on the `<a>` tag, which represents a single
 option I'll add `role="option"`
 
-And actually down here on the no results and we need to do the same thing, 
+And actually down here on the no results and we need to do the same thing,
 `role="option"`. And if you look again at the documentation, if you want to make it not
 something not clickable, you can add an `area-disabled="true"` options. So that will make it
 show up on the list, but it's not something I'm going to actually be able to select
@@ -57,7 +55,7 @@ show up on the list, but it's not something I'm going to actually be able to sel
 This time, back in our site, we don't even need to refresh the page I can type and
 boom, there it is. It looks exactly like before. And as a bonus, this controller has
 something that ours never did. The ability to hit up and down to go through the
-results and the hitting enter selects it. Let's celebrate by deleting our old 
+results and the hitting enter selects it. Let's celebrate by deleting our old
 `search-preview` controller. Thanks for teaching us how to use stimulus. Now we will use less
 custom code, but I have one last question. Could we make this `autocomplete`
 controller load laser only earlier we made the whole chart-js controller lazy in
@@ -91,7 +89,7 @@ If you remember now refresh and then go down to the filter for on your network t
 filter for JS. Yes. Look at this. You can look at this name here. This one here
 stimulus complete is being downloaded.
 
-This script file here today is a new controller and was only loaded after the 
+This script file here today is a new controller and was only loaded after the
 `data-controller="autocomplete"` was found on the page. If we want to any other page,
 you would see that that is never downloaded. This new controller allowed us to have
 cut less custom code in our app and added the ability to press up and down on the
