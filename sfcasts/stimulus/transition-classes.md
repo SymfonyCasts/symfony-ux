@@ -10,6 +10,8 @@ Because... adding the *transition* is... actually up to us! By defining it in CS
 Go back to `assets/styles/app.css` and head to the bottom. I'm going to paste
 in three new CSS rules.
 
+[[[ code('951b22e814') ]]]
+
 This 2000 milliseconds here is probably too slow... but it will make it easy to
 see how the feature works.
 

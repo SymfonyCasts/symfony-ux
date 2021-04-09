@@ -66,13 +66,18 @@ To activate the `useTransition` behavior, we'll do the same thing as the
 other behaviors. Import `useTransition`... and down in `connect()`, initialize
 it: `useTransition(this)`.
 
+[[[ code('98d2e585c8') ]]]
+
 But this behavior has several *required* options. The first is called `element`.
 This is the element that we want to hide or show. For us, that's
 `this.resultTarget`.
 
-I'm going to paste in the next *six* options. These are CSS classes that
-we're going to create in our CSS file in a minute. Don't worry about them yet.
-The last option we need is `hiddenClass` set to `d-none`.
+I'm going to paste in the next *six* options. 
+
+[[[ code('63404ec8a5') ]]]
+
+These are CSS classes that we're going to create in our CSS file in a minute. 
+Don't worry about them yet. The last option we need is `hiddenClass` set to `d-none`.
 
 You'll see how this is used in a second, but `d-none` is a Bootstrap class that
 sets `display: none` on an element.
@@ -88,6 +93,8 @@ Down after we make the Ajax call, to *show* the `resultTarget` element, say
 
 Then, later, when we want to hide it, we can say `this.leave()`. And we will *not*
 clear the HTML anymore: we'll keep the HTML, but hide the element.
+
+[[[ code('27f53699f6') ]]]
 
 ## The Elements Hides and Shows!
 
