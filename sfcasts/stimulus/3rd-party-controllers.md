@@ -69,6 +69,8 @@ registers that as a controller, which means we can add a matching `data-controll
 element to the page and it *will* work. When we install a Symfony UX package, the
 `controllers.json` does the same thing for *those* controllers.
 
+[[[ code('c1d236640d') ]]]
+
 But what about the controller that we just installed? How do we register *that* with
 our Stimulus app? Back at the docs, under "Usage", you can see that they import
 the `Autocomplete` package... then call some `application.register()` thing
@@ -79,10 +81,14 @@ Notice that this looks *pretty* similar to the code example, though not
 exactly the same. The `application` variable in the docs is the same as the `app`
 variable that we have in our file.
 
+[[[ code('14a57423c4') ]]]
+
 On the docs, copy the `import` line and... pop that onto the top of our file. Then,
 to register the controller, down here say: `app.register('autocomplete')` - that
 name could be *anything*... and will determine the `data-controller` that will
 be used to connect to this controller in HTML - then  `Autocomplete`.
+
+[[[ code('05bb3e1c42') ]]]
 
 Congratulations! With 1 command and 2 lines of code, we now have a new controller
 called `autocomplete` available in our app!
