@@ -9,18 +9,28 @@ Let's customize those to make more sense. Up on the header, we can say:
 "add a new product".
 
 Wait, don't do that. I want to try to make this template as reusable as possible
-for *other* modals. Instead, let's say `{{ modalTitle }}`. In `index.html.twig`,
-add a second argument to `include()` and pass `modalTitle` set to
-"Add a new product".
+for *other* modals. Instead, let's say `{{ modalTitle }}`:
+
+[[[ code('4fd5f9967c') ]]]
+
+In `index.html.twig`, add a second argument to `include()` and pass `modalTitle` 
+set to "Add a new product":
+
+[[[ code('5665c52543') ]]]
 
 Very nice! For the body, use `{{ modalContent }}`. That's a new variable I'm
-inventing. But pipe this into the `default` filter and say "loading...".
+inventing. But pipe this into the `default` filter and say "loading...":
+
+[[[ code('d2235d73b3') ]]]
+
 In this case, we are *not* going to pass any modal content, but you could in
 other situations. We'll replace the `loading...` in a minute after we make the
 Ajax call.
 
 For the buttons, hard-code those to some new text: "Cancel" and "Save". We can
 always make them dynamic later.
+
+[[[ code('c9b4b0605e') ]]]
 
 Let's make sure we didn't break anything. When I click the button, very nice!
 
@@ -42,10 +52,16 @@ And so, we'll do what we've done several times before: pass the URL into the
 controller as a *value*. Add `static values = {}` and create a value called, how
 about `formUrl`, which will be a `String`.
 
+[[[ code('5cbd3972cd') ]]]
+
 Then, down in `openModal`, `console.log(this.formUrlValue)`.
+
+[[[ code('9950108bce') ]]]
 
 In the template, on `stimulus_controller`, add a second argument so that we can
 pass the `formUrl` value set to `path()` and the route name: `product_admin_new`.
+
+[[[ code('94469740c5') ]]]
 
 Try it: refresh, click and... got it! There's the URL.
 
@@ -65,6 +81,8 @@ yarn add jquery --dev
 Once that finishes, we can import that into our controller with:
 `import $ from 'jquery'`.
 
+[[[ code('c0902dbf4e') ]]]
+
 ## Making the Ajax Call
 
 Now, down in the method, remove the `console.log()` and make the Ajax call with
@@ -77,11 +95,17 @@ need a new target.
 
 Right here, add `data-modal-form-target=` and let's call this one `modalBody`.
 
+[[[ code('cfd3bc2460') ]]]
+
 Copy that, go back to the controller, and set this up as a second target.
+
+[[[ code('aa32d25469') ]]]
 
 In `openModal()` use that: `this.modalBodyTarget.innerHTML` equals,
 `await $.ajax()`... because jQuery's Ajax function returns a `Promise`. And, of
 course, my Webpack build is mad because we need to make `openModal()` *async*.
+
+[[[ code('aa32d25469') ]]]
 
 Our Ajax call *is* still going to return the HTML for the *entire* page... but
 let's at least see if it works.
@@ -92,6 +116,8 @@ returns the full page, but it *is* working!
 Before we fix that, I want to handle one small detail. In our Stimulus
 controller, at the very top of `openModal`, add `this.modalBodyTarget.innerHTML`
 equals `Loading...`.
+
+[[[ code('94960f6d81') ]]]
 
 That's a minor thing: if we open the modal twice, this will clear the contents
 before we start the AJAX call... so that we don't temporarily see an *old* form.
@@ -109,6 +135,8 @@ Yea! `make:crud` already generated the exact template partial we need!
 Inside `new()`, we can say `$template =` and then, to figure out if this is an
 Ajax request, use `$request->isXmHttpRequest()`. If it is, use `_form.html.twig`.
 Else, use `new.html.twig`. Now, render `product_admin/` and then `$template`.
+
+[[[ code('2aed286c75') ]]]
 
 That's it! But I do have one warning. When I make an Ajax call for a partial, I
 usually append a query parameter like `?form=1` or `?ajax=1`... or add some special
@@ -134,6 +162,8 @@ that's coming from the form partial. A really easy way to do this is with CSS.
 Over in your editor, open `assets/styles/app.css`. All the way at the bottom, we're
 going to hide any buttons that are inside of the modal body... which has this
 `modal-body` class. Do that with `.modal-body button` and `display: none`.
+
+[[[ code('51a8c9e749') ]]]
 
 This will hide all the buttons for *all* of the modals on your site. If that's
 a problem, add a custom class on your modal HTML so you can be more targeted.
