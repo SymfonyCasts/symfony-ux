@@ -11,7 +11,11 @@ Add `data-action=` - we can just use the default action for a button, which is
 `click` - then our controller name - `modal-form` - a `#` sign and a new
 method name. How about `submitForm`.
 
+[[[ code('91631fc517') ]]]
+
 Copy that name and go add it to our stimulus controller `submitForm()`.
+
+[[[ code('f24e1a1168') ]]]
 
 ## Finding the form Without a Target
 
@@ -28,6 +32,8 @@ Instead, in our controller, let's leverage the `modalBodyTarget` - which is goin
 to be this element right here - and look *inside* of it for a `form` element. With
 jQuery, we can do that with: `const $form = $(this.modalBodyTarget)` then
 `.find('form')`.
+
+[[[ code('52d7692b48') ]]]
 
 If you use jQuery in Stimulus, you will always use `$()` and then some element
 so that we're looking *inside* that element... instead of inside the whole page.
@@ -53,6 +59,8 @@ which in this case was `this.element`.
 We *could* do that same thing here. But since we're using jQuery, there's a
 shortcut: `console.log($form.serialize())`.
 
+[[[ code('47b1373572') ]]]
+
 Let's try that. Move over, refresh the page, open the modal and fill in at least
 one of the fields. Hit save. Nothing visually happened... but look at the log.
 
@@ -68,6 +76,8 @@ Say `$.ajax()` and I'll pass it the options format where even the URL is
 an option. Set that to `$form.`. Now you might expect me to read the `action`
 attribute off of the form. But instead, say `.prop('action')`.
 
+[[[ code('e5365a0cd0') ]]]
+
 That's *slightly* different... and bit smarter: this will return the correct action
 URL even if there is *no* `action` attribute... which means that a form should
 submit back to the *current* URL.
@@ -78,7 +88,11 @@ In jQuery, we're asking it to give us that same property.
 
 Repeat this for `method` set to `$form.prop('method')`.
 
+[[[ code('8f66b141b6') ]]]
+
 Finally, for the data, we can say `data` set to `$form.serialize()`.
+
+[[[ code('564e0f2f5c') ]]]
 
 So there you have it: a jQuery version of how you can submit a form via Ajax.
 
