@@ -23,6 +23,8 @@ on the `div` that's around the cart table. Change this to `reload-content`... an
 then, the `cartRefreshUrl` value is now called `url` in the new controller,
 so change that here.
 
+[[[ code('bf1a639deb') ]]]
+
 Great!
 
 Now, we need something to *call* the `refreshContent()` method on the controller.
@@ -34,6 +36,8 @@ this dispatches a custom event: `submit-confirm:async:submitted`. Before, we wer
 listening to that and calling `removeItem` on the `cart-list` controller. All we
 need to do *now* - since we're using the `reload-content` controller - is call
 the `refreshContent` method.
+
+[[[ code('8df2a553ad') ]]]
 
 Sweet! I think we're done. Testing time!
 
@@ -63,8 +67,12 @@ haven't really used it yet. This is a safe way to check whether or not there *is
 `content` target defined in the HTML. If there *is* one, then of course we'll
 use `this.contentTarget`. Else use `this.element`.
 
+[[[ code('ee2b10e336') ]]]
+
 Now, down here, use `target` in those three other places instead of
 `this.contentTarget`.
+
+[[[ code('bc2edce4c3') ]]]
 
 Try it now! Refresh, remove an item and... got it! We get the same functionality
 with *less* code!
