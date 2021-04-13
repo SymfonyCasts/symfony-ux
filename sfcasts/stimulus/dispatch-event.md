@@ -12,7 +12,11 @@ So since we did this before, let's jump straight in. First, at the top,
 `connect()` method: `useDispatch(this)`. Temporarily pass this
 `debug: true` so we can see the event being dispatched in the log.
 
+[[[ code('5c250e3522') ]]]
+
 Now, down after success, say `this.dispatch('success')`.
+
+[[[ code('2f993b1beb') ]]]
 
 Try it: reload... and try selling some rotted, I mean, reclaimed wood at our store.
 Submit and... awesome! That *did* just dispatch an event... and its name is
@@ -26,6 +30,8 @@ the `reload-content` controller `<div>`, add an action for the new event:
 `data-action=""` the name of the event - `modal-form:success` - arrow, the name of
 the controller - `reload-content` - a pound sign and the name of the method:
 `refreshContent`.
+
+[[[ code('2afb197e47') ]]]
 
 That's it! When the `modal-form:success` event is dispatched, it will bubble up to
 this element and we will call `refreshContent()`. Then... that'll take care of
@@ -48,8 +54,12 @@ better anyways.
 Replace this code with `$request->query->get('ajax')`. So, we'll be looking for a
 `?ajax=1` on the end of the URL.
 
+[[[ code('8d01f3d295') ]]]
+
 In the template - `index.html.twig` - add that to the URL by passing extra params
 with `ajax` set to `1`.
+
+[[[ code('785db68158') ]]]
 
 Try the form again. Refresh! We'll sell some salsa to go with those avocados... and
 this time... perfect! The section reloaded. We're done!
@@ -59,6 +69,8 @@ to force CSS transitions. Or we can do an even simpler trick. When it first star
 loading, let's say `this.contentTarget.style.opacity = .5`.
 
 Copy that, and then, *after* it finishes loading, set the opacity back to 1.
+
+[[[ code('8f07db9981') ]]]
 
 Add one more product: this time, a mystery box of donuts. Watch the table closely
 when I hit save. Yes! It was quick, but the table had less transparency for *just*
