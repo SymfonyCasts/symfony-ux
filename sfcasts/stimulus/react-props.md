@@ -87,6 +87,8 @@ serializer component installed in my app... and I've already added some
 serialization groups to this class to control exactly *which* fields are turned
 into JSON: that's this `product:read` group.
 
+[[[ code('9efd077244') ]]]
+
 The only missing piece is that... well.. there isn't a way in Twig to *use*
 Symfony's serializer to transform an object into JSON. So... I built one. You can
 see it in `src/Twig/SerializerExtension.php`. This adds a filter called `serialize`,
