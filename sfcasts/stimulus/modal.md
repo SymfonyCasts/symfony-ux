@@ -7,14 +7,21 @@ leaving or reloading this page. To do that, we need an "Add" button!
 
 Open the template for this page - `templates/product_admin/index.html.twig` - and
 wrap the `h1` in a `div` with `class="d-flex flex-row"`. Also give the
-`h1` an `me-3` so it has some margin between it and the button. Add that `button`,
-text "Add" with classes `btn`, `btn-primary` and `btn-sm`.
+`h1` an `me-3` so it has some margin between it and the button:
+
+[[[ code('81c06215cf') ]]]
+
+Add that `button`, text "Add" with classes `btn`, `btn-primary` and `btn-sm`.
+
+[[[ code('ebc9f522ad') ]]]
 
 Cool! Because clicking the button will open a modal via JavaScript, let's immediately
 attach a Stimulus `data-controller` attribute. But instead of adding it to the
 `button` directly, wrap the button in a div and add it there:
 `{{ stimulus_controller()` }} and let's call it `modal-form`... because we're
 going to make this controller able to open *any* form we want in a modal.
+
+[[[ code('947f8f05a4') ]]]
 
 Why are we attaching the controller to the `div` instead of the `button`? It
 won't make any difference right now... but it *will* come in handy in a few minutes
@@ -24,6 +31,8 @@ Speaking of the controller, let's go add that! In `assets/controllers/`, create
 a new file called `modal-form_controller.js`. Go steal the starting code from another
 controller... paste, and do our usual `connect()` method with `console.log()`
 coffee.
+
+[[[ code('82b235398b') ]]]
 
 Ok! Refresh the page to make sure everything is connected and... it is! There's
 our tiny, delicious beverage.
@@ -36,8 +45,12 @@ to the button.
 Over in our template, add `data-action=` the name of our controller -
 `modal-form` - pound sign, and let's call the method `openModal`.
 
+[[[ code('f975f551b4') ]]]
+
 Copy that, head into the controller, rename `connect()` to `openModal()` and add
 the event argument in case we need it. Inside, `console.log(event)`.
+
+[[[ code('8e40c6c938') ]]]
 
 If we refresh now... and click. We're on a roll!
 
@@ -46,6 +59,8 @@ If we refresh now... and click. We're on a roll!
 So how do we open the modal? One of the nice things about Bootstrap is that it has
 standalone JavaScript utilities, including one that opens a modal. In Bootstrap 5,
 we can import it by saying `import { Modal } from 'bootstrap'`.
+
+[[[ code('e9a0bdddb1') ]]]
 
 ## Fixing the Missing @popperjs/core Peer Dependency
 
@@ -87,8 +102,12 @@ Inside, I'll paste a basic modal structure. There's no magic here: you can find 
 copy a bunch of different modal examples from the Bootstrap docs. This has a
 header, a body, which is basically empty, and a footer with some buttons.
 
+[[[ code('277a67a16f') ]]]
+
 Now go back to `index.html.twig`. Right after the button, include the modal:
 `include('_modal.html.twig')`.
+
+[[[ code('b904019d38') ]]]
 
 Why are we including it right there?  You'll see why in a minute. But first, go
 refresh the page... and inspect element on the button. Ok good: the modal HTML
@@ -108,6 +127,8 @@ Back in `_modal.html.twig`, all the way up on the top level element, add a targe
 `data-` - the name of our controller - `modal-form` - `-target=` and call
 the new target `modal`.
 
+[[[ code('2233705a78') ]]]
+
 This *does* make the modal template a *bit* specific to this *one* Stimulus
 controller. But I'm okay with that. If we need to make this same element a target
 for a *different* controller in the future... we can totally do that! We can add
@@ -117,10 +138,16 @@ Copy the target name and head back to the controller. Declare it with
 `static targets = []` an array with `modal` inside. Careful with the typing on
 `targets`: I'll regret that mistake.
 
+[[[ code('c07517bba9') ]]]
+
 Anyways, now we can say `new Modal(this.modalTarget)`.
+
+[[[ code('b19133f65c') ]]]
 
 That creates a new `Modal` object... but doesn't actually *open* it yet. To do
 that, say `modal.show()`.
+
+[[[ code('adb972391e') ]]]
 
 Time to take it for a test drive! Move over, refresh and click. Ah! An error!
 
