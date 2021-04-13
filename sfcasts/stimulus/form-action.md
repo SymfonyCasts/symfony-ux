@@ -25,6 +25,8 @@ To fix this, instead of `$form.prop('action')`, use the `formUrl` value:
 `this.formUrlValue`. This assumes that the same URL that you use to *fetch* the
 form is also the URL that should be used to *submit* the form.
 
+[[[ code('8930cbf002') ]]]
+
 Let's try that again. Refresh the page, hit add, and Save. Yes! Look at that!
 We instantly see validation errors! If I fill out one field and submit again,
 it goes away!
@@ -47,12 +49,16 @@ Fortunately, we do *not* need to do that. In `_modal.html.twig`, break the
 `data-action=` the name of the event - `submit`, `->`, the name of our
 controller - `modal-form` - `#` sign and then `submitForm`.
 
+[[[ code('bce798d7e3') ]]]
+
 Remember: events bubble up. The `submit` event is *first* dispatched on this `form`
 element. But then it bubbles up to the `modal-body` div. That means that this
 element will *also* receive the `submit` event.
 
 To *prevent* the form from actually *submitting*... so that we can make the
 Ajax call, add an `event` argument to `submitForm()` and say `event.preventDefault()`.
+
+[[[ code('0894ca169b') ]]]
 
 When we hit enter on the form, that will prevent the submit. When we click the save
 button, this will have *no* effect... because clicking a button outside of a
