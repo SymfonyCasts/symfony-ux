@@ -84,7 +84,7 @@ and pass `app`.
 Like with the styles, this will render the built version of `app.js` plus any
 JavaScript it imports. And it may *also* be split into multiple files.
 
-## The New &lt;script defer Attribute
+## The New `<script>` defer Attribute
 
 Oh, and you're seeing a recent change in Symfony's TwigBundle recipe for
 `base.html.twig`. The `javascripts` block *used* to live down here at the bottom
@@ -100,7 +100,7 @@ having the `scripts` at the bottom of the page. But with the new setup, our brow
 *does* start downloading the files *slightly* earlier. And this plays nicer with
 Turbo - the topic of our next tutorial.
 
-Iif you want to learn more about this change, check out a
+If you want to learn more about this change, check out a
 [blog post I wrote on Symfony.com](https://symfony.com/blog/moving-script-inside-head-and-the-defer-attribute).
 
 Next: let's use Encore to build our assets, see "code splitting" in action and
