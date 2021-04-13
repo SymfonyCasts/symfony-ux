@@ -27,6 +27,8 @@ Let's break it on multiple lines... fix my *super* old  typo on `container` - no
 wonder the page didn't look very good - then add `{{ stimulus_controller() }}`.
 Call the new controller, how about, `reload-content`.
 
+[[[ code('b64c982205') ]]]
+
 Why are we adding it here... and not directly around the table? Well, in order
 for the `reload-controller` to know when a form was submitted successfully,
 we're going to use an old trick: we will dispatch an event from `modal-form`
@@ -39,6 +41,8 @@ Let's go add the new file. In `assets/controllers/` create
 it's so similar - close it and paste. Add a `connect()` method with
 `console.log()` a refresh icon.
 
+[[[ code('e93b5ee821') ]]]
+
 Let's give it a go! Refresh the page, check out the logs and... we are connected!
 
 ## Creating the Partial Endpoint
@@ -49,8 +53,12 @@ like we've done before. Copy the entire table, delete it and then, in this same
 directory - `product_admin` - create a new file called `_list.html.twig`. Paste the
 table here.
 
+[[[ code('6d5c4c4aed') ]]]
+
 Back in `index.html.twig` include that with
 `{{ include('product_admin/_list.html.twig') }}`.
+
+[[[ code('6e046b79c6') ]]]
 
 If we refresh now... so far so good: nothing changes.
 
@@ -64,26 +72,38 @@ HttpFoundation - and then say `$template = $request->isXmlHttpRequest()`. If thi
 *is* an Ajax request, use `_list.html.twig`. Else, use the template we're using
 now, `index.html.twig`. Below, we can replace the `index.html.twig` with `$template`.
 
+[[[ code('90f51a038c') ]]]
+
 Awesome! Now, copy the route name so we can pass this into our controller. We'll
 use a value. Start by defining that in our controller. Or, really, just rename
 `cartRefreshUrl` to just `url` and it will be a `String`. I'll also remove the
 `connect()` method.
 
+[[[ code('74a0576cec') ]]]
+
 Pass the value in via the template. So up at the top, on a second argument to
 `stimulus_controller()`, set `url` to `path('product_admin_index')`.
+
+[[[ code('d993fe5572') ]]]
 
 Lovely! Before we use that to make the Ajax call, when that call finishes,
 we're going to need to know *where* we should put the new HTML. Let's wrap the table
 in a new `div` and make it a target: `data-reload-content-target=""` and...
 call it `content`.
 
+[[[ code('a13f839fb4') ]]]
+
 Go set up that target. At the top of the class, add `static targets = []` with
 `content` inside.
+
+[[[ code('951d23d04c') ]]]
 
 *Now* let's make the Ajax call. Rename the method to `refreshContent()`. We're not
 *using* this method anywhere... but we will soon. Let's see: we don't need to add
 this class... the value changed to `this.urlValue`... and instead of using
 `this.element`, use `this.contentTarget`
+
+[[[ code('47da3b912d') ]]]
 
 As I mentioned, nobody is *calling* `refreshContent()` yet. But if they did, it
 *should* make the Ajax call and replace the table with the new HTML. So... how
