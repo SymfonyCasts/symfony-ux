@@ -25,6 +25,8 @@ query parameter if you decided to use that strategy - then return
 `new Response()` - the one from HttpFoundation - passing it `null` for the
 content and `204` for the status code.
 
+[[[ code('312d6c2a23') ]]]
+
 204 is a special status code that means:
 
 > This response was successful! Yay! But... I have no content that I want to return.
@@ -59,6 +61,8 @@ is called both when the form is *originally* loaded *and* when it's submitted wi
 invalid data. So we need to figure out which situation we're in. Use the ternary
 syntax here to say: if `$form->isSubmitted()`, then use `422` else `200`.
 
+[[[ code('311ded6cda') ]]]
+
 This works because - if the form was submitted *and* was successful - we would already
 be inside the first `if` statement... and we would never get down here. So if the
 form is submitted, we definitely know it's an *invalid* submit.
@@ -76,12 +80,20 @@ Back in our Stimulus controller, now we have the info we need. When the form
 submit fails validation, the 422 status code will cause the `await $.ajax()`
 to throw an exception. So let's wrap this in a try catch block.
 
-Say, `try`, `catch`... and what we want to do is take out
+Say, `try`, `catch`:
+
+[[[ code('f999e76b87') ]]]
+
+and what we want to do is take out
 `this.modalBodyTarget.innerHTML` because we *only* want to do that on error. In
 the catch, say `this.modalBodyTarget.innerHTML` and the response text is available
 on the error object as `e.responseText`.
 
+[[[ code('5d13d8735f') ]]]
+
 In the successful situation, for now, just `console.log('success')`.
+
+[[[ code('7035b1c1c2') ]]]
 
 Ok team - let's see what happens! Refresh. Open the modal and let's first submit
 the form empty. Beautiful! We have errors! Fill in name and price... and submit
@@ -100,8 +112,12 @@ but I'm going to say `modal` equals `null` to initialize the property. Then down
 in `connect()`, update to `this.modal` equals `new Modal()` and
 `this.modal.show()`.
 
+[[[ code('fa1a342734') ]]]
+
 Now, after the Ajax call, replace `console.log('success')` with
 `this.modal.hide()`.
+
+[[[ code('c818596b08') ]]]
 
 Let's try it now. Refresh - there's my awesome zip drive from the last submit - open
 the modal, fill out the field and... submit! OMG! We have a fully-functioning
@@ -127,12 +143,16 @@ hidden.
 Use that event name, then `->`, the name of our controller - `modal-form` - a
 `#` sign and then call the new method `modalHidden`.
 
+[[[ code('f172381d7f') ]]]
+
 Now, the `hidden.bs.modal` event *won't* be dispatched directly on *this*
 `<div>`. It will be dispatched on the modal element. But we already know that's okay!
 The event will bubble *up* to *this* `<div>`.
 
 Copy `modalHidden` and head into our Stimulus controller. At the bottom add that
 method and let's just `console.log('it was hidden')`.
+
+[[[ code('6dd39aff0e') ]]]
 
 Try it out! Go back to our site, refresh, open the modal and hit cancel. There's
 the log! Open it again, hit "X" and... *another* log. I love that.
