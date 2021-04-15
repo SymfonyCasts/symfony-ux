@@ -9,6 +9,10 @@ export default class extends Controller {
     }
 
     toggleState(event) {
-        console.log('toggling!', event);
+        if (event.detail.action === 'open') {
+            this.enter();
+        } else {
+            this.leave();
+        }
     }
 }
