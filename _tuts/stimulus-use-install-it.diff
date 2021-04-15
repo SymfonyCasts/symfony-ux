@@ -11,10 +11,10 @@ index f95ee90..678553e 100644
      },
      "license": "UNLICENSED",
 diff --git a/yarn.lock b/yarn.lock
-index 5f00c87..b36279f 100644
+index 2abe684..446bab9 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4675,6 +4675,11 @@ stackframe@^1.1.1:
+@@ -4682,6 +4682,11 @@ stackframe@^1.1.1:
    resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
    integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
  
