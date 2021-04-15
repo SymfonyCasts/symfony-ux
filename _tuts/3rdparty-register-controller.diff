@@ -1,18 +1,15 @@
 diff --git a/assets/bootstrap.js b/assets/bootstrap.js
-index cb771d2..f0db990 100644
+index cb771d2..08f4645 100644
 --- a/assets/bootstrap.js
 +++ b/assets/bootstrap.js
-@@ -1,8 +1,12 @@
+@@ -1,4 +1,5 @@
  import { startStimulusApp } from '@symfony/stimulus-bridge';
 +import { Autocomplete } from 'stimulus-autocomplete';
  
  // Registers Stimulus controllers from controllers.json and in the controllers/ directory
--export const app = startStimulusApp(require.context(
-+const app = startStimulusApp(require.context(
-     '@symfony/stimulus-bridge/lazy-controller-loader!./controllers',
+ export const app = startStimulusApp(require.context(
+@@ -6,3 +7,4 @@ export const app = startStimulusApp(require.context(
      true,
      /\.(j|t)sx?$/
  ));
 +app.register('autocomplete', Autocomplete);
-+
-+export { app };
