@@ -43,3 +43,4 @@ chapters:
     - transition-classes
     - 3rd-party-controllers
     - autocomplete-controller
+    - autocomplete-transitions
