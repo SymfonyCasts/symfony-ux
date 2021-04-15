@@ -12,10 +12,10 @@ index 82f4acb..ede0b53 100644
          "stimulus": "^2.0.0",
          "stimulus-use": "^0.22.1",
 diff --git a/yarn.lock b/yarn.lock
-index e6dda80..67c38e6 100644
+index 78829e4..4a55f64 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -3166,7 +3166,7 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:
+@@ -3173,7 +3173,7 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:
      merge-stream "^2.0.0"
      supports-color "^7.0.0"
  
@@ -24,7 +24,7 @@ index e6dda80..67c38e6 100644
    version "4.0.0"
    resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
    integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
-@@ -3290,6 +3290,13 @@ lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20:
+@@ -3297,6 +3297,13 @@ lodash@^4.17.14, lodash@^4.17.19, lodash@^4.17.20:
    resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
    integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
  
@@ -38,7 +38,7 @@ index e6dda80..67c38e6 100644
  lru-cache@^6.0.0:
    version "6.0.0"
    resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-6.0.0.tgz#6d6fe6570ebd96aaf90fcad1dafa3b2566db3a94"
-@@ -3574,7 +3581,7 @@ nth-check@^1.0.2:
+@@ -3581,7 +3588,7 @@ nth-check@^1.0.2:
    dependencies:
      boolbase "~1.0.0"
  
@@ -47,7 +47,7 @@ index e6dda80..67c38e6 100644
    version "4.1.1"
    resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
    integrity sha1-IQmtx5ZYh8/AXLvUQsrIv7s2CGM=
-@@ -4261,6 +4268,23 @@ raw-body@2.4.0:
+@@ -4268,6 +4275,23 @@ raw-body@2.4.0:
      iconv-lite "0.4.24"
      unpipe "1.0.0"
  
@@ -71,7 +71,7 @@ index e6dda80..67c38e6 100644
  readable-stream@^2.0.1:
    version "2.3.7"
    resolved "https://registry.yarnpkg.com/readable-stream/-/readable-stream-2.3.7.tgz#1eca1cf711aef814c04f62252a36a62f6cb23b57"
-@@ -4492,6 +4516,14 @@ sax@~1.2.4:
+@@ -4499,6 +4523,14 @@ sax@~1.2.4:
    resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
    integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
  
