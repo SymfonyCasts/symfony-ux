@@ -1,0 +1,48 @@
+diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
+index e54a46e..ff61fd3 100644
+--- a/assets/controllers/autocomplete-transition_controller.js
++++ b/assets/controllers/autocomplete-transition_controller.js
+@@ -1,7 +1,10 @@
+ import { Controller } from 'stimulus';
++import { addFadeTransition } from '../util/add-transition';
+ 
+ export default class extends Controller {
++    static targets = ['results'];
++
+     connect() {
+-        console.log('I want transitions!');
++        addFadeTransition(this, this.resultsTarget);
+     }
+ }
+diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
+new file mode 100644
+index 0000000..698d678
+--- /dev/null
++++ b/assets/util/add-transition.js
+@@ -0,0 +1,14 @@
++import { useTransition } from 'stimulus-use';
++
++export function addFadeTransition(controller, element) {
++    useTransition(controller, {
++        element,
++        enterActive: 'fade-enter-active',
++        enterFrom: 'fade-enter-from',
++        enterTo: 'fade-enter-to',
++        leaveActive: 'fade-leave-active',
++        leaveFrom: 'fade-leave-from',
++        leaveTo: 'fade-leave-to',
++        hiddenClass: 'd-none',
++    });
++}
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index e88a98e..110ae3f 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -57,6 +57,7 @@
+                                 <div
+                                     class="search-preview"
+                                     data-autocomplete-target="results"
++                                    data-autocomplete-transition-target="results"
+                                 ></div>
+                             </div>
+                         </form>
