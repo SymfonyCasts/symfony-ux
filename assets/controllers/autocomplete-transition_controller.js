@@ -9,6 +9,6 @@ export default class extends Controller {
     }
 
     toggleState(event) {
-        //console.log('toggling!', event);
+        console.log('toggling!', event);
     }
 }
