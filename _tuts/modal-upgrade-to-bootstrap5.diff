@@ -12,10 +12,10 @@ index 45e809b..a9ef887 100644
          "react": "^17.0.1",
          "react-dom": "^17.0.1",
 diff --git a/yarn.lock b/yarn.lock
-index 5984478..861cdb5 100644
+index 9ef6129..e1947bb 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -1461,10 +1461,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
+@@ -1468,10 +1468,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:
    resolved "https://registry.yarnpkg.com/boolbase/-/boolbase-1.0.0.tgz#68dff5fbe60c51eb37725ea9e3ed310dcc1e776e"
    integrity sha1-aN/1++YMUes3cl6p4+0xDcwed24=
  
