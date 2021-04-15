@@ -4859,9 +4859,9 @@ stackframe@^1.1.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
 
-"stimulus-autocomplete@https://github.com/weaverryan/stimulus-autocomplete#toggle-event-always":
+"stimulus-autocomplete@https://github.com/weaverryan/stimulus-autocomplete#toggle-event-always-dist":
   version "2.0.0"
-  resolved "https://github.com/weaverryan/stimulus-autocomplete#8fdc6c00f63e12bd4ca2130a698d827420c7a659"
+  resolved "https://github.com/weaverryan/stimulus-autocomplete#1575e3ddac13e7c0bb0bcd1e04c64258167cc6a4"
   dependencies:
     lodash.debounce "^4.0.8"
 
