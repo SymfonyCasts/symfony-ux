@@ -17,7 +17,7 @@ index 105b26e..82f4acb 100644
 \ No newline at end of file
 +}
 diff --git a/yarn.lock b/yarn.lock
-index 23b68a2..e6dda80 100644
+index 8366a62..78829e4 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -44,7 +44,7 @@
