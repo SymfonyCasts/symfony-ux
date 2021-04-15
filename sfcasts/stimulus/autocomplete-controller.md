@@ -18,12 +18,18 @@ Open the template for the homepage: `templates/product/index.html.twig`. First,
 change the name of the controller from `search-preview` to `autocomplete`. Then...
 nice! We were *already* passing a value called `url`, so that's done.
 
+[[[ code('8dca50384c') ]]]
+
 Next, on the input, we don't need the "action" anymore: the controller will handle
 setting that up for us. But we *do* need to *identity* this as the text input by
 adding a target: `data-autocomplete-target="input"`.
 
+[[[ code('698150357e') ]]]
+
 Finally, update the "results" target to use the new controller name - `autocomplete` -
 and the target name is now `results` with an "S".
+
+[[[ code('e8028446c2') ]]]
 
 Done. Let's try it! Move over, find our site, refresh, type "di" and... nothing
 happened! Well, not *nothing*. I can see that there *was* an Ajax call. In fact,
@@ -42,13 +48,21 @@ controller sends the contents of our input as a query parameter called `q`... wh
 is *exactly* what we were using before! You can see that in
 `src/Controller/ProductController.php`: we read `q` as our search term. Awesome!
 
+[[[ code('14a278ceb1') ]]]
+
 But we *also* look for a `?preview` query parameter to know if we should render
-a page *partial*. Previously, in `search-preview` controller, we added that query
+a page *partial*. 
+
+[[[ code('94192010fe') ]]]
+
+Previously, in `search-preview` controller, we added that query
 parameter manually in JavaScript. We can't do that now... but that's ok! We can
 add it to the `url` *value*.
 
 In `index.html.twig`, back up on the `url`, add a second argument to `path` and
 pass `preview: 1`. That will fix the full page problem.
+
+[[[ code('e04f095063') ]]]
 
 But if you try it now... the same thing happened again! An Ajax call was made...
 but no results are showing up! On the network tab... yeah! It *is* now
@@ -68,10 +82,14 @@ Let's go add it! The template for the partial lives at
 `templates/product/_searchPreview.html.twig`. On the `<a>` tag, which represents
 a single option, add `role="option"`.
 
+[[[ code('47d01ab566') ]]]
+
 Oh, and down here on the "no results", we need to do the same thing: `role="option"`.
 And if you look again at the documentation, to have an option but make it *not*
 selectable, you can add `aria-disabled="true"`. That will make it show up on the
 list... but I won't be able to select it.
+
+[[[ code('b661a23abc') ]]]
 
 This time, back on the site, we don't even need to refresh the page: I can type and
 boom! There it is! It looks *exactly* like before! And as a bonus, the controller
@@ -123,6 +141,8 @@ to say `import Autocomplete`. If we tried *this*, it would not work.
 *Anyways*, since the library uses a named export, we need to notify the loader
 about this so it knows where to find the code. We do that by adding one more loader
 option: `&export=Autocomplete`: the name of the import.
+
+[[[ code('3b747a37ca') ]]]
 
 Ok, *now* we're done. It's ugly, but it gets the job done *if* you need a 3rd
 party controller to load lazily.
