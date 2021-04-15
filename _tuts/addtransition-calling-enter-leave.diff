@@ -1,12 +1,12 @@
 diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
-index 3f987c4..847c2e4 100644
+index 10b530e..2ff5550 100644
 --- a/assets/controllers/autocomplete-transition_controller.js
 +++ b/assets/controllers/autocomplete-transition_controller.js
 @@ -9,6 +9,10 @@ export default class extends Controller {
      }
  
-     toggleState(event) {
--        console.log('toggling!', event);
+     toggle(event) {
+-        console.log(event);
 +        if (event.detail.action === 'open') {
 +            this.enter();
 +        } else {
