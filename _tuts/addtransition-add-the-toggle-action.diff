@@ -1,25 +1,25 @@
 diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
-index ff61fd3..3f987c4 100644
+index e54a46e..63e48c6 100644
 --- a/assets/controllers/autocomplete-transition_controller.js
 +++ b/assets/controllers/autocomplete-transition_controller.js
-@@ -7,4 +7,8 @@ export default class extends Controller {
+@@ -4,4 +4,8 @@ export default class extends Controller {
      connect() {
-         addFadeTransition(this, this.resultsTarget);
+         console.log('I want transitions!');
      }
 +
-+    toggleState(event) {
-+        console.log('toggling!', event);
++    toggle(event) {
++        console.log(event);
 +    }
  }
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 110ae3f..2452fab 100644
+index e88a98e..8ca16d7 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -44,6 +44,7 @@
                                      },
                                      'autocomplete-transition': {}
                                  }) }}
-+                                data-action="toggle->autocomplete-transition#toggleState"
++                                data-action="toggle->autocomplete-transition#toggle"
                              >
                                  <input
                                      name="q"
