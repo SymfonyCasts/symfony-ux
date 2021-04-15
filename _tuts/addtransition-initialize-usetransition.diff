@@ -1,8 +1,8 @@
 diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
-index e54a46e..ff61fd3 100644
+index 63e48c6..10b530e 100644
 --- a/assets/controllers/autocomplete-transition_controller.js
 +++ b/assets/controllers/autocomplete-transition_controller.js
-@@ -1,7 +1,10 @@
+@@ -1,8 +1,11 @@
  import { Controller } from 'stimulus';
 +import { addFadeTransition } from '../util/add-transition';
  
@@ -13,7 +13,8 @@ index e54a46e..ff61fd3 100644
 -        console.log('I want transitions!');
 +        addFadeTransition(this, this.resultsTarget);
      }
- }
+ 
+     toggle(event) {
 diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
 new file mode 100644
 index 0000000..698d678
@@ -35,10 +36,10 @@ index 0000000..698d678
 +    });
 +}
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index e88a98e..110ae3f 100644
+index 8ca16d7..3a6dbb8 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
-@@ -57,6 +57,7 @@
+@@ -58,6 +58,7 @@
                                  <div
                                      class="search-preview"
                                      data-autocomplete-target="results"
