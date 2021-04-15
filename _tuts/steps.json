@@ -734,7 +734,37 @@
             "id": "3rdparty-make-controller-lazy",
             "name": "3rdParty: make controller lazy",
             "description": null
+        },
+        {
+            "id": "addtransition-use-my-fork",
+            "name": "AddTransition: use my fork",
+            "description": null
+        },
+        {
+            "id": "addtransition-create-new-controller",
+            "name": "AddTransition: create new controller",
+            "description": null
+        },
+        {
+            "id": "addtransition-initialize-usetransition",
+            "name": "AddTransition: initialize useTransition",
+            "description": null
+        },
+        {
+            "id": "addtransition-toggle-action",
+            "name": "AddTransition: toggle action",
+            "description": null
+        },
+        {
+            "id": "addtransition-calling-enter-leave",
+            "name": "AddTransition: calling enter\/leave",
+            "description": null
+        },
+        {
+            "id": "addtransition-skiphiddenproperty",
+            "name": "AddTransition: skipHiddenProperty",
+            "description": null
         }
     ],
-    "sha": "c0efb1f9ffda61870eb8da5df966dd0b9f7c7d23"
+    "sha": "ece67c35baae7d8fa1847b8830d88c30737669fe"
 }
