@@ -1,0 +1,25 @@
+diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
+index ff61fd3..3f987c4 100644
+--- a/assets/controllers/autocomplete-transition_controller.js
++++ b/assets/controllers/autocomplete-transition_controller.js
+@@ -7,4 +7,8 @@ export default class extends Controller {
+     connect() {
+         addFadeTransition(this, this.resultsTarget);
+     }
++
++    toggleState(event) {
++        console.log('toggling!', event);
++    }
+ }
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 110ae3f..2452fab 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -44,6 +44,7 @@
+                                     },
+                                     'autocomplete-transition': {}
+                                 }) }}
++                                data-action="toggle->autocomplete-transition#toggleState"
+                             >
+                                 <input
+                                     name="q"
