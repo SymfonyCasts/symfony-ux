@@ -38,8 +38,11 @@
                         <form>
                             <div
                                 class="input-group"
-                                {{ stimulus_controller('autocomplete', {
-                                    url: path('app_homepage', { preview: 1 })
+                                {{ stimulus_controller({
+                                    'autocomplete': {
+                                        url: path('app_homepage', { preview: 1 })
+                                    },
+                                    'autocomplete-transition': {}
                                 }) }}
                             >
                                 <input
