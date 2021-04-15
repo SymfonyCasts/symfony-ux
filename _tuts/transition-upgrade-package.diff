@@ -12,10 +12,10 @@ index ea4b8cc..e648f62 100644
          "webpack-bundle-analyzer": "^4.4.0",
          "webpack-notifier": "^1.6.0"
 diff --git a/yarn.lock b/yarn.lock
-index e5df9b4..3f7c7f7 100644
+index 605e938..30fd6b7 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4847,10 +4847,10 @@ stackframe@^1.1.1:
+@@ -4854,10 +4854,10 @@ stackframe@^1.1.1:
    resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
    integrity sha1-Fhx9rBd2Wf2YEfQ3cfqZOBR4Yow=
  

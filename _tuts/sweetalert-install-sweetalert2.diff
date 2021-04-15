@@ -11,10 +11,10 @@ index 678553e..eabc294 100644
      },
      "license": "UNLICENSED",
 diff --git a/yarn.lock b/yarn.lock
-index b36279f..7eb68aa 100644
+index 446bab9..43f20bc 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -4816,6 +4816,11 @@ svgo@^1.0.0:
+@@ -4823,6 +4823,11 @@ svgo@^1.0.0:
      unquote "~1.1.1"
      util.promisify "~1.0.0"
  
