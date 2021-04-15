@@ -746,13 +746,18 @@
             "description": null
         },
         {
+            "id": "addtransition-add-the-toggle-action",
+            "name": "AddTransition: add the toggle action",
+            "description": null
+        },
+        {
             "id": "addtransition-initialize-usetransition",
             "name": "AddTransition: initialize useTransition",
             "description": null
         },
         {
-            "id": "addtransition-toggle-action",
-            "name": "AddTransition: toggle action",
+            "id": "delete-me-2",
+            "name": "delete me 2",
             "description": null
         },
         {
@@ -766,5 +771,5 @@
             "description": null
         }
     ],
-    "sha": "ece67c35baae7d8fa1847b8830d88c30737669fe"
+    "sha": "cb4ca9ddb018dfd454489fb2461e92d4b35e0d40"
 }
