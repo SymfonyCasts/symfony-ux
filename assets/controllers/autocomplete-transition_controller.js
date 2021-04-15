@@ -5,7 +5,7 @@ export default class extends Controller {
         console.log('I want transitions!');
     }
 
-    toggleState(event) {
+    toggle(event) {
         console.log(event);
     }
 }
