@@ -1,150 +1,101 @@
 # Autocomplete with Transitions
 
-Coming soon...
+The great thing about the third party `stimulus-autocomplete` controller is that
+we were able to quickly create a nice search auto-complete feature with *full*
+control over the HTML. And this all required zero custom JavaScript.
 
-The great thing about the third party stimulus autocomplete controller is that we're
-able to quickly build a fully functional search auto-complete feature with full
-control over the HTML that you see this all required. Zero custom JavaScript. The
-only bummer is that we lost our fade in fade out transition. How can we add that
-back? When we originally added the transition, we did it by leveraging use transition
-from the stimulus use library. We added the behavior in connect then called either
-enter or leave to show or hide the element with the transition. But we can't exactly
-go into the stimulus. Auto completes the source code and hack that stuff in, but we
-can make this work. As long as this controller dispatches some events, the right
-events. If you look at their docs and scroll down, you'll see they have an event.
-They actually do trigger a bunch of events. And this toggle one looks perfect. Fire
-is one of the results element is shown or hidden. We can use that to trigger our
-transition. Before we jump in
+The only bummer is that we lost our fade-in, fade-out transition! How can we add
+that back?
 
-To get this to work,
+When we originally added the transition, we did it by leveraging `useTransition()`
+from the `stimulus-use` library. We added the behavior in `connect()` in a custom
+controller... then called either `this.enter()` or `this.leave()` to show or hide
+the element *with* the transition.
 
-We need a poll request to be merged into this library, which is still at the time of
-this recording, waiting to be merged rats. Since this is an merged, we'll use a fork
-of this library, which contains the tweaks from this pull request
+But... we can't exactly go into the `stimulus-autocomplete` source code and hack
+that stuff in! But we *can* make this work... as long as this 3rd party controller
+dispatches the right events.
 
-To do that. Open your package.JSON file.
+If you look at their docs... and scroll down: they have an Events section! And
+they *do* trigger a bunch of events! This `toggle` one looks perfect:
 
-Find the stimulus auto complete line and set its version To a specific branch on my
-repository,
+> Fires when the results element is shown or hidden.
 
-Right.
+We can use that to trigger our transition.
 
-I'll paste in. So this is my username, the same norm, the name of the library, and
-then the special branch called toggle event. Always a dist now at your terminal run
-yarn install to download that version of the library. Okay. So here's the plan in
-order to leverage the use transition behavior, we're going to need our own custom
-controller and assets controllers create a new file called how about auto complete
-transition_controller.JS. I'll go steal some code from another controller. And the
-only thing we need right now is just a connect method and we'll counsel.log. I want
-transitions now back in the template for this page, which is in templates, product
-index, .html.twig, we're going to add two controllers to this same element. We can do
-that with stimulus_controller. We just need to tweak the format a bit.
+## Using my stimulus-autocomplete Fork
 
-We pass an object to the first argument, and then each controller becomes a key in
-the object assigned to the value. So let me actually, Eric, go finish it. So you see,
-we're not passing an object. We're currently passing on one controller and here are
-the values for that controller. Now we'll also pass it our new controller name, which
-is going to be auto, complete dash transition, and we don't need to pass any values
-to this. So we'll just set it to an empty object. Let's try it move over, back on our
-site. I'll open my inspector, refresh the page, check the console and beautiful.
-There's our log. If you inspect the element on this, you can see that the data desk
-controller attribute now has both controllers on it to get this all to all work. We
-need our new controller to be notified whenever the autocomplete results should be
-shown or hidden so that we can trigger the transition.
+Before we jump in, to get this to work, we need a pull request to be merged into
+this library, which... at the time of this recording... is still *waiting* to be
+merged. Rats! Since this is unmerged, we'll use a *fork* of this library, which
+contains the tweaks from this pull request. Living on the edge!
 
-This is where that toggle event comes in handy. The stimulus auto complete controller
-dispatches all of its events on the main element that's registered for the
-controller, which means it's going to be on this div right here. Let's add an action
-for the toggle event. We'll do that with a new attribute called data dash action
-equals. And then the name of the event we want to listen to, which is toggle an-> the
-name of the controller that we want to call. That's going to be our new custom
-controller auto complete bash transition. And then the name on that controller that
-should be called. Let's just use the name toggle I'll copy that and head over to our
-new controller. And we'll add a new toggle method with an event argument, and let's
-just console that log, that event. So with any luck, whenever the complete results
-are shown or hidden, we should see this line get hit. Let's see if that happens,
-refresh the page. I'll go back to the console. And yes, you can see actually the
-first time there's an event that's dispatched immediately when it's loaded. Uh, but
-this down here as our custom event, when it was shown, and if you open that up and
-look at the detail property, there's an action property set to open. When we click
-off of this to close, we get a another event in this time, the detailed property, the
-action is set to close
+How can we use a fork? Open your `package.json` file and find the
+`stimulus-autocomplete` line. Set its version to a specific branch on my
+repository: I'll paste that in. This is my username, the name of the library...
+and then it points to a branch I created called `toggle-event-always-dist`.
 
-Back in our toggle method. We can use that info to either call this dot, enter, to
-fade in the element or this.leave to fade it out. But in order to even have those
-methods, we need to initialize the use transition behavior on this controller this
-time, instead of putting all the code right here, I'm going to create a reusable
-function so that we can add our fade, transition behavior more easily to other
-controllers in the future in the assets directory, let's create a new directory
-called how about util and inside that a new file called add dash transition.JS
+To download this new version, find your terminal and run:
 
-[inaudible]
+```terminal
+yarn install
+```
 
-I'll paste. In some code, you can get that from the code block on this page, this
-exports, a named function called add fade transition that will add the use transition
-behavior to a controller. Most of what you see here is identical to what we had
-before. When we originally leveraged the use behavior back in our controller,
+## Creating & Using a 2nd Controller
 
-Okay.
+While that downloads, let's discuss the plan. In order to leverage the
+`useTransition` behavior, we're going to need our own custom controller. In
+`assets/controllers/`, create a new file called, how about,
+`autocomplete-transition_controller.js`. I'll go steal some code from another
+controller. The only thing we need right now is a `connect()` method... and we'll
+`console.log` "i want transitions".
 
-In the connect method, which is normally where we, uh, initialize behaviors, we can
-use that, say, add, fade, transition, I'll hit tab. I'm going to do that. It's going
-to add the import for me, which is awesome. And then we need to pass the controller,
-which is this. And then we need to pass it, which element is going to be hidden or
-shown, which we don't actually have access to yet for that we're going to use
-this.results targets. So we're going to use a target that points the results. Of
-course, this means we're going to need a static targets, = an array with results
-inside.
+Back in the template for this page - which lives at
+`templates/product/index.html.twig` - we're now going to add *two* controllers to
+the same element. We can do that with `stimulus_controller()`... we just need to
+tweak the format a bit.
 
-And then in the template, we need to add a target to this device right here. Now
-notice is we already have this as a target for the normal complete controller. We now
-need to copy that and have another target for auto-complete transition. It is a
-little weird to have this as a, you know, two different targets on the same element.
-Uh, but this allows our two different controllers to work independently. They both
-need access to that target. If you really didn't like that, you could actually just,
-um, try to find an element that has this attribute and use that as your target. That
-would totally work fine.
+The first argument becomes an object... and controller becomes a key in
+the object assigned to its set of values. Once I finish rearranging things...
+yup: we're passing an object with *one* controller set to these values for that
+controller. Now we can add our new controller name - `autocomplete-transition` -
+and this doesn't need any values, so set it to an empty object.
 
-Now back in our Tala method, because we've initialized the youth transition behavior,
-we have those enter and leave methods. So we can say if event that detail.action =
-open, we know that we need to open. We do that with this, that enter else,
-this.leave. Let's try it. Move over. Refresh and type Dai. Yes. There's our
-transition. As a reminder, the details behind this transition, like the fact that
-it's fading and the fact that it takes two seconds, which is way too long right now
-it's only two seconds so that we can see more easily. All of these details live in
-our app. That CSS file. If you search in here for fade so you can tweak these however
-you want, But now I'm back at the browser. Let me bring that thing back up quick off
-to close it. That happened instantly. There was no transition.
+Let's see if the new controller is connected! Find our site... I'll open my
+dev tools, refresh the page, check the console and... got it! There's our log. If
+you inspect element on the text box.. you can see that the `data-controller`
+attribute now has *both* controllers on it.
 
-Okay.
+## Adding an Action for "toggle"
 
-The reason and I'll inspect element on here
+To get this all to all work, we need our new controller to be notified whenever the
+autocomplete results should be shown or hidden... so that we can trigger the
+transition.
 
-Is that our
+*This* is where that `toggle` event comes in handy. The `stimulus-autocomplete`
+controller dispatches all of its events on the "main element" that's registered
+for the controller, which means it's going to be on *this* div. Let's add an
+action for the `toggle` event. Do that with a new attribute: `data-action=""`,
+the name of the event we want to listen to - `toggle` - an `->`, the name of
+the controller to call - that's our new custom controller `autocomplete-transition` -
+a `#` sign and the method to call on that controller: let's use `toggle`.
 
-Dave now has a hidden attribute on it. This is here because the stimulus auto
-complete controller adds this hidden attribute to the div. Whenever it needs to close
-it, normally
+Copy that and head over to our controller. Add the new `toggle()` method with an
+`event` argument... and `console.log(event)`.
 
-That's
+With any luck, whenever the autocomplete results are shown or hidden, we should see
+this line get hit. Let's see if that happens! Refresh the page. I'll go back to
+the console and... yes! Actually an event was dispatched *immediately* when the
+component initialized. This second one is from when the element was shown. Open
+up the `event` object and look at the `detail` property. Ah: it has a sub-key call
+`action` set to the string `open`. When the results close - like when we click
+off of the area... we see another event. This time `action` is set to `close`.
 
-Great. That's why the results div normally goes away.
+In the `toggle()` method, we can use this info to either call `this.enter()` to
+fade *in* the element or `this.leave()` to fade it out.
 
-Normally it becomes,
+But in order to even *have* those methods, we need to initialize the
+`useTransition` behavior on this controller.
 
-Becomes invisible and we click off. But now that we are controlling the hiding and
-showing with our transition behavior, we do not want this hidden attribute to be
-added anymore. Fortunately, after my PR is merged, we can pass a value to disable
-this behavior in the template above here on the auto complete library, passing new
-value called skip hidden property set to true that literally says, please do not
-
-Great
-
-Set that hidden property. We are handling the hiding and showing it manually. Let's
-try it out again. I'll type. We still get the nice fade in now. And we click off. We
-get the nice fade out. And so we're done. I mean, the whole tutorial is done. I hope
-you found this journey through stimulus, as refreshing as I did. And the next
-tutorial in the series about turbo. I hope to show you that we can have an even more
-dynamic app while writing even less custom JavaScript, let us know what cool stuff
-your building. And as always, if you have any questions, we're here for you in the
-comment section. Okay. Friends. See you next time.
+Let's do that next... but in a way that will allow us to more easily reuse
+our transitions in other controllers. Code-reuse: booya!
