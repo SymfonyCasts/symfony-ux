@@ -1,7 +1,8 @@
 import { Controller } from 'stimulus';
+import { addFadeTransition } from '../util/add-transition';
 
 export default class extends Controller {
     connect() {
-        console.log('I want transitions!');
+        addFadeTransition(this, this.resultsTarget);
     }
 }
