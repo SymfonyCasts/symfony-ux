@@ -1,10 +1,10 @@
 diff --git a/yarn.lock b/yarn.lock
-index 7eb68aa..23b68a2 100644
+index 43f20bc..8366a62 100644
 --- a/yarn.lock
 +++ b/yarn.lock
-@@ -869,6 +869,11 @@
-   dependencies:
-     acorn "^8.0.5"
+@@ -871,6 +871,11 @@
+     loader-utils "^2.0.0"
+     schema-utils "^3.0.0"
  
 +"@symfony/ux-chartjs@file:vendor/symfony/ux-chartjs/Resources/assets":
 +  version "1.1.0"
@@ -14,7 +14,7 @@ index 7eb68aa..23b68a2 100644
  "@symfony/webpack-encore@^1.0.0":
    version "1.0.4"
    resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-1.0.4.tgz#0248d7d19bec2b2ddd6f92ad88556deec8c90185"
-@@ -1538,6 +1543,29 @@ chalk@^4.0.0:
+@@ -1545,6 +1550,29 @@ chalk@^4.0.0:
      ansi-styles "^4.1.0"
      supports-color "^7.1.0"
  
@@ -44,7 +44,7 @@ index 7eb68aa..23b68a2 100644
  chokidar@^3.4.3:
    version "3.5.1"
    resolved "https://registry.yarnpkg.com/chokidar/-/chokidar-3.5.1.tgz#ee9ce7bbebd2b79f49f304799d5468e31e14e68a"
-@@ -1596,7 +1624,7 @@ coa@^2.0.2:
+@@ -1603,7 +1631,7 @@ coa@^2.0.2:
      chalk "^2.4.1"
      q "^1.1.2"
  
@@ -53,7 +53,7 @@ index 7eb68aa..23b68a2 100644
    version "1.9.3"
    resolved "https://registry.yarnpkg.com/color-convert/-/color-convert-1.9.3.tgz#bb71850690e1f136567de629d2d5471deda4c1e8"
    integrity sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==
-@@ -3391,6 +3419,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
+@@ -3398,6 +3426,11 @@ mkdirp@^1.0.3, mkdirp@^1.0.4:
    resolved "https://registry.yarnpkg.com/mkdirp/-/mkdirp-1.0.4.tgz#3eb5ed62622756d79a5f0e2a221dfebad75c2f7e"
    integrity sha512-vVqVZQyf3WLx2Shd0qJ9xuvqgAyKPLAiqITEtqW0oIUjzo3PePDd6fW9iFz30ef7Ysp/oiWqbhszeGWW2T6Gzw==
  
