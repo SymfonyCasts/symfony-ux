@@ -8,7 +8,7 @@ export default class extends Controller {
         addFadeTransition(this, this.resultsTarget);
     }
 
-    toggleState(event) {
+    toggle(event) {
         console.log(event);
     }
 }
