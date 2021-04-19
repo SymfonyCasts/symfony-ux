@@ -44,3 +44,4 @@ chapters:
     - 3rd-party-controllers
     - autocomplete-controller
     - autocomplete-transitions
+    - finish-transition
