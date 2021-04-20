@@ -35,6 +35,8 @@ How can we use a fork? Open your `package.json` file and find the
 repository: I'll paste that in. This is my username, the name of the library...
 and then it points to a branch I created called `toggle-event-always-dist`.
 
+[[[ code('856d61e094') ]]]
+
 To download this new version, find your terminal and run:
 
 ```terminal
@@ -50,6 +52,8 @@ While that downloads, let's discuss the plan. In order to leverage the
 controller. The only thing we need right now is a `connect()` method... and we'll
 `console.log` "i want transitions".
 
+[[[ code('79b0040c64') ]]]
+
 Back in the template for this page - which lives at
 `templates/product/index.html.twig` - we're now going to add *two* controllers to
 the same element. We can do that with `stimulus_controller()`... we just need to
@@ -60,6 +64,8 @@ the object assigned to its set of values. Once I finish rearranging things...
 yup: we're passing an object with *one* controller set to these values for that
 controller. Now we can add our new controller name - `autocomplete-transition` -
 and this doesn't need any values, so set it to an empty object.
+
+[[[ code('9bd5a99549') ]]]
 
 Let's see if the new controller is connected! Find our site... I'll open my
 dev tools, refresh the page, check the console and... got it! There's our log. If
@@ -80,8 +86,12 @@ the name of the event we want to listen to - `toggle` - an `->`, the name of
 the controller to call - that's our new custom controller `autocomplete-transition` -
 a `#` sign and the method to call on that controller: let's use `toggle`.
 
+[[[ code('0047170d36') ]]]
+
 Copy that and head over to our controller. Add the new `toggle()` method with an
 `event` argument... and `console.log(event)`.
+
+[[[ code('b9c6c90bcd') ]]]
 
 With any luck, whenever the autocomplete results are shown or hidden, we should see
 this line get hit. Let's see if that happens! Refresh the page. I'll go back to
