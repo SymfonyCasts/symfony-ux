@@ -13,6 +13,8 @@ In the `assets/` directory, add a new directory called, how about, `util/`. And
 inside that a new file called `add-transition.js`. I'll paste in the code: you can
 get this from the code block on this page.
 
+[[[ code('9609ec3356') ]]]
+
 This exports a named function called `addFadeTransition()` which adds the
 `useTransition` behavior to the passed controller. *Most* of what you see here is
 identical to what we had when we *originally* leveraged `useTransition`.
@@ -27,9 +29,13 @@ which we don't actually have access to yet. Let's add a target for that. Pass
 `this.resultsTarget`... then initialize that target above: `static targets = `
 an array with `results` inside.
 
+[[[ code('c963d9ab3f') ]]]
+
 In the template, we need to add the target to the results `div`. Hmm, this *already*
 has a target for the `autocomplete` controller. Copy that, paste, and add an
 *identical* target for our `autocomplete-transition` controller.
+
+[[[ code('b0be3e6ce6') ]]]
 
 It *is* a bit weird to have two different targets on the same element... but this
 is totally allowed. If you *really* didn't like this, you could actually *find* this
@@ -39,6 +45,8 @@ to find this element using the `data-autocomplete-target` attribute.
 *Anyways*, back in our toggle method, because we've initialized the `useTransition`
 behavior, we now have `enter()` and `leave()` methods. And so, if
 `event.detail.action` equals `open`, call `this.enter()`. Else, call `this.leave()`.
+
+[[[ code('e58a49766a') ]]]
 
 Let's try it! Move over, refresh, type "de" and... yes! It transitioned!
 
@@ -64,6 +72,8 @@ merged, we can pass a *value* to disable that behavior.
 
 In the template, on the `autocomplete` controller, pass a new value called
 `skipHiddenProperty` set to `true`.
+
+[[[ code('5f516ade46') ]]]
 
 That literally says: please do not set that `hidden` property: we are handling the
 hiding and showing ourselves.
