@@ -53,7 +53,7 @@ Variable `products` does not exist. Because... in the controller, I forgot my "s
 Now... much better. I mean, it looks terrible *here*, but that's just because this
 page doesn't have any CSS. Head back to the homepage.
 
-## Adding the AJAX HTML to the a Target
+## Adding the AJAX HTML to the Target
 
 The last step in Stimulus is to dump the HTML from the AJAX endpoint onto the page.
 To control exactly where it goes, let's add a new target element. In
