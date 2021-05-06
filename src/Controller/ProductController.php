@@ -56,4 +56,12 @@ class ProductController extends AbstractController
             'addToCartForm' => $addToCartForm->createView()
         ]);
     }
+
+    /**
+     * @Route("/i-like-counting")
+     */
+    public function iLikeCounting()
+    {
+        return $this->render('product/counting.html.twig');
+    }
 }
