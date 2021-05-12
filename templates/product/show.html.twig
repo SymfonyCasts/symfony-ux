@@ -9,8 +9,8 @@
 
             <div class="col-xs-12 col-9 product-show">
                 <h1>{{ product.name }}</h1>
-                <div class="row component-light">
-                    <div class="col-4 pt-3">
+                <div class="row component-light pt-3">
+                    <div class="col-4">
                         <img
                             alt="{{ product.name }}"
                             src="{{ asset('/uploads/products/'~product.imageFilename) }}"
@@ -21,7 +21,7 @@
                             <small class="d-inline">{{ product.brand }}</small>
                         </div>
                     </div>
-                    <div class="col-8 p-3">
+                    <div class="col-8 px-3">
                         <div>
                             {{ product.description }}
                         </div>
