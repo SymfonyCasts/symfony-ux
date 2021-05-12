@@ -20,5 +20,5 @@
         <button class="btn btn-primary" formnovalidate>Add Review</button>
     {{ form_end(reviewForm) }}
 {% else %}
-    <p>Log in to post a review</p>
+    <p><a href="{{ path('app_login') }}">Log in</a> to post a review</p>
 {% endif %}
