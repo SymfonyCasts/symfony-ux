@@ -5,6 +5,7 @@ namespace App\DataFixtures;
 use App\Entity\Category;
 use App\Entity\Color;
 use App\Entity\Product;
+use App\Entity\Review;
 use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -50,6 +51,12 @@ class AppFixtures extends Fixture
             'break_room' => $category3,
         ];
 
+        $user = new User();
+        $user->setEmail('shopper@example.com');
+        $user->setPassword($this->passwordEncoder->encodePassword($user, 'buy'));
+
+        $manager->persist($user);
+
         $brands = [
             'Faux-Trendster',
             'Low End Luxury',
@@ -72,6 +79,14 @@ class AppFixtures extends Fixture
                 $product->addColor($colorGreen);
             }
 
+            $reviewCount = rand(1, 2);
+            for ($i = 0; $i < $reviewCount; $i++) {
+                $review = new Review($user, $product);
+                $review->setStars(rand(1, 5));
+                $review->setContent('It worked... like... pretty well I guess!');
+                $manager->persist($review);
+            }
+
             $manager->persist($product);
         }
 
@@ -80,12 +95,6 @@ class AppFixtures extends Fixture
         $fs->remove($target);
         $fs->mirror(__DIR__.'/uploads', $target);
         $fs->chmod($target, 0777);
-
-        $user = new User();
-        $user->setEmail('shopper@example.com');
-        $user->setPassword($this->passwordEncoder->encodePassword($user, 'buy'));
-
-        $manager->persist($user);
 
         $manager->flush();
     }

@@ -77,9 +77,15 @@ class Product
      */
     private $imageFilename = 'floppy-disc.png';
 
+    /**
+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="product")
+     */
+    private $reviews;
+
     public function __construct()
     {
         $this->colors = new ArrayCollection();
+        $this->reviews = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -225,5 +231,13 @@ class Product
     public function getImageUrl(): string
     {
         return sprintf('/uploads/products/'.$this->imageFilename);
+    }
+
+    /**
+     * @return Collection|Review[]
+     */
+    public function getReviews(): Collection
+    {
+        return $this->reviews;
     }
 }

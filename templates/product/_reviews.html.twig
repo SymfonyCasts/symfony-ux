@@ -1,0 +1,24 @@
+{% for review in product.reviews %}
+    <div>
+        <p>By {{ review.owner.email }} - {{ review.stars }}/5</p>
+        <div>
+            {{ review.content }}
+        </div>
+    </div>
+{% else %}
+    <p>This product has not been reviewed yet!</p>
+{% endfor %}
+
+{% if reviewForm %}
+    <h4>Post your own review</h4>
+    {{ form_start(reviewForm, {
+        'action': path('app_product_reviews', { id: product.id })
+    }) }}
+        {{ form_row(reviewForm.stars) }}
+        {{ form_row(reviewForm.content) }}
+
+        <button class="btn btn-primary" formnovalidate>Add Review</button>
+    {{ form_end(reviewForm) }}
+{% else %}
+    <p>Log in to post a review</p>
+{% endif %}

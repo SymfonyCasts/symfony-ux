@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="container-fluid mt-4">
+        <div class="row">
+            <aside class="col-xs-12 col-3">
+                {{ include('product/_categoriesSidebar.html.twig') }}
+            </aside>
+
+            <div class="col-xs-12 col-9 product-show">
+                <h1>
+                    Reviews for
+                    <a href="{{ path('app_product', { id: product.id }) }}">
+                        {{ product.name }}
+                    </a>
+                </h1>
+
+                {{ include('product/_reviews.html.twig') }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
