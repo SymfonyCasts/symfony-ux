@@ -93,7 +93,7 @@ class ProductController extends AbstractController
             'product' => $product,
             'currentCategory' => $product->getCategory(),
             'categories' => $categoryRepository->findAll(),
-            'reviewForm' => $reviewForm->createView(),
+            'reviewForm' => $reviewForm ? $reviewForm->createView() : null,
         ]);
     }
 
