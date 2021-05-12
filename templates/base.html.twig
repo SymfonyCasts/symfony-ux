@@ -38,11 +38,13 @@
                                     Log out
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ path('product_admin_index') }}">
-                                    Admin
-                                </a>
-                            </li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ path('product_admin_index') }}">
+                                        Admin
+                                    </a>
+                                </li>
+                            {% endif %}
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_login') }}">

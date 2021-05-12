@@ -3,6 +3,10 @@ security:
         App\Entity\User:
             algorithm: auto
 
+    role_hierarchy:
+        # everyone is an admin!
+        ROLE_USER: [ROLE_ADMIN]
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         # used to reload user from session & other features (e.g. switch_user)
