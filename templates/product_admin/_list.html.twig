@@ -24,7 +24,7 @@
             <td>{{ product.stockQuantity }}</td>
             <td>{{ product.imageFilename }}</td>
             <td>
-                <a href="{{ path('product_admin_show', {'id': product.id}) }}">show</a>
+                <a href="{{ path('app_product', {'id': product.id}) }}">show</a>
                 <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
             </td>
         </tr>
