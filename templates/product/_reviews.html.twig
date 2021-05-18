@@ -19,6 +19,8 @@
 
         <button class="btn btn-primary" formnovalidate>Add Review</button>
     {{ form_end(reviewForm) }}
-{% else %}
+{% elseif not is_granted('ROLE_USER') %}
     <p><a href="{{ path('app_login') }}">Log in</a> to post a review</p>
+{% else %}
+    <p>Thanks for your review!</p>
 {% endif %}
