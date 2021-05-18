@@ -240,4 +240,15 @@ class Product
     {
         return $this->reviews;
     }
+
+    public function getAverageStars()
+    {
+        $totalRating = 0;
+        // this is an inefficient way of doing this ;)
+        foreach ($this->getReviews() as $review) {
+            $totalRating += $review->getStars();
+        }
+
+        return round($totalRating / count($this->getReviews()), 1);
+    }
 }
