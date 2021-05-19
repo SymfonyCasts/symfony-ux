@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Review index{% endblock %}
+
+{% block body %}
+<div class="container-fluid mt-4">
+    <h1>Review index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Content</th>
+                <th>Stars</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for review in reviews %}
+            <tr>
+                <td>{{ review.id }}</td>
+                <td>{{ review.content }}</td>
+                <td>{{ review.stars }}</td>
+                <td>
+                    <a href="{{ path('review_admin_edit', {'id': review.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('review_admin_new') }}">Create new</a>
+</div>
+{% endblock %}

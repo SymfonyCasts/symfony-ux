@@ -251,4 +251,9 @@ class Product
 
         return round($totalRating / count($this->getReviews()), 1);
     }
+
+    public function __toString(): string
+    {
+        return sprintf('%s ($%s)', $this->name, $this->getPriceString());
+    }
 }
