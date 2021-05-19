@@ -9,8 +9,8 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Content</th>
+                <th>Comment</th>
+                <th>Product</th>
                 <th>Stars</th>
                 <th>actions</th>
             </tr>
@@ -18,8 +18,8 @@
         <tbody>
         {% for review in reviews %}
             <tr>
-                <td>{{ review.id }}</td>
-                <td>{{ review.content }}</td>
+                <td>{{ review.contentPreview }}</td>
+                <td>{{ review.product.name }}</td>
                 <td>{{ review.stars }}</td>
                 <td>
                     <a href="{{ path('review_admin_edit', {'id': review.id}) }}">edit</a>

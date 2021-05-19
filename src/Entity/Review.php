@@ -61,6 +61,15 @@ class Review
         return $this->content;
     }
 
+    public function getContentPreview(): string
+    {
+        if (strlen($this->content) < 50) {
+            return $this->content;
+        }
+
+        return substr($this->content, 0, 50).'...';
+    }
+
     public function setContent(string $content): self
     {
         $this->content = $content;
