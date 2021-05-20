@@ -27,11 +27,11 @@
                         </div>
                         <div class="p-3 mt-4 d-flex justify-content-between">
                             <div>
-                                Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
+                                <strong>{{ product.priceString|format_currency('USD') }}</strong>
                                 <br>
-                                Reviews: <strong>{{ product.reviews|length }}</strong>
+                                <strong>{{ product.reviews|length }}</strong> Reviews
                                 <br/>
-                                Stars: <strong>{{ product.averageStars }}/5</strong>
+                                <strong>{{ product.averageStars }}/5</strong><i class="fas fa-star ms-2"></i>
                             </div>
                             <div>
                                 {{ include('product/_cart_add_controls.html.twig') }}
