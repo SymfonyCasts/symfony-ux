@@ -134,7 +134,7 @@ class AppFixtures extends Fixture
         ];
         yield [
             'name' => 'Hammock',
-            'description' => 'Feel sluggish part way through the work day? Get a refresh in our official office hammock. (beach views now included).',
+            'description' => 'Feel sluggish part way through the work day? Get a refresh in our official office hammock. (beach views not included).',
             'image' => 'hammock.png',
             'category' => 'furniture',
             'with_colors' => true,
