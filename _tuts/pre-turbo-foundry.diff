@@ -1,0 +1,598 @@
+diff --git a/composer.json b/composer.json
+index 9e08041..fc5ab10 100644
+--- a/composer.json
++++ b/composer.json
+@@ -88,6 +88,7 @@
+         "symfony/monolog-bundle": "^3.0",
+         "symfony/stopwatch": "^5.2",
+         "symfony/var-dumper": "^5.2",
+-        "symfony/web-profiler-bundle": "^5.2"
++        "symfony/web-profiler-bundle": "^5.2",
++        "zenstruck/foundry": "^1.10"
+     }
+ }
+diff --git a/composer.lock b/composer.lock
+index ea57dfa..0b20d16 100644
+--- a/composer.lock
++++ b/composer.lock
+@@ -4,7 +4,7 @@
+         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+         "This file is @generated automatically"
+     ],
+-    "content-hash": "6ddc72759eb23aaff730fb2e94f25e34",
++    "content-hash": "bd0a25c50a699e24f91a174814c46912",
+     "packages": [
+         {
+             "name": "composer/package-versions-deprecated",
+@@ -6972,6 +6972,71 @@
+             ],
+             "time": "2020-11-14T09:36:49+00:00"
+         },
++        {
++            "name": "fakerphp/faker",
++            "version": "v1.14.1",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/FakerPHP/Faker.git",
++                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/FakerPHP/Faker/zipball/ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
++                "reference": "ed22aee8d17c7b396f74a58b1e7fefa4f90d5ef1",
++                "shasum": ""
++            },
++            "require": {
++                "php": "^7.1 || ^8.0",
++                "psr/container": "^1.0",
++                "symfony/deprecation-contracts": "^2.2"
++            },
++            "conflict": {
++                "fzaninotto/faker": "*"
++            },
++            "require-dev": {
++                "bamarni/composer-bin-plugin": "^1.4.1",
++                "ext-intl": "*",
++                "symfony/phpunit-bridge": "^4.4 || ^5.2"
++            },
++            "suggest": {
++                "ext-curl": "Required by Faker\\Provider\\Image to download images.",
++                "ext-dom": "Required by Faker\\Provider\\HtmlLorem for generating random HTML.",
++                "ext-iconv": "Required by Faker\\Provider\\ru_RU\\Text::realText() for generating real Russian text.",
++                "ext-mbstring": "Required for multibyte Unicode string functionality."
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-main": "v1.15-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Faker\\": "src/Faker/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "François Zaninotto"
++                }
++            ],
++            "description": "Faker is a PHP library that generates fake data for you.",
++            "keywords": [
++                "data",
++                "faker",
++                "fixtures"
++            ],
++            "support": {
++                "issues": "https://github.com/FakerPHP/Faker/issues",
++                "source": "https://github.com/FakerPHP/Faker/tree/v.1.14.1"
++            },
++            "time": "2021-03-30T06:27:33+00:00"
++        },
+         {
+             "name": "monolog/monolog",
+             "version": "2.2.0",
+@@ -7531,6 +7596,130 @@
+                 }
+             ],
+             "time": "2021-05-11T14:37:54+00:00"
++        },
++        {
++            "name": "zenstruck/callback",
++            "version": "v1.2.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/zenstruck/callback.git",
++                "reference": "b759cfc784da44c6ffdd19671025597428cf9435"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/zenstruck/callback/zipball/b759cfc784da44c6ffdd19671025597428cf9435",
++                "reference": "b759cfc784da44c6ffdd19671025597428cf9435",
++                "shasum": ""
++            },
++            "require": {
++                "php": ">=7.2.5"
++            },
++            "require-dev": {
++                "phpunit/phpunit": "^8.5.0",
++                "symfony/phpunit-bridge": "^5.2"
++            },
++            "type": "library",
++            "autoload": {
++                "psr-4": {
++                    "Zenstruck\\": "src/"
++                }
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Kevin Bond",
++                    "email": "kevinbond@gmail.com"
++                }
++            ],
++            "description": "Callable wrapper to validate and inject arguments.",
++            "homepage": "https://github.com/zenstruck/callback",
++            "keywords": [
++                "callable",
++                "callback",
++                "utility"
++            ],
++            "support": {
++                "issues": "https://github.com/zenstruck/callback/issues",
++                "source": "https://github.com/zenstruck/callback/tree/v1.2.0"
++            },
++            "time": "2021-01-11T21:34:02+00:00"
++        },
++        {
++            "name": "zenstruck/foundry",
++            "version": "v1.10.0",
++            "source": {
++                "type": "git",
++                "url": "https://github.com/zenstruck/foundry.git",
++                "reference": "7dc49f0e6247db66b7d8215d04b5d3b9e4455734"
++            },
++            "dist": {
++                "type": "zip",
++                "url": "https://api.github.com/repos/zenstruck/foundry/zipball/7dc49f0e6247db66b7d8215d04b5d3b9e4455734",
++                "reference": "7dc49f0e6247db66b7d8215d04b5d3b9e4455734",
++                "shasum": ""
++            },
++            "require": {
++                "doctrine/persistence": "^1.3.3|^2.0",
++                "fakerphp/faker": "^1.5",
++                "php": ">=7.2.12",
++                "symfony/deprecation-contracts": "^2.2",
++                "symfony/property-access": "^3.4|^4.4|^5.0",
++                "zenstruck/callback": "^1.1"
++            },
++            "require-dev": {
++                "dama/doctrine-test-bundle": "^6.0",
++                "doctrine/doctrine-bundle": "^2.0",
++                "doctrine/doctrine-migrations-bundle": "^2.2|^3.0",
++                "doctrine/orm": "^2.7",
++                "matthiasnoback/symfony-dependency-injection-test": "^4.1",
++                "psalm/plugin-symfony": "^1.5|^2.0",
++                "symfony/framework-bundle": "^4.4|^5.0",
++                "symfony/maker-bundle": "^1.30",
++                "symfony/phpunit-bridge": "^5.2",
++                "vimeo/psalm": "^3.18|^4.0"
++            },
++            "type": "library",
++            "extra": {
++                "branch-alias": {
++                    "dev-master": "1.x-dev"
++                }
++            },
++            "autoload": {
++                "psr-4": {
++                    "Zenstruck\\Foundry\\": "src/"
++                },
++                "files": [
++                    "src/functions.php"
++                ]
++            },
++            "notification-url": "https://packagist.org/downloads/",
++            "license": [
++                "MIT"
++            ],
++            "authors": [
++                {
++                    "name": "Kevin Bond",
++                    "email": "kevinbond@gmail.com"
++                }
++            ],
++            "description": "A model factory library for creating expressive, auto-completable, on-demand dev/test fixtures with Symfony and Doctrine.",
++            "homepage": "https://github.com/zenstruck/foundry",
++            "keywords": [
++                "Fixture",
++                "doctrine",
++                "factory",
++                "faker",
++                "symfony",
++                "test"
++            ],
++            "support": {
++                "issues": "https://github.com/zenstruck/foundry/issues",
++                "source": "https://github.com/zenstruck/foundry/tree/v1.10.0"
++            },
++            "time": "2021-04-19T20:28:09+00:00"
+         }
+     ],
+     "aliases": [],
+diff --git a/config/bundles.php b/config/bundles.php
+index f8d5509..b0bfb47 100644
+--- a/config/bundles.php
++++ b/config/bundles.php
+@@ -15,4 +15,5 @@ return [
+     Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle::class => ['dev' => true, 'test' => true],
+     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+     Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
++    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
+ ];
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index 2f42501..2626b74 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -40,3 +40,10 @@ security:
+     access_control:
+         # - { path: ^/admin, roles: ROLE_ADMIN }
+         # - { path: ^/profile, roles: ROLE_USER }
++
++when@dev:
++    security:
++        encoders:
++            App\Entity\User:
++                # for performance
++                algorithm: sha512
+diff --git a/config/packages/zenstruck_foundry.yaml b/config/packages/zenstruck_foundry.yaml
+new file mode 100644
+index 0000000..a7ab108
+--- /dev/null
++++ b/config/packages/zenstruck_foundry.yaml
+@@ -0,0 +1,9 @@
++# See full configuration: https://github.com/zenstruck/foundry#full-default-bundle-configuration
++when@test:
++    zenstruck_foundry:
++        # Whether to auto-refresh proxies by default (https://github.com/zenstruck/foundry#auto-refresh)
++        auto_refresh_proxies: true
++
++when@dev:
++    zenstruck_foundry:
++        auto_refresh_proxies: true
+diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
+index 7aab59d..79d756f 100644
+--- a/src/DataFixtures/AppFixtures.php
++++ b/src/DataFixtures/AppFixtures.php
+@@ -7,6 +7,9 @@ use App\Entity\Color;
+ use App\Entity\Product;
+ use App\Entity\Review;
+ use App\Entity\User;
++use App\Factory\ProductFactory;
++use App\Factory\ReviewFactory;
++use App\Factory\UserFactory;
+ use Doctrine\Bundle\FixturesBundle\Fixture;
+ use Doctrine\Persistence\ObjectManager;
+ use Symfony\Component\Filesystem\Filesystem;
+@@ -15,13 +18,6 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+ 
+ class AppFixtures extends Fixture
+ {
+-    private UserPasswordHasherInterface $passwordHasher;
+-
+-    public function __construct(UserPasswordHasherInterface $passwordHasher)
+-    {
+-        $this->passwordHasher = $passwordHasher;
+-    }
+-
+     public function load(ObjectManager $manager)
+     {
+         $colorRed = new Color('red', 'ff0000');
+@@ -45,6 +41,7 @@ class AppFixtures extends Fixture
+         $manager->persist($category2);
+         $manager->persist($category3);
+         $manager->persist($category4);
++        $manager->flush();
+ 
+         $categories = [
+             'office_supplies' => $category1,
+@@ -52,11 +49,10 @@ class AppFixtures extends Fixture
+             'break_room' => $category3,
+         ];
+ 
+-        $user = new User();
+-        $user->setEmail('shopper@example.com');
+-        $user->setPassword($this->passwordHasher->hashPassword($user, 'buy'));
+-
+-        $manager->persist($user);
++        UserFactory::createOne([
++            'email' => 'shopper@example.com'
++        ]);
++        UserFactory::createMany(10);
+ 
+         $brands = [
+             'Faux-Trendster',
+@@ -65,30 +61,25 @@ class AppFixtures extends Fixture
+         ];
+ 
+         foreach (self::getProductsData() as $productData) {
+-            $product = new Product();
+-            $product->setName($productData['name']);
+-            $product->setDescription($productData['description']);
+-            $product->setCategory($categories[$productData['category']]);
+-            $product->setImageFilename($productData['image']);
+-            $product->setPrice(rand(10, 50) * 100);
+-            $product->setStockQuantity(rand(10, 100));
+-            $product->setBrand($brands[array_rand($brands)]);
++            $data = [
++                'name' => $productData['name'],
++                'description' => $productData['description'],
++                'category' => $categories[$productData['category']],
++                'imageFilename' => $productData['image'],
++                'brand' => $brands[array_rand($brands)],
++            ];
+ 
+             if ($productData['with_colors'] ?? false) {
+-                $product->addColor($colorRed);
+-                $product->addColor($colorBlue);
+-                $product->addColor($colorGreen);
+-            }
+-
+-            $reviewCount = rand(1, 2);
+-            for ($i = 0; $i < $reviewCount; $i++) {
+-                $review = new Review($user, $product);
+-                $review->setStars(rand(1, 5));
+-                $review->setContent('It worked... like... pretty well I guess!');
+-                $manager->persist($review);
++                $data['colors'] = [$colorRed, $colorBlue, $colorGreen];
+             }
+-
+-            $manager->persist($product);
++            $product = ProductFactory::createOne($data);
++
++            ReviewFactory::createMany(rand(2, 5), function() use ($product) {
++                return [
++                    'product' => $product,
++                    'owner' => UserFactory::random(),
++                ];
++            });
+         }
+ 
+         $fs = new Filesystem();
+diff --git a/src/Factory/ProductFactory.php b/src/Factory/ProductFactory.php
+new file mode 100644
+index 0000000..1710aca
+--- /dev/null
++++ b/src/Factory/ProductFactory.php
+@@ -0,0 +1,59 @@
++<?php
++
++namespace App\Factory;
++
++use App\Entity\Product;
++use App\Repository\ProductRepository;
++use Zenstruck\Foundry\RepositoryProxy;
++use Zenstruck\Foundry\ModelFactory;
++use Zenstruck\Foundry\Proxy;
++
++/**
++ * @method static Product|Proxy createOne(array $attributes = [])
++ * @method static Product[]|Proxy[] createMany(int $number, $attributes = [])
++ * @method static Product|Proxy find($criteria)
++ * @method static Product|Proxy findOrCreate(array $attributes)
++ * @method static Product|Proxy first(string $sortedField = 'id')
++ * @method static Product|Proxy last(string $sortedField = 'id')
++ * @method static Product|Proxy random(array $attributes = [])
++ * @method static Product|Proxy randomOrCreate(array $attributes = [])
++ * @method static Product[]|Proxy[] all()
++ * @method static Product[]|Proxy[] findBy(array $attributes)
++ * @method static Product[]|Proxy[] randomSet(int $number, array $attributes = [])
++ * @method static Product[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
++ * @method static ProductRepository|RepositoryProxy repository()
++ * @method Product|Proxy create($attributes = [])
++ */
++final class ProductFactory extends ModelFactory
++{
++    public function __construct()
++    {
++        parent::__construct();
++
++        // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
++    }
++
++    protected function getDefaults(): array
++    {
++        return [
++            'name' => self::faker()->words(2, true),
++            'description' => self::faker()->paragraph(),
++            'imageFilename' => 'spigot.png',
++            'price' => self::faker()->numberBetween(10000, 50000),
++            'stockQuantity' => self::faker()->numberBetween(10, 100),
++        ];
++    }
++
++    protected function initialize(): self
++    {
++        // see https://github.com/zenstruck/foundry#initialization
++        return $this
++            // ->afterInstantiate(function(Product $product) {})
++        ;
++    }
++
++    protected static function getClass(): string
++    {
++        return Product::class;
++    }
++}
+diff --git a/src/Factory/ReviewFactory.php b/src/Factory/ReviewFactory.php
+new file mode 100644
+index 0000000..6d293cb
+--- /dev/null
++++ b/src/Factory/ReviewFactory.php
+@@ -0,0 +1,58 @@
++<?php
++
++namespace App\Factory;
++
++use App\Entity\Review;
++use App\Repository\ReviewRepository;
++use Zenstruck\Foundry\RepositoryProxy;
++use Zenstruck\Foundry\ModelFactory;
++use Zenstruck\Foundry\Proxy;
++
++/**
++ * @method static Review|Proxy createOne(array $attributes = [])
++ * @method static Review[]|Proxy[] createMany(int $number, $attributes = [])
++ * @method static Review|Proxy find($criteria)
++ * @method static Review|Proxy findOrCreate(array $attributes)
++ * @method static Review|Proxy first(string $sortedField = 'id')
++ * @method static Review|Proxy last(string $sortedField = 'id')
++ * @method static Review|Proxy random(array $attributes = [])
++ * @method static Review|Proxy randomOrCreate(array $attributes = [])
++ * @method static Review[]|Proxy[] all()
++ * @method static Review[]|Proxy[] findBy(array $attributes)
++ * @method static Review[]|Proxy[] randomSet(int $number, array $attributes = [])
++ * @method static Review[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
++ * @method static ReviewRepository|RepositoryProxy repository()
++ * @method Review|Proxy create($attributes = [])
++ */
++final class ReviewFactory extends ModelFactory
++{
++    public function __construct()
++    {
++        parent::__construct();
++
++        // TODO inject services if required (https://github.com/zenstruck/foundry#factories-as-services)
++    }
++
++    protected function getDefaults(): array
++    {
++        return [
++            'content' => self::faker()->paragraph(),
++            'owner' => UserFactory::new(),
++            'product' => ProductFactory::new(),
++            'stars' => self::faker()->numberBetween(1, 5),
++        ];
++    }
++
++    protected function initialize(): self
++    {
++        // see https://github.com/zenstruck/foundry#initialization
++        return $this
++            // ->afterInstantiate(function(Review $review) {})
++        ;
++    }
++
++    protected static function getClass(): string
++    {
++        return Review::class;
++    }
++}
+diff --git a/src/Factory/UserFactory.php b/src/Factory/UserFactory.php
+new file mode 100644
+index 0000000..1a6c191
+--- /dev/null
++++ b/src/Factory/UserFactory.php
+@@ -0,0 +1,59 @@
++<?php
++
++namespace App\Factory;
++
++use App\Entity\User;
++use App\Repository\UserRepository;
++use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
++use Zenstruck\Foundry\RepositoryProxy;
++use Zenstruck\Foundry\ModelFactory;
++use Zenstruck\Foundry\Proxy;
++
++/**
++ * @method static User|Proxy createOne(array $attributes = [])
++ * @method static User[]|Proxy[] createMany(int $number, $attributes = [])
++ * @method static User|Proxy find($criteria)
++ * @method static User|Proxy findOrCreate(array $attributes)
++ * @method static User|Proxy first(string $sortedField = 'id')
++ * @method static User|Proxy last(string $sortedField = 'id')
++ * @method static User|Proxy random(array $attributes = [])
++ * @method static User|Proxy randomOrCreate(array $attributes = [])
++ * @method static User[]|Proxy[] all()
++ * @method static User[]|Proxy[] findBy(array $attributes)
++ * @method static User[]|Proxy[] randomSet(int $number, array $attributes = [])
++ * @method static User[]|Proxy[] randomRange(int $min, int $max, array $attributes = [])
++ * @method static UserRepository|RepositoryProxy repository()
++ * @method User|Proxy create($attributes = [])
++ */
++final class UserFactory extends ModelFactory
++{
++    private UserPasswordHasherInterface $userPasswordHasher;
++
++    public function __construct(UserPasswordHasherInterface $userPasswordHasher)
++    {
++        parent::__construct();
++        $this->userPasswordHasher = $userPasswordHasher;
++    }
++
++    protected function getDefaults(): array
++    {
++        return [
++            'email' => self::faker()->email(),
++            'password' => 'buy'
++        ];
++    }
++
++    protected function initialize(): self
++    {
++        return $this
++             ->afterInstantiate(function(User $user) {
++                 $user->setPassword($this->userPasswordHasher->hashPassword($user, $user->getPassword()));
++             })
++         ;
++    }
++
++    protected static function getClass(): string
++    {
++        return User::class;
++    }
++}
+diff --git a/symfony.lock b/symfony.lock
+index 3273540..fe6e575 100644
+--- a/symfony.lock
++++ b/symfony.lock
+@@ -97,6 +97,9 @@
+     "doctrine/sql-formatter": {
+         "version": "1.1.1"
+     },
++    "fakerphp/faker": {
++        "version": "v1.14.1"
++    },
+     "friendsofphp/proxy-manager-lts": {
+         "version": "v1.0.2"
+     },
+@@ -477,5 +480,21 @@
+     },
+     "webmozart/assert": {
+         "version": "1.9.1"
++    },
++    "zenstruck/callback": {
++        "version": "v1.2.0"
++    },
++    "zenstruck/foundry": {
++        "version": "1.9",
++        "recipe": {
++            "repo": "github.com/symfony/recipes",
++            "branch": "master",
++            "version": "1.9",
++            "ref": "e03ffeeb52fd76e99f2c527ecddc9c986cb194e5"
++        },
++        "files": [
++            "config/packages/dev/zenstruck_foundry.yaml",
++            "config/packages/test/zenstruck_foundry.yaml"
++        ]
+     }
+ }
