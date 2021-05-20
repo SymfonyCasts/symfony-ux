@@ -769,7 +769,47 @@
             "id": "addtransition-skiphiddenproperty",
             "name": "AddTransition: skipHiddenProperty",
             "description": null
+        },
+        {
+            "id": "pre-turbo-upgrade-deps",
+            "name": "PRE_TURBO: Upgrade deps",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-upgrade-yarn-deps",
+            "name": "PRE_TURBO: upgrade yarn deps",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-upgrading-recipes",
+            "name": "PRE_TURBO: upgrading recipes",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-use-new-security",
+            "name": "PRE_TURBO: use new security",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-various-minor-tweaks",
+            "name": "PRE_TURBO: Various minor tweaks",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-add-counting-page",
+            "name": "PRE_TURBO: Add \"counting\" page",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-adding-review-system",
+            "name": "PRE_TURBO: Adding review system",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-review-admin",
+            "name": "PRE_TURBO: Review admin",
+            "description": null
         }
     ],
-    "sha": "cb4ca9ddb018dfd454489fb2461e92d4b35e0d40"
+    "sha": "97c5fffd8bb0eba672931faf2ce5f2e7378778c2"
 }

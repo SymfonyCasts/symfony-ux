@@ -1,0 +1,189 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 5621c51..49945ae 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -153,7 +153,7 @@ h1 {
+ }
+ 
+ .fade-enter-active, .fade-leave-active {
+-    transition: opacity 2000ms;
++    transition: opacity 300ms;
+ }
+ .fade-enter-from, .fade-leave-to {
+     opacity: 0;
+diff --git a/config/packages/security.yaml b/config/packages/security.yaml
+index e2f6ef6..2f42501 100644
+--- a/config/packages/security.yaml
++++ b/config/packages/security.yaml
+@@ -5,6 +5,10 @@ security:
+         App\Entity\User:
+             algorithm: auto
+ 
++    role_hierarchy:
++        # everyone is an admin!
++        ROLE_USER: [ROLE_ADMIN]
++
+     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+     providers:
+         # used to reload user from session & other features (e.g. switch_user)
+diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
+index 14e0cc1..6923b00 100644
+--- a/config/packages/twig.yaml
++++ b/config/packages/twig.yaml
+@@ -1,4 +1,4 @@
+ twig:
+     default_path: '%kernel.project_dir%/templates'
+     form_themes:
+-        - bootstrap_4_layout.html.twig
++        - bootstrap_5_layout.html.twig
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index f3ae653..fbc0ba2 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -5,6 +5,7 @@ namespace App\Controller;
+ use App\Entity\Product;
+ use App\Form\ProductType;
+ use App\Repository\ProductRepository;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+@@ -12,6 +13,7 @@ use Symfony\Component\Routing\Annotation\Route;
+ 
+ /**
+  * @Route("/admin/product")
++ * @IsGranted("ROLE_ADMIN")
+  */
+ class ProductAdminController extends AbstractController
+ {
+@@ -59,16 +61,6 @@ class ProductAdminController extends AbstractController
+         ));
+     }
+ 
+-    /**
+-     * @Route("/{id}", name="product_admin_show", methods={"GET"})
+-     */
+-    public function show(Product $product): Response
+-    {
+-        return $this->render('product_admin/show.html.twig', [
+-            'product' => $product,
+-        ]);
+-    }
+-
+     /**
+      * @Route("/{id}/edit", name="product_admin_edit", methods={"GET","POST"})
+      */
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 0e06935..01ef8a1 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -32,6 +32,13 @@
+                                     Log out
+                                 </a>
+                             </li>
++                            {% if is_granted('ROLE_ADMIN') %}
++                                <li class="nav-item">
++                                    <a class="nav-link" href="{{ path('product_admin_index') }}">
++                                        Admin
++                                    </a>
++                                </li>
++                            {% endif %}
+                         {% else %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{ path('app_login') }}">
+@@ -54,9 +61,13 @@
+             </header>
+ 
+             {% for flash in app.session.flashBag.get('success') %}
+-                <div class="alert alert-success">
++                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     {{ flash }}
++                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
++                      <span aria-hidden="true"></span>
++                    </button>
+                 </div>
++
+             {% endfor %}
+         </div>
+ 
+diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
+index bf20b98..eec6f04 100644
+--- a/templates/product_admin/_form.html.twig
++++ b/templates/product_admin/_form.html.twig
+@@ -1,4 +1,4 @@
+ {{ form_start(form) }}
+     {{ form_widget(form) }}
+-    <button class="btn">{{ button_label|default('Save') }}</button>
++    <button class="btn btn-primary" formnovalidate>{{ button_label|default('Save') }}</button>
+ {{ form_end(form) }}
+diff --git a/templates/product_admin/_list.html.twig b/templates/product_admin/_list.html.twig
+index b03c9c3..9745a66 100644
+--- a/templates/product_admin/_list.html.twig
++++ b/templates/product_admin/_list.html.twig
+@@ -24,7 +24,7 @@
+             <td>{{ product.stockQuantity }}</td>
+             <td>{{ product.imageFilename }}</td>
+             <td>
+-                <a href="{{ path('product_admin_show', {'id': product.id}) }}">show</a>
++                <a href="{{ path('app_product', {'id': product.id}) }}">show</a>
+                 <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
+             </td>
+         </tr>
+diff --git a/templates/product_admin/show.html.twig b/templates/product_admin/show.html.twig
+deleted file mode 100644
+index 79dd56f..0000000
+--- a/templates/product_admin/show.html.twig
++++ /dev/null
+@@ -1,52 +0,0 @@
+-{% extends 'base.html.twig' %}
+-
+-{% block title %}Product{% endblock %}
+-
+-{% block body %}
+-<div class="container-fluid mt-4">
+-    <h1>Product</h1>
+-
+-    <table class="table">
+-        <tbody>
+-            <tr>
+-                <th>Id</th>
+-                <td>{{ product.id }}</td>
+-            </tr>
+-            <tr>
+-                <th>Name</th>
+-                <td>{{ product.name }}</td>
+-            </tr>
+-            <tr>
+-                <th>Description</th>
+-                <td>{{ product.description }}</td>
+-            </tr>
+-            <tr>
+-                <th>Brand</th>
+-                <td>{{ product.brand }}</td>
+-            </tr>
+-            <tr>
+-                <th>Weight</th>
+-                <td>{{ product.weight }}</td>
+-            </tr>
+-            <tr>
+-                <th>Price</th>
+-                <td>{{ product.price }}</td>
+-            </tr>
+-            <tr>
+-                <th>StockQuantity</th>
+-                <td>{{ product.stockQuantity }}</td>
+-            </tr>
+-            <tr>
+-                <th>ImageFilename</th>
+-                <td>{{ product.imageFilename }}</td>
+-            </tr>
+-        </tbody>
+-    </table>
+-
+-    <a href="{{ path('product_admin_index') }}">back to list</a>
+-
+-    <a href="{{ path('product_admin_edit', {'id': product.id}) }}">edit</a>
+-
+-    {{ include('product_admin/_delete_form.html.twig') }}
+-</div>
+-{% endblock %}
