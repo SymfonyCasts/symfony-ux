@@ -6,12 +6,12 @@
     <div class="container mt-4">
         <div class="row">
             <div
-                class="col-sm-3"
+                class="col-12 col-md-3 order-2 order-md-1 mt-4 mt-md-0"
                 {{ stimulus_controller('featured-product-react', {
                     product: featuredProduct|serialize('json', { groups: 'product:read'})
                 }) }}
             ></div>
-            <div class="col-sm">
+            <div class="col order-1 order-md-2">
                 <h1 class="mb-3">Create your account</h1>
 
                 {{ form_start(registrationForm) }}
