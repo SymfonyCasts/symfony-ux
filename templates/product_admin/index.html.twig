@@ -4,7 +4,7 @@
 
 {% block body %}
 <div
-    class="container-fluid mt-4"
+    class="container-fluid container-xl mt-4"
     {{ stimulus_controller('reload-content', {
         url: path('product_admin_index', { ajax: 1 })
     }) }}

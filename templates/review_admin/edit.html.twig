@@ -3,12 +3,13 @@
 {% block title %}Edit Review{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-4">
-    <h1>Edit Review</h1>
+<div class="container mt-4">
+    <a href="{{ path('review_admin_index') }}"><i class="fas fa-caret-left"></i> back to list</a>
+    <h1 class="mt-3">Edit Review</h1>
 
     {{ include('review_admin/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('review_admin_index') }}">back to list</a>
+    
 
     {{ include('review_admin/_delete_form.html.twig') }}
 </div>

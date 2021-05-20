@@ -3,35 +3,36 @@
 {% block title %}Review index{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-4">
+<div class="container-fluid container-xl mt-4">
     <h1>Review index</h1>
-
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Comment</th>
-                <th>Product</th>
-                <th>Stars</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for review in reviews %}
-            <tr>
-                <td>{{ review.contentPreview }}</td>
-                <td>{{ review.product.name }}</td>
-                <td>{{ review.stars }}</td>
-                <td>
-                    <a href="{{ path('review_admin_edit', {'id': review.id}) }}">edit</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="4">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Comment</th>
+                    <th>Product</th>
+                    <th>Stars</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for review in reviews %}
+                <tr>
+                    <td>{{ review.contentPreview }}</td>
+                    <td>{{ review.product.name }}</td>
+                    <td>{{ review.stars }}</td>
+                    <td>
+                        <a href="{{ path('review_admin_edit', {'id': review.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">no records found</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
 
     <a href="{{ path('review_admin_new') }}">Create new</a>
 </div>
