@@ -27,10 +27,12 @@ h1 {
 .footer {
     background-color: #343a40;
     padding: 30px;
-
     border-top: 2px solid #BA1414;
     color: #fff;
     margin-top: 30px;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
 }
 
 .footer a {

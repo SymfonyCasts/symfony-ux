@@ -98,7 +98,7 @@ class ProductController extends AbstractController
     }
 
     /**
-     * @Route("/i-like-counting")
+     * @Route("/you-won")
      */
     public function iLikeCounting()
     {
