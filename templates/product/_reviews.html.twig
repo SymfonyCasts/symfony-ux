@@ -1,6 +1,6 @@
 {% for review in product.reviews %}
     <div>
-        <p>By {{ review.owner.email }} - {{ review.stars }}/5</p>
+        <p>{{ review.owner.email }} - <i class="fas fa-star"></i> {{ review.stars }}/5</p>
         <div>
             {{ review.content }}
         </div>
