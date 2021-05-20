@@ -74,14 +74,16 @@
                                             class="d-block mb-2"
                                         >
                                     </a>
-                                    <h3 class="font-weight-bold mb-2 px-2">
-                                        <a href="{{ path('app_product', { id: product.id }) }}">
-                                            {{ product.name }}
-                                        </a>
-                                    </h3>
+                                    <div class="d-flex justify-content-between px-2 pt-3 mb-2">
+                                        <h3>
+                                            <a href="{{ path('app_product', { id: product.id }) }}">
+                                                {{ product.name }}
+                                            </a>
+                                        </h3>
+                                        <p>{{ product.averageStars }}/5<i class="fas fa-star ms-2"></i></p>
+                                    </div>
                                 </div>
-                                <div
-                                    class="p-2 my-3 d-md-flex justify-content-between">
+                                <div class="px-2 my-3 d-flex justify-content-between">
                                     <p class="p-0 d-inline">
                                         <strong>{{ product.priceString|format_currency('USD') }}</strong>
                                     </p>
