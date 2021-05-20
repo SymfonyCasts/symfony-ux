@@ -1,17 +1,18 @@
 <div>
-    <div class="row p-3">
-        <div class="col-3">
-            Item Name
-        </div>
-        <div class="col-3">
-            Quantity
-        </div>
-        <div class="col-3">
-            Price
-        </div>
-        <div class="col-3"></div>
-    </div>
     {% for item in cart.items %}
+        <div class="row p-3">
+            <div class="col-3">
+                Item Name
+            </div>
+            <div class="col-3">
+                Quantity
+            </div>
+            <div class="col-3">
+                Price
+            </div>
+            <div class="col-3"></div>
+        </div>
+    
         <div
             class="cart-item row p-3"
             data-action="submit-confirm:async:submitted->reload-content#refreshContent"
@@ -54,8 +55,8 @@
             </div>
         </div>
     {% else %}
-        <div class="col-12">
-            Your cart is empty! Get to shopping!
+        <div class="col text-center mt-5">
+            Your cart is empty! <a href="{{ path('app_homepage') }}">Get to shopping!</a>
         </div>
     {% endfor %}
 

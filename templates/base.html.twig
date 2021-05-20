@@ -33,19 +33,25 @@
                     </a>
 
                     <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('app_cart') }}">
+                                Shopping Cart ({{ count_cart_items() }})
+                            </a>
+                        </li>
                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        {% if is_granted('ROLE_ADMIN') %}
+                            <li class="nav-item">
+                                <a class="nav-link" href="{{ path('product_admin_index') }}">
+                                    Admin
+                                </a>
+                            </li>
+                        {% endif %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_logout') }}">
                                     Log out
                                 </a>
                             </li>
-                            {% if is_granted('ROLE_ADMIN') %}
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ path('product_admin_index') }}">
-                                        Admin
-                                    </a>
-                                </li>
-                            {% endif %}
+                            
                         {% else %}
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ path('app_login') }}">
@@ -58,11 +64,6 @@
                                 </a>
                             </li>
                         {% endif %}
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ path('app_cart') }}">
-                                Shopping Cart ({{ count_cart_items() }})
-                            </a>
-                        </li>
                     </ul>
                 </nav>
             </header>
