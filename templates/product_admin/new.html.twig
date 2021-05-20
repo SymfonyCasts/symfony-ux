@@ -3,11 +3,12 @@
 {% block title %}New Product{% endblock %}
 
 {% block body %}
-<div class="container-fluid mt-4">
-    <h1>Create new Product</h1>
+<div class="container mt-4">
+    <a href="{{ path('product_admin_index') }}"><i class="fas fa-caret-left"></i> Back to list</a>
+    <h1 class="mt-3">Create new Product</h1>
 
     {{ include('product_admin/_form.html.twig') }}
 
-    <a href="{{ path('product_admin_index') }}">back to list</a>
+    
 </div>
 {% endblock %}

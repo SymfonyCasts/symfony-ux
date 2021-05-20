@@ -11,7 +11,7 @@
     data-action="modal-form:success->reload-content#refreshContent"
 >
     <div class="d-flex flex-row">
-        <h1 class="me-3">Product index</h1>
+        <h1 class="me-3 mb-4">Product index</h1>
 
         <div
             {{ stimulus_controller('modal-form', {
@@ -22,7 +22,7 @@
             <button
                 class="btn btn-primary btn-sm"
                 data-action="modal-form#openModal"
-            >Add+</button>
+            >+ Add new product</button>
 
             {{ include('_modal.html.twig', {
                 modalTitle: 'Add a new Product',
@@ -30,10 +30,10 @@
         </div>
     </div>
 
-    <div data-reload-content-target="content">
+    <div data-reload-content-target="content" class="table-responsive">
         {{ include('product_admin/_list.html.twig') }}
     </div>
 
-    <a href="{{ path('product_admin_new') }}">Create new</a>
+    <a href="{{ path('product_admin_new') }}">Add a new product</a>
 </div>
 {% endblock %}
