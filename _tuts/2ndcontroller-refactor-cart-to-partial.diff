@@ -1,6 +1,6 @@
 diff --git a/templates/cart/_cartList.html.twig b/templates/cart/_cartList.html.twig
 new file mode 100644
-index 0000000..5da81fc
+index 00000000..5da81fc5
 --- /dev/null
 +++ b/templates/cart/_cartList.html.twig
 @@ -0,0 +1,75 @@
@@ -80,7 +80,7 @@ index 0000000..5da81fc
 +</div>
 +{% endif %}
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 8868958..4822828 100644
+index 88689584..48228280 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -15,81 +15,7 @@

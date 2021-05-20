@@ -1,6 +1,6 @@
 diff --git a/assets/components/MadeWithLove.js b/assets/components/MadeWithLove.js
 new file mode 100644
-index 0000000..7507a9d
+index 00000000..7507a9d8
 --- /dev/null
 +++ b/assets/components/MadeWithLove.js
 @@ -0,0 +1,30 @@

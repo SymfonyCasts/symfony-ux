@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 5621c51..49945ae 100644
+index 5621c51d..49945ae9 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -153,7 +153,7 @@ h1 {
@@ -12,7 +12,7 @@ index 5621c51..49945ae 100644
  .fade-enter-from, .fade-leave-to {
      opacity: 0;
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index e2f6ef6..2f42501 100644
+index e2f6ef67..2f425015 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -5,6 +5,10 @@ security:
@@ -27,7 +27,7 @@ index e2f6ef6..2f42501 100644
      providers:
          # used to reload user from session & other features (e.g. switch_user)
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
-index 14e0cc1..6923b00 100644
+index 14e0cc13..6923b009 100644
 --- a/config/packages/twig.yaml
 +++ b/config/packages/twig.yaml
 @@ -1,4 +1,4 @@
@@ -37,7 +37,7 @@ index 14e0cc1..6923b00 100644
 -        - bootstrap_4_layout.html.twig
 +        - bootstrap_5_layout.html.twig
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index f3ae653..fbc0ba2 100644
+index f3ae6532..fbc0ba27 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -5,6 +5,7 @@ namespace App\Controller;
@@ -74,7 +74,7 @@ index f3ae653..fbc0ba2 100644
       * @Route("/{id}/edit", name="product_admin_edit", methods={"GET","POST"})
       */
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 0e06935..01ef8a1 100644
+index 0e069350..01ef8a1a 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -32,6 +32,13 @@
@@ -106,8 +106,311 @@ index 0e06935..01ef8a1 100644
              {% endfor %}
          </div>
  
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 6184ce8e..1771ddad 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -1,116 +1,105 @@
+-{% extends 'base.html.twig' %}
++{% extends 'product/productBase.html.twig' %}
+ 
+-{% block body %}
+-    <div class="container-fluid mt-4">
+-        <div class="row">
+-            <aside class="col-xs-12 col-3">
+-                {{ include('product/_categoriesSidebar.html.twig') }}
+-            </aside>
++{% block productBody %}
++    <div data-controller="counter">
++        <button
++            data-action="counter#increment"
++            class="btn btn-primary btn-sm"
++        >
++            Click me!
++        </button>
+ 
+-            <div class="col-xs-12 col-9">
++        <br>
+ 
+-                <div data-controller="counter">
+-                    <button
+-                        data-action="counter#increment"
+-                        class="btn btn-primary btn-sm"
+-                    >
+-                        Click me!
+-                    </button>
++        I have been clicked
++        <span data-counter-target="count">0</span>
++        times!
++    </div>
+ 
+-                    <br>
++    <div class="row">
++        <div class="col-3">
++            <h1>
++                {% if currentCategory %}
++                    {{ currentCategory.name }}
++                {% else %}
++                    All Products
++                {% endif %}
++            </h1>
++        </div>
++        <div class="col-9">
++            <form>
++                <div
++                    class="input-group"
++                    {{ stimulus_controller({
++                        'autocomplete': {
++                            url: path('app_homepage', { preview: 1 }),
++                            skipHiddenProperty: true
++                        },
++                        'autocomplete-transition': {}
++                    }) }}
++                    data-action="toggle->autocomplete-transition#toggle"
++                >
++                    <input
++                        name="q"
++                        value="{{ searchTerm }}"
++                        placeholder="Search products..."
++                        type="search"
++                        class="form-control"
++                        data-autocomplete-target="input"
++                    >
+ 
+-                    I have been clicked
+-                    <span data-counter-target="count">0</span>
+-                    times!
++                    <div
++                        class="search-preview"
++                        data-autocomplete-target="results"
++                        data-autocomplete-transition-target="results"
++                    ></div>
+                 </div>
+-
+-                <div class="row">
+-                    <div class="col-3">
+-                        <h1>
+-                            {% if currentCategory %}
+-                                {{ currentCategory.name }}
+-                            {% else %}
+-                                All Products
+-                            {% endif %}
+-                        </h1>
+-                    </div>
+-                    <div class="col-9">
+-                        <form>
+-                            <div
+-                                class="input-group"
+-                                {{ stimulus_controller({
+-                                    'autocomplete': {
+-                                        url: path('app_homepage', { preview: 1 }),
+-                                        skipHiddenProperty: true
+-                                    },
+-                                    'autocomplete-transition': {}
+-                                }) }}
+-                                data-action="toggle->autocomplete-transition#toggle"
++            </form>
++        </div>
++    </div>
++    <div class="row mt-4">
++        {% for product in products %}
++            <div class="col-xs-12 col-6 mb-2 pb-2">
++                <div class="component-light">
++                    <div class="product-image">
++                        <a href="{{ path('app_product', { id: product.id }) }}">
++                            <img
++                                alt="{{ product.name }}"
++                                src="{{ asset('/uploads/products/'~product.imageFilename) }}"
++                                class="d-block mb-2"
+                             >
+-                                <input
+-                                    name="q"
+-                                    value="{{ searchTerm }}"
+-                                    placeholder="Search products..."
+-                                    type="search"
+-                                    class="form-control"
+-                                    data-autocomplete-target="input"
+-                                >
+-
+-                                <div
+-                                    class="search-preview"
+-                                    data-autocomplete-target="results"
+-                                    data-autocomplete-transition-target="results"
+-                                ></div>
+-                            </div>
+-                        </form>
++                        </a>
++                        <h3 class="font-weight-bold mb-2 px-2">
++                            <a href="{{ path('app_product', { id: product.id }) }}">
++                                {{ product.name }}
++                            </a>
++                        </h3>
++                    </div>
++                    <div
++                        class="p-2 my-3 d-md-flex justify-content-between">
++                        <p class="p-0 d-inline">
++                            <strong>{{ product.priceString|format_currency('USD') }}</strong>
++                        </p>
++                        <a href="{{ path('app_product', { id: product.id }) }}" class="btn btn-info">View Product</a>
+                     </div>
+                 </div>
+-                <div class="row mt-4">
+-                    {% for product in products %}
+-                        <div class="col-xs-12 col-6 mb-2 pb-2">
+-                            <div class="component-light">
+-                                <div class="product-image">
+-                                    <a href="{{ path('app_product', { id: product.id }) }}">
+-                                        <img
+-                                            alt="{{ product.name }}"
+-                                            src="{{ asset('/uploads/products/'~product.imageFilename) }}"
+-                                            class="d-block mb-2"
+-                                        >
+-                                    </a>
+-                                    <h3 class="font-weight-bold mb-2 px-2">
+-                                        <a href="{{ path('app_product', { id: product.id }) }}">
+-                                            {{ product.name }}
+-                                        </a>
+-                                    </h3>
+-                                </div>
+-                                <div
+-                                    class="p-2 my-3 d-md-flex justify-content-between">
+-                                    <p class="p-0 d-inline">
+-                                        <strong>{{ product.priceString|format_currency('USD') }}</strong>
+-                                    </p>
+-                                    <a href="{{ path('app_product', { id: product.id }) }}" class="btn btn-info">View Product</a>
+-                                </div>
+-                            </div>
+-                            <hr>
+-                            <div class="px-2 pb-2">
+-                                <small>brought to you by {{ product.brand }}</small>
+-                            </div>
+-                        </div>
+-                    {% else %}
+-                        <div class="col-12">
+-                            <h5 class="ml-4 mt-4" >
+-                                Whoopsie Daisy, no products found!
+-                            </h5>
+-                        </div>
+-                    {% endfor %}
+-                </div>
+-
+-                <div class="row">
+-                    <span class="p-3">
+-                        Shipping takes 10-13 weeks, and products probably won't work
+-                    </span>
++                <hr>
++                <div class="px-2 pb-2">
++                    <small>brought to you by {{ product.brand }}</small>
+                 </div>
+             </div>
+-        </div>
++        {% else %}
++            <div class="col-12">
++                <h5 class="ml-4 mt-4" >
++                    Whoopsie Daisy, no products found!
++                </h5>
++            </div>
++        {% endfor %}
++    </div>
++
++    <div class="row">
++        <span class="p-3">
++            Shipping takes 10-13 weeks, and products probably won't work
++        </span>
+     </div>
+ {% endblock %}
+diff --git a/templates/product/productBase.html.twig b/templates/product/productBase.html.twig
+new file mode 100644
+index 00000000..82d3cc21
+--- /dev/null
++++ b/templates/product/productBase.html.twig
+@@ -0,0 +1,15 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <div class="container-fluid mt-4">
++        <div class="row">
++            <aside class="col-xs-12 col-3">
++                {{ include('product/_categoriesSidebar.html.twig') }}
++            </aside>
++
++            <div class="col-xs-12 col-9">
++                {% block productBody %}{% endblock %}
++            </div>
++        </div>
++    </div>
++{% endblock %}
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 537282c6..138999b0 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -1,39 +1,29 @@
+-{% extends 'base.html.twig' %}
++{% extends 'product/productBase.html.twig' %}
+ 
+-{% block body %}
+-    <div class="container-fluid mt-4">
+-        <div class="row">
+-            <aside class="col-xs-12 col-3">
+-                {{ include('product/_categoriesSidebar.html.twig') }}
+-            </aside>
+-
+-            <div class="col-xs-12 col-9 product-show">
+-                <h1>{{ product.name }}</h1>
+-                <div class="row component-light">
+-                    <div class="col-4 pt-3">
+-                        <img
+-                            alt="{{ product.name }}"
+-                            src="{{ asset('/uploads/products/'~product.imageFilename) }}"
+-                            class="d-block"
+-                        >
+-                        <div class="p-2">
+-                            <small>brought to you by </small>
+-                            <small class="d-inline">{{ product.brand }}</small>
+-                        </div>
+-                    </div>
+-                    <div class="col-8 p-3">
+-                        <div>
+-                            {{ product.description }}
+-                        </div>
+-                        <div class="row mt-4 align-items-center">
+-                            <div class="col-3">
+-                                Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
+-                            </div>
+-                            <div class="col-9 p-3">
+-                                {{ include('product/_cart_add_controls.html.twig') }}
+-                            </div>
+-                        </div>
+-                    </div>
++{% block productBody %}
++    <h1>{{ product.name }}</h1>
++    <div class="row component-light product-show">
++        <div class="col-4 pt-3">
++            <img
++                alt="{{ product.name }}"
++                src="{{ asset('/uploads/products/'~product.imageFilename) }}"
++                class="d-block"
++            >
++            <div class="p-2">
++                <small>brought to you by </small>
++                <small class="d-inline">{{ product.brand }}</small>
++            </div>
++        </div>
++        <div class="col-8 p-3">
++            <div>
++                {{ product.description }}
++            </div>
++            <div class="row mt-4 align-items-center">
++                <div class="col-3">
++                    Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
++                </div>
++                <div class="col-9 p-3">
++                    {{ include('product/_cart_add_controls.html.twig') }}
+                 </div>
+             </div>
+         </div>
 diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
-index bf20b98..eec6f04 100644
+index bf20b98f..eec6f040 100644
 --- a/templates/product_admin/_form.html.twig
 +++ b/templates/product_admin/_form.html.twig
 @@ -1,4 +1,4 @@
@@ -117,7 +420,7 @@ index bf20b98..eec6f04 100644
 +    <button class="btn btn-primary" formnovalidate>{{ button_label|default('Save') }}</button>
  {{ form_end(form) }}
 diff --git a/templates/product_admin/_list.html.twig b/templates/product_admin/_list.html.twig
-index b03c9c3..9745a66 100644
+index b03c9c31..9745a66b 100644
 --- a/templates/product_admin/_list.html.twig
 +++ b/templates/product_admin/_list.html.twig
 @@ -24,7 +24,7 @@
@@ -131,7 +434,7 @@ index b03c9c3..9745a66 100644
          </tr>
 diff --git a/templates/product_admin/show.html.twig b/templates/product_admin/show.html.twig
 deleted file mode 100644
-index 79dd56f..0000000
+index 79dd56ff..00000000
 --- a/templates/product_admin/show.html.twig
 +++ /dev/null
 @@ -1,52 +0,0 @@

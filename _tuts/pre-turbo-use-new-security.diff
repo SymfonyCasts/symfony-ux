@@ -1,5 +1,5 @@
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 9d199ba..e2f6ef6 100644
+index 9d199bab..e2f6ef67 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -1,4 +1,6 @@
@@ -24,7 +24,7 @@ index 9d199ba..e2f6ef6 100644
                  path: app_logout
                  # where to redirect after logout
 diff --git a/src/Controller/RegistrationController.php b/src/Controller/RegistrationController.php
-index 7be2280..e84524a 100644
+index 7be2280c..e84524a8 100644
 --- a/src/Controller/RegistrationController.php
 +++ b/src/Controller/RegistrationController.php
 @@ -9,16 +9,16 @@ use App\Security\LoginFormAuthenticator;
@@ -71,7 +71,7 @@ index 7be2280..e84524a 100644
          }
  
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index 5600637..abc1be9 100644
+index 5600637c..abc1be93 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -9,15 +9,16 @@ use App\Entity\User;
@@ -112,7 +112,7 @@ index 5600637..abc1be9 100644
          /* OFFICE SUPPLIES */
          yield [
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index abdb02d..23f03ea 100644
+index abdb02df..23f03ea5 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
@@ -142,7 +142,7 @@ index abdb02d..23f03ea 100644
          return (string) $this->email;
      }
 diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
-index 297f815..4b81112 100644
+index 297f815f..4b811127 100644
 --- a/src/Security/LoginFormAuthenticator.php
 +++ b/src/Security/LoginFormAuthenticator.php
 @@ -6,9 +6,11 @@ use App\Entity\User;

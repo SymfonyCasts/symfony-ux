@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 9e08041..fc5ab10 100644
+index 9e08041f..fc5ab106 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -88,6 +88,7 @@
@@ -12,7 +12,7 @@ index 9e08041..fc5ab10 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index ea57dfa..0b20d16 100644
+index 7435ba59..5004a320 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -228,7 +228,7 @@ index ea57dfa..0b20d16 100644
      ],
      "aliases": [],
 diff --git a/config/bundles.php b/config/bundles.php
-index f8d5509..b0bfb47 100644
+index f8d5509e..b0bfb47e 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,4 +15,5 @@ return [
@@ -238,7 +238,7 @@ index f8d5509..b0bfb47 100644
 +    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 2f42501..2626b74 100644
+index 2f425015..2626b74e 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -40,3 +40,10 @@ security:
@@ -254,7 +254,7 @@ index 2f42501..2626b74 100644
 +                algorithm: sha512
 diff --git a/config/packages/zenstruck_foundry.yaml b/config/packages/zenstruck_foundry.yaml
 new file mode 100644
-index 0000000..a7ab108
+index 00000000..a7ab1084
 --- /dev/null
 +++ b/config/packages/zenstruck_foundry.yaml
 @@ -0,0 +1,9 @@
@@ -268,7 +268,7 @@ index 0000000..a7ab108
 +    zenstruck_foundry:
 +        auto_refresh_proxies: true
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index 7aab59d..79d756f 100644
+index 7aab59d4..79d756ff 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -7,6 +7,9 @@ use App\Entity\Color;
@@ -368,7 +368,7 @@ index 7aab59d..79d756f 100644
          $fs = new Filesystem();
 diff --git a/src/Factory/ProductFactory.php b/src/Factory/ProductFactory.php
 new file mode 100644
-index 0000000..1710aca
+index 00000000..1710aca0
 --- /dev/null
 +++ b/src/Factory/ProductFactory.php
 @@ -0,0 +1,59 @@
@@ -433,7 +433,7 @@ index 0000000..1710aca
 +}
 diff --git a/src/Factory/ReviewFactory.php b/src/Factory/ReviewFactory.php
 new file mode 100644
-index 0000000..6d293cb
+index 00000000..6d293cba
 --- /dev/null
 +++ b/src/Factory/ReviewFactory.php
 @@ -0,0 +1,58 @@
@@ -497,7 +497,7 @@ index 0000000..6d293cb
 +}
 diff --git a/src/Factory/UserFactory.php b/src/Factory/UserFactory.php
 new file mode 100644
-index 0000000..1a6c191
+index 00000000..1a6c191d
 --- /dev/null
 +++ b/src/Factory/UserFactory.php
 @@ -0,0 +1,59 @@
@@ -561,7 +561,7 @@ index 0000000..1a6c191
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index 3273540..fe6e575 100644
+index 32735404..fe6e575d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -97,6 +97,9 @@

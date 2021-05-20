@@ -1,6 +1,6 @@
 diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
 new file mode 100644
-index 0000000..fec7cca
+index 00000000..fec7ccaf
 --- /dev/null
 +++ b/src/Controller/ReviewAdminController.php
 @@ -0,0 +1,84 @@
@@ -90,7 +90,7 @@ index 0000000..fec7cca
 +}
 diff --git a/src/Form/ReviewType.php b/src/Form/ReviewType.php
 new file mode 100644
-index 0000000..b6457d0
+index 00000000..b6457d04
 --- /dev/null
 +++ b/src/Form/ReviewType.php
 @@ -0,0 +1,28 @@
@@ -124,7 +124,7 @@ index 0000000..b6457d0
 +}
 diff --git a/templates/review_admin/_delete_form.html.twig b/templates/review_admin/_delete_form.html.twig
 new file mode 100644
-index 0000000..38b1513
+index 00000000..38b1513d
 --- /dev/null
 +++ b/templates/review_admin/_delete_form.html.twig
 @@ -0,0 +1,4 @@
@@ -134,7 +134,7 @@ index 0000000..38b1513
 +</form>
 diff --git a/templates/review_admin/_form.html.twig b/templates/review_admin/_form.html.twig
 new file mode 100644
-index 0000000..9328bd5
+index 00000000..9328bd56
 --- /dev/null
 +++ b/templates/review_admin/_form.html.twig
 @@ -0,0 +1,4 @@
@@ -144,7 +144,7 @@ index 0000000..9328bd5
 +{{ form_end(form) }}
 diff --git a/templates/review_admin/edit.html.twig b/templates/review_admin/edit.html.twig
 new file mode 100644
-index 0000000..14d4b42
+index 00000000..14d4b42e
 --- /dev/null
 +++ b/templates/review_admin/edit.html.twig
 @@ -0,0 +1,15 @@
@@ -165,7 +165,7 @@ index 0000000..14d4b42
 +{% endblock %}
 diff --git a/templates/review_admin/index.html.twig b/templates/review_admin/index.html.twig
 new file mode 100644
-index 0000000..67640e2
+index 00000000..67640e23
 --- /dev/null
 +++ b/templates/review_admin/index.html.twig
 @@ -0,0 +1,38 @@
@@ -209,7 +209,7 @@ index 0000000..67640e2
 +{% endblock %}
 diff --git a/templates/review_admin/new.html.twig b/templates/review_admin/new.html.twig
 new file mode 100644
-index 0000000..2d4426c
+index 00000000..2d4426c2
 --- /dev/null
 +++ b/templates/review_admin/new.html.twig
 @@ -0,0 +1,13 @@
