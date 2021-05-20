@@ -8,7 +8,6 @@
             </aside>
 
             <div class="col-xs-12 col-9 product-show">
-                <h1>{{ product.name }}</h1>
                 <div class="row pt-3">
                     <div class="col-4">
                         <img
@@ -22,18 +21,19 @@
                         </div>
                     </div>
                     <div class="col-8 px-3">
+                        <h1>{{ product.name }}</h1>
                         <div>
                             {{ product.description }}
                         </div>
-                        <div class="row mt-4 align-items-center">
-                            <div class="col-3">
+                        <div class="p-3 mt-4 d-flex justify-content-between">
+                            <div>
                                 Price: <strong>{{ product.priceString|format_currency('USD') }}</strong>
                                 <br>
                                 Reviews: <strong>{{ product.reviews|length }}</strong>
                                 <br/>
                                 Stars: <strong>{{ product.averageStars }}/5</strong>
                             </div>
-                            <div class="col-9 p-3">
+                            <div>
                                 {{ include('product/_cart_add_controls.html.twig') }}
                             </div>
                         </div>
