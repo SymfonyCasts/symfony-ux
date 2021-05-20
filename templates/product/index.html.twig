@@ -2,28 +2,25 @@
 
 {% block body %}
     <div class="container-fluid mt-4">
+        <div class="p-3 mb-4 text-center" data-controller="counter" style="background-color: #efefee;">
+            <button
+                data-action="counter#increment"
+                class="btn btn-success btn-sm me-3"
+            >
+                Click for a chance to win!
+            </button>
+            
+            You've entered the contest
+            <span data-counter-target="count">0</span>
+            times!
+            
+        </div>
         <div class="row">
             <aside class="col-xs-12 col-3">
                 {{ include('product/_categoriesSidebar.html.twig') }}
             </aside>
 
             <div class="col-xs-12 col-9">
-
-                <div data-controller="counter">
-                    <button
-                        data-action="counter#increment"
-                        class="btn btn-primary btn-sm"
-                    >
-                        Click me!
-                    </button>
-
-                    <br>
-
-                    I have been clicked
-                    <span data-counter-target="count">0</span>
-                    times!
-                </div>
-
                 <div class="row">
                     <div class="col-3">
                         <h1>
