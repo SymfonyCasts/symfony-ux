@@ -1,3 +1,44 @@
+diff --git a/README.md b/README.md
+index 6a97709..26af5ff 100644
+--- a/README.md
++++ b/README.md
+@@ -46,7 +46,11 @@ adjustments you need - specifically `DATABASE_URL`. Or, better,
+ you can create a `.env.local` file and *override* any configuration
+ you need there (instead of changing `.env` directly).
+ 
++<<<<<<< HEAD
++**4) Database Schema**
++=======
+ **3) Database Schema**
++>>>>>>> _tuts/main/installencore-install-encore
+ 
+ To actually *create* the database and get some tables, run:
+ 
+@@ -85,7 +89,23 @@ symfony serve -d
+ (If this is your first time using this command, you may see an
+ error that you need to run `symfony server:ca:install` first).
+ 
+-Now check out the site at `https://localhost:8000`. Enjoy!
++Now check out the site at `https://localhost:8000`. But don't
++forget about the next step - setting up the Frontend assets!
++
++**5) Frontend Assets**
++
++The frontend is built with Encore. First download the node packages
++via yarn:
++
++```
++yarn install
++```
++
++Then use Encore to build the assets with:
++
++```
++yarn watch
++```
+ 
+ ## Have Ideas, Feedback or an Issue?
+ 
 diff --git a/yarn.lock b/yarn.lock
 new file mode 100644
 index 0000000..a44acd0

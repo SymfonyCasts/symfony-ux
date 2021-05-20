@@ -71,7 +71,7 @@ index 7be2280..e84524a 100644
          }
  
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index 317c9cd..51519ac 100644
+index 5600637..abc1be9 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -9,15 +9,16 @@ use App\Entity\User;

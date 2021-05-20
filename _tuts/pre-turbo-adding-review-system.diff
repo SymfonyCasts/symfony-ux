@@ -105,7 +105,7 @@ index 91aecaf..0689dd0 100644
      }
  
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index 51519ac..87758ac 100644
+index abc1be9..7aab59d 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -5,6 +5,7 @@ namespace App\DataFixtures;
