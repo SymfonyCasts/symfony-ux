@@ -1,6 +1,6 @@
 {% for review in product.reviews %}
-    <div>
-        <p>{{ review.owner.email }} - <i class="fas fa-star"></i> {{ review.stars }}/5</p>
+    <div class="component-light my-3 p-3">
+        <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
         <div>
             {{ review.content }}
         </div>
@@ -22,7 +22,7 @@
         <button class="btn btn-primary" formnovalidate>Add Review</button>
     {{ form_end(reviewForm) }}
 {% elseif not is_granted('ROLE_USER') %}
-    <p><a href="{{ path('app_login') }}">Log in</a> to post a review</p>
+    <p><a href="{{ path('app_login') }}">Log in</a> to post your review</p>
 {% else %}
     <div class="alert alert-success">Thanks for your review!</div>
 {% endif %}
