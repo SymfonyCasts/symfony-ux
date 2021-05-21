@@ -3,10 +3,10 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
-    <div class="container mt-4">
+    <div class="container" style="margin-top: 100px;">
         <div class="row">
             <div
-                class="col-12 col-md-3 order-2 order-md-1 mt-4 mt-md-0"
+                class="col-12 col-md-3 order-2 order-md-1 mt-4 mt-md-0 text-center"
                 {{ stimulus_controller('featured-product-react', {
                     product: featuredProduct|serialize('json', { groups: 'product:read'})
                 }) }}
