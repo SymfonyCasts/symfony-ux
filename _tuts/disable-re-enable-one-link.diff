@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 0af8edc6..d77714bc 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -25,7 +25,7 @@
+                         <span class="p-3">MVP Office Supplies</span>
+                     </a>
+ 
+-                    <ul class="navbar-nav">
++                    <ul class="navbar-nav" data-turbo="true">
+                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{ path('app_logout') }}">

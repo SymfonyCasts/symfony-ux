@@ -1,0 +1,100 @@
+diff --git a/src/Form/AddItemToCartFormType.php b/src/Form/AddItemToCartFormType.php
+index 9611bb3a..1c131f44 100644
+--- a/src/Form/AddItemToCartFormType.php
++++ b/src/Form/AddItemToCartFormType.php
+@@ -14,7 +14,7 @@ use Symfony\Component\Routing\RouterInterface;
+ 
+ class AddItemToCartFormType extends AbstractType
+ {
+-    private $router;
++    private RouterInterface $router;
+ 
+     public function __construct(RouterInterface $router)
+     {
+diff --git a/src/Repository/ProductRepository.php b/src/Repository/ProductRepository.php
+index f9cf337a..49370510 100644
+--- a/src/Repository/ProductRepository.php
++++ b/src/Repository/ProductRepository.php
+@@ -25,7 +25,7 @@ class ProductRepository extends ServiceEntityRepository
+      *
+      * @return Product[]
+      */
+-    public function search(?Category $category, ?string $term)
++    public function search(?Category $category, ?string $term): array
+     {
+         $qb = $this->createQueryBuilder('product');
+ 
+diff --git a/src/Service/CartStorage.php b/src/Service/CartStorage.php
+index c1f323ab..9dd35cc7 100644
+--- a/src/Service/CartStorage.php
++++ b/src/Service/CartStorage.php
+@@ -11,9 +11,9 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
+ 
+ class CartStorage
+ {
+-    private $requestStack;
+-    private $productRepository;
+-    private $colorRepository;
++    private RequestStack $requestStack;
++    private ProductRepository $productRepository;
++    private ColorRepository $colorRepository;
+ 
+     public function __construct(RequestStack $requestStack, ProductRepository $productRepository, ColorRepository  $colorRepository)
+     {
+@@ -54,12 +54,12 @@ class CartStorage
+         return $this->getCart() ?: new Cart();
+     }
+ 
+-    public function save(Cart $cart)
++    public function save(Cart $cart): void
+     {
+         $this->getSession()->set(self::getKey(), $cart);
+     }
+ 
+-    public function clearCart()
++    public function clearCart(): void
+     {
+         $this->getSession()->remove(self::getKey());
+     }
+diff --git a/src/Twig/CartExtension.php b/src/Twig/CartExtension.php
+index 7c354eb3..66d6af37 100644
+--- a/src/Twig/CartExtension.php
++++ b/src/Twig/CartExtension.php
+@@ -12,14 +12,14 @@ use Twig\TwigFunction;
+ 
+ class CartExtension extends AbstractExtension
+ {
+-    private $cartStorage;
++    private CartStorage $cartStorage;
+ 
+     public function __construct(CartStorage $cartStorage)
+     {
+         $this->cartStorage = $cartStorage;
+     }
+ 
+-    public function getFunctions()
++    public function getFunctions(): array
+     {
+         return [
+             new TwigFunction('count_cart_items', [$this, 'countCartItems']),
+diff --git a/src/Twig/SerializeExtension.php b/src/Twig/SerializeExtension.php
+index c6a11248..7b9980f9 100644
+--- a/src/Twig/SerializeExtension.php
++++ b/src/Twig/SerializeExtension.php
+@@ -8,14 +8,14 @@ use Twig\TwigFilter;
+ 
+ class SerializeExtension extends AbstractExtension
+ {
+-    private $serializer;
++    private SerializerInterface $serializer;
+ 
+     public function __construct(SerializerInterface $serializer)
+     {
+         $this->serializer = $serializer;
+     }
+ 
+-    public function getFilters()
++    public function getFilters(): array
+     {
+         return [
+             new TwigFilter('serialize', [$this, 'serialize']),

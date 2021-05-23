@@ -12,7 +12,7 @@ index 5621c51d..49945ae9 100644
  .fade-enter-from, .fade-leave-to {
      opacity: 0;
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index e2f6ef67..2f425015 100644
+index ac75763c..d7645dc0 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -5,6 +5,10 @@ security:
@@ -106,6 +106,22 @@ index 0e069350..01ef8a1a 100644
              {% endfor %}
          </div>
  
+diff --git a/templates/product/_categoriesSidebar.html.twig b/templates/product/_categoriesSidebar.html.twig
+index acc26f24..cc430c48 100644
+--- a/templates/product/_categoriesSidebar.html.twig
++++ b/templates/product/_categoriesSidebar.html.twig
+@@ -19,11 +19,4 @@
+             </li>
+         {% endfor %}
+     </ul>
+-    <hr>
+-
+-    <div class="d-flex justify-content-end">
+-        <button class="btn btn-secondary btn-sm">
+-            Collapse
+-        </button>
+-    </div>
+ </div>
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
 index 6184ce8e..1771ddad 100644
 --- a/templates/product/index.html.twig
@@ -490,3 +506,25 @@ index 79dd56ff..00000000
 -    {{ include('product_admin/_delete_form.html.twig') }}
 -</div>
 -{% endblock %}
+diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
+index b71ecc6b..1e7c5e71 100644
+--- a/templates/security/login.html.twig
++++ b/templates/security/login.html.twig
+@@ -21,11 +21,17 @@
+                         <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+                         <label for="inputEmail">Email</label>
+                         <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
++                        <small class="form-text text-muted">
++                          (try email <code>shopper@example.com</code>)
++                        </small>
+                     </div>
+ 
+                     <div class="form-group">
+                         <label for="inputPassword">Password</label>
+                         <input type="password" name="password" id="inputPassword" class="form-control" required>
++                        <small class="form-text text-muted">
++                          (try password <code>buy</code>)
++                        </small>
+                     </div>
+ 
+                     <input type="hidden" name="_csrf_token"

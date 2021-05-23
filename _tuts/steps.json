@@ -796,6 +796,16 @@
             "description": null
         },
         {
+            "id": "pre-turbo-fix-deprecations",
+            "name": "PRE_TURBO: fix deprecations",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-add-more-types",
+            "name": "PRE_TURBO: Add more types",
+            "description": null
+        },
+        {
             "id": "pre-turbo-add-counting-page",
             "name": "PRE_TURBO: Add \"counting\" page",
             "description": null
@@ -811,10 +821,95 @@
             "description": null
         },
         {
+            "id": "pre-turbo-making-entity-setters-relaxed",
+            "name": "PRE_TURBO: making entity setters relaxed",
+            "description": null
+        },
+        {
             "id": "pre-turbo-foundry",
             "name": "PRE_TURBO: Foundry",
             "description": null
+        },
+        {
+            "id": "pre-turbo-empty-migrations",
+            "name": "PRE_TURBO: empty migrations",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-empty-tutorial",
+            "name": "PRE_TURBO: empty tutorial\/",
+            "description": null
+        },
+        {
+            "id": "drivebasics-install-turbo",
+            "name": "DriveBasics: Install Turbo",
+            "description": null
+        },
+        {
+            "id": "drivebasics-yarn-install-force",
+            "name": "DriveBasics: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "drivebasics-add-sleep",
+            "name": "DriveBasics: Add sleep()",
+            "description": null
+        },
+        {
+            "id": "drivebasics-remove-sleep",
+            "name": "DriveBasics: remove sleep",
+            "description": null
+        },
+        {
+            "id": "drivejs-add-document-ready",
+            "name": "DriveJs: add document.ready()",
+            "description": null
+        },
+        {
+            "id": "drivejs-adding-js-to-body",
+            "name": "DriveJs: Adding js to body",
+            "description": null
+        },
+        {
+            "id": "drivejs-attaching-document-listener",
+            "name": "DriveJs: Attaching document listener",
+            "description": null
+        },
+        {
+            "id": "drivejs-remove-extra-js",
+            "name": "DriveJs: Remove extra js",
+            "description": null
+        },
+        {
+            "id": "disable-add-data-turbo-false",
+            "name": "Disable: add data-turbo=\"false\"",
+            "description": null
+        },
+        {
+            "id": "disable-re-enable-one-link",
+            "name": "Disable: re-enable one link",
+            "description": null
+        },
+        {
+            "id": "disable-remove-data-turbo",
+            "name": "Disable: remove data-turbo",
+            "description": null
+        },
+        {
+            "id": "forms-add-422-by-hand",
+            "name": "Forms: add 422 by hand",
+            "description": null
+        },
+        {
+            "id": "forms-renderform",
+            "name": "Forms: renderForm()",
+            "description": null
+        },
+        {
+            "id": "forms-updating-all-other-forms",
+            "name": "Forms: updating all other forms",
+            "description": null
         }
     ],
-    "sha": "579ae1f34af2df32b520f73965f5dd82cde2e4e2"
+    "sha": "580467acc7bf0833bb1575f79fac69c8e88d4cce"
 }

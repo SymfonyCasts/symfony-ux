@@ -238,7 +238,7 @@ index f8d5509e..b0bfb47e 100644
 +    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index 2f425015..2626b74e 100644
+index d7645dc0..590d82f2 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -40,3 +40,10 @@ security:

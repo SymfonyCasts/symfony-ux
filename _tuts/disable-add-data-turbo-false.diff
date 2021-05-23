@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 01ef8a1a..0af8edc6 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -11,7 +11,7 @@
+             {{ encore_entry_script_tags('app') }}
+         {% endblock %}
+     </head>
+-    <body>
++    <body data-turbo="false">
+         <div class="page-top">
+             <header class="header">
+                 <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">

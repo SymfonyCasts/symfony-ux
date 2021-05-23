@@ -1,0 +1,13 @@
+diff --git a/public/index.php b/public/index.php
+index a7ac7661..9982c218 100644
+--- a/public/index.php
++++ b/public/index.php
+@@ -1,7 +1,7 @@
+ <?php
+ 
+ use App\Kernel;
+-sleep(2);
++
+ require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
+ 
+ return function (array $context) {

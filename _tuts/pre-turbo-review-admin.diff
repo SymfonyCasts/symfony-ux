@@ -1,6 +1,6 @@
 diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
 new file mode 100644
-index 00000000..fec7ccaf
+index 00000000..fb60f564
 --- /dev/null
 +++ b/src/Controller/ReviewAdminController.php
 @@ -0,0 +1,84 @@
@@ -51,7 +51,7 @@ index 00000000..fec7ccaf
 +        return $this->render('review_admin/new.html.twig', [
 +            'review' => $review,
 +            'form' => $form->createView(),
-+        ], new Response(null, $form->isSubmitted() ? 422 : 200));
++        ]);
 +    }
 +
 +    /**
@@ -71,7 +71,7 @@ index 00000000..fec7ccaf
 +        return $this->render('review_admin/edit.html.twig', [
 +            'review' => $review,
 +            'form' => $form->createView(),
-+        ], new Response(null, $form->isSubmitted() ? 422 : 200));
++        ]);
 +    }
 +
 +    /**

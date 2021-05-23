@@ -1,0 +1,15 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 916be297..e3dde656 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -80,7 +80,9 @@
+         </div>
+ 
+         <script>
+-        console.log('body executing!');
++        document.addEventListener('click', () => {
++            console.log('body clicked!');
++        })
+         </script>
+     </body>
+ </html>

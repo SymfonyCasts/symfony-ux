@@ -1,0 +1,22 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index d77714bc..01ef8a1a 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -11,7 +11,7 @@
+             {{ encore_entry_script_tags('app') }}
+         {% endblock %}
+     </head>
+-    <body data-turbo="false">
++    <body>
+         <div class="page-top">
+             <header class="header">
+                 <nav class="navbar navbar-expand-lg navbar-dark justify-content-between">
+@@ -25,7 +25,7 @@
+                         <span class="p-3">MVP Office Supplies</span>
+                     </a>
+ 
+-                    <ul class="navbar-nav" data-turbo="true">
++                    <ul class="navbar-nav">
+                         {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                             <li class="nav-item">
+                                 <a class="nav-link" href="{{ path('app_logout') }}">
