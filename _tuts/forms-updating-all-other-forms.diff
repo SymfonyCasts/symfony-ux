@@ -47,7 +47,7 @@ index 9dafd16c..a5a4d645 100644
      }
  
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index 2f347d20..629bd598 100644
+index 2f347d20..39a247eb 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -52,13 +52,10 @@ class ProductAdminController extends AbstractController
@@ -62,7 +62,7 @@ index 2f347d20..629bd598 100644
 -            null,
 -            $form->isSubmitted() && !$form->isValid() ? 422 : 200,
 -        ));
-+            'form',
++            'form' => $form,
 +        ]);
      }
  

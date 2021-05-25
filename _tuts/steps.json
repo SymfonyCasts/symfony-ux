@@ -914,7 +914,107 @@
             "id": "forms-updating-all-other-forms",
             "name": "Forms: updating all other forms",
             "description": null
+        },
+        {
+            "id": "snapshot-disable-preview",
+            "name": "Snapshot: disable preview",
+            "description": null
+        },
+        {
+            "id": "snapshot-lower-opacity-on-preview",
+            "name": "Snapshot: lower opacity on preview",
+            "description": null
+        },
+        {
+            "id": "snapshot-remove-opacity",
+            "name": "Snapshot: remove opacity",
+            "description": null
+        },
+        {
+            "id": "snapshot-listen-to-turbo-before-cache",
+            "name": "Snapshot: listen to turbo:before-cache",
+            "description": null
+        },
+        {
+            "id": "snapshot-close-modal",
+            "name": "Snapshot: Close modal",
+            "description": null
+        },
+        {
+            "id": "snapshot-complex-close-modal",
+            "name": "Snapshot: Complex close modal",
+            "description": null
+        },
+        {
+            "id": "snapshot-try-sweetalert",
+            "name": "Snapshot: Try SweetAlert",
+            "description": null
+        },
+        {
+            "id": "snapshot-remove-swal-animation",
+            "name": "Snapshot: remove Swal animation",
+            "description": null
+        },
+        {
+            "id": "snapshot-lazily-load-swal",
+            "name": "Snapshot: Lazily load Swal",
+            "description": null
+        },
+        {
+            "id": "widgets-log-in-body",
+            "name": "Widgets: log in body",
+            "description": null
+        },
+        {
+            "id": "widgets-remove-log",
+            "name": "Widgets: remove log",
+            "description": null
+        },
+        {
+            "id": "widgets-add-weather-widget",
+            "name": "Widgets: add weather widget",
+            "description": null
+        },
+        {
+            "id": "widgets-expand-widget-code",
+            "name": "Widgets: expand widget code",
+            "description": null
+        },
+        {
+            "id": "widgets-log-on-turbo-before-render",
+            "name": "Widgets: log on turbo:before-render",
+            "description": null
+        },
+        {
+            "id": "widgets-remove-script-element",
+            "name": "Widgets: remove script element",
+            "description": null
+        },
+        {
+            "id": "widgets-turbo-render-function",
+            "name": "Widgets: turbo:render + function",
+            "description": null
+        },
+        {
+            "id": "assets-turn-on-versioning",
+            "name": "Assets: turn on versioning",
+            "description": null
+        },
+        {
+            "id": "assets-tweak-app-js",
+            "name": "Assets: tweak app.js",
+            "description": null
+        },
+        {
+            "id": "assets-activate-data-turbo-track",
+            "name": "Assets: activate data-turbo-track",
+            "description": null
+        },
+        {
+            "id": "assets-remove-log",
+            "name": "Assets: remove log",
+            "description": null
         }
     ],
-    "sha": "51944bfe984522a12d1524ad15a8de6f4170ed99"
+    "sha": "132facb4065c4f6fd9f5974977268c4f32f32e32"
 }

@@ -1,0 +1,16 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 0f0cb66f..6d010547 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -5,9 +5,11 @@
+ body {
+     font-family: 'Montserrat', sans-serif;
+ }
++/*
+ [data-turbo-preview] body {
+     opacity: .2;
+ }
++*/
+ 
+ a, a:hover  {
+     color: #000;

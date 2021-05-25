@@ -1,0 +1,9 @@
+diff --git a/assets/app.js b/assets/app.js
+index 031f9967..66b8e14b 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -38,3 +38,4 @@ document.addEventListener('turbo:before-cache', () => {
+ document.addEventListener('turbo:render', () => {
+     __weatherwidget_init();
+ });
++console.log('new code!');

@@ -17132,10 +17132,10 @@ index 67640e23..9d008a88 100644
      <a href="{{ path('review_admin_new') }}">Create new</a>
  </div>
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 1e7c5e71..c32bc080 100644
+index 1e7c5e71..0a716292 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
-@@ -4,57 +4,46 @@
+@@ -4,57 +4,52 @@
  
  {% block body %}
      <div class="container mt-4">
@@ -17203,12 +17203,18 @@ index 1e7c5e71..c32bc080 100644
 +                <h1 class="h3 mb-3 font-weight-normal" style="margin-top: 100px;">Welcome back!</h1>
 +                <label for="inputEmail">Email</label>
 +                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
++                <small class="form-text text-muted">
++                  (try email <code>shopper@example.com</code>)
++                </small>
              </div>
 -        </div>
  
 +            <div class="form-group mt-3">
 +                <label for="inputPassword">Password</label>
 +                <input type="password" name="password" id="inputPassword" class="form-control" required>
++                <small class="form-text text-muted">
++                  (try password <code>buy</code>)
++                </small>
 +            </div>
 +
 +            <input type="hidden" name="_csrf_token"

@@ -1,0 +1,12 @@
+diff --git a/assets/app.js b/assets/app.js
+index 2ce8f0e8..97070c1a 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -34,3 +34,7 @@ document.addEventListener('turbo:before-cache', () => {
+         })
+     }
+ });
++
++document.addEventListener('turbo:before-render', () => {
++    console.log('before render!');
++});

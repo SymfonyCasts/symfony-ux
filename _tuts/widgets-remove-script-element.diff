@@ -1,0 +1,11 @@
+diff --git a/assets/app.js b/assets/app.js
+index 97070c1a..082087e6 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -36,5 +36,5 @@ document.addEventListener('turbo:before-cache', () => {
+ });
+ 
+ document.addEventListener('turbo:before-render', () => {
+-    console.log('before render!');
++    document.querySelector('#weatherwidget-io-js').remove();
+ });

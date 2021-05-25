@@ -1,0 +1,18 @@
+diff --git a/assets/app.js b/assets/app.js
+index a3f77271..2c9c02cb 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -11,6 +11,11 @@ import './styles/app.css';
+ // start the Stimulus application
+ import './bootstrap';
+ 
+-document.addEventListener('turbo:before-cache', (event) => {
+-    console.log(event);
++import { Modal } from 'bootstrap';
++
++document.addEventListener('turbo:before-cache', () => {
++    if (document.body.classList.contains('modal-open')) {
++        const modal = Modal.getInstance(document.querySelector('.modal'));
++        modal.hide();
++    }
+ });

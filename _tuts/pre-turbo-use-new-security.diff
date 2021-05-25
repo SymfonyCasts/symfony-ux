@@ -144,10 +144,10 @@ index abdb02df..23f03ea5 100644
          return (string) $this->email;
      }
 diff --git a/src/Security/LoginFormAuthenticator.php b/src/Security/LoginFormAuthenticator.php
-index 297f815f..034fb7f6 100644
+index 297f815f..48a71a4f 100644
 --- a/src/Security/LoginFormAuthenticator.php
 +++ b/src/Security/LoginFormAuthenticator.php
-@@ -6,98 +6,62 @@ use App\Entity\User;
+@@ -6,98 +6,69 @@ use App\Entity\User;
  use Doctrine\ORM\EntityManagerInterface;
  use Symfony\Component\HttpFoundation\RedirectResponse;
  use Symfony\Component\HttpFoundation\Request;
@@ -155,7 +155,7 @@ index 297f815f..034fb7f6 100644
  use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
  use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 -use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
--use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
+ use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationException;
 -use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
  use Symfony\Component\Security\Core\Security;
 -use Symfony\Component\Security\Core\User\UserInterface;
@@ -248,7 +248,13 @@ index 297f815f..034fb7f6 100644
 -        return $credentials['password'];
 +        return new Passport(
 +            new UserBadge($email, function() use ($email) {
-+                return $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
++                $user = $this->entityManager->getRepository(User::class)->findOneBy(['email' => $email]);
++
++                if (!$user) {
++                    throw new CustomUserMessageAuthenticationException('Email not found!');
++                }
++
++                return $user;
 +            }),
 +            new PasswordCredentials($request->request->get('password')),
 +            [
