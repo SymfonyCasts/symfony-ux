@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 038a0a15..d6e0091f 100644
+index 65192cea..348b70e2 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -11,6 +11,42 @@ const TurboHelper = class {
@@ -42,7 +42,7 @@ index 038a0a15..d6e0091f 100644
 +    }
 +
 +    initializeTransitions() {
-         document.documentElement.addEventListener('turbo:visit', () => {
+         document.addEventListener('turbo:visit', () => {
              // fade out the old body
              document.body.classList.add('turbo-loading');
 @@ -53,38 +89,6 @@ const TurboHelper = class {

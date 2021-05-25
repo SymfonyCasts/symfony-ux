@@ -1,0 +1,21 @@
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index 81281399..c03446a8 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -4,9 +4,13 @@
+     <div class="container-fluid container-xl mt-4">
+         <div class="row">
+             <aside class="col-12 col-md-4 order-2 order-md-1">
+-                <turbo-frame id="cart-sidebar" src="{{ path('_app_cart_product_featured') }}" target="_top">
+-                    Loading...
+-                </turbo-frame>
++                {% if featuredProduct is defined %}
++                    {{ include('cart/_featuredSidebar.html.twig') }}
++                {% else %}
++                    <turbo-frame id="cart-sidebar" src="{{ path('_app_cart_product_featured') }}" target="_top">
++                        Loading...
++                    </turbo-frame>
++                {% endif %}
+             </aside>
+ 
+             <div class="col-12 col-md-8 order-1 order-md-2 cart">

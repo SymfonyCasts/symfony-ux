@@ -1,0 +1,13 @@
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index fa1cc8ba..140d519e 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -23,7 +23,7 @@
+         <button class="btn btn-primary" formnovalidate>Add Review</button>
+     {{ form_end(reviewForm) }}
+ {% elseif not is_granted('ROLE_USER') %}
+-    <p><a href="{{ path('app_login') }}">Log in</a> to post your review</p>
++    <p><a href="{{ path('app_login') }}" data-turbo-frame="_top">Log in</a> to post your review</p>
+ {% else %}
+     <div class="alert alert-success">Thanks for your review!</div>
+ {% endif %}

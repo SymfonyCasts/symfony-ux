@@ -1,0 +1,14 @@
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index 197f79e9..fa1cc8ba 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -1,3 +1,4 @@
++<turbo-frame id="product-review">
+ {% for review in product.reviews %}
+     <div class="component-light my-3 p-3">
+         <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+@@ -26,3 +27,4 @@
+ {% else %}
+     <div class="alert alert-success">Thanks for your review!</div>
+ {% endif %}
++</turbo-frame>

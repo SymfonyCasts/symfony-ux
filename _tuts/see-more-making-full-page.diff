@@ -1,0 +1,13 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 0a16385f..2b384c97 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -38,7 +38,7 @@ class CartController extends AbstractController
+             'product' => $featuredProduct,
+         ]);
+ 
+-        return $this->renderForm('cart/_featuredSidebar.html.twig', [
++        return $this->renderForm('cart/cart.html.twig', [
+             'featuredProduct' => $featuredProduct,
+             'addToCartForm' => $addToCartForm,
+             'showDescription' => $request->query->get('description'),

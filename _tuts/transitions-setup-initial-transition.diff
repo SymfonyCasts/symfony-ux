@@ -14,7 +14,7 @@ index 6d010547..a6ce310b 100644
  /*
  [data-turbo-preview] body {
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index dcefc45f..93488d62 100644
+index dcefc45f..be3abc2f 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -10,6 +10,22 @@ const TurboHelper = class {
@@ -22,15 +22,15 @@ index dcefc45f..93488d62 100644
              this.initializeWeatherWidget();
          });
 +
-+        document.documentElement.addEventListener('turbo:visit', () => {
++        document.addEventListener('turbo:visit', () => {
 +            // fade out the old body
 +            document.body.classList.add('turbo-loading');
 +        });
-+        document.documentElement.addEventListener('turbo:before-render', (event) => {
++        document.addEventListener('turbo:before-render', (event) => {
 +            // when we are *about* to render, start us faded out
 +            event.detail.newBody.classList.add('turbo-loading');
 +        });
-+        document.documentElement.addEventListener('turbo:render', () => {
++        document.addEventListener('turbo:render', () => {
 +            // after rendering, we first allow the .turbo-loaded to set the low opacity
 +            // THEN, 10ms later, we remove the turbo-loaded class, which allows the fade in
 +            setTimeout(() => {

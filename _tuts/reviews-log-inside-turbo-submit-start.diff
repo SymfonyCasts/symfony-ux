@@ -1,0 +1,15 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index ee424a3c..88bf93c9 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -7,6 +7,10 @@ const TurboHelper = class {
+             this.closeSweetalert();
+         });
+ 
++        document.addEventListener('turbo:submit-start', (event) => {
++            console.log('submit-start', event);
++        })
++
+         this.initializeTransitions();
+     }
+ 

@@ -1,0 +1,14 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 775cfbe7..ea638a3b 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -16,6 +16,9 @@ body.turbo-loading, body.turbo-loaded {
+     opacity: .2;
+ }
+ */
++turbo-frame {
++    display: block;
++}
+ turbo-frame[busy] {
+     opacity: .2;
+ }

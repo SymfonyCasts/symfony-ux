@@ -836,6 +836,11 @@
             "description": null
         },
         {
+            "id": "pre-turbo-add-log-in-helper-links",
+            "name": "PRE_TURBO: add log in helper links",
+            "description": null
+        },
+        {
             "id": "pre-turbo-empty-migrations",
             "name": "PRE_TURBO: empty migrations",
             "description": null
@@ -1154,7 +1159,92 @@
             "id": "lazyframe-move-weatherwidget-init-into-ctrl",
             "name": "LazyFrame: move __weatherwidget_init into ctrl",
             "description": null
+        },
+        {
+            "id": "targetting-add-target-top",
+            "name": "Targetting: add target=_top",
+            "description": null
+        },
+        {
+            "id": "targetting-also-add-to-internal-frame",
+            "name": "Targetting: also add to internal frame",
+            "description": null
+        },
+        {
+            "id": "see-more-add-truncated-description",
+            "name": "See More: add truncated description",
+            "description": null
+        },
+        {
+            "id": "see-more-install-twig-string-extra",
+            "name": "See More: install twig\/string-extra",
+            "description": null
+        },
+        {
+            "id": "see-more-read-more-link",
+            "name": "See More: \"read more\" link",
+            "description": null
+        },
+        {
+            "id": "see-more-adding-turbo-frame",
+            "name": "See More: adding turbo-frame",
+            "description": null
+        },
+        {
+            "id": "see-more-making-full-page",
+            "name": "See More: making full page",
+            "description": null
+        },
+        {
+            "id": "see-more-fixing-missing-variable",
+            "name": "See More: fixing missing variable",
+            "description": null
+        },
+        {
+            "id": "see-more-render-frame-conditionally",
+            "name": "See More: render frame conditionally",
+            "description": null
+        },
+        {
+            "id": "framebusy-add-busy-css",
+            "name": "FrameBusy: add busy CSS",
+            "description": null
+        },
+        {
+            "id": "framebusy-add-display-block",
+            "name": "FrameBusy: add display: block",
+            "description": null
+        },
+        {
+            "id": "framebusy-make-effect-less-dramatic",
+            "name": "FrameBusy: make effect less dramatic",
+            "description": null
+        },
+        {
+            "id": "reviews-wrap-reviews-in-frame",
+            "name": "Reviews: wrap reviews in frame",
+            "description": null
+        },
+        {
+            "id": "reviews-fix-log-in-target",
+            "name": "Reviews: fix log in target",
+            "description": null
+        },
+        {
+            "id": "reviews-log-inside-turbo-submit-start",
+            "name": "Reviews: log inside turbo:submit-start",
+            "description": null
+        },
+        {
+            "id": "reviews-disable-all-submit-buttons",
+            "name": "Reviews: disable all submit buttons",
+            "description": null
+        },
+        {
+            "id": "reviews-fix-disabled-buttons-on-back",
+            "name": "Reviews: fix disabled buttons on back",
+            "description": null
         }
     ],
-    "sha": "6fdbc7f20c14b6df8215f81ea993a53f88c09b93"
+    "sha": "5932a85cd87d4b550fa8f075ba4f4526fa639bea"
 }

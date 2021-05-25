@@ -16,7 +16,7 @@ index 52bb06db..bca63596 100644
  
      initializeScriptTag (d, s, id) {
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 5e07f51b..e26e6741 100644
+index ef5449e6..ee424a3c 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -7,10 +7,6 @@ const TurboHelper = class {

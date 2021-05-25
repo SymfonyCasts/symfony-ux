@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 93488d62..61612a27 100644
+index be3abc2f..6e88959c 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -15,16 +15,32 @@ const TurboHelper = class {
@@ -7,7 +7,7 @@ index 93488d62..61612a27 100644
              document.body.classList.add('turbo-loading');
          });
 +
-         document.documentElement.addEventListener('turbo:before-render', (event) => {
+         document.addEventListener('turbo:before-render', (event) => {
 -            // when we are *about* to render, start us faded out
 -            event.detail.newBody.classList.add('turbo-loading');
 +            if (this.isPreviewRendered()) {
@@ -24,7 +24,7 @@ index 93488d62..61612a27 100644
 +                event.detail.newBody.classList.add('turbo-loading');
 +            }
          });
-         document.documentElement.addEventListener('turbo:render', () => {
+         document.addEventListener('turbo:render', () => {
 -            // after rendering, we first allow the .turbo-loaded to set the low opacity
 -            // THEN, 10ms later, we remove the turbo-loaded class, which allows the fade in
 -            setTimeout(() => {

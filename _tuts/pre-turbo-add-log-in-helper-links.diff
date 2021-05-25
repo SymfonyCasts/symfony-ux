@@ -1,0 +1,61 @@
+diff --git a/assets/controllers/form-filler_controller.js b/assets/controllers/form-filler_controller.js
+new file mode 100644
+index 00000000..a4d4bd2f
+--- /dev/null
++++ b/assets/controllers/form-filler_controller.js
+@@ -0,0 +1,10 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    static targets = ['input'];
++
++    fillInField(event) {
++        event.preventDefault();
++        this.inputTarget.value = event.currentTarget.textContent;
++    }
++}
+diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
+index 0a716292..533a84d4 100644
+--- a/templates/security/login.html.twig
++++ b/templates/security/login.html.twig
+@@ -15,20 +15,34 @@
+                 </div>
+             {% endif %}
+ 
+-            <div class="form-group">
++            <div class="form-group" data-controller="form-filler">
+                 <h1 class="h3 mb-3 font-weight-normal" style="margin-top: 100px;">Welcome back!</h1>
+                 <label for="inputEmail">Email</label>
+-                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" required autofocus>
++                <input
++                    type="email"
++                    value="{{ last_username }}"
++                    data-form-filler-target="input"
++                    name="email"
++                    id="inputEmail"
++                    class="form-control"
++                    required autofocus>
+                 <small class="form-text text-muted">
+-                  (try email <code>shopper@example.com</code>)
++                  (try email <code><span style="cursor: pointer" data-action="click->form-filler#fillInField">shopper@example.com</span></code>)
+                 </small>
+             </div>
+ 
+-            <div class="form-group mt-3">
++            <div class="form-group mt-3" data-controller="form-filler">
+                 <label for="inputPassword">Password</label>
+-                <input type="password" name="password" id="inputPassword" class="form-control" required>
++                <input
++                    type="password"
++                    data-form-filler-target="input"
++                    name="password"
++                    id="inputPassword"
++                    class="form-control"
++                    required
++                >
+                 <small class="form-text text-muted">
+-                  (try password <code>buy</code>)
++                  (try password <code><span style="cursor: pointer" data-action="click->form-filler#fillInField">buy</span></code>)
+                 </small>
+             </div>
+ 

@@ -1,0 +1,26 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index ea638a3b..8888f1ab 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -20,7 +20,7 @@ turbo-frame {
+     display: block;
+ }
+ turbo-frame[busy] {
+-    opacity: .2;
++    opacity: .7;
+ }
+ 
+ a, a:hover  {
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 53df725e..5a3d9a62 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -38,8 +38,6 @@ class CartController extends AbstractController
+             'product' => $featuredProduct,
+         ]);
+ 
+-        sleep(5);
+-
+         return $this->renderForm('cart/cart.html.twig', [
+             'featuredProduct' => $featuredProduct,
+             'addToCartForm' => $addToCartForm,
