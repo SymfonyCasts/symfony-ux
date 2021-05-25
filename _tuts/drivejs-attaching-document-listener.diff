@@ -1,8 +1,8 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index d73af180..c9e3f424 100644
+index 54b284c1..b452e8a1 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -80,7 +80,9 @@
+@@ -81,7 +81,9 @@
          </div>
  
          <script>

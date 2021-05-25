@@ -1,0 +1,21 @@
+diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+index 3b7b48ff..0b292a24 100644
+--- a/assets/util/turbo-helper.js
++++ b/assets/util/turbo-helper.js
+@@ -26,6 +26,16 @@ const TurboHelper = class {
+                     document.body.classList.add('turbo-loading');
+                 }, 10);
+             } else {
++                const isRestoration = event.detail.newBody.classList.contains('turbo-loading');
++                if (isRestoration) {
++                    // this is a restoration (back button). Remove the class
++                    // so it simply starts with full opacity
++
++                    event.detail.newBody.classList.remove('turbo-loading');
++
++                    return;
++                }
++
+                 // when we are *about* to render a fresh page
+                 // we should already be faded out, so start us faded out
+                 event.detail.newBody.classList.add('turbo-loading');

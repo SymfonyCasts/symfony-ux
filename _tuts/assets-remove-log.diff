@@ -1,9 +1,10 @@
 diff --git a/assets/app.js b/assets/app.js
-index 66b8e14b..031f9967 100644
+index 8e5d9433..7cb6eba4 100644
 --- a/assets/app.js
 +++ b/assets/app.js
-@@ -38,4 +38,3 @@ document.addEventListener('turbo:before-cache', () => {
- document.addEventListener('turbo:render', () => {
-     __weatherwidget_init();
- });
+@@ -12,5 +12,3 @@ import './styles/app.css';
+ import './bootstrap';
+ 
+ import './util/turbo-helper';
+-
 -console.log('new code!');

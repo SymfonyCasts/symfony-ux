@@ -961,6 +961,21 @@
             "description": null
         },
         {
+            "id": "snapshot-webpackmode-weak",
+            "name": "Snapshot: webpackMode: 'weak'",
+            "description": null
+        },
+        {
+            "id": "organization-create-turbo-helper-js",
+            "name": "Organization: create turbo-helper.js",
+            "description": null
+        },
+        {
+            "id": "organization-organize-into-methods",
+            "name": "Organization: organize into methods",
+            "description": null
+        },
+        {
             "id": "widgets-log-in-body",
             "name": "Widgets: log in body",
             "description": null
@@ -996,6 +1011,11 @@
             "description": null
         },
         {
+            "id": "widgets-refactor-to-method",
+            "name": "Widgets: refactor to method",
+            "description": null
+        },
+        {
             "id": "assets-turn-on-versioning",
             "name": "Assets: turn on versioning",
             "description": null
@@ -1014,7 +1034,47 @@
             "id": "assets-remove-log",
             "name": "Assets: remove log",
             "description": null
+        },
+        {
+            "id": "manualvisit-redirect-on-10-clicks",
+            "name": "ManualVisit: redirect on 10 clicks",
+            "description": null
+        },
+        {
+            "id": "manualvisit-navigate-with-turbo",
+            "name": "ManualVisit: navigate with Turbo",
+            "description": null
+        },
+        {
+            "id": "manualvisit-import-visit",
+            "name": "ManualVisit: import { visit }",
+            "description": null
+        },
+        {
+            "id": "manualvisit-use-global-turbo",
+            "name": "ManualVisit: use global Turbo",
+            "description": null
+        },
+        {
+            "id": "transitions-setup-initial-transition",
+            "name": "Transitions: setup initial transition",
+            "description": null
+        },
+        {
+            "id": "transitions-different-on-preview",
+            "name": "Transitions: different on preview",
+            "description": null
+        },
+        {
+            "id": "transitions-fix-restoration-visit",
+            "name": "Transitions: fix restoration visit",
+            "description": null
+        },
+        {
+            "id": "transitions-organize-to-method",
+            "name": "Transitions: organize to method",
+            "description": null
         }
     ],
-    "sha": "132facb4065c4f6fd9f5974977268c4f32f32e32"
+    "sha": "d87659ea5c1ad5b6c7b72b2619c7535e17fcb585"
 }

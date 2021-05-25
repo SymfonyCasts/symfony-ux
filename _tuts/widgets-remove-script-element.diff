@@ -1,11 +1,13 @@
-diff --git a/assets/app.js b/assets/app.js
-index 97070c1a..082087e6 100644
---- a/assets/app.js
-+++ b/assets/app.js
-@@ -36,5 +36,5 @@ document.addEventListener('turbo:before-cache', () => {
- });
+diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+index ab98bd99..06e64bb1 100644
+--- a/assets/util/turbo-helper.js
++++ b/assets/util/turbo-helper.js
+@@ -8,7 +8,7 @@ const TurboHelper = class {
+         });
  
- document.addEventListener('turbo:before-render', () => {
--    console.log('before render!');
-+    document.querySelector('#weatherwidget-io-js').remove();
- });
+         document.addEventListener('turbo:before-render', () => {
+-            console.log('before render!');
++            document.querySelector('#weatherwidget-io-js').remove();
+         });
+     }
+ 

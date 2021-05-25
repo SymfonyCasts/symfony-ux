@@ -14,10 +14,10 @@ index b054a2eb..bb0a6aa1 100644
 -})
 -console.log('script is done!');
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index c9e3f424..5d6dcb2b 100644
+index b452e8a1..66f4f911 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -78,11 +78,5 @@
+@@ -79,11 +79,5 @@
              {{ stimulus_controller('made-with-love') }}
          >
          </div>

@@ -1,8 +1,8 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 410f7190..c0d40094 100644
+index 9c89c007..f7e429c6 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -25,7 +25,7 @@
+@@ -26,7 +26,7 @@
                          <span class="p-3">MVP Office Supplies</span>
                      </a>
  

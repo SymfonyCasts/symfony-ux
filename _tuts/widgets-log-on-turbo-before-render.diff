@@ -1,12 +1,15 @@
-diff --git a/assets/app.js b/assets/app.js
-index 2ce8f0e8..97070c1a 100644
---- a/assets/app.js
-+++ b/assets/app.js
-@@ -34,3 +34,7 @@ document.addEventListener('turbo:before-cache', () => {
-         })
-     }
- });
+diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+index 7406f98d..ab98bd99 100644
+--- a/assets/util/turbo-helper.js
++++ b/assets/util/turbo-helper.js
+@@ -6,6 +6,10 @@ const TurboHelper = class {
+             this.closeModal();
+             this.closeSweetalert();
+         });
 +
-+document.addEventListener('turbo:before-render', () => {
-+    console.log('before render!');
-+});
++        document.addEventListener('turbo:before-render', () => {
++            console.log('before render!');
++        });
+     }
+ 
+     closeModal() {

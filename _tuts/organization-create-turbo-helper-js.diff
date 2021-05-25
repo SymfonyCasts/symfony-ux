@@ -1,0 +1,67 @@
+diff --git a/assets/app.js b/assets/app.js
+index 6a303d44..7cb6eba4 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -11,26 +11,4 @@ import './styles/app.css';
+ // start the Stimulus application
+ import './bootstrap';
+ 
+-import { Modal } from 'bootstrap';
+-
+-document.addEventListener('turbo:before-cache', () => {
+-    if (document.body.classList.contains('modal-open')) {
+-        const modalEl = document.querySelector('.modal');
+-        const modal = Modal.getInstance(modalEl);
+-        modalEl.classList.remove('fade');
+-        modal._backdrop._config.isAnimated = false;
+-        modal.hide();
+-        modal.dispose();
+-    }
+-
+-    // internal way to see if sweetalert2 has been imported yet
+-    if (__webpack_modules__[require.resolveWeak('sweetalert2')]) {
+-        // because we know it's been imported, this will run synchronously
+-        import(/* webpackMode: 'weak' */'sweetalert2').then((Swal) => {
+-            if (Swal.default.isVisible()) {
+-                Swal.default.getPopup().style.animationDuration = '0ms'
+-                Swal.default.close();
+-            }
+-        })
+-    }
+-});
++import './util/turbo-helper';
+diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+new file mode 100644
+index 00000000..0dc9fd3f
+--- /dev/null
++++ b/assets/util/turbo-helper.js
+@@ -0,0 +1,29 @@
++import { Modal } from 'bootstrap';
++
++const TurboHelper = class {
++    constructor() {
++        document.addEventListener('turbo:before-cache', () => {
++            if (document.body.classList.contains('modal-open')) {
++                const modalEl = document.querySelector('.modal');
++                const modal = Modal.getInstance(modalEl);
++                modalEl.classList.remove('fade');
++                modal._backdrop._config.isAnimated = false;
++                modal.hide();
++                modal.dispose();
++            }
++
++            // internal way to see if sweetalert2 has been imported yet
++            if (__webpack_modules__[require.resolveWeak('sweetalert2')]) {
++                // because we know it's been imported, this will run synchronously
++                import(/* webpackMode: 'weak' */'sweetalert2').then((Swal) => {
++                    if (Swal.default.isVisible()) {
++                        Swal.default.getPopup().style.animationDuration = '0ms'
++                        Swal.default.close();
++                    }
++                })
++            }
++        });
++    }
++}
++
++export default new TurboHelper();

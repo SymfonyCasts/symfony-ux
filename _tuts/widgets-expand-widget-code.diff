@@ -1,8 +1,8 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index eb8b4c09..1f7d7a70 100644
+index c2bf797a..591403a0 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -82,7 +82,15 @@
+@@ -83,7 +83,15 @@
  
          <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
          <script>

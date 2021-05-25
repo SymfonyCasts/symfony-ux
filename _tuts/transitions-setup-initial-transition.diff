@@ -1,0 +1,54 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 6d010547..a6ce310b 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -4,6 +4,10 @@
+ 
+ body {
+     font-family: 'Montserrat', sans-serif;
++    transition: opacity 1000ms;
++}
++body.turbo-loading, body.turbo-loaded {
++    opacity: .2;
+ }
+ /*
+ [data-turbo-preview] body {
+diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+index d98cbac3..08b6f22b 100644
+--- a/assets/util/turbo-helper.js
++++ b/assets/util/turbo-helper.js
+@@ -10,6 +10,22 @@ const TurboHelper = class {
+         document.addEventListener('turbo:before-render', () => {
+             this.initializeWeatherWidget();
+         });
++
++        document.documentElement.addEventListener('turbo:visit', () => {
++            // fade out the old body
++            document.body.classList.add('turbo-loading');
++        });
++        document.documentElement.addEventListener('turbo:before-render', (event) => {
++            // when we are *about* to render, start us faded out
++            event.detail.newBody.classList.add('turbo-loading');
++        });
++        document.documentElement.addEventListener('turbo:render', () => {
++            // after rendering, we first allow the .turbo-loaded to set the low opacity
++            // THEN, 10ms later, we remove the turbo-loaded class, which allows the fade in
++            setTimeout(() => {
++                document.body.classList.remove('turbo-loading');
++            }, 10);
++        });
+     }
+ 
+     closeModal() {
+diff --git a/public/index.php b/public/index.php
+index 9982c218..52a23167 100644
+--- a/public/index.php
++++ b/public/index.php
+@@ -3,6 +3,7 @@
+ use App\Kernel;
+ 
+ require_once dirname(__DIR__).'/vendor/autoload_runtime.php';
++sleep(1);
+ 
+ return function (array $context) {
+     return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
