@@ -1,0 +1,45 @@
+diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
+index 52bb06db..bca63596 100644
+--- a/assets/controllers/weather-widget_controller.js
++++ b/assets/controllers/weather-widget_controller.js
+@@ -2,7 +2,11 @@ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+     connect() {
+-        this.initializeScriptTag(document, 'script', 'weatherwidget-io-js');
++        if (typeof __weatherwidget_init === 'function') {
++            __weatherwidget_init();
++        } else {
++            this.initializeScriptTag(document, 'script', 'weatherwidget-io-js');
++        }
+     }
+ 
+     initializeScriptTag (d, s, id) {
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index 5e07f51b..e26e6741 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -7,10 +7,6 @@ const TurboHelper = class {
+             this.closeSweetalert();
+         });
+ 
+-        document.addEventListener('turbo:render', () => {
+-            this.initializeWeatherWidget();
+-        });
+-
+         this.initializeTransitions();
+     }
+ 
+@@ -38,12 +34,6 @@ const TurboHelper = class {
+         }
+     }
+ 
+-    initializeWeatherWidget() {
+-        if (typeof __weatherwidget_init === 'function') {
+-            __weatherwidget_init();
+-        }
+-    }
+-
+     isPreviewRendered() {
+         return document.documentElement.hasAttribute('data-turbo-preview');
+     }

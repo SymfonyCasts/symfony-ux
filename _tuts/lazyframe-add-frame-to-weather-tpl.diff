@@ -1,0 +1,37 @@
+diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
+index f95eb92f..e223a3af 100644
+--- a/templates/weather/index.html.twig
++++ b/templates/weather/index.html.twig
+@@ -3,18 +3,20 @@
+ {% block body %}
+     <h1>The Weather!</h1>
+ 
+-    <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
+-    <script>
+-    !function (d, s, id) {
+-        var js, fjs = d.getElementsByTagName(s)[0];
+-        if (!d.getElementById(id)) {
+-            js = d.createElement(s);
+-            js.id = id;
+-            js.src = 'https://weatherwidget.io/js/widget.min.js';
+-            fjs.parentNode.insertBefore(js, fjs);
+-        }
+-    }(document, 'script', 'weatherwidget-io-js');
+-    </script>
++    <turbo-frame id="weather_widget">
++        <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
++        <script>
++        !function (d, s, id) {
++            var js, fjs = d.getElementsByTagName(s)[0];
++            if (!d.getElementById(id)) {
++                js = d.createElement(s);
++                js.id = id;
++                js.src = 'https://weatherwidget.io/js/widget.min.js';
++                fjs.parentNode.insertBefore(js, fjs);
++            }
++        }(document, 'script', 'weatherwidget-io-js');
++        </script>
++    </turbo-frame>
+ {% endblock %}
+ 
+ {% block weather_widget %}{% endblock %}

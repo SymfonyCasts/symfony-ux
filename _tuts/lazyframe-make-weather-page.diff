@@ -1,0 +1,63 @@
+diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
+new file mode 100644
+index 00000000..91c51959
+--- /dev/null
++++ b/src/Controller/WeatherController.php
+@@ -0,0 +1,17 @@
++<?php
++
++namespace App\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
++use Symfony\Component\Routing\Annotation\Route;
++
++class WeatherController extends AbstractController
++{
++    /**
++     * @Route("/weather", name="app_weather")
++     */
++    public function weather()
++    {
++        return $this->render('weather/index.html.twig');
++    }
++}
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index f0baa21b..15f533b5 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -28,6 +28,11 @@
+                     </a>
+ 
+                     <ul class="navbar-nav">
++                        <li class="nav-item">
++                            <a class="nav-link" href="{{ path('app_weather') }}">
++                                <span class="fas fa-sun"></span>
++                            </a>
++                        </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="{{ path('app_cart') }}">
+                                 Shopping Cart ({{ count_cart_items() }})
+diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
+new file mode 100644
+index 00000000..99a3a670
+--- /dev/null
++++ b/templates/weather/index.html.twig
+@@ -0,0 +1,18 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>The Weather!</h1>
++
++    <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
++    <script>
++    !function (d, s, id) {
++        var js, fjs = d.getElementsByTagName(s)[0];
++        if (!d.getElementById(id)) {
++            js = d.createElement(s);
++            js.id = id;
++            js.src = 'https://weatherwidget.io/js/widget.min.js';
++            fjs.parentNode.insertBefore(js, fjs);
++        }
++    }(document, 'script', 'weatherwidget-io-js');
++    </script>
++{% endblock %}

@@ -1,0 +1,24 @@
+diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
+index e82aae54..52bb06db 100644
+--- a/assets/controllers/weather-widget_controller.js
++++ b/assets/controllers/weather-widget_controller.js
+@@ -2,10 +2,10 @@ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+     connect() {
+-        console.log('🌦');
++        this.initializeScriptTag(document, 'script', 'weatherwidget-io-js');
+     }
+ 
+-    !function (d, s, id) {
++    initializeScriptTag (d, s, id) {
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (!d.getElementById(id)) {
+             js = d.createElement(s);
+@@ -13,5 +13,5 @@ export default class extends Controller {
+             js.src = 'https://weatherwidget.io/js/widget.min.js';
+             fjs.parentNode.insertBefore(js, fjs);
+         }
+-    }(document, 'script', 'weatherwidget-io-js');
++    }
+ }

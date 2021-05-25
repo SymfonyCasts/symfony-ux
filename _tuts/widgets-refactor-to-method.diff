@@ -1,11 +1,11 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 49d3ea58..d98cbac3 100644
+index e78b2663..dcefc45f 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -8,7 +8,7 @@ const TurboHelper = class {
          });
  
-         document.addEventListener('turbo:before-render', () => {
+         document.addEventListener('turbo:render', () => {
 -            __weatherwidget_init();
 +            this.initializeWeatherWidget();
          });

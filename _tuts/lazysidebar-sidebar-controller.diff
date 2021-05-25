@@ -1,0 +1,49 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 33fcabab..b5170d6c 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -21,15 +21,24 @@ class CartController extends AbstractController
+     /**
+      * @Route("/cart", name="app_cart")
+      */
+-    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository): Response
++    public function shoppingCart(CartStorage $cartStorage): Response
++    {
++        return $this->renderForm('cart/cart.html.twig', [
++            'cart' => $cartStorage->getOrCreateCart(),
++        ]);
++    }
++
++    /**
++     * @Route("/cart/_featured", name="_app_cart_product_featured")
++     */
++    public function cartFeaturedProduct(ProductRepository $productRepository): Response
+     {
+         $featuredProduct = $productRepository->findFeatured();
+         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
+             'product' => $featuredProduct,
+         ]);
+ 
+-        return $this->renderForm('cart/cart.html.twig', [
+-            'cart' => $cartStorage->getOrCreateCart(),
++        return $this->renderForm('cart/_featuredSidebar.html.twig', [
+             'featuredProduct' => $featuredProduct,
+             'addToCartForm' => $addToCartForm,
+         ]);
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index c7d8676b..2d06578f 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -4,9 +4,9 @@
+     <div class="container-fluid container-xl mt-4">
+         <div class="row">
+             <aside class="col-12 col-md-4 order-2 order-md-1">
+-                {% if featuredProduct %}
+-                    {{ include('cart/_featuredSidebar.html.twig') }}
+-                {% endif %}
++                <turbo-frame id="cart-sidebar" src="{{ path('_app_cart_product_featured') }}">
++                    Loading...
++                </turbo-frame>
+             </aside>
+ 
+             <div class="col-12 col-md-8 order-1 order-md-2 cart">

@@ -1094,7 +1094,67 @@
             "id": "prefetch-comment-out",
             "name": "Prefetch: comment out",
             "description": null
+        },
+        {
+            "id": "lazysidebar-sidebar-controller",
+            "name": "LazySidebar: _sidebar controller",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-add-internal-turbo-frame",
+            "name": "LazySidebar: add internal turbo-frame",
+            "description": null
+        },
+        {
+            "id": "lazyframe-make-weather-page",
+            "name": "LazyFrame: make weather page",
+            "description": null
+        },
+        {
+            "id": "lazyframe-remove-extra-weather",
+            "name": "LazyFrame: remove extra weather",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-lazy-weather-frame",
+            "name": "LazyFrame: add lazy weather frame",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-frame-to-weather-tpl",
+            "name": "LazyFrame: add frame to weather tpl",
+            "description": null
+        },
+        {
+            "id": "lazyframe-make-it-lazy",
+            "name": "LazyFrame: make it lazy",
+            "description": null
+        },
+        {
+            "id": "lazyframe-check-for-weatherwidget-init",
+            "name": "LazyFrame: check for __weatherwidget_init",
+            "description": null
+        },
+        {
+            "id": "lazyframe-bootstrap-stimulus-controller",
+            "name": "LazyFrame: bootstrap Stimulus controller",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-in-script",
+            "name": "LazyFrame: move in script",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-into-connect",
+            "name": "LazyFrame: move into connect()",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-weatherwidget-init-into-ctrl",
+            "name": "LazyFrame: move __weatherwidget_init into ctrl",
+            "description": null
         }
     ],
-    "sha": "9f2af6b47ffd25d5855598b615ae05205ee18ec0"
+    "sha": "6fdbc7f20c14b6df8215f81ea993a53f88c09b93"
 }

@@ -1,0 +1,41 @@
+diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
+index 5ab87478..e82aae54 100644
+--- a/assets/controllers/weather-widget_controller.js
++++ b/assets/controllers/weather-widget_controller.js
+@@ -4,4 +4,14 @@ export default class extends Controller {
+     connect() {
+         console.log('🌦');
+     }
++
++    !function (d, s, id) {
++        var js, fjs = d.getElementsByTagName(s)[0];
++        if (!d.getElementById(id)) {
++            js = d.createElement(s);
++            js.id = id;
++            js.src = 'https://weatherwidget.io/js/widget.min.js';
++            fjs.parentNode.insertBefore(js, fjs);
++        }
++    }(document, 'script', 'weatherwidget-io-js');
+ }
+diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
+index c513bf40..3c69ea06 100644
+--- a/templates/weather/index.html.twig
++++ b/templates/weather/index.html.twig
+@@ -5,17 +5,6 @@
+ 
+     <turbo-frame id="weather_widget">
+         <a data-controller="weather-widget" class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
+-        <script>
+-        !function (d, s, id) {
+-            var js, fjs = d.getElementsByTagName(s)[0];
+-            if (!d.getElementById(id)) {
+-                js = d.createElement(s);
+-                js.id = id;
+-                js.src = 'https://weatherwidget.io/js/widget.min.js';
+-                fjs.parentNode.insertBefore(js, fjs);
+-            }
+-        }(document, 'script', 'weatherwidget-io-js');
+-        </script>
+     </turbo-frame>
+ {% endblock %}
+ 

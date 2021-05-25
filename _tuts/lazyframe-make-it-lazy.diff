@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 30862746..8c81d8d7 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -87,7 +87,7 @@
+         </div>
+ 
+         {% block weather_widget %}
+-            <turbo-frame id="weather_widget" src="{{ path('app_weather') }}"></turbo-frame>
++            <turbo-frame id="weather_widget" src="{{ path('app_weather') }}" loading="lazy"></turbo-frame>
+         {% endblock %}
+ 
+         <script>

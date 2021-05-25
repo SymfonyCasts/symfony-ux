@@ -1,0 +1,26 @@
+diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
+new file mode 100644
+index 00000000..5ab87478
+--- /dev/null
++++ b/assets/controllers/weather-widget_controller.js
+@@ -0,0 +1,7 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    connect() {
++        console.log('🌦');
++    }
++}
+diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
+index e223a3af..c513bf40 100644
+--- a/templates/weather/index.html.twig
++++ b/templates/weather/index.html.twig
+@@ -4,7 +4,7 @@
+     <h1>The Weather!</h1>
+ 
+     <turbo-frame id="weather_widget">
+-        <a class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
++        <a data-controller="weather-widget" class="weatherwidget-io" href="https://forecast7.com/en/40d71n74d01/new-york/" data-label_1="NEW YORK" data-label_2="WEATHER" data-theme="original" >NEW YORK WEATHER</a>
+         <script>
+         !function (d, s, id) {
+             var js, fjs = d.getElementsByTagName(s)[0];
