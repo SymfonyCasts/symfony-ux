@@ -1,0 +1,25 @@
+diff --git a/assets/app.js b/assets/app.js
+index be6a7b8b..380c1f8e 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -12,3 +12,4 @@ import './styles/app.css';
+ import './bootstrap';
+ 
+ import './turbo/turbo-helper';
++import './turbo/prefetch';
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 8f31ca73..9876bdc5 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -6,9 +6,11 @@ body {
+     font-family: 'Montserrat', sans-serif;
+     transition: opacity 200ms;
+ }
++/*
+ body.turbo-loading, body.turbo-loaded {
+     opacity: .8;
+ }
++*/
+ /*
+ [data-turbo-preview] body {
+     opacity: .2;

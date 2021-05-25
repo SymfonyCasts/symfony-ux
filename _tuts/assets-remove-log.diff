@@ -1,10 +1,10 @@
 diff --git a/assets/app.js b/assets/app.js
-index 8e5d9433..7cb6eba4 100644
+index 2265f057..be6a7b8b 100644
 --- a/assets/app.js
 +++ b/assets/app.js
 @@ -12,5 +12,3 @@ import './styles/app.css';
  import './bootstrap';
  
- import './util/turbo-helper';
+ import './turbo/turbo-helper';
 -
 -console.log('new code!');

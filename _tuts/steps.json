@@ -841,8 +841,8 @@
             "description": null
         },
         {
-            "id": "pre-turbo-empty-tutorial",
-            "name": "PRE_TURBO: empty tutorial\/",
+            "id": "pre-turbo-set-up-tutorial",
+            "name": "PRE_TURBO: set up tutorial\/",
             "description": null
         },
         {
@@ -1074,7 +1074,27 @@
             "id": "transitions-organize-to-method",
             "name": "Transitions: organize to method",
             "description": null
+        },
+        {
+            "id": "transitions-remove-slowness",
+            "name": "Transitions: remove slowness",
+            "description": null
+        },
+        {
+            "id": "prefetch-add-prefetch-script",
+            "name": "Prefetch: add prefetch script",
+            "description": null
+        },
+        {
+            "id": "prefetch-remove-transition-hook-up",
+            "name": "Prefetch: remove transition & hook up",
+            "description": null
+        },
+        {
+            "id": "prefetch-comment-out",
+            "name": "Prefetch: comment out",
+            "description": null
         }
     ],
-    "sha": "d87659ea5c1ad5b6c7b72b2619c7535e17fcb585"
+    "sha": "9f2af6b47ffd25d5855598b615ae05205ee18ec0"
 }

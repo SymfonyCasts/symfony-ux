@@ -1,7 +1,7 @@
-diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
 index 7406f98d..ab98bd99 100644
---- a/assets/util/turbo-helper.js
-+++ b/assets/util/turbo-helper.js
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
 @@ -6,6 +6,10 @@ const TurboHelper = class {
              this.closeModal();
              this.closeSweetalert();

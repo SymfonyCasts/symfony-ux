@@ -1,7 +1,7 @@
-diff --git a/assets/util/turbo-helper.js b/assets/util/turbo-helper.js
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
 index 49d3ea58..d98cbac3 100644
---- a/assets/util/turbo-helper.js
-+++ b/assets/util/turbo-helper.js
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
 @@ -8,7 +8,7 @@ const TurboHelper = class {
          });
  
