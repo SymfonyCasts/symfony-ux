@@ -158,7 +158,7 @@ index abc1be93..7aab59d4 100644
      }
  
 diff --git a/src/Entity/Product.php b/src/Entity/Product.php
-index d100c519..09bc1b1e 100644
+index d100c519..c160e549 100644
 --- a/src/Entity/Product.php
 +++ b/src/Entity/Product.php
 @@ -77,9 +77,15 @@ class Product
@@ -166,7 +166,7 @@ index d100c519..09bc1b1e 100644
      private $imageFilename = 'floppy-disc.png';
  
 +    /**
-+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="product")
++     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="product", cascade={"remove"})
 +     */
 +    private $reviews;
 +
@@ -177,7 +177,7 @@ index d100c519..09bc1b1e 100644
      }
  
      public function getId(): ?int
-@@ -226,4 +232,28 @@ class Product
+@@ -226,4 +232,32 @@ class Product
      {
          return sprintf('/uploads/products/'.$this->imageFilename);
      }
@@ -192,6 +192,10 @@ index d100c519..09bc1b1e 100644
 +
 +    public function getAverageStars(): float
 +    {
++        if (count($this->getReviews()) === 0) {
++            return 0;
++        }
++
 +        $totalRating = 0;
 +        // this is an inefficient way of doing this ;)
 +        foreach ($this->getReviews() as $review) {
@@ -314,7 +318,7 @@ index 00000000..418b4a09
 +    }
 +}
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 23f03ea5..52566b91 100644
+index 23f03ea5..f5d8f835 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -2,6 +2,8 @@
@@ -331,7 +335,7 @@ index 23f03ea5..52566b91 100644
      private $password;
  
 +    /**
-+     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="owner")
++     * @ORM\OneToMany(targetEntity=Review::class, mappedBy="owner", orphanRemoval=true)
 +     */
 +    private $reviews;
 +
@@ -343,7 +347,7 @@ index 23f03ea5..52566b91 100644
      public function getId(): ?int
      {
          return $this->id;
-@@ -116,4 +128,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
+@@ -116,4 +128,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          // If you store any temporary, sensitive data on the user, clear it here
          // $this->plainPassword = null;
      }
@@ -360,7 +364,6 @@ index 23f03ea5..52566b91 100644
 +    {
 +        if (!$this->reviews->contains($review)) {
 +            $this->reviews[] = $review;
-+            $review->setOwner($this);
 +        }
 +
 +        return $this;
@@ -368,19 +371,14 @@ index 23f03ea5..52566b91 100644
 +
 +    public function removeReview(Review $review): self
 +    {
-+        if ($this->reviews->removeElement($review)) {
-+            // set the owning side to null (unless already changed)
-+            if ($review->getOwner() === $this) {
-+                $review->setOwner(null);
-+            }
-+        }
++        $this->reviews->removeElement($review);
 +
 +        return $this;
 +    }
 +
 +    public function __toString(): string
 +    {
-+        return (string) $this->getUsername();
++        return (string) $this->getEmail();
 +    }
  }
 diff --git a/src/Form/ReviewForm.php b/src/Form/ReviewForm.php
@@ -475,7 +473,7 @@ index 00000000..0de05caa
 +}
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
 new file mode 100644
-index 00000000..a3fe59cc
+index 00000000..36d39d84
 --- /dev/null
 +++ b/templates/product/_reviews.html.twig
 @@ -0,0 +1,28 @@
@@ -492,7 +490,7 @@ index 00000000..a3fe59cc
 +
 +<hr>
 +
-+{% if reviewForm %}
++{% if reviewForm|default(false) %}
 +    <h4>Post your own review</h4>
 +    {{ form_start(reviewForm, {
 +        'action': path('app_product_reviews', { id: product.id })

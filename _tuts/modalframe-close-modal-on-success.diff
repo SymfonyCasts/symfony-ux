@@ -1,0 +1,21 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 2c646648..7a7a5232 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -8,7 +8,15 @@ export default class extends Controller {
+     connect() {
+         document.addEventListener('turbo:before-fetch-response', (event) => {
+             console.log(event);
+-            //this.modal.hide();
++            if (!this.modal || !this.modal._isShown) {
++                return;
++            }
++
++            const fetchResponse = event.detail.fetchResponse;
++            if (fetchResponse.succeeded && fetchResponse.redirected) {
++                event.preventDefault();
++                this.modal.hide();
++            }
+         });
+     }
+ 

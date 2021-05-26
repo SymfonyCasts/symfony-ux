@@ -1,0 +1,16 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 34d7be58..2c646648 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -6,9 +6,9 @@ export default class extends Controller {
+     modal = null;
+ 
+     connect() {
+-        this.element.addEventListener('turbo:submit-end', (event) => {
++        document.addEventListener('turbo:before-fetch-response', (event) => {
+             console.log(event);
+-            this.modal.hide();
++            //this.modal.hide();
+         });
+     }
+ 

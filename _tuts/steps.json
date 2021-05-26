@@ -846,6 +846,11 @@
             "description": null
         },
         {
+            "id": "pre-turbo-remove-modal-on-close",
+            "name": "PRE_TURBO: remove modal on close",
+            "description": null
+        },
+        {
             "id": "pre-turbo-set-up-tutorial",
             "name": "PRE_TURBO: set up tutorial\/",
             "description": null
@@ -1244,7 +1249,137 @@
             "id": "reviews-fix-disabled-buttons-on-back",
             "name": "Reviews: fix disabled buttons on back",
             "description": null
+        },
+        {
+            "id": "inlineedit-wrap-product-show-in-frame",
+            "name": "InlineEdit: Wrap product show in frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-use-turbo-frame-for-row",
+            "name": "InlineEdit: use turbo-frame for row",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-edit-button",
+            "name": "InlineEdit: add edit button",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-frame-target-to-edit",
+            "name": "InlineEdit: add frame target to edit",
+            "description": null
+        },
+        {
+            "id": "inlineedit-wrap-form-in-frame",
+            "name": "InlineEdit: wrap form in frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-form-action",
+            "name": "InlineEdit: Add form action",
+            "description": null
+        },
+        {
+            "id": "inlineedit-redirect-back-to-show-page",
+            "name": "InlineEdit: redirect back to show page",
+            "description": null
+        },
+        {
+            "id": "inlineedit-make-form-target-frame",
+            "name": "InlineEdit: make form target frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-conditionally-add-form-target",
+            "name": "InlineEdit: conditionally add form target",
+            "description": null
+        },
+        {
+            "id": "inlineedit-randomize-url",
+            "name": "InlineEdit: randomize url",
+            "description": null
+        },
+        {
+            "id": "modalframe-turn-modal-into-frame",
+            "name": "ModalFrame: turn modal into frame",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-modal-form-target",
+            "name": "ModalFrame: remove modal-form target",
+            "description": null
+        },
+        {
+            "id": "modalframe-add-id-to-frame",
+            "name": "ModalFrame: add id to frame",
+            "description": null
+        },
+        {
+            "id": "modalframe-add-turbo-frame-to-new",
+            "name": "ModalFrame: add turbo-frame to new",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-modal-footer",
+            "name": "ModalFrame: remove modal footer",
+            "description": null
+        },
+        {
+            "id": "modalframe-set-formtarget-in-new",
+            "name": "ModalFrame: set formTarget in new",
+            "description": null
+        },
+        {
+            "id": "modalframe-loading-lazy",
+            "name": "ModalFrame: loading=lazy",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-extra-stuff",
+            "name": "ModalFrame: remove extra stuff",
+            "description": null
+        },
+        {
+            "id": "modalframe-listen-to-submit-end",
+            "name": "ModalFrame: listen to submit-end",
+            "description": null
+        },
+        {
+            "id": "modalframe-hide-modal",
+            "name": "ModalFrame: hide modal",
+            "description": null
+        },
+        {
+            "id": "modalframe-listen-to-before-fetch-response",
+            "name": "ModalFrame: listen to before-fetch-response",
+            "description": null
+        },
+        {
+            "id": "modalframe-close-modal-on-success",
+            "name": "ModalFrame: close modal on success",
+            "description": null
+        },
+        {
+            "id": "modalframe-visit-redirect-url",
+            "name": "ModalFrame: visit redirect url",
+            "description": null
+        },
+        {
+            "id": "modalframe-extract-to-method",
+            "name": "ModalFrame: extract to method",
+            "description": null
+        },
+        {
+            "id": "modalframe-disconnect-listener",
+            "name": "ModalFrame: disconnect() listener",
+            "description": null
+        },
+        {
+            "id": "modalframe-don-t-close-modal",
+            "name": "ModalFrame: don't close modal",
+            "description": null
         }
     ],
-    "sha": "5932a85cd87d4b550fa8f075ba4f4526fa639bea"
+    "sha": "9cae8c3b9f2bf2e6f5941645f34154eddb438443"
 }

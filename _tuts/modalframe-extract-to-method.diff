@@ -1,0 +1,42 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 2c3750fb..66670b78 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -7,22 +7,25 @@ export default class extends Controller {
+     modal = null;
+ 
+     connect() {
+-        document.addEventListener('turbo:before-fetch-response', (event) => {
+-            if (!this.modal || !this.modal._isShown) {
+-                return;
+-            }
+-
+-            const fetchResponse = event.detail.fetchResponse;
+-            if (fetchResponse.succeeded && fetchResponse.redirected) {
+-                event.preventDefault();
+-                Turbo.visit(fetchResponse.location);
+-                this.modal.hide();
+-            }
+-        });
++        this.boundBeforeFetchResponse = this.beforeFetchResponse.bind(this);
++        document.addEventListener('turbo:before-fetch-response', this.boundBeforeFetchResponse);
+     }
+ 
+     async openModal(event) {
+         this.modal = new Modal(this.modalTarget);
+         this.modal.show();
+     }
++
++    beforeFetchResponse(event) {
++        if (!this.modal || !this.modal._isShown) {
++            return;
++        }
++
++        const fetchResponse = event.detail.fetchResponse;
++        if (fetchResponse.succeeded && fetchResponse.redirected) {
++            event.preventDefault();
++            Turbo.visit(fetchResponse.location);
++            this.modal.hide();
++        }
++    }
+ }

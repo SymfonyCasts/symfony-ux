@@ -1,0 +1,12 @@
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 24799b12..419e0b9d 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -22,6 +22,7 @@
+                             id: product.id
+                         }) }}"
+                         class="btn btn-sm btn-secondary"
++                        data-turbo-frame="product-info"
+                     >Edit</a>
+                 {% endif %}
+             </h1>

@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Product.php b/src/Entity/Product.php
-index 09bc1b1e..bf5d5ffe 100644
+index c160e549..ca28409e 100644
 --- a/src/Entity/Product.php
 +++ b/src/Entity/Product.php
 @@ -98,7 +98,7 @@ class Product
