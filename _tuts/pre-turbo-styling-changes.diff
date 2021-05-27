@@ -17,7 +17,7 @@ index 49945ae9..22944601 100644
      color: #fff;
      margin-top: 30px;
 diff --git a/package.json b/package.json
-index ff541844..a08e98ad 100644
+index 6953de4d..79c2c4c9 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -17231,7 +17231,7 @@ index 86e18352..1180589e 100644
      </div>
  {% endblock %}
 diff --git a/yarn.lock b/yarn.lock
-index 9a29b9e2..2704337a 100644
+index 91156b1b..3a4323bc 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -925,6 +925,11 @@

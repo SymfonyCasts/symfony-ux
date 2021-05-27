@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index fc5ab106..06440aa4 100644
+index ffbe7c16..aa4f4e64 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -10,7 +10,6 @@
@@ -11,15 +11,15 @@ index fc5ab106..06440aa4 100644
          "phpdocumentor/reflection-docblock": "^5.2",
          "sensio/framework-extra-bundle": "^6.1",
 diff --git a/composer.lock b/composer.lock
-index 5004a320..4afd1906 100644
+index a736b4ba..3bf27165 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "bd0a25c50a699e24f91a174814c46912",
-+    "content-hash": "405f92c25a39ce5d96f69c4edc9a81ce",
+-    "content-hash": "249b2d1b0f44234410f57e6107046121",
++    "content-hash": "853a1afcbb1d5dd53ba7458f50abc24c",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
@@ -224,8 +224,8 @@ index 5004a320..4afd1906 100644
 -        },
          {
              "name": "doctrine/orm",
-             "version": "2.8.4",
-@@ -5602,68 +5414,6 @@
+             "version": "2.9.1",
+@@ -5607,68 +5419,6 @@
              ],
              "time": "2021-04-01T10:43:52+00:00"
          },
@@ -294,7 +294,7 @@ index 5004a320..4afd1906 100644
          {
              "name": "symfony/string",
              "version": "v5.3.0-RC1",
-@@ -7519,6 +7269,68 @@
+@@ -7527,6 +7277,68 @@
              ],
              "time": "2021-03-31T07:20:47+00:00"
          },
