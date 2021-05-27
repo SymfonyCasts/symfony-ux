@@ -1,0 +1,44 @@
+diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
+index eec02186..eee47c67 100644
+--- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
++++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
+@@ -3,12 +3,17 @@
+ namespace App\EventSubscriber;
+ 
+ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
++use Symfony\Component\HttpFoundation\Request;
++use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\HttpKernel\Event\ResponseEvent;
+ 
+ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+ {
+     public function onKernelResponse(ResponseEvent $event)
+     {
++        if (!$this->shouldWrapRedirect($event->getRequest(), $event->getResponse())) {
++            return;
++        }
+     }
+ 
+     public static function getSubscribedEvents()
+@@ -17,4 +22,21 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+             ResponseEvent::class => 'onKernelResponse',
+         ];
+     }
++
++    private function shouldWrapRedirect(Request $request, Response $response): bool
++    {
++        if (!$response->isRedirection()) {
++            return false;
++        }
++
++        if (!$request->headers->has('Turbo-Frame')) {
++            return false;
++        }
++
++        if ($request->headers->get('Turbo-Frame-Redirect')) {
++            return true;
++        }
++
++        return false;
++    }
+ }

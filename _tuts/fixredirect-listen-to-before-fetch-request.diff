@@ -1,0 +1,26 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index d7b63a29..51b3a9eb 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -15,6 +15,10 @@ const TurboHelper = class {
+             submitter.classList.add('turbo-submit-disabled');
+         })
+ 
++        document.addEventListener('turbo:before-fetch-request', (event) => {
++            this.beforeFetchRequest(event);
++        });
++
+         document.addEventListener('turbo:before-fetch-response', (event) => {
+             this.beforeFetchResponse(event);
+         });
+@@ -101,6 +105,10 @@ const TurboHelper = class {
+         });
+     }
+ 
++    beforeFetchRequest(event) {
++        console.log(event);
++    }
++
+     beforeFetchResponse(event) {
+         const fetchResponse = event.detail.fetchResponse;
+         if (!fetchResponse.succeeded || !fetchResponse.redirected) {

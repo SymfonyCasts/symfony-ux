@@ -38,7 +38,7 @@ index 00000000..2c17c9ce
 +    }
 +}
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 91aecaf6..0689dd07 100644
+index 91aecaf6..53bc2818 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -4,9 +4,12 @@ namespace App\Controller;
@@ -54,7 +54,7 @@ index 91aecaf6..0689dd07 100644
  use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
  use Symfony\Component\HttpFoundation\Request;
  use Symfony\Component\Routing\Annotation\Route;
-@@ -49,11 +52,48 @@ class ProductController extends AbstractController
+@@ -49,11 +52,49 @@ class ProductController extends AbstractController
              'product' => $product
          ]);
  
@@ -79,7 +79,8 @@ index 91aecaf6..0689dd07 100644
 +    public function productReviews(Product $product, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $entityManager)
 +    {
 +        $reviewForm = null;
-+        if ($this->getUser()) {
++        if ($request->isMethod('POST')) {
++            $this->denyAccessUnlessGranted('ROLE_USER');
 +            $reviewForm = $this->createForm(ReviewForm::class, new Review($this->getUser(), $product));
 +
 +            $reviewForm->handleRequest($request);

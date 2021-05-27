@@ -521,7 +521,7 @@ index 79dd56ff..00000000
 -</div>
 -{% endblock %}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index b71ecc6b..1e7c5e71 100644
+index 91333596..86e18352 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -21,11 +21,17 @@

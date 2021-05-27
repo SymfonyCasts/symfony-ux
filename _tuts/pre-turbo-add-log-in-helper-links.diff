@@ -15,7 +15,7 @@ index 00000000..a4d4bd2f
 +    }
 +}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 0a716292..533a84d4 100644
+index 1180589e..3fe97afa 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -15,20 +15,34 @@

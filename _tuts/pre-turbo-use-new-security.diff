@@ -280,3 +280,16 @@ index 297f815f..48a71a4f 100644
      {
          return $this->urlGenerator->generate('app_login');
      }
+diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
+index b71ecc6b..91333596 100644
+--- a/templates/security/login.html.twig
++++ b/templates/security/login.html.twig
+@@ -13,7 +13,7 @@
+ 
+                     {% if app.user %}
+                         <div class="mb-3">
+-                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
++                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                         </div>
+                     {% endif %}
+ 

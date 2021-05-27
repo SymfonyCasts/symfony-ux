@@ -13,7 +13,7 @@ index 9876bdc5..775cfbe7 100644
  a, a:hover  {
      color: #000;
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 5a3d9a62..53df725e 100644
+index a046eb10..f7b7bbbc 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -38,6 +38,8 @@ class CartController extends AbstractController

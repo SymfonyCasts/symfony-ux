@@ -16343,10 +16343,10 @@ literal 0
 HcmV?d00001
 
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 0689dd07..637332ae 100644
+index 53bc2818..246fb966 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
-@@ -98,10 +98,10 @@ class ProductController extends AbstractController
+@@ -99,10 +99,10 @@ class ProductController extends AbstractController
      }
  
      /**
@@ -16418,39 +16418,25 @@ index e8212ec3..66f4f911 100644
                  </nav>
              </header>
 diff --git a/templates/cart/_cartList.html.twig b/templates/cart/_cartList.html.twig
-index f512bec7..b741c1da 100644
+index f512bec7..421ed3e9 100644
 --- a/templates/cart/_cartList.html.twig
 +++ b/templates/cart/_cartList.html.twig
-@@ -1,17 +1,17 @@
+@@ -1,12 +1,12 @@
  <div>
--    <div class="row p-3">
+     <div class="row p-3">
 -        <div class="col-3">
--            Item Name
--        </div>
++        <div class="col-3 fw-bold">
+             Item Name
+         </div>
 -        <div class="col-3">
--            Quantity
--        </div>
++        <div class="col-3 fw-bold">
+             Quantity
+         </div>
 -        <div class="col-3">
--            Price
--        </div>
--        <div class="col-3"></div>
--    </div>
-     {% for item in cart.items %}
-+        <div class="row p-3">
-+            <div class="col-3 fw-bold">
-+                Item Name
-+            </div>
-+            <div class="col-3 fw-bold">
-+                Quantity
-+            </div>
-+            <div class="col-3 fw-bold">
-+                Price
-+            </div>
-+            <div class="col-3"></div>
-+        </div>
-         <div
-             class="cart-item row p-3"
-             data-action="submit-confirm:async:submitted->reload-content#refreshContent"
++        <div class="col-3 fw-bold">
+             Price
+         </div>
+         <div class="col-3"></div>
 @@ -54,8 +54,8 @@
              </div>
          </div>
@@ -17138,7 +17124,7 @@ index 67640e23..9d008a88 100644
      <a href="{{ path('review_admin_new') }}">Create new</a>
  </div>
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 1e7c5e71..0a716292 100644
+index 86e18352..1180589e 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -4,57 +4,52 @@
@@ -17154,7 +17140,7 @@ index 1e7c5e71..0a716292 100644
 -
 -                    {% if app.user %}
 -                        <div class="mb-3">
--                            You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
+-                            You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
 -                        </div>
 -                    {% endif %}
 -
@@ -17201,7 +17187,7 @@ index 1e7c5e71..0a716292 100644
 +
 +            {% if app.user %}
 +                <div class="mb-3">
-+                    You are logged in as {{ app.user.username }}, <a href="{{ path('app_logout') }}">Logout</a>
++                    You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
 +                </div>
 +            {% endif %}
 +

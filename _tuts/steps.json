@@ -816,6 +816,11 @@
             "description": null
         },
         {
+            "id": "pre-turbo-change-add-to-cart-url",
+            "name": "PRE_TURBO: change add to cart URL",
+            "description": null
+        },
+        {
             "id": "pre-turbo-review-admin",
             "name": "PRE_TURBO: Review admin",
             "description": null
@@ -1379,7 +1384,77 @@
             "id": "modalframe-don-t-close-modal",
             "name": "ModalFrame: don't close modal",
             "description": null
+        },
+        {
+            "id": "frameredirect-move-listener-to-turbo-helper",
+            "name": "FrameRedirect: move listener to turbo-helper",
+            "description": null
+        },
+        {
+            "id": "frameredirect-add-data-turbo-form-redirect",
+            "name": "FrameRedirect: add data-turbo-form-redirect",
+            "description": null
+        },
+        {
+            "id": "frameredirect-add-getcurrentframe",
+            "name": "FrameRedirect: add getCurrentFrame()",
+            "description": null
+        },
+        {
+            "id": "frameredirect-add-shouldframedofullredirect",
+            "name": "FrameRedirect: add shouldFrameDoFullRedirect()",
+            "description": null
+        },
+        {
+            "id": "frameredirect-finish-frame-function",
+            "name": "FrameRedirect: finish frame function",
+            "description": null
+        },
+        {
+            "id": "frameredirect-frame-around-cart-controls",
+            "name": "FrameRedirect: frame around cart-controls",
+            "description": null
+        },
+        {
+            "id": "frameredirect-data-turbo-form-redirect-again",
+            "name": "FrameRedirect: data-turbo-form-redirect again",
+            "description": null
+        },
+        {
+            "id": "fixredirect-listen-to-before-fetch-request",
+            "name": "FixRedirect: listen to before-fetch-request",
+            "description": null
+        },
+        {
+            "id": "fixredirect-add-request-header",
+            "name": "FixRedirect: Add request header",
+            "description": null
+        },
+        {
+            "id": "fixredirect-bootstrap-subscriber",
+            "name": "FixRedirect: Bootstrap subscriber",
+            "description": null
+        },
+        {
+            "id": "fixredirect-add-shouldwrapredirect",
+            "name": "FixRedirect: Add shouldWrapRedirect()",
+            "description": null
+        },
+        {
+            "id": "fixredirect-finish-subscriber",
+            "name": "FixRedirect: finish subscriber",
+            "description": null
+        },
+        {
+            "id": "fixredirect-read-header-in-js",
+            "name": "FixRedirect: read header in JS",
+            "description": null
+        },
+        {
+            "id": "fixredirect-redirect-on-login",
+            "name": "FixRedirect: redirect on login",
+            "description": null
         }
     ],
-    "sha": "9cae8c3b9f2bf2e6f5941645f34154eddb438443"
+    "sha": "d6cc93ec62c7933eba307c298bfe87afaecf59a0"
 }

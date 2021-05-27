@@ -1,0 +1,24 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index 51b3a9eb..e22aea0a 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -106,7 +106,18 @@ const TurboHelper = class {
+     }
+ 
+     beforeFetchRequest(event) {
+-        console.log(event);
++        const frameId = event.detail.fetchOptions.headers['Turbo-Frame'];
++        if (!frameId) {
++            return;
++        }
++
++        const frame = document.querySelector(`#${frameId}`);
++
++        if (!frame || !frame.dataset.turboFormRedirect) {
++            return;
++        }
++
++        event.detail.fetchOptions.headers['Turbo-Frame-Redirect'] = 1;
+     }
+ 
+     beforeFetchResponse(event) {
