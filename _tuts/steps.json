@@ -856,6 +856,11 @@
             "description": null
         },
         {
+            "id": "pre-turbo-updating-readme",
+            "name": "PRE_TURBO: updating README",
+            "description": null
+        },
+        {
             "id": "pre-turbo-set-up-tutorial",
             "name": "PRE_TURBO: set up tutorial\/",
             "description": null
@@ -1456,5 +1461,5 @@
             "description": null
         }
     ],
-    "sha": "6b2e58336d453a670454080b6ce1f9ae2379cf69"
+    "sha": "d3114a7be53ef8ec942583c11b1285cd38d00fb7"
 }
