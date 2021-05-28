@@ -1,50 +1,68 @@
-# Install
+# Installing Turbo
 
-Coming soon...
+Wouldn't it be cool if when we click on a link or even submit a form, instead of
+that trigger a full page reload, it made an Ajax call... then updated the page with
+the new HTML? Well, that's *exactly* what Turbo Drive does. And it's a *huge* step
+towards making our app feel like a single page application - or an SPA.
 
-Wouldn't it be cool. If when we click on a link or even submit a form yep. Instead of
-that, making a full page, refresh it made an Ajax call, then updated the page with
-the new HTML. Well, that's exactly what turbo drive does. And it's a huge step
-towards making our app feel like a single page app or an spa turbo drive is turbo is
-just a JavaScript library. It has nothing to do with Symfony, but Symfony does have a
-package that makes it easier to play with. So let's go get that package, install,
-head back to your terminal, open a new tab and run composer require Symfony /UX
-turbo. Yeah. After this finishes, let's run. Get status to see what change, what
-changes it's recipe made. Let's see this installed a new bundle called turbo bundle.
-It also changed our package that JSON file
+Turbo is... just a JavaScript library: it has nothing to do with Symfony. But Symfony
+*does* have a package that makes it easier to use. So get that package installed.
 
-I'll show you that it had a
+Head back to your terminal, open a new tab and run:
 
-Two new packages including turbo itself. Then also updated our controllers that JSON
-file, which we learned about in the first, this tutorial, this adds a new stimulus
-controller to our application, more on what that controller does later, but now you
-probably saw it. We have an error from yarn the file, add Symfony UX turbo package
-that JSON could not be found. Try running yarn installed dash dash force.
+```terminal
+composer require symfony/ux-turbo
+```
 
-That makes sense. As we learned about in the first tutorial, we need to re-install a
-yarn
+After this finishes... let's run: `git status` to see what its recipe did:
 
-So it can copy our new package into the node modules, directory. Okay. Control CN,
-yarn run, yarn installed dash dash force, and one that finishes yarn watch again and
-all is happy. So what do we do now to activate turbo drive
+```terminal-silent
+git status
+```
 
-Nothing. It already works back to the browser. What's a refresh the full page and
-start clicking around. Whoa. It already does feel a lot faster.
+Let's see: it looks like this installed a new bundle... called `TurboBundle`. It
+also changed our `package.json` file - let's go find that. It added two new packages
+including turbo itself. The recipe *also* updated our `controllers.json` file, which
+we learned about in the Stimulus tutorial. This adds a new Stimulus controller
+to our application. More on what that controller *does* a bit later.
 
-All right, click it and go to inspect and then open up my network tools and watch the
-XHR. That's the Ajax requests. Every single click is an Ajax request. There is no
-full page reloading happening.
+But... you probably noticed that we have an error from yarn:
 
-We now have dare I say a single page app tutorial finished by. Okay. Of course we
-can't finish yet. This feels like magic and that's never a great feeling. So next
-let's find out how
+> the file `@symfony/ux-turbo/package.json` could not be found. Try running
+> `yarn install --force`.
 
-Turbo drive works behind the scenes.
+That makes sense. As we learned about in the first tutorial, we need to re-install
+our yarn dependencies so it can copy the new `@symfony/ux-turbo` from our vendor
+directory into `node_modules/`. Let's do it:
 
-We'll also see how turbo was
+```terminal
+yarn install --force
+```
 
-Magically activated simply by installing it.
+When that finishes... run `yarn watch` again and... all is happy.
 
-And I'll introduce you to a few, uh, subtle features of turbo drive beyond what you
-can see already.
+```terminal-silent
+yarn watch
+```
 
+## Hello Turbo Drive
+
+Cool! So the `@hotwired/turbo` JavaScript package is now installed. So... what
+do we need to do to *activate* Turbo Drive?
+
+The answer is... nothing! It's already working.
+
+Head back to your browser and refresh the page. Now, start clicking around. Woh!
+It's alive! And it *feels* fast!
+
+Open up your browser tools... and then go to network tools and watch for XHR
+requests - or Ajax request. Yep! Every single click is now an Ajax request. There
+are *zero* full page reloads!
+
+We now have... dare I say... a single page app! Tutorial finished! Good luck!
+
+Okay, okay... of *course* the tutorial isn't finished yet. Turbo Drive feels like
+black magic... and that's never a great feeling. So next, let's discover how
+Turbo Drive *works* behind the scenes. We'll also see how Turbo was magically
+activated simply by installing it and I'll introduce you to a few subtle features
+of Turbo Drive that are already making the experience feel extra quick.
