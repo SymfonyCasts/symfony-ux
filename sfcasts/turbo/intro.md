@@ -85,5 +85,5 @@ viable office products to trendy startups. This is the same project as the first
 tutorial though, I did make some changes, like adding a review system below each
 product... and upgrading some libraries.
 
-Next, now that we have this running, let's install Turbo and activate Turbo Drive
+Now that we have this running, let's install Turbo and activate Turbo Drive
 to instantly eliminate full page refreshes. Woh.
