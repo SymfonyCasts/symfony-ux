@@ -43,6 +43,8 @@ use 422 all the time because we don't want that status code when we simply navig
 to this page. So use the ternary syntax: if `$form->isSubmitted()` and
 `$form->isValid()`, I mean if *not* `$form->isValid()`, then use 422. Else use 200.
 
+[[[ code('2c4b55466d') ]]]
+
 That's it! Back over at the browser, we don't even need to refresh. Hit update
 and... voilà! We see the validation error! Let's put the content back...remove my
 exclamation points, hit enter again and... it works.
@@ -82,6 +84,8 @@ Response object.
 That's it! Well, that's *almost* it. Also remove the `createView()` call on the
 form.
 
+[[[ code('deb52f4788') ]]]
+
 Let's break this down. The `renderForm()` method is *identical* to `$this->render()`
 except that it loops over all of the variables that we pass into the template.
 If any of them are a `Form` object, it does two things. First, it calls
@@ -96,8 +100,14 @@ because we wrote some custom JavaScript that - like Turbo - needed to know if a
 form was simply rendering or if it had a validation error.
 
 Change this to `renderForm()`, we don't need `createView()`... and we don't need
-the third argument at all. Much nicer. Let's clear the tabs and go to
-`CartController`. There are two spots inside here. I'll search for `createView()`.
+the third argument at all. Much nicer.
+
+[[[ code('4bcacbdbf8') ]]]
+
+Let's clear the tabs and go to `CartController`. There are two spots inside here.
+I'll search for `createView()`.
+
+[[[ code('a760e674d7') ]]]
 
 Cool: `renderForm()`, then take off `createView()`. For the next one... it's exactly
 the same. I'll take a big sip of coffee... and speed through the rest of the
@@ -105,6 +115,14 @@ controllers: `CheckoutController` has one spot, `ProductController` has two spot
 one of which renders two forms including a conditional `reviewForm` that can be
 simplified, `RegistrationController` has one spot... and `ReviewAdminController`
 has two spots.
+
+[[[ code('e8bae87367') ]]]
+
+[[[ code('a232e916d6') ]]]
+
+[[[ code('161df1af5c') ]]]
+
+[[[ code('61442c74aa') ]]]
 
 Phew! Good, straightforward, boring work. The only form we *didn't* need to change
 was the login form. That's because the login form works a bit differently than other
