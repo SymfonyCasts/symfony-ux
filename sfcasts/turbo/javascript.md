@@ -15,6 +15,8 @@ Import `$` from `jquery` - I already have that installed. Then use
 fully loaded with `console.log('page is ready')`. After this block, also
 `console.log('script is done')`.
 
+[[[ code('34293bb4dd') ]]]
+
 Cool. Go refresh... and check out the console. Yep! We see both logs: script is done
 first, then "page is ready" shortly after. But when we click to another page, we
 see nothing! And that makes sense! `app.js` is *not* re-executed... and the page
@@ -27,6 +29,8 @@ JavaScript over and over again on each page load takes time!
 However, if you put JavaScript into the *body* of your page, then it *does* work
 like normal. Open up `templates/base.html.twig` and - anywhere in the `body`,
 I'll go to the bottom - add a `script` tag and `console.log('body executing!')`.
+
+[[[ code('3b17786a93') ]]]
 
 Refresh now. We see all three logs. Click to another page. Hey! The new log is
 there! And... this *also* makes sense. Turbo replaces the old body with the new body.
@@ -56,6 +60,8 @@ important here.
 Anyways, add an event listener to this: `document.addEventListener()` to listen
 to the `click` event. On click, `console.log('document clicked')`.
 
+[[[ code('bc26cc7db9') ]]]
+
 We should be able to click *anywhere* to see this message. Refresh, go to
 the console and... click. There it is! Click again and another log! Easy peasy.
 
@@ -66,6 +72,10 @@ This happens because, each time we execute the script, it adds *another* listene
 to the `document`. After 10 clicks, our function would be called 10 times!
 
 Go remove the `script` tag and the jQuery loading code.
+
+[[[ code('ba51eb9fc0') ]]]
+
+[[[ code('aab9ad8dfa') ]]]
 
 ## Writing JavaScript that you (and Turbo) will Love
 
