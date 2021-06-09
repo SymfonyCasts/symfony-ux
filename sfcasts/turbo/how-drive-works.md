@@ -56,6 +56,8 @@ Some of this preview & snapshot stuff is kind of hard to see because things are 
 fast. So in your editor, open up `public/index.php` and add a `sleep()` for two
 seconds.
 
+[[[ code('92602b0191') ]]]
+
 Now head back to your browser and refresh the page... which takes 2 seconds.
 Click back to the homepage. Oh! This shows off the progress bar! If an Ajax
 call takes longer than 500 milliseconds, the progress bar shows up, which
@@ -73,6 +75,8 @@ to the preview.
 
 And if we click backward and forward, as we mentioned earlier, those pages load
 instantly with *no* Ajax request. Let's go take out that `sleep`.
+
+[[[ code('bb33fd76a7') ]]]
 
 ## Merging of the &lt;head&gt; Tag
 
