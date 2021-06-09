@@ -40,6 +40,8 @@ an entire section of the page, you can do that with a special `data-turbo`
 attribute. For example, to *completely* disable Turbo drive on your entire site,
 head over to `base.html.twig`. Find the `body` tag and add `data-turbo="false"`.
 
+[[[ code('db94030e57') ]]]
+
 Now, any link clicks or form submits *inside* of this element - which is
 everything - will *not* use Turbo drive. Check it out: refresh the page and click
 around. We are back to boring full page reloads. Boo.
@@ -48,11 +50,15 @@ To reenable Turbo Drive on a link or section, you can set the same attribute to 
 For example, let's activate Drive for *just* the links up in the `navbar`. Find
 that element... it's this `ul`, and add `data-turbo="true"`
 
+[[[ code('a9ac920467') ]]]
+
 Refresh again. When we click a category, it still triggers a full page reload. But
 if we click to go to the cart... that loaded with Drive! You can use this strategy
 to activate Turbo Drive on only some parts of your site that are ready.
 
 Let's remove both of these to *fully* get Turbo Drive again.
+
+[[[ code('9744c057e5')]]]
 
 Next: we've activated Turbo Drive and gotten the no-page-reload goodness with zero
 changes to our Symfony code! That's... amazing! But... there is *one* tiny change
