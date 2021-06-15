@@ -15,7 +15,7 @@ Import `$` from `jquery` - I already have that installed. Then use
 fully loaded with `console.log('page is ready')`. After this block, also
 `console.log('script is done')`.
 
-[[[ code('34293bb4dd') ]]]
+[[[ code('ca370f1e35') ]]]
 
 Cool. Go refresh... and check out the console. Yep! We see both logs: script is done
 first, then "page is ready" shortly after. But when we click to another page, we

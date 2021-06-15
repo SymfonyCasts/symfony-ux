@@ -5,6 +5,8 @@ elements live up here in the `head` with a `defer` attribute. That's on purpose.
 And this `defer` attribute comes from our configuration:
 `config/packages/webpack_encore.yaml`: `script_attributes`, `defer`
 
+[[[ code('dec148e034') ]]]
+
 ## The defer Attribute
 
 The reason we placed our `script` tags up in the `head` element is... well, we

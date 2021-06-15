@@ -76,8 +76,6 @@ to the preview.
 And if we click backward and forward, as we mentioned earlier, those pages load
 instantly with *no* Ajax request. Let's go take out that `sleep`.
 
-[[[ code('bb33fd76a7') ]]]
-
 ## Merging of the &lt;head&gt; Tag
 
 Okay... but how does this all *really* work? What is Turbo doing behind the scenes

@@ -29,6 +29,8 @@ Let's go find the controller for this page: it's in
 short, if the form has a validation error, we need to return a 422 status code
 instead of a 200 status code.
 
+[[[ code('8fbf4ee9b1') ]]]
+
 Right now, both when the page originally loads *and* when we have a validation error,
 we return `$this->render()`, which sets a 200 status code. Using a 422 status
 code when there's a validation error is actually more correct. And it tells Turbo

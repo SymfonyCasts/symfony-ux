@@ -27,6 +27,8 @@ including turbo itself. The recipe *also* updated our `controllers.json` file, w
 we learned about in the Stimulus tutorial. This adds a new Stimulus controller
 to our app. More on what that controller *does* a bit later.
 
+[[[ code('d82eacafff') ]]]
+
 But... you probably noticed that we have an error from yarn:
 
 > The file `@symfony/ux-turbo/package.json` could not be found. Try running
