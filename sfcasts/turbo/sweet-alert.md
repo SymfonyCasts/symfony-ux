@@ -13,6 +13,8 @@ the page is snapshotted. To do that, `import Swal from 'sweetalert2'`.
 Then, down inside of the function, if `Swal.isVisible()` - they have a nice
 function to check if Sweetalert is visible - then `Swal.close()`.
 
+[[[ code('863f8aa8cb') ]]]
+
 It's that simple! Or at least... it *might* be. Let's go try this. Refresh the
 cart page, hit remove, go back, go forward and... it worked! Wait, I can't scroll...
 and nothing is clickable! Inspect element anywhere. Uh oh: a Sweetalert backdrop
@@ -25,6 +27,8 @@ tell Sweetalert to close... but *without* an animation.
 This is easier than Bootstrap... but it still tool some digging to figure out how
 to do it. In this case, right before we close, we can say `Swal.getPopup()` - which
 gives you the `Element` associated with the dialog - `.style.animationDuration = 0ms`.
+
+[[[ code('c5659d0692') ]]]
 
 How could I possibly know that *this* is the code we need? If you look internally
 at Sweetalert, you'll notice that it looks at its popup element and checks to see
@@ -54,6 +58,8 @@ Open `assets/controllers/submit-confirm_controller.js`. This is the controller
 that handles the Sweetalert confirmation on this page. Notice that it has
 `stimulusFetch: lazy` above it.
 
+[[[ code('1341200673') ]]]
+
 This is something that we added in our Stimulus tutorial. Thanks to this, *before*
 we started adding all of this new code in `app.js` - so pretend this isn't there -
 the `sweetalert2` JavaScript was *not* downloaded on every page. It was only
@@ -65,6 +71,8 @@ But now that we're importing `sweetalert2` directly in `app.js`, it *is* being
 downloaded on every page. If you care enough about this, you can fix it using a
 very specific Webpack trick. It's a little nuts actually. I'll paste in the
 first half of the code, indent, then close things.
+
+[[[ code('a1f5d7c318') ]]]
 
 Let's walk through this. The `__webpack_modules__` thing is an internal way - along
 with `require.resolveWeak` - to check to see if `sweetalert2` has *already* been
