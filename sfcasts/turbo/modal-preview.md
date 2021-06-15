@@ -70,6 +70,8 @@ need that. Instead, say `document.addEventListener()` - which is how you add an
 event listener in normal JavaScript - then paste the event name. Pass an arrow
 function with an `event` argument and, inside, `console.log(event)`.
 
+[[[ code('86376cf890') ]]]
+
 Turbo dispatches most of its events on the `html` tag itself. And, remember,
 as we navigate around, the `html` element is never removed: this one `html`
 element sticks around forever. That's nice because it means we can attach an event
@@ -100,6 +102,8 @@ To do that, import `{ Modal }` from `bootstrap`. Remove the `event` argument - w
 won't need it - and the log. Now, if `document.body` - that's an easy way
 to get the `body` element - `.classList.contains('modal-open')`, then we know that
 there *is* a modal currently open.
+
+[[[ code('15fcf3d435') ]]]
 
 I'm using a bit of Bootstrap-specific knowledge here. Click over to the product
 admin page and open the modal. Yup! When the modal is open, the `body` element gets
