@@ -25,6 +25,8 @@ Unfortunately, changing whether or not you want a modal to have an animation
 
 So... it's a bit ugly to get this working. I'll paste in the code.
 
+[[[ code('ee773c0b6d') ]]]
+
 This does the same thing as before: it finds the element, gets the modal instance
 and calls `hide()` on it. But it also does some extra stuff. Most importantly, before
 it hides, we remove the `fade` class from the modal. We also reach *into* this
