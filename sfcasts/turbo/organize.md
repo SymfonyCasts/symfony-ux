@@ -1,40 +1,47 @@
 # Organizing our Turbo Events Code
 
-Did you turbo drive to work super nicely. We're going to need to hook into a few
-turbo events like `turbo:before-cache`. Before we're done, we're going to hook into
-even more events to help us properly leverage JavaScript, widgets, add transitions,
-and do more craziness. When we talk about turbo frames. So instead of putting all
-that logic right here in `app.js`, let's organize a bit. There's no right or wrong way
-to do this, but let's create a class that holds all of this special turbo logic in
-the `assets/` directory create a sub-directory called `turbo/` inside a new file called
-`turbo-helper.js`. Inside here we say `const TurboHelper = class {}`. I won't give
-that class a `constructor() {}`. And the idea is that we can go back over here into `app.js`
-copy all of this code and paste
+To get Turbo Drive to work *super* nicely, we're going to need to hook into a few
+turbo events, like `turbo:before-cache`. Before we're done, we'll listen into
+even *more* events to help us properly load JavaScript widgets, add transitions,
+and do more craziness when we talk about Turbo Frames.
 
-And knows when we did that, that important. It'd be modal up here for me. Now at the
-bottom of this, we'll actually export is `export default new TurboHelper()`. So this
-will instantiate a new instance of her object and export it. It won't really matter
-for us, but each time we import this module, we'll get the same one instance of this
-object back and `app.js`. I'm going to delete all of this code and then we'll
-`import './turbo/turbo-helper'`. I don't need to set that to any variable,
-just importing it is going to cause that object to be instantiated. And when that
-object is instantiated, it will register the event listener. So this should be enough
-to get it to work. Let's try it a refresh
+## Isolating the Turbo Logic
 
-Quick, remove on an item, go back forward and yep.
+So instead of putting all that logic right here in `app.js`, let's organize a bit.
+There's no right or wrong way to do this, but let's create a class that holds all
+of this special Turbo logic. In the `assets/` directory add a sub-directory called
+`turbo/` and, inside a new file called `turbo-helper.js`. Start with `const
+TurboHelper = class {}` with `constructor() {}` method inside.
 
-Everything still works. Now that we have a class, we can organize this a bit better.
+Head back to `app.js`, copy all of this code, and paste! When we did that, PhpStorm
+added the `import { Modal }` automatically. At the bottom of this file, export
+`export default new TurboHelper()`.
 
-Copy the modal code here. Remove that, create a new method down here called 
-`closeModal()` and paste. Then up here inside of our terminal before cache call back, we'll
-say `this.closeModal()`. We'll do the same thing for squealer. Copy all of that sweet
-alert code,
+This instantiates a new instance of our object and exports it. It won't really matter
+for us... but thanks to this, each time we import this module, we'll get the same
+*one* instance of this object back.
 
-But on here, create a new method called `closeSweetalert()` paste in call it up here.
-Okay.
+In `app.js`, delete all the original code and then `import './turbo/turbo-helper'`.
+We don't need to set that to a variable... and *just* by importing it, the object
+will be instantiated and the listeners will be registered. So this should be enough
+to get it to work.
 
-After that, that does that pose. Well, `this.closeSweetalert()`, that looks better. And if
-we just go over here real quick, make sure that I didn't mess anything up. I click
-remove good back forward and yes, it still works. So next let's learn what types of
-things can go wrong when including a third party, JavaScript, widgets like an
-analytics with like analytics, JavaScript, or a cute little weather widget.
+Let's try! Refresh, click to remove an item, go back and go forward. Yep! All good.
+
+## Organizing the Class
+
+Now that we have a class, we can organize a bit more. Copy the modal code here, remove
+it, create a new method below called `closeModal()` and paste. Then, back up
+inside the `turbo:before0cache` callback, say `this.closeModal()`.
+
+Repeat this for Sweetalert: copy all of the Sweetalert code, create a new method
+called `closeSweetalert()`, paste... and... then back in the callback, call it:
+`this.closeSweetalert()`.
+
+That looks better! Let's... make sure we didn't mess anything up. Do the same
+dance as before: refresh, click remove, go back and go forward. All good!
+
+Next: let's learn what types of things can go wrong when including third-party hosted
+JavaScript, like a JavaScript widgets or analytics code. This type of JavaScript
+is often supposed to be included in the *body* of the page... and often is expecting
+full page refreshes.
