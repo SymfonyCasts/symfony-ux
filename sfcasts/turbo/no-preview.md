@@ -62,9 +62,13 @@ open up `templates/base.html.twig`. We don't want to remove the preview function
 for *every* page. So instead of adding the `meta` tag right here, add a block so that
 a *child* template can add new meta elements: `{% block metas %}` `{% endblock %}`.
 
+[[[ code('eeb4f61ac5') ]]]
+
 Now open up `templates/registration/register.html.twig` and override that block:
 `{% block metas %}`, `{% endblock %}` and inside add `<meta>`
 `name="turbo-cache-control"` with `content="no-preview"`.
+
+[[[ code('6120133fa5') ]]]
 
 The `no-preview` means: don't show a preview for this page. The other possible value
 is `no-cache`, which tells Turbo to not do *any* snapshotting: not even for the back
@@ -91,6 +95,8 @@ Head over to `assets/styles/app.css`. Target that attribute using the lesser-kno
 attribute syntax: `[data-turbo-preview]` then `body` to apply some body styling.
 Set the `opacity` to .2 so it's really obvious.
 
+[[[ code('fd0015dfff') ]]]
+
 Let's go check it! Refresh. As we click to new pages, we don't see anything. But
 if we click to a page that we've been to... yes! The whole page was nearly invisible
 while the preview was being shown. This is also kind of a fun way, while you're
@@ -98,6 +104,8 @@ developing, to get a feel for when a preview is shown.
 
 But... since this looks a bit extreme, let's go back to `app.css` and comment it
 out.
+
+[[[ code('e3f384d397') ]]]
 
 Next: in addition to the form situation we just saw, there's one other common
 time when the preview feature will do something that... we don't want. Let's talk
