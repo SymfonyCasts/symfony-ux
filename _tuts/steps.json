@@ -1016,6 +1016,16 @@
             "description": null
         },
         {
+            "id": "widgets-always-add-script",
+            "name": "Widgets: always add script",
+            "description": null
+        },
+        {
+            "id": "widgets-undo-on-every-page",
+            "name": "Widgets: undo on every page",
+            "description": null
+        },
+        {
             "id": "widgets-log-on-turbo-before-render",
             "name": "Widgets: log on turbo:before-render",
             "description": null
@@ -1461,5 +1471,5 @@
             "description": null
         }
     ],
-    "sha": "72063273279d78245f70582ceb63979d7a60bb9d"
+    "sha": "1a02b55c5420754fca5846d84032e6688d0ff194"
 }
