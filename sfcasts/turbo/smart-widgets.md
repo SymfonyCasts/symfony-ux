@@ -1,0 +1,3 @@
+# Fixing External JS With Turbo a Event
+
+Coming soon...
