@@ -1,38 +1,135 @@
 # Fixing External JS + Analytics Code
 
-Coming soon...
+Head back to the Turbo docs, specifically to Reference and then Events. We saw this
+list of events earlier. Now we're going to hook into a *new* event:
+`turbo:before-render`.
 
-Head back to the turbo docs specifically to reference and then events. We saw this list of events earlier. Now we're going to hook into a new event, turbo colon before render. Here it is. Fire is before rendering the page. This event triggers before turbo renders a page, but not counting V initial page refresh. In other words, it renders one turbo is specifically responsible for rendering a page. This is useful because we can, yeah. Is it to help our third party weather widget get working right before the page renders head over to assets, turbo, turbo helper, and up here in the construct method. Good. Let's say document that add event listener to listen to our turbo before render, pass us an error function. And let's just that log before renders. So we can see exactly when this in does and doesn't execute.
+## The turbo:before-render Event
 
-Cool. Let's try it
+Here it is. This event triggers before Turbo renders a page, but not counting the
+initial page load. In other words, it renders when Turbo is *specifically* responsible
+for rendering a page. We can use this to help our third party weather widget get
+working right before the page renders.
 
-At over. I'll refresh. Go console. Okay. So nothing on initial page load, but then as we click to another page, there it is click to another page. There's a second one. Click to the homepage. There's a third one. Awesome. Clear out the console. And let's go back to a page. We went to a second ago. It logs twice. This is an important detail about this event. It fired twice because first the preview was rendered and then the final page was rendered. Just keep that fact in mind. So here's the plan right before the page is rendered. So inside of our new listener here, we're going to find and remove this weather widget IO, J S script tech. Then with any luck when the new page is rendered, the JavaScript from our base template, we'll execute and it will re add that script tag and everything will work.
+Head over to `assets/turbo/turbo-helper.js` and, up here in the `constructor`...
+say `document.addEventListener()` to listen to `turbo:before-render`. Pass this
+an arrow function and then log "before render" so we can see *exactly* when this
+does and doesn't execute.
 
-Let's try it. Revise that counts that log with document dot query selector. And we are going to look for pound sign weather dash weather widget, dash IO, dash J S. And then we'll say remove. And if you want, so you can code defensively in case that element isn't there. That's up to you. All right. Let's refresh. And it works navigate to a different page. And yes, it still works. If you look in the head element here, there's only one of those script tags works without duplicating the script act. So this is cool, but if you want to do some digging, there is an alternate solution. I'm going to copy this URL to widget I'm in digest and open it in my browser. I'm going to copy the source code here, close this, and let's go over to our project and just create a file anywhere like pizza dot JS. We're not gonna actually gonna use this. I'm going to paste that there, then actually select it again and go to code reformat code.
+Cool. Let's test it!
 
-So we can at least kind of read it. It's still not super clear, but well, let's see, ah, there's a function called weather widget, a knit, and it looks like maybe that is the key to re initializing the weather widget. In other words, instead of removing and re adding the script tag on each render, we might be able to just call this function. First changed the event from a turbo before render to turbo render. That is one other event here, and we need to use that because in order for this weather widget and knit function to work, the anchor tag and that's brought in when the new page load needs to be on the page.
+Find your browser, refresh, and open the console. Okay. So nothing on initial page
+load. But then as we click to another page, there it is! Click to another page...
+there's a second one. Click to the homepage, a third one. Awesome.
 
-The turbo before render is triggered before the new body is on the page. And turbo render is called after it's on the page. In other words, inside of this, we know that the new body is going to be on the page so we can call it that weather widget and knit function, which let me steal that from the other file. And there we go. Let's try it over. Okay. Refresh the first page loads. That's no surprise. That's just the normal functionality. Now, when we go to a second page, as it still works, no matter how many pages do we go to, it keeps working. I like this solution better though. I also realize that we're sort of using an internal function here, which, and it's possible that they might change the name of his function in
+*Now*, clear out the console... and go back to a page we went to a second ago.
+It logs twice! This is an important detail about this event. It fired twice because
+*first* the preview was rendered and *then* the final page was rendered. Just keep
+that fact in mind.
 
-The future. Anyways,
+## Removing the Weather Script Tag Before Render
 
-Let's refactor this, uh, logic into a method for clarity. So very soon, I'm going to copy this weather widget align here, go to the bottom of my class and let's create a method. Call initialize why the widget I'll paste. Call that from up here in our listener Vista initialize weather widget.
+So here's the plan: right before the page is rendered, so inside of our new listener,
+we're going to find and remove this `weatherwidget-io-js` script tag. Then, with
+any luck, when the new page is rendered, the JavaScript from our base template will
+be execute, it will re-add that script tag and everything will work!
 
-Cool,
+Let's check it! Replace the log with `document.querySelector` and look for
+`#weatherwidget-io-js`. Then say, `.remove()`. You can also code defensively
+to make sure the element *exists* first before trying to call remove.
 
-By the way, there is a third way to solve this problem. And we'll talk about it later. It's needed. If it's appropriate, if you need to load an external widget like our weather widget, but that widget might be loaded onto the page. At any time, even via custom, a custom Ajax call non turbo Ajax call it basically involves running the same code that we have here, but leveraging a
+Ok: refresh. It works and... navigate to a different page. Nice! It *still* works!
+If you look inside the `head` element, it works *without* duplicating the `script`
+tag.
 
-Stimulus controller
+## Calling the External Script Directly on Navigation
 
-Before we move on, we do need to talk about one more type of external JavaScript analytics code. As an example, here's what Google analytics code looks like. Here's what you're supposed to paste into the head tag of your page. It turns out the key thing that actually triggers the visit visit is this last G tag config line here. If we paste it all of this onto our site, guess what would happen? It would register the first visit. Then this code would never execute again, no matter how many pages the user visited, that's not great. Fortunately, single page applications like those written and view or react have the same problem. And often you can find docs that talk about how to integrate with those. In this case, the solution would be to paste all this code, except for the G-Tech config line into your head, like, like normal for this last line.
+I like this solution. But if you're willing to do some digging, there *might* be
+an alternate solution.
 
-This we want to execute this on initial page load. And then every visit afterwards, I'll pull up a, you know, a blink that talks about this with a really nice solution. As you can see here, Henrik is using a turbo colon load event, which is yet another event that we haven't talked about yet. Turbo load is nice because it's executed on the initial page load. And one time on every visit, it avoids the double dispatch that happens with turbo render. When you visit a page that shows a preview. In other words, it triggers exactly when you would want, uh, analytics code to trigger a visit. And so inside of it, it calls G-Tech and
+Copy the `widget.min.js` and open it in your browser. It's minified... so pretty
+unreadable. Copy the source code, close, spin over to your editor and create a
+new file anywhere, like `pizza.js`... we're not going to actually use this. Paste
+the code here, select it, then go back up to Code -> Reformat Code so we can at
+least, *kind of* read it.
 
-Fig this
+It's still not super clear, but... let's see. Ah! There's a function called
+`__weatherwidget_init`... and it looks like *this* might be the key to re-initializing
+the weather widget! In other words, instead of removing and re-adding the `script`
+tag on each render, we might be able to just call this function!
 
-Google analytics ID for script is actually his way of just basically, uh, putting in the, whatever your custom, uh, Google, uh, measurement ID is. And then the one special thing is that you do need to pass a little bit of extra data to help Google analytics know what the actual URL is that it should use.
+## The turbo:render Event
 
-What do you pop this in? It will work
+Let's do some experimenting! Start by changing the event from a `turbo:before-render`
+to `turbo:render`. That's one other event. Why are we switching to it? In order
+for this `__weatherwidget_init` function to work, the new `weatherwidget-io` anchor
+tag needs to actually live *on* the page.
 
-Next. We already know that with turbo drive, we download the CSS and JavaScript under a page. Just one time. Then as we navigate around, if turbo sees a file in the new head tag that already exists in the existing ad tag, it ignores it. But what happens if we deploy a new version of our sites and the contents of these files changes, how will we force the user to download the newest version of our assets? That's an important question. And one where the answer is so refreshingly simple. Okay.
+But tje `turbo:before-render` event is triggered too early: it's triggered *before*
+the new body is on the page. Fortunately, `turbo:render` is called *after* it's on
+the page. This means that, inside of this function, we know that the *new* body
+*will* be on the page and so we can call that `__weatherwidget_init` function.
+Let me steal that function name from the other file... and paste it here.
 
+Testing time! Refresh! The first page works - no surprise. And when we go to a second
+page... yes! It still works! No matter how many pages do we go to, it keeps working.
+I like this solution better though, I also realize that we're sort of using an
+"internal" function from that widget script... and it's possible they may change
+their JavaScript in the future.
+
+Now that we have this owrking, let's refactor this logic into a method for clarity.
+Copy the `__weatherwidget_init` function, go to the bottom of the class and create
+a method, how about `initializeWeatherWidget`. Paste, then call that from up here
+in our listener: `this.initializeWeatherWidget()`.
+
+## Solving External Widgets with Stimulus?
+
+By the way, there *is* a third way to solve this problem, and we'll talk about it
+a bit later. It's especially appropriate if you need to load an external widget -
+like our weather widget - but that widget might be loaded onto the page at any time,
+even via a custom, non-turbo Ajax call. This solution basically involves running
+the same code that we have here, but leveraging a Stimulus controller.
+
+## Handling Analytics Code
+
+Before we move on, we do need to talk about *one* last type of external JavaScript:
+analytics code. As an example, here's what Google analytics code looks like: this
+is what you're supposed to paste into the `head` tag of your page.
+
+It turns out that the key line that triggers the visit is this last line:
+`gtag('config')`. If we pasted all of this onto our site, guess what would happen?
+It would register the first visit... then this code would *never* execute again,
+no matter how many pages the user visited. That's not great. Fortunately, single
+page applications - like those written in Vue or React - have the same problem....
+often you can often find docs that talk about how to integrate with *those*.
+
+In this case, the solution would be to paste all this code - *except* for the
+`gtag('config')` line - into your `head` like normal. For this last line, we need
+to execute it on initial page load and then every Turbo "visit" after.
+
+## The turbo:load Event & Analytics
+
+Let me open a [GitHub issue](https://github.com/turbolinks/turbolinks/issues/73#issuecomment-812484452)
+that talks about this with a really nice solution. As you can see here, `henrik`
+is using a `turbo:load` event... which is yet *another* event that we haven't talked
+about yet. `turbo:load` is nice because it's executed on initial page load and
+*one* time for every visit: it avoids the "double dispatch" that happens with
+the `turbo:before-render` and `turbo:render` events when you visit a page that shows
+a preview. In other words, `turbo:load` is triggered *exactly* when you would want
+your analytics code to trigger a visit.
+
+Inside the callback, `henrik` calls `gtag('config')` to trigger that visit. This
+`googleAnalyticsIDForScript` thing is just their way of referencing whatever your
+Google Analytics ID is. The one special thing that you need to do with this function
+is pass a little bit of extra data to make sure analytics knows what the actual
+URL is that it should use.
+
+Next: we already know that, with Turbo Drive, we download each CSS and JavaScript
+file just *one* time. Then, as we navigate around, if Turbo sees a CSS or JS file
+in the new page's `head` tag that already exists on the current page, it ignores
+it.
+
+But what happens if we deploy a new version of our site and the contents of these
+files has changed? How can we force the user to download the newest version of our
+assets? That's an important question.... and one where the answer is refreshingly
+simple.
