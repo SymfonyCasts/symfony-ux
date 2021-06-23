@@ -1,61 +1,79 @@
-# Manual Visit
+# Manual Visits with Turbo
 
-Coming soon...
+Sometimes you need to trigger a Turbo visit programmatically... like after
+running some custom JavaScript, you want to send the user to another page.
 
-Sometimes you might need to visit trigger a turbo visit programmatically. This is
-common. If you ever need to redirect from JavaScript, for example, head over to your
-code and open `assets/controllers/counter_controller.js`. This very advanced to stimulus
-controller power is this high tech quick for a chance to
+Head over to your code and open `assets/controllers/counter_controller.js`. This
+very advanced Stimulus controller powers this high-tech "click for a chance to
+win" area. Each time I click the button, the counter goes up. Amazing!
 
-Win area. Every time I click the button, the counter goes up
+Let's pretend that, after 10 clicks, the user wins and we want to redirect them to
+a "you won!" page. Let's first do this with normal JavaScript. Inside of the
+`increment()` method - which is called each time we click - say, if `this.count`
+equals `10`, then redirect using raw JavaScript: `window.location.href` equals
+`/you-won`, which is a page I already created.
 
-And updates right here. Amazing. Let's pretend that after 10 clicks, the user wins
-and we want to redirect them to a you one page first, let's do this with normal
-JavaScript. So inside this `increment()` method, which is called each time we click, I'll
-say, if `this.count` is equal to `10`, then the way that we re redirect with normal
-JavaScript is `window.location.href` equals. And then `/you-won`. So you
-want as a page that I've created to congratulate our winners. All right, so let's
-refresh the homepage, click a bunch of times and every go Eureka where winners, but
-of course, that worked via eight full page refresh, not via a turbo. Could we
-navigate with everyone's dead, totally start by importing turbo into this file. This
-is actually the most complicated part because it looks a little funny. It's 
-`import * as Turbo from ''`, and then the name of the library, which is pat `@hotwired/turbo`
-The `* as Turbo` is just how you need to do it based on how they're
-exporting things from that file. Now down here, instead of `window.location.href`
-we can say `Turbo.visit()` and then pass in the URL.
+Let's make sure this works. Refresh the homepage... click a bunch of times and...
+eureka! We're winners! But... that worked via a full page refresh, *not* via Turbo.
 
-Let's try it again. Let me go back to the homepage, do a full page refresh. Actually
-it did a full page refresh automatically for me because of the asset, uh, versioning.
-We did it a second ago. Um, and now let's kick 10 times and watch as I get to 10,
-beautiful that navigated with turbo. We can see the Ajax call right here. So yeah,
-it's just that easy. And if you want to be more hipster, you can use de-structuring
-to just import this visit function that looks like this `import { visit } from '@hotwire/turbo'`
-And then down here, it's just literally `visit()`, but that will work exactly the
-same as before. There is one other tricky situation that you might run into when it
-comes to navigating with turbo. And that's, if you're inside of JavaScript, that is
-not inside of a file that's parsed by Webpack. In other words, you're inside of a
-file where you can't use the import keyword. This is probably not very common and
-really in a perfect world. 100% of our JavaScript will be written in a Webpack parsed
-file. And that's what I recommend you do. Okay.
+## Navigating with Turbo
 
-But just in case, let's see how we can navigate with turbo from some inline
-JavaScript on our page. So let's open up `templates/base.html.twig`, head to the
-bottom. And right before the end `</body>`, we'll add a `<script>` tag. And we're going to
-pretend that when we click this logo here, which has the class logo dash or the ID
-`logo-img` that we want to go to the cart page. So do that. We'll say 
-`document.getElementById()`, pass it, `logo-img` `.addEventListener('click')` and
-then we'll pass an arrow function with any `event` argument. And here we'll say 
-`event.preventDefault()`. So it doesn't actually follow the link. That's that images inside
-of, oh man, holy cow. Forgot my comma over there. Things are mad at me. There we go.
-And now it's a visit with turbo. We can just say `Turbo.visit('/cart')`
+Could we navigate *with* Turbo? Totally! Start by importing Turbo into this
+file. This is the most complicated part because... the syntax looks a little
+funny. It's `import * as Turbo from` and then the name of the library, which
+is `@hotwired/turbo`. The `* as Turbo` is needed due to how that library exports
+things.
 
-Yep. Touro is available as a global object. How, who said it as a global object?
-Well, starting in turbo seven, beta six, when you import the turbo module to even get
-turbo set up on your site, it automatically sets itself as a global variable exactly.
-To help with this use case. The point is, if we go and do a full page, refresh and
-click the logo image, instead of going to the homepage where we would normally go, it
-navigates us with turbo to the cart page. Next we are now done with all the turbo
-drive tricky parts. Before we move onto turbo frames, let's try doing, do a few fun
-things. The first will be some experiments with CSS transitions as we navigate
-between pages with drive. Okay.
+Down in the method, instead of `window.location.href`, we can say `Turbo.visit()`
+and pass in the URL.
 
+Let's try it again! Go back to the homepage and do a full page refresh. Actually...
+it did a full page refresh automatically because of the asset tracking we
+created in the last chapter. Cool!
+
+Time to click! Watch when we get to 10. Beautiful! That navigated with Turbo. We
+can see the Ajax call right here. And... yea! It's just that easy.
+
+But if you want to be more hipster, you can use de-structuring to *just* import the
+`visit` function. It looks like this `import { visit } from '@hotwired/turbo'`. Then
+below, literally call `visit()` as a function.
+
+This will work exactly the same as before.
+
+## What if Turbo isn't Available?
+
+There's one other tricky situation that you might run into when it comes to navigating
+with Turbo: if you're writing JavaScript... but you are *not* in a file that's
+parsed by Webpack. In other words, you're somewhere where you *can't* use the
+`import` keyword.
+
+This is probably not very common and, really, in a perfect world, 100% of our
+JavaScript *will* be written in a Webpack-parsed file.
+
+But just in case, let's see how we can navigate with Turbo from inside some
+*inline* JavaScript on our page. Open up `templates/base.html.twig` and head to the
+bottom. Right before the closing `</body>`, add a `<script>` tag. We're going to pretend
+that when we click the logo... which has `id="logo-img"`...  that we want to go to
+the cart page.
+
+Do that by saying `document.getElementById()`, pass it, `logo-img`,
+`.addEventListener('click')` and pass an arrow function with an `event` argument.
+Inside, say `event.preventDefault()` so that it doesn't follow the link that the
+image is inside of. Oh... yikes! I forgot my comma. That's better.
+
+How can we fetch the Turbo object to trigger the visit? It turns out... it's already
+available as a global variable! So we can immediately say: `Turbo.visit('/cart')`
+
+That's it! But... who *set* Turbo as a global object? I don't remember doing that!
+Starting in Turbo 7 beta 6, when you import the `@hotwired/turbo` library, it
+automatically sets itself as a global variable. So if you have Turbo working on
+your site, there *is* a `Turbo` global variable, which is done to help with this
+exact situation.
+
+Anyways, if we go and do a full page refresh... then click the logo image, instead
+of going to the homepage like it normally would, it navigates us - via Turbo - to
+the cart page.
+
+Next, we are now done with all the Turbo Drive tricky parts! Before we move onto
+Turbo frames, let's try doing a few fun things. The first will be to experiment with
+adding CSS transitions as we navigate between pages with Drive.
