@@ -34,43 +34,43 @@ new page, we're going to get access to that new body and have that same turbo le
 loading class to it, to set it to a low opacity. You know what? Let's not talk about
 this. So here's the plan at various times when the old page is leaving, a new page
 has been added. We're going to add some CSS classes that allow us to cause those to
-fade in, fade out. Let's actually start with the CSS. Some of our assets styles add
-that CSS hand right up here in the body. I'm going to say that. I would say that I
-want to transition the opacity over 1000 milliseconds.
+fade in, fade out. Let's actually start with the CSS. Some of our `assets/styles/app.css`
+hand right up here in the body. I'm going to say that. I would say that I
+want to `transition: opacity 1000ms`.
 
 So two things about this. First of all, 1000 milliseconds is way too long for a
 transition, but it'll make this very easy for us to see while we're developing.
 Second thing is that this doesn't cause a transition to the body. It just says if the
 opacity ever changes, I want you to change the opacity gradually over one second,
-instead of immediately blow this, let's say body, that turbo loading and here is
-where we're going to set the opacity to 0.2 0.2 is probably too low of an opacity,
+instead of immediately blow this, let's say `body.turbo-loading` and here is
+where we're going to set the opacity to `.2` is probably too low of an opacity,
 but again, it'll make it easy for us to see this. Now that's terrible. Loading class
 is not something that's part of turbo. That's something that we are going to add to
 cause the transition.
 
-All right, so let's do this. Go back and do assets, turbo, turbo helper dot JS. And
+All right, so let's do this. Go back and do `assets/turbo/turbo-helper.js`. And
 I'll in the constructor. Here we are. These are constructed with our listeners. I'm
 going to add some new event listeners down here. So step one is that I want to fade
 out the body as soon as I click a link. So as soon as we click a link over here, we
-want to add the turbo loading class to the body. And that will cause the old body to
-fade out, to do that. We can add a listener here, document that add event, listener
-to a, uh, [inaudible] turbo colon visit. This is yet again, another event that we
+want to add the `turbo-loading` class to the `<body>`. And that will cause the old body to
+fade out, to do that. We can add a listener here, `document.addEventListener()`
+to a, uh, `turbo:visit`. This is yet again, another event that we
 haven't seen before.
 
 This is bend is called immediately. After a visit starts inside of here, we're gonna
-say document dot body. That's an easy way to get the body element. Then that class
-list that had turbo dash loading, I'll put law comment on this, the old body cool
-fitting up should be done to make it easy to see if this is working, go to public
-index that page. Hm let's add a little sleep for one seconds in here temporarily.
+say `document.body`. That's an easy way to get the body element. Then 
+`.classList.add('turbo-loading')` I'll put law comment on this, the old body cool
+fitting up should be done to make it easy to see if this is working, go to 
+`public/index.php`. Hm let's add a little `sleep()` for one seconds in here temporarily.
 Alright, let's go refresh the page. This will be kind of slow then. Ready for it.
 Nice. Paige fades out. But then the new content shows immediately. We haven't added
-the fade in effect yet. Let's do that head back to Cherwell helper. And I'm going to
+the fade in effect yet. Let's do that head back to `turbo-helper`. And I'm going to
 paste in two more listener functions, both for events. Let's walk through this. Both
-of these events we've seen before turbo, before render and TurboTax gender turbo
+of these events we've seen before `turbo:render` and `turbo:render` turbo
 before render fires right before the new body is added to the page. By adding the
-turbo dash loading class to it, we're setting its opacity 2.2 to start. We want to
+turbo dash loading class to it, we're setting its opacity to `.2` to start. We want to
 have it start faded out. Then the turbo render event is dis is triggered right after
-that new body is added to the page here. We want to remove the turbo loading class,
+that new body is added to the page here. We want to remove the `turbo-loading` class,
 which would set the opacity me back to one and things to be transitioned in our CSS
 where the opacity changes. It should change slowly over one second,
 
@@ -81,7 +81,7 @@ turbo loading line, like right inside the listener. Why, why not? We need the ne
 body to actually be rendered for at least a single frame with the turbo loading class
 so that its opacity can be set to point to, to start if we removed it immediately by
 just popping this line right here. Okay. The element would actually start at full
-pack opacity with no transition. So that's why we have this request animation frame
+pack opacity with no transition. So that's why we have this `requestAnimationFrame()`
 function here. That's a built in browser function that says, Hey, once you do render
 the next frame, please call my function. That allows the element to be rendered for
 one frame with the low capacity. And then we removed the class to force it, to
