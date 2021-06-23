@@ -1,10 +1,10 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 6e88959c..65192cea 100644
+index 005e5f6d..db34bd3b 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -26,6 +26,16 @@ const TurboHelper = class {
                      document.body.classList.add('turbo-loading');
-                 }, 10);
+                 });
              } else {
 +                const isRestoration = event.detail.newBody.classList.contains('turbo-loading');
 +                if (isRestoration) {

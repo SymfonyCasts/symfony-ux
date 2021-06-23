@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index a6ce310b..8f31ca73 100644
+index 6de3abb7..b287b30e 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -4,10 +4,10 @@
@@ -9,7 +9,7 @@ index a6ce310b..8f31ca73 100644
 -    transition: opacity 1000ms;
 +    transition: opacity 200ms;
  }
- body.turbo-loading, body.turbo-loaded {
+ body.turbo-loading {
 -    opacity: .2;
 +    opacity: .8;
  }

@@ -38,7 +38,7 @@ index 292ae5f0..ad3b7492 100644
 -    }
  }
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index b668cb63..6e1b9284 100644
+index 628a8637..38b4ee00 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -1,4 +1,5 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index be3abc2f..6e88959c 100644
+index a7083a99..005e5f6d 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -15,16 +15,32 @@ const TurboHelper = class {
@@ -14,10 +14,10 @@ index be3abc2f..6e88959c 100644
 +                // this is a preview that has been instantly swapped
 +                // remove .turbo-loading so the preview starts fully opaque
 +                event.detail.newBody.classList.remove('turbo-loading');
-+                // start fading out 10ms later after opacity starts full
-+                setTimeout(() => {
++                // start fading out 1 frame later after opacity starts full
++                requestAnimationFrame(() => {
 +                    document.body.classList.add('turbo-loading');
-+                }, 10);
++                });
 +            } else {
 +                // when we are *about* to render a fresh page
 +                // we should already be faded out, so start us faded out
@@ -25,19 +25,19 @@ index be3abc2f..6e88959c 100644
 +            }
          });
          document.addEventListener('turbo:render', () => {
--            // after rendering, we first allow the .turbo-loaded to set the low opacity
--            // THEN, 10ms later, we remove the turbo-loaded class, which allows the fade in
--            setTimeout(() => {
--                document.body.classList.remove('turbo-loading');
--            }, 10);
+-            // after rendering, we first allow the turbo-loading class to set the low opacity
+-            // THEN, one frame later, we remove the turbo-loading class, which allows the fade in
+-            requestAnimationFrame(() => {
+-               document.body.classList.remove('turbo-loading');
+-            });
 +            if (!this.isPreviewRendered()) {
 +                // if this is a preview, then we do nothing: stay faded out
 +                // after rendering the REAL page, we first allow the .turbo-loading to
-+                // instantly start the page at lower opacity. THEN remove the class,
-+                // which allows the fade in
-+                setTimeout(() => {
++                // instantly start the page at lower opacity. THEN remove the class
++                // one frame later, which allows the fade in
++                requestAnimationFrame(() => {
 +                    document.body.classList.remove('turbo-loading');
-+                }, 10);
++                });
 +            }
          });
      }

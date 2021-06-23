@@ -8,7 +8,7 @@ index be6a7b8b..380c1f8e 100644
  import './turbo/turbo-helper';
 +import './turbo/prefetch';
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 8f31ca73..9876bdc5 100644
+index b287b30e..4808859e 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -6,9 +6,11 @@ body {
@@ -16,7 +16,7 @@ index 8f31ca73..9876bdc5 100644
      transition: opacity 200ms;
  }
 +/*
- body.turbo-loading, body.turbo-loaded {
+ body.turbo-loading {
      opacity: .8;
  }
 +*/
