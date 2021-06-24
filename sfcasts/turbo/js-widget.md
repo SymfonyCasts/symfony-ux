@@ -26,6 +26,8 @@ Let's do it: copy this... then go open `templates/base.html.twig`. Head to the
 bottom and paste this in the footer: right before the closing `body` tag...
 though you could put this anywhere.
 
+[[[ code('d4f8876f93')]]]
+
 Cool: this gives us an `a` tag... which just says "New York weather". Then,
 my *guess* is that this JavaScript will execute and transform that `a` tag into
 the cool weather widget that you see down here.
@@ -39,6 +41,8 @@ the original anchor tag. Where did our cool little widget go?
 The JavaScript code that we pasted is pretty impossible to read. To help, select
 it and then go to Code -> Reformat code. There we go! It's still a little hard to
 read, but it's doable.
+
+[[[ code('a54d354f11') ]]]
 
 This is a function that calls itself and passes in these three arguments. Basically,
 when this JavaScript is executed, it adds a new `script` tag to the `head` element
