@@ -17,6 +17,8 @@ Now, head back to `app.js`, copy all of this code, and paste! When we did that,
 PhpStorm helpfully added the `import { Modal }` for us. At the bottom of this file,
 `export default new TurboHelper()`.
 
+[[[ code('2b9bd90ada') ]]]
+
 This is kind of cool: it instantiates a new instance of our object and exports it.
 It won't really matter for us... but thanks to this, each time we import this module,
 we will get the same *one* instance of this object.
@@ -25,6 +27,8 @@ In `app.js`, delete all the original code and then `import './turbo/turbo-helper
 We don't need to set that to a variable... and *just* by importing it, the object
 will be instantiated and the listeners will be registered. So... this should be
 enough to get things working!
+
+[[[ code('b154ca5114') ]]]
 
 Let's try! Refresh, click to remove an item, go back and go forward. Yep! All good.
 
@@ -37,6 +41,8 @@ inside the `turbo:before-cache` callback, say `this.closeModal()`.
 Repeat this for Sweetalert: copy all of the Sweetalert code, create a new method
 called `closeSweetalert()`, paste... and... then back in the callback, use it:
 `this.closeSweetalert()`.
+
+[[[ code('36d196e3c4') ]]]
 
 That looks better! Let's... make sure we didn't mess anything up. Do the same
 dance as before: refresh, click remove, go back and go forward. All good!
