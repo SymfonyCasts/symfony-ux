@@ -1,15 +1,18 @@
-# Transition Finish
+# Polished CSS Transition
 
-Coming soon...
+The fade-out and fade-in transition works... until you visit a page that you've
+already been to... then things get weird. Instead of fading out, it, sort of,
+fades in... then fades in again.
 
-Okay. The fade out and fade transition works until you visit a page we've already
-been to edit, then things get weird instead of fading out, then it sort of like fades
-out and then phase in, again, this happens because back over here and turbo helper
-dot JS, both, he goes turbo before render and turbo render are called when both a
-real page renders and when a preview renders, that means that when a preview is
-shown, it has the same effect as a real page. So when we click to a previous page,
-the preview is instantly shown and then fades in like a normal page. When the HS call
-finishes for the real page, that also fades in
+This happens because, back over in `turbo-helper.js`, both `turbo:before-render`
+and `turbo:render` are  when both a real page renders *and* when a preview renders.
+
+---> START HERE!
+
+that means that when a preview is shown, it has the same effect as a real page. So
+when we click to a previous page, the preview is instantly shown and then fades in
+like a normal page. When the HS call finishes for the real page, that also fades
+in
 
 Tricky. Huh? The solution is to detect once.
 
@@ -110,4 +113,3 @@ Nice, subtle little effect. And if I go to a preview, it looks good. I never had
 back. It shows instantly next where you're going to try something kind of crazy. What
 if, when a user hovers over a link, we prefetch that URL with turbo then instantly
 displayed it. Is that possible? Is it a good idea? Let's do some experimenting.
-
