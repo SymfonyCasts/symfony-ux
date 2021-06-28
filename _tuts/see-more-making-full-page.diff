@@ -1,8 +1,8 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 3e127bf8..8d93c922 100644
+index 5b1f6767..0b9dbe82 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -38,7 +38,7 @@ class CartController extends AbstractController
+@@ -44,7 +44,7 @@ class CartController extends AbstractController
              'product' => $featuredProduct,
          ]);
  

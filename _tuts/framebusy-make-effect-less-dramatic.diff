@@ -1,8 +1,8 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index ca74f755..2167fbb2 100644
+index 752dc0a8..33318dcc 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
-@@ -20,7 +20,7 @@ turbo-frame {
+@@ -18,7 +18,7 @@ turbo-frame {
      display: block;
  }
  turbo-frame[busy] {
@@ -12,10 +12,10 @@ index ca74f755..2167fbb2 100644
  
  a, a:hover  {
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index f7b7bbbc..a046eb10 100644
+index 9a967d12..0379cd34 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -38,8 +38,6 @@ class CartController extends AbstractController
+@@ -44,8 +44,6 @@ class CartController extends AbstractController
              'product' => $featuredProduct,
          ]);
  

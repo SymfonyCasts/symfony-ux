@@ -1,16 +1,26 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index e6bdba1b..17ac090d 100644
+index bb291a21..8bbdffde 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -21,15 +21,24 @@ class CartController extends AbstractController
+@@ -22,13 +22,8 @@ class CartController extends AbstractController
      /**
       * @Route("/cart", name="app_cart")
       */
--    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository): Response
-+    public function shoppingCart(CartStorage $cartStorage): Response
-+    {
-+        return $this->renderForm('cart/cart.html.twig', [
-+            'cart' => $cartStorage->getOrCreateCart(),
+-    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository, Request $request): Response
++    public function shoppingCart(CartStorage $cartStorage, Request $request): Response
+     {
+-        $featuredProduct = $productRepository->findFeatured();
+-        $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
+-            'product' => $featuredProduct,
+-        ]);
+-
+         $this->addLink(
+             $request,
+             new Link('prefetch', $this->generateUrl('app_checkout'))
+@@ -36,6 +31,20 @@ class CartController extends AbstractController
+ 
+         return $this->renderForm('cart/cart.html.twig', [
+             'cart' => $cartStorage->getOrCreateCart(),
 +        ]);
 +    }
 +
@@ -18,14 +28,12 @@ index e6bdba1b..17ac090d 100644
 +     * @Route("/cart/_featured", name="_app_cart_product_featured")
 +     */
 +    public function cartFeaturedProduct(ProductRepository $productRepository): Response
-     {
-         $featuredProduct = $productRepository->findFeatured();
-         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
-             'product' => $featuredProduct,
-         ]);
- 
--        return $this->renderForm('cart/cart.html.twig', [
--            'cart' => $cartStorage->getOrCreateCart(),
++    {
++        $featuredProduct = $productRepository->findFeatured();
++        $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
++            'product' => $featuredProduct,
++        ]);
++
 +        return $this->renderForm('cart/_featuredSidebar.html.twig', [
              'featuredProduct' => $featuredProduct,
              'addToCartForm' => $addToCartForm,

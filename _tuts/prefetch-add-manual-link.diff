@@ -1,0 +1,31 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index e6bdba1b..bb291a21 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -15,19 +15,25 @@ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+ use Symfony\Component\Routing\Annotation\Route;
++use Symfony\Component\WebLink\Link;
+ 
+ class CartController extends AbstractController
+ {
+     /**
+      * @Route("/cart", name="app_cart")
+      */
+-    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository): Response
++    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository, Request $request): Response
+     {
+         $featuredProduct = $productRepository->findFeatured();
+         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
+             'product' => $featuredProduct,
+         ]);
+ 
++        $this->addLink(
++            $request,
++            new Link('prefetch', $this->generateUrl('app_checkout'))
++        );
++
+         return $this->renderForm('cart/cart.html.twig', [
+             'cart' => $cartStorage->getOrCreateCart(),
+             'featuredProduct' => $featuredProduct,

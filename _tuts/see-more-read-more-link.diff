@@ -1,8 +1,8 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 17ac090d..3e127bf8 100644
+index 8bbdffde..5b1f6767 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -31,7 +31,7 @@ class CartController extends AbstractController
+@@ -37,7 +37,7 @@ class CartController extends AbstractController
      /**
       * @Route("/cart/_featured", name="_app_cart_product_featured")
       */
@@ -11,7 +11,7 @@ index 17ac090d..3e127bf8 100644
      {
          $featuredProduct = $productRepository->findFeatured();
          $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
-@@ -41,6 +41,7 @@ class CartController extends AbstractController
+@@ -47,6 +47,7 @@ class CartController extends AbstractController
          return $this->renderForm('cart/_featuredSidebar.html.twig', [
              'featuredProduct' => $featuredProduct,
              'addToCartForm' => $addToCartForm,
