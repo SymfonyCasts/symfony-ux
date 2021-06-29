@@ -13,6 +13,8 @@ a "you won!" page. Let's first do this with normal JavaScript. Inside of the
 equals `10`, then redirect using raw JavaScript: `window.location.href` equals
 `/you-won`, which is a page I already created.
 
+[[[ code('d0014f3439') ]]]
+
 Let's make sure this works. Refresh the homepage... click a bunch of times and...
 eureka! We're winners! But... that worked via a full page refresh, *not* via Turbo.
 
@@ -27,6 +29,8 @@ things.
 Down in the method, instead of `window.location.href`, we can say `Turbo.visit()`
 and pass in the URL.
 
+[[[ code('4c63b84939') ]]]
+
 Let's try it again! Go back to the homepage and do a full page refresh. Actually...
 it did a full page refresh automatically because of the asset tracking we
 created in the last chapter. Cool!
@@ -37,6 +41,8 @@ can see the Ajax call right here. And... yea! It's just that easy.
 But if you want to be more hipster, you can use de-structuring to *just* import the
 `visit` function. It looks like this `import { visit } from '@hotwired/turbo'`. Then
 below, literally call `visit()` as a function.
+
+[[[ code('64b7d3afad') ]]]
 
 This will work exactly the same as before.
 
@@ -63,6 +69,8 @@ image is inside of. Oh... yikes! I forgot my comma. That's better.
 
 How can we fetch the Turbo object to trigger the visit? It turns out... it's already
 available as a global variable! So we can immediately say: `Turbo.visit('/cart')`
+
+[[[ code('072306d92f') ]]]
 
 That's it! But... who *set* Turbo as a global object? I don't remember doing that!
 Starting in Turbo 7 beta 6, when you import the `@hotwired/turbo` library, it

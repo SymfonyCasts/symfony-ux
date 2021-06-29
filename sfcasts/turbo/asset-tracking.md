@@ -28,6 +28,8 @@ in a *non* Turbo universe - to download the latest version.
 To see what happens *with* Turbo, let's activate this for dev builds also by
 removing the `Encore.isProduction()` argument.
 
+[[[ code('2deb0cbeac') ]]]
+
 To make this take effect, find your terminal, go to the tab that's running Encore,
 hit Control+C and then rerun:
 
@@ -41,6 +43,8 @@ and the `app.js` file also has a hash.
 
 Let's go modify the `app.js` file - that's over at `assets/app.js`. At the bottom,
 `console.log('new code')`.
+
+[[[ code('818c5d9c97') ]]]
 
 Now, *without* refreshing your browser, navigate to a new page.. and look at the
 console. Interesting... no log! And we have *two* `app.js` script tags on the page...
@@ -75,6 +79,8 @@ Open `config/packages/webpack_encore.yaml`. The `script_attributes` key allows u
 to add an attribute to *every* `script` tag that Encore outputs. Add
 `data-turbo-track` and set it to `reload`. We'll talk about what this does in
 a second. Also uncomment `link_attributes` and set the same thing here.
+
+[[[ code('49893076ab') ]]]
 
 With this simple change, every `script` and `link` tag that Encore renders
 will now have that `data-turbo-track="reload"` attribute on it.
