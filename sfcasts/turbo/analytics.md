@@ -16,6 +16,8 @@ say `document.addEventListener()` to listen to `turbo:before-render`. Pass this
 an arrow function and then log "before render" so we can see *exactly* when this
 does and doesn't execute.
 
+[[[ code('6e598fda0d') ]]]
+
 Cool. Let's test it!
 
 Find your browser, refresh, and open the console. Okay. So nothing on initial page
@@ -38,6 +40,8 @@ Let's check it! Replace the log with `document.querySelector()` and look for
 `#weatherwidget-io-js`. Then say, `.remove()`. You can also code defensively
 to make sure the element *exists* first before trying to call `remove()`... not
 a bad idea.
+
+[[[ code('53dea88fb2') ]]]
 
 Ok: refresh. It works and... navigate to a different page. Yea! It *still* works!
 If you look inside the `head` element, it accomplishes this *without* duplicating
@@ -72,6 +76,8 @@ the page. This means that, inside of the callback, we know that the *new* body
 *will* be on the page. And so, we can call that `__weatherwidget_init` function.
 Let me steal that name from the other file... and paste it here.
 
+[[[ code('739bb961bf') ]]]
+
 Testing time! Refresh! The first page works: no surprise. And when we go to a second
 page... yes! It still works! No matter how many pages we go to, it keeps working.
 I like this solution better, though, I also realize that we're sort of using an
@@ -82,6 +88,8 @@ Now that we have this working, let's refactor this logic into a method for clari
 Copy the `__weatherwidget_init` function, go to the bottom of the class and create
 a new method, how about `initializeWeatherWidget`. Paste, then call that from up
 here in our listener: `this.initializeWeatherWidget()`.
+
+[[[ code('835bf6be19') ]]]
 
 ## Solving External Widgets with Stimulus?
 
