@@ -1,8 +1,8 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index b287b30e..1db51a81 100644
+index 4808859e..561c6430 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
-@@ -14,6 +14,9 @@ body.turbo-loading {
+@@ -16,6 +16,9 @@ body.turbo-loading {
      opacity: .2;
  }
  */
@@ -13,10 +13,10 @@ index b287b30e..1db51a81 100644
  a, a:hover  {
      color: #000;
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 0379cd34..9a967d12 100644
+index 5cd311be..ecad2e97 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -44,6 +44,8 @@ class CartController extends AbstractController
+@@ -43,6 +43,8 @@ class CartController extends AbstractController
              'product' => $featuredProduct,
          ]);
  

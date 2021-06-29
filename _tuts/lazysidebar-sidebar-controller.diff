@@ -1,23 +1,8 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index bb291a21..8bbdffde 100644
+index e6bdba1b..db2ee6c7 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -22,13 +22,8 @@ class CartController extends AbstractController
-     /**
-      * @Route("/cart", name="app_cart")
-      */
--    public function shoppingCart(CartStorage $cartStorage, ProductRepository  $productRepository, Request $request): Response
-+    public function shoppingCart(CartStorage $cartStorage, Request $request): Response
-     {
--        $featuredProduct = $productRepository->findFeatured();
--        $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
--            'product' => $featuredProduct,
--        ]);
--
-         $this->addLink(
-             $request,
-             new Link('prefetch', $this->generateUrl('app_checkout'))
-@@ -36,6 +31,20 @@ class CartController extends AbstractController
+@@ -30,6 +30,20 @@ class CartController extends AbstractController
  
          return $this->renderForm('cart/cart.html.twig', [
              'cart' => $cartStorage->getOrCreateCart(),
@@ -39,10 +24,10 @@ index bb291a21..8bbdffde 100644
              'addToCartForm' => $addToCartForm,
          ]);
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index c7d8676b..2d06578f 100644
+index a2e9ced5..41545d00 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
-@@ -4,9 +4,9 @@
+@@ -9,9 +9,9 @@
      <div class="container-fluid container-xl mt-4">
          <div class="row">
              <aside class="col-12 col-md-4 order-2 order-md-1">

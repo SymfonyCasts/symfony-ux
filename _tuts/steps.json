@@ -1111,23 +1111,33 @@
             "description": null
         },
         {
-            "id": "prefetch-add-instant-page-script",
-            "name": "Prefetch: add instant page script",
+            "id": "prefetch-copy-prefetch-script",
+            "name": "Prefetch: copy prefetch script",
             "description": null
         },
         {
-            "id": "prefetch-removing-instant-page-script",
-            "name": "Prefetch: removing Instant Page script",
+            "id": "prefetch-import-script",
+            "name": "Prefetch: import script",
             "description": null
         },
         {
-            "id": "prefetch-install-symfony-web-link",
-            "name": "Prefetch: install symfony\/web-link",
+            "id": "prefetch-remove-prefetch-import",
+            "name": "Prefetch: remove prefetch import",
             "description": null
         },
         {
-            "id": "prefetch-add-manual-link",
-            "name": "Prefetch: add manual link",
+            "id": "prefetch-manual-prefetch-link",
+            "name": "Prefetch: manual prefetch link",
+            "description": null
+        },
+        {
+            "id": "delete-me-7",
+            "name": "delete me 7",
+            "description": null
+        },
+        {
+            "id": "delete-me-6",
+            "name": "delete me 6",
             "description": null
         },
         {
@@ -1476,5 +1486,5 @@
             "description": null
         }
     ],
-    "sha": "9bd07b62784aac6ae440083ba2ad837e253d88d6"
+    "sha": "a44e6449bd18c3981691d57d9e5d48e7d7d7b2b4"
 }

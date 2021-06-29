@@ -1,8 +1,8 @@
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 2d06578f..81281399 100644
+index 41545d00..a5196bf4 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
-@@ -4,7 +4,7 @@
+@@ -9,7 +9,7 @@
      <div class="container-fluid container-xl mt-4">
          <div class="row">
              <aside class="col-12 col-md-4 order-2 order-md-1">

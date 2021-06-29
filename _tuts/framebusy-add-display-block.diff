@@ -1,8 +1,8 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 1db51a81..752dc0a8 100644
+index 561c6430..ca74f755 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
-@@ -14,6 +14,9 @@ body.turbo-loading {
+@@ -16,6 +16,9 @@ body.turbo-loading {
      opacity: .2;
  }
  */
