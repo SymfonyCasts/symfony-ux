@@ -50,6 +50,8 @@ for us to see.
 This `turbo-loading` class is *not* something that's part of Turbo: it's something
 that *we* are going to add to cause the transition.
 
+[[[ code('77834f0bc5') ]]]
+
 ## Triggering the Fade Out Transition
 
 Let's do it. Go back to `assets/turbo/turbo-helper.js` and, in the constructor,
@@ -63,8 +65,12 @@ is triggered immediately after a visit *starts*. Inside, say `document.body` - t
 an easy way to get the `body` element - then  `.classList.add('turbo-loading')`.
 I'll add a comment that explains what this does.
 
+[[[ code('7e10ac18ee') ]]]
+
 To make it easy to see if this is working, go to `public/index.php`... and add a
 1 second `sleep()` temporarily.
+
+[[[ code('3c68b55704') ]]]
 
 Ok: let's go refresh the page... this will be kind of slow. Ready? Click! Nice!
 The page faded out. But then the new content shows up immediately. We haven't added
@@ -74,6 +80,8 @@ the fade *in* effect yet.
 
 Let's do *that*. Head back to `turbo-helper.js`. I'm going to paste in two more
 listener functions. Let's walk through this: we've seen both of these events before.
+
+[[[ code('5077ffda5e') ]]]
 
 `turbo:before-render` fires right *before* the new body is added to the page. This
 allows us to add the `turbo-loading` class to the *new* body before it's added to the
