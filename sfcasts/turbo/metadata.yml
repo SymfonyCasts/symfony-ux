@@ -17,3 +17,4 @@ chapters:
     - transitions
     - transition-finish
     - prefetch
+    - native-prefetch

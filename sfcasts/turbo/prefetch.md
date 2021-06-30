@@ -1,117 +1,77 @@
 # Prefetching the Next Page
 
-Coming soon...
+I have a crazy idea. What if, when the user hovers over a link, we *prefetch*
+that page via Ajax and saved it as a snapshot cache? Then, assuming the user *does*
+click that link, Turbo would show the page *instantly* via its preview system.
 
-I have a crazy idea. What if, when the user hovers over a little, like we prefetch,
-that you were out and saved it as a snapshot cache, then assuming the user does click
-that link turbo would show this page instantly from its preview. Is that possible? It
-is well not officially interval, but thanks to some clever people on the internet. It
-is. If you download the course code, you should have a tutorial directory with a
-prefetch.JS file inside. Copy that and paste it into our turbo directory. Okay. This
-isn't not my script. It comes from a gist that I attributed up on top. This script
-automatically makes an Ajax call whenever a user hovers over an anchor tab and saves
-that as a turbo snapshot. Then when you click, you instantly see the preview for a
-super fast navigating experience, like instant to avoid totally spamming the server
-with requests, the code waits for you to hover for 65 milliseconds before sending the
-Ajax request. This approach does have some downsides, but let's see it in action.
-First, open up app.JS, and import this import./turbo /prefetch. That's enough to
-activate it. Also open up styles /app that CSS and coming out in the opacity
-transition that we added before the page are going to be so instant that this won't
-be needed.
+Is that possible? Well, not *officially*. But thanks to some clever people on the
+Internet, it is! Let's learn two different ways that can we can make the performance
+of our site *even* faster... and the caveats that go with both - neither is perfect
+out-of-the box. But both are *super* interesting.
 
-Okay. Moment of truth. However, refresh. And I'm just going to kind of casually click
-down here on furniture. How fast that was. All these pages are now loading as if I've
-already visited them before. The thing is now super fast and my site, okay. That was
-too easy. So what are the downsides? There are a few. The first is that your site is
-going to get hit by a lot more requests. If you hover over a link button, never click
-it. That's an extra request, but worse. Even if you do click the link, two requests
-are made watch. I'm going to refresh then clear my network tools down here. All
-right. So I'll have our office supplies then quick, check it out. Two requests for
-the same page on top
+## Prefetching on Hover
 
-[inaudible]
+If you downloaded the course code, you should have a `tutorial/` directory
+with a `prefetch.js` file inside. Copy that and paste it into `assets/turbo/`.
 
-The prefetch script made the first request to store it as a snapshot for the preview,
-but like normal preview functionality. After showing the preview a second request was
-made to load the page fresh. That's a bummer. Another downside is that unless your
-pages load fast enough, this won't make a difference. So for example, let me clear
-this again. If I hover over break room and click it really quickly before the age has
-called finished it's we're not going to get the nice behavior. You still see that
-took a second to load that's because the first prefect H request hadn't finished by
-the time I started the second one [inaudible]
+Ok: this is *not* my script: it comes from a gist that I attributed on top.
+This script automatically makes an Ajax call whenever a user hovers over an anchor
+tag and saves the response as a Turbo snapshot. Then, if the user *does* click that
+link, the page will be displayed *instantly* thanks to the preview. To avoid
+*totally* spamming the server with requests, this code waits for the user to hover
+for 65 milliseconds before sending the Ajax request. The idea is to take advantage
+of the brief pause between when a user starts to hover over a link and when they
+actually *click* that link. This approach does have some downsides, but let's see
+it in action before we chat about them.
 
-[inaudible]
+Open up `app.js` and import this: `import './turbo/prefetch'`. That's enough to
+activate the new behavior.
 
-In fact, it's stalled the request that actually the second request had to wait for
-the first to load. She's totally a problem. The last problem is that our prefetch
-script also includes things like log out length. So if I, however long outline this
-script here is not going to know is going to request that and it's going to log me
-out. We don't really want log out links to be visited. So this is really cool, but be
-careful. You can add a, I search it for dataset. You can add a data dash prefetch = a
-false to any URL to disable it, or with a little bit of customization to the script.
-You could disable the behavior by the faults and only enable it. If a link has data
-that's prefetch = true. You just change this line right here.
+Also open up `styles/app.css` and comment-out the `opacity` transition that we added
+before. The pages are going to be *so* fast that this won't be needed.
 
-Now allow you to, prefetch just the most likely pages or a third option, which you
-can see in the bottom here is to add a data prefetch with link = true attribute,
-which adds a link element to your head. What does that do? Okay, great question.
-Let's back up a little bit so far, this whole prefetch script here is pure turbo
-magic or making an Ajax call down here and actually leveraging turbo is a snapshot
-cache, but your browser actually has a prefetch feature built into it. And that's
-what this data prefetch with. Link attribute is leveraging to see how it works. Let's
-actually close this prefetch script and comment at out.
+Moment of truth. At your browser, refresh. I'm going "casually" click on the
+Furniture category. Woh - that was fast! All these pages are now loading as *if*
+we've already visited them... because... we actually have! The perceived performance
+of our site just took another huge step forward.
 
-Okay. I want to show you how true prefetching works without any turbo magic, because
-prefetching can be used on any site, even if you don't have turbo. Here's the deal.
-Imagine that when you go to a certain page on your site, you were fairly sure that
-you know what the next page or pages will be, that the user will go to. In that case,
-you can hint to the user's browser, that if it has extra time, it can prefetch that
-URL so that if the user does navigate to it, it will load instantly from cache. For
-example, let's add an item to our cart and then had to the shopping cart page.
+## The Downsides of the Hover Prefetch
 
-It might be obvious that once a user is on this page, they usually click this
-checkout link. Let's add a hint that the browser can prefetch that how open the
-temple for this page? So that's templates cart carved out age twig, and up on top
-override, a blocked called metas. This is not a standard at blocking Symfony. Uh, but
-earlier in the tutorial, in based at age two months, we, we added it. So we can
-inside of here add link instead of rallying call style sheet, say WRAL = prefetch.
-And then for the age rap, I'll say {{ path, and then the route to the checkout pages
-app_checkout.
+But that was *too* easy! So what are the downsides? There are a few. The first is
+that your site is going to get hit by a lot more requests. If you hover over a link
+but never click it, that's an extra, unnecessary request! But worse, even if you
+*do* click the link, *two* requests are made! Watch, I'll refresh, then clear my
+network tools. I'll hover over "Office Supplies", then click. Check it out: *two*
+requests were made for the same page! The prefetch script made the first request
+to store the page as a snapshot for the preview. But then, like normal preview
+functionality, after showing the preview, Turbo made a *second* request to load a
+"fresh" version of the page. That's a bummer.
 
-That's it let's go see what happens or here, I'm going to refresh the page on the
-network tools. Let's click to see all and then scroll to the top. And there's the
-cart, original quest, but scroll down there. It is check out. Okay. Hey, checkout
-requests that took a 360 milliseconds that is thanks to the prefetch. Now the
-requests and click at checkout. Scroll up to the top of the requests. Cool. When
-turbo made the AJAX call for this page, our browser was smart enough to instantly
-pull it from the prefetch cache. Let me get my mouse out of the way there, making
-your page load even faster. So this isn't as fancy as the automatic is the isn't
-quite isn't as fancy or quite as fast as the hover prefetch, but it works without any
-extra requests. Could you combine these two approaches or, or stop fewer extra
-requests?
+Another downside is that, if your page doesn't load fast enough, this won't make
+any difference! For example, let me clear the network tools again. I'm going to
+hover and then click "Breakroom" *really* fast. Watch: that time, the page did
+*not* load instantly because the first prefetch request had *not* finished by the
+time I clicked.
 
-Could we on the hover add a prefetch link tag? Yep. That's what the data dash
-prefetch dash with dash link attribute does. And there are other tiny libraries. One
-is called instant page that also does this because this idea of adding a prefetch
-link, when you hover over a link has nothing to do with turbo, but the devil is in
-the details. Whenever we navigate to a new page removes any, uh, prefetch link tAJAX
-that are in the head, that's just how turbo looks. So if we go to the shopping cart
-page and go to elements, we're going to see, whereas city on here, our link rally was
-pretty fetch. Actually. I want me to refresh just so we don't have any surprises
-about link. Really? It was prefetch. So that's on there and we've not prepared that
-you were out, but when we clicked to a different page, like a shopping cart page,
-that link rally up was, is gone.
+In fact, when you look at the second request that Turbo made, it "stalled": the
+second request waited for the first. To be fully honest, I'm not actually sure
+*why* my browser waits like this... but it means that if the user clicks before
+the prefetch request finishes, it may actually be slowing *down* the experience.
 
-Oh, I'm back on the card again. Here we go. Let me actually go to the homepage. There
-we go. You can see the link rally goes prefetch is gone, which means even though our
-browser technically has prefetch that you were out, our browser forgot that we
-preached it. Okay. So this is the tricky part. The prefetch on hover works really
-well, but you will prefetch URLs over and over and over again on necessarily because
-they'll be taken out of your head tag. So I know this got a little bit hairy with all
-this. It's just so cool. The stuff you can do, but the takeaway is that even though
-these are really cool and they can make you say it really, really fast, none of these
-options are perfect yet. So use them wisely on my side. I'd probably use an opt-in an
-opt in approach. One that leverages the prefetch link on hubber of just certain, uh,
-URLs. Okay. Then we're done with turbo drive. Let's turn a turbo frame, a feature
-that allows us to separate our site into little pieces each, which navigates
-independently.
+The *last* problem is that the prefetch script will also try to prefetch links
+that we don't want it to - like a "log out" link. Yup, right now, if we hovered
+briefly over a log out link, that... would log us out.
+
+In the script, search for `dataset`. You *can* add a `data-prefetch="false"`
+attribute to any link to disable the behavior for that link. Or, by customizing
+this line a little, you could *disable* the prefetch behavior by default and only
+*enable* it if the link has `data-prefetch=true`. That would be a safe way to
+enable this only on links that make sense to you.
+
+## The "prefetch" link Hint
+
+There's also another way to use this script, which you can see at the bottom. If
+you add a `data-prefetch-with-link="true"` attribute, instead of making an Ajax
+call, it will add a `<link rel="prefetch">` element to your `head` tag. What
+does that do? It enables a really neat feature that's native to your browser.
+Let's learn about it next.
