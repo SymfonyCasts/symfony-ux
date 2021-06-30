@@ -1,7 +1,7 @@
 # Prefetching the Next Page
 
 I have a crazy idea. What if, when the user hovers over a link, we *prefetch*
-that page via Ajax and saved it as a snapshot cache? Then, assuming the user *does*
+that page via Ajax and saved it to the snapshot cache? Then, assuming the user *does*
 click that link, Turbo would show the page *instantly* via its preview system.
 
 Is that possible? Well, not *officially*. But thanks to some clever people on the
@@ -41,7 +41,7 @@ But that was *too* easy! So what are the downsides? There are a few. The first i
 that your site is going to get hit by a lot more requests. If you hover over a link
 but never click it, that's an extra, unnecessary request! But worse, even if you
 *do* click the link, *two* requests are made! Watch, I'll refresh, then clear my
-network tools. I'll hover over "Office Supplies", then click. Check it out: *two*
+network tools. Hover over "Office Supplies", then click. Check it out: *two*
 requests were made for the same page! The prefetch script made the first request
 to store the page as a snapshot for the preview. But then, like normal preview
 functionality, after showing the preview, Turbo made a *second* request to load a
