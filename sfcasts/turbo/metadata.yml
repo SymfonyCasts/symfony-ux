@@ -16,3 +16,4 @@ chapters:
     - manual-visit
     - transitions
     - transition-finish
+    - prefetch
