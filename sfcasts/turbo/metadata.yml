@@ -19,3 +19,4 @@ chapters:
     - prefetch
     - native-prefetch
     - lazy-frame
+    - frames-find-frames
