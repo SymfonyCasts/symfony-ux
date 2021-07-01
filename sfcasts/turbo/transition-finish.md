@@ -6,6 +6,9 @@ fades in... then fades in again?
 
 This happens because, back over in `turbo-helper.js`, both `turbo:before-render`
 and `turbo:render` happen when both a real page renders *and* when a preview renders.
+
+[[[ code('6dafa2774c') ]]]
+
 That means that, when a preview is shown, it gets the same transition effect as a
 real page. When we click a page we've previously been to, the preview instantly
 shows - starting faded out - and then fades in. When the Ajax call finishes for the
@@ -26,6 +29,8 @@ attribute while it's showing.
 Back in `turbo-helper`, start by going all the way to the bottom and creating a new
 method called `isPreviewRendered()`. Inside, return `document.documentElement` -
 that's how you get the HTML tag - `.hasAttribute('data-turbo-preview')`.
+
+[[[ code('2211fcea4b') ]]]
 
 We're using `hasAttribute` instead of `dataset` because we don't care what
 the *value* is - it would be an empty string - we just care whether or not it
@@ -51,12 +56,16 @@ Copy the code from below, paste, but *remove* the class. Then, steal the
 `requestAnimationFrame()` code, paste *that*... and grab the `classList.add()`
 from below and use that exactly.
 
+[[[ code('6cf4c64dd2') ]]]
+
 Perfect! So this will remove `turbo-loading` from the new body, then, one frame
 later, re-add it to cause the fade out.
 
 Now, in `turbo:render`, we only want to remove the `turbo-loading` class if this
 is *not* a preview. So if not `this.isPreviewRendered()`, then remove that
 `turbo-loading` class.
+
+[[[ code('2a8f579526') ]]]
 
 Yes, I know, it's *pretty* complex. Let's take it for a test drive. Do a full page
 refresh. If we click to new pages... this all still looks fine. And if we click
@@ -96,6 +105,8 @@ I'll add a note above explaining this. Oh, duh, sorry - this probably looks
 super confusing because I forgot to wrap this in an if `isRestoration`.
 *If* this is a restoration, remove that class and return.
 
+[[[ code('c39a19d536') ]]]
+
 This will cause the page to start with full capacity and never change.
 
 Phew! Okay, let's make sure this helps. Head back, refresh, click around to a new
@@ -113,6 +124,8 @@ big - into its own method. Copy both `document.addEventListener()` sections, rem
 them, go down to the bottom, and create a new method called `initializeTransitions()`.
 Paste all that logic there, head back up to the constructor and call it:
 `this.initializeTransitions()`.
+
+[[[ code('ba28eb52fd') ]]]
 
 This at least gives all this code down here a name so that future "us" can better
 remember what it does.
