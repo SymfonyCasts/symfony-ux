@@ -18,3 +18,4 @@ chapters:
     - transition-finish
     - prefetch
     - native-prefetch
+    - lazy-frame
