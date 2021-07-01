@@ -14,6 +14,8 @@ out-of-the box. But both are *super* interesting.
 If you downloaded the course code, you should have a `tutorial/` directory
 with a `prefetch.js` file inside. Copy that and paste it into `assets/turbo/`.
 
+[[[ code('ddc1857797') ]]]
+
 Ok: this is *not* my script: it comes from a gist that I attributed on top.
 This script automatically makes an Ajax call whenever a user hovers over an anchor
 tag and saves the response as a Turbo snapshot. Then, if the user *does* click that
@@ -27,8 +29,12 @@ it in action before we chat about them.
 Open up `app.js` and import this: `import './turbo/prefetch'`. That's enough to
 activate the new behavior.
 
+[[[ code('99653f43d9') ]]]
+
 Also open up `styles/app.css` and comment-out the `opacity` transition that we added
 before. The pages are going to be *so* fast that this won't be needed.
+
+[[[ code('a1b0ca53f8') ]]]
 
 Moment of truth. At your browser, refresh. I'm going "casually" click on the
 Furniture category. Woh - that was fast! All these pages are now loading as *if*
@@ -68,10 +74,15 @@ this line a little, you could *disable* the prefetch behavior by default and onl
 *enable* it if the link has `data-prefetch=true`. That would be a safe way to
 enable this only on links that make sense to you.
 
+[[[ code('a13a447cd0') ]]]
+
 ## The "prefetch" link Hint
 
 There's also another way to use this script, which you can see at the bottom. If
 you add a `data-prefetch-with-link="true"` attribute, instead of making an Ajax
-call, it will add a `<link rel="prefetch">` element to your `head` tag. What
-does that do? It enables a really neat feature that's native to your browser.
-Let's learn about it next.
+call, it will add a `<link rel="prefetch">` element to your `head` tag.
+
+[[[ code('bb153b7797') ]]]
+
+What does that do? It enables a really neat feature that's native to your
+browser. Let's learn about it next.
