@@ -81,7 +81,7 @@ the fade *in* effect yet.
 Let's do *that*. Head back to `turbo-helper.js`. I'm going to paste in two more
 listener functions. Let's walk through this: we've seen both of these events before.
 
-[[[ code('5077ffda5e') ]]]
+[[[ code('03e615745e') ]]]
 
 `turbo:before-render` fires right *before* the new body is added to the page. This
 allows us to add the `turbo-loading` class to the *new* body before it's added to the
