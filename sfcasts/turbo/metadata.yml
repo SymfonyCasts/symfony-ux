@@ -20,3 +20,5 @@ chapters:
     - native-prefetch
     - lazy-frame
     - frames-find-frames
+    - lazy-frame-full-page
+    - external-js-stimulus
