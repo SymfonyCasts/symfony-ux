@@ -1,4 +1,4 @@
-# <link rel="prefetch"
+# <link rel="prefetch">
 
 Looking at the code of this `prefetch` script, there is *another* way this can
 be used. If you add a `data-prefetch-with-link="true"` attribute to a link, instead
