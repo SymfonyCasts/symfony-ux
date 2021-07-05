@@ -28,7 +28,7 @@ of Ruby on Rails and Basecamp - built a new email service entirely with server-s
 generated HTML. Their claim was bold: that they could get a single page application
 experience by building a *traditional* app.
 
-They called the idea [Hotwire](https://hotwire.dev/). Symfony UX is built on *top*
+They called the idea [Hotwire](https://hotwired.dev/). Symfony UX is built on *top*
 of this concept.
 
 ## Hotwire: Stimulus & Turbo
