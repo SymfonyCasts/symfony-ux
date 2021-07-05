@@ -1136,8 +1136,8 @@
             "description": null
         },
         {
-            "id": "delete-me-6",
-            "name": "delete me 6",
+            "id": "lazy-sidebar-upgrade-turbo",
+            "name": "Lazy Sidebar: upgrade Turbo",
             "description": null
         },
         {
@@ -1148,6 +1148,21 @@
         {
             "id": "lazysidebar-add-internal-turbo-frame",
             "name": "LazySidebar: add internal turbo-frame",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-use-fragment-uri",
+            "name": "LazySidebar: use fragment_uri()",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-enabling-fragments",
+            "name": "LazySidebar: enabling fragments",
+            "description": null
+        },
+        {
+            "id": "lazyframe-upgrade-turbo-again",
+            "name": "LazyFrame: upgrade turbo again",
             "description": null
         },
         {
@@ -1173,6 +1188,11 @@
         {
             "id": "lazyframe-make-it-lazy",
             "name": "LazyFrame: make it lazy",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-2nd-frame-on-homepage",
+            "name": "LazyFrame: add 2nd frame on homepage",
             "description": null
         },
         {
@@ -1486,5 +1506,5 @@
             "description": null
         }
     ],
-    "sha": "a44e6449bd18c3981691d57d9e5d48e7d7d7b2b4"
+    "sha": "1f6609b7a3cbcab9bb8a938e093d5d7dcfc62acb"
 }

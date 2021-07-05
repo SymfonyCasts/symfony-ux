@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index e6bdba1b..db2ee6c7 100644
+index e6bdba1b..9096277f 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -30,6 +30,20 @@ class CartController extends AbstractController
@@ -12,7 +12,7 @@ index e6bdba1b..db2ee6c7 100644
 +    /**
 +     * @Route("/cart/_featured", name="_app_cart_product_featured")
 +     */
-+    public function cartFeaturedProduct(ProductRepository $productRepository): Response
++    public function _cartFeaturedProduct(ProductRepository $productRepository): Response
 +    {
 +        $featuredProduct = $productRepository->findFeatured();
 +        $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [

@@ -1,0 +1,17 @@
+diff --git a/yarn.lock b/yarn.lock
+index 5ab49772..3747f720 100644
+--- a/yarn.lock
++++ b/yarn.lock
+@@ -931,9 +931,9 @@
+   integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+ 
+ "@hotwired/turbo@^7.0.0-beta.5":
+-  version "7.0.0-beta.7"
+-  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.0-beta.7.tgz#0f519af4e63698a9fb44d2db9019cdb5ddd048db"
+-  integrity sha512-w4Oajhnqnz+b2rM325FjPnENVij1yWJy+q6bwSgmCvRG4715T7PoC6YwTPd4h6PVUGgy5WpqgDadzKdEV+qtLw==
++  version "7.0.0-beta.8"
++  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-7.0.0-beta.8.tgz#133630eabbd3c26183efcfb6dea2db5dd172e8da"
++  integrity sha512-3HfWoxtGGQOxaXo2bh2tvEBFAV4oSSIA/BFnMvIfY5D4HbEKYpPH2Q3Roa707/E9LtnIgyN/RibDY6dszCwPuw==
+ 
+ "@nodelib/fs.scandir@2.1.4":
+   version "2.1.4"

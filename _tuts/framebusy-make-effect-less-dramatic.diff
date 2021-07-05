@@ -12,10 +12,10 @@ index ca74f755..2167fbb2 100644
  
  a, a:hover  {
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index ecad2e97..5cd311be 100644
+index 6a3ec754..778dd967 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -43,8 +43,6 @@ class CartController extends AbstractController
+@@ -40,8 +40,6 @@ class CartController extends AbstractController
              'product' => $featuredProduct,
          ]);
  

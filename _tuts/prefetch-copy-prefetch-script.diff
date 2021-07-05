@@ -1,12 +1,12 @@
 diff --git a/assets/turbo/prefetch.js b/assets/turbo/prefetch.js
 new file mode 100644
-index 00000000..6f1678e6
+index 00000000..4ab37853
 --- /dev/null
 +++ b/assets/turbo/prefetch.js
 @@ -0,0 +1,152 @@
 +// https://gist.github.com/vitobotta/8ac3c6f65633b5edb2949aeff0dec69b
 +
-+// This code is to be used with https://turbo.hotwire.dev. By default Turbo keeps visited pages in its cache
++// This code is to be used with https://turbo.hotwired.dev. By default Turbo keeps visited pages in its cache
 +// so that when you visit one of those pages again, Turbo will fetch the copy from cache first and present that to the user, then
 +// it will fetch the updated page from the server and replace the preview. This makes for a much more responsive navigation
 +// between pages. We can improve this further with the code in this file. It enables automatic prefetching of a page when you
