@@ -5,7 +5,7 @@ be used. If you add a `data-prefetch-with-link="true"` attribute to a link, inst
 of making an Ajax call, it will add a `<link rel="prefetch">` element to the
 `head` tag of the page.
 
-## Hello <link rel="prefetch"
+## Hello <link rel="prefetch">
 
 What does that do? Great question! To explain, let's back up a little. So far, this
 whole prefetch script has been pure Turbo magic: it makes an Ajax call

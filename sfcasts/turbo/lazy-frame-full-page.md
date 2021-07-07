@@ -1,92 +1,115 @@
-# Lazy Frame Full Page
+# Using a Full HTML Page to Populate a Frame
 
-Coming soon...
-
-I want to show one more lazy frame example, but before we do, I'm going to find my
-terminal. And yes, once again, run 
+I want to show one more lazy frame example. But before we do, I'm going to find my
+terminal and, yes, once again, run:
 
 ```terminal
 yarn upgrade @hotwired/turbo
 ```
 
-This time I get a beta version 8, which is actually the release I was waiting for. This changes,
-how JavaScript is handled inside frames, which will be important with what we're
-about to, but to start completely forget about frames. And let's pretend that we want
-to add a weather page to our site. Sure. We have this weather footer on the bottom of
-every page, but we also want people to be able to go to `/weather` and see the
-weather report front and center. So over in `src/Controller`, let's create a new
-piece B class called `WeatherController`, make it extend `AbstractController` mental,
-create a public function `weather()` and above this, I'll give it route `@Route('/weather')`  and a
-`name="app_weather"` inside. We'll just simply return `$this->render('weather/index.html.twig')`
-Cool.
+This time I get beta version 8, which is actually the release I was waiting for.
+This changes how JavaScript is handled inside frames, which will be important with
+what we're about to do.
 
-Let's go make that template down to `templates/`, create a new directory called the
-`weather/`, and then inside there, a new file called `index.html.twig` and will
-give us some structure `{% extends 'base.html.twig' %}`, and then our `{% block body %}`
-`{% endblock %}` an `<h1>`, the weather and for the body, let's go into `base.html.twig`
-twig, go down to the bottom and we're just going to completely steal all of the, the
-anchor tag and the script for the weather widget back `index.html.twig` we'll
-paste that finally back in `base.html.twig` let's find the cart link.
+But for a minute, I want you to completely forget about frames. Let's pretend
+that we, being the nerds that we are, want to add a weather page to our site. Sure,
+we have this weather footer on the bottom of every page, but we *also* want people
+to be able to go to `/weather` and see the weather report front and center.
 
-There it is. And on a copy of the cart link, what a new link to our weather page
-change the path to `app_weather`. Okay. And then for the texts itself, I'll
-just use a font. Awesome icon, `fas fa-sun`. Hopefully your weather is sunny.
-All right, cool. Let's head over. Refresh the page. And there is our sunshine. When
-we quick, we have a weather page. Amazing though, having two other widgets on the
-page does look weird. So let's remove the one in the footer for just this page and
-`base.html.twig`, scroll back down to that area. Let's surround this in a
-new `{% block %}`, okay. `whether_widget` and then the other side of it `{% endblock %}` a competent
-name of that block. And back-end `index.html.twig` just anywhere, how good at the
-bottom, we will reinvent that block, but make it empty.
+## Creating a Normal Weather Page
 
-All right. Refresh again. And cool. Got it. Now, obviously we have some code
-duplication between `index.html.twig`, and `base.html.twig`, we could
-easily fix that by isolating all of this into its own template. And then using the
-twig `{{ include() }}` function in both of these templates to include that. But like we did
-with the featured product sidebar, I want you to pretend that it takes a lot of work
-to generate this HTML here. Maybe we make database calls, API and API calls to
-generate it. And so if we could convert the weather widget, that's on the footer of
-every page into a lazy turbo frame. Well, that would make every page load faster.
-When we created a lazy turbo frame for the featured product sidebar, I started by
-making a route and a controller that rendered just that part of the page, just the
-featured product. But this time I'm not going to do that.
+Over in `src/Controller/`, let's create a new piece class called `WeatherController`.
+Make it extend `AbstractController` and add a public function `weather()` with a
+route above it: `@Route('/weather')` and `name="app_weather"`. Inside, return
+`$this->render('weather/index.html.twig')`.
 
-Why? Why not? Because we already have a page that contains the HTML that we need the
-weather page. Sure. It contains a lot of extra stuff that we don't want, like the
-HTML layout, uh, and this `<h1>` tag, but the turbo frame system can ignore all that.
-In other words, we can jump straight to adding the turbo frame with zero extra work.
-So in base studies and I'll tweak remove all of the duplicated code and instead say,
-`<turbo-frame id="">`nd we'll give him some ID to identify this. So we'll hop
-out `weather_widget`. And then, because this is a lazy frame, we'll say `src=""` equals.
-And we will paint pointed at the full page that we want to target, which is the
-weather page.
+Cool! Let's go make that template! Down in `templates/`, create a new directory called
+`weather/`, and, inside, a new file called `index.html.twig`. Give this the basic
+structure `{% extends 'base.html.twig' %}`, `{% block body %}`, `{% endblock %}` and
+an `<h1>`.
 
-If we want to try this, now, let me go to the homepage. It's not going to work. And
-you forget the console. We know why we saw this error earlier. Spawns has no matching
-`<turbo-frame id="weather_widget">` element. And basically we need to tell the turbo
-frame system, which part of the weather page to use for this frame over in index,
-that age timeouts way for our weather page, wrap the entire weather section with a
-`<turbo-frame>` that has `id="whether_widget"`. So I moved the closing frame down there and
-then I'll invent everything.
+*Now* go into `base.html.twig` and... at the bottom, steal all of the weather stuff:
+the anchor tag and the script element. In `index.html.twig`, paste.
 
-All right, Bri fresh again, and works. That's amazing. We're now able to reuse just
-parts of existing pages simply by wrapping pieces inside a `<turbo-frame>`. If you go
-into network tools and find the AGS call for the weather page, there's no magic line
-here. The AGS call for that, uh, frame did return to full HTML. And this is really
-how frames are meant to be used. You have an existing page like the other page, and
-then you're able to reuse parts of that page inside a frame instead of needing to
-build an extra end point that only returns the part you want ready to be more
-amazing. Yes, the homepage. This is in long page. So don't you think it's kind of a
-wasteful to load the weather widget in the footer. Even if the user never scrolls
-down that far, it is wasteful and we can fix that and `base.html.twig` on the
-terminal frame, add a new attribute `loading="lazy"`, all right.
+Done! Oh, but in `base.html.twig`, let's add a link to this... find the cart link -
+there it is - copy it, paste, change the route to `app_weather` and.. for the text,
+I'll use a FontAwesome icon: `fas fa-sun`.
 
-Scroll to the top of the homepage refresh and make sure you're looking at the Ajax
-calls network. Notice. There is no Ajax request yet for the weather page, but watch
-this area. If we scroll down. Yeah, there it is. Yup. With `loading="lazy"`, the
-request isn't made until the frame becomes visible. I love that, but there is a
-lingering bug in our code. It's more about the JavaScript for the weather widget.
-Then about the turbo frames we've created. Let's find out what the bug is next and
-create a stimulus controller to make the weather JavaScript finally, fully
-functional, no matter how we load it.
+Let's go check it out! Move over, refresh and... there's our sunshine! When we click
+the icon, we have a weather page. Amazing!
 
+Though... having *two* weather widgets on the page *does* look weird. Let's remove
+the one in the footer for *just* this page. In `base.html.twig`, scroll back down to
+that area. Surround this in a new `{% block weather_widget %}` and, on the other
+side, `{% endblock %}`.
+
+Back in `index.html.twig`, anywhere, override that block but make it empty.
+
+Ok, refresh again and... cool!
+
+At this point, we *do* have some code duplication between `index.html.twig`, and
+`base.html.twig`. We could easily fix that by isolating the weather widget code
+into its own template and then using the Twig `{{ include() }}` function in both
+templates to bring that in.
+
+## Creating the Lazy Turbo Frame
+
+But like we did with the featured product sidebar, I want you to pretend that it
+takes a lot of work to generate this HTML... maybe we make some database calls or
+API calls to generate it. And so, if we could convert the weather widget that's
+on the footer of every page into a lazy turbo frame, well, that would make *every*
+page load faster.
+
+When we created a lazy turbo frame for the featured product sidebar, we started by
+making a route and a controller that rendered just that *part* of the page, just
+the featured product itself, but with not layout. But this time, we're *not* going
+to do that.
+
+Why not? Because we already have a page that contains the HTML that we need: the
+weather page. Sure, it contains a lot of *extra* stuff that we *don't* want in
+the footer, like the HTML layout and this `<h1>` tag, but the turbo-frame system
+can ignore all that. Yup, we can jump *straight* to adding the turbo frame with zero
+extra work.
+
+In `base.html.twig`, remove all the duplicated code and instead say,
+`<turbo-frame id="">`, how about, `weather_widget`. Then, because we want this to
+be a lazy frame, add `src=""` point this at the *full* HTML page that we want
+to target: the weather page.
+
+If we try this...  I'll go to the homepage, it's not going to work. In the console,
+we see a familiar error!
+
+> Response has no matching `<turbo-frame id="weather_widget">` element.
+
+Of course! We need to tell the Turbo frame system, *which* part of the weather
+page to use for this frame. Over in `index.html.twig` - the template for the full
+weather page - wrap the entire weather section in a `<turbo-frame>` that has
+`id="weather_widget"`. I'll put the closing tag down here... and indent everything.
+
+Testing time! Refresh again and... it works! That's amazing! We're now able to reuse
+just *parts* of existing pages simply by wrapping those parts inside a `<turbo-frame>`.
+If you look aat the network tools... and find the Ajax call for the weather page,
+there's no magic here: the ajax call for the frame *did* return the full HTML.
+
+And this is really how frames are meant to be used. You have an existing page like
+the weather page, and then you're able to reuse parts of that page inside a frame
+instead of needing to build an extra endpoint that only returns the *part* you want.
+
+## Truly Lazy Frames: Load only when Visible
+
+Ok, ready to be *more* amazed? Check out the homepage: this is a *long* page. Don't
+you think it's kind of a wasteful to load the weather widget in the footer... even
+if the user never scrolls down that far? It is wasteful! And we can fix that!
+
+In `base.html.twig`, on the `turbo-frame`, add a new attribute: `loading="lazy"`,
+
+Let's see what that did. Scroll to the top of the homepage, refresh and make sure
+you're looking at the Ajax calls in the network tools. Notice that Turbo has *not*,
+yet, made an Ajax request for the weather page. But keep an eye on this. If we scroll
+down... there it is! Yup, when you add `loading="lazy"`, the request isn't made until
+the frame becomes *visible*. That's *super* cool.
+
+But... there's a lingering bug in our code. It's more about the *JavaScript* for
+the weather widget thaan about the turbo-frame we created. Let's find out what
+the bug is next and create a Stimulus controller that will make the weather JavaScript
+finally, fully functional, no matter how we load it.

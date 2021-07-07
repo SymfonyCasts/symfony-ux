@@ -1,119 +1,144 @@
-# External Js Stimulus
+# Reliably Load External JS with Stimulus
 
-Coming soon...
+Thanks to the turbo-frame system, we're now lazily-loading just *part* of the
+weather page down in the footer. And... notice that this *is* working... which
+actually proves something: `script` tags inside frames *are* executed.
 
-Thank you. So the turbo frame system, we're now laser only loading, just part of the
-weather page down here in the footer. As you can tell, just by the fact that this is
-working means that if you have a,
+## script Tags in Frames Are Executed
 
-If you have
+Let me find that frame... here it is. Ok, so no surprise: if you have a `<script>`
+tag that's included in a `turbo-frame`, Turbo *does* execute that... *exactly* how
+Turbo Drive executes any `script` tags found inside the *body* element.
 
-A `<script>` tag, that's loaded into a terrible frame. Let me find, here you go. In turbo
-frame and the `<script>` tag. If you have a `<script>` tag that's loaded into a terrible
-frame, turbo does X you that exactly how turbo free turbo drive, executes your script
-tags in the body. But we have a bug that's hiding well sort of two buckets to see the
-first scroll to the top refresh don't click don't scroll down. Now click to another
-page. Now click to the weather page and check out the console error, uncaught
-reference error, weather widget, and it is not a fine coming from `turbo-helper`. Let's
-go over and open that file as that's `turbo/turbo-helper.js` and scroll down to
-line 71.
+That's great! But... we have a bug that's hiding. Well, sort of *two* bugs. Yikes!
+To see the first, scroll to the top of the page, refresh but don't scroll down. Now
+click to the weather page... and check out the console. Error!
 
-There we go. This `initializeWeatherWidget()` function. If I scroll back up this
-`initializeWeatherWidget()` function, if I scroll back up to our constructor is called
-when `turbo:render` is executed, its job is to reinitialize the weather widget on the
-next page. The problem is that in this case now weather widget, JavaScript hasn't
-quite yet been loaded onto the page since it didn't load on the first page. And we
-didn't code defensively here. So an easy fix for this is just to say if, if `typeof` a
-copy of that `__weatherwidget_innt === 'function'`. Yeah, let's call this otherwise. It
-means the JavaScript hasn't been loaded. So no reason to call it and get an air. So
-this would fix this problem, but not our other problem to see that problem over on
-the product page below the sidebar. I want to add a second to weather widget. The
-tempo for this is over in `templates/product/index.html.twig`, but actually
-the sidebar is in this `productBase.html.twig`. So cool. Okay.
+> Uncaught reference error: `__weatherwidget_init()` is not a function
 
-Right here. I'm going to add `<turbo-frame>` with our `id="whether_widget"` to match the ID
-that we've been using so far and `src="{{ path('app_weather') }}"`.
-Okay. We had a brand refresh the homepage that works oh, popped up in the wrong spots
-because I meant to put this inside the `<aside>`. Let's try that again. Or you're fresh
-now. Perfect. Right below the sidebar. Now scroll to the footer. It's broken. The
-turbo frame did its job. The HTML is here, but the JavaScript, it didn't initialize.
-What's going on. Let's remember how this is supposed to work because it's getting
-kind of complicated on page load, or really anytime that the weather JavaScript is
-first executed, it adds a `<script>` tag to the page that after being downloaded,
-initializes, any elements with weather widget, I O on the page class on the page.
+And it's coming from `turbo-helper`. Go open that file - `turbo/turbo-helper.js`
+and scroll down to line 71. Here we are: `initializeWeatherWidget()`.
 
-But when we serve to another page, this external JavaScript file is not re executed
-because this function is smart enough to not add it multiple times. We hit this
-problem earlier to fix it back in `turbo-helper.js`. We added this `__weatherwidget_init()`
-code, which is run on `turbo:render`. So basically each time `turbo:render` the
-page, we would call it `__weatherwidget_init`, that would reinitialize the weather
-widget for that page. This works great. When the only way that, that a weather widget
-tag can be added to a page is as a result of a turbo drive navigation. But now it's
-sometimes loaded later on the page via Ajax by a turbo frame, when this is loaded via
-Ajax, that does not trigger the `turbo:render` event listener because we're not
-actually rendering a full page. And so the `__weatherwidget_init()` function is never
-called and nothing ever initializes the weather widget down here.
+If you scroll back up, this `initializeWeatherWidget()` function is called when
+the `turbo:render` event is dispatched and its job is to *reinitialize* the weather
+widget on the next page. The problem is that, in this case, the weather widget
+JavaScript hasn't *quite* yet been loaded onto the page... since it didn't load on
+the first page. And the *real* problem is that I didn't code defensively.
 
-By the way, you might be wondering how this weather widget in this lazy frame was
-ever working. Since we were never calling the weather widget and net function after
-it loaded, it works simply thanks to some smart code that lives in this weather,
-widget and net function. So if you actually went and looked at what this JavaScript
-file looked like, which we did a little bit earlier, you would see that the weather
-with it widget function when you call that, if it does not find any matching weather
-widget IO elements on the page, it automatically recalls itself every 1.5 seconds
-until it finds one. So that kind of helped this work temporarily until,
+An easy fix is to wrap this in an if `typeof __weatherwidget_init === 'function'`,
+call this. Otherwise, it means the JavaScript hasn't been loaded... so no reason
+to try to call it.
 
-But it's not a robust solution. So
+## The Weather Widget JavaScript is not Always Reinitialized
 
-Let's fix all of this and simplify our code. Cause it's getting a little hard to
-follow how by creating a stimulus controller. I know this tutorial is about turbo,
-but since turbo really works best when you have no inline JavaScript, let's see how
-stimulus could accomplish this. Here's the idea. Let's attach a stimulus controller
-to the weather widget. I O anchor tech by doing that, whenever this element appears
-on the page, no matter how, or when it appears on the page, we can run some code like
-the weather widget and it function up and `assets/controllers/`. That's created the new
-file called how about `weather-widget_controller.js`. I'm going to cheat and steal
-a little code from another controller, paste that, and then clear everything out.
-Start with a `connect()` function.
+So this would fix *one* problem... but not our *bigger* problem. To see that one,
+over on the product page, below the sidebar, i want to add a *second* weather widget.
+Open the template for this page: `templates/product/index.html.twig`. Oh, but
+actually, the sidebar is in this `productBase.html.twig`.
 
-And let's just `console.log('🌦')`. Now over in `weather/index.html.twig`. So
-this is the weather page. This is where we have all of our JavaScript and the anchor
-tag at a `data-controller=""` and then match that name, `whether-widget`. Okay.
-Let's make sure that's connected. So I'm head over, scroll up and then refresh the
-homepage and check the console. Okay, perfect. We have a log here and that's coming
-from this weather widget down here. Now watch what happens when we scroll down a
-second emoji, the next step is to move all of this JavaScript here into our stimulus
-controller. So I'm gonna copy all of this and delete the `<script>` tag entirely and
-weather widget controller after `connect()` function. Let's just paste now. That is
-totally invalid JavaScript. And my build system and editor are freaking out. Let's
-turn this into a function. Now I'll call this `initializeScriptTag()` and I'm going to
-copy these three arguments down here
+Cool: right here, I'm going to add `<turbo-frame>` with `id="whether_widget"` -
+to match the id that we've been using so far - and `src="{{ path('app_weather') }}"`.
 
-And remove [inaudible] and cool.
+Try it! Refresh and... bah! It works - but I put it in the wrong spot! I meant
+to put it in the `<aside>`. Let's try that again. Refresh now and... beautiful.
 
-And then up and connect instead of logging a rain cloud, we'll say `this.initializeScriptTag()`, a
-script tag and pass those three arguments. So this isn't quite perfect. Yet. Each
-time stimulus sees a matching anchor tag, it's going to run this code down here. So
-let's try it, scroll back up the top refresh and beautiful. The fact that this loads
-means that our student's controller did just add that script tag. If you look in the
-head of our page, there's the weather, which IO script tag right there. Of course, if
-we scroll down to the bottom that still doesn't work, that's okay. We expected that
-we still need to move this `__weatherwidget_init` code into
+*Now* scroll to the footer. Ah, it's busted! Let's see: the turbo frame did its
+job - the HTML is here, but the JavaScript didn't initialize! What's going on?
 
-Stimulus. So let's copy
+Let's remember how this is supposed to work... because it's getting kind of
+complicated. On page load, or really, anytime that the weather JavaScript is first
+executed, it adds a `<script>` tag to the page, which downloads an external
+JavaScript file. *That* JavaScript finds any elements on the page with a
+`weatherwidget-io` class and initializes the weather widget inside of them.
 
-This entirety of statement and I'll delete the initialize weather widget, scroll up
-and delete the, uh, event listener entirely now over in `weather-widget` controller, up
-in the connect method, let's paste that and then move the `initializeScriptTag`,
-which I totally misspelled that is realized. We fix that. Move that into the else. I
-love this. So if the weather widget and knit function already exists, just call it.
-L's run initial Esker pack to add the original script tag to the page. I think we're
-ready. Let's scroll back up to the top of page and refresh sidebar works. Footer
-works to go to the weather page that also works. I love this approach, even though
-our external JavaScript is not written in stimulus. We can still use stimulus to
-activate this JavaScript exactly what we want at this point. We can add this anchor
-tag anywhere to our site, and it's going to initialize do instantly do the work it
-needs to do to initialize itself. Next let's investigate the second use case for
-turbo frames and really the main use case. The ability to keep navigation isolated to
-one section of the page.
+But... when we surf to another page, this external JavaScript file is *not*
+re-executed... because this function is smart enough to not add the same script
+tag multiple times. We hit this problem earlier. To fix it, back in `turbo-helper.js`,
+We added this `__weatherwidget_init()` code, which is executed on `turbo:render`.
+So basically, each time Turbo renders the page, we call `__weatherwidget_init`
+and *that* reinitializes the weather widget for that page.
 
+This works *great* when the *only* way that a weather widget tag can be added to
+a page is as a result of a Turbo Drive navigation. But now, that tag is sometimes
+loaded later on the page via Ajax by a Turbo Frame... and that does *not* trigger
+the `turbo:render` event because we're not rendering a full page. In other words,
+when a Turbo frame loads, there is no guarantee that the `__weatherwidget_init()`
+function is ever called!
+
+If you're watching *really* closely, you might be wondering how the weather widget
+in this lazy frame was *ever* working... since we were *never* calling the
+`__weatherwidget_init()` function after it loaded. It worked simply thanks to some
+smart code that lives in this `weatherwidget_init` function. If you actually
+looked at this JavaScript in detail - which we did a bit earlier, you would see that
+when you call the `__weatherwidget_init()` function, if it does *not* find any
+`weatherwidget-io` elements on the page, it automatically recalls itself every 1.5
+seconds *until* it finds one. This... almost accidentally made sure that once
+our lazy frame in the footer loaded, the JavaScript was initialized within 1.5
+seconds. But... it wasn't a very robust solution, and stopped working as soon as
+there was a *second* widget on the page that loaded earlier.
+
+So let's fix *all* of this and simplify our code a *bunch*... because it took me
+five minutes to explain how it's been *barely* working so far.
+
+How can we improve this? By creating a Stimulus controller! I know, this tutorial
+is about Turbo... but since Turbo *really* works best when you have *no* inline
+script tags, let's see how Stimulus could help us manage this external JavaScript.
+
+## Creating the Stimulus Controller
+
+Here's the idea: let's attach a Stimulus controller to the `weatherwidget-io` anchor
+tag. By doing that, *whenever* this element appears on the page... no matter *how*
+or *when* it appears, we can run some code... like `__weatherwidget_init()`.
+
+In `assets/controllers/`, create a new file called, how about,
+`weather-widget_controller.js`. I'm going to cheat... as usual... and steal the
+code from another controller, paste... then clear everything out. Start with
+a `connect()` function and `console.log('🌦')`.
+
+Next, over in `weather/index.html.twig`, find the anchor tag and add
+`data-controller=""` and the name of our new controller: `whether-widget`.
+
+Okay! Let's make sure that's connected. Head over, scroll up... refresh the homepage
+and check the console. Perfect! This log is coming from the weather widget on the
+sidebar. Now watch what happens when we scroll down... a second emoji!
+
+The next step is to move all of this JavaScript into our Stimulus controller.
+Copy all of this and delete the `<script>` tag entirely. In the controller, after
+`connect()`, paste!. That is *totally* invalid JavaScript... and my build system
+*and* editor are freaking out. Let's turn this into a function called
+`initializeScriptTag()`. Copy these three arguments and remove them. Cool.
+
+Up in `connect()`, instead of logging a cloud, say `this.initializeScriptTag()`
+and pass those three arguments.
+
+So this isn't perfect yet... but it's closer: each time Stimulus sees a matching
+anchor tag, it's going to run this.
+
+Let's try it. Scroll back up to the top, refresh and... awesome! The fact that this
+loads means that our Stimulus controller *did* just execute and add the script
+tag. If you look in the `head` of our page... there it is!
+
+But... if we scroll to the bottom of the page... that still *doesn't* work. That's
+ok, we expected that: we still need to move the `__weatherwidget_init()` code into
+Stimulus.
+
+Copy the entire if statement, delete the `initializeWeatherWidget()` function, scroll
+up and delete the event listener entirely. Over in the `weather-widget` controller,
+up in the `connect()` method, paste that and then move the `initializeScriptTag`,
+which I *totally* misspelled... let me fix that - move that into the `else`.
+
+So *if* the `__weatherwidget_init()` function already exists, just call
+it. Else, run the code to add the original `script` tag to the page.
+
+I think we're ready! Scroll back up to the top of page and refresh. The sidebar
+works... the footer works... and the, if we go to the weather page, that works too!
+
+I *love* this approach. Even though our external JavaScript is *not* written in
+Stimulus, we can still *use* Stimulus to activate this JavaScript *exactly*
+when we want to.
+
+At this point, we can add this anchor tag *anywhere* on our site, and it *will*
+instantly do the work to initialize itself.
+
+Next: let's investigate the second-use case for Turbo Frames... and really the
+*main* use case: the ability to keep navigation isolated to one section of the page.
