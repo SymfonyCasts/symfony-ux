@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index e648f621..76204524 100644
+index e648f62..7620452 100644
 --- a/package.json
 +++ b/package.json
 @@ -12,6 +12,7 @@
@@ -11,7 +11,7 @@ index e648f621..76204524 100644
          "sweetalert2": "^10.13.0",
          "webpack-bundle-analyzer": "^4.4.0",
 diff --git a/yarn.lock b/yarn.lock
-index 30fd6b79..4408e871 100644
+index 30fd6b7..4408e87 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -3319,6 +3319,11 @@ locate-path@^5.0.0:

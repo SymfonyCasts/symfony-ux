@@ -1,5 +1,5 @@
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index 8b1b18f2..6161b48e 100644
+index 8b1b18f..6161b48 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -7,20 +7,20 @@
@@ -28,7 +28,7 @@ index 8b1b18f2..6161b48e 100644
              </div>
          </div>
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index 23152883..9e6b821d 100644
+index 2315288..9e6b821 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -13,7 +13,9 @@

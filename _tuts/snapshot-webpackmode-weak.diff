@@ -1,5 +1,5 @@
 diff --git a/assets/app.js b/assets/app.js
-index 2ce8f0e8..6a303d44 100644
+index 2ce8f0e..6a303d4 100644
 --- a/assets/app.js
 +++ b/assets/app.js
 @@ -26,7 +26,7 @@ document.addEventListener('turbo:before-cache', () => {

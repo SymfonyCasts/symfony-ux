@@ -1,5 +1,5 @@
 diff --git a/assets/controllers.json b/assets/controllers.json
-index a1c6e90c..fb0dbf01 100644
+index a1c6e90..fb0dbf0 100644
 --- a/assets/controllers.json
 +++ b/assets/controllers.json
 @@ -1,4 +1,11 @@
@@ -16,7 +16,7 @@ index a1c6e90c..fb0dbf01 100644
      "entrypoints": []
  }
 diff --git a/composer.json b/composer.json
-index f4fe4162..d883ee24 100644
+index f4fe416..d883ee2 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -26,6 +26,7 @@
@@ -28,7 +28,7 @@ index f4fe4162..d883ee24 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.2.*",
 diff --git a/composer.lock b/composer.lock
-index cccd3391..3428a1e5 100644
+index cccd339..3428a1e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -130,7 +130,7 @@ index cccd3391..3428a1e5 100644
              "name": "symfony/validator",
              "version": "v5.2.3",
 diff --git a/config/bundles.php b/config/bundles.php
-index b0ce84c2..f8d5509e 100644
+index b0ce84c..f8d5509 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -14,4 +14,5 @@ return [
@@ -140,7 +140,7 @@ index b0ce84c2..f8d5509e 100644
 +    Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
  ];
 diff --git a/package.json b/package.json
-index eabc2946..105b26e4 100644
+index eabc294..105b26e 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -159,7 +159,7 @@ index eabc2946..105b26e4 100644
 +}
 \ No newline at end of file
 diff --git a/symfony.lock b/symfony.lock
-index 06896851..3ee32be2 100644
+index 0689685..3ee32be 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -396,6 +396,9 @@

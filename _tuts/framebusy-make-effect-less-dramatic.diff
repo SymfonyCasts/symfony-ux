@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index ca74f755..2167fbb2 100644
+index ca74f75..2167fbb 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -20,7 +20,7 @@ turbo-frame {
@@ -12,7 +12,7 @@ index ca74f755..2167fbb2 100644
  
  a, a:hover  {
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 6a3ec754..778dd967 100644
+index 6a3ec75..778dd96 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -40,8 +40,6 @@ class CartController extends AbstractController

@@ -1,5 +1,5 @@
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index bd3f89ac..a99aac61 100644
+index bd3f89a..a99aac6 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -9,9 +9,13 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 465ff7be..778dd967 100644
+index 465ff7b..778dd96 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -33,7 +33,7 @@ class CartController extends AbstractController

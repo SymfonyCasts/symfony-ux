@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 6d010547..6de3abb7 100644
+index 6d01054..6de3abb 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -4,6 +4,10 @@
@@ -14,7 +14,7 @@ index 6d010547..6de3abb7 100644
  /*
  [data-turbo-preview] body {
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index dcefc45f..a7083a99 100644
+index dcefc45..a7083a9 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -10,6 +10,22 @@ const TurboHelper = class {
@@ -41,7 +41,7 @@ index dcefc45f..a7083a99 100644
  
      closeModal() {
 diff --git a/public/index.php b/public/index.php
-index 9982c218..52a23167 100644
+index 9982c21..52a2316 100644
 --- a/public/index.php
 +++ b/public/index.php
 @@ -3,6 +3,7 @@
