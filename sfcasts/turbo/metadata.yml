@@ -22,3 +22,6 @@ chapters:
     - frames-find-frames
     - lazy-frame-full-page
     - external-js-stimulus
+    - frame-target
+    - read-more-frame
+    - frame-loading
