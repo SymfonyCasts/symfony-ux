@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
-index 10b530e0..2ff55503 100644
+index 10b530e..2ff5550 100644
 --- a/assets/controllers/autocomplete-transition_controller.js
 +++ b/assets/controllers/autocomplete-transition_controller.js
 @@ -9,6 +9,10 @@ export default class extends Controller {

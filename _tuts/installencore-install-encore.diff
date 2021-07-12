@@ -1,5 +1,5 @@
 diff --git a/.gitignore b/.gitignore
-index a67f91e2..7fdcc07f 100644
+index a67f91e..7fdcc07 100644
 --- a/.gitignore
 +++ b/.gitignore
 @@ -8,3 +8,10 @@
@@ -15,7 +15,7 @@ index a67f91e2..7fdcc07f 100644
 +###< symfony/webpack-encore-bundle ###
 diff --git a/assets/app.js b/assets/app.js
 new file mode 100644
-index 00000000..bb0a6aa1
+index 0000000..bb0a6aa
 --- /dev/null
 +++ b/assets/app.js
 @@ -0,0 +1,12 @@
@@ -33,7 +33,7 @@ index 00000000..bb0a6aa1
 +import './bootstrap';
 diff --git a/assets/bootstrap.js b/assets/bootstrap.js
 new file mode 100644
-index 00000000..cb771d29
+index 0000000..cb771d2
 --- /dev/null
 +++ b/assets/bootstrap.js
 @@ -0,0 +1,8 @@
@@ -47,7 +47,7 @@ index 00000000..cb771d29
 +));
 diff --git a/assets/controllers.json b/assets/controllers.json
 new file mode 100644
-index 00000000..a1c6e90c
+index 0000000..a1c6e90
 --- /dev/null
 +++ b/assets/controllers.json
 @@ -0,0 +1,4 @@
@@ -57,7 +57,7 @@ index 00000000..a1c6e90c
 +}
 diff --git a/assets/controllers/hello_controller.js b/assets/controllers/hello_controller.js
 new file mode 100644
-index 00000000..8c79f65a
+index 0000000..8c79f65
 --- /dev/null
 +++ b/assets/controllers/hello_controller.js
 @@ -0,0 +1,16 @@
@@ -79,7 +79,7 @@ index 00000000..8c79f65a
 +}
 diff --git a/assets/styles/app.css b/assets/styles/app.css
 new file mode 100644
-index 00000000..cb33b131
+index 0000000..cb33b13
 --- /dev/null
 +++ b/assets/styles/app.css
 @@ -0,0 +1,3 @@
@@ -87,7 +87,7 @@ index 00000000..cb33b131
 +    background-color: lightgray;
 +}
 diff --git a/composer.json b/composer.json
-index 31d8c7e8..f4fe4162 100644
+index 31d8c7e..f4fe416 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -99,7 +99,7 @@ index 31d8c7e8..f4fe4162 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index 562b6589..cccd3391 100644
+index 562b658..cccd339 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -190,7 +190,7 @@ index 562b6589..cccd3391 100644
              "name": "symfony/yaml",
              "version": "v5.2.3",
 diff --git a/config/bundles.php b/config/bundles.php
-index 484569df..b0ce84c2 100644
+index 484569d..b0ce84c 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -13,4 +13,5 @@ return [
@@ -201,7 +201,7 @@ index 484569df..b0ce84c2 100644
  ];
 diff --git a/config/packages/assets.yaml b/config/packages/assets.yaml
 new file mode 100644
-index 00000000..051d36dc
+index 0000000..051d36d
 --- /dev/null
 +++ b/config/packages/assets.yaml
 @@ -0,0 +1,3 @@
@@ -210,7 +210,7 @@ index 00000000..051d36dc
 +        json_manifest_path: '%kernel.project_dir%/public/build/manifest.json'
 diff --git a/config/packages/prod/webpack_encore.yaml b/config/packages/prod/webpack_encore.yaml
 new file mode 100644
-index 00000000..d0b3ba81
+index 0000000..d0b3ba8
 --- /dev/null
 +++ b/config/packages/prod/webpack_encore.yaml
 @@ -0,0 +1,4 @@
@@ -220,7 +220,7 @@ index 00000000..d0b3ba81
 +    #cache: true
 diff --git a/config/packages/test/webpack_encore.yaml b/config/packages/test/webpack_encore.yaml
 new file mode 100644
-index 00000000..02a76515
+index 0000000..02a7651
 --- /dev/null
 +++ b/config/packages/test/webpack_encore.yaml
 @@ -0,0 +1,2 @@
@@ -228,7 +228,7 @@ index 00000000..02a76515
 +#    strict_mode: false
 diff --git a/config/packages/webpack_encore.yaml b/config/packages/webpack_encore.yaml
 new file mode 100644
-index 00000000..90f1a1db
+index 0000000..90f1a1d
 --- /dev/null
 +++ b/config/packages/webpack_encore.yaml
 @@ -0,0 +1,30 @@
@@ -264,7 +264,7 @@ index 00000000..90f1a1db
 +    # cache: true
 diff --git a/package.json b/package.json
 new file mode 100644
-index 00000000..ba0e4f41
+index 0000000..ba0e4f4
 --- /dev/null
 +++ b/package.json
 @@ -0,0 +1,18 @@
@@ -287,7 +287,7 @@ index 00000000..ba0e4f41
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index cb203f4e..06896851 100644
+index cb203f4..0689685 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -429,6 +429,28 @@
@@ -321,7 +321,7 @@ index cb203f4e..06896851 100644
      },
 diff --git a/webpack.config.js b/webpack.config.js
 new file mode 100644
-index 00000000..056b04aa
+index 0000000..056b04a
 --- /dev/null
 +++ b/webpack.config.js
 @@ -0,0 +1,75 @@

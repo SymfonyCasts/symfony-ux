@@ -37,10 +37,14 @@ yarn upgrade @hotwired/turbo
 ```
 
 As a reminder `@hotwired/turbo`, is a normal library and you can find it in the
-`package.json` file. This line *was* added automatically when we installed the
-`symfony/ux-turbo` PHP package, but we have *complete* control over managing its
-version. when I originally downloaded it, I got version `beta.5`. The latest version
-at the time of recording, which you can see over here, is `beta.7`. Not a lot has
+`package.json` file.
+
+[[[ code('81695c8dd7') ]]]
+
+This line *was* added automatically when we installed the `symfony/ux-turbo`
+PHP package, but we have *complete* control over managing its version. When I
+originally downloaded it, I got version `beta.5`. The latest version at the
+time of recording, which you can see over here, is `beta.7`. Not a lot has
 changed between the two versions, but there *was* one tweak to how JavaScript works
 in frames that I want to get.
 
@@ -59,6 +63,8 @@ this is where we render the featured sidebar. And you can see that it's *already
 isolated into its own template. So all *we* need to do is create a route & controller
 that *render* this template.
 
+[[[ code('bc945b7001') ]]]
+
 Let's do that in `src/Controller/CartController.php`. This top method is the cart
 page itself. Copy that, paste below, rename it to `_cartFeaturedProduct()`
 and change the URL to `/cart/_featured`. I like to use that `_` prefix when
@@ -66,6 +72,8 @@ something only renders *part* of a page. Below, instead of rendering `cart.html.
 render `_featuredSidebar.html.twig`. And... we don't need to pass the `cart`
 variable... and so we don't need this `CartStorage`. Oh, and the route needs
 a unique name, like `_app_cart_product_featured`.
+
+[[[ code('c4deb5c239') ]]]
 
 Cool. Now, up in the cart action, this will load faster because we can do
 *less* work... because we don't need to prepare the `addToCartForm` or
@@ -77,6 +85,8 @@ We can do all of this because, in the template for this action - `cart.html.twig
 we're not going to include this sidebar anymore. Instead, we're going to add
 a Turbo Frame... which is... just a custom HTML element - `<turbo-frame>` - which
 always has at *least* an `id` attribute that identifies it, like `id="cart-sidebar"`.
+
+[[[ code('a969bfe789') ]]]
 
 PhpStorm highlights this as an unknown tag, but the Turbo library *does* register
 it as a custom element.

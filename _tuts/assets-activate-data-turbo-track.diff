@@ -1,5 +1,5 @@
 diff --git a/config/packages/webpack_encore.yaml b/config/packages/webpack_encore.yaml
-index 90f1a1db..05bdd17f 100644
+index 90f1a1d..05bdd17 100644
 --- a/config/packages/webpack_encore.yaml
 +++ b/config/packages/webpack_encore.yaml
 @@ -7,7 +7,9 @@ webpack_encore:

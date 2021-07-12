@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 66f4f911..9c89c007 100644
+index 66f4f91..9c89c00 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -11,7 +11,7 @@

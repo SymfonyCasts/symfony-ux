@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index dc6817f2..c5e9bcfb 100644
+index dc6817f..c5e9bcf 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -112,6 +112,7 @@ const TurboHelper = class {
@@ -11,7 +11,7 @@ index dc6817f2..c5e9bcfb 100644
      }
  
 diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
-index 774f929d..dfd01668 100644
+index 774f929..dfd0166 100644
 --- a/templates/product/_cart_add_controls.html.twig
 +++ b/templates/product/_cart_add_controls.html.twig
 @@ -1,4 +1,7 @@

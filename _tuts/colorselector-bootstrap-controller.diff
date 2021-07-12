@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
 new file mode 100644
-index 00000000..8f84eb45
+index 0000000..8f84eb4
 --- /dev/null
 +++ b/assets/controllers/color-square_controller.js
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 00000000..8f84eb45
 +    }
 +}
 diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
-index 7131b2ba..feeeafdb 100644
+index 7131b2b..feeeafd 100644
 --- a/templates/product/_cart_add_controls.html.twig
 +++ b/templates/product/_cart_add_controls.html.twig
 @@ -2,14 +2,16 @@

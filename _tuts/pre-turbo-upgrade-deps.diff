@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index d883ee24..9d2ce2f4 100644
+index d883ee2..9d2ce2f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -1,7 +1,7 @@
@@ -59,7 +59,7 @@ index d883ee24..9d2ce2f4 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 3428a1e5..5e4bfc14 100644
+index 3428a1e..5e4bfc1 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -3968,7 +3968,7 @@ index 3428a1e5..5e4bfc14 100644
      "prefer-stable": true,
      "prefer-lowest": false,
 diff --git a/package.json b/package.json
-index 3ed9c261..ca0b0207 100644
+index 3ed9c26..ca0b020 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,7 @@
@@ -3980,7 +3980,7 @@ index 3ed9c261..ca0b0207 100644
          "jquery": "^3.6.0",
          "react": "^17.0.1",
 diff --git a/symfony.lock b/symfony.lock
-index 3ee32be2..ea59cffa 100644
+index 3ee32be..ea59cff 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -29,6 +29,9 @@

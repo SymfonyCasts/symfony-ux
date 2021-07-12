@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index a9ef8871..5fa1f17a 100644
+index a9ef887..5fa1f17 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -11,7 +11,7 @@ index a9ef8871..5fa1f17a 100644
          "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
          "@symfony/webpack-encore": "^1.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index e1947bb5..8a1ba0a4 100644
+index e1947bb..8a1ba0a 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -894,6 +894,11 @@

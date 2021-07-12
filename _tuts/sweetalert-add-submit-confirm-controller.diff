@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
 new file mode 100644
-index 00000000..f7862aba
+index 0000000..f7862ab
 --- /dev/null
 +++ b/assets/controllers/submit-confirm_controller.js
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 00000000..f7862aba
 +    }
 +}
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 7f716513..f1229d13 100644
+index 7f71651..f1229d1 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -48,6 +48,7 @@

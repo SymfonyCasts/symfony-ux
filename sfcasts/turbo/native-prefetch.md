@@ -5,6 +5,8 @@ be used. If you add a `data-prefetch-with-link="true"` attribute to a link, inst
 of making an Ajax call, it will add a `<link rel="prefetch">` element to the
 `head` tag of the page.
 
+[[[ code('bb153b7797') ]]]
+
 ## Hello <link rel="prefetch">
 
 What does that do? Great question! To explain, let's back up a little. So far, this
@@ -16,6 +18,8 @@ code is leveraging.
 To see how it works, close the prefetch script and comment out its import in
 `app.js`. I want to see how true prefetching works without *any* Turbo magic...
 because prefetching can be used on any site - even if it doesn't use Turbo.
+
+[[[ code('9220f41340') ]]]
 
 Here's the deal: imagine that, when a user goes to a specific page on our site,
 we're *fairly* sure that you know what the next page - or pages - will be that the
@@ -36,6 +40,8 @@ earlier in the tutorial, in `base.html.twig`, we added this.
 Inside the block, add `link` - but instead of `rel="stylesheet"`, use
 `rel="prefetch"`. Then set the `href` to the checkout URL: `{{ path() }}` then
 name of that route, which is `app_checkout`.
+
+[[[ code('1219e7c164') ]]]
 
 That's it! By the way, Symfony has a web-link component that can help with this
 and can even help your server *push* resources - including CSS and JS files - via a
