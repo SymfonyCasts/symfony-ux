@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
-index 6a1cac9..2449e7c 100644
+index 6a1cac9b..2449e7cd 100644
 --- a/assets/controllers/color-square_controller.js
 +++ b/assets/controllers/color-square_controller.js
 @@ -1,7 +1,7 @@

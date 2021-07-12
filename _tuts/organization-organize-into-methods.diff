@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 0dc9fd3..7406f98 100644
+index 0dc9fd3f..7406f98d 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -3,27 +3,34 @@ import { Modal } from 'bootstrap';

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index 174aa73..09bc052 100644
+index 174aa737..09bc0522 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;

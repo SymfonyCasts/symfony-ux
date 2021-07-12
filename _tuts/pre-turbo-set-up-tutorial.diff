@@ -1,6 +1,6 @@
 diff --git a/tutorial/FeaturedProduct.js b/tutorial/FeaturedProduct.js
 deleted file mode 100644
-index 91b85ac..0000000
+index 91b85ac6..00000000
 --- a/tutorial/FeaturedProduct.js
 +++ /dev/null
 @@ -1,25 +0,0 @@
@@ -31,7 +31,7 @@ index 91b85ac..0000000
 -}
 diff --git a/tutorial/MadeWithLove.js b/tutorial/MadeWithLove.js
 deleted file mode 100644
-index 7507a9d..0000000
+index 7507a9d8..00000000
 --- a/tutorial/MadeWithLove.js
 +++ /dev/null
 @@ -1,30 +0,0 @@
@@ -67,7 +67,7 @@ index 7507a9d..0000000
 -}
 diff --git a/tutorial/prefetch.js b/tutorial/prefetch.js
 new file mode 100644
-index 0000000..4ab3785
+index 00000000..4ab37853
 --- /dev/null
 +++ b/tutorial/prefetch.js
 @@ -0,0 +1,152 @@

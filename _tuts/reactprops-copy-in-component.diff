@@ -1,6 +1,6 @@
 diff --git a/assets/components/FeatureProduct.js b/assets/components/FeatureProduct.js
 new file mode 100644
-index 0000000..91b85ac
+index 00000000..91b85ac6
 --- /dev/null
 +++ b/assets/components/FeatureProduct.js
 @@ -0,0 +1,25 @@

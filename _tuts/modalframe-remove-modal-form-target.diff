@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index 6206616..0d0afbc 100644
+index 6206616f..0d0afbc3 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -4,7 +4,7 @@ import $ from 'jquery';
@@ -40,7 +40,7 @@ index 6206616..0d0afbc 100644
      }
  }
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index f893b54..df87b80 100644
+index f893b54c..df87b80c 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -14,8 +14,6 @@

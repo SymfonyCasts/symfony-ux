@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
-index 52bb06d..bca6359 100644
+index 52bb06db..bca63596 100644
 --- a/assets/controllers/weather-widget_controller.js
 +++ b/assets/controllers/weather-widget_controller.js
 @@ -2,7 +2,11 @@ import { Controller } from 'stimulus';
@@ -16,7 +16,7 @@ index 52bb06d..bca6359 100644
  
      initializeScriptTag (d, s, id) {
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index 411fde6..bb04c1f 100644
+index 411fde62..bb04c1f5 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -7,10 +7,6 @@ const TurboHelper = class {
