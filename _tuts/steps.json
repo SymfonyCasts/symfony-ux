@@ -1146,6 +1146,11 @@
             "description": null
         },
         {
+            "id": "lazysidebar-remove-extra-args-cart",
+            "name": "LazySidebar: remove extra args cart ",
+            "description": null
+        },
+        {
             "id": "lazysidebar-add-internal-turbo-frame",
             "name": "LazySidebar: add internal turbo-frame",
             "description": null
@@ -1241,6 +1246,11 @@
             "description": null
         },
         {
+            "id": "see-more-put-back-featured-route",
+            "name": "See More: put back featured route",
+            "description": null
+        },
+        {
             "id": "see-more-read-more-link",
             "name": "See More: \"read more\" link",
             "description": null
@@ -1251,23 +1261,33 @@
             "description": null
         },
         {
-            "id": "see-more-making-full-page",
-            "name": "See More: making full page",
+            "id": "delete-me-6",
+            "name": "delete me 6",
             "description": null
         },
         {
-            "id": "see-more-fixing-missing-variable",
-            "name": "See More: fixing missing variable",
+            "id": "delete-me-8",
+            "name": "delete me 8",
             "description": null
         },
         {
-            "id": "see-more-render-frame-conditionally",
-            "name": "See More: render frame conditionally",
+            "id": "delete-me-9",
+            "name": "delete me 9",
             "description": null
         },
         {
             "id": "framebusy-add-busy-css",
             "name": "FrameBusy: add busy CSS",
+            "description": null
+        },
+        {
+            "id": "framebusy-conditional-loading",
+            "name": "FrameBusy: conditional loading",
+            "description": null
+        },
+        {
+            "id": "framebusy-set-low-opacity",
+            "name": "FrameBusy: set low opacity",
             "description": null
         },
         {
@@ -1278,6 +1298,11 @@
         {
             "id": "framebusy-make-effect-less-dramatic",
             "name": "FrameBusy: make effect less dramatic",
+            "description": null
+        },
+        {
+            "id": "framebusy-make-checkout-a-lazy-frame",
+            "name": "FrameBusy: make checkout a lazy frame",
             "description": null
         },
         {
@@ -1506,5 +1531,5 @@
             "description": null
         }
     ],
-    "sha": "1f6609b7a3cbcab9bb8a938e093d5d7dcfc62acb"
+    "sha": "8a34f4ba9f52bdbbbf6568c24ac72e4c25201b76"
 }

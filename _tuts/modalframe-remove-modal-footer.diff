@@ -1,8 +1,8 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 2167fbb2..1ba9a350 100644
+index c92cf621..0c8a8f2f 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
-@@ -165,10 +165,6 @@ h1 {
+@@ -170,10 +170,6 @@ h1 {
      color: inherit;
  }
  

@@ -1,17 +1,17 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index cc3e9d5c..9cc3567b 100644
+index 1c1b443f..b32cfe2d 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
-@@ -33,7 +33,7 @@ class CartController extends AbstractController
-         ]);
-     }
- 
+@@ -31,7 +31,7 @@ class CartController extends AbstractController
+     /**
+      * @Route("/cart/_featured", name="_app_cart_product_featured")
+      */
 -    public function _cartFeaturedProduct(ProductRepository $productRepository): Response
-+    public function cartFeaturedProduct(ProductRepository $productRepository, Request $request): Response
++    public function _cartFeaturedProduct(ProductRepository $productRepository, Request $request): Response
      {
          $featuredProduct = $productRepository->findFeatured();
          $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
-@@ -43,6 +43,7 @@ class CartController extends AbstractController
+@@ -41,6 +41,7 @@ class CartController extends AbstractController
          return $this->renderForm('cart/_featuredSidebar.html.twig', [
              'featuredProduct' => $featuredProduct,
              'addToCartForm' => $addToCartForm,
@@ -20,7 +20,7 @@ index cc3e9d5c..9cc3567b 100644
      }
  
 diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
-index 99d777b5..80e54c5c 100644
+index 99d777b5..9626c730 100644
 --- a/templates/cart/_featuredSidebar.html.twig
 +++ b/templates/cart/_featuredSidebar.html.twig
 @@ -15,7 +15,15 @@
@@ -28,7 +28,7 @@ index 99d777b5..80e54c5c 100644
              </h6>
  
 -            {{ featuredProduct.description|u.truncate(25)|trim }}...
-+            {% if showDescription|default(false) %}
++            {% if showDescription %}
 +                {{ featuredProduct.description }}
 +            {% else %}
 +                {{ featuredProduct.description|u.truncate(25)|trim }}...
