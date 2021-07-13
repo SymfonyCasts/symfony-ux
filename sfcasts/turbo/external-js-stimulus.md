@@ -19,6 +19,8 @@ click to the weather page... and check out the console. Error!
 And it's coming from `turbo-helper`. Go open that file - `turbo/turbo-helper.js`
 and scroll down to line 71. Here we are: `initializeWeatherWidget()`.
 
+[[[ code('27deb6e08b') ]]]
+
 If you scroll back up, this `initializeWeatherWidget()` function is called when
 the `turbo:render` event is dispatched. Its job is to *reinitialize* the weather
 widget on the next page. The problem is that, in this case, the weather widget
@@ -28,6 +30,8 @@ at all on the first page. And the *real* problem is that... well... I didn't cod
 Fix this by adding an if: if `typeof __weatherwidget_init === 'function'`, *then*
 call this. Otherwise, it means the JavaScript hasn't been loaded... so no reason
 to do anything.
+
+[[[ code('4fe02b786d') ]]]
 
 ## The Weather Widget JavaScript is not Always Reinitialized
 
@@ -41,6 +45,8 @@ to match the id that we've been using so far - and `src="{{ path('app_weather') 
 
 Try it! Refresh and... bah! It works - but I put it in the wrong spot! I meant
 to put it in the `<aside>`. Let's try that again. Refresh now and... beautiful.
+
+[[[ code('e2db7cc00b') ]]]
 
 *Now* scroll to the footer. It's busted! Hmm... the turbo frame did its
 job - the HTML is here - but the JavaScript didn't initialize! What happened?
@@ -57,6 +63,8 @@ tag multiple times. We hit this problem earlier. To fix it, back in `turbo-helpe
 we added this `__weatherwidget_init()` code, which is executed on `turbo:render`.
 So basically, each time Turbo renders the page, we call `__weatherwidget_init()`
 and *that* reinitializes the weather widget for that page.
+
+[[[ code('4fe02b786d') ]]]
 
 This worked *great* when the *only* way that a weather widget tag could be added to
 a page was as a result of a Turbo Drive navigation. But now, this tag is sometimes
@@ -93,21 +101,34 @@ In `assets/controllers/`, create a new file called, how about,
 code from another controller, paste... then clear everything out. Start with
 a `connect()` function and `console.log('🌦')`.
 
+[[[ code('2d5a05c6a7') ]]]
+
 Next, over in `weather/index.html.twig`, find the anchor tag and add
 `data-controller=""` and the name of our new controller: `weather-widget`.
+
+[[[ code('876505ab4e') ]]]
 
 Okay! Let's make sure that's connected. Head over, scroll up... refresh the homepage
 and check the console. Perfect! This log is coming from the weather widget on the
 sidebar. Now watch what happens when we scroll down... a second emoji!
 
 The next step is to move all of this JavaScript into our Stimulus controller.
-Copy everything and delete the `<script>` tag entirely. In the controller, after
-`connect()`, paste! That is *totally* invalid JavaScript... and my build system
-*and* editor are freaking out. Let's turn this into a function called
-`initializeScriptTag()`. Copy these three arguments and remove them. Cool.
+Copy everything and delete the `<script>` tag entirely.
+
+[[[ code('d8917bcfaa') ]]]
+
+In the controller, after `connect()`, paste! That is *totally* invalid
+JavaScript... and my build system *and* editor are freaking out.
+
+[[[ code('400be85c39') ]]]
+
+Let's turn this into a function called `initializeScriptTag()`. Copy these three
+arguments and remove them. Cool.
 
 Up in `connect()`, instead of logging a cloud, say `this.initializeScriptTag()`
 and *pass* those three arguments.
+
+[[[ code('e882eff78a') ]]]
 
 So... this isn't perfect yet... but it's closer: each time Stimulus sees a matching
 anchor tag, it's going to run this.
@@ -124,6 +145,8 @@ Copy the entire if statement, delete the `initializeWeatherWidget()` function, s
 up and remove the event listener entirely. Over in the `weather-widget` controller,
 up in `connect()`, paste that and then move the `initializeScriptTag()` call,
 which I *totally* misspelled... let me fix that - move that into the `else`.
+
+[[[ code('89bf07ae6d') ]]]
 
 So *if* the `__weatherwidget_init()` function already exists, just call
 it! Else, run the code to add the original `script` tag to the page.
