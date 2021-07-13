@@ -23,6 +23,8 @@ Make it extend `AbstractController` and add a public function `weather()` with a
 route above it: `@Route('/weather')`, `name="app_weather"`. Inside, return
 `$this->render('weather/index.html.twig')`.
 
+[[[ code('d2c4538e4c') ]]]
+
 Cool! Let's go make that template! Down in `templates/`, create a new directory called
 `weather/`, and, inside, the new file: `index.html.twig`. Give this the basic
 structure `{% extends 'base.html.twig' %}`, `{% block body %}`, `{% endblock %}` and
@@ -31,9 +33,13 @@ an `<h1>`.
 *Now* go into `base.html.twig` and... at the bottom, steal all of the weather stuff:
 the anchor tag and the script element. In `index.html.twig`, paste.
 
+[[[ code('0b387b0ea2') ]]]
+
 Done! Oh, but in `base.html.twig`, let's add a link to this... find the cart link -
 there it is - copy it, paste, change the route to `app_weather` and... for the text,
 I'll use a FontAwesome icon: `fas fa-sun`.
+
+[[[ code('3070bb7efc') ]]]
 
 Let's go check it out! Move over, refresh and... there's our sunshine! When we click
 the icon, we have a weather page. Amazing!
@@ -43,7 +49,11 @@ the one in the footer for *just* this page. In `base.html.twig`, scroll back dow
 that area. Surround this in a new `{% block weather_widget %}` and, on the other
 side, `{% endblock %}`.
 
+[[[ code('689890df97') ]]]
+
 Back in `index.html.twig`, anywhere, override that block... but make it empty.
+
+[[[ code('eb566bd606') ]]]
 
 Ok, refresh again and... cool!
 
@@ -76,6 +86,8 @@ In `base.html.twig`, remove all the duplicated code and instead say,
 be a *lazy* frame, add `src=""` and point this at the *full* HTML page that we want
 to target: the weather page.
 
+[[[ code('0262fc2c1a') ]]]
+
 If we try this...  I'll go to the homepage... it's not going to work. In the console,
 we see a familiar error!
 
@@ -85,6 +97,8 @@ Of course! We need to tell the Turbo frame system *which* part of the weather
 page to use for this frame. Over in `index.html.twig` - the template for the full
 weather page - wrap the entire weather section in a `<turbo-frame>` that has
 `id="weather_widget"`. I'll put the closing tag down here... and indent.
+
+[[[ code('c475c863ed') ]]]
 
 Testing time! Refresh again and... it works! That's amazing! We're now able to reuse
 just *parts* of existing pages simply by wrapping those parts inside a `<turbo-frame>`.
@@ -102,6 +116,8 @@ you think it's kind of a wasteful to load the weather widget in the footer... ev
 if the user never scrolls down that far? It is wasteful! And we can fix that!
 
 In `base.html.twig`, on the `turbo-frame`, add a new attribute: `loading="lazy"`,
+
+[[[ code('0d059fd2b6') ]]]
 
 Let's see what that did. Scroll to the top of the homepage, refresh and make sure
 you're looking at the Ajax calls in the network tools. Notice that Turbo has *not*,

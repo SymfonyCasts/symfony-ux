@@ -27,6 +27,8 @@ Anyways, what we need to do is make sure that the response contains a `<turbo-fr
 element with `id="cart-sidebar"`. I'll copy that from `cart.html.twig`, open
 `_featuredSidebar.html.twig`, add that... and indent everything.
 
+[[[ code('fd894f8698') ]]]
+
 Notice that we don't have a `src=""` on *this* frame: this is *not* a lazy frame...
 it's just a normal frame that already has its final content.
 
@@ -46,16 +48,22 @@ Oh, and by the way, if you're using Symfony 5.3 and you create a controller - li
 this one - that just renders part of a page, you don't *have* to give this a route.
 There's another option. Remove this route.
 
+[[[ code('54caa01253') ]]]
+
 Now, in `cart.html.twig`, instead of `{{ path() }}`, use `{{ fragment_uri() }}`
 and then `controller()` and *then* the name of the controller:
 `App\\Controller\\CartController::` and then the method name... which is
 `_featuredProduct`.
+
+[[[ code('e2b939d633') ]]]
 
 This is a bit longer - and those double slashes are ugly and needed because backslash
 is an escape character. Behind the scenes, this will generate a signed URL - called
 a fragment URL - that renders our controller. To get this to work, make sure that
 you have the fragment system activated: that's in `config/packages/framework.yaml`.
 Uncomment `fragments: true`.
+
+[[[ code('937ac11683') ]]]
 
 Let's try this. Move over, refresh the page and cool! It still works! If you look
 at the `turbo-frame`, the `src=""` is now set to a long, weird looking `_fragments`
