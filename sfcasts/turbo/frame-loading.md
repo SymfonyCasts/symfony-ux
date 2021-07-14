@@ -1,97 +1,125 @@
-# Frame Loading
+# Frame Loading Animations
 
-Coming soon...
+With Turbo Drive, when we click a link or submit a form, and that takes *longer*
+than 500 milliseconds to load, we get a loading animation on the top of the
+page... which we don't see here because this is all loading *fast*, but we saw it
+earlier. It's a built-in, global loading indicator that we don't even need
+to think about.
 
-Yeah, with turbo drive. If we click a link or submit a form, if that page takes
-longer than 500 milliseconds to load, then we get a loading animation on the top of
-the page, which we don't see here, because this is all loading fast, but it's sort of
-a built in loading indicator that you don't even need to think about. But the same is
-not true for terrible frames. When you click this, read more link, that loads pretty
-fast, but there is a slight delay when nothing happens. And if clicking this we're
-loading a heavier page, it might not load so fast. So can we add a loading indicator?
-Sure. And we actually already have what we need head over to `src/Controller/CartController.php`
-And in `_cartFeaturedProduct()`, let's sleep for three seconds to fake us
-slow page back at the browser, inspect this turbo frame, make sure you're selecting
-on it and then watch it as watched this element. When I refresh the page, there it
-is. Look, it says a `busy`, yep. Whenever you're terrible frame is loading, it gets
-this attribute. If we click the read more link, we'll see it again.
+But the same thing does *not* happen for Turbo frames. When you click the read
+more link, that loads pretty fast, but there *is* a slight delay when nothing happens.
+And if clicking this loaded a heavier page.... it might *not* load so fast. It's
+pretty normal to add a loading indicator in situations like this. Can we add
+one with Turbo frames?
 
-This simple Azure, it makes it possible to add all sorts of loading indicators. For
-example, we could create two classes, one that will hide an element during loading in
-one that will show an element only during loading. Let's do this over in our
-`templates/cart/_featuredSidebar.html.twig`. So for example, this read more link. Let's
-pretend we want that to hide once we click it. So we'll add `class=""` and I'll invent a
-new class called `frame-loading-hide`. And then down after this, let's add a `<span>`. I'll
-give this a class of `frame-loading-show`. So we want this to show only when we're
-loading. Also give this `fas fas-spinner fa-spin` so that this is actually a
-font awesome icon. All right now, for the styling for this head over to 
-`assets/styles/app.css` and we can do here is we can say `turbo-frame[busy]`
-So if there's a turbo frame element that has a busy attribute, then for the
-`.frame-loading-hide` element, we want to say `display:none`
+## The "busy" Attribute
 
-That's an element that should be hidden while we're loading for the other element,
-the `frame-loading-show`. We want this to hide by default and then during loading. So
-first actually to hide it, I'm going to actually copy this. Okay. Comma. And then
-we're gonna say, is that on any `turbo-frame`? If you have `frame-loading-show`
-then we also want you to have `display: none` because what we'll do is we'll override
-that down here. Oh, jumped around a little bit down here. If we have `turbo-frame[busy]`
-any element inside of it with `frame-loading-show` should have `display` and I'm
-going to do `inline-block` because that's going to work well with my font. Awesome
-icon. It's a little complicated, but if you stare at that, that's going to get things
-to hide and show in just the right situations. All right. So let's try it over
-refresh.
+Sure! And we already have what we need. Head over to
+`src/Controller/CartController.php`. In `_cartFeaturedProduct()`, let's sleep
+for three seconds to fake a slow page.
 
-It's a little slow to load and perfect. So you can already see that my font awesome
-icon is not showing up because it's hidden by default. Now I'll click this link.
-Beautiful. Okay. And you can leverage this technique to pretty much do whatever you
-want. For example, another approach which will instantly work for all frames across
-your entire site is to lower the opacity of the frame while it's loading. So this is
-pretty easy. We can just say, I'll copy the turbo frame from up. I'm going to say
-`turbo-frame[busy]` `opacity` and temporarily I'll set this to `.2`. So it's
-really noticeable. All right. So try it refresh and we should already see it while
-it's doing the initial loading. And we do.
+Back at the browser, inspect this `turbo-frame` and make sure it's highlighted.
+Watch the element closely when I refresh. Look! It has a `busy` attribute!
+Yup, whenever a `turbo-frame` is loading, it gets this attribute. If we click the
+"read more" link, we'll see it again.
 
-And when I click this link down here, we don't, that's weird to see what's going on
-on the spec element on this. Let's hack a little busy attribute on the end of this.
-So to say busy. All right. So when I do that, you can see, it does see the CSS over
-here. It's just not actually making the element. It's just not actually applying to
-the element. And here's the problem. If you hover over this, let me scroll up a
-little bit, actually check it out. It has no height. You can kind of see the->in the
-upper left is not really highlighting the element. You'd expect it to kind of go
-around the element like this, but it's not going around the element. The problem
-[inaudible].
+This simple attribute makes it possible to add all *sorts* of loading indicators.
+For example, we could create two classes to help us hide or *show* an element
+during loading.
 
-So this is interesting. The problem is that `<turbo-frame>` is a custom HTML element. And
-by default, your browser renders it as an inline element. You can see this over in
-the computer `display: inline`. And so when you put block elements inside of it, it just
-doesn't expand in the way you'd expect it to. That's why it appears to have no
-height. And that's why it appears that nothing has the low capacity to fix this. We
-can make this element `display: block`. You can see as soon as I do that, it takes
-effect. So to make this work everywhere, you can actually make your turbo frames
-display block by default. So `turbo-frame`  `display: block`. All right, try now refresh
-the original one is still working and after it loads, we click that works too.
+## Hiding / Showing Elements During Loading
 
-All right. So now that this looks good, let's go and make that, uh, opacity a little,
-yeah, less dramatic and over in `CartController`, I'll take out that slate. So now if
-we play with the page, it looks a little bit more natural. Perfect. Before we keep
-doing, keep going in doing all of this triple frame stuff, we accidentally broke page
-quick checkout, ah, variable `showDescription` does not exist coming from 
-`_featuredSidebar.html.twig`. The template for this page lives, that 
-`templates/checkout/checkout.html.twig`
-ah, this also has a featured product sidebar and it is still using the
-include directly. So when we added our new show description, variable, that doesn't
-exist because we're including a directly. So obviously we could fix this by passing
-that variable in, but we don't have to anymore. We can simply remove this and replace
-it with a lazy turbo frame. So in `cart.html.twig`, let's steal our lazy frame
-from there and paste it inside. `checkout.html.twig`. And if you even
-wanted to not duplicate these three lines of code, you could put those in their own
-twig template and include it.
+Open up `templates/cart/_featuredSidebar.html.twig`. Ok, let's pretend that we want
+to hide the "read more" link once we click it. Add `class=""` and let's invent a
+new class called `frame-loading-hide`. We'll add the CSS for this in a minute.
+After this, add a `<span>` and give it a different, new, class -
+`frame-loading-show`  - that will cause this element to only *show* when loading.
+Also give this `fas fas-spinner fa-spin` to render a FontAwesome loading animation.
 
-Celebrate this open up a controller for this page, which is `CheckoutController`. And
-we actually don't need a couple of variables anymore. We don't need to `$addToCartForm`
-form or the `$featuredProduct` variable, which means we don't need to create this
-variable or this variable. And we don't need to inject this, uh, arguing not anymore.
-Okay. Refresh now and all good and are nice. Read more even works over here next
-below each product. If you're logged in users can post a review. We can make this a
-bit more awesome by leveraging a turbo frame.
+To add styling for these, open up `assets/styles/app.css`. Target the
+`busy` attribute with `turbo-frame[busy]`. So *if* there's a turbo-frame element
+that has a `busy` attribute, then for any elements inside with a `frame-loading-hide`
+class, `display: none`.
 
+For the *other* class - the `frame-loading-show` - we want this to *hide* by
+default and then only *show* when loading. First, to hide it, copy the CSS selector,
+paste, make it apply to *all* turbo-frame elements, and look for the
+`frame-loading-show` class. So, hide these by default.
+
+And, whoops!  That jumped a bit. Anyways, below this, *override* that: inside a
+`turbo-frame[busy]` element, if you have a `frame-loading-show` class,
+`display: inline-block`.
+
+It's a little complicated, but that *should* get the job done and give us two
+classes that we can reuse across our site. Let's try it! Find your browser, refresh
+and... perfect! You can already see that my FontAwesome icon is *not* showing up
+because it's hidden by default. Now click this link. Beautiful!
+
+## Loading Opacity
+
+And... that's it! You can leverage this `busy` attribute to do whatever you want.
+For example, we can give *every* frame on our site loading behavior by lowering
+their opacity. This is pretty easy. Copy the turbo-frame from above to say that
+any `turbo-frame` with a `busy` attribute should have `opacity` set to .2. That's
+an extreme level - but it'll be easy to see.
+
+When we refresh now, we should even see this during the *initial* load. And...
+we do! When we click the "read more" link... uh... hmm. I did *not* see the lower
+opacity. That's weird. Inspect the element... and hack a `busy` attribute
+on the end of this.
+
+## turbo-frame is an Inline Element by Default
+
+Hmm. When I do this, our browser *does* see the correct opacity CSS... it just
+doesn't seem to be doing anything! Hover over the element... let me scroll up a
+bit. Check it out: it has no height! I see the arrow in the upper left... but
+it's not highlighting the element. You'd expect it to go *around* the element
+like this... but it's not!
+
+So this is interesting. The problem is that `<turbo-frame>` is a custom HTML element.
+And by default, your browser renders it as an *inline* element. You can see this
+over in the computed CSS: it has `display: inline`. And so, when you put block
+elements inside of it, it just... doesn't expand in the way you'd expect it to.
+That's why it appears to have no height. And *that's* why nothing gets the lower
+opacity.
+
+To fix this, we can make this element `display: block`. As soon as I hack this in,
+the opacity *does* take effect. To make this work everywhere, we can make our
+turbo-frames `display: block` by default with `turbo-frame`, `display: block`.
+
+Try it now. The opacity on loading still works and when we click... that works too!
+
+So now that this looks spectacular, let's go and make the opacity a little less
+@dramatic... and over in `CartController`, take out the sleep.
+
+Let's go play with the page. That feels much more natural.
+
+## Fixing the Checkout Page
+
+Before we keep going and doing other cool Turbo frame stuff, we accidentally
+broke the checkout page! It... was my fault.
+
+> Variable `showDescription` does not exist
+
+Coming from `_featuredSidebar.html.twig`. The template for this page lives at
+`templates/checkout/checkout.html.twig`.
+
+Ooooh. This page *also* has a featured product sidebar... and it is *still* using
+the `include` directly. When we added our new `showDescription` variable, I didn't
+realize this was being included directly and... well... now things are mad.
+
+We could fix this by passing in the variable... or even coding defensively
+inside `_featuredSidebar.html.twig`. But, pfff. We have a working, lazy Turbo
+Frame! So let's just use that! In `cart.html.twig`, steal the lazy frame and
+paste it inside `checkout.html.twig`.
+
+Celebrate by opening up the controller for this page, which is
+`CheckoutController`, and removing some variables that we don't need anymore:
+`addToCartForm` and `featuredProduct`... which means we can delete both variables...
+and we don't need to inject this argument.
+
+Cool! Refresh now and... all good. The "read more", of course, even works here
+because Turbo & Stimulus are awesome.
+
+Next: below each product, if you're logged in, users can post a review. We can make
+this a bit more awesome by leveraging a turbo frame.
