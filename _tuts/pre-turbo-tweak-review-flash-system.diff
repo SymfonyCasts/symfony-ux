@@ -1,0 +1,30 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 246fb966..e749f11f 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -72,9 +72,13 @@ class ProductController extends AbstractController
+     public function productReviews(Product $product, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $entityManager)
+     {
+         $reviewForm = null;
++
++        if ($this->getUser()) {
++            $reviewForm = $this->createForm(ReviewForm::class, new Review($this->getUser(), $product));
++        }
++
+         if ($request->isMethod('POST')) {
+             $this->denyAccessUnlessGranted('ROLE_USER');
+-            $reviewForm = $this->createForm(ReviewForm::class, new Review($this->getUser(), $product));
+ 
+             $reviewForm->handleRequest($request);
+ 
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index fd408288..2a3093fb 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -23,6 +23,4 @@
+     {{ form_end(reviewForm) }}
+ {% elseif not is_granted('ROLE_USER') %}
+     <p><a href="{{ path('app_login') }}">Log in</a> to post your review</p>
+-{% else %}
+-    <div class="alert alert-success">Thanks for your review!</div>
+ {% endif %}

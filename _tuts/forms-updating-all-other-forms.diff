@@ -68,7 +68,7 @@ index 2f347d20..39a247eb 100644
  
      /**
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 246fb966..992f95c5 100644
+index e749f11f..5eec9e14 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -57,12 +57,12 @@ class ProductController extends AbstractController
@@ -87,7 +87,7 @@ index 246fb966..992f95c5 100644
          ]);
      }
  
-@@ -90,11 +90,11 @@ class ProductController extends AbstractController
+@@ -94,11 +94,11 @@ class ProductController extends AbstractController
              }
          }
  
