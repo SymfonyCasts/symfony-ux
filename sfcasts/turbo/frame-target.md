@@ -22,6 +22,8 @@ its links and forms to navigate like normal.
 No problem. Open the template for the cart page: `templates/cart/cart.html.twig`.
 On the `<turbo-frame>`, add `target="_top"`.
 
+[[[ code('d745d4e898') ]]]
+
 That's it! The `_top` means that any links or forms inside of this frame should
 target the *main* page. You can also change the target on just a *specific* link
 or form instead of the *entire* frame... and we'll see how later.
@@ -61,7 +63,11 @@ didn't *replace* this one: we know that because only the *original* frame has
 our *original* frame.
 
 But... in `_featuredSidebar.html.twig`, I'm *also* going to add `target="_top"`
-here. Why? Well, functionally-speaking, it makes no difference. But conceptually,
+here. 
+
+[[[ code('768d838823') ]]]
+
+Why? Well, functionally-speaking, it makes no difference. But conceptually,
 if you look at this frame in isolation, its links - like this link and the form
 down here - are not designed to navigate in the frame. Both are really meant to
 target the main page. Adding `target="_top"` here makes that clear.
