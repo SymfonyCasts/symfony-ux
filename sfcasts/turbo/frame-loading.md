@@ -34,7 +34,7 @@ to hide the "read more" link once we click it. Add `class=""` and let's invent a
 new class called `frame-loading-hide`. We'll add the CSS for this in a minute.
 After this, add a `<span>` and give it a different, new, class -
 `frame-loading-show`  - that will cause this element to only *show* when loading.
-Also give this `fas fas-spinner fa-spin` to render a FontAwesome loading animation.
+Also give this `fas fa-spinner fa-spin` to render a FontAwesome loading animation.
 
 To add styling for these, open up `assets/styles/app.css`. Target the
 `busy` attribute with `turbo-frame[busy]`. So *if* there's a turbo-frame element
