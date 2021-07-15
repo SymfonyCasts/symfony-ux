@@ -12,7 +12,7 @@ index 5eec9e14..7431f911 100644
                  return $this->redirectToRoute('app_product_reviews', [
                      'id' => $product->getId(),
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index 2cd343df..cf6d710c 100644
+index 2cd343df..ad6911f5 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -12,6 +12,10 @@
@@ -20,7 +20,7 @@ index 2cd343df..cf6d710c 100644
  <hr>
  
 +{% for flash in app.flashes('review_success') %}
-+    <div class="alert alert-success">Thanks for your review!</div>
++    <div class="alert alert-success">{{ flash }}</div>
 +{% endfor %}
 +
  {% if reviewForm|default(false) %}
