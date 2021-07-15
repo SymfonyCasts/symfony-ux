@@ -1,87 +1,119 @@
-# Reviews Frame
+# Review this Product... in a turbo-frame!
 
-Coming soon...
+We have a new mission. But before we get to it, let's log in. Use the delightful
+cheating links. Now head to a product page and scroll down.
 
-Okay. We have a new mission, but before we get to it, let's log in. Use our
-delightful cheating links. Now I had to do a product page and scroll down. Okay.
-Every product has reviews and we can even at post review from right here, right now,
-there is nothing fancy about this. This is a normal HTML form with no accent,
-JavaScript and no turbo frames. And mostly it works great. Fill out the form and
-submit it. Okay. Ooh, that's smooth. Just because turbo drive is awesome. But notice
-that we are taken to a different page, a `/reviews` page, this is on purpose management
-wants to show a review, wants to show the reviews below each product, but also wants
-a dedicated reviews page for each product. And so we decided to make the review forms
-submit to this page,
+Okay: every product has reviews and we can even at *post* a review from right here.
+There is *nothing* fancy about this: this is a normal HTML form with no custom
+JavaScript and no turbo frames. And, mostly, it works great! Fill out the form...
+and submit. Ooh, that's smooth... just because Turbo Drive is awesome.
 
-And this is working great, but it might be even better.
+But notice that we *are* taken to a different page, a `/reviews` page. This is on
+purpose: management wants to show the reviews below each product... but they also
+want a dedicated "reviews" *page* for each product. And so, we decided to make the
+review form *submit* to this page.
 
-If when we submit a review from the product page, here we stay on that page. Instead
-of going to a different page, this is a type of progressive enhancement that we are
-going to choose to make. And it's going to require exactly two lines of code. The
-template for this page is `templates/product/show.html.twig` at the bottom,
-the reviews are actually loaded from this `_reviews.html.twig` that's right template,
-open that template and scroll down to the form. By the way, this template is also
-included by the main reviews page. It is also how it renders the same list of
-reviews.
+This *is* working great... but it *could* be even better if, when we submit a review
+*from* the product page, we *stayed* on the product page... instead of going to a
+different page. This is a type of progressive enhancement: everything is cool
+right now, but we're going to *chose* to enhance things further. And doing this
+is going to require exactly two lines of code.
 
-So anyways, if you think about it, if we wrap this entire template in a turbo frame,
-I think that would do it. Wouldn't that do it? Wouldn't that make the form submit,
-stay in the frame and just work for the shot at the top of the template, add 
-`<turbo-frame id="">` equals. How about `product-review`, take the closing tag and put it
-on the bottom. Okay. Testing time, refresh the page. And remember right now we are on
-the product show page at the bottom, submit the form empty. Yes, that was perfect. We
-S we see our validation areas, but we are still on the product show page. This is my
-favorite example of yet of the power of turbo frames with two lines of code. The
-entire review system is now self-contained behind the scenes. When we submit this
-form, it does submit to these `/reviews` page. You can see down in the network tools
-under the Ajax calls. Here we go. The summit was to `/reviews`.
+## Adding the Frame
 
-If you look closely at the preview for this, this is rendering the full reviews page,
-but our turbo frame is smart enough to find just the product review frame inside,
-grab it and use it here. So let's finish our review, another five stars. And when we
-submit, oh, gorgeous our new recipe, our new review even popped up right above the
-form though. Hmm. There's no success message anywhere on this page, there was a six
-months success message before on the top of the page, where did that go look back to
-the latest request down in the network tools. There they are.
+The template for this page is `templates/product/show.html.twig`. At the bottom,
+the reviews are rendered from this `_reviews.html.twig` template partial. Open
+that and scroll down to the form. The reason all of this lives in its own partial
+is that this is *also* included from the reviews page template - `reviews.html.twig`.
+That lets us show the same list of reviews and form on both pages without duplication.
 
-So our first POST request was right here as opposed to request a `/reviews`, the forms,
-and it was successful. So it returned a `302` redirect that redirected back to the
-same URL. And so it made his second request for `/reviews`. And this is what it used to
-fill in the turbo frame. If you look at the preview for this closely checking out on
-top, it does, it does have a success message. Thanks for you. Revert view. I like
-you. And then way down below here is where we actually have our reviews. So do you
-see the problem? The message, success message is being printed outside of our turbo
-frame. And so we never see it. Fortunately, we can fix this pretty easily, open up a
-controller that handles this page `src/Controller/ProductController`, and find the
-review `productReviews()`. Action.
+Ok, let's think: when the "new review" form submits, we want the page to *not*
+navigate away: we want everything to happen *in* this reviews area. So... if we
+wrap this entire template in a `<turbo-frame>`... wouldn't that do it? I think
+it would!
 
-Let's see. All right. So if this is a `POST` request and it's successful, then as a
-success flash message over here and at `templates/base.html.twig`, we already have
-code that renders any success, flash messages near the top of the page, but because
-our frame, when we really want to do now is make sure that that success message
-renders inside of our frame. So back in the controller, change this to `review_success`
-right now that won't render anywhere, but go into the template `_reviews.html.twig`
-and above the form. Let's render it.
+At the top of the template, add `<turbo-frame id="">`, how about, `product-review`.
+Take the closing tag and put it on the bottom.
 
-We can say for `flash` in `app.flashes('review_success')` and for
-inside of here, very simply, we'll do a `<div class="alert alert-success">`, curly,
-curly `flash`. And if you want it to be even a little fancier, you could isolate this
-flash logic from base that HTML twig into its own template, then include it from here
-and also include it from here, but this should work fine. Cool. Let's go review our
-product one more time. I'm going to do a full page refresh just to be sure. Now five
-submit and yes, this is perfect.
+Those are the 2 lines I was talking about! Testing time. Refresh the page. Scroll
+to the bottom of the product show page and submit the form empty. Yes! That was
+perfect! We see the validation errors but we are *still* on the product show page.
+This is my favorite example yet of the power of turbo frames. With two lines of
+code, the entire review system is now self-contained.
 
-Now I'm back on the top of the page, click to log out. Cause there is one tiny little
-detail left, go back to our product and scroll down to the reviews. So we're not
-logged in. So now I have this log in to post your review. When I put that link that
-didn't work. And if you look at the console, it's a familiar error response has no
-matching, `<turbo-frame id="product-review">` element. Of course, let me refresh the
-page to get that back. When we click this log in link, it's now inside of a turbo
-frame. So what tries to navigate in that frame, it goes to the login page via Ajax
-and tries to find the frame there. That is not what we want. We want this link to
-target the whole page, and we now know how to do that. So over and_reviews that HTML
-twig all the way on the bottom here is our link on that. Add `data-turbo-frame="_top"`
-Now when we refresh and quick, we're good next what's that a
-tiny little bonus feature to our site. Whenever any form submits on our site, for any
-reason, let's automatically disabled the submit button to avoid double submits.
+Behind the scenes, when we submit this form, it *does* submit to the `/reviews` page.
+You can see this down in the network tools under the Ajax calls. Here it is: this
+was a POST request to `/reviews`.
 
+If you look closely at the "preview" for this, this *is* rendering the full reviews
+page - with header, footer and all. But our `turbo-frame` is smart enough to find
+*just* the `product-review` frame inside this response, grab it and use it.
+
+I love this product show much that I think we should publish another another five
+star review. When we submit... gorgeous! Our new review even popped up right above
+the form!
+
+## Changing The Flash Message to Render In the Frame
+
+Though, hmm. There's no success message anywhere on this page. There *was*
+a success message before on the top of the page. Where did that go? Look back
+at the network tools. There are *two* new requests.
+
+The first is a POST request to `/reviews`. That processed our form, was successful,
+and returned a 302 redirect *back* to the same URL. This caused a *second* AJAX
+request to be made to `/reviews` and *this* is what's used to fill in the
+`turbo-frame`.
+
+Look at the preview for this request closely. Near the top - here! The page
+*does* have a success message! Then, way below this, we see the reviews. Can you
+spot the problem? The success message is being printed *outside* of our turbo-frame.
+And so, we never see it.
+
+Fortunately, we can fix this pretty easily. Open up the controller that handles
+this page: `src/Controller/ProductController.php` and find the `productReviews()`
+action.
+
+Let's see: if this is a `POST` request and it's successful, then we set a
+`success` flash message. Over in `templates/base.html.twig`, we already have
+code that renders any `success` flash messages near the top of the page.
+
+Now that we're leveraging a frame, what we *really* want to do now is make render
+the success message *inside* that frame. Back in the controller, change the
+flash type from `success` to, how about, `review_success`.
+
+Right now, nothing is rendering `review_success` flash messages. But go into the
+template - `_reviews.html.twig` - and, above the form, render it: for
+`flash` in `app.flashes('review_success')`. And inside, an an alert div with
+`alert-success` and print the `flash` variable.
+
+If you want to be even a fancier, you could isolate the flash logic from
+`base.html.twig` into its own template and include it from both the base template
+and `_reviews.html.twig`.
+
+Let's go review our product one more time. Do a full page refresh just to be safe,
+recommend this product to all your friends, submit and... that's *lovely*.
+
+## Making One Link target="_top"
+
+Back at the top of the page, click to log out... because there is one *tiny* little
+detail left. Go back to the product and scroll down to the reviews. You need to
+be logged in to post a review. But when we click the "log in" link... it's busted!
+
+Check out the console, it's a familiar error:
+
+> response has no matching `<turbo-frame id="product-review">` element.
+
+Of course. Refresh the page to reset this. When we click the "log in" link, it's
+now *inside* of a turbo frame. When we click, turbo makes an Ajax call to the
+login page and looks for a `product-review` frame *on* that page. That is...
+*not* what we want. We want this link to target the *whole* page. And we know how
+to do that!
+
+Over in `_reviews.html.twig`, sll the way on the bottom, find the link and add
+`data-turbo-frame="_top"`.
+
+Now when we refresh... and click... we're good!
+
+Next: let's add a bonus feature to our site! Whenever *any* form is submitted on
+our site for *any* reason, let's automatically disabled the submit button to avoid
+double submits.
