@@ -11,6 +11,8 @@ the cart controls, add `{{ featuredProduct.description }}`. To show only *part*
 of the description, pipe this to a special `|u` filter and say `.truncate(25)`.
 I'm also going to add `|trim` on the end.
 
+[[[ code('3a20fe406a') ]]]
+
 This `u` filter comes from a Twig extension library, which... we don't actually have
 installed yet. But, pff, let's try it anyways. When we refresh.... nothing happens!
 But down on the web debug toolbar, you can see that an Ajax call failed!
@@ -42,10 +44,15 @@ to do that with *zero* JavaScript thanks to Turbo frames.
 
 But before we implement that, head over to `src/Controller/CartController.php`.
 On `_cartFeaturedProduct()`, I'm going to *re-add* the route that we had earlier:
-`@Route("/cart/_featured", name="_app_cart_product_featured")`. Copy the
-route name then, over in the cart template - so `cart.html.twig` - instead
-of using the `fragment_uri()` function, go back to using `{{ path() }}` and
-then `_app_cart_product_featured`.
+`@Route("/cart/_featured", name="_app_cart_product_featured")`.
+
+[[[ code('64b9f9ac7e') ]]]
+
+Copy the route name then, over in the cart template - so `cart.html.twig` -
+instead of using the `fragment_uri()` function, go back to using `{{ path() }}`
+and then `_app_cart_product_featured`.
+
+[[[ code('468b2f3abc') ]]]
 
 Doing this is *totally* unnecessary to accomplish our new goal. The reason
 I'm doing this is because, in a few minutes, it'll make it easier to play with
@@ -61,6 +68,8 @@ description like we are now.
 To do that, add a `Request` argument - the one from HttpFoundation - and then
 pass a new variable into the template called `showDescription` set to
 `$request->query->get('description')`.
+
+[[[ code('19bb3d4051') ]]]
 
 Next, in `_featuredSidebar.html.twig`, if `showDescription`, then render
 the full description: `featuredProduct.description`. Else, render the preview.
@@ -78,6 +87,8 @@ In other words, all we need to do is create a boring, normal link to `{{ path() 
 Hmm... PhpStorm is confused, so I'll delete and re-add this quote to reset the
 highlighting. Inside the link, say "(read more)".
 
+[[[ code('461f9a7057') ]]]
+
 Done... or done-ish. If we refresh the page... we have a link! But when we click
 it... the whole page navigates as if we were *not* in a turbo frame! Click back.
 
@@ -87,9 +98,13 @@ apply to the *whole* page. But we now *want* this one link - this read more link
 to "yes" behave like a *normal* turbo frame: we want it to *keep* its navigation
 inside the frame.
 
+[[[ code('95edf23d59') ]]]
+
 To override the `target="_top"`, find the link in `_featuredSidebar`. Let's
 put this onto multiple lines. Add `data-turbo-frame=""` and then the name
 of our frame: `cart-sidebar`.
+
+[[[ code('721ac7b7e2') ]]]
 
 That's it! We also could have done the opposite... which in some ways would have
 been more natural. We could have left *off* the `target="_top"` - so that our
