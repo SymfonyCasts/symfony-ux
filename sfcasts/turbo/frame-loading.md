@@ -36,6 +36,8 @@ After this, add a `<span>` and give it a different, new, class -
 `frame-loading-show`  - that will cause this element to only *show* when loading.
 Also give this `fas fa-spinner fa-spin` to render a FontAwesome loading animation.
 
+[[[ code('e42d4bb16b') ]]]
+
 To add styling for these, open up `assets/styles/app.css`. Target the
 `busy` attribute with `turbo-frame[busy]`. So *if* there's a turbo-frame element
 that has a `busy` attribute, then for any elements inside with a `frame-loading-hide`
@@ -50,6 +52,8 @@ And, whoops!  That jumped a bit. Anyways, below this, *override* that: inside a
 `turbo-frame[busy]` element, if you have a `frame-loading-show` class,
 `display: inline-block`.
 
+[[[ code('57c38c735a') ]]]
+
 It's a little complicated, but that *should* get the job done and give us two
 classes that we can reuse across our site. Let's try it! Find your browser, refresh
 and... perfect! You can already see that my FontAwesome icon is *not* showing up
@@ -62,6 +66,8 @@ For example, we can give *every* frame on our site loading behavior by lowering
 their opacity. This is pretty easy. Copy the turbo-frame from above to say that
 any `turbo-frame` with a `busy` attribute should have `opacity` set to .2. That's
 an extreme level - but it'll be easy to see.
+
+[[[ code('13b26b0d41') ]]]
 
 When we refresh now, we should even see this during the *initial* load. And...
 we do! When we click the "read more" link... uh... hmm. I did *not* see the lower
@@ -87,10 +93,14 @@ To fix this, we can make this element `display: block`. As soon as I hack this i
 the opacity *does* take effect. To make this work everywhere, we can make our
 turbo-frames `display: block` by default with `turbo-frame`, `display: block`.
 
+[[[ code('92c6dedb13') ]]]
+
 Try it now. The opacity on loading still works and when we click... that works too!
 
 So now that this looks spectacular, let's go and make the opacity a little less
 @dramatic... and over in `CartController`, take out the sleep.
+
+[[[ code('a0cc2cebe7') ]]]
 
 Let's go play with the page. That feels much more natural.
 
@@ -104,6 +114,8 @@ broke the checkout page! It... was my fault.
 Coming from `_featuredSidebar.html.twig`. The template for this page lives at
 `templates/checkout/checkout.html.twig`.
 
+[[[ code('cf0574104e') ]]]
+
 Ooooh. This page *also* has a featured product sidebar... and it is *still* using
 the `include` directly. When we added our new `showDescription` variable, I didn't
 realize this was being included directly and... well... now things are mad.
@@ -113,10 +125,14 @@ inside `_featuredSidebar.html.twig`. But, pfff. We have a working, lazy Turbo
 Frame! So let's just use that! In `cart.html.twig`, steal the lazy frame and
 paste it inside `checkout.html.twig`.
 
+[[[ code('61eb97fe15') ]]]
+
 Celebrate by opening up the controller for this page, which is
 `CheckoutController`, and removing some variables that we don't need anymore:
 `addToCartForm` and `featuredProduct`... which means we can delete both variables...
 and we don't need to inject this argument.
+
+[[[ code('b63853824b') ]]]
 
 Cool! Refresh now and... all good. The "read more", of course, even works here
 because Turbo & Stimulus are awesome.
