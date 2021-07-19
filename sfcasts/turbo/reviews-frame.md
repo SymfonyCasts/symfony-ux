@@ -35,6 +35,8 @@ navigate away: we want everything to happen *in* this reviews area. Isn't that..
 At the top of the template, add `<turbo-frame id="">`, how about, `product-review`.
 Take the closing tag and put it on the bottom.
 
+[[[ code('04d19c9caf') ]]]
+
 Those are the 2 lines! Testing time. Refresh, scroll to the bottom of the product
 show page and submit the form empty. Yes! That was perfect! We see the validation
 errors but we are *still* on the product show page. This is my favorite example
@@ -73,6 +75,8 @@ And so, we never see it.
 Fortunately, we can fix this pretty easily. Open up the controller that handles
 the review form submit and renders the reviews page: `src/Controller/ProductController.php`. Here it is: `productReviews()`.
 
+[[[ code('18eec279e2') ]]]
+
 Let's see: if this is a `POST` request and it's successful, then we set a
 `success` flash message. Over in `templates/base.html.twig`, we already have
 code that renders any `success` flash messages near the top of the page.
@@ -81,10 +85,14 @@ Now that we're leveraging a frame, what we *really* want to do is render
 the success message *inside* that frame. Back in the controller, change the
 flash type from `success` to, how about, `review_success`.
 
+[[[ code('4a88487126') ]]]
+
 Right now, nothing is rendering `review_success` flash messages. But go into the
 template - `_reviews.html.twig` - and, above the form, render it: for
 `flash` in `app.flashes('review_success')`. Inside, and an alert div with
 `alert-success` and print the `flash` variable.
+
+[[[ code('56490ef3d5') ]]]
 
 If you want to be fancier, you could isolate the flash logic from `base.html.twig`
 into its own template and include it from both the base layout
@@ -111,6 +119,8 @@ to do that!
 
 Over in `_reviews.html.twig`, all the way on the bottom, find the link and add
 `data-turbo-frame="_top"`.
+
+[[[ code('eadaecd564') ]]]
 
 Now when we refresh... and click... we're good!
 
