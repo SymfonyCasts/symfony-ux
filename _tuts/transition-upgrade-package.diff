@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index ea4b8cce..e648f621 100644
+index ea4b8cc..e648f62 100644
 --- a/package.json
 +++ b/package.json
 @@ -12,7 +12,7 @@
@@ -12,7 +12,7 @@ index ea4b8cce..e648f621 100644
          "webpack-bundle-analyzer": "^4.4.0",
          "webpack-notifier": "^1.6.0"
 diff --git a/yarn.lock b/yarn.lock
-index 605e938c..30fd6b79 100644
+index 605e938..30fd6b7 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -4854,10 +4854,10 @@ stackframe@^1.1.1:

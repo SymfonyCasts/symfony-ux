@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 4808859e..bc83f84e 100644
+index 4808859..bc83f84 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -16,7 +16,12 @@ body.turbo-loading {
@@ -17,7 +17,7 @@ index 4808859e..bc83f84e 100644
      color: #000;
  }
 diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
-index 5bf1009d..113df23c 100644
+index 5bf1009..113df23 100644
 --- a/templates/cart/_featuredSidebar.html.twig
 +++ b/templates/cart/_featuredSidebar.html.twig
 @@ -22,9 +22,11 @@

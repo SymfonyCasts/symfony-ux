@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
-index d367d928..342733f9 100644
+index d367d92..342733f 100644
 --- a/assets/controllers/color-square_controller.js
 +++ b/assets/controllers/color-square_controller.js
 @@ -4,11 +4,14 @@ export default class extends Controller {
@@ -19,7 +19,7 @@ index d367d928..342733f9 100644
  
      selectColor(event) {
 diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
-index 5addac08..781e52ce 100644
+index 5addac0..781e52c 100644
 --- a/templates/product/_cart_add_controls.html.twig
 +++ b/templates/product/_cart_add_controls.html.twig
 @@ -4,7 +4,7 @@

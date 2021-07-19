@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index ba0e4f41..f95ee902 100644
+index ba0e4f4..f95ee90 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,6 +2,7 @@
@@ -11,7 +11,7 @@ index ba0e4f41..f95ee902 100644
          "regenerator-runtime": "^0.13.2",
          "stimulus": "^2.0.0",
 diff --git a/yarn.lock b/yarn.lock
-index a44acd03..2abe6849 100644
+index a44acd0..2abe684 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1402,6 +1402,11 @@ boolbase@^1.0.0, boolbase@~1.0.0:
