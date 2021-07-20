@@ -1,253 +1,98 @@
-# Inline Edit
+# Frame-Powered Inline Editing
 
-Coming soon...
+Make sure you're logged in... and then head over to any product page. Ok: we
+already have a product admin section. And since we *are* an admin, we can use it
+to edit any product. To make life cooler for our admin users, let's add an edit link
+right on this show page.
 
-Make sure you're logged in and then head over to any product page. Cool. So we
-already have a product admin section. We're an admin user and we are an admin user
-can edit any product to make life cooler for our admin users. Let's add an edit link
-right on this show page, open up the template for this page, which is templates.
-Product showed to HTML last week. Find the age one, and let's pop this on the
-multiple lines. All right, I'll do a tweak. You have statement to say, if is granted
-role admin, which is a role that our user has. And if, if we are, let's add an anchor
-tag to path and then the admin, uh, product admin, which is product admin edits, and
-then this takes an ID wild card set to product ID.
+Easy enough: open up the template for this page - `templates/product/show.html.twig` -
+find the `h1` and move it onto multiple lines. Then add if `is_granted('ROLE_ADMIN')`
+and `endif`. Inside, add a boring anchor tag that points to the edit page:
+`path('product_admin_edit')` and this needs an `id` wildcard set to `product.id`.
 
-Cool. And actually let me pop this on the multiple lines in a slightly different way,
-because I'm also going to add a class = [inaudible] dash secondary. And if the text
-we'll just say edit, alright, easy enough. Want to move over and refresh there's our
-edit link. This is a good normal, boring edit link. Thanks to turbo drive. It still
-feels pretty good. And with a bit more work, we could add a link here to the show
-page so that you could easily get back without any trouble. Heck we could even attach
-a query parameter when we click this edit button, like question mark from = and use
-that on this page to power this back button to be dynamic either back to the admin
-list page like it is now, or back to the product show page based on where you came
-from, we could even go further and make it so that when we submit this form, it
-redirects us back to the product show page, if that's where we came from. So there
-are lots of little ways to make this process a bit smoother, but instead of doing
-those, let's progressively enhance this in a different way by making this edit link
-load that form right on the show page. That sounds like a job for a turbo frame.
+Oh, but I'm going to put this onto multiple lines in a slightly different way...
+so that we can cleanly give it a few classes. For the text, say "Edit".
 
-All right. So head back into template. [inaudible]
+Nothing magical yet. When we refresh, there's our link... a good, boring edit
+link. Thanks to Turbo Drive, clicking it feels good. And with a bit more work, we
+could add a link back to the show page. Heck, we could even attach a query parameter
+when we click this edit button - like `?from=` - and use that on this page
+to dynamically link back to the admin index page, like it is now, *or* back to the
+product show page if that's where we originally came from. We could even go further
+and make it so that when we submit this form, it redirects us back to the product
+show page. My point is, there are lots of little ways to make this process a bit
+smoother.
 
-All right. So let's see over here, scroll to the top. Okay. So we have a column four
-here and a column eight here in what we really want to do. Here's the column four and
-the column eight. You want to take this entire area here and wrap it in a turbo
-frame. So basically right inside of our row, I'll say Turo dash frame ID = let's call
-this. How about product dash info? I'm also going to add a target = top to this so
-that everything inside here, at least for the moment will behave completely like
-normal. Like it's not instead of a terrible frame. All right. Take the closing tag of
-the terrible frame and put it all the way down. I think here is the right spot.
+But instead of doing any of those, let's progressively enhance this in a different
+way: by making the edit link load the form *right* onto the show page. That sounds
+like a job for a turbo frame!
 
-Cool. All right. Refresh and whoa, that completely messed up our styling. Why? Well,
-the problem, if you inspect this is that I just put an element between the row and
-the columns and with CSS Flexbox sometimes the direct relationship between elements
-is important. So by putting this terrible frame in the middle, it's sort of mess
-things up. All right. So what could we do here? So one idea is we could take this
-terrible frame and actually put that around the row so that we don't interrupt the
-row and column relationship. But turtle frame is also just a normal element. So we
-could actually change this div classical's row into a turbo frame, check it out. I'm
-actually going to delete my terrible frame on the bottom. And then on top, I'll kind
-of copy the guts of the terrible frame and then change the div to be a turbo dash.
-And then I'll put the ID and target on top. Now I got to head back down to our
-closing div oh, and actually updated it for me already. So perfect. So now we have a
-diff a terrible frame instead of the div classical's row down, refresh back to
-normal.
+## Adding the turbo-frame
 
-So this looks good, but because our frame is targeting top, this stream doesn't do
-anything yet. This edit link still navigates the entire page completely to fix that,
-find that link, which is down here and let's add data dash turbo dash frame equals.
-And then the name of the frame we just created, which is product dash info. Will this
-work not quite, it was a good chance. You already know why when we refresh and click
-that link, it disappears. And we see our favorite air in the console. Response has no
-matching turbo frame ID = product info element. Of course, the page that that was
-navigating to, which is our admin edit page, it needs a product info frame. So the
-template for that page lives at product admin, edit that HTML, that twig, the actual
-form lives inside this_form that HTML that twig. So we could add the turbo frame
-around this entire thing, but I kind of do want the edit product h1 and the delete
-form buttons to be loaded on the page as well. So I'm going to add the turbo frame
-right here. So let's say I won't include the back button. Turbo dash frame ID =
-product info to match what we have. And I'm also going to do target = top here so
-that everything inside of this just continues to work the way it did before, in case
-we go directly to this page. So I'll put the closing general frame and then in
-everything. Okay. I think that should do it. All right. So let's refresh the page. It
-doesn't look okay.
+Head back to the template and scroll to the top. Okay: we have a `col-4` and
+a `col-8` - that's the left and right sides of the page. Our new mission is to
+wrap that *entire* area in a `turbo-frame`. So basically, we need to add a frame
+right *inside* of this "row" div.
 
-[inaudible]
+Say `<tubro-frame id=""` and call it, how about `product-info`. I'm also going to
+add a `target="_top"` to this so that everything inside, at least for now, will
+behave *completely* normally: as if there is *no* frame.
 
-And click edit. Nice. We're still in a product show page. You can even see our
-product reviews right below, but something isn't right. Let's change the title and
-submit the form. Well, that looked like a full page refresh. Let's try that again.
-Watch the console closely down here. It also didn't save update. Whoa, you see that
-there was a failed post request. So for some reason, the post request failed and then
-the whole page reloaded is going on here. So let's start by getting more information
-about what that fit, what happened on that field post request. So I'm going to open
-the profile for this page in a new window. [inaudible]
+Take the `turbo-frame` closing tag and... put it all the way down here: I think
+this is the right spot.
 
-[inaudible]
+Let's see how things look so far. Refresh and... whoa! That *completely* messed
+up our styling! Why? Inspect element on this area. The problem is that we added
+an element *between* the row and the columns... and with CSS Flexbox, sometimes the
+direct relationship between elements *is* important. By putting this `turbo-frame`
+in the middle, it's messes things up.
 
-And then go and hit last 10. All right. Perfect. Here. You can see what a 4 0 5 air.
-Interesting. So let's look at the profile for that page. Hmm. Okay. So it says no
-route Von for post method, not allowed. Allow get, wait, look at the you URL out.
-That is not the right you were out. The form is, should be submitting to the product
-admin area, which if you look at that the product admin area, when you edit a
-product, look at the URL, it should be as many, do something like this /admin
-/product /12 /edit. Instead, this was submitting to the public product show page. Why
-close this tab and then hit edit again. Let me get this out of the way here, refresh
-there to ever go refresh to get that web diva, two of our, out of the way now inspect
-element on the form.
+## Using turbo-frame as a Normal Element
 
-Let's see. Ah, the form element does not have an action attribute. Normally this is
-fine. If you go to the product admin page and click to edit a product in this case,
-that form also doesn't have an action attribute. That's fine because when a form
-doesn't have an action attribute, it tells your browser to submit to these same URL
-that it's currently on. So for this page, that's perfect. But when we're on the
-public product show page, and we load the same form now having that empty action is
-not okay. Our browser incorrectly thinks it should submit to /product /one. So here's
-kind of the takeaway. If you're planning to load a form into a turbo frame, that form
-does need an action attribute. We can't be lazy. Like we normally are. You can set
-the action ads to be in a few places, but I like to do it in the controller where we
-create the form.
+So what can we do? One obvious idea is to move the `turbo-frame` *around* the
+`row` div so that we don't interrupt the row-column relationship. That *would*
+work.
 
-So open the controller for the product admin area, which is src/Controller, product
-admin controller. Yeah, right now we're only dealing with the edit page, but I'm
-going to set the F the action on both the new and the edits actions. So the way we
-can do that is by adding a third argument to create form and passing an option called
-action. So say this->generate URL, we'll generate right back to this route. So
-product admin new now scroll down to the one that we really care about, which is the
-edits and same thing here. Won't pass a third argument action set to this-> generate
-URL to product admin, edit this time, matching this one. And of course, this will
-need to also have an ID set to product-> get ID
+But... `turbo-frame` is just a normal HTML element... so we could also *change*
+the `row` element from a `div` to a `turbo-frame`!
 
-[inaudible]
+Check it out: delete the `turbo-frame` closing tag. Then, on top, copy the guts
+from the `turbo-frame`, change the `div` to a `turbo-frame` and re-add the `id`
+and `target` attributes. Down on the closing tag, ah nice! PhpStorm already
+changed that for me.
 
-Okay, Tim, let's give that a try, refresh the page, click at it, change the title and
-let's submit the form. Got it. Okay. Very nice. Mostly, if you look down here, there
-we go. It did update the title [inaudible]
+When we refresh now... it looks good again! But because our frame has `target="_top"`...
+the frame doesn't *do* anything yet: the edit link still navigates the *entire* page.
 
-But you can see it redirected as a back to the product list page, not the product
-show page what's really going on here is that when we click this edit button, that
-does load the form into this frame, but then because our frame has target = top on
-it. Yeah. When we submit this form, this submits to the whole page and navigates the
-whole page, that's why hitting save here, redirects us to a totally different page.
-And that's probably okay. This is already a better experience than when we started,
-but we could make it a bit more awesome by having it redirect back to the product
-show page. So let's do that this time. I'll do it just in the edit action. So let's
-see here after success right now, we're listening, redirecting back to the index
-page. So let's change this to app_product.
+To fix that, find the link... which is down here... and make it target the frame:
+`data-turbo-frame=""` and then the name of the frame we just created: `product-info`.
 
-That's the, to our show page. And this has an ID wild card. So little by little,
-we're just making this experience better. So now I can open up my floppy disk public
-show page, hit, edits, change the title and enter. And it redirects me right back
-here, gorgeous. But if we want to week and enhance a little bit further, edit the
-product again and empty the title so that we fail form validation. When we submit
-this, navigate us away from that page and put us in the admin section, which makes
-complete sense. Since we know this form is still submitting to the full page, not to
-the frame. And so this is probably okay, but we could make the form also, but could
-we also make the form submit in the frame? Totally. And we have two ways to do this
-first over and showed at HTML on twig.
+Will this work? Not *quite*... and you may remember why. Refresh and click Edit.
+The whole area disappeared!  And we see our favorite error in the console:
 
-We added the target = top to our turbo frame. So one way that we can make the form,
-the edit form submit into this frame as by removing target = top so that everything
-is out of that frame navigates inside that frame. But if we did that, we would need
-to make sure that any other links or forms that are inside of here that should target
-the main page, have data turbo frame = top attribute. So the other option is that we
-can leave the target = top on here and then on just the product form. So just this
-form here we add data turbo frame = product info. Okay. So for me, this is still kind
-of a confusing, unclear spot with turbo drive in general, the idea of, do you add the
-data turbo frame equals, do you add target = top on the frame and then on individual
-forms and links inside of here, you target the frame or do you leave target = top off
-of the frame and then only add target = top to the individual links inform submits
-inside of it.
+> Response has no matching `<turbo-frame id="product-info">` element.
 
-There are just two different ways to go. And haven't found one that is definitely
-better than the other. So in this case, I'm going to keep things safer by keeping
-this target = top up here in just changing the target of the form to target the
-frame. So if you remember this form, uh, the edit page is edit the HTML twig and the
-form itself lives in_form at that age two month twigs. So let's open up that
-template. So we want to make this form tag target. And the frame this form started
-here is actually responsible rendering the opening form tag. So we basically want to
-do is add a data turbo frame attribute right here. So it's a little bit ugly, but we
-can do that by passing a second argument to form start passing that in ATT are
-variable. And inside of that, a data turbo frame attribute set to product dash info.
+Of course! The page that that we're navigating to - the product admin edit page -
+needs a `product-info` frame.
 
-Okay, let's try the flow. So when I refresh right now, I have a turbo frame that has
-target = top target. He goes top, but then inside of here, we have a edit link that
-targets the frame specifically. So when I click this, add a button that opens inside
-the frame, now that just loaded a form, we still have turbo frame = target top, but
-now we have a frame that is also targeting product info when it's submitted. So
-thanks to this. If we empty this title and then submit, yes, that keeps us right on
-the page and submit inside of the frame. That is lovely.
+The template for that product admin edit page lives lives at
+`templates/product_admin/edit.html.twig`. The actual *form* lives inside this
+`_form.html.twig`. So we *could* add the `turbo-frame` here around the form. But
+I kind of *do* want the "edit product" `h1` and the "delete form" button to be
+*also* be loaded loaded when we click "edit". So let's add the `turbo-frame`
+right here.
 
-If we put the title back and change it and submit beautiful. So it was subtle, but we
-actually just saw one important behavior of terrible frames. When we submitted that
-form successfully, it's submitted to the edit action inside of product admin
-controller. So this handled the form, submit on success. This redirects to the pro
-public products show page. It turns out if you submit a form in a frame and it
-redirects turbo does not follow the redirect and navigate the entire page. Well, well
-actually the AJAX called does follow the redirect. Let me show you in the network
-tools here, you can see this edit here was for our unsuccessful forms event or for 20
-to this second post to the edit page here was our successful forms, Mitt it
-redirected. And so turtle made a second Ajax call to the public product page. This is
-exactly how turbo works in general, but instead of actually changing the URL to this
-page, because we're in a turbo frame, it read the HTML of this redirected page, found
-the product info frame and loaded that right here. It's kind of hard to see because
-this just redirected back to the same. You were all that we have here, but it's not
-actually redirecting the full page to this URL. It's just using its content.
+After the back button - because we don't want to include that - add
+`<turbo-frame id="product-info">`. I'm also going to do `target="_top"` here to
+guarantee that, by default, any links or forms inside here continue to behave
+like normal if we navigate directly to the product admin page.
 
-So another way to think about this is that if you submit a form inside of a frame and
-that page redirects, the frame system will grab the Tribble frame from that
-redirected page and put it in the frame, but it's not going to navigate the entire
-page, navigate what the navigation stays inside the frame, an easier place to see
-this is actually the product admin area, where this is actually causing a problem. So
-if I go to the product admin area right now and edit a product, we now know that this
-frame is target. Ms. Form is targeting the frame. So even though this is instead of a
-terrible frame of targeting, we'll stop. The form is now targeting the product info
-frame. So watch what happens when we change this title and hit enter, actually. So if
-we clear out the title and it enter the frame, it's it actually just submitted right
-into this frame.
+Add the closing frame tag and indent everything.
 
-If we put back the title, change it and submit successfully. Watch what happens here.
-Ah, Frankenstein page weird half of the public product page just exploded onto this
-admin page. So unfortunately, turbo frames, the turbo frame is doing exactly what
-we're asking it to do. If you look at the network tools here, [inaudible] and scroll
-up a bit, you can see, we submitted successfully to the edit page that redirected to
-the public show page. Then the, because we're submitting in a turbo frame, turbo
-frame found the product info frame here, which has all of this kind of info up here,
-grabbed it and popped it onto this page.
+That should do it! Refresh the page... and click edit. Oh sweet! We see the form
+but we're *still* on the product show page!
 
-It did not. For example, redirect the entire page, just last products. Last 12, we
-stay on the page and only the contents of the frame change. That's definitely not
-what we want. And look at this point, things are getting kind of complicated. So
-let's think when we load the form from the product show page, by hitting edit, we do
-want this form to submit into this frame. But when we load that same frame on the,
-from the product, have an area, we kind of just want this to behave like normal by
-submitting to the entire page. Could we do that? Totally had to product admin
-controller, edit action. Whenever turbo is navigating inside a frame, it sends an
-extra called turbo frame with the name of the frame. So when we click the edit link
-from a product show page, that Ajax request yeah, adds a turbo frame header. You can
-see it all the way down here under headers. We want request headers. Let's see here,
-there it is turbo frame at product dash info, but why don't we just navigate directly
-to the product admin area and look at that AJAXrequest. But down here, there is no
-turbo frame. So we can actually detect whether we're being loaded inside of a turbo
-frame or not. From inside of Symfony.
-
-We can use that inside of our controller, down the template. I'm going to pass a new
-variable here, call it form target, set to request-> headers,-> get turbo frame. And
-then I can add a second argument here. If there is no header, let's have the default
-value be_top. Okay. Now in_form by age two months wig, instead of having this target
-product info, in all cases, we can use that new form target variable. Now because
-this pen temple parcels also included from the new page and we're not passing this
-in. I'm going to add a little default here and defaulted to_top as well.
-
-Now I think we're good. All right, let's try it. Refresh the product admin page and
-hit save beautiful that submit it to the whole page and redirected the entire page to
-after submit now, click edit, empty the title and enter. And yes, this is still
-navigating just right inside the frame. If you inspect element on that form, you can
-see it does have the extra data turbo frame attribute set to product info. Okay, we
-are done. I included this example both because it's really cool to have this inline
-edits, but also it shows up situations where turbo frames can get a little bit
-complex. It's always up to you to balance the complexity with the user experience
-that you want next. What am I using turbo frames inside of a modal after aisle? You
-often want navigation like links and form submits inside of a modal to stay inside of
-modal, which is what turbo frames are really good at. What's transformed this model
-into a turbo frame power model next.
+So far, this has been pretty easy: a perfect use-case for Turbo Frames! But...
+something isn't quite right. If we change the title and submit the form... woh!
+That looked like a full page refresh! Let's find out what's going on next, fix
+it, and complete our inline editing destiny!
