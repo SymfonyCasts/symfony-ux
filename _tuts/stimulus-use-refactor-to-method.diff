@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
-index f00b147..2817b5b 100644
+index f00b1471..2817b5bf 100644
 --- a/assets/controllers/search-preview_controller.js
 +++ b/assets/controllers/search-preview_controller.js
 @@ -7,16 +7,20 @@ export default class extends Controller {

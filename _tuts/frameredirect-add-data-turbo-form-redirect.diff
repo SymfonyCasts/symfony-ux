@@ -1,5 +1,5 @@
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index f907c36..62bf84d 100644
+index f907c361..62bf84d3 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -17,6 +17,7 @@

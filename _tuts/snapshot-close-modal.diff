@@ -1,5 +1,5 @@
 diff --git a/assets/app.js b/assets/app.js
-index a3f7727..2c9c02c 100644
+index a3f77271..2c9c02cb 100644
 --- a/assets/app.js
 +++ b/assets/app.js
 @@ -11,6 +11,11 @@ import './styles/app.css';

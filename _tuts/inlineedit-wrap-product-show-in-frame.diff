@@ -1,5 +1,5 @@
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index 231ba15..0ef0aef 100644
+index af23ef86..0a26386a 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -2,6 +2,7 @@
@@ -10,7 +10,7 @@ index 231ba15..0ef0aef 100644
          <div class="col-4">
              <img
                  alt="{{ product.name }}"
-@@ -31,6 +32,7 @@
+@@ -41,6 +42,7 @@
                  </div>
              </div>
          </div>

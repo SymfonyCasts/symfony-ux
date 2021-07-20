@@ -1,6 +1,6 @@
 diff --git a/migrations/Version20210512155409.php b/migrations/Version20210512155409.php
 new file mode 100644
-index 0000000..2c17c9c
+index 00000000..2c17c9ce
 --- /dev/null
 +++ b/migrations/Version20210512155409.php
 @@ -0,0 +1,33 @@
@@ -38,7 +38,7 @@ index 0000000..2c17c9c
 +    }
 +}
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 91aecaf..53bc281 100644
+index 91aecaf6..53bc2818 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -4,9 +4,12 @@ namespace App\Controller;
@@ -106,7 +106,7 @@ index 91aecaf..53bc281 100644
      }
  
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index abc1be9..7aab59d 100644
+index abc1be93..7aab59d4 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -5,6 +5,7 @@ namespace App\DataFixtures;
@@ -159,7 +159,7 @@ index abc1be9..7aab59d 100644
      }
  
 diff --git a/src/Entity/Product.php b/src/Entity/Product.php
-index d100c51..c160e54 100644
+index d100c519..c160e549 100644
 --- a/src/Entity/Product.php
 +++ b/src/Entity/Product.php
 @@ -77,9 +77,15 @@ class Product
@@ -213,7 +213,7 @@ index d100c51..c160e54 100644
  }
 diff --git a/src/Entity/Review.php b/src/Entity/Review.php
 new file mode 100644
-index 0000000..418b4a0
+index 00000000..418b4a09
 --- /dev/null
 +++ b/src/Entity/Review.php
 @@ -0,0 +1,101 @@
@@ -319,7 +319,7 @@ index 0000000..418b4a0
 +    }
 +}
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 23f03ea..f5d8f83 100644
+index 23f03ea5..f5d8f835 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -2,6 +2,8 @@
@@ -384,7 +384,7 @@ index 23f03ea..f5d8f83 100644
  }
 diff --git a/src/Form/ReviewForm.php b/src/Form/ReviewForm.php
 new file mode 100644
-index 0000000..a9713ab
+index 00000000..a9713abd
 --- /dev/null
 +++ b/src/Form/ReviewForm.php
 @@ -0,0 +1,28 @@
@@ -418,7 +418,7 @@ index 0000000..a9713ab
 +}
 diff --git a/src/Repository/ReviewRepository.php b/src/Repository/ReviewRepository.php
 new file mode 100644
-index 0000000..0de05ca
+index 00000000..0de05caa
 --- /dev/null
 +++ b/src/Repository/ReviewRepository.php
 @@ -0,0 +1,50 @@
@@ -474,7 +474,7 @@ index 0000000..0de05ca
 +}
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
 new file mode 100644
-index 0000000..36d39d8
+index 00000000..36d39d84
 --- /dev/null
 +++ b/templates/product/_reviews.html.twig
 @@ -0,0 +1,28 @@
@@ -508,7 +508,7 @@ index 0000000..36d39d8
 +{% endif %}
 diff --git a/templates/product/reviews.html.twig b/templates/product/reviews.html.twig
 new file mode 100644
-index 0000000..db18bc8
+index 00000000..db18bc82
 --- /dev/null
 +++ b/templates/product/reviews.html.twig
 @@ -0,0 +1,22 @@
@@ -535,7 +535,7 @@ index 0000000..db18bc8
 +    </div>
 +{% endblock %}
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index 138999b..e8b4f1b 100644
+index 138999b0..e8b4f1b7 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -2,8 +2,8 @@

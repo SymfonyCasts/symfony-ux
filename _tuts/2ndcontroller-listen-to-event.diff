@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/cart-list_controller.js b/assets/controllers/cart-list_controller.js
-index b3f6ff5..6856d39 100644
+index b3f6ff50..6856d395 100644
 --- a/assets/controllers/cart-list_controller.js
 +++ b/assets/controllers/cart-list_controller.js
 @@ -1,7 +1,7 @@
@@ -13,7 +13,7 @@ index b3f6ff5..6856d39 100644
      }
  }
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index c076fbd..8868958 100644
+index c076fbd3..88689584 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -29,7 +29,10 @@

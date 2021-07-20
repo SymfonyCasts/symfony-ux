@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
 deleted file mode 100644
-index e0c1cc8..0000000
+index e0c1cc89..00000000
 --- a/assets/controllers/search-preview_controller.js
 +++ /dev/null
 @@ -1,45 +0,0 @@

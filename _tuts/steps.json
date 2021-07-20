@@ -1341,6 +1341,11 @@
             "description": null
         },
         {
+            "id": "inlineedit-add-an-edit-button",
+            "name": "InlineEdit: add an edit button",
+            "description": null
+        },
+        {
             "id": "inlineedit-wrap-product-show-in-frame",
             "name": "InlineEdit: Wrap product show in frame",
             "description": null
@@ -1351,8 +1356,8 @@
             "description": null
         },
         {
-            "id": "inlineedit-add-edit-button",
-            "name": "InlineEdit: add edit button",
+            "id": "delete-me-11",
+            "name": "delete me 11",
             "description": null
         },
         {
@@ -1386,8 +1391,8 @@
             "description": null
         },
         {
-            "id": "inlineedit-randomize-url",
-            "name": "InlineEdit: randomize url",
+            "id": "delete-me-12",
+            "name": "delete me 12",
             "description": null
         },
         {
@@ -1541,5 +1546,5 @@
             "description": null
         }
     ],
-    "sha": "6e5ee80842e538dcf5a51468138dcea5ce083bda"
+    "sha": "c8726938b826f2c205cee25c9450dc7b08976b82"
 }

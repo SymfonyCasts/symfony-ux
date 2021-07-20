@@ -1,6 +1,6 @@
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
 new file mode 100644
-index 0000000..fa7b04b
+index 00000000..fa7b04b9
 --- /dev/null
 +++ b/templates/_modal.html.twig
 @@ -0,0 +1,27 @@
@@ -32,7 +32,7 @@ index 0000000..fa7b04b
 +    </div>
 +</div>
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index 7449ffb..2315288 100644
+index 7449ffbf..23152883 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -12,6 +12,8 @@

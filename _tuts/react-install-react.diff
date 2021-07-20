@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 82f4acb..ede0b53 100644
+index 82f4acb0..ede0b530 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,8 @@
@@ -12,7 +12,7 @@ index 82f4acb..ede0b53 100644
          "stimulus": "^2.0.0",
          "stimulus-use": "^0.22.1",
 diff --git a/yarn.lock b/yarn.lock
-index 78829e4..4a55f64 100644
+index 78829e4e..4a55f64f 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -3173,7 +3173,7 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:

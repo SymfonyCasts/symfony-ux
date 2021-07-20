@@ -1,5 +1,5 @@
 diff --git a/assets/controllers.json b/assets/controllers.json
-index fbcedcd..6f27124 100644
+index fbcedcd4..6f27124a 100644
 --- a/assets/controllers.json
 +++ b/assets/controllers.json
 @@ -5,6 +5,12 @@
@@ -16,7 +16,7 @@ index fbcedcd..6f27124 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index aa4f4e6..70b3562 100644
+index aa4f4e64..70b35626 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -28,7 +28,7 @@ index aa4f4e6..70b3562 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 3bf2716..c161416 100644
+index 3bf27165..c1614162 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -148,7 +148,7 @@ index 3bf2716..c161416 100644
              "name": "symfony/validator",
              "version": "v5.3.0-RC1",
 diff --git a/config/bundles.php b/config/bundles.php
-index 12d8b37..d8ae16d 100644
+index 12d8b37c..d8ae16dd 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,4 +15,5 @@ return [
@@ -158,7 +158,7 @@ index 12d8b37..d8ae16d 100644
 +    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
  ];
 diff --git a/package.json b/package.json
-index 79c2c4c..d375185 100644
+index 79c2c4c9..d3751850 100644
 --- a/package.json
 +++ b/package.json
 @@ -2,9 +2,11 @@
@@ -174,7 +174,7 @@ index 79c2c4c..d375185 100644
          "bootstrap": "^5.0.0-beta2",
          "chart.js": "^2.9.4",
 diff --git a/symfony.lock b/symfony.lock
-index 5b7cdfb..7ab4df0 100644
+index 5b7cdfb5..7ab4df04 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -395,6 +395,9 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
-index db34bd3..4bed7b9 100644
+index db34bd3b..4bed7b98 100644
 --- a/assets/turbo/turbo-helper.js
 +++ b/assets/turbo/turbo-helper.js
 @@ -11,6 +11,42 @@ const TurboHelper = class {

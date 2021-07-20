@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index e6bdba1..9096277 100644
+index e6bdba1b..9096277f 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -30,6 +30,20 @@ class CartController extends AbstractController
@@ -24,7 +24,7 @@ index e6bdba1..9096277 100644
              'addToCartForm' => $addToCartForm,
          ]);
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index a2e9ced..41545d0 100644
+index a2e9ced5..41545d00 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -9,9 +9,9 @@
