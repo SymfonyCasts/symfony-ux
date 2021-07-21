@@ -15,7 +15,7 @@ Ah, here! A 405 error. Open the profiler for that page:
 
 Wait: look at the URL. That is *not* the right URL! The form should submit to the
 product admin area, which... if you navigate there, looks like this:
-`/admin/product/12/edit`. But form *actually* submitted to the public product show
+`/admin/product/12/edit`. But the form *actually* submitted to the public product show
 page. Why?
 
 Close this tab and hit edit again. Actually, refresh, hit edit and inspect
@@ -94,7 +94,7 @@ to the individual links and forms that need it?
 
 I don't have a perfect answer. But my rule of thumb is to determine this based on
 the *main* purpose of a frame. In this case, I would expect *most* links to
-navigate the whole page, so the `target="_top"` feels safer.
+navigate the whole page, so the `target="_top"` on the *frame* feels safer.
 
 So let's go change the target of *just* the form. The edit page template is
 `edit.html.twig`, but the form lives in `_form.html.twig`. Pass a second argument
