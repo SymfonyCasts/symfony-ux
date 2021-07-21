@@ -1,180 +1,116 @@
-# Frames, Redirects & Form "action" Attributes
+# Frames & Form "action" Attributes
 
-Coming soon...
+Something isn't right. We *can* click this "edit" link to inline-load the product
+form into the Turbo Frame. But when we save, something weird happens.
+Watch the console closely down here. Whoa! It was fast, but it looked the Ajax
+request failed! And then, the whole page reloaded?
 
-But something isn't right. Let's change the title and
-submit the form. Well, that looked like a full page refresh. Let's try that again.
-Watch the console closely down here. It also didn't save update. Whoa, you see that
-there was a failed post request. So for some reason, the post request failed and then
-the whole page reloaded is going on here. So let's start by getting more information
-about what that fit, what happened on that field post request. So I'm going to open
-the profile for this page in a new window. [inaudible]
+Time to put on our detective hats! Let's start by getting more information
+about why the form submit failed. Click any link on the web debug toolbar to jump
+into the profiler... and then click the "last 10" link to see the last 10 requests.
 
-[inaudible]
+Ah, here! A 405 error. Open the profiler for that page:
 
-And then go and hit last 10. All right. Perfect. Here. You can see what a 4 0 5 air.
-Interesting. So let's look at the profile for that page. Hmm. Okay. So it says no
-route Von for post method, not allowed. Allow get, wait, look at the you URL out.
-That is not the right you were out. The form is, should be submitting to the product
-admin area, which if you look at that the product admin area, when you edit a
-product, look at the URL, it should be as many, do something like this /admin
-/product /12 /edit. Instead, this was submitting to the public product show page. Why
-close this tab and then hit edit again. Let me get this out of the way here, refresh
-there to ever go refresh to get that web diva, two of our, out of the way now inspect
-element on the form.
+> No route found for POST /product/1: Method not allowed
 
-Let's see. Ah, the form element does not have an action attribute. Normally this is
-fine. If you go to the product admin page and click to edit a product in this case,
-that form also doesn't have an action attribute. That's fine because when a form
-doesn't have an action attribute, it tells your browser to submit to these same URL
-that it's currently on. So for this page, that's perfect. But when we're on the
-public product show page, and we load the same form now having that empty action is
-not okay. Our browser incorrectly thinks it should submit to /product /one. So here's
-kind of the takeaway. If you're planning to load a form into a turbo frame, that form
-does need an action attribute. We can't be lazy. Like we normally are. You can set
-the action ads to be in a few places, but I like to do it in the controller where we
-create the form.
+Wait: look at the URL. That is *not* the right URL! The form should submit to the
+product admin area, which... if you navigate there, looks like this:
+`/admin/product/12/edit`. But form *actually* submitted to the public product show
+page. Why?
 
-So open the controller for the product admin area, which is src/Controller, product
-admin controller. Yeah, right now we're only dealing with the edit page, but I'm
-going to set the F the action on both the new and the edits actions. So the way we
-can do that is by adding a third argument to create form and passing an option called
-action. So say this->generate URL, we'll generate right back to this route. So
-product admin new now scroll down to the one that we really care about, which is the
-edits and same thing here. Won't pass a third argument action set to this-> generate
-URL to product admin, edit this time, matching this one. And of course, this will
-need to also have an ID set to product-> get ID
+Close this tab and hit edit again. Actually, refresh, hit edit and inspect
+element on the form. Ah ha! The form element does *not* have an `action` attribute.
+Normally this is fine! If you go to the product admin page and click to edit a
+product, the form doesn't have an `action` attribute here either. That's ok because
+when a form doesn't have an `action` attribute, it tells your browser to submit
+to the URL that it's currently on. For this page, that's perfect.
 
-[inaudible]
+But when we're on the public product show page... and we load the same form,
+having that missing `action` attribute is *not* okay: our browser incorrectly thinks
+it should submit to `/product/1`.
 
-Okay, Tim, let's give that a try, refresh the page, click at it, change the title and
-let's submit the form. Got it. Okay. Very nice. Mostly, if you look down here, there
-we go. It did update the title [inaudible]
+Here's the takeaway: if you're planning to load a form into a `turbo-frame`, that
+form *does* need an `action` attribute. We can't be lazy like we normally are.
 
-But you can see it redirected as a back to the product list page, not the product
-show page what's really going on here is that when we click this edit button, that
-does load the form into this frame, but then because our frame has target = top on
-it. Yeah. When we submit this form, this submits to the whole page and navigates the
-whole page, that's why hitting save here, redirects us to a totally different page.
-And that's probably okay. This is already a better experience than when we started,
-but we could make it a bit more awesome by having it redirect back to the product
-show page. So let's do that this time. I'll do it just in the edit action. So let's
-see here after success right now, we're listening, redirecting back to the index
-page. So let's change this to app_product.
+## Setting the Form action
 
-That's the, to our show page. And this has an ID wild card. So little by little,
-we're just making this experience better. So now I can open up my floppy disk public
-show page, hit, edits, change the title and enter. And it redirects me right back
-here, gorgeous. But if we want to week and enhance a little bit further, edit the
-product again and empty the title so that we fail form validation. When we submit
-this, navigate us away from that page and put us in the admin section, which makes
-complete sense. Since we know this form is still submitting to the full page, not to
-the frame. And so this is probably okay, but we could make the form also, but could
-we also make the form submit in the frame? Totally. And we have two ways to do this
-first over and showed at HTML on twig.
+We can set the action attribute in a few places, but I like to do it in the
+controller where we create the form. Open the controller for the product admin area:
+`src/Controller/ProductAdminController.php`. Right now we're only dealing with
+the edit page, but I'll set the action on both the new *and* edit actions to be
+safe. Add a third argument to `createForm()` and pass an option called `action`
+set to the URL to *this* action: `$this->generateUrl('product_admin_new')`.
 
-We added the target = top to our turbo frame. So one way that we can make the form,
-the edit form submit into this frame as by removing target = top so that everything
-is out of that frame navigates inside that frame. But if we did that, we would need
-to make sure that any other links or forms that are inside of here that should target
-the main page, have data turbo frame = top attribute. So the other option is that we
-can leave the target = top on here and then on just the product form. So just this
-form here we add data turbo frame = product info. Okay. So for me, this is still kind
-of a confusing, unclear spot with turbo drive in general, the idea of, do you add the
-data turbo frame equals, do you add target = top on the frame and then on individual
-forms and links inside of here, you target the frame or do you leave target = top off
-of the frame and then only add target = top to the individual links inform submits
-inside of it.
+Now scroll down to the one that we really care about: the edit action.
+Same thing here: pass a third argument with `action` set to
+`$this->generateUrl('product_admin_edit')`... but this needs an `id` wildcard
+set to `$product->getId()`.
 
-There are just two different ways to go. And haven't found one that is definitely
-better than the other. So in this case, I'm going to keep things safer by keeping
-this target = top up here in just changing the target of the form to target the
-frame. So if you remember this form, uh, the edit page is edit the HTML twig and the
-form itself lives in_form at that age two month twigs. So let's open up that
-template. So we want to make this form tag target. And the frame this form started
-here is actually responsible rendering the opening form tag. So we basically want to
-do is add a data turbo frame attribute right here. So it's a little bit ugly, but we
-can do that by passing a second argument to form start passing that in ATT are
-variable. And inside of that, a data turbo frame attribute set to product dash info.
+Time to give this a try! Refresh the page, click edit, change the title and
+submit the form. Very nice... kind of. If you scroll down to find this product...
+yes! It *did* update the title!
 
-Okay, let's try the flow. So when I refresh right now, I have a turbo frame that has
-target = top target. He goes top, but then inside of here, we have a edit link that
-targets the frame specifically. So when I click this, add a button that opens inside
-the frame, now that just loaded a form, we still have turbo frame = target top, but
-now we have a frame that is also targeting product info when it's submitted. So
-thanks to this. If we empty this title and then submit, yes, that keeps us right on
-the page and submit inside of the frame. That is lovely.
+But, as we can see, it redirected to the product admin list page, not the product
+show page. When we click this "edit" button, that *does* load the form into the
+Turbo frame. But then, because the frame has `target="_top"`, when we submit the
+form, it submits to the *whole* page and *navigates* the whole page. That's why
+hitting save redirects us to a totally different page.
 
-If we put the title back and change it and submit beautiful. So it was subtle, but we
-actually just saw one important behavior of terrible frames. When we submitted that
-form successfully, it's submitted to the edit action inside of product admin
-controller. So this handled the form, submit on success. This redirects to the pro
-public products show page. It turns out if you submit a form in a frame and it
-redirects turbo does not follow the redirect and navigate the entire page. Well, well
-actually the AJAX called does follow the redirect. Let me show you in the network
-tools here, you can see this edit here was for our unsuccessful forms event or for 20
-to this second post to the edit page here was our successful forms, Mitt it
-redirected. And so turtle made a second Ajax call to the public product page. This is
-exactly how turbo works in general, but instead of actually changing the URL to this
-page, because we're in a turbo frame, it read the HTML of this redirected page, found
-the product info frame and loaded that right here. It's kind of hard to see because
-this just redirected back to the same. You were all that we have here, but it's not
-actually redirecting the full page to this URL. It's just using its content.
+## Redirecting to the Product Show Page
 
-So another way to think about this is that if you submit a form inside of a frame and
-that page redirects, the frame system will grab the Tribble frame from that
-redirected page and put it in the frame, but it's not going to navigate the entire
-page, navigate what the navigation stays inside the frame, an easier place to see
-this is actually the product admin area, where this is actually causing a problem. So
-if I go to the product admin area right now and edit a product, we now know that this
-frame is target. Ms. Form is targeting the frame. So even though this is instead of a
-terrible frame of targeting, we'll stop. The form is now targeting the product info
-frame. So watch what happens when we change this title and hit enter, actually. So if
-we clear out the title and it enter the frame, it's it actually just submitted right
-into this frame.
+And that's maybe okay: this is already a better experience than when we started.
+But we could make it a bit more awesome by redirecting back to the public
+product show page. Let's try that: I'll do it in just the edit action. On
+success, change the index route to `app_product` - the route for the show page -
+and pass this the `id` wildcard that it needs.
 
-If we put back the title, change it and submit successfully. Watch what happens here.
-Ah, Frankenstein page weird half of the public product page just exploded onto this
-admin page. So unfortunately, turbo frames, the turbo frame is doing exactly what
-we're asking it to do. If you look at the network tools here, [inaudible] and scroll
-up a bit, you can see, we submitted successfully to the edit page that redirected to
-the public show page. Then the, because we're submitting in a turbo frame, turbo
-frame found the product info frame here, which has all of this kind of info up here,
-grabbed it and popped it onto this page.
+Let's see how this feels. Open up the floppy disk public show page, hit edit, change
+the title and submit. That's very nice!
 
-It did not. For example, redirect the entire page, just last products. Last 12, we
-stay on the page and only the contents of the frame change. That's definitely not
-what we want. And look at this point, things are getting kind of complicated. So
-let's think when we load the form from the product show page, by hitting edit, we do
-want this form to submit into this frame. But when we load that same frame on the,
-from the product, have an area, we kind of just want this to behave like normal by
-submitting to the entire page. Could we do that? Totally had to product admin
-controller, edit action. Whenever turbo is navigating inside a frame, it sends an
-extra called turbo frame with the name of the frame. So when we click the edit link
-from a product show page, that Ajax request yeah, adds a turbo frame header. You can
-see it all the way down here under headers. We want request headers. Let's see here,
-there it is turbo frame at product dash info, but why don't we just navigate directly
-to the product admin area and look at that AJAXrequest. But down here, there is no
-turbo frame. So we can actually detect whether we're being loaded inside of a turbo
-frame or not. From inside of Symfony.
+Edit the product again, but empty the title so that we fail validation. When
+we submit now, this navigate us away from the show page and puts us in the admin
+section. That makes complete sense: we know that the form is *still* submitting
+to the full page, not to the frame. And so, again, this is probably okay! We
+should probably stop and say "good enough!".
 
-We can use that inside of our controller, down the template. I'm going to pass a new
-variable here, call it form target, set to request-> headers,-> get turbo frame. And
-then I can add a second argument here. If there is no header, let's have the default
-value be_top. Okay. Now in_form by age two months wig, instead of having this target
-product info, in all cases, we can use that new form target variable. Now because
-this pen temple parcels also included from the new page and we're not passing this
-in. I'm going to add a little default here and defaulted to_top as well.
+## Submitting the Form in the Frame
 
-Now I think we're good. All right, let's try it. Refresh the product admin page and
-hit save beautiful that submit it to the whole page and redirected the entire page to
-after submit now, click edit, empty the title and enter. And yes, this is still
-navigating just right inside the frame. If you inspect element on that form, you can
-see it does have the extra data turbo frame attribute set to product info. Okay, we
-are done. I included this example both because it's really cool to have this inline
-edits, but also it shows up situations where turbo frames can get a little bit
-complex. It's always up to you to balance the complexity with the user experience
-that you want next. What am I using turbo frames inside of a modal after aisle? You
-often want navigation like links and form submits inside of a modal to stay inside of
-modal, which is what turbo frames are really good at. What's transformed this model
-into a turbo frame power model next.
+Or... we could *also* make the form *submit* in the frame.
+
+To do this, we have two options. Over in `show.html.twig`, we have
+`target="_top"` on the `turbo-frame`. The first way that we could make the form
+submit to the frame would be to remove this target so that *everything* navigates
+inside the frame. Of course, if we did that, we would need to make sure to add
+`data-turbo-frame="_top"` to any links or forms that *should* target the full
+page.
+
+The other option is to leave the `target="_top"` and then, on *just* the product
+form, add `data-turbo-frame="product-info"`.
+
+For me, the *best* option is still... not totally clear. Is it better to add
+`target="_top"` on the frame and then target the frame on individual links and
+forms? Or should we leave `target="_top"` *off* the frame and add `target="_top"`
+to the individual links and forms that need it?
+
+I don't have a perfect answer. But my rule of thumb is to determine this based on
+the *main* purpose of a frame. In this case, I would expect *most* links to
+navigate the whole page, so the `target="_top"` feels safer.
+
+So let's go change the target of *just* the form. The edit page template is
+`edit.html.twig`, but the form lives in `_form.html.twig`. Pass a second argument
+to `form_start` with an `attr` variable set to an object. Inside *that*, set
+`data-turbo-frame` to `product-info`.
+
+Let's try the flow! Refresh. We have a `turbo-frame` with `target="_top"`...
+but inside, an edit link that specifically targets the frame. When we click this,
+the new form is *still* in the frame with `target="_top"`... but it *also* targets
+the `product-info` frame.
+
+Thanks to this, if we empty the title and submit... woohoo! That keeps us
+on the page! That submitted *into* the frame. And if we put the title back,
+change it and submit. Beautiful!
+
+Next: when we submit a form inside a frame... and that request redirects to
+*another* page, what happens? Does that redirect the entire page and change the
+URL in the address bar? Or does it *only* update the frame? Let's find out and
+fix a related bug with our new inline edit frame system.
