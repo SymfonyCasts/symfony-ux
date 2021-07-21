@@ -46,7 +46,7 @@ is all this product info - grabbed it, and popped it right here.
 In the admin area... this is *not* what we want. And things are getting a bit
 complicated as a result of us *really* pushing for the best possible user experience.
 
-So let's stops and think. When we load the form from the product show page and hit
+So let's stop and think. When we load the form from the product show page and hit
 edit, we *do* want this form to submit *into* the frame. But when we load that same
 form in the product admin area, we kind of just want this to behave like *normal*,
 by submitting *to* the entire page. Could we do that? Could we make the same form
