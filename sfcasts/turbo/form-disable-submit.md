@@ -15,6 +15,8 @@ listen to a new event: `document.addEventListener('turbo:submit-start')`. Pass t
 an arrow function with an event argument. Inside, let's `console.log()` the string
 `submit-start` and also the event object.
 
+[[[ code('16b260fa98') ]]]
+
 Turbo triggers this `turbo:submit-start` event whenever *any* form is submitted
 with turbo, whether it's inside of a Turbo frame or just a normal form that Turbo
 Drive is handling.
@@ -35,6 +37,8 @@ to this is `detail.formSubmission.submitter`.
 
 Head back to our code and replace the log with `event.detail.formSubmission.submitter`.
 Add the `disabled` attribute with `.toggleAttribute('disabled', true)`.
+
+[[[ code('5a5fb142e3') ]]]
 
 When you use `toggleAttribute` with a second argument of `true`, it means:
 
@@ -70,6 +74,8 @@ Back in `turbo-helper.js`, create a new variable: `const submitter =`. Copy the
 We're doing this so we can *also* give this button a new class:
 `submitter.classList.add('turbo-submit-disabled')`.
 
+[[[ code('b65292b13c') ]]]
+
 This class doesn't do anything and doesn't have any CSS attached to it. I just
 invented it as a way to *mark* that this button was disabled *because* of our
 loading logic.
@@ -88,6 +94,8 @@ Inside, use `document.querySelectorAll()` to find any element with the
 with a `button` argument, and then say: `button.toggleAttribute('disabled', false)`.
 Fully clean things up by removing the class:
 `button.classList.remove('turbo-submit-disabled')`.
+
+[[[ code('f40e272393') ]]]
 
 It's pretty hard to actually *repeat* the edge case we just fixed... but let's
 at least make sure we didn't break anything. Submit the form. Yup! That still
