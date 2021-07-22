@@ -1,0 +1,15 @@
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index d5f1766d..4fc8d750 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -49,7 +49,9 @@ class ProductAdminController extends AbstractController
+                 return new Response(null, 204);
+             }
+ 
+-            return $this->redirectToRoute('product_admin_index');
++            return $this->redirectToRoute('app_product_reviews', [
++                'id' => $product->getId(),
++            ]);
+         }
+ 
+         $template = $request->isXmlHttpRequest() ? '_form.html.twig' : 'new.html.twig';

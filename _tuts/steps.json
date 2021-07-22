@@ -1446,6 +1446,11 @@
             "description": null
         },
         {
+            "id": "modalframe-redirect-to-reviews-page",
+            "name": "ModalFrame: redirect to reviews page",
+            "description": null
+        },
+        {
             "id": "modalframe-listen-to-before-fetch-response",
             "name": "ModalFrame: listen to before-fetch-response",
             "description": null
@@ -1461,8 +1466,18 @@
             "description": null
         },
         {
+            "id": "modalframe-no-need-to-hide-the-modal",
+            "name": "ModalFrame: no need to hide the modal",
+            "description": null
+        },
+        {
             "id": "modalframe-extract-to-method",
             "name": "ModalFrame: extract to method",
+            "description": null
+        },
+        {
+            "id": "modalframe-bind-the-method-to-this",
+            "name": "ModalFrame: bind the method to this",
             "description": null
         },
         {
@@ -1471,8 +1486,13 @@
             "description": null
         },
         {
-            "id": "modalframe-don-t-close-modal",
-            "name": "ModalFrame: don't close modal",
+            "id": "delete-me-13",
+            "name": "delete me 13",
+            "description": null
+        },
+        {
+            "id": "modalframe-redirect-back-to-index",
+            "name": "ModalFrame: redirect back to index",
             "description": null
         },
         {
@@ -1546,5 +1566,5 @@
             "description": null
         }
     ],
-    "sha": "c8726938b826f2c205cee25c9450dc7b08976b82"
+    "sha": "bdba8b8ae9e700bf89164b0078c148ea0877ddec"
 }
