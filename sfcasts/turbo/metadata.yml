@@ -30,3 +30,5 @@ chapters:
     - inline-edit
     - frame-form-action
     - frame-redirect
+    - modal-frame
+    - modal-redirect
