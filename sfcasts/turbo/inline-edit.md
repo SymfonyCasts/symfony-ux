@@ -13,6 +13,8 @@ and `endif`. Inside, we can create a boring anchor tag that points to the edit p
 Oh, but I'm going to put this onto multiple lines in a slightly different way...
 so that we can cleanly give this a few classes. For the text, say "Edit".
 
+[[[ code('1ecb714cf1') ]]]
+
 Nothing magic yet. When we refresh, there's our link... a fantastically boring edit
 link. Thanks to Turbo Drive, clicking it feels pretty good. And with a bit more work,
 we could add a link back to the public show page. Heck, we could even attach a query
@@ -42,6 +44,8 @@ add a `target="_top"` so that everything inside, at least for now, will behave
 Take the `turbo-frame` closing tag and... put it all the way down here: I think
 this is the right spot.
 
+[[[ code('2d1d0475bb') ]]]
+
 Let's see how things look so far. Refresh and... whoa! That *completely* messed
 up our styling! Why? Inspect element on this area. The problem is that we added
 an element *between* the row and the columns... and with CSS Flexbox, sometimes the
@@ -62,12 +66,16 @@ from the `turbo-frame`, change the `div` to a `turbo-frame` and re-add `id`
 and `target`. Down on the closing tag, ah nice! PhpStorm already changed that
 for me.
 
+[[[ code('1dd0879827') ]]]
+
 When we refresh now... it looks good again! But because our frame has
 `target="_top"`... the frame doesn't *do* anything yet: the edit link still
 navigates the *entire* page.
 
 To fix that, find the link... which is down here... and make it target the frame:
 `data-turbo-frame="product-info"`.
+
+[[[ code('94cc26c1f9') ]]]
 
 Will this work? Not *quite*... and you may remember why. Refresh and click Edit.
 The whole area disappeared! And we see our favorite error in the console:
@@ -90,6 +98,8 @@ guarantee that, by default, any links or forms inside here continue to behave
 like normal when we navigate directly to the product admin page.
 
 Add the closing frame tag and indent everything.
+
+[[[ code('a3436182de') ]]]
 
 That should do it! Refresh the page... and click edit. Sweet! We see the form
 but we're *still* on the product show page!
