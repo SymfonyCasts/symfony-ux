@@ -1,64 +1,76 @@
 # Lazy Modal & Big Cleanup
 
-Coming soon...
+Our modal *is* now powered by a `turbo-frame`: the form was Ajax loaded by the
+frame system. But when we submit, wah, wah. It submits to the whole page.
 
-So at this, when I refresh, we have a really boring modal. I click this. It's letting
-be the frame. There's nothing special happening. This is the normal button from the
-form. Well it's summit. Let's try it summit and sort of, yeah, it did work, but it
-submitted the full page. All right, let's see what's going on here. Reopen the modal
-and let's inspect it. Let's see. Ah, look at the form here. It is `data-turbo-frame="_top"`
-that is coming from the `_form.html.twig` template is a reminder.
-A second ago, we set the `data-turbo-form` attribute to a dynamic form target variable.
-And the point of this was so that if the form were being loaded in a frame, then it
-would you, it would target that frame else. It would target the top of the page. The
-problem is that we only set this up for the edit page. So you feel like at
-`src/Controller/ProductAdminController.php` right here, this is the `edit()` action. And we did
-pass in this `formTarget` variable. That's set to the turbo frame request header, but
-I did not do that for the new page. The new page does not have that variable. And so
-it was just defaulting to `_top`. So let's pass that variable in for the new page as
-well.
+Let's see what's going on. Reopen the modal inspect it. Hmm. Ah, look at the
+`form` here. It has `data-turbo-frame="_top"`! That's coming from `_form.html.twig`
+template. Remember: a few minutes ago, we set the `data-turbo-form` attribute to a
+dynamic `formTarget` variable. The point of this was so that *if* the form were
+being loaded into a frame, then we would *target* that frame. Else, if the form
+were being loaded via a normal page load, it would target `_top`.
 
-This is just yet another thing where we're kind of making things simpler and more
-consistent to get this to work. All right, refresh again, open that up. Submit and oh
-God, it's beautiful. We still need to work on what happens when we fill this out
-successfully. But before we do, we can do something cool. Refresh the page and then
-inspect element on the button. What I'm really looking for here is the turbo frame
-that contains the modal. So let me open up a couple of things here. Turbo frame,
-modal body. If you expand this, you'll notice that it is already made the Ajax
-request for the form that happens as soon as the page load, as soon as the page
-loads, it sees the `src` and it makes an AGS call to this URL. But if we want to, we
-can make this lazy. We don't really need to make that age. I've called until the
-modal is visible until it opens. We did this before by adding a `loading="lazy"`
-attribute. So let's do that and `_modal.html.twig` let's add `loading="lazy"`.
-All right. Let's refresh again. And awesome. Look at the element. It
-still says loading right there, but we don't care because it's not actually visible.
-If you go to your network tools and go to XR, watch what happens when you click this.
-As soon as that frame becomes visible, then it actually makes the Ajax call to load,
-which is pretty cool.
+The problem is that... we only set this up for the *edit*. Open
+`src/Controller/ProductAdminController.php`. Right here - this is the `edit()`
+action - we *did* pass in the `formTarget` variable that's set to the `Turbo-Frame`
+request header. Go us! But... I did *not* do that for the `new` action. And
+since that does *not* pass a `formTarget` variable, it defaulted to `_top`.
 
-At this point, if you look at our `modal-form` controller, the only point of this
-controller is just to open up the modal with bootstrap, which is pretty cool. So we
-can clean up even more stuff. We don't need to, uh, uh, `useDispatch` anymore. That
-helps us dispatch an event. Oops
+So let's pass that variable in for the new page as well. This is just yet *another*
+spot where, to get this turbo-frame-powered modal working, we're making things simpler
+and more consistent.
 
-And we don't need to import useDispatch or jQuery
+Ok: refresh again, open the modal, submit and... oh, that is positively
+heart-warming.
 
-We also don't need this `formUrl` value because the frame is handling all of
-that for us. In the template for the product index page.
+## Lazy Modal Loading
 
-We still do need to have the `modal-form` controller up here, but we don't need to pass
-in this form. You were out variable anymore. That's the one we just deleted. And
-above this, we have some fanciness with the `reload-content` controller, uh, is there,
-as I mentioned, that helped us reload the list via Ajax after the Myrtle closed,
-we're going to replace that with something simpler in a second. So I'm just going to
-delete all of that stuff up here.
+We still need to work on what happens when we submit the form *successfully*... but
+before we do, let's do something cool. Refresh the page and inspect element on the
+button. Dig a little to find the `turbo-frame` that contains the modal Here it is.
+If you expand this, you'll notice that Turbo *has* already made the Ajax request
+for the form and put the HTML here. That happens as *soon* as the page loads.
 
-And finally, down near the bottom, we had a specific, um, targets for that
-`reload-content` controller that we just deleted. So we can also remove that target. Honestly,
-it may have been easier just to start this feature from scratch because we are
-simplifying so much stuff. Alright, so refresh again. Let's make sure we didn't break
-anything. So I'll open up the modal. It loads. I can submit it empty. So let's add a
-brand new product, all the title, price it's saved and oh, that's interesting. It
-says loading next. Let's figure out what's going on here and then code up the real
-solution that we want, which is after the forms submit successfully, we want to close
-the modal and make sure we reload the list behind us.
+But we don't *really* need to make that Ajax call until the modal opens. Can we
+somehow *delay* that? Totally! And we did it earlier.
+
+In `_modal.html.twig`, on the `turbo-frame`, add`loading="lazy"`.
+
+Let's see how this looks. Refresh and inspect the frame. It still says "Loading":
+it has *not* made the Ajax request yet. Open your network tools and watch the
+Ajax requests. Click to open the modal! There's the Ajax call!
+
+Remember: with `loading="lazy"`, the frame system won't make the call until the
+frame becomes *visible* in the viewport. And... that works pretty awesomely with
+modals which don't become visible until you open them.
+
+## Big Ol' Cleanup
+
+At this point, if you look at the `modal-form` controller, its only job is to...
+open the modal! The `turbo-frame` inside handles the rest... and that's *pretty*
+cool. Let's cleanup a few more things: we don't need `useDispatch` anymore - we're
+not dispatching any events - whoops. And... we don't need to import `useDispatch`
+or `jQuery`... and we can also delete the `formUrl` value.
+
+Cool. In the template for the product index page, we still *do* need the
+`modal-form` controller but we *don't* need to pass in the `formUrl` variable.
+
+Above this, we have some fanciness with the `reload-content` controller. That
+helped us reload the product list via Ajax after the modal closed. We're going to
+completely replace that with something simpler in a few minutes. So delete *all*
+of that stuff.
+
+Finally, near the bottom, remove this target that was for the `reload-content`
+controller.
+
+Honestly, I'm wondering if it may have been easier to start this feature from
+scratch! Because most of the work we just did was deleting and simplifying.
+
+Let's make sure we didn't break anything. Refresh, open the modal and submit the
+form empty. That all feels great.
+
+But what happens on a *successful* form submit? Fill in a title, price and...
+go! Woh. That's... interesting. It says "loading". Next, let's figure out what
+just happened. And then, we'll code up the *real* solution: after a successful
+form submit, we want to close the modal and reload the list behind us. We're
+about to bend the frame system to our will!
