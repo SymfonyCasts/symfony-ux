@@ -1,72 +1,15 @@
-# Modal Redirect
+# Preventing turbo-frame Navigation
 
 Coming soon...
 
-There we go. We submitted the form successfully in this model. And well, this
-happened, if you refresh the submit did work, you can see our new product on top
-inspect element on the frame so we can see what's going on. Let's see there's the
-button. And if we open a couple of levels, perfect, there's the frame. So sort of
-starts with `/admin/product/new`, which means when we open the model, we see the
-form, the frame from that page, fill in some data and then submit, what do we do? Can
-we submit the controller for this page redirects to `/admin/product`? You can see this
-over here and product admin control or new. Here we go. This is the new action. And
-on submit it redirects to `/admin/product`, which is the page that we're on
-right now.
-
-And it happens. The turbo frame of follows that. Redirect it actually updates the
-source on the turbo frame, uh, to the new URL. Now it's a little bit weird, but if
-you think about it, this page, this `/admin/product` page does have a turbo frame on
-it with modal body. And that frame contains the words loading. So I know it's a
-little bit confusing, but behind the scenes Terp when turbo, okay. If you look at the
-network tab, when turbo frame follows, here's a post for the new page term of
-hearings follows the redirect here. And if you look at the response for that
-redirect, and if you actually looked inside of here, it's a little bit hard to see,
-but you'd actually find here we go. That technically it's terrible frame is just the
-word loading. So that's actually what it uses.
-
-And so once again, turbo is behaving exactly like we're telling it to, but not how we
-want, but it's sort of doesn't matter because what we really want to do is a big
-custom, when the form summits successfully, we want to close the modal to do this.
-Maybe we can leverage an event from turbo, like detect if the form was successful and
-then close the model in the country, any `modal-form_controller.js`, add a `connect()` method.
-We're actually going to listen to a turbo event from right here. Now, until now we've
-been listened to all of our turbo events inside of `assets/turbo/turbo-helper.js`
-And the reason we've been doing that is that all of these terminal, all this
-turbo code we've been adding is really global to our page red in global behaviors to
-our page. But in this case, we want to, uh, do something custom just inside this
-controller.
-
-So check this out, say `this.element.addEventListener()`, I'm going to listen
-to an event called `turbo:submit-end`  event, uh, an arrow function
-with an `event` argument. Now earlier in listened to a turbo submit certain event.
-Now we're listening to `turbo:submit-end`, which happens after the summit finishes once
-`console.log(event)`. Now you're probably noticing one other difference between
-this event and the other events until now we've been listening to everything on and
-document. Now most terrible events are dispatched directly on document, but the form
-ones like `turbo:submit-start` and `turbo:submit-end` are actually dispatched on the
-form object themselves. And then they bubble up. So by adding an event listener just
-to `this.element`, I'm only going to be listening to a turbo submit events that happen
-is side of that, this controller, which is kind of nice.
-
-All right. So let's go over, refresh the page, open the model and just submit Jan,
-check the console universal there's our event. I'll check out some information here.
-So like other things there's a detailed key with a form submission on it, but there
-is also a `success` key set to `false`. That would be true if this way successful form
-summit. So that's really cool because we can use that to know if the summit was
-successful and it closed the modal.
-
-So it's as easy as if `event.detail.success`. Then we can say `this.modal.hide()`. Yeah.
-
-Pretty cool. Sorry, refresh,
-
-Add some details and answered and got it. We're awesome. I'm going to complicate
+I'm going to complicate
 things a little bit because I really want us to understand the how to get the most
 out of France had ever would you `ProductAdminController` as we just talked about
 this redirects to the `product_admin_index` page. Let's pretend that
 for some reason, we want to redirect this to the reviews page for the new product. So
-that's a `app_product_reviews`, and then we can pass the `id` to the new ID 
-`$product->getId()`. This change won't apply to our model. You think about right now, once the
-model is successful, we're simply closing the modal
+that's a `app_product_reviews`, and then we can pass the `id` to the new ID
+`$product->getId()`. This change won't apply to our modal. You think about right now, once the
+modal is successful, we're simply closing the modal
 
 And staying on the page
 
@@ -84,9 +27,9 @@ to do that.
 
 Can, we could ignore this air showing up here or even hack an empty turbo frame onto
 that page, but let's fix this properly. All right. So here are the order of events
-that are happening with turbo behind the saints. First turbo dispatches 
-`turbo:before-fetch-request` then `turbo:submit-start`, and then 
-`turbo:before-fetch-response` and finally `turbo:summit-end`. 
+that are happening with turbo behind the saints. First turbo dispatches
+`turbo:before-fetch-request` then `turbo:submit-start`, and then
+`turbo:before-fetch-response` and finally `turbo:summit-end`.
 And then the frame is rendered. So wait a second.
 
 Why did, why is
@@ -111,8 +54,8 @@ So I'll refresh
 
 Although some new details, so we can see a successful form submit on this. It saved
 and cool. So you actually said there's two of these events. One of them happened
-right before it was loading the original form into the model. And then the second one
-happened when we submitted, we open this up and look in detail and as a 
+right before it was loading the original form into the modal. And then the second one
+happened when we submitted, we open this up and look in detail and as a
 `fetchResponse` object inside of it with awesome, a `succeeded` key, and also a `redirected`
 keys. So it tells us if it was successful. And also if it was redirected, because
 here's what we can do. If this, if when this event happens, if a modal was open and
@@ -122,14 +65,14 @@ the modal. Yeah.
 So check this out. It doesn't make sense quite yet. Don't worry about it. This is a
 bit complicated. So I'm going to delete my code here. And I'm just going to say,
 okay, if we do not have `this.modal`, which we set down here, that means certainly the
-models modal is not open. So we don't need to do anything. Or if not, 
+modals modal is not open. So we don't need to do anything. Or if not,
 `this.modal._isShown` kind of an internal way to detect whether a modal isn't visible or not.
 Either of those things happen, we don't need to do anything. We're just going to
 `return`. The modal is not open, but if it is open, say constant `fetchResponse =` and
 say `event.detail.fetchResponse` as the object that we were just looking at
 over a year, a second ago, then if `fetchResponse.succeeded` and `fetchResponse.redirected`
 that we know it's redirecting to another page. And we're, we're going to
-choose to do, at least for the moment is just hide the model.
+choose to do, at least for the moment is just hide the modal.
 
 Now so far, if we did this, this would have the exact same effect as before it would
 hide the modal. But then it was still try to render the frame of the redirector page
@@ -152,7 +95,7 @@ itself that `fetchResponse.location`, which is a fancy object, but it's
 just a different way that points to where this is redirected to. So the reason we're
 looking at this is that what we really want to do is one, the M is, uh, get the URL
 that the form submitted to. And then we can actually just navigate to that page with
-turbo.  Check it out at the top of this, I'm going to 
+turbo.  Check it out at the top of this, I'm going to
 `import * as Turbo from '@hotwired/turbo'`
 
 Then down here, I'll remove that `console.log`, we don't need that anymore. Now
@@ -162,8 +105,8 @@ But for driving this there's a new one last little annoying detail.
 when you submit the form successfully, that works.
 
 No, at least in some cases, though, if you go back, you know, I'm also going to read
-with you this time model, that higher don't actually need that anymore for
-redirecting to another page. There's no reason to close the model. And in some cases
+with you this time modal, that higher don't actually need that anymore for
+redirecting to another page. There's no reason to close the modal. And in some cases
 I've seen kind of that. Uh, yeah,
 
 I won't say that.
@@ -202,14 +145,14 @@ Our connect method will be called
 
 And we'll attach yet. We'll attach yet another event listener. So to be responsible,
 let's clean up that in `disconnect()`, which is called when the element we're attached
-to is removed and the page finally, to make our new model field, the most awesome
+to is removed and the page finally, to make our new modal field, the most awesome
 head back to `ProductAdminController`. And let's actually read direct change the
 reject back to the, uh, `product_admin_index`, which just makes more sense. So try the
 entire process, have it admin area, and then I'll do a full refresh. If we clicked
 the modal that was via the molded frame, we can save it. That saves via the mobile
 frame. And if we fill in some new, real data, this is going to submit normally be at
 a terrible frame. We'll detect that it was successful and boom, our item shows up. So
-when we tag, when we detect successful, we close the model. And then we navigated
+when we tag, when we detect successful, we close the modal. And then we navigated
 back to this page. We redirected back to this page,
 
 Which is why the new product showed up, but
@@ -219,4 +162,3 @@ made the whole thing feel really smooth. So next we just did something pretty cu
 We submitted a form into a turbo frame, but then navigating the entire page on
 success is, is not something turbo does natively, but it's kind of handy sometimes.
 So let's add a reusable way to do this whenever we want.
-
