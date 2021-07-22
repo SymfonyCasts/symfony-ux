@@ -31,4 +31,5 @@ chapters:
     - frame-form-action
     - frame-redirect
     - modal-frame
+    - modal-cleanup
     - modal-redirect
