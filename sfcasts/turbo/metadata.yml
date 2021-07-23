@@ -34,3 +34,5 @@ chapters:
     - modal-cleanup
     - modal-frame-close
     - modal-redirect
+    - full-frame-redirect
+    - frame-redirect-cache
