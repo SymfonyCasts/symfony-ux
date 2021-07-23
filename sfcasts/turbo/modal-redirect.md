@@ -1,85 +1,99 @@
 # Full Page Redirect from a Frame
 
-Coming soon...
+Our Turbo-frame-powered modal is now *almost* perfect. When we submit successfully,
+it closes the modal. But... dang! That's *all* it did. The product list did *not*
+update... so it's not *super* obvious that this worked!
 
-beautiful. It closed in this time. They did it without the error, but you notice
-the page. It didn't like reload or anything. So you don't see the new product her
+Look at the console log of the event for the successful form submit. Let's see.
+Inside `response`, ooh! We can see what URL the frame was redirected to! You
+can also get this from `fetchResponse`: this `fetchResponse.location` is an object
+that points to where this was redirected to.
 
+So the reason we're looking at this is that what we *really* want to do is, after
+the form submit successfully, read this URL and navigate the *entire* page to
+it with Turbo! We want a frame that's, sort of a "hybrid". We want the form submit
+to *stay* in the frame... but then once the submit is successful, we want to navigate
+the whole page to the redirected URL.
 
-Right away.
-Let's look at the log of the successful form. Submit again. Let's see here.
-Look inside this `response`. Ooh, look at, we actually have a way to get
-what URL was redirected to
-And actually there's a different way we can do that. It's actually on the `fetchResponse`
-itself that `fetchResponse.location`, which is a fancy object, but it's
-just a different way that points to where this is redirected to. So the reason we're
-looking at this is that what we really want to do is one, the M is, uh, get the URL
-that the form submitted to. And then we can actually just navigate to that page with
-turbo.  Check it out at the top of this, I'm going to
-`import * as Turbo from '@hotwired/turbo'`
+## Navigating the Redirect with Turbo
 
-Then down here, I'll remove that `console.log`, we don't need that anymore. Now
-we can say `Turbo.visit()` here. We can use `fetchResponse.location`
+And... yea! We can do that! At the top of the controller, import Turbo:
+`import * as Turbo from '@hotwired/turbo'`.
+
+Below, remove the `console.log`, then `Turbo.visit(fetchResponse.location)`.
 
 But for driving this there's a new one last little annoying detail.
-when you submit the form successfully, that works.
 
-No, at least in some cases, though, if you go back, you know, I'm also going to read
-with you this time modal, that higher don't actually need that anymore for
-redirecting to another page. There's no reason to close the modal. And in some cases
-I've seen kind of that. Uh, yeah,
+Let's do this! Refresh, open the modal, typy, typy, submit and... cool! The whole
+page navigated to the reviews page! Oh, and back in our code, I'm going to remove
+`this.modal.hide()`. We don't need that anymore since we're triggering a normal
+full page visit.
 
-I won't say that.
+## "Binding" this for a Listener Method
 
-All right. So I'm pretty happy with this. So let's clean things up a little bit. I'm
-going to copy the, of this method, the lead them, and then down here, create a new
-method called `beforeFetchresponse()` within `event` argument, just doing this for
-readability. No I'm connect. We can call that. So we don't even need an error
-function. We can say just `this.beforeFetchResponse`, are you sure you don't call it
-here? Just point to the function, but be careful because there's a subtle problem
-with this of her refresh. And actually I need to go back to the admin page and open
-this up and some of the format. Yeah.
+I'm pretty happy with this, but let's clean things up a bit. Copy the code inside
+the arrow function, scroll down, and create a new method called
+`beforeFetchResponse()` with an `event` argument. I'm just doing this for readability.
 
-Actually let me refresh that again. Add a new product. So there's empty thoughts and
-real data say it didn't work that time. And the area is not very obvious, but what
-happened here is that the, this variable down here is no longer the, our controller
-object. This happens when you pass a function directly to an event listener. And we
-normally work around if I pass bypass using an arrow function. But if you do want to point
-directly to method, you can by binding the method to this. So I want to do is create
-a spread above this. I'll say `this.boundBeforeFetchResponse`. So I'm actually
-creating a new property, `= this.beforeFetchResponse`, but don't call the method, just
-say `.bind(this)`. And then below I'll point at the bound before the federal
-response. So this creates a new property that points to this function. But when
-that's called the, this object is going to be the controller object, no matter what,
-this is not a stimulus problem. This is how Jarvis is sort of a JavaScript and event
-listener problem. What this does it solve our issue.
+In connect, call that. We don't even need an arrow function: just reference
+`this.beforeFetchResponse`.
 
-I submit now we get the good behavior. Oh, but I do want to add one tiny detail over
-here at a, `disconnect()` method. And then a copy of the `document.addEventListener`
-listener, but do change it to `document.removeEventListener`. Why are we doing this?
-If we add an event listener to a controller's element like `this.element` then if that
-element is removed from the page, it's no big deal. Nothing can interact and trigger
-events on that element anymore. Anyways, what if we add an event listener to the
-`document`, then every time a new `data-controller="modal-form"` appears on the page,
-Our connect method will be called
+But there *is* a subtle problem with this. Refresh, go back to the admin page,
+open up the modal and fill this out with real data. Submit!
 
-And we'll attach yet. We'll attach yet another event listener. So to be responsible,
-let's clean up that in `disconnect()`, which is called when the element we're attached
-to is removed and the page finally, to make our new modal field, the most awesome
-head back to `ProductAdminController`. And let's actually read direct change the
-reject back to the, uh, `product_admin_index`, which just makes more sense. So try the
-entire process, have it admin area, and then I'll do a full refresh. If we clicked
-the modal that was via the molded frame, we can save it. That saves via the mobile
-frame. And if we fill in some new, real data, this is going to submit normally be at
-a terrible frame. We'll detect that it was successful and boom, our item shows up. So
-when we tag, when we detect successful, we close the modal. And then we navigated
-back to this page. We redirected back to this page,
+It didn't redirect! And we have that error back in the console. What happened?
+It's not super obvious at first, but in our new method, the `this` variable is
+no longer referencing our `controller` object. This is a classic problem with
+callback functions, and we normally work around this by passing an arrow function.
+But if you *do* want to point directly to method, you *can* by *binding* the method
+to `this`.
 
-Which is why the new product showed up, but
+Check it out: say `this.boundBeforeFetchResponse` -I'm actually creating a new
+property `= this.beforeFetchResponse.bind(this)`. Then, below, point to the
+bound method.
 
-Reality, it wasn't a full page refresh, redirect. We navigate it with turbo, which
-made the whole thing feel really smooth. So next we just did something pretty custom.
-We submitted a form into a turbo frame, but then navigating the entire page on
-success is, is not something turbo does natively, but it's kind of handy sometimes.
-So let's add a reusable way to do this whenever we want.
+This creates a new property that points to the method.... But where we have
+*guaranteed* that the `this` variable in that method will point to `this`. That's
+the job of `bind`. And this is not a Stimulus problem, it's a problem you run
+into whenever you combine JavaScript, event listeners and objects.
 
+It looks weird at first... but when we submit the form... it *does* solve our issue:
+back to the good behavior!
+
+## Disconnecting the Event Listener
+
+Oh, but I do want to handle one small detail. Over in the controller, add a
+`disconnect()` method. Then copy the `document.addEventListener()` line, paste,
+and change it to `document.removeEventListener()`.
+
+Why are we doing this? If we add an event listener to a controller's element, like
+`this.element`, then if that element is removed from the page, it's no big deal
+that our listener is still technically attached to it. Nothing can interact or
+trigger events on that element anymore.
+
+But if we add an event listener to the `document`, then *every* time a new
+`data-controller="modal-form"` appears on the page, our connect method will be
+called and we'll attach yet *another* listener. Even after a controller's element
+is removed from the page, its `beforeFetchResponse()` would *still* be called!
+
+So, to be the responsible developers that we are, we *remove* the listener in
+`disconnect()`, which is called when the element attached to this controller is
+removed from the page.
+
+## Changing the Redirect Back to the List Page
+
+*Anyways*, to put the cherry on top of our new feature, head back to
+`ProductAdminController`. Let's change the redirect *back* to
+`product_admin_index`, which just makes more sense.
+
+Time to try the entire process. Go to the admin area and do a full refresh. Click
+to open the modal - that loaded via the frame - hit save - that submitted via the
+frame - and if fill in some real data. This is going to submit - like normal -
+*to* the frame. Then, we'll detect that it was *successful* and... boom! The new
+product shows up! That's because we just *navigated* back to this page with
+Turbo. That's smooth.
+
+Next: we just did something pretty custom. We submitted a form *into* a turbo
+frame... but then navigated the entire *page* on success. This isnot something
+a turbo frame does natively... but it's kind of handy sometimes. So let's add a
+reusable way to do this whenever we want.
