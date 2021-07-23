@@ -1,0 +1,22 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index b9ac91b9..3e14bbad 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -101,7 +101,7 @@ const TurboHelper = class {
+         });
+     }
+ 
+-    beforeFetchResponse(event) {
++    async beforeFetchResponse(event) {
+         const fetchResponse = event.detail.fetchResponse;
+         if (!fetchResponse.succeeded || !fetchResponse.redirected) {
+             return;
+@@ -113,6 +113,8 @@ const TurboHelper = class {
+ 
+         event.preventDefault();
+         Turbo.clearCache();
++        const snapshot = Turbo.PageSnapshot.fromHTMLString(await fetchResponse.responseHTML);
++        Turbo.navigator.view.snapshotCache.put(fetchResponse.location, snapshot)
+ 
+         Turbo.visit(fetchResponse.location, {
+             action: 'restore'

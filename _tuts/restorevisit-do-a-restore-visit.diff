@@ -1,0 +1,16 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index c5e9bcfb..b9ac91b9 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -113,7 +113,10 @@ const TurboHelper = class {
+ 
+         event.preventDefault();
+         Turbo.clearCache();
+-        Turbo.visit(fetchResponse.location);
++
++        Turbo.visit(fetchResponse.location, {
++            action: 'restore'
++        });
+     }
+ 
+     getCurrentFrame() {

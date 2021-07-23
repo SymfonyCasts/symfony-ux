@@ -1536,6 +1536,26 @@
             "description": null
         },
         {
+            "id": "restorevisit-upgrade-turbo",
+            "name": "RestoreVisit: upgrade turbo",
+            "description": null
+        },
+        {
+            "id": "restorevisit-do-a-restore-visit",
+            "name": "RestoreVisit: do a restore visit",
+            "description": null
+        },
+        {
+            "id": "restorevisit-put-snapshot-into-cache",
+            "name": "RestoreVisit: put snapshot into cache",
+            "description": null
+        },
+        {
+            "id": "restorevisit-normal-visit-again",
+            "name": "RestoreVisit: normal visit again",
+            "description": null
+        },
+        {
             "id": "fixredirect-listen-to-before-fetch-request",
             "name": "FixRedirect: listen to before-fetch-request",
             "description": null
@@ -1571,5 +1591,5 @@
             "description": null
         }
     ],
-    "sha": "82b78406839cda93d1a326fce7079fc11a8b83c6"
+    "sha": "9eda097d2017af5b62bd1baae882712d92f441d2"
 }
