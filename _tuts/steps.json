@@ -1511,8 +1511,8 @@
             "description": null
         },
         {
-            "id": "frameredirect-add-shouldframedofullredirect",
-            "name": "FrameRedirect: add shouldFrameDoFullRedirect()",
+            "id": "delete-me-14",
+            "name": "delete me 14",
             "description": null
         },
         {
@@ -1528,6 +1528,11 @@
         {
             "id": "frameredirect-data-turbo-form-redirect-again",
             "name": "FrameRedirect: data-turbo-form-redirect again",
+            "description": null
+        },
+        {
+            "id": "frameredirect-clear-cache-manually",
+            "name": "FrameRedirect: clear cache manually",
             "description": null
         },
         {
@@ -1566,5 +1571,5 @@
             "description": null
         }
     ],
-    "sha": "96b5872cb22072b551a7334072d131b29b773998"
+    "sha": "82b78406839cda93d1a326fce7079fc11a8b83c6"
 }
