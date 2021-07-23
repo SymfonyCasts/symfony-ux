@@ -5,7 +5,7 @@ frame system. But when we submit, wah, wah. It submits to the whole page.
 
 Let's see what's going on. Reopen the modal and inspect it. Hmm. Ah, look at the
 `form`. It has `data-turbo-frame="_top"`! That's coming from `_form.html.twig`.
-Remember: a few minutes ago, we set the `data-turbo-form` attribute to a
+Remember: a few minutes ago, we set the `data-turbo-frame` attribute to a
 dynamic `formTarget` variable. The point of this was so that *if* the form is
 being loaded into a frame, then we *target* that frame. Else, if the form
 is being loaded via a normal page load, target `_top`.

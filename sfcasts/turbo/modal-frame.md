@@ -34,7 +34,7 @@ the `modal-form` Stimulus controller here. We also have a Stimulus controller fo
 closed successfully. We're going to be removing *a lot* of this stuff soon.
 
 What I want to focus on right now is down here where we *include* that modal.
-Pass in that new `modalSrc` variable set to `{{ path('product_admin_new) }}`
+Pass in that new `modalSrc` variable set to `path('product_admin_new)`
 because that's the page that holds the "new product form" that we want.
 
 Before we try this, let's delete some code in `modal-form_controller.js`. In
@@ -44,7 +44,7 @@ That's going to happen automatically just because we're setting the `src` attrib
 on the `<turbo-frame>`.
 
 Also `submitForm()`... yea, we're not going to need this at *all*. The turbo frame
-will handle the form submit all on its own. And thanks to these changes, one the
+will handle the form submit all on its own. And thanks to these changes, one of the
 targets up on top - `modalBody` - is no longer used. So we can remove that too.
 
 Yup, the job of this controller is getting... pretty simple!
@@ -88,7 +88,7 @@ Attempt number 3! Refresh and click. Got it!
 
 ## Using Real Buttons vs Modal Footer
 
-But if try to submit this... error!
+But if we try to submit this... error!
 
 > Error invoking action `click->modal-form#submitForm`.
 

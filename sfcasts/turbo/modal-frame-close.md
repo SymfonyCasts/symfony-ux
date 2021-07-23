@@ -9,11 +9,11 @@ Ok, the `src` starts set to `/admin/product/new`, which means that when we open 
 modal, we see the contents of the `turbo-frame` from that page. Fill in some data
 and then submit.
 
-hmm, the `src` changed to `/admin/product`. Well, that *does* make sense:
-if you look `ProductAdminController`, after success, the controller redirects
+Hmm, the `src` changed to `/admin/product/`. Well, that *does* make sense:
+if you look in `ProductAdminController`, after success, the controller redirects
 to `/admin/product` - this is inside of the `new` action.
 
-So we submit to `/admin/product/new` and it redirects to `/admin/product`. When
+So we submit to `/admin/product/new` and it redirects to `/admin/product/`. When
 that happens, the frame system does *two* things. First, it makes a second request
 to the redirected URL - `/admin/product`. We've seen that before. And second, it
 updates the `src` attribute to match the redirected URL.
@@ -56,7 +56,7 @@ we're adding to the *entire* page.
 ## turbo:submit-end in Stimulus
 
 But in this case, we want to listen to an event *only* when a specific controller
-is active... so w can run some custom code that affect *just* that controller. Say
+is active... so we can run some custom code that affect *just* that controller. Say
 `this.element.addEventListener()` and listen to an event called
 `turbo:submit-end`. Pass this an arrow function with an `event` argument.
 
