@@ -46,6 +46,8 @@ Same thing here: pass a third argument with `action` set to
 `$this->generateUrl('product_admin_edit')`... but this needs an `id` wildcard
 set to `$product->getId()`.
 
+[[[ code('07ef85d1c7') ]]]
+
 Time to give this a try! Refresh the page, click edit, change the title and
 submit the form. Very nice... kind of. If you scroll down to find this product...
 yes! It *did* update the title!
@@ -63,6 +65,8 @@ But we could make it a bit more awesome by redirecting back to the public
 product show page. Let's try that: I'll do it in just the edit action. On
 success, change the index route to `app_product` - the route for the show page -
 and pass this the `id` wildcard that it needs.
+
+[[[ code('aabc2ed2a5') ]]]
 
 Let's see how this feels. Open up the floppy disk public show page, hit edit, change
 the title and submit. That's very nice!
@@ -100,6 +104,8 @@ So let's go change the target of *just* the form. The edit page template is
 `edit.html.twig`, but the form lives in `_form.html.twig`. Pass a second argument
 to `form_start` with an `attr` variable set to an object. Inside *that*, set
 `data-turbo-frame` to `product-info`.
+
+[[[ code('2a150f20ba') ]]]
 
 Let's try the flow! Refresh. We have a `turbo-frame` with `target="_top"`...
 but inside, an edit link that specifically targets the frame. When we click this,
