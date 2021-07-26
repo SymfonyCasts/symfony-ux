@@ -68,10 +68,14 @@ Back in the controller, when we render the template, pass in a new variable call
 `formTarget` set to `$request->headers->get('Turbo-Frame')`. If that header was
 *not* sent, add a second argument to default this to `_top`.
 
+[[[ code('df81a0897d') ]]]
+
 Now in `_form.html.twig`, instead of setting the target to `product-info`, use
 the `formTarget` variable. And because this template is *also* included on the
 new product page... and we're *not* setting this variable there, code defensively
 by defaulting it to `_top`.
+
+[[[ code('2ac71f840b') ]]]
 
 I *think* that's going to do it! Refresh the product admin page and hit save.
 Beautiful! That submitted to the entire page and *redirected* the entire page.
