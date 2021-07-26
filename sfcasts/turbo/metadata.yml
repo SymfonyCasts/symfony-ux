@@ -37,3 +37,4 @@ chapters:
     - modal-redirect
     - full-frame-redirect
     - frame-redirect-cache
+    - restore-visit
