@@ -25,7 +25,7 @@ I committed all my changes before hitting record so I can easily see any
 changes that the Flex recipe for this package might make. Paste and go:
 
 ```terminal
-composer require symfony/ux-chartjs
+composer require symfony/ux-chartjs:1.2.0
 ```
 
 While this loads, your Encore build may start failing: don't worry about that
