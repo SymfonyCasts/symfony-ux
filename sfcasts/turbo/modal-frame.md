@@ -27,6 +27,8 @@ be reusaable in multiple places. This `modal-body` element holds the actual
 Let's transform this into a `<turbo-frame>`. To keep things usable, set the frame's
 `src=""` to a new `modalSrc` variable that we will pass *into* this template.
 
+[[[ code('527a916e89') ]]]
+
 Now open the template for the product admin list page:
 `templates/product_admin/index.html.twig`. There's a lot going on here: we activate
 the `modal-form` Stimulus controller here. We also have a Stimulus controller for
@@ -36,6 +38,8 @@ closed successfully. We're going to be removing *a lot* of this stuff soon.
 What I want to focus on right now is down here where we *include* that modal.
 Pass in that new `modalSrc` variable set to `path('product_admin_new)`
 because that's the page that holds the "new product form" that we want.
+
+[[[ code('8c970df6b0') ]]]
 
 Before we try this, let's delete some code in `modal-form_controller.js`. In
 `openModal()`, we don't need to set the `innerHTML` to "Loading" - that can live
@@ -47,11 +51,15 @@ Also `submitForm()`... yea, we're not going to need this at *all*. The turbo fra
 will handle the form submit all on its own. And thanks to these changes, one of the
 targets up on top - `modalBody` - is no longer used. So we can remove that too.
 
+[[[ code('d60e96df81') ]]]
+
 Yup, the job of this controller is getting... pretty simple!
 
 Back in `_modal.html.twig`, to finish our cleanup, we don't need the `modalBody`
 target... and we also don't need the `data-action` that called the `submitForm`
 method that we just deleted.
+
+[[[ code('bce306397a') ]]]
 
 ## Forgetting the id Attribute
 
@@ -68,9 +76,13 @@ our frame an id! Whoops.
 Head back to `_modal.html.twig`. I want to keep this dynamic because different
 modals may need different frame ids. So say `id="{{ id }}"`.
 
+[[[ code('527ac5edca') ]]]
+
 Over in `index.html.twig`, pass in the new `id` variable set to `product-info`.
 That's the `id` we've been using... and it really could be *anything*, as long
 as it matches a frame on the new product page.
+
+[[[ code('9c8b0bec15') ]]]
 
 Ok: let's keep trying. Refresh and add a new product. Error!
 
@@ -83,6 +95,8 @@ disadvantage is that we added the frame in `edit.html.twig` on purpose so that o
 inline editing feature would include the "edit product" `h1` tag and the delete
 button. So instead, let's just add the same `<turbo-frame>` over here in
 `new.html.twig`.
+
+[[[ code('03eaeecc5c') ]]]
 
 Attempt number 3! Refresh and click. Got it!
 
@@ -98,6 +112,8 @@ deleted a few minutes ago. In `_modal.html.twig`, this is coming from the
 the form. But this button is actually *outside* of the form, which lives in
 the `turbo-frame`. What we need to do, yet again, is simplify. Remove the
 `modal-footer` entirely.
+
+[[[ code('f7d3c8b5c0') ]]]
 
 If you refresh and open the form... the footer buttons are gone... but there is now
 *no* submit button on the form! Well, there *is* one, but it's hiding: you can
