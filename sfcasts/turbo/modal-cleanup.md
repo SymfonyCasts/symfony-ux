@@ -5,6 +5,9 @@ frame system. But when we submit, wah, wah. It submits to the whole page.
 
 Let's see what's going on. Reopen the modal and inspect it. Hmm. Ah, look at the
 `form`. It has `data-turbo-frame="_top"`! That's coming from `_form.html.twig`.
+
+[[[ code('619c88cf25') ]]]
+
 Remember: a few minutes ago, we set the `data-turbo-frame` attribute to a
 dynamic `formTarget` variable. The point of this was so that *if* the form is
 being loaded into a frame, then we *target* that frame. Else, if the form
@@ -16,9 +19,13 @@ action - we *did* pass in the `formTarget` variable that's set to the `Turbo-Fra
 request header. Go us! But... I did *not* do that for the `new` action. And
 since that does *not* pass a `formTarget` variable, it defaulted to `_top`.
 
+[[[ code('6f66bebaf8') ]]]
+
 So let's pass that variable in for the new page as well. This is yet *another*
 spot where, to get this turbo-frame-powered modal working, we're making things
 simpler and more consistent.
+
+[[[ code('b48081e9e1') ]]]
 
 Ok: refresh again, open the modal, submit and... oh, that is positively
 heart-warming.
@@ -36,6 +43,8 @@ somehow *delay* that? Totally! And we did this earlier.
 
 In `_modal.html.twig`, on the `turbo-frame`, add `loading="lazy"`.
 
+[[[ code('9bfa9a0409') ]]]
+
 Let's see how this looks. Refresh and inspect the frame. It still says "Loading":
 it has *not* made the Ajax request yet. Open your network tools and watch the
 Ajax requests. Click to open the modal! There's the Ajax call!
@@ -52,6 +61,8 @@ cool. Let's cleanup a few more things: we don't need `useDispatch` anymore: we'r
 not dispatching any events... whoops. And... we don't need to import `useDispatch`
 or `jQuery`... and we can also delete the `formUrl` value.
 
+[[[ code('b06bfdac34') ]]]
+
 Cool. In the template for the product index page, we still *do* need the
 `modal-form` controller but we do *not* need to pass in the `formUrl` variable.
 
@@ -65,6 +76,8 @@ controller.
 
 Honestly, I'm wondering if it might have been easier to start this feature from
 scratch! Because most of the work we just did was deleting and simplifying.
+
+[[[ code('f9ff1f787f') ]]]
 
 Let's make sure we didn't break anything. Refresh, open the modal and submit the
 form empty. That feels great!
