@@ -1,96 +1,128 @@
-# Restore Visit
+# Manual "Restore" Visit
 
-Coming soon...
+Refresh, go to the cart page and add another item from the sidebar. A few minutes
+ago, after doing this, we saw a nice green success flash message on the top of the
+page. Where did it go?
 
-Refresh. So do the cart page and add another item for the sidebar. A few minutes ago,
-we saw a nice green success flash message on the top of this page, where did it go
-look at the network tools and scroll up? Ah, here's the problem. When we submitted
-the, add the cart into the frame, our controller redirected and the turbo frame
-followed that redirect that's this exhibit here, here's the post to gov `/cart`. And
-this is the request for the redirect. This page does contain a success flash message,
-whereas it item added and remember flash messages that are only rendered once as soon
-as they're rendered, they're not rendered again, but we did. You never actually see
-this response on the page. Nope. We detect that this redirect just happened. Cancel
-the render, which would have happened only inside the frame and then use turbo to
-navigate to this URL. That's this second request. Fortunately, once we, again here,
-the flash message, it doesn't show because it
+Look at the network tools and scroll up. Ah, here's the problem. When we submitted
+the add to cart form into the frame, our controller redirected and the turbo frame
+*followed* that redirect. This request is the POST to `/cart`... and this is the
+Ajax request for the redirect. That response *does* contain a success flash message:
+"Item added!".
 
-Was already rendered.
+But remember: flash messages are only rendered *one* time. Or, to be more precise,
+as soon as we render a flash message, Symfony *removes* it so that it's never
+rendered again.
 
-Yep. Our system works great except that they redirected page as requested twice. And
-we only rented the second one. This is actually really hard to work around and it's
-mostly not Turbo's fault. There are from a high level two solutions. The first is
-that we can add some code to our flash logic so that if the request is for a turbo
-frame, it doesn't render that way. It won't get used and it'll render on the next
-four request, but that feels really hacking to me. If you're not careful, you can end
-up with multiple flash messages that I'll render on the page at the same time. The
-other solution is the hard one, but more correct. Basically when we return a redirect
-internally, internally turbo uses the `fetch()` function to make all of its Ajax calls.
-When we return a redirect, it automatically follows that and makes a second request,
-which we're seeing down here turns out that's not a behavior of turbo.
+The problem is that... we never actually *see* this response on the page. Nope.
+We detect that this redirect happened, cancel the render - which only would have
+rendered inside the frame anyways - and then use Turbo to navigate to this URL.
+That's the *second* identical request. Unfortunately, once we get there, the flash
+message is gone... because it was already rendered... even though *we* never saw it.
 
-That's just how fetch works. If you use fetch to make an Ajax request to one URL and
-it redirects, it will automatically make a second request. The ideal solution would
-be for fetch to not follow the redirect to this URL, to make only the first request.
-Stop then us the URL to the second request so that we can visit it with turbo on.
-Unfortunately that's literally not possible for complex reasons that might change
-someday. You can tell `fetch()` to not follow a redirect, but if you do it, won't tell
-you what you were out. It would have redirected to it, hides it. So what we want to
-do is literally not possible in browsers as of today. So what a mess, fortunately,
-there are still two ways to solve this correctly and I'll show you both. The first is
-quick, easy and involves turbo. It also involves on an internal option that they tell
-you not to use.
+Yep, our system works great except that the redirected page is requested twice...
+and we only render the second one.
 
-The second solution involves some cool work in our Symfony app. So let's start with
-the turbo solution. It's beautifully simple, and it all starts with a question. If
-the turtle frame already makes an Ajax request to the redirected page, can we simply
-tell turbo to navigate to that page and use this HTML without making a second
-request? Think about it over in `turbo-helper.js`, this `fetchResponse`, which represents,
-uh, already contains the HTML we want. We just need turbo to put that onto the page
-and update the address bar. So let's do it start by finding your terminal. And yes,
-once again, running 
+## Ajax Calls and Redirects: A Conundrum
+
+This is actually tough to fix... and it's mostly not Turbo's fault. We *could* try
+to work around this by adding some code to our flash logic. Like, *if* the request
+is for a turbo frame, don't render the flash message. That way, it won't get used
+and will render on the next *full* request.
+
+But... that feels hacky to me. The *real* solution is harder, but more correct:
+avoid the second, duplicate request!
+
+Internally Turbo uses the `fetch()` function to make its Ajax calls. When
+we return a redirect, `fetch` automatically follows that and makes a second Ajax
+request, which we see down here. So, this "follow the redirect" behavior does
+*not* come from Turbo... it's just how `fetch` works.
+
+The ideal solution would be for `fetch()` to... *not* follow the redirect: to
+make only the *first* request, stop, then tell us the redirect URL so that *we*
+can visit it with Turbo.
+
+Unfortunately... that's literally *not* possible. For complex reasons that might
+change someday, you *can* tell `fetch()` to *not* follow a redirect. But if you
+do, `fetch()` purposely *hides* the URL that it *would* have redirected to...
+which means we have no idea what URL to make Turbo navigate to! Yup, our ideal
+solution is entirely *not* possible in browsers as of today. What a mess!
+
+Fortunately, there are still two ways to solve this correctly, and I'll show you
+both. The first is quick, easy and... involves using an internal option in Turbo
+that the documentation specifically tells you *not* to use. Exciting! The second
+solution involves some work in our Symfony app, but avoids using that option.
+
+## Upgrading Turbo... Again
+
+So let's start with the pure Turbo solution. It's beautifully simple and... it all
+starts with a question: if the turbo-frame already makes the Ajax request to the
+redirected page, could we simply tell Turbo to navigate to that page and use *that*
+HTML... without making a second request? Think about it: over in `turbo-helper.js`,
+this `fetchResponse` already contains the HTML we want! We just need Turbo to put
+that onto the page and update the address bar.
+
+Doing this *is* possible... mostly. Start by finding your terminal and, once again,
+running:
 
 ```terminal
 yarn upgrade @hotwired/turbo
 ```
 
-this time and upgrades to turbo
-RC one turbo. It seems to release a feature just before I knew next over in a `turbo-helper.js`
-helper. We're to a second argument, determined `Turbo.visit()`. There's an option here
-called `action`. And one of the values you can put here is `restore`.
+## The Internal "restore" Option
 
-The actual restore tells turbo to visit this URL, but with the same behavior as when
-you click the back or forward buttons in your browser specifically, if the page is
-all right in the snapshot, cache, use that and make no network request. If it's not
-already in the snapshot cache, it will make a network request. This is the part where
-we're breaking the rules. Restoration visits are reserved for clicking back and
-forward. While setting this action restore will work. The documentation says that
-this is internal and we shouldn't do this, which is kind of a shame anyways, let's
-ignore that for now. If we refresh the page and head back to the cart and add on
-another item, it's we still don't see the flash message that's because even though
-turbo has made a request for this URL, it was never put into the snapshot cache. We
-need to do that manually. Yeah.
+This upgrades Turbo to RC-1. Turbo seems to always release a new feature just
+*before* I need it. In this case, it's a `PageSnapshot` class we'll use later.
 
-And here's how I'm just going to put some code up here. It's a little bit internal.
-So everybody clear the cache. We can say `const snapshot =` and then 
-`Turbo.PageSnapshot.fromHTMLString()`, and then we're going to pass it. The response HTML,
-which we can get by saying `fetchResponse.responseHTML`, except there's one
-little gotcha on here. This is actually a return. They promise. So we need to `await`
-that. And as soon as we await that we need to `async` this, I, it gives us a snapshot
-object from that HTML. Then we can say `Turbo.navigator.view.snapshotCache.put()`
-And then we give us the location, which we're going to a special `fetchResponse.location`. 
-That's just basically the URL for this snapshot. And then
-the `snapshot` object. So both of these pretty low level, but that puts that snapshot
-in the cache at four, that you were out. Let's try it, do the whole flow again,
-refresh the page, go to the cards, submit. And we got it. Be flash messes shows up
-and down in the network tools. You can see only one request for this page. That's
-awesome. So maybe we just stick with the solution and hope it won't break in the
-future. Even though the action restore is meant as an internal flag, I couldn't find
-any conversation about why it's internal or what risks you have, but if you want to
-play it safe, we have another solution. Change this back to a normal visit.
+Now, over in `turbo-helper.js`, add a second argument to `Turbo.visit()` - an
+options argument. One option here is called `action`.... and one of the values
+you can set it to is `restore`.
 
-Also take off the `async`
+The action `restore` tells Turbo to visit this URL, but with the same behavior as
+if you clicked the back or forward buttons in your browser. Specifically, if the
+page is already in the snapshot cache, use that snapshot and make *no* network
+request. If it's not already in the snapshot cache, then it *will* make a network
+request.
 
-And next let's solve this problem again by doing some fancy communication between
-turbo and Symfony.
+*This* is the part where we're breaking the rules. "Restoration visits" are reserved
+for clicking the back and forward buttons. Setting this action to `restore` *will*
+work... but the documentation says that this is "internal" and that we should
+*not* use this `action` directly.
 
+But... let's ignore that for now. Refresh the page, head back to the cart and
+add another item. Hmm, we *still* don't see the flash message. Oh, that's because
+even though Turbo *has* made a request for this URL - via the redirect - that
+response was never put into the snapshot cache. Remember: a snapshot of a page is
+normally taken the moment you navigate *away* from that page. We're going to need
+to put the HTML into the snapshot cache manually.
+
+Here's how... and some of this *is* pretty deep in Turbo. Say
+`const snapshot = Turbo.PageSnapshot.fromHTMLString()` and pass it the response
+HTML, which we can get by saying `fetchResponse.responseHTML`. Except...
+`responseHTML` returns a Promise... so we need to `await` that. And as soon as
+we await *that*, we need to make the method `async`.
+
+This gives us a Snapshot object from that HTML. To put this into the cache, say
+`Turbo.navigator.view.snapshotCache.put()` and pass this the URL - or "location" -
+of the page - `fetchResponse.location` - and then the `snapshot` object.
+
+This is... pretty low-level, but *that* is how you can manually add a page to the
+cache. Let's try it!
+
+Do the whole flow again: refresh the page, go to the cart, submit, and... we got
+it! The flash message shows up and, down in the network tools, we see only one
+request for this page. That's awesome!
+
+## Is this Internal Option Safe?
+
+So... maybe we just stick with this solution and hope it won't break in the
+future. Even though the action `restore` is meant as an internal flag, I couldn't
+find any conversation about *why* it's internal or what risks there are: the
+note in the documentation was added years ago when the feature was first
+introduced.
+
+But... if you want to play it safe, we have another solution. Change this back to
+a normal visit... and also take off the `async`.
+
+Next: let's solve this problem again by doing some fancy communication between
+Turbo and Symfony.
