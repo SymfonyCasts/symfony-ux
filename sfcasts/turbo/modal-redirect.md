@@ -22,10 +22,14 @@ And... yea! We can do that! At the top of the controller, import Turbo:
 
 Below, remove the `console.log`, then `Turbo.visit(fetchResponse.location)`.
 
+[[[ code('27c2b1b547') ]]]
+
 Let's do this! Refresh, open the modal, typy, typy, submit and... cool! The whole
 page navigated to the reviews page! Oh, and back in our code, we can remove
 `this.modal.hide()`. We don't need that anymore: we're navigating the entire
 page, so that will naturally replace the modal.
+
+[[[ code('ffa99d65d4') ]]]
 
 ## "Binding" this for a Listener Method
 
@@ -35,6 +39,8 @@ the arrow function, scroll down, and create a new method called
 
 In `connect()`, call that. We don't even need an arrow function: just reference
 `this.beforeFetchResponse`.
+
+[[[ code('7c8e669c75') ]]]
 
 There *is* a problem with this... but let's try it! Refresh, go back to the admin
 page, open up the modal and fill this out with real data. Submit!
@@ -50,6 +56,8 @@ Check it out: say `this.boundBeforeFetchResponse` - I'm actually creating a new
 property `= this.beforeFetchResponse.bind(this)`. Then, below, point to the
 bound method.
 
+[[[ code('e86490e517') ]]]
+
 This creates a new property that points to the method.... but where we have
 *guaranteed* that the `this` variable in that method will point to `this` object.
 That's the job of `bind`. And this isn't a Stimulus problem, it's a problem you
@@ -63,6 +71,8 @@ back to the good behavior!
 Oh, but I do want to handle one small detail. Over in the controller, add a
 `disconnect()` method. Then copy the `document.addEventListener()` line, paste,
 and change it to `document.removeEventListener()`.
+
+[[[ code('37e5500ed8') ]]]
 
 Why are we doing this? If we add an event listener to a controller's element, like
 `this.element`, then if that element is removed from the page, it's no big deal
@@ -84,6 +94,8 @@ removed from the page.
 *Anyways*, to put the cherry on top of our new feature, head back to
 `ProductAdminController`. Change the redirect *back* to
 `product_admin_index`, which just makes more sense.
+
+[[[ code('3e0cc716c4') ]]]
 
 Time to try the entire process. Go to the admin area and do a full refresh. Click
 to open the modal - that loaded via the frame - hit save - that submitted via the

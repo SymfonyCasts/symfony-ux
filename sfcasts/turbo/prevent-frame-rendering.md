@@ -80,8 +80,6 @@ that's the object we were just looking at. If `fetchResponse.succeeded` *and*
 `fetchResponse.redirected`, then we're going to assume this was a successful form
 submit and hide the modal.
 
-[[[ code('8adf4ddec6') ]]]
-
 ## Cancelling the Frame Render
 
 If we stopped now, this would do the *exact* same thing as before... just with
@@ -89,6 +87,8 @@ more code. It would hide the modal... but then the frame would *still* try to re
 and give us that annoying error. But there's a key difference between this event
 and `turbo:submit-end`: *this* event is *cancellable*. In this event we're allowed
 to say `event.preventDefault()`.
+
+[[[ code('8adf4ddec6') ]]]
 
 Normally, we use `event.preventDefault()` to prevent form submits or link
 clicks. Some custom events - like this one - *also* allow you to call this method...
