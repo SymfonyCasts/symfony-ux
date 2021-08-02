@@ -64,6 +64,8 @@ Earlier we listened to `turbo:submit-start`. As you can see, there is *also*
 a `turbo:submit-end` event, which happens after the submit Ajax call has finished.
 Let's `console.log(event)` to see what it looks like.
 
+[[[ code('8578c78127') ]]]
+
 Oh, and you probably noticed one big difference between this event and the other
 events that we've listened to. Most Turbo events are dispatched directly on
 `document`. But the form events - like `turbo:submit-start` and `turbo:submit-end` -
@@ -82,6 +84,8 @@ key set to `false`! That would be true if this was a *successful* form submit.
 the modal.
 
 Let's go do it! If `event.detail.success`, then `this.modal.hide()`.
+
+[[[ code('2378c3c18e') ]]]
 
 Cool. Refresh, open the modal, fill in some details and submit. Go team!
 
