@@ -8,6 +8,8 @@ the `product_admin_index` page. Let's pretend that we want to redirect this to t
 "reviews" page for the new product. Change this to `app_product_reviews` and pass
 the `id` wildcard set to the new id: `$product->getId()`.
 
+[[[ code('c72001e72d') ]]]
+
 Cool. But this change won't affect our modal. When the modal submit is successful,
 we're simply closing the modal, staying on the page and completely *ignoring*
 the frame that lives in the now-closed modal. This new redirect would only affect us
@@ -53,6 +55,8 @@ This time, we *do* need to attach the event to `document` because this event is
 dispatched directly there - not on the form. For now, I'm going to *not* hide the
 modal.
 
+[[[ code('e7b1f2427c') ]]]
+
 Refresh, open the modal and fill out the form so we can see what the event looks
 like for a successful form submit. Cool. In the console, we see *two* of these
 events. The first happened when we opened the modal: that's the GET request to
@@ -75,6 +79,8 @@ But if the modal *is* open, set `const fetchResponse` to `event.detail.fetchResp
 that's the object we were just looking at. If `fetchResponse.succeeded` *and*
 `fetchResponse.redirected`, then we're going to assume this was a successful form
 submit and hide the modal.
+
+[[[ code('8adf4ddec6') ]]]
 
 ## Cancelling the Frame Render
 
