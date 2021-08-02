@@ -15,6 +15,8 @@ Here's the plan: if a `turbo-frame` - like the `turbo-frame` in `_modal.html.twi
 has a `data-turbo-form-redirect="true"` attribute - which I *totally* just invented -
 then we will redirect the whole page if we detect a redirect in that frame.
 
+[[[ code('0e28166ba0') ]]]
+
 ## Moving Code to turbo-helper
 
 Because this new redirect behavior will be something that will work *anywhere*
@@ -24,13 +26,19 @@ into `turbo-helper` where the rest of our global Turbo stuff lives.
 Copy the `beforeFetchResponse()` method and delete it. Then, in `turbo-helper`,
 paste this at the bottom. Cool.
 
+[[[ code('c479057d74') ]]]
+
 Back in `modal-form_controller`, we don't need the `disconnect()` method anymore.
 We're going to register this listener just *once* inside of `turbo-helper`. Copy
 part of `connect()`, delete the rest... and we can also remove the Turbo import.
 
+[[[ code('c0e19e76f2') ]]]
+
 Over in `turbo-helper`, go up to the constructor - here it is - and paste. To
 call the method, pass an arrow function with an event argument and call
 `this.beforeFetchResponse(event)`.
+
+[[[ code('7eed3fefea') ]]]
 
 ## Finding the "Active" Frame, if any, for a Request
 
@@ -50,6 +58,8 @@ Create a new convenience method called `getCurrentFrame()`. This is going to ret
 the `turbo-frame` Element that is currently loading or null. And it's as simple as
 return `document.querySelector()` looking for `turbo-frame[busy]`.
 
+[[[ code('3e59075425') ]]]
+
 It *is* theoretically possible that *two* frames could be loading at the same time.
 But other than on initial page load if you had multiple lazy frames, I think that's
 pretty unlikely.
@@ -63,6 +73,8 @@ But if the response *was* successful and was a redirect, we need to see if we ar
 inside of a frame *and* make sure that the frame has our data attribute. If
 not `this.getCurrentFrame()`, then return and do nothing. And if the current
 frame does *not* have `.dataset.turboFormRedirect`, *also* do nothing.
+
+[[[ code('502f59eb46') ]]]
 
 At this point, we know that the Ajax call *did* happen inside of a frame with our
 `data` attribute *and* that the Ajax call *did* redirect to another page. And so,
