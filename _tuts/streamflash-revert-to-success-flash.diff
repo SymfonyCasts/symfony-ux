@@ -1,0 +1,28 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 7431f911..5eec9e14 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -86,7 +86,7 @@ class ProductController extends AbstractController
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
+-                $this->addFlash('review_success', 'Thanks for your review! I like you!');
++                $this->addFlash('success', 'Thanks for your review! I like you!');
+ 
+                 return $this->redirectToRoute('app_product_reviews', [
+                     'id' => $product->getId(),
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index 7c402287..5638e9cf 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -12,10 +12,6 @@
+ 
+ <hr>
+ 
+-{% for flash in app.flashes('review_success') %}
+-    <div class="alert alert-success">{{ flash }}</div>
+-{% endfor %}
+-
+ {% if reviewForm|default(false) %}
+     <h4>Post your own review</h4>
+     {{ form_start(reviewForm, {

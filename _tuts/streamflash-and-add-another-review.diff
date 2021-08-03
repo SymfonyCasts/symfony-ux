@@ -1,0 +1,14 @@
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index be5d1681..77f0407d 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -29,5 +29,9 @@
+         type: 'success',
+         message: 'Thanks for your review!',
+     }) }}
++
++    <a href="{{ path('app_product_reviews', {
++        id: product.id
++    }) }}">Add another review</a>
+ {% endif %}
+ </turbo-frame>

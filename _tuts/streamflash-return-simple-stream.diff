@@ -1,0 +1,55 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 5eec9e14..e32023c1 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\HttpFoundation\Response;
++use Symfony\UX\Turbo\Stream\TurboStreamResponse;
+ 
+ class ProductController extends AbstractController
+ {
+@@ -86,6 +87,9 @@ class ProductController extends AbstractController
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
++                return $this->render('product/reviews.stream.html.twig', [
++                ], new TurboStreamResponse());
++
+                 $this->addFlash('success', 'Thanks for your review! I like you!');
+ 
+                 return $this->redirectToRoute('app_product_reviews', [
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 8c81d8d7..302ef146 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -67,6 +67,7 @@
+                 </nav>
+             </header>
+ 
++            <div id="flash-container">
+             {% for flash in app.session.flashBag.get('success') %}
+                 <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     {{ flash }}
+@@ -74,8 +75,8 @@
+                       <span aria-hidden="true"></span>
+                     </button>
+                 </div>
+-
+             {% endfor %}
++            </div>
+         </div>
+ 
+         {% block body %}{% endblock %}
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+new file mode 100644
+index 00000000..513fb6b9
+--- /dev/null
++++ b/templates/product/reviews.stream.html.twig
+@@ -0,0 +1,5 @@
++<turbo-stream action="append" target="flash-container">
++    <template>
++        Will this <strong>really</strong> work???
++    </template>
++</turbo-stream>

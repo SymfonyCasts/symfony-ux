@@ -1,0 +1,23 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+index 3b3f60af..bb1f7ba6 100644
+--- a/assets/controllers/counter_controller.js
++++ b/assets/controllers/counter_controller.js
+@@ -12,7 +12,7 @@ export default class extends Controller {
+         renderStreamMessage(`
+ <turbo-stream action="update" target="flash-container">
+     <template>
+-        <div class="alert alert-success">
++        <div class="alert alert-success" data-turbo-cache="false" >
+             Thanks for clicking ${this.count} times!
+         </div>
+     </template>
+diff --git a/templates/_flash.html.twig b/templates/_flash.html.twig
+index deacbf3f..4c02fb71 100644
+--- a/templates/_flash.html.twig
++++ b/templates/_flash.html.twig
+@@ -1,4 +1,4 @@
+-<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
++<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert" data-turbo-cache="false">
+     {{ message }}
+     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+         <span aria-hidden="true"></span>

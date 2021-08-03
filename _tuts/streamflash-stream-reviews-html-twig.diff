@@ -1,0 +1,14 @@
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+index 74e593ef..058c7e56 100644
+--- a/templates/product/reviews.stream.html.twig
++++ b/templates/product/reviews.stream.html.twig
+@@ -6,3 +6,9 @@
+         }) }}
+     </template>
+ </turbo-stream>
++
++<turbo-stream action="replace" target="product-review">
++    <template>
++        {{ include('product/_reviews.html.twig') }}
++    </template>
++</turbo-stream>

@@ -1589,7 +1589,72 @@
             "id": "fixredirect-redirect-on-login",
             "name": "FixRedirect: redirect on login",
             "description": null
+        },
+        {
+            "id": "streamflash-revert-to-success-flash",
+            "name": "StreamFlash: revert to success flash",
+            "description": null
+        },
+        {
+            "id": "streamflash-return-simple-stream",
+            "name": "StreamFlash: Return simple stream",
+            "description": null
+        },
+        {
+            "id": "streamflash-paste-to-flash-html-twig",
+            "name": "StreamFlash: paste to _flash.html.twig",
+            "description": null
+        },
+        {
+            "id": "streamflash-include-flash",
+            "name": "StreamFlash: include _flash",
+            "description": null
+        },
+        {
+            "id": "streamflash-use-in-stream-template",
+            "name": "StreamFlash: use in stream template",
+            "description": null
+        },
+        {
+            "id": "streamflash-stream-reviews-html-twig",
+            "name": "StreamFlash: stream _reviews.html.twig",
+            "description": null
+        },
+        {
+            "id": "streamflash-pass-in-product",
+            "name": "StreamFlash: pass in product",
+            "description": null
+        },
+        {
+            "id": "streamflash-extra-flash",
+            "name": "StreamFlash: Extra flash",
+            "description": null
+        },
+        {
+            "id": "streamflash-and-add-another-review",
+            "name": "StreamFlash: and add another review",
+            "description": null
+        },
+        {
+            "id": "streamstats-create-quickstats-template",
+            "name": "StreamStats: create _quickStats template",
+            "description": null
+        },
+        {
+            "id": "streamstats-add-update-to-stream",
+            "name": "StreamStats: add update to stream",
+            "description": null
+        },
+        {
+            "id": "manualstream-stream-from-javascript",
+            "name": "ManualStream: Stream from JavaScript",
+            "description": null
+        },
+        {
+            "id": "manualstream-add-data-turbo-cache-false",
+            "name": "ManualStream: add data-turbo-cache=\"false\" ",
+            "description": null
         }
     ],
-    "sha": "21abe417dc38c8e7cf6b8c6a78b1c3e1b69aa1f9"
+    "sha": "61aec32f916c4fe5a590af03f94eebf8a5577990"
 }

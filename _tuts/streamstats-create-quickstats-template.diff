@@ -1,0 +1,30 @@
+diff --git a/templates/product/_quickStats.html.twig b/templates/product/_quickStats.html.twig
+new file mode 100644
+index 00000000..ab6e4507
+--- /dev/null
++++ b/templates/product/_quickStats.html.twig
+@@ -0,0 +1,5 @@
++<strong>{{ product.priceString|format_currency('USD') }}</strong>
++<br>
++<strong>{{ product.reviews|length }}</strong> Reviews
++<br/>
++<strong>{{ product.averageStars }}/5</strong><i class="fas fa-star ms-2"></i>
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 419e0b9d..d2ab874c 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -30,12 +30,8 @@
+                 {{ product.description }}
+             </div>
+             <div class="p-3 mt-4 d-flex justify-content-between flex-wrap flex-lg-nowrap">
+-                <div>
+-                    <strong>{{ product.priceString|format_currency('USD') }}</strong>
+-                    <br>
+-                    <strong>{{ product.reviews|length }}</strong> Reviews
+-                    <br/>
+-                    <strong>{{ product.averageStars }}/5</strong><i class="fas fa-star ms-2"></i>
++                <div id="product-quick-stats">
++                    {{ include('product/_quickStats.html.twig') }}
+                 </div>
+                 <div>
+                     {{ include('product/_cart_add_controls.html.twig') }}

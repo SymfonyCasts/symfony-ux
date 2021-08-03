@@ -1,0 +1,12 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index de429c3c..d171d1f2 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -91,6 +91,7 @@ class ProductController extends AbstractController
+ 
+                 return $this->render('product/reviews.stream.html.twig', [
+                     'message' => $message,
++                    'product' => $product,
+                 ], new TurboStreamResponse());
+ 
+                 $this->addFlash('success', $message);

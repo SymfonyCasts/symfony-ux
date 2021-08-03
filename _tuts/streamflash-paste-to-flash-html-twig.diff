@@ -1,0 +1,29 @@
+diff --git a/templates/_flash.html.twig b/templates/_flash.html.twig
+new file mode 100644
+index 00000000..9656aa19
+--- /dev/null
++++ b/templates/_flash.html.twig
+@@ -0,0 +1,6 @@
++<div class="alert alert-success alert-dismissible fade show" role="alert">
++    {{ flash }}
++    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
++        <span aria-hidden="true"></span>
++    </button>
++</div>
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 302ef146..724f0b04 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -69,12 +69,6 @@
+ 
+             <div id="flash-container">
+             {% for flash in app.session.flashBag.get('success') %}
+-                <div class="alert alert-success alert-dismissible fade show" role="alert">
+-                    {{ flash }}
+-                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+-                      <span aria-hidden="true"></span>
+-                    </button>
+-                </div>
+             {% endfor %}
+             </div>
+         </div>
