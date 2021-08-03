@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
-index eee47c67..9bfdb042 100644
+index eee47c67..577ced60 100644
 --- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 +++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 @@ -14,6 +14,11 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
@@ -14,3 +14,19 @@ index eee47c67..9bfdb042 100644
      }
  
      public static function getSubscribedEvents()
+@@ -29,14 +34,6 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+             return false;
+         }
+ 
+-        if (!$request->headers->has('Turbo-Frame')) {
+-            return false;
+-        }
+-
+-        if ($request->headers->get('Turbo-Frame-Redirect')) {
+-            return true;
+-        }
+-
+-        return false;
++        return (bool) $request->headers->get('Turbo-Frame-Redirect');
+     }
+ }

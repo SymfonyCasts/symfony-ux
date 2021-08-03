@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
-index 9bfdb042..c17c4376 100644
+index 577ced60..f1339d94 100644
 --- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 +++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 @@ -6,9 +6,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;
@@ -20,8 +20,8 @@ index 9bfdb042..c17c4376 100644
      public function onKernelResponse(ResponseEvent $event)
      {
          if (!$this->shouldWrapRedirect($event->getRequest(), $event->getResponse())) {
-@@ -42,6 +50,12 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
-             return true;
+@@ -34,6 +42,12 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+             return false;
          }
  
 +        $location = $response->headers->get('Location');
@@ -30,6 +30,6 @@ index 9bfdb042..c17c4376 100644
 +            return true;
 +        }
 +
-         return false;
+         return (bool) $request->headers->get('Turbo-Frame-Redirect');
      }
  }
