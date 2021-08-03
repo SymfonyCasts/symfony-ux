@@ -1,4 +1,4 @@
-# Frame Redirect Cache
+# Frame Redirecting and Clearing the Snapshot Cache
 
 Where else could we use our new turbo frame redirect system? Go to the cart.
 On the featured product sidebar, we could leverage a frame around the cart controls.
