@@ -38,5 +38,6 @@ chapters:
     - full-frame-redirect
     - frame-redirect-cache
     - restore-visit
+    - frame-custom-header
     - server-frame-redirect
     - login-redirect
