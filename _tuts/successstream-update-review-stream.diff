@@ -1,0 +1,34 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 753be330..73e655ad 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -83,23 +83,19 @@ class ProductController extends AbstractController
+         if ($request->isMethod('POST')) {
+             $this->denyAccessUnlessGranted('ROLE_USER');
+ 
+-            $update = new Update(
+-                'product-reviews',
+-                '<turbo-stream action="update" target="product-quick-stats"><template>QUICK STATS CHANGED!</template></turbo-stream>'
+-            );
+-            $mercureHub->publish($update);
+-
+             $reviewForm->handleRequest($request);
+ 
+             if ($reviewForm->isSubmitted() && $reviewForm->isValid()) {
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
+-                if (TurboStreamResponse::STREAM_FORMAT === $request->getPreferredFormat()) {
+-                    return $this->render('product/reviews.stream.html.twig', [
++                $update = new Update(
++                    'product-reviews',
++                    $this->render('product/reviews.stream.html.twig', [
+                         'product' => $product,
+-                    ], new TurboStreamResponse());
+-                }
++                    ]),
++                );
++                $mercureHub->publish($update);
+ 
+                 $this->addFlash('review_success', 'Thanks for your review! I like you!');
+ 

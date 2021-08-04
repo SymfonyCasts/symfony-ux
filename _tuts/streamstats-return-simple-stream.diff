@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 5eec9e14..e32023c1 100644
+index 7431f911..479892e0 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,39 +17,30 @@ index 5eec9e14..e32023c1 100644
 +                return $this->render('product/reviews.stream.html.twig', [
 +                ], new TurboStreamResponse());
 +
-                 $this->addFlash('success', 'Thanks for your review! I like you!');
+                 $this->addFlash('review_success', 'Thanks for your review! I like you!');
  
                  return $this->redirectToRoute('app_product_reviews', [
-diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 8c81d8d7..302ef146 100644
---- a/templates/base.html.twig
-+++ b/templates/base.html.twig
-@@ -67,6 +67,7 @@
-                 </nav>
-             </header>
- 
-+            <div id="flash-container">
-             {% for flash in app.session.flashBag.get('success') %}
-                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                     {{ flash }}
-@@ -74,8 +75,8 @@
-                       <span aria-hidden="true"></span>
-                     </button>
-                 </div>
--
-             {% endfor %}
-+            </div>
-         </div>
- 
-         {% block body %}{% endblock %}
 diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
 new file mode 100644
-index 00000000..513fb6b9
+index 00000000..a30620e8
 --- /dev/null
 +++ b/templates/product/reviews.stream.html.twig
 @@ -0,0 +1,5 @@
-+<turbo-stream action="append" target="flash-container">
++<turbo-stream action="update" target="product-quick-stats">
 +    <template>
 +        Will this <strong>really</strong> work???
 +    </template>
 +</turbo-stream>
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 419e0b9d..6c050c13 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -30,7 +30,7 @@
+                 {{ product.description }}
+             </div>
+             <div class="p-3 mt-4 d-flex justify-content-between flex-wrap flex-lg-nowrap">
+-                <div>
++                <div id="product-quick-stats">
+                     <strong>{{ product.priceString|format_currency('USD') }}</strong>
+                     <br>
+                     <strong>{{ product.reviews|length }}</strong> Reviews

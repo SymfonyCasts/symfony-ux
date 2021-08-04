@@ -1,15 +1,14 @@
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index 5638e9cf..be5d1681 100644
+index 7c402287..8e89c0e6 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
-@@ -24,5 +24,10 @@
+@@ -28,5 +28,9 @@
      {{ form_end(reviewForm) }}
  {% elseif not is_granted('ROLE_USER') %}
      <p><a href="{{ path('app_login') }}" data-turbo-frame="_top">Log in</a> to post your review</p>
 +{% else %}
-+    {{ include('_flash.html.twig', {
-+        type: 'success',
-+        message: 'Thanks for your review!',
-+    }) }}
++    <div class="alert alert-success">
++        Thanks for your "real" review you "human" 😉!
++    </div>
  {% endif %}
  </turbo-frame>

@@ -11,13 +11,16 @@ index 3b3f60af..bb1f7ba6 100644
              Thanks for clicking ${this.count} times!
          </div>
      </template>
-diff --git a/templates/_flash.html.twig b/templates/_flash.html.twig
-index deacbf3f..4c02fb71 100644
---- a/templates/_flash.html.twig
-+++ b/templates/_flash.html.twig
-@@ -1,4 +1,4 @@
--<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert">
-+<div class="alert alert-{{ type }} alert-dismissible fade show" role="alert" data-turbo-cache="false">
-     {{ message }}
-     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-         <span aria-hidden="true"></span>
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 8c81d8d7..6fc8b754 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -68,7 +68,7 @@
+             </header>
+ 
+             {% for flash in app.session.flashBag.get('success') %}
+-                <div class="alert alert-success alert-dismissible fade show" role="alert">
++                <div class="alert alert-success alert-dismissible fade show" role="alert" data-turbo-cache="false">
+                     {{ flash }}
+                     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                       <span aria-hidden="true"></span>
