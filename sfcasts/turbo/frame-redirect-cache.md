@@ -24,6 +24,8 @@ this template.
 In other words... adding a frame here should... just work. On top, add `<turbo-frame>`
 with `id="add-to-cart-controls"`. Add the closing frame at the bottom.
 
+[[[ code('67565ec595') ]]]
+
 Just with that, refresh the page and go to the cart. Submit with a negative quantity.
 That is *so* much nicer. Now change to red change, set the quantity to 5 and
 hit add.
@@ -43,6 +45,8 @@ the *entire* page after adding an item.
 Fortunately, that's exactly what our new frame system does! Let's add the attribute
 that we invented to this frame. I'll move it onto multiple lines to keep my sanity,
 then add `data-turbo-form-redirect="true"`.
+
+[[[ code('b64875f5fe') ]]]
 
 Testing time! Refresh the cart page. If we submit the form with errors, everything
 stays right here. But if we submit it *successfully*... yes! That redirected to
@@ -77,6 +81,8 @@ it *also* prevents it from clearing its snapshot cache!
 
 But now that we know that, it's no problem: we can clear it manually by saying
 `Turbo.clearCache()`.
+
+[[[ code('18ee07eeb5') ]]]
 
 Refresh and watch the cart header. *Much* better.
 
