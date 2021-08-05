@@ -1,0 +1,49 @@
+diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
+new file mode 100644
+index 000000000..d20b7bedc
+--- /dev/null
++++ b/assets/controllers/streamed-item_controller.js
+@@ -0,0 +1,15 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    static values = {
++        className: String
++    }
++
++    connect() {
++        this.element.classList.add(this.classNameValue);
++        setTimeout(() => {
++            this.element.classList.add('fade-background');
++            this.element.classList.remove(this.classNameValue);
++        }, 5000);
++    }
++}
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index fea451c5e..8382e7663 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -182,3 +182,6 @@ h1 {
+ .streamed-new-item {
+     background-color: lightgreen;
+ }
++.fade-background {
++    transition: background-color 2000ms;
++}
+diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
+index fd2e91e5f..320563d53 100644
+--- a/templates/product/_review.html.twig
++++ b/templates/product/_review.html.twig
+@@ -1,4 +1,11 @@
+-<div class="component-light my-3 p-3{{ isNew|default(false) ? ' streamed-new-item' }}">
++<div
++    class="component-light my-3 p-3"
++    {% if isNew|default(false) %}
++        {{ stimulus_controller('streamed-item', {
++            className: 'streamed-new-item'
++        }) }}
++    {% endif %}
++>
+     <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+     <div>
+         {{ review.content }}

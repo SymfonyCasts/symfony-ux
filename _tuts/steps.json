@@ -1634,7 +1634,127 @@
             "id": "successstream-put-back-reviews-html-twig",
             "name": "SuccessStream: put back _reviews.html.twig",
             "description": null
+        },
+        {
+            "id": "successstream-add-id-to-targets",
+            "name": "SuccessStream: add id to targets",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-separate-reviews-frame",
+            "name": "StreamCleanup: separate reviews frame",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-isolate-to-reviews-list-tpl",
+            "name": "StreamCleanup: isolate to _reviews_list tpl",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-change-frame-to-div",
+            "name": "StreamCleanup: change frame to div",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-only-stream-list",
+            "name": "StreamCleanup: only stream list",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-tweak-target-to-review-list",
+            "name": "StreamCleanup: tweak target to \"review-list\"",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-isolate-review-into-tpl",
+            "name": "StreamCleanup: isolate review into tpl",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-stream-append-review",
+            "name": "StreamCleanup: stream append _review",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-highlight-new-with-css",
+            "name": "StreamCleanup: highlight new with css",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-fade-out-highlight",
+            "name": "StreamCleanup: Fade out highlight",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-annotation",
+            "name": "EntityBroadcast: add annotation",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-listen-in-tpl",
+            "name": "EntityBroadcast: add listen in tpl",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-dummy-template",
+            "name": "EntityBroadcast: add dummy template",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-move-stream-to-new-tpl",
+            "name": "EntityBroadcast: move stream to new tpl",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-rename-variable-to-entity",
+            "name": "EntityBroadcast: rename variable to entity",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-update",
+            "name": "EntityBroadcast: add update",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-remove",
+            "name": "EntityBroadcast: add remove",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-remove-with-fade-out",
+            "name": "EntityBroadcast: remove with fade out",
+            "description": null
+        },
+        {
+            "id": "toast-add-toast-template",
+            "name": "Toast: add toast template",
+            "description": null
+        },
+        {
+            "id": "toast-include-customize",
+            "name": "Toast: include & customize",
+            "description": null
+        },
+        {
+            "id": "toast-creating-the-toast-controller",
+            "name": "Toast: creating the toast controller",
+            "description": null
+        },
+        {
+            "id": "toast-open-toast-in-js",
+            "name": "Toast: open toast in js",
+            "description": null
+        },
+        {
+            "id": "toast-move-into-toast-container",
+            "name": "Toast: move into toast-container",
+            "description": null
+        },
+        {
+            "id": "toast-broadcast-a-toast-also",
+            "name": "Toast: broadcast a toast also",
+            "description": null
         }
     ],
-    "sha": "2700d3e549a83a23c6775947cb458f12b311844b"
+    "sha": "75b51676a8bac94b4058f2c8cb52d0b0b8f90d47"
 }

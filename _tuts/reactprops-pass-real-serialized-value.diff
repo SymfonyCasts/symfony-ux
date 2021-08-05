@@ -1,5 +1,5 @@
 diff --git a/src/Controller/RegistrationController.php b/src/Controller/RegistrationController.php
-index 741f58d1..7be2280c 100644
+index 741f58d13..7be2280cd 100644
 --- a/src/Controller/RegistrationController.php
 +++ b/src/Controller/RegistrationController.php
 @@ -4,6 +4,7 @@ namespace App\Controller;
@@ -28,7 +28,7 @@ index 741f58d1..7be2280c 100644
      }
  }
 diff --git a/templates/registration/register.html.twig b/templates/registration/register.html.twig
-index 366e0a52..4c5e5b72 100644
+index 366e0a523..4c5e5b721 100644
 --- a/templates/registration/register.html.twig
 +++ b/templates/registration/register.html.twig
 @@ -8,7 +8,7 @@

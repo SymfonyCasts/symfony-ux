@@ -1,5 +1,5 @@
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index 28d4aa12..ca99fc0e 100644
+index 28d4aa12d..ca99fc0ed 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -22,3 +22,9 @@ when@test:

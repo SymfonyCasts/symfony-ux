@@ -1,0 +1,33 @@
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 0c8a8f2f1..fea451c5e 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -179,3 +179,6 @@ h1 {
+ .fade-enter-to, .fade-leave-from {
+     opacity: 1;
+ }
++.streamed-new-item {
++    background-color: lightgreen;
++}
+diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
+index fc843f1b9..fd2e91e5f 100644
+--- a/templates/product/_review.html.twig
++++ b/templates/product/_review.html.twig
+@@ -1,4 +1,4 @@
+-<div class="component-light my-3 p-3">
++<div class="component-light my-3 p-3{{ isNew|default(false) ? ' streamed-new-item' }}">
+     <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+     <div>
+         {{ review.content }}
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+index d1d0b9683..59e92ef2f 100644
+--- a/templates/product/reviews.stream.html.twig
++++ b/templates/product/reviews.stream.html.twig
+@@ -8,6 +8,7 @@
+     <template>
+         {{ include('product/_review.html.twig', {
+             review: newReview,
++            isNew: true
+         }) }}
+     </template>
+ </turbo-stream>

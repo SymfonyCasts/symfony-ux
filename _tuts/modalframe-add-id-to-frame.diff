@@ -1,5 +1,5 @@
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index df87b80c..da621b5d 100644
+index df87b80ce..da621b5d7 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -15,6 +15,7 @@
@@ -11,7 +11,7 @@ index df87b80c..da621b5d 100644
                  {{ modalContent|default('Loading...') }}
              </turbo-frame>
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index b1ff5b16..93766ec0 100644
+index b1ff5b168..93766ec02 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -26,6 +26,7 @@

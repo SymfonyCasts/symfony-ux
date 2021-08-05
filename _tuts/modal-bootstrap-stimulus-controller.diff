@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
 new file mode 100644
-index 00000000..9a4423e0
+index 000000000..9a4423e07
 --- /dev/null
 +++ b/assets/controllers/modal-form_controller.js
 @@ -0,0 +1,7 @@

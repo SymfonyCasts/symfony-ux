@@ -1,0 +1,17 @@
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+new file mode 100644
+index 000000000..b863f50fa
+--- /dev/null
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -0,0 +1,11 @@
++{% block create %}
++    CREATE!
++{% endblock %}
++
++{% block update %}
++    UPDATE!
++{% endblock %}
++
++{% block remove %}
++    REMOVE!
++{% endblock %}

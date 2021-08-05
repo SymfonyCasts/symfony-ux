@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
-index 6baf2616..ea338dc8 100644
+index 6baf26164..ea338dc8a 100644
 --- a/assets/controllers/featured-product-react_controller.js
 +++ b/assets/controllers/featured-product-react_controller.js
 @@ -4,9 +4,13 @@ import React from 'react';

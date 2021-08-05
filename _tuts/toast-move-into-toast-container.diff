@@ -1,0 +1,33 @@
+diff --git a/assets/controllers/toast_controller.js b/assets/controllers/toast_controller.js
+index a94edbe93..b4ed250ba 100644
+--- a/assets/controllers/toast_controller.js
++++ b/assets/controllers/toast_controller.js
+@@ -3,6 +3,13 @@ import { Toast } from 'bootstrap';
+ 
+ export default class extends Controller {
+     connect() {
++        const toastContainer = document.getElementById('toast-container');
++        if (this.element.parentNode !== toastContainer) {
++            toastContainer.appendChild(this.element);
++
++            return;
++        }
++
+         const toast = new Toast(this.element);
+         toast.show();
+     }
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 6fc8b7549..3167d96fc 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -96,5 +96,10 @@
+             Turbo.visit('/cart');
+         })
+         </script>
++
++        <div
++            id="toast-container"
++            class="toast-container position-fixed top-0 end-0 p-3"
++        ></div>
+     </body>
+ </html>

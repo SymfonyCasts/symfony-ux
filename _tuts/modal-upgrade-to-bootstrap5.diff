@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 45e809b3..a9ef8871 100644
+index 45e809b37..a9ef8871d 100644
 --- a/package.json
 +++ b/package.json
 @@ -4,7 +4,7 @@
@@ -12,7 +12,7 @@ index 45e809b3..a9ef8871 100644
          "react": "^17.0.1",
          "react-dom": "^17.0.1",
 diff --git a/yarn.lock b/yarn.lock
-index 9ef6129d..e1947bb5 100644
+index 9ef6129d7..e1947bb55 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -1468,10 +1468,10 @@ boolbase@^1.0.0, boolbase@~1.0.0:

@@ -1,0 +1,29 @@
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index e2fbcc7bd..a3f26596e 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -18,7 +18,13 @@
+ {% endblock %}
+ 
+ {% block update %}
+-    UPDATE!
++    <turbo-stream action="replace" target="product-review-{{ entity.id }}">
++        <template>
++            {{ include('product/_review.html.twig', {
++                review: entity
++            }) }}
++        </template>
++    </turbo-stream>
+ {% endblock %}
+ 
+ {% block remove %}
+diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
+index 320563d53..b30c55bb7 100644
+--- a/templates/product/_review.html.twig
++++ b/templates/product/_review.html.twig
+@@ -1,4 +1,5 @@
+ <div
++    id="product-review-{{ review.id }}"
+     class="component-light my-3 p-3"
+     {% if isNew|default(false) %}
+         {{ stimulus_controller('streamed-item', {

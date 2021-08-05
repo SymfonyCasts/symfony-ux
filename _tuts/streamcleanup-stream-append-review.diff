@@ -1,0 +1,29 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 309e18fb8..4fe5bf5da 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -93,6 +93,7 @@ class ProductController extends AbstractController
+                     'product-reviews',
+                     $this->renderView('product/reviews.stream.html.twig', [
+                         'product' => $product,
++                        'newReview' => $reviewForm->getData(),
+                     ]),
+                 );
+                 $mercureHub->publish($update);
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+index a1321d563..d1d0b9683 100644
+--- a/templates/product/reviews.stream.html.twig
++++ b/templates/product/reviews.stream.html.twig
+@@ -4,8 +4,10 @@
+     </template>
+ </turbo-stream>
+ 
+-<turbo-stream action="replace" target="product-{{ product.id }}-review-list">
++<turbo-stream action="append" target="product-{{ product.id }}-review-list">
+     <template>
+-        {{ include('product/_reviews_list.html.twig') }}
++        {{ include('product/_review.html.twig', {
++            review: newReview,
++        }) }}
+     </template>
+ </turbo-stream>

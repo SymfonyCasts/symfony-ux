@@ -1,0 +1,101 @@
+diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
+index d20b7bedc..ced412348 100644
+--- a/assets/controllers/streamed-item_controller.js
++++ b/assets/controllers/streamed-item_controller.js
+@@ -1,15 +1,25 @@
+ import { Controller } from 'stimulus';
++import { addFadeTransition } from '../util/add-transition';
+ 
+ export default class extends Controller {
+     static values = {
+-        className: String
++        className: String,
++        removeElement: Boolean
+     }
+ 
+     connect() {
++        addFadeTransition(this, this.element, {
++            transitioned: true
++        });
++
+         this.element.classList.add(this.classNameValue);
+         setTimeout(() => {
+-            this.element.classList.add('fade-background');
+-            this.element.classList.remove(this.classNameValue);
++            if (this.removeElementValue) {
++                this.leave();
++            } else {
++                this.element.classList.add('fade-background');
++                this.element.classList.remove(this.classNameValue);
++            }
+         }, 5000);
+     }
+ }
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 8382e7663..204e37ba4 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -182,6 +182,9 @@ h1 {
+ .streamed-new-item {
+     background-color: lightgreen;
+ }
++.streamed-removed-item {
++    background-color: lightcoral;
++}
+ .fade-background {
+     transition: background-color 2000ms;
+ }
+diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
+index 698d67845..b0ed4f3ff 100644
+--- a/assets/util/add-transition.js
++++ b/assets/util/add-transition.js
+@@ -1,6 +1,6 @@
+ import { useTransition } from 'stimulus-use';
+ 
+-export function addFadeTransition(controller, element) {
++export function addFadeTransition(controller, element, options) {
+     useTransition(controller, {
+         element,
+         enterActive: 'fade-enter-active',
+@@ -10,5 +10,6 @@ export function addFadeTransition(controller, element) {
+         leaveFrom: 'fade-leave-from',
+         leaveTo: 'fade-leave-to',
+         hiddenClass: 'd-none',
++        ...options
+     });
+ }
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index d1d1c973c..1acb47640 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -28,5 +28,12 @@
+ {% endblock %}
+ 
+ {% block remove %}
+-    <turbo-stream action="remove" target="product-review-{{ id }}"></turbo-stream>
++    <turbo-stream action="replace" target="product-review-{{ id }}">
++        <template>
++            {{ include('product/_review.html.twig', {
++                review: entity,
++                isRemoved: true
++            }) }}
++        </template>
++    </turbo-stream>
+ {% endblock %}
+diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
+index b30c55bb7..eb45b1a2a 100644
+--- a/templates/product/_review.html.twig
++++ b/templates/product/_review.html.twig
+@@ -6,6 +6,12 @@
+             className: 'streamed-new-item'
+         }) }}
+     {% endif %}
++    {% if isRemoved|default(false) %}
++        {{ stimulus_controller('streamed-item', {
++            className: 'streamed-removed-item',
++            removeElement: true
++        }) }}
++    {% endif %}
+ >
+     <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+     <div>

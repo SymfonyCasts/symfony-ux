@@ -1,0 +1,23 @@
+diff --git a/templates/product/_reviews_list.html.twig b/templates/product/_reviews_list.html.twig
+index a4309c36b..05630227f 100644
+--- a/templates/product/_reviews_list.html.twig
++++ b/templates/product/_reviews_list.html.twig
+@@ -1,4 +1,4 @@
+-<div id="product-{{ product.id }}-review">
++<div id="product-{{ product.id }}-review-list">
+ {% for review in product.reviews %}
+     <div class="component-light my-3 p-3">
+         <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+index e62244266..a1321d563 100644
+--- a/templates/product/reviews.stream.html.twig
++++ b/templates/product/reviews.stream.html.twig
+@@ -4,7 +4,7 @@
+     </template>
+ </turbo-stream>
+ 
+-<turbo-stream action="replace" target="product-{{ product.id }}-review">
++<turbo-stream action="replace" target="product-{{ product.id }}-review-list">
+     <template>
+         {{ include('product/_reviews_list.html.twig') }}
+     </template>

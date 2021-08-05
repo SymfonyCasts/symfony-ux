@@ -1,6 +1,6 @@
 diff --git a/src/Controller/WeatherController.php b/src/Controller/WeatherController.php
 new file mode 100644
-index 00000000..91c51959
+index 000000000..91c519590
 --- /dev/null
 +++ b/src/Controller/WeatherController.php
 @@ -0,0 +1,17 @@
@@ -22,7 +22,7 @@ index 00000000..91c51959
 +    }
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index f0baa21b..15f533b5 100644
+index f0baa21b3..15f533b57 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -28,6 +28,11 @@
@@ -39,7 +39,7 @@ index f0baa21b..15f533b5 100644
                                  Shopping Cart ({{ count_cart_items() }})
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
 new file mode 100644
-index 00000000..99a3a670
+index 000000000..99a3a6704
 --- /dev/null
 +++ b/templates/weather/index.html.twig
 @@ -0,0 +1,18 @@
