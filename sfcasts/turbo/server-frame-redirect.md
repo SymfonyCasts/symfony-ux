@@ -71,7 +71,7 @@ in this situation with something different.
 
 The last little piece of work is back in JavaScript. We already have a
 `beforeFetchResponse()` method, which is currently looking to see if a request was
-successful and redirected... and checking for the `turboFrameRedirect` data
+successful and redirected... and checking for the `turboFormRedirect` data
 attribute.
 
 We can simplify this a *lot*. All we need to do *now* is check to see if the response

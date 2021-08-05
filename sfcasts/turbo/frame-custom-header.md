@@ -78,6 +78,7 @@ for `#` then `${frameId}`.
 Yep, we're literally finding that `<turbo-frame>` element on the page! If we
 can't find the frame for some reason - which shouldn't happen - *or* if the
 frame does *not* have the dataset of `turboFormRedirect`, then do nothing.
+Whoops - make sure that's `turboFormRedirect`.
 
 Go back to the cart page and inspect element on the frame. As a reminder,
 this *does* have the `data-turbo-form-redirect="true"` attribute. That's what
