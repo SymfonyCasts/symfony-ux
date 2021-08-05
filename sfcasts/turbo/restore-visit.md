@@ -78,6 +78,8 @@ Now, over in `turbo-helper.js`, add a second argument to `Turbo.visit()` - an
 options argument. One option here is called `action`.... and one of the values
 you can set it to is `restore`.
 
+[[[ code('41a53eafea') ]]]
+
 The action `restore` tells Turbo to visit this URL, but with the same behavior as
 if you clicked the back or forward buttons in your browser. Specifically, if the
 page is already in the snapshot cache, use that snapshot and make *no* network
@@ -105,6 +107,8 @@ we await *that*, we need to make the method `async`.
 This gives us a Snapshot object from that HTML. To put this into the cache, say
 `Turbo.navigator.view.snapshotCache.put()` and pass this the URL - or "location" -
 of the page - `fetchResponse.location` - and then the `snapshot` object.
+
+[[[ code('bd4094b934') ]]]
 
 This is... pretty low-level, but *that* is how you can manually add a page to the
 cache. Let's try it!
