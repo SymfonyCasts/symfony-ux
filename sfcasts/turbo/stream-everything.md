@@ -1,69 +1,31 @@
-# Stream Everything
+# Multiple Updates in one Stream
 
 Coming soon...
 
-Yeah. When we submit the product reviews form, instead of redirecting like we were
-before, we're now returning this `TurboStreamResponse`. When the AGS call finishes
-turbo notices that we're returning this type of response instead of an HTML page. And
-so instead of handling the HTML like a frame, normally would it passes it to the
-turbo stream system right now we're using it to update the quick stats area of the
-page with this random HTML. If you refresh the real goal is to automatically update
-the review count. And the review average, as soon as the newer review is submitted to
-do that without repeating ourselves over in `show.html.twig` a template for the
-product show page, copy the quick stats code, and then you create a new template in
-`template/product/` called how about `_quickStats.html.twig` paste
-that there. Now we can reuse this in two places first and `show.html.twig`, we can
-include `product/_quickStats.html.twig`
+Anyways, because I want to be able to update the quick stats area, let's *continue*
+to return a stream. But in addition to updating the quick stats area, we can
+*also* update the reviews area. And... it's pretty easy!
 
-And then on top of that, because in our new reviews stream, we can do this same
-thing. All right, let's try that. So refresh, this still works. We have a 10 reviews
-and an average of 4.1 scroll down and let's add the 11th you review submit. And oh,
-the entire review section is gone. My web debug toolbar, is it red? Ah, a 500 air.
-Let's open that up. Of course, variable product does not exist coming from our 
-`_quickStats.html.twig`. Of course, the problem is that we're including quick
-stats from `reviews.stream.html.twig` but he our `ProductController`. We're not
-passing any variables in there. So our quick stats needs a `product` variable. So no
-problem. We'll pass product here, set to product, and that will pass all the way into
-the quick stats template. Okay. Take two. I'll review the refresh page again. That
-did works. We now have 11 reviews.
+The entire content of `_reviews.html.html` lives inside of an element with a
+`product-review` id. So in `reviews.stream.html.twig`, add a *second*
+`<turbo-stream>`. Yup, we can include as *many* instructions as we want in a
+stream. Set the `action=""` to `replace` and the `target` to `product-review`, the
+id of the element that surrounds the reviews area. Inside, include the reviews
+template. Don't forget the include the `<template>` element - I'll remember in
+a minute.
 
-Let's start adding the 12th review submit. And this page is this part of the page is
-still stuck. That's okay. Let's scroll up. Yes. It automatically updated this area
-with the real data. That is so cool, but it's not quite yet while we want, because we
-need to fix the reviews frame. This form just sitting here is not going to work this
-entire area lives in the `templates/products/_reviews.html.twig`
-two months, wait template. Now as a reminder, this entire template lives inside the
-`product-review `frame. So both the PR review list and the form. Thanks to this. Before
-we started messing around with turbo streams after submit, we redirected to the
-reviews page and that included this template with this frame. And so because of this,
-the entire frame updated with the new review listing and a fresh empty form.
+We're using `replace` instead of `update` because `_reviews.html.twig` *contains*
+that element. So we want to *replace* the existing `product-review` element
+with the *new* one... instead of just updating its `innerHTML`.
 
-So we kind of have two choices. One we could redirect on success like we were doing
-before and let the normal turbo frame logic do its magic. But if we do that or we can
-use a turbo stream to update whatever we want, but we can't do both. We need to
-choose between these stream or redirecting so that the frame can do its job. Well,
-actually we can do both, but that's a topic for a little later for now. Since we're
-choosing to return a turbo stream response, we need to update everything via that
-turbo stream. In other words, we also need to update this reviews area via the
-stream, and that's actually pretty easy. The entire contents of `_reviews.html.html`
-is inside of an element with a `product-review` id.
+Oh, before we try this, go back to `reviews.stream.html.twig`: I forgot the
+`<template>` element! If you forget that, you'll get a very clear error that to
+remind you.
 
-So in reviews that stream to reg add a second `<turbo-stream>`. Yup. You can return
-as many instructions as you want this time set the `action="""` to `replace` and the `target`
-two `product-review` the ID, uh, of that element inside include that template
-`product/_reviews.html.twig`, okay. We're using replace
-instead of update because the `_reviews.html.twig` template contains
-the outer element. So we will replace the existing `product-review` element with the
-new one instead of just updating its innerHTML. All right. Testing time refresh and
-wow. I, I really love his product
+Ok: move over and refresh. Let's add another glowing review and submit. Yes!
+It worked! I see my new review! But... the form is gone.
 
-Summit and [inaudible]
-
-Oh, before we try this, go back to reviews that stream to Asia. Sorry. I forgot my
-`<template>` elements. If you forget that, you'll get a very clear error that says you
-forgot your template element. So let's not do that. All right. Now I move over. I
-will refresh this product is really wild. Wowing me that's hit submit, and yes, it
-shows up, but the form is gone as so often happens. That makes complete sense
+As *so* often happens. That makes complete sense
 previously when the frame was being redirected to the reviews page. So it was
 actually being redirected to this page right here. That page contains a fresh form.
 And so the fresh form showed up at the bottom of their page after we submit a review,

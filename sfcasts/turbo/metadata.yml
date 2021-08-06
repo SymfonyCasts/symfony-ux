@@ -42,4 +42,5 @@ chapters:
     - server-frame-redirect
     - login-redirect
     - turbo-stream
+    - stream-include
     - stream-everything
