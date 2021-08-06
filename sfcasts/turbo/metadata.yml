@@ -41,3 +41,5 @@ chapters:
     - frame-custom-header
     - server-frame-redirect
     - login-redirect
+    - turbo-stream
+    - stream-everything
