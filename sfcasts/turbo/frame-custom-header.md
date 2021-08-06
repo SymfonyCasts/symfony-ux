@@ -45,6 +45,8 @@ Inside, call a new method - `this.beforeFetchRequest()` - and pass the `event`.
 Copy that method name, head down to the methods... and add that with the `event`
 argument. Inside, `console.log(event)` so we can see what it looks like.
 
+[[[ code('5a0cdb379f') ]]]
+
 Back at our browser, refresh. This logs *every* time Turbo makes an Ajax request,
 like when we navigate... or a frame loads. This is from the weather frame. And I
 think if we go down to the bottom... yep! It fires again when the *second* weather
@@ -88,6 +90,8 @@ At this point, we know that the request *is* happening in a frame and that the
 frame *does* have the `data-turbo-form-redirect` attribute. And so, we're going
 to add a new header. Use `event.detail.fetchOptions.headers` again to invent a
 new header called, how about, `Turbo-Frame-Redirect`. Set it to `1`.
+
+[[[ code('91e4bb1a84') ]]]
 
 Cool! Let's go check it! At your browser, any normal request - even a request inside
 a frame like for the weather widget - will *not* have the new header. Check
