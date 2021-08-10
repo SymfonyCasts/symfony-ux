@@ -23,6 +23,8 @@ so the `Response` object *has* already been created.
 Above this, add the `public function onKernelResponse()` method with a
 `ResponseEvent $event` argument.
 
+[[[ code('40e787f027') ]]]
+
 Cool. So the logic inside of here will be fairly simple: if the request has the
 `Turbo-Frame-Redirect` header *and* the response is a redirect, then we're going to
 *change* the response to something else.
@@ -45,6 +47,8 @@ the `$response` is *not* a redirection. If it's not, return false. The only resp
 we need to change are *redirects*: we don't want to change normal frame loads
 or frame form submits that are returning with validation errors.
 
+[[[ code('dc5f664594') ]]]
+
 The only other check we need is for the header. Copy the header name
 from `turbo-helper.js`. Then `return $request->headers->get('Turbo-Frame-Redirect')`.
 So if the header exists and is set to something "truthy" like 1, this method
@@ -63,6 +67,8 @@ from the original response: `$event->getResponse()->headers->get('Location')`.
 
 Finally, to use this response instead of the original, say
 `$event->setResponse($response)`.
+
+[[[ code('425fea7199') ]]]
 
 Ok! That's all we need to do in Symfony: we're now replacing the redirect response
 in this situation with something different.
@@ -87,11 +93,15 @@ where we need to do anything fancy. So, just return.
 Then, the rest is perfect, except instead of `fetchResponse.location`. use
 `redirectLocation`.
 
+[[[ code('9f068e2db4') ]]]
+
 That's it. We don't even need our `getCurrentFrame()` method anymore. It took
 more work inside of Symfony, but the JavaScript side of things is nice!
 
 Oh, but before we try this, back in our subscriber, before the return statement,
 add a `(bool)` type-cast. This will guarantee the method returns a boolean.
+
+[[[ code('16f200b4b6') ]]]
 
 Ok, *now* let's try it: Go back to the cart page and refresh. Remember: the whole
 goal is to be able to submit this form and have it *not* make duplicate requests
