@@ -69,6 +69,8 @@ a frame... and we're redirecting to the login page... then that's a problem. Tha
 going to break the frame. And so, we'll wrap the redirect with our fake redirect
 so that our JavaScript can navigate things.
 
+[[[ code('70d6786a6a') ]]]
+
 Testing time! Log back in... go back to a product page, scroll down to the reviews,
 and then, in the other tab, refresh and log out.
 
