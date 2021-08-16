@@ -1,13 +1,13 @@
 diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
 new file mode 100644
-index 000000000..6baf26164
+index 00000000..f319b241
 --- /dev/null
 +++ b/assets/controllers/featured-product-react_controller.js
 @@ -0,0 +1,13 @@
 +import { Controller } from 'stimulus';
 +import ReactDOM from 'react-dom';
 +import React from 'react';
-+import FeatureProduct from '../components/FeatureProduct';
++import FeaturedProduct from '../components/FeaturedProduct';
 +
 +export default class extends Controller {
 +    connect() {

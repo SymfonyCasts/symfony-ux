@@ -1,31 +1,31 @@
 diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
-index ea338dc8a..e6f59a468 100644
+index dbe3a63a..907ef06a 100644
 --- a/assets/controllers/featured-product-react_controller.js
 +++ b/assets/controllers/featured-product-react_controller.js
 @@ -1,5 +1,4 @@
  import { Controller } from 'stimulus';
 -import ReactDOM from 'react-dom';
  import React from 'react';
- import FeatureProduct from '../components/FeatureProduct';
+ import FeaturedProduct from '../components/FeaturedProduct';
  
 @@ -9,9 +8,11 @@ export default class extends Controller {
      }
  
      connect() {
 -        ReactDOM.render(
--            <FeatureProduct product={this.productValue} />,
+-            <FeaturedProduct product={this.productValue} />,
 -            this.element
 -        )
 +        import('react-dom').then((ReactDOM) => {
 +            ReactDOM.default.render(
-+                <FeatureProduct product={this.productValue} />,
++                <FeaturedProduct product={this.productValue} />,
 +                this.element
 +            )
 +        })
      }
  }
 diff --git a/assets/controllers/made-with-love_controller.js b/assets/controllers/made-with-love_controller.js
-index dbfe3744e..ca8dccb5c 100644
+index dbfe3744..ca8dccb5 100644
 --- a/assets/controllers/made-with-love_controller.js
 +++ b/assets/controllers/made-with-love_controller.js
 @@ -1,13 +1,14 @@

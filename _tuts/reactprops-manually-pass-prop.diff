@@ -1,9 +1,9 @@
 diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
-index 6baf26164..ea338dc8a 100644
+index f319b241..dbe3a63a 100644
 --- a/assets/controllers/featured-product-react_controller.js
 +++ b/assets/controllers/featured-product-react_controller.js
 @@ -4,9 +4,13 @@ import React from 'react';
- import FeatureProduct from '../components/FeatureProduct';
+ import FeaturedProduct from '../components/FeaturedProduct';
  
  export default class extends Controller {
 +    static values = {
@@ -13,7 +13,7 @@ index 6baf26164..ea338dc8a 100644
      connect() {
          ReactDOM.render(
 -            <FeatureProduct />,
-+            <FeatureProduct product={this.productValue} />,
++            <FeaturedProduct product={this.productValue} />,
              this.element
          )
      }

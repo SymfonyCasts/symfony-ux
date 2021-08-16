@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index f95ee902e..678553ee2 100644
+index f95ee902..678553ee 100644
 --- a/package.json
 +++ b/package.json
 @@ -6,6 +6,7 @@
@@ -11,7 +11,7 @@ index f95ee902e..678553ee2 100644
      },
      "license": "UNLICENSED",
 diff --git a/yarn.lock b/yarn.lock
-index 2abe6849e..446bab9b8 100644
+index 2abe6849..446bab9b 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -4682,6 +4682,11 @@ stackframe@^1.1.1:

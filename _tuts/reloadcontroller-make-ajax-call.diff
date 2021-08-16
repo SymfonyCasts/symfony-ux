@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/reload-content_controller.js b/assets/controllers/reload-content_controller.js
-index 55530b4d8..337c38778 100644
+index 55530b4d..337c3877 100644
 --- a/assets/controllers/reload-content_controller.js
 +++ b/assets/controllers/reload-content_controller.js
 @@ -1,14 +1,13 @@
@@ -22,7 +22,7 @@ index 55530b4d8..337c38778 100644
      }
  }
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index dbde87ac4..9a857f438 100644
+index dbde87ac..9a857f43 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -29,7 +29,9 @@

@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index ffbe7c168..aa4f4e640 100644
+index ffbe7c16..aa4f4e64 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -10,7 +10,6 @@
@@ -11,7 +11,7 @@ index ffbe7c168..aa4f4e640 100644
          "phpdocumentor/reflection-docblock": "^5.2",
          "sensio/framework-extra-bundle": "^6.1",
 diff --git a/composer.lock b/composer.lock
-index a736b4ba1..3bf271655 100644
+index a736b4ba..3bf27165 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -364,7 +364,7 @@ index a736b4ba1..3bf271655 100644
              "name": "symfony/web-profiler-bundle",
              "version": "v5.3.0-RC1",
 diff --git a/config/bundles.php b/config/bundles.php
-index b0bfb47eb..12d8b37c9 100644
+index b0bfb47e..12d8b37c 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -3,7 +3,6 @@
@@ -377,7 +377,7 @@ index b0bfb47eb..12d8b37c9 100644
      Symfony\Bundle\WebProfilerBundle\WebProfilerBundle::class => ['dev' => true, 'test' => true],
 diff --git a/config/packages/doctrine_migrations.yaml b/config/packages/doctrine_migrations.yaml
 deleted file mode 100644
-index a0a17a084..000000000
+index a0a17a08..00000000
 --- a/config/packages/doctrine_migrations.yaml
 +++ /dev/null
 @@ -1,6 +0,0 @@
@@ -389,10 +389,10 @@ index a0a17a084..000000000
 -    enable_profiler: '%kernel.debug%'
 diff --git a/migrations/.gitignore b/migrations/.gitignore
 deleted file mode 100644
-index e69de29bb..000000000
+index e69de29b..00000000
 diff --git a/migrations/Version20191206161148.php b/migrations/Version20191206161148.php
 deleted file mode 100644
-index 2770ca78f..000000000
+index 2770ca78..00000000
 --- a/migrations/Version20191206161148.php
 +++ /dev/null
 @@ -1,59 +0,0 @@
@@ -457,7 +457,7 @@ index 2770ca78f..000000000
 -}
 diff --git a/migrations/Version20200127144611.php b/migrations/Version20200127144611.php
 deleted file mode 100644
-index fe4f0b0a7..000000000
+index fe4f0b0a..00000000
 --- a/migrations/Version20200127144611.php
 +++ /dev/null
 @@ -1,35 +0,0 @@
@@ -498,7 +498,7 @@ index fe4f0b0a7..000000000
 -}
 diff --git a/migrations/Version20210512155409.php b/migrations/Version20210512155409.php
 deleted file mode 100644
-index 2c17c9ce1..000000000
+index 2c17c9ce..00000000
 --- a/migrations/Version20210512155409.php
 +++ /dev/null
 @@ -1,33 +0,0 @@
@@ -536,7 +536,7 @@ index 2c17c9ce1..000000000
 -    }
 -}
 diff --git a/symfony.lock b/symfony.lock
-index fe6e575d6..5b7cdfb58 100644
+index fe6e575d..5b7cdfb5 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -60,19 +60,6 @@

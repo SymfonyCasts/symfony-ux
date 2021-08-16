@@ -1,5 +1,5 @@
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index ad6911f54..7c402287c 100644
+index ad6911f5..7c402287 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -27,6 +27,6 @@

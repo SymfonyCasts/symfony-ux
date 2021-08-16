@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
-index 5ab874787..e82aae54f 100644
+index 5ab87478..e82aae54 100644
 --- a/assets/controllers/weather-widget_controller.js
 +++ b/assets/controllers/weather-widget_controller.js
 @@ -4,4 +4,14 @@ export default class extends Controller {
@@ -18,7 +18,7 @@ index 5ab874787..e82aae54f 100644
 +    }(document, 'script', 'weatherwidget-io-js');
  }
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index c513bf407..3c69ea06f 100644
+index c513bf40..3c69ea06 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -5,17 +5,6 @@
