@@ -25,7 +25,7 @@ These are the two files that use `react-dom`.
 module as an argument. Move the `ReactDOM.render()` stuff into this function...
 and the last thing we need to do is add `.default`.
 
-[[[ code('87eb4e848d') ]]]
+[[[ code('070e2813db') ]]]
 
 That's it! This is called an async or dynamic import and we've talked about this
 a few times before on Symfonycasts. This allows Webpack to isolate the `react-dom`
