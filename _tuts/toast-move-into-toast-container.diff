@@ -17,10 +17,10 @@ index a94edbe93..b4ed250ba 100644
          toast.show();
      }
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 6fc8b7549..3167d96fc 100644
+index 337b87198..853726aff 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
-@@ -96,5 +96,10 @@
+@@ -98,5 +98,10 @@
              Turbo.visit('/cart');
          })
          </script>
