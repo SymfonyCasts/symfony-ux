@@ -37,6 +37,8 @@ and give it a unique ID. The template for this page lives in
 `templates/product/show.html.twig`. Let's see... here are the details. On the
 `<div>` around this, add, how about, `id="product-quick-stats"`.
 
+[[[ code('6aac35fa32') ]]]
+
 Now open `Controller/ProductController.php` and find the reviews action. This is
 the page that we submit to when we post a new review. Down here, instead of
 redirecting on success, let's do something different, let's render a new template.
@@ -45,6 +47,8 @@ I'll leave the old logic for now. But above this, return `$this->render()` to
 render a template called `product/reviews.stream.html.twig`. We don't need to pass
 any variables yet, but I'm going to pass an empty second argument because we *do*
 need to pass a third argument: a `new TurboStreamResponse()`.
+
+[[[ code('e75b86c21e') ]]]
 
 Okay first: see the `.stream` in the template name? Yep. That has *no* technical
 effect. It's just a naming convention because this template will have a special
@@ -66,6 +70,8 @@ that should be updated. I'll copy `product-quick-stats` and paste that here.
 Inside of the `<turbo-stream>`, we always have a `<template>` element. This...
 doesn't really mean anything... you just always need it. Inside of *that*, put
 the HTML. Start by hardcoding something.
+
+[[[ code('0de8e623f4') ]]]
 
 Ok, let's see this in action! Find your browser, refresh and scroll down. Add
 a review and... submit!
