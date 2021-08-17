@@ -17,10 +17,16 @@ for the product show page - copy the quick stats code... and create a new
 template in `templates/product/` called, how about `_quickStats.html.twig`. Paste
 the code here.
 
+[[[ code('2b8a4cdccd') ]]]
+
 We can now *reuse* this in two places. In `show.html.twig` include it:
 `product/_quickStats.html.twig`
 
+[[[ code('6050f4f756') ]]]
+
 Then, in the *stream* template, do the same thing!
+
+[[[ code('373f3a028c') ]]]
 
 Pretty cool, right?
 
@@ -39,6 +45,8 @@ in quick stats, we *need* a `product`!
 
 No problem: pass product set to `$product`, which will make it available all
 the way into the quick stats template.
+
+[[[ code('03eb4903c2') ]]]
 
 Okay: take two. Refresh again. We now have *11* reviews... so let's go add
 number 12. Submit. The reviews section is still weird - but that's ok. Scroll
