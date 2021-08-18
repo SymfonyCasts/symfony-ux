@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 5eec9e14..7431f911 100644
+index 5eec9e14a..7431f911f 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -86,7 +86,7 @@ class ProductController extends AbstractController
@@ -12,7 +12,7 @@ index 5eec9e14..7431f911 100644
                  return $this->redirectToRoute('app_product_reviews', [
                      'id' => $product->getId(),
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index 2cd343df..ad6911f5 100644
+index 2cd343df3..ad6911f54 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -12,6 +12,10 @@

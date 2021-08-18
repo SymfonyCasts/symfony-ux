@@ -1,5 +1,5 @@
 diff --git a/templates/_toast.html.twig b/templates/_toast.html.twig
-index cb0dc9c0..5c369d18 100644
+index cb0dc9c00..5c369d18b 100644
 --- a/templates/_toast.html.twig
 +++ b/templates/_toast.html.twig
 @@ -1,12 +1,12 @@
@@ -19,7 +19,7 @@ index cb0dc9c0..5c369d18 100644
      </div>
  </div>
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index f5bd9b0f..52016490 100644
+index f5bd9b0f7..52016490e 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -8,7 +8,10 @@

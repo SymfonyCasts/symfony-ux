@@ -1601,6 +1601,16 @@
             "description": null
         },
         {
+            "id": "mercure-dd-server",
+            "name": "Mercure: dd $_SERVER",
+            "description": null
+        },
+        {
+            "id": "mercure-remove-dd",
+            "name": "Mercure: remove dd()",
+            "description": null
+        },
+        {
             "id": "mercure-add-turbo-stream-listen",
             "name": "Mercure: add turbo_stream_listen()",
             "description": null
@@ -1756,5 +1766,5 @@
             "description": null
         }
     ],
-    "sha": "17ea21bde2a4139f22864cfd12a2c9106a4484d1"
+    "sha": "560cc424ac92db4f2617a723c763e7fd04821552"
 }

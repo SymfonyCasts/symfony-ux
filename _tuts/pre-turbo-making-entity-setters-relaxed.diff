@@ -1,5 +1,5 @@
 diff --git a/src/Entity/Product.php b/src/Entity/Product.php
-index c160e549..ca28409e 100644
+index c160e5496..ca28409ec 100644
 --- a/src/Entity/Product.php
 +++ b/src/Entity/Product.php
 @@ -98,7 +98,7 @@ class Product
@@ -21,7 +21,7 @@ index c160e549..ca28409e 100644
          $this->brand = $brand;
  
 diff --git a/src/Entity/Review.php b/src/Entity/Review.php
-index 418b4a09..f4110621 100644
+index 418b4a09c..f41106219 100644
 --- a/src/Entity/Review.php
 +++ b/src/Entity/Review.php
 @@ -70,7 +70,7 @@ class Review

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index a32024c1..7e33a08a 100644
+index a32024c1e..7e33a08ac 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -83,6 +83,7 @@ class ProductAdminController extends AbstractController
@@ -11,7 +11,7 @@ index a32024c1..7e33a08a 100644
      }
  
 diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
-index f8d464bb..cdd16401 100644
+index f8d464bb0..cdd16401d 100644
 --- a/templates/product_admin/_form.html.twig
 +++ b/templates/product_admin/_form.html.twig
 @@ -1,5 +1,5 @@

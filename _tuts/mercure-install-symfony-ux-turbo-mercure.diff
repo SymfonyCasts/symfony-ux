@@ -1,5 +1,5 @@
 diff --git a/.env b/.env
-index 20286d99..f1b663b7 100644
+index 20286d99c..f1b663b7d 100644
 --- a/.env
 +++ b/.env
 @@ -26,3 +26,13 @@ APP_SECRET=b678902bbd0cc3e89c788fe00ed30bd1
@@ -17,7 +17,7 @@ index 20286d99..f1b663b7 100644
 +MERCURE_JWT_SECRET="!ChangeMe!"
 +###< symfony/mercure-bundle ###
 diff --git a/assets/controllers.json b/assets/controllers.json
-index 6f27124a..b7f5fb55 100644
+index 6f27124a0..b7f5fb55e 100644
 --- a/assets/controllers.json
 +++ b/assets/controllers.json
 @@ -11,6 +11,12 @@
@@ -34,7 +34,7 @@ index 6f27124a..b7f5fb55 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index 44816b61..248633a8 100644
+index 44816b611..248633a85 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -28,6 +28,7 @@
@@ -46,7 +46,7 @@ index 44816b61..248633a8 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 9b64df95..338f05d8 100644
+index 9b64df95f..338f05d8f 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -708,7 +708,7 @@ index 9b64df95..338f05d8 100644
 +    "plugin-api-version": "2.1.0"
  }
 diff --git a/config/bundles.php b/config/bundles.php
-index d8ae16dd..70f142d5 100644
+index d8ae16ddc..70f142d5e 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -16,4 +16,5 @@ return [
@@ -719,7 +719,7 @@ index d8ae16dd..70f142d5 100644
  ];
 diff --git a/config/packages/mercure.yaml b/config/packages/mercure.yaml
 new file mode 100644
-index 00000000..f2a73954
+index 000000000..f2a739540
 --- /dev/null
 +++ b/config/packages/mercure.yaml
 @@ -0,0 +1,8 @@
@@ -732,7 +732,7 @@ index 00000000..f2a73954
 +                secret: '%env(MERCURE_JWT_SECRET)%'
 +                publish: '*'
 diff --git a/package.json b/package.json
-index d3751850..783e2859 100644
+index d37518507..783e2859c 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,6 +7,7 @@
@@ -744,7 +744,7 @@ index d3751850..783e2859 100644
          "bootstrap": "^5.0.0-beta2",
          "chart.js": "^2.9.4",
 diff --git a/symfony.lock b/symfony.lock
-index 2ef2ae42..25fe1acb 100644
+index 2ef2ae424..25fe1acba 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -96,6 +96,12 @@

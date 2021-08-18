@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/search-preview_controller.js b/assets/controllers/search-preview_controller.js
 new file mode 100644
-index 00000000..66e39361
+index 000000000..66e39361a
 --- /dev/null
 +++ b/assets/controllers/search-preview_controller.js
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 00000000..66e39361
 +    }
 +}
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index d44eb6a9..00514dba 100644
+index d44eb6a96..00514dbab 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -36,7 +36,10 @@

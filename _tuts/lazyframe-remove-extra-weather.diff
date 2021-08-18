@@ -1,5 +1,5 @@
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 15f533b5..32377a07 100644
+index 15f533b57..32377a079 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -86,6 +86,7 @@
@@ -19,7 +19,7 @@ index 15f533b5..32377a07 100644
          <script>
          document.getElementById('logo-img').addEventListener('click', (event) => {
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index 99a3a670..f95eb92f 100644
+index 99a3a6704..f95eb92f1 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -16,3 +16,5 @@

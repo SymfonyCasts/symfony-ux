@@ -1,6 +1,6 @@
 diff --git a/assets/turbo/prefetch.js b/assets/turbo/prefetch.js
 new file mode 100644
-index 00000000..4ab37853
+index 000000000..4ab378535
 --- /dev/null
 +++ b/assets/turbo/prefetch.js
 @@ -0,0 +1,152 @@

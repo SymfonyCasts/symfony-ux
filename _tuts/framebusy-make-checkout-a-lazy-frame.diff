@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CheckoutController.php b/src/Controller/CheckoutController.php
-index a5a4d645..54564321 100644
+index a5a4d645d..545643219 100644
 --- a/src/Controller/CheckoutController.php
 +++ b/src/Controller/CheckoutController.php
 @@ -21,13 +21,9 @@ class CheckoutController extends AbstractController
@@ -27,7 +27,7 @@ index a5a4d645..54564321 100644
      }
  
 diff --git a/templates/checkout/checkout.html.twig b/templates/checkout/checkout.html.twig
-index 88559539..b3882181 100644
+index 885595399..b3882181f 100644
 --- a/templates/checkout/checkout.html.twig
 +++ b/templates/checkout/checkout.html.twig
 @@ -10,9 +10,9 @@

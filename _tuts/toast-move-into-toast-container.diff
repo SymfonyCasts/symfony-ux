@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/toast_controller.js b/assets/controllers/toast_controller.js
-index a94edbe9..b4ed250b 100644
+index a94edbe93..b4ed250ba 100644
 --- a/assets/controllers/toast_controller.js
 +++ b/assets/controllers/toast_controller.js
 @@ -3,6 +3,13 @@ import { Toast } from 'bootstrap';
@@ -17,7 +17,7 @@ index a94edbe9..b4ed250b 100644
          toast.show();
      }
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 337b8719..853726af 100644
+index 337b87198..853726aff 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -98,5 +98,10 @@

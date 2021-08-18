@@ -1,6 +1,6 @@
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
 new file mode 100644
-index 00000000..174aa737
+index 000000000..174aa7375
 --- /dev/null
 +++ b/src/Controller/ProductAdminController.php
 @@ -0,0 +1,94 @@
@@ -100,7 +100,7 @@ index 00000000..174aa737
 +}
 diff --git a/src/Form/ProductType.php b/src/Form/ProductType.php
 new file mode 100644
-index 00000000..b0f2b516
+index 000000000..b0f2b5169
 --- /dev/null
 +++ b/src/Form/ProductType.php
 @@ -0,0 +1,33 @@
@@ -139,7 +139,7 @@ index 00000000..b0f2b516
 +}
 diff --git a/templates/product_admin/_delete_form.html.twig b/templates/product_admin/_delete_form.html.twig
 new file mode 100644
-index 00000000..f1344bd1
+index 000000000..f1344bd13
 --- /dev/null
 +++ b/templates/product_admin/_delete_form.html.twig
 @@ -0,0 +1,4 @@
@@ -149,7 +149,7 @@ index 00000000..f1344bd1
 +</form>
 diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
 new file mode 100644
-index 00000000..bf20b98f
+index 000000000..bf20b98fb
 --- /dev/null
 +++ b/templates/product_admin/_form.html.twig
 @@ -0,0 +1,4 @@
@@ -159,7 +159,7 @@ index 00000000..bf20b98f
 +{{ form_end(form) }}
 diff --git a/templates/product_admin/edit.html.twig b/templates/product_admin/edit.html.twig
 new file mode 100644
-index 00000000..83b87579
+index 000000000..83b875790
 --- /dev/null
 +++ b/templates/product_admin/edit.html.twig
 @@ -0,0 +1,13 @@
@@ -178,7 +178,7 @@ index 00000000..83b87579
 +{% endblock %}
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
 new file mode 100644
-index 00000000..87a7a102
+index 000000000..87a7a1028
 --- /dev/null
 +++ b/templates/product_admin/index.html.twig
 @@ -0,0 +1,47 @@
@@ -231,7 +231,7 @@ index 00000000..87a7a102
 +{% endblock %}
 diff --git a/templates/product_admin/new.html.twig b/templates/product_admin/new.html.twig
 new file mode 100644
-index 00000000..1560ef70
+index 000000000..1560ef70f
 --- /dev/null
 +++ b/templates/product_admin/new.html.twig
 @@ -0,0 +1,11 @@
@@ -248,7 +248,7 @@ index 00000000..1560ef70
 +{% endblock %}
 diff --git a/templates/product_admin/show.html.twig b/templates/product_admin/show.html.twig
 new file mode 100644
-index 00000000..4bb4073d
+index 000000000..4bb4073d2
 --- /dev/null
 +++ b/templates/product_admin/show.html.twig
 @@ -0,0 +1,50 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 49945ae9..22944601 100644
+index 49945ae94..229446018 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -1,4 +1,5 @@
@@ -17,7 +17,7 @@ index 49945ae9..22944601 100644
      color: #fff;
      margin-top: 30px;
 diff --git a/package.json b/package.json
-index 6953de4d..79c2c4c9 100644
+index 6953de4dd..79c2c4c93 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -16343,7 +16343,7 @@ literal 0
 HcmV?d00001
 
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 53bc2818..246fb966 100644
+index 53bc28182..246fb9663 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -99,10 +99,10 @@ class ProductController extends AbstractController
@@ -16361,7 +16361,7 @@ index 53bc2818..246fb966 100644
      }
  }
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index e8212ec3..66f4f911 100644
+index e8212ec35..66f4f9113 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -13,7 +13,7 @@
@@ -16418,7 +16418,7 @@ index e8212ec3..66f4f911 100644
                  </nav>
              </header>
 diff --git a/templates/cart/_cartList.html.twig b/templates/cart/_cartList.html.twig
-index f512bec7..421ed3e9 100644
+index f512bec71..421ed3e9c 100644
 --- a/templates/cart/_cartList.html.twig
 +++ b/templates/cart/_cartList.html.twig
 @@ -1,12 +1,12 @@
@@ -16449,7 +16449,7 @@ index f512bec7..421ed3e9 100644
      {% endfor %}
  
 diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
-index dc22814f..fd148db9 100644
+index dc22814f3..fd148db95 100644
 --- a/templates/cart/_featuredSidebar.html.twig
 +++ b/templates/cart/_featuredSidebar.html.twig
 @@ -8,8 +8,8 @@
@@ -16464,7 +16464,7 @@ index dc22814f..fd148db9 100644
              {{ featuredProduct.priceString|format_currency('USD') }}
          </h6>
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index 2e243996..c7d8676b 100644
+index 2e243996f..c7d8676be 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -1,18 +1,18 @@
@@ -16491,7 +16491,7 @@ index 2e243996..c7d8676b 100644
                          url: path('_app_cart_list')
                      }) }}
 diff --git a/templates/checkout/checkout.html.twig b/templates/checkout/checkout.html.twig
-index d07f5998..88559539 100644
+index d07f59981..885595399 100644
 --- a/templates/checkout/checkout.html.twig
 +++ b/templates/checkout/checkout.html.twig
 @@ -7,25 +7,25 @@
@@ -16571,7 +16571,7 @@ index d07f5998..88559539 100644
              </div>
          </div>
 diff --git a/templates/checkout/confirmation.html.twig b/templates/checkout/confirmation.html.twig
-index 9313ab1e..baf82437 100644
+index 9313ab1eb..baf82437f 100644
 --- a/templates/checkout/confirmation.html.twig
 +++ b/templates/checkout/confirmation.html.twig
 @@ -1,78 +1,66 @@
@@ -16709,7 +16709,7 @@ index 9313ab1e..baf82437 100644
      </div>
  {% endblock %}
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index 36d39d84..fd408288 100644
+index 36d39d840..fd4082888 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -1,6 +1,6 @@
@@ -16732,7 +16732,7 @@ index 36d39d84..fd408288 100644
  {% endif %}
 diff --git a/templates/product/counting.html.twig b/templates/product/counting.html.twig
 deleted file mode 100644
-index b81a8b8c..00000000
+index b81a8b8ca..000000000
 --- a/templates/product/counting.html.twig
 +++ /dev/null
 @@ -1,11 +0,0 @@
@@ -16748,7 +16748,7 @@ index b81a8b8c..00000000
 -</div>
 -{% endblock %}
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 1771ddad..9df79cf6 100644
+index 1771ddad2..9df79cf6c 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -1,21 +1,21 @@
@@ -16805,7 +16805,7 @@ index 1771ddad..9df79cf6 100644
                              <strong>{{ product.priceString|format_currency('USD') }}</strong>
                          </p>
 diff --git a/templates/product/productBase.html.twig b/templates/product/productBase.html.twig
-index 82d3cc21..22302e6b 100644
+index 82d3cc216..22302e6b5 100644
 --- a/templates/product/productBase.html.twig
 +++ b/templates/product/productBase.html.twig
 @@ -1,13 +1,14 @@
@@ -16827,7 +16827,7 @@ index 82d3cc21..22302e6b 100644
              </div>
          </div>
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index e8b4f1b7..231ba152 100644
+index e8b4f1b70..231ba1529 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -1,8 +1,7 @@
@@ -16868,7 +16868,7 @@ index e8b4f1b7..231ba152 100644
              </div>
 diff --git a/templates/product/winner.html.twig b/templates/product/winner.html.twig
 new file mode 100644
-index 00000000..b986aab1
+index 000000000..b986aab1f
 --- /dev/null
 +++ b/templates/product/winner.html.twig
 @@ -0,0 +1,15 @@
@@ -16888,7 +16888,7 @@ index 00000000..b986aab1
 +</div>
 +{% endblock %}
 diff --git a/templates/product_admin/_delete_form.html.twig b/templates/product_admin/_delete_form.html.twig
-index f1344bd1..5177080a 100644
+index f1344bd13..5177080ac 100644
 --- a/templates/product_admin/_delete_form.html.twig
 +++ b/templates/product_admin/_delete_form.html.twig
 @@ -1,4 +1,4 @@
@@ -16899,7 +16899,7 @@ index f1344bd1..5177080a 100644
 +    <button class="btn btn-danger btn-sm">Delete</button>
  </form>
 diff --git a/templates/product_admin/_list.html.twig b/templates/product_admin/_list.html.twig
-index 9745a66b..b5e3ab81 100644
+index 9745a66b2..b5e3ab813 100644
 --- a/templates/product_admin/_list.html.twig
 +++ b/templates/product_admin/_list.html.twig
 @@ -1,4 +1,4 @@
@@ -16909,7 +16909,7 @@ index 9745a66b..b5e3ab81 100644
          <tr>
              <th>Id</th>
 diff --git a/templates/product_admin/edit.html.twig b/templates/product_admin/edit.html.twig
-index b0162471..4ff3b1b8 100644
+index b01624716..4ff3b1b8e 100644
 --- a/templates/product_admin/edit.html.twig
 +++ b/templates/product_admin/edit.html.twig
 @@ -3,13 +3,13 @@
@@ -16933,7 +16933,7 @@ index b0162471..4ff3b1b8 100644
  </div>
  {% endblock %}
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index 5f4686fd..70d64eff 100644
+index 5f4686fdb..70d64eff6 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -4,14 +4,14 @@
@@ -16976,7 +16976,7 @@ index 5f4686fd..70d64eff 100644
  </div>
  {% endblock %}
 diff --git a/templates/product_admin/new.html.twig b/templates/product_admin/new.html.twig
-index 4e2de8ca..ff2b1f31 100644
+index 4e2de8cab..ff2b1f310 100644
 --- a/templates/product_admin/new.html.twig
 +++ b/templates/product_admin/new.html.twig
 @@ -3,11 +3,10 @@
@@ -16995,7 +16995,7 @@ index 4e2de8ca..ff2b1f31 100644
  </div>
  {% endblock %}
 diff --git a/templates/registration/register.html.twig b/templates/registration/register.html.twig
-index 4c5e5b72..944d5887 100644
+index 4c5e5b721..944d58879 100644
 --- a/templates/registration/register.html.twig
 +++ b/templates/registration/register.html.twig
 @@ -3,16 +3,16 @@
@@ -17020,7 +17020,7 @@ index 4c5e5b72..944d5887 100644
                  {{ form_start(registrationForm) }}
                      {{ form_row(registrationForm.email) }}
 diff --git a/templates/review_admin/_delete_form.html.twig b/templates/review_admin/_delete_form.html.twig
-index 38b1513d..7b89245a 100644
+index 38b1513d9..7b89245a6 100644
 --- a/templates/review_admin/_delete_form.html.twig
 +++ b/templates/review_admin/_delete_form.html.twig
 @@ -1,4 +1,4 @@
@@ -17031,7 +17031,7 @@ index 38b1513d..7b89245a 100644
 +    <button class="btn btn-danger btn-sm">Delete</button>
  </form>
 diff --git a/templates/review_admin/edit.html.twig b/templates/review_admin/edit.html.twig
-index 14d4b42e..44bdce66 100644
+index 14d4b42ea..44bdce660 100644
 --- a/templates/review_admin/edit.html.twig
 +++ b/templates/review_admin/edit.html.twig
 @@ -3,13 +3,15 @@
@@ -17055,7 +17055,7 @@ index 14d4b42e..44bdce66 100644
  </div>
  {% endblock %}
 diff --git a/templates/review_admin/index.html.twig b/templates/review_admin/index.html.twig
-index 67640e23..9d008a88 100644
+index 67640e239..9d008a88f 100644
 --- a/templates/review_admin/index.html.twig
 +++ b/templates/review_admin/index.html.twig
 @@ -3,35 +3,36 @@
@@ -17124,7 +17124,7 @@ index 67640e23..9d008a88 100644
      <a href="{{ path('review_admin_new') }}">Create new</a>
  </div>
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 86e18352..1180589e 100644
+index 86e183527..1180589ef 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -4,57 +4,52 @@
@@ -17231,7 +17231,7 @@ index 86e18352..1180589e 100644
      </div>
  {% endblock %}
 diff --git a/yarn.lock b/yarn.lock
-index 91156b1b..3a4323bc 100644
+index 91156b1b6..3a4323bc8 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -925,6 +925,11 @@
