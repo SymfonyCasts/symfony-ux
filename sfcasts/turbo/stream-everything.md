@@ -13,6 +13,8 @@ id of the element that surrounds the reviews area. Inside, include the reviews
 template. Oh, but don't forget to include the `<template>` element - I'll remember
 that in a minute.
 
+[[[ code('0e2c691015') ]]]
+
 We're using `replace` instead of `update` because `_reviews.html.twig` *contains*
 the target. So we want to *replace* the existing `product-review` element
 with the *new* one... instead of just updating its `innerHTML`.
@@ -45,6 +47,8 @@ the only way to get here is if the form *was* just submitted successfully. But
 you could also pass a `success` variable to the template to be more
 explicit.
 
+[[[ code('2c88e82fa2') ]]]
+
 Anyways, let's test this thing out with *another* glowing review. When we submit...
 that's *lovely*.
 
@@ -62,6 +66,8 @@ us to the review page... because the review page *renders* this frame
 Check it out: right after the success message, add an anchor tag with
 `{{ path() }}` to generate a URL to the `app_product_reviews` route. This needs
 an `id` wildcard set to `product.id`. Put some text inside.
+
+[[[ code('1f6b3c801f') ]]]
 
 Move back over, refresh...  and, once again, profess your love - or maybe disgust -
 for this product: your call. Submit. There's our success message. When we click
@@ -84,6 +90,8 @@ for that in the controller.
 
 Here's how it looks: wrap our stream render with if
 `TurboStreamResponse::STREAM_FORMAT` equals `$request->getPreferredFormat()`.
+
+[[[ code('eaa99b1e97') ]]]
 
 That's it. This preferred format thing basically looks at the `Accept` request header
 to see if the request supports turbo streams. All Ajax requests made through
