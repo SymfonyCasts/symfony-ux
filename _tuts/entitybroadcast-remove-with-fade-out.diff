@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
-index d20b7bedc..ced412348 100644
+index d20b7bed..ced41234 100644
 --- a/assets/controllers/streamed-item_controller.js
 +++ b/assets/controllers/streamed-item_controller.js
 @@ -1,15 +1,25 @@
@@ -32,7 +32,7 @@ index d20b7bedc..ced412348 100644
      }
  }
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 8382e7663..204e37ba4 100644
+index 8382e766..204e37ba 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -182,6 +182,9 @@ h1 {
@@ -46,7 +46,7 @@ index 8382e7663..204e37ba4 100644
      transition: background-color 2000ms;
  }
 diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
-index 698d67845..b0ed4f3ff 100644
+index 698d6784..b0ed4f3f 100644
 --- a/assets/util/add-transition.js
 +++ b/assets/util/add-transition.js
 @@ -1,6 +1,6 @@
@@ -65,7 +65,7 @@ index 698d67845..b0ed4f3ff 100644
      });
  }
 diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
-index d1d1c973c..1acb47640 100644
+index d1d1c973..1acb4764 100644
 --- a/templates/broadcast/Review.stream.html.twig
 +++ b/templates/broadcast/Review.stream.html.twig
 @@ -28,5 +28,12 @@
@@ -83,7 +83,7 @@ index d1d1c973c..1acb47640 100644
 +    </turbo-stream>
  {% endblock %}
 diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
-index b30c55bb7..eb45b1a2a 100644
+index b30c55bb..eb45b1a2 100644
 --- a/templates/product/_review.html.twig
 +++ b/templates/product/_review.html.twig
 @@ -6,6 +6,12 @@

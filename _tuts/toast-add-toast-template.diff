@@ -1,6 +1,6 @@
 diff --git a/templates/_toast.html.twig b/templates/_toast.html.twig
 new file mode 100644
-index 000000000..cb0dc9c00
+index 00000000..cb0dc9c0
 --- /dev/null
 +++ b/templates/_toast.html.twig
 @@ -0,0 +1,12 @@

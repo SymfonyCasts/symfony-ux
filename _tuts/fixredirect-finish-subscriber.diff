@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
-index eee47c677..577ced60f 100644
+index eee47c67..577ced60 100644
 --- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 +++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 @@ -14,6 +14,11 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface

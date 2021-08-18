@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 5fa1f17a5..ea4b8cced 100644
+index 5fa1f17a..ea4b8cce 100644
 --- a/package.json
 +++ b/package.json
 @@ -7,6 +7,7 @@
@@ -11,7 +11,7 @@ index 5fa1f17a5..ea4b8cced 100644
          "react-dom": "^17.0.1",
          "regenerator-runtime": "^0.13.2",
 diff --git a/yarn.lock b/yarn.lock
-index 8a1ba0a4d..605e938c1 100644
+index 8a1ba0a4..605e938c 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -3205,6 +3205,11 @@ jest-worker@^26.3.0, jest-worker@^26.6.2:

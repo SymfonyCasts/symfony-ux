@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/made-with-love_controller.js b/assets/controllers/made-with-love_controller.js
-index ca0d704ec..dbfe3744e 100644
+index ca0d704e..dbfe3744 100644
 --- a/assets/controllers/made-with-love_controller.js
 +++ b/assets/controllers/made-with-love_controller.js
 @@ -1,7 +1,13 @@

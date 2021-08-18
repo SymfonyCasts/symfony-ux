@@ -1,5 +1,5 @@
 diff --git a/yarn.lock b/yarn.lock
-index 3a4323bc8..926a57ec7 100644
+index 3a4323bc..926a57ec 100644
 --- a/yarn.lock
 +++ b/yarn.lock
 @@ -930,6 +930,11 @@

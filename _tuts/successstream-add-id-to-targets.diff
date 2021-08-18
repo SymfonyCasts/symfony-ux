@@ -1,5 +1,5 @@
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index 8b2a9467b..18411e351 100644
+index 8b2a9467..18411e35 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -1,6 +1,6 @@
@@ -11,7 +11,7 @@ index 8b2a9467b..18411e351 100644
      <div class="component-light my-3 p-3">
          <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
 diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
-index 2dbb3670a..4f965da3a 100644
+index 2dbb3670..4f965da3 100644
 --- a/templates/product/reviews.stream.html.twig
 +++ b/templates/product/reviews.stream.html.twig
 @@ -1,10 +1,10 @@
@@ -28,7 +28,7 @@ index 2dbb3670a..4f965da3a 100644
          {{ include('product/_reviews.html.twig') }}
      </template>
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index d2ab874c3..7af93061e 100644
+index d2ab874c..7af93061 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -30,7 +30,7 @@

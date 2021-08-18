@@ -1,5 +1,5 @@
 diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
-index eec6f040c..f8d464bb0 100644
+index eec6f040..f8d464bb 100644
 --- a/templates/product_admin/_form.html.twig
 +++ b/templates/product_admin/_form.html.twig
 @@ -1,4 +1,6 @@

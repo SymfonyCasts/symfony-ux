@@ -1,5 +1,5 @@
 diff --git a/templates/product_admin/edit.html.twig b/templates/product_admin/edit.html.twig
-index 83b875790..b01624716 100644
+index 83b87579..b0162471 100644
 --- a/templates/product_admin/edit.html.twig
 +++ b/templates/product_admin/edit.html.twig
 @@ -3,6 +3,7 @@
@@ -17,7 +17,7 @@ index 83b875790..b01624716 100644
 +</div>
  {% endblock %}
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index 87a7a1028..edee43484 100644
+index 87a7a102..edee4348 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -3,6 +3,7 @@
@@ -35,7 +35,7 @@ index 87a7a1028..edee43484 100644
 +</div>
  {% endblock %}
 diff --git a/templates/product_admin/new.html.twig b/templates/product_admin/new.html.twig
-index 1560ef70f..4e2de8cab 100644
+index 1560ef70..4e2de8ca 100644
 --- a/templates/product_admin/new.html.twig
 +++ b/templates/product_admin/new.html.twig
 @@ -3,9 +3,11 @@
@@ -51,7 +51,7 @@ index 1560ef70f..4e2de8cab 100644
 +</div>
  {% endblock %}
 diff --git a/templates/product_admin/show.html.twig b/templates/product_admin/show.html.twig
-index 4bb4073d2..79dd56ff3 100644
+index 4bb4073d..79dd56ff 100644
 --- a/templates/product_admin/show.html.twig
 +++ b/templates/product_admin/show.html.twig
 @@ -3,6 +3,7 @@

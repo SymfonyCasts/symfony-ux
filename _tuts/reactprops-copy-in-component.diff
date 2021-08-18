@@ -1,8 +1,8 @@
-diff --git a/assets/components/FeatureProduct.js b/assets/components/FeatureProduct.js
+diff --git a/assets/components/FeaturedProduct.js b/assets/components/FeaturedProduct.js
 new file mode 100644
-index 000000000..91b85ac6d
+index 00000000..91b85ac6
 --- /dev/null
-+++ b/assets/components/FeatureProduct.js
++++ b/assets/components/FeaturedProduct.js
 @@ -0,0 +1,25 @@
 +import React from 'react';
 +

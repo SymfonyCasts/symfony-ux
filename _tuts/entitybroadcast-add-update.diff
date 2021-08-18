@@ -1,5 +1,5 @@
 diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
-index e2fbcc7bd..a3f26596e 100644
+index e2fbcc7b..a3f26596 100644
 --- a/templates/broadcast/Review.stream.html.twig
 +++ b/templates/broadcast/Review.stream.html.twig
 @@ -18,7 +18,13 @@
@@ -18,7 +18,7 @@ index e2fbcc7bd..a3f26596e 100644
  
  {% block remove %}
 diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
-index 320563d53..b30c55bb7 100644
+index 320563d5..b30c55bb 100644
 --- a/templates/product/_review.html.twig
 +++ b/templates/product/_review.html.twig
 @@ -1,4 +1,5 @@

@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 246fb9663..e749f11fb 100644
+index 246fb966..e749f11f 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -72,9 +72,13 @@ class ProductController extends AbstractController
@@ -18,7 +18,7 @@ index 246fb9663..e749f11fb 100644
              $reviewForm->handleRequest($request);
  
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index fd4082888..2a3093fb8 100644
+index fd408288..2a3093fb 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -23,6 +23,4 @@

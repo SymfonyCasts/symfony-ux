@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
 new file mode 100644
-index 000000000..5ab874787
+index 00000000..5ab87478
 --- /dev/null
 +++ b/assets/controllers/weather-widget_controller.js
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 000000000..5ab874787
 +    }
 +}
 diff --git a/templates/weather/index.html.twig b/templates/weather/index.html.twig
-index e223a3afb..c513bf407 100644
+index e223a3af..c513bf40 100644
 --- a/templates/weather/index.html.twig
 +++ b/templates/weather/index.html.twig
 @@ -4,7 +4,7 @@

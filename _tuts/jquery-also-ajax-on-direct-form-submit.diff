@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index ac2405a2a..8b512139d 100644
+index ac2405a2..8b512139 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -16,7 +16,8 @@ export default class extends Controller {
@@ -13,7 +13,7 @@ index ac2405a2a..8b512139d 100644
          this.modalBodyTarget.innerHTML = await $.ajax({
              url: this.formUrlValue,
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index 756851597..ae97d92ff 100644
+index 75685159..ae97d92f 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -12,7 +12,11 @@

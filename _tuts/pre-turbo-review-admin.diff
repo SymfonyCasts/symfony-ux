@@ -1,6 +1,6 @@
 diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
 new file mode 100644
-index 000000000..fb60f5648
+index 00000000..fb60f564
 --- /dev/null
 +++ b/src/Controller/ReviewAdminController.php
 @@ -0,0 +1,84 @@
@@ -90,7 +90,7 @@ index 000000000..fb60f5648
 +}
 diff --git a/src/Form/ReviewType.php b/src/Form/ReviewType.php
 new file mode 100644
-index 000000000..b6457d044
+index 00000000..b6457d04
 --- /dev/null
 +++ b/src/Form/ReviewType.php
 @@ -0,0 +1,28 @@
@@ -124,7 +124,7 @@ index 000000000..b6457d044
 +}
 diff --git a/templates/review_admin/_delete_form.html.twig b/templates/review_admin/_delete_form.html.twig
 new file mode 100644
-index 000000000..38b1513d9
+index 00000000..38b1513d
 --- /dev/null
 +++ b/templates/review_admin/_delete_form.html.twig
 @@ -0,0 +1,4 @@
@@ -134,7 +134,7 @@ index 000000000..38b1513d9
 +</form>
 diff --git a/templates/review_admin/_form.html.twig b/templates/review_admin/_form.html.twig
 new file mode 100644
-index 000000000..9328bd56d
+index 00000000..9328bd56
 --- /dev/null
 +++ b/templates/review_admin/_form.html.twig
 @@ -0,0 +1,4 @@
@@ -144,7 +144,7 @@ index 000000000..9328bd56d
 +{{ form_end(form) }}
 diff --git a/templates/review_admin/edit.html.twig b/templates/review_admin/edit.html.twig
 new file mode 100644
-index 000000000..14d4b42ea
+index 00000000..14d4b42e
 --- /dev/null
 +++ b/templates/review_admin/edit.html.twig
 @@ -0,0 +1,15 @@
@@ -165,7 +165,7 @@ index 000000000..14d4b42ea
 +{% endblock %}
 diff --git a/templates/review_admin/index.html.twig b/templates/review_admin/index.html.twig
 new file mode 100644
-index 000000000..67640e239
+index 00000000..67640e23
 --- /dev/null
 +++ b/templates/review_admin/index.html.twig
 @@ -0,0 +1,38 @@
@@ -209,7 +209,7 @@ index 000000000..67640e239
 +{% endblock %}
 diff --git a/templates/review_admin/new.html.twig b/templates/review_admin/new.html.twig
 new file mode 100644
-index 000000000..2d4426c2b
+index 00000000..2d4426c2
 --- /dev/null
 +++ b/templates/review_admin/new.html.twig
 @@ -0,0 +1,13 @@
