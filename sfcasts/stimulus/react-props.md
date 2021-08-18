@@ -23,7 +23,7 @@ To render this, let's create a new stimulus controller called, how about,
 `made-with-love_controller.js`, paste here, and then change the import to
 `FeaturedProduct` from `FeaturedProduct`. Render `<FeaturedProduct />` below.
 
-[[[ code('7850a58981') ]]]
+[[[ code('2d06667e62') ]]]
 
 Super simple. The interesting part about this React component is that it requires
 a `product` prop, which is the data for whatever the featured product is. If we
