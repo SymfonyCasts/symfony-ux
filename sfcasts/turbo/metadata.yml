@@ -49,3 +49,4 @@ chapters:
     - mercure-service
     - listen-publish
     - mercure-jwt
+    - mercure-php
