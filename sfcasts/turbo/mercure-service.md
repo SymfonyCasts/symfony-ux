@@ -53,7 +53,7 @@ This looks fancy, but I'm basically dumping the `$_SERVER` variable... except
 only the keys that contain `MERCURE`. The `$_SERVER` variable - among other things -
 will contain all environment variables. I'm filtering for `MERCURE` basically...
 because I don't want to accidentally publish any secret keys from my computer
-to the internet... as fun as that would be.
+to the internet... as much fun as that would be.
 
 *Anyways*, this will run *before* the `.env` file is loaded, so it will only
 print *real* environment variables. Back over on our site, refresh!
