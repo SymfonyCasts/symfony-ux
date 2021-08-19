@@ -46,4 +46,5 @@ chapters:
     - stream-everything
     - manual-stream
     - mercure
+    - mercure-service
     - listen-publish
