@@ -1,41 +1,64 @@
 # Publishing Mercure Updates in PHP
 
-Coming soon...
+We *now* know that we can *easily* subscribe to a Mercure topic in JavaScript.
+*And*, if we publish a message with `<turbo-stream>` HTML in it, our JavaScript
+will instantly notice & process it. Sweet!
 
-want to publish via PHP and that's actually much easier than using curl. So let's
-publish this same at message that we have right here. I'll actually copy it.
+So far, we've published messages to Mercure via curl at the command line... but
+that was just to learn how it works. In reality, we're going to publish message
+in PHP... which is a heck of a lot simpler anyways.
 
-But from inside of our controller, so over in product controller, inside of reviews,
-action, the thing that we need to publish messages from PHP is a new argument called
-a hub interface. So I'll say how I'm interface, I'll call this merch, your hub, and
-then down here. Okay. Just something that's really easy right after we, uh, post, but
-even before we're successful, let's create a new update. So what it is is you're
-creating update variable, say update = new updates to use this nice little update
-class. Instead of here, this takes two arguments. The first one is the topic or
-topics that we want to publish to. So I'll save product reviews. And the second thing
-is the data that we want to send. So I'm going to put a string and I'll paste in that
-turbo stream that we just had. Okay.
+Copy the `<turbo-stream>`... then go find `ProductController`... and then the
+reviews action.
 
-Then below this to publish this, we all say mark, your hub-> publish update.
-That's it. All right. So head back over, I'm going to refresh my page so we can get
-our original, quick stats back then. All we need to do down here is just submit the
-form. We don't even need to fill it out successfully. That should submit it. And oh,
-500 air. Let me open up that page in my profiler. And I get failed to send an update
-and it's not really clear what the problem with the issue is, but you can see it says
-exceptions for sometimes there are multiple exceptions on the page and if you hide
-one, ah, here we go. SSL peer certificate or SSH remote key was not okay for our URL.
-This is just a Mac thing with the Symfony binary. Okay.
+## Publishing a Message from PHP
 
-You can learn more about it on this issue for the Symfony C L I. So this is only
-happening because we're using the Symfony binary and we're on a Mac. So to work
-around it, I'm actually just going to disable, uh, in dev environment, only a SSL
-check. So the way to do this is to go into config packages, framework dynamical, and
-we're going to configure the Symfony HTTP client to ignore a SSL areas in dev only.
-And we can actually do this by using this cool when app dev syntax, that's new and
-Peachtree and Symfony 5.3, then framework HDV client default options, verified peer
-false ID here. All right. So let me close this over here. Refresh the page again, see
-our number review sections up there and reviewed out here and okay. We've got the
-validation air here. That's expected, but scroll up. Yes. We updated the page with
-our stream. That is awesome. So next let's use this new power to simplify our reviews
-action. We can now really direct on success. Like we were originally were and publish
-a stream to update the quick stats area through mercure. Okay.
+To publish updates to a Mercure Hub, we need to autowire a new service. Use
+`HubInterface` and I'll call it `$mercureHub`.
+
+Down below, to start, let's publish an update when we submit the form... but not
+necessarily when it's successful. I'm lazy: we can test without filling out the
+form. Add a variable - `$update` - set to `new Update()` - a handy class for
+creating the message. We need to pass this two arguments. The first is the topic
+or topics that we want to publish to. Use `product-reviews`. The second is the
+*data* that we want to send. Paste in the `<turbo-stream>` string.
+
+Below, to actually *publish* this, all we need is `$mecureHub->publish($update)`.
+
+Kind of... beautiful, isn't it?
+
+Let's try it! Find your browser and refresh so the quick stats area is restored.
+Scroll down and submit the form empty. Uh... 500 error? Open the profiler for that
+request. Hmm:
+
+> Failed to send an update
+
+## Setting verify_peer to False in dev for Macs
+
+Not... very explanatory. But notice that there were *four* exceptions. When this
+happens, it's often one of the *other* exceptions that has more details. Ah:
+
+> SSL peer certificate or SSH remote key was not okay
+
+This... is a problem specific to the Symfony binary, https and... Macs. You can
+learn more about it on this issue for the Symfony CLI. If you're not using a Mac,
+good for you! That hopefully just worked.
+
+If you *are*, the easiest way to fix this is to disable "peer verification" in the
+`dev` environment.
+
+To do this, open `config/packages/framework.yaml`. At the bottom, use `when@dev`
+to set config specific to the `dev` environment - that's a feature that's new
+to Symfony 5.3. Under this, set `framework`, `http_client`, `default_options` then
+`verify_peer: false`.
+
+That's *not* something you want to set in production... and it's a bummer we need
+to set it in the `dev` environment. But it *should* fix our issue.
+
+Close this... then refresh the page again. Scroll down... and submit the review
+form. Ok! We get the normal validation error - that's expected. But scroll up.
+Yes! We just updated the page with our stream through Mercure! That's awesome!
+
+So next: let's use this new superpower to simplify our reviews action. We can now
+redirect on success like we were originally were... *and* publish a stream to update
+the quick stats area.
