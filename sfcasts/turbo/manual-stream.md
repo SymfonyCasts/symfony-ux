@@ -19,6 +19,8 @@ it. In `templates/base.html.twig`, find the section - I'll search for flash - an
 surround it: a `<div>` with id set to, how about, `flash-container`. Pop the
 closing tag on the other side.
 
+[[[ code('3e5ea16e8c') ]]]
+
 ## Manually Creating a Stream
 
 Back in `counter_controller.js`, right after we update the count on the page, let's
@@ -41,6 +43,8 @@ function called `renderStreamMessage`.
 
 Copy that. Down below, it's as simple as this: `renderStreamMessage()` passing
 `streamMessage`.
+
+[[[ code('ac3a378c42') ]]]
 
 Done! Let's try this thing. Head back over, refresh and click. Oh! That's *so*
 cool. We now have a dead-simple way to mutate different elements on your page from
@@ -71,6 +75,8 @@ to show once... but *not* be there if we navigate away and then back again.
 
 So, in `base.html.twig`, it's really simple: on `flash-container` - which will contain
 all flash messages - add a new `data-turbo-cache="false"`.
+
+[[[ code('f61b8986c0') ]]]
 
 That's it! Thanks to this, the entire element - and anything inside - will *not*
 be included in the snapshot. Check it out: refresh the homepage... click 10 times
