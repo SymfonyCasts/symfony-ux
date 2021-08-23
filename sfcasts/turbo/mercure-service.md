@@ -32,12 +32,17 @@ running at this URL. We get that for free.
 ## The Environment Variables
 
 To communicate with this, head back over to your editor and open the `.env` file.
+
+[[[ code('d434b0be49') ]]]
+
 These three environment variables define values that are used in a new
 config file: `config/packages/mercure.yaml`. `MERCURE_PUBLIC_URL` is the
 *public* URL to the Mercure hub that our JavaScript will use to *subscribe* to
 messages and `MERCURE_URL` is the URL that our PHP code will use to *publish*
 messages. These are usually the same. `MERCURE_SECRET` is basically a password
 that will allow us to publish: more on that later.
+
+[[[ code('e64411d5e3') ]]]
 
 In our case, both URL variables *already*, by chance, point to the correct URL!
 Yay! But actually, if you're using the latest version of the Symfony binary... we
@@ -48,6 +53,8 @@ automatically to their correct values.
 Check it out. Back over in our editor, open `public/index.php`. Let me close a
 few things... then open it. Cool. Right after the runtime load, I'll paste in
 some code.
+
+[[[ code('a7f4de90da') ]]]
 
 This looks fancy, but I'm basically dumping the `$_SERVER` variable... except
 only the keys that contain `MERCURE`. The `$_SERVER` variable - among other things -
