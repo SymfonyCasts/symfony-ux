@@ -50,3 +50,4 @@ chapters:
     - listen-publish
     - mercure-jwt
     - mercure-php
+    - reviews-stream
