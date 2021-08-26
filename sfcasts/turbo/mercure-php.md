@@ -25,6 +25,8 @@ is the *data* that we want to send. Paste in the `<turbo-stream>` string.
 
 Below, to *publish* this, all we need is `$mercureHub->publish($update)`.
 
+[[[ code('488b5641b5') ]]]
+
 Kind of... beautiful, isn't it?
 
 Let's try this! Find your browser and refresh so the quick stats area is restored.
@@ -51,6 +53,8 @@ To do this, open `config/packages/framework.yaml`. At the bottom, use `when@dev`
 to set config specific to the `dev` environment - that's a feature that's new
 to Symfony 5.3. Under this, set `framework`, `http_client`, `default_options` then
 `verify_peer: false`.
+
+[[[ code('66b54cbf9d') ]]]
 
 That's *not* something you want to set in production... and it's a bummer we need
 to set it in the `dev` environment. But it *should* fix our issue.
