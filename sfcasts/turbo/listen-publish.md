@@ -23,6 +23,8 @@ installed a few minutes ago - `turbo_stream_listen()` - and pass this the name o
 "topic"... which could be anything. How about `product-reviews`. Then, close the
 `div`.
 
+[[[ code('9c57475010') ]]]
+
 I know, that looks kind of weird. To see what it does, go refresh a product page...
 and inspect the reviews area to find this `div`. Here it is.
 
