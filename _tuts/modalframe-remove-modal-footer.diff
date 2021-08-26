@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index c92cf621..0c8a8f2f 100644
+index c92cf621f..0c8a8f2f1 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -170,10 +170,6 @@ h1 {
@@ -14,7 +14,7 @@ index c92cf621..0c8a8f2f 100644
      transition: opacity 300ms;
  }
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index da621b5d..41aa07ac 100644
+index da621b5d7..41aa07ac6 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -19,14 +19,6 @@

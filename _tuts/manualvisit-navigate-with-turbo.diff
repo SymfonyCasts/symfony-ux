@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
-index bf8e4750..99dcdf03 100644
+index bf8e4750e..99dcdf03d 100644
 --- a/assets/controllers/counter_controller.js
 +++ b/assets/controllers/counter_controller.js
 @@ -1,4 +1,5 @@

@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/made-with-love_controller.js b/assets/controllers/made-with-love_controller.js
 new file mode 100644
-index 00000000..ca0d704e
+index 000000000..ca0d704ec
 --- /dev/null
 +++ b/assets/controllers/made-with-love_controller.js
 @@ -0,0 +1,7 @@
@@ -12,7 +12,7 @@ index 00000000..ca0d704e
 +    }
 +}
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index cbfb9749..0e069350 100644
+index cbfb9749d..0e0693507 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -62,11 +62,10 @@

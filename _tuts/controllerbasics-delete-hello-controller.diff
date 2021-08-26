@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/hello_controller.js b/assets/controllers/hello_controller.js
 deleted file mode 100644
-index 8c79f65a..00000000
+index 8c79f65a2..000000000
 --- a/assets/controllers/hello_controller.js
 +++ /dev/null
 @@ -1,16 +0,0 @@

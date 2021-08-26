@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
-index 4fe5bf5d..0c03a9bb 100644
+index 4fe5bf5da..0c03a9bb1 100644
 --- a/src/Controller/ProductController.php
 +++ b/src/Controller/ProductController.php
 @@ -12,8 +12,6 @@ use App\Repository\ProductRepository;
@@ -37,7 +37,7 @@ index 4fe5bf5d..0c03a9bb 100644
  
                  return $this->redirectToRoute('app_product_reviews', [
 diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
-index b863f50f..f7281971 100644
+index b863f50fa..f7281971a 100644
 --- a/templates/broadcast/Review.stream.html.twig
 +++ b/templates/broadcast/Review.stream.html.twig
 @@ -1,5 +1,18 @@
@@ -62,7 +62,7 @@ index b863f50f..f7281971 100644
  {% block update %}
 diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
 deleted file mode 100644
-index 59e92ef2..00000000
+index 59e92ef2f..000000000
 --- a/templates/product/reviews.stream.html.twig
 +++ /dev/null
 @@ -1,14 +0,0 @@

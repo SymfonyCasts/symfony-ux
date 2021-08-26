@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index b6aa7fa2..6a80f861 100644
+index b6aa7fa28..6a80f8616 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -39,6 +39,10 @@ class ProductAdminController extends AbstractController

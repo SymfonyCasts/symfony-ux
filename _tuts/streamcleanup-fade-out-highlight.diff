@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
 new file mode 100644
-index 00000000..d20b7bed
+index 000000000..d20b7bedc
 --- /dev/null
 +++ b/assets/controllers/streamed-item_controller.js
 @@ -0,0 +1,15 @@
@@ -20,7 +20,7 @@ index 00000000..d20b7bed
 +    }
 +}
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index fea451c5..8382e766 100644
+index fea451c5e..8382e7663 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -182,3 +182,6 @@ h1 {
@@ -31,7 +31,7 @@ index fea451c5..8382e766 100644
 +    transition: background-color 2000ms;
 +}
 diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
-index fd2e91e5..320563d5 100644
+index fd2e91e5f..320563d53 100644
 --- a/templates/product/_review.html.twig
 +++ b/templates/product/_review.html.twig
 @@ -1,4 +1,11 @@

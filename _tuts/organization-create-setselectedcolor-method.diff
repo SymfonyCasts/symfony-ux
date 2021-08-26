@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
-index bebe4140..008ca900 100644
+index bebe4140f..008ca9003 100644
 --- a/assets/controllers/color-square_controller.js
 +++ b/assets/controllers/color-square_controller.js
 @@ -10,10 +10,12 @@ export default class extends Controller {

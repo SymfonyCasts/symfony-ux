@@ -1,5 +1,5 @@
 diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
-index 577ced60..f1339d94 100644
+index 577ced60f..f1339d947 100644
 --- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 +++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
 @@ -6,9 +6,17 @@ use Symfony\Component\EventDispatcher\EventSubscriberInterface;

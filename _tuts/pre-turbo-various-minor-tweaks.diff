@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 5621c51d..49945ae9 100644
+index 5621c51dc..49945ae94 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -153,7 +153,7 @@ h1 {
@@ -12,7 +12,7 @@ index 5621c51d..49945ae9 100644
  .fade-enter-from, .fade-leave-to {
      opacity: 0;
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index ac75763c..d7645dc0 100644
+index ac75763c4..d7645dc08 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -5,6 +5,10 @@ security:
@@ -27,7 +27,7 @@ index ac75763c..d7645dc0 100644
      providers:
          # used to reload user from session & other features (e.g. switch_user)
 diff --git a/config/packages/twig.yaml b/config/packages/twig.yaml
-index 14e0cc13..6923b009 100644
+index 14e0cc13b..6923b0093 100644
 --- a/config/packages/twig.yaml
 +++ b/config/packages/twig.yaml
 @@ -1,4 +1,4 @@
@@ -37,7 +37,7 @@ index 14e0cc13..6923b009 100644
 -        - bootstrap_4_layout.html.twig
 +        - bootstrap_5_layout.html.twig
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index f3ae6532..fbc0ba27 100644
+index f3ae6532d..fbc0ba27f 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -5,6 +5,7 @@ namespace App\Controller;
@@ -74,7 +74,7 @@ index f3ae6532..fbc0ba27 100644
       * @Route("/{id}/edit", name="product_admin_edit", methods={"GET","POST"})
       */
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 0e069350..e8212ec3 100644
+index 0e0693507..e8212ec35 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -17,9 +17,10 @@
@@ -121,7 +121,7 @@ index 0e069350..e8212ec3 100644
          </div>
  
 diff --git a/templates/product/_categoriesSidebar.html.twig b/templates/product/_categoriesSidebar.html.twig
-index acc26f24..cc430c48 100644
+index acc26f242..cc430c48f 100644
 --- a/templates/product/_categoriesSidebar.html.twig
 +++ b/templates/product/_categoriesSidebar.html.twig
 @@ -19,11 +19,4 @@
@@ -137,7 +137,7 @@ index acc26f24..cc430c48 100644
 -    </div>
  </div>
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 6184ce8e..1771ddad 100644
+index 6184ce8e4..1771ddad2 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -1,116 +1,105 @@
@@ -351,7 +351,7 @@ index 6184ce8e..1771ddad 100644
  {% endblock %}
 diff --git a/templates/product/productBase.html.twig b/templates/product/productBase.html.twig
 new file mode 100644
-index 00000000..82d3cc21
+index 000000000..82d3cc216
 --- /dev/null
 +++ b/templates/product/productBase.html.twig
 @@ -0,0 +1,15 @@
@@ -371,7 +371,7 @@ index 00000000..82d3cc21
 +    </div>
 +{% endblock %}
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index 537282c6..138999b0 100644
+index 537282c6b..138999b00 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -1,39 +1,29 @@
@@ -440,7 +440,7 @@ index 537282c6..138999b0 100644
              </div>
          </div>
 diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
-index bf20b98f..eec6f040 100644
+index bf20b98fb..eec6f040c 100644
 --- a/templates/product_admin/_form.html.twig
 +++ b/templates/product_admin/_form.html.twig
 @@ -1,4 +1,4 @@
@@ -450,7 +450,7 @@ index bf20b98f..eec6f040 100644
 +    <button class="btn btn-primary" formnovalidate>{{ button_label|default('Save') }}</button>
  {{ form_end(form) }}
 diff --git a/templates/product_admin/_list.html.twig b/templates/product_admin/_list.html.twig
-index b03c9c31..9745a66b 100644
+index b03c9c313..9745a66b2 100644
 --- a/templates/product_admin/_list.html.twig
 +++ b/templates/product_admin/_list.html.twig
 @@ -24,7 +24,7 @@
@@ -464,7 +464,7 @@ index b03c9c31..9745a66b 100644
          </tr>
 diff --git a/templates/product_admin/show.html.twig b/templates/product_admin/show.html.twig
 deleted file mode 100644
-index 79dd56ff..00000000
+index 79dd56ff3..000000000
 --- a/templates/product_admin/show.html.twig
 +++ /dev/null
 @@ -1,52 +0,0 @@
@@ -521,7 +521,7 @@ index 79dd56ff..00000000
 -</div>
 -{% endblock %}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 91333596..86e18352 100644
+index 913335965..86e183527 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -21,11 +21,17 @@

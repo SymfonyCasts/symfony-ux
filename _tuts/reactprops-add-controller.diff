@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
 new file mode 100644
-index 00000000..6c67e67c
+index 000000000..6c67e67cc
 --- /dev/null
 +++ b/assets/controllers/featured-product-react_controller.js
 @@ -0,0 +1,13 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/weather-widget_controller.js b/assets/controllers/weather-widget_controller.js
-index e82aae54..52bb06db 100644
+index e82aae54f..52bb06db4 100644
 --- a/assets/controllers/weather-widget_controller.js
 +++ b/assets/controllers/weather-widget_controller.js
 @@ -2,10 +2,10 @@ import { Controller } from 'stimulus';
