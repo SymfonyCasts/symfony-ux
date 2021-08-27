@@ -51,3 +51,4 @@ chapters:
     - mercure-jwt
     - mercure-php
     - reviews-stream
+    - reviews-stream-update
