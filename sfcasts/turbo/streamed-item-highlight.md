@@ -1,86 +1,80 @@
-# Streamed Item Highlight
+# Visually Highlighting new Items that Pop onto the Page
 
-Coming soon...
+Our review system is super cool: if *any* user submits a review, that review will
+pop onto the page of anyone *else* that's currently viewing this product.
 
-Our review system is super cool. If any user submits a review that review will pop
-onto the page of anyone else that is currently
+To make this a bit more obvious, I want to highlight the new review as soon as it
+appears. And this is pretty easy. Start over in `assets/styles/app.css`.
+Add a `.streamed-new-item` style with a `background-color` set to `lightgreen`.
 
-Viewing this product
+## Adding a Green Background to New Items
 
-To make this a bit more obvious. I want to highlight that new review as soon as it
-pops up. And this is pretty easy. Let's start over in assets styles, app that CSS
+Let's *add* this class to a new review *if* it's added via a stream. We
+can do this in `reviews.stream.html.twig`: pass a new variable into the template
+called `isNew` set to `true`.
 
-Add a new.streamed, new
+Now, over in *that* template - `_review.html.twig` - at the end of the class list,
+use the ternary syntax: if `isNew` - and `default` this to `false` if the variable
+is *not* passed in - then print `streamed-new-item`.
 
-Item class, and all of a sudden there's two very simply a background color of light
-green. Next let's add this class to a new review if it's added via the stream. So we
-can do is in reviews that stream that agent on site we'll specifically pass in a new
-variable here called is new. True. And then over in this template,_reviewed at age 12
-twig at the end of the class less, we'll just do a little Turner since exercise is
-new and we'll default to this, to false. We're adding this just so that we won't get
-an undefined variable. When is new isn't passed. So if his new is passed, then we
-will add streamed new item, and that's all we need. If it's false, then it won't
-print anything. Awesome. Let's check it out. I'll refresh both of my pages to get the
-new CSS and then submit a newer view. Beautiful this green background, and does also
-show up on anyone else's page like our incognito browser.
+That's it. The "else" is automatic: if `isNew` is false, this will print nothing.
 
-So this is cool,
+Let's check it out! Refresh both of the pages to get the new CSS... and then submit
+a new review. Yay! The green background shows up here... *and* on the page of
+*everyone* on the planet that happens to be viewing this page.
 
-But I want to make it fancier by showing this background for only five seconds and
-then fading it out. Start again and add that CSS to handle the fading out part. We
-need a new class that describes this transition. So I had a fade dash background
-glass, and here I'll say,
+So... this is cool. But... we need more fancy! What if we show this background for
+only five seconds and then fade it out. Start again in `app.css` to set up the
+fading out part: we need a new class that describes this transition. Add a
+`fade-background` class that declares that we want any `background-color` changes
+to happen gradually over 2000 milliseconds.
 
-Try and listen,
+## A Stimulus Controller to Fade Out
 
-And we'll change us in the background color for 2000 milliseconds.
+Before we try to use this somewhere directly, let's stop and think. If the goal is
+to remove this background after 5 seconds, then the only way to accomplish that is
+by writing some custom JavaScript. In other words, we need a Stimulus controller!
+In the `assets/controllers/` directory, create a new file called, how
+about, `streamed-item_controller.js`. I'll paste in the normal structure, which
+imports turbo, exports the controller and creates a `connect()` method.
 
-Before we try to use this somewhere directly, let's think if the goal is to remove
+Before we fill this in, go over to `_review.html.twig` and use this. I'll break this
+onto multiple lines.. cause it's getting kind of ugly. Copy the class name,
+but delete the custom logic. Replace it with a normal if statement: if
+`isNew|default(false)`, then we want to *activate* that new Stimulus controller.
+Do that with `{{ stimulus_controller('streamed-item') }}`. Oh, and pass a second
+argument, I want to pass a variable *into* the controller called `className` set
+to `streamed-new-item`.
 
-This background after seconds, then the only way to accomplish that is by writing
-some custom JavaScript. In other words, we're going to need a stimulus controller in
-the assets /controllers directory. Let's create a new file called how about streamed
-item_controller.JS. I'll do our normal normal import export default class extends
-controller, and then create a connect method. So before I fill this in, let's
-actually go over to our_reviewed at age two months, wig, and let's use this. So I'm
-going to break this onto multiple lines, cause this is getting kind of ugly here and
-I'm copying my streamed to new item class and then kind of delete this. All right. So
-here's the whole deal. I was just going to put a kind of normal if statement here. So
-say if is new, I could false false.
+I'm doing this for two reasons. First, it will now be the responsibility of the
+*controller* to add this class to the element. We'll do that in a minute. And
+second, while we don't need it now, making this class name dynamic will help us
+reuse this controller later.
 
-And then, and if so, if we are new, what we're going to do is not add that class
-where can actually render that stimulus control ourselves like {{ stimulus
-controller, streamed item. And what I'm going to do here is actually pass in the
-class as a new variable, as a new variable into this has any value into this called
-class name, last name set to stream new item. Uh, I'm doing this because I'm going
-and go. I'm going to make this stream to item controller, really flexible. Cause
-we're going to use that later when we actually remove items for now, it's going to be
-sort of unnecessarily, uh, flexible. So because I'm passing an a class name value
-over in our controller, I had static values = and we're have one class name, which
-will be a string. Cool. And then down at connect to do actually, uh, assign that
-value. We'll say this element, that class list.add, and then this.class name value.
-So if we stop right now, this is just a really fancy way to add the streamed new item
-class to this element, as soon as it pops onto the page. All right. So let's go and
-do our real work back in the controller. We'll use the set time out. So, so that we
-can remove that class after 5,000
+*Anyways*, head back to the controller and define the value: `static values = {}`
+an object with `className` which will be a `String`.
 
-Seconds.
+Cool. Down in `connect()`, add that class to the element: `this.element.classList.add()`
+and pass `this.classNameValue`.
 
-So when you say I'll copy the code from above this sentence, to me, this, that
-element, that class let's remove this.class named value. If we just did this, then
-after five seconds, the green background would suddenly disappear. It says, we want
-to want it to fade out. I'm also going to say this, that element, that classless.add.
-And we're going to add the fade dash of background class as well. This is a class
-that we added that has the transition. If you want to be really fancy, you could
-actually wait until the transition from finishes and then even remove this class. But
-it's going to be fine if it just stays on there forever.
+If we stopped right now... this would just be a really fancy way to add the
+`streamed-new-item` class to the element as soon as it pops onto the page.
 
-Anyways, let's
+So let's do our *real* work. Use `setTimeout()` to wait 5 seconds... and then...
+if I steal some code... *remove* `this.classNameValue`.
 
-Try this. I'm going to refresh both of my tabs so that I get that new CSS fill in the
-review. And yes, there is a green background over here. Here's a gray background and
-if we wait, beautiful it, fade it. How it's. That is nice. All right. Next, we're
-currently publishing updates to Merck here inside of our controller, but the mercury
-turbo UX package we installed earlier makes it possible to publish updates like this
-automatically. Whenever an entity is updated, added or removed, it's pretty
-incredible.
+If we just did this, after five seconds, the green background would suddenly
+disappear. To activate the transition when the background is removed, add
+*another* class: `fade-background`.
+
+If you wanted to be really fancy, you could wait until the transition finishes
+and then remove this class to clean things up. But this will work fine.
+
+Let's try it! Refresh both tabs so that we get that new CSS... then go fill in
+another review. When we submit... good! A green background here... *and*
+in the other browser. If we wait... beautiful! It faded out! How nice is that?
+
+Ok team, we're currently publishing updates to Mercure from inside of our
+controller. But the Mercure Turbo UX package that we installed earlier makes it
+possible to publish updates *automatically* whenever an entity is updated, added
+or removed. It's pretty incredible, and it's our next topic.

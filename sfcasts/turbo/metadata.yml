@@ -53,3 +53,5 @@ chapters:
     - reviews-stream
     - reviews-stream-update
     - streamed-item-highlight
+    - entity-broadcast
+    - broadcast-remove
