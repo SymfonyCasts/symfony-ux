@@ -43,6 +43,11 @@ to redirect *back* to the new product page. Done.
 But I want to do something different: after a successful form submit, I want to
 *close* the modal. How can we do something *after* a turbo frame navigates?
 
+***TIP
+Starting in Turbo 7.0 RC2, there *are* two frame-specific events: `turbo:frame-render`
+and `turbo:frame-load`.
+***
+
 We already know that Turbo triggers a bunch of events... but there aren't
 any events *specific* to turbo frames. There's no, `turbo:frame-start` or
 anything like that. *However*, Turbo *does* trigger an event right before
