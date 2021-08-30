@@ -52,3 +52,4 @@ chapters:
     - mercure-php
     - reviews-stream
     - reviews-stream-update
+    - streamed-item-highlight
