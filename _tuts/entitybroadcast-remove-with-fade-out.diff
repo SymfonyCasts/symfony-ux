@@ -45,25 +45,6 @@ index 8382e7663..204e37ba4 100644
  .fade-background {
      transition: background-color 2000ms;
  }
-diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
-index 698d67845..b0ed4f3ff 100644
---- a/assets/util/add-transition.js
-+++ b/assets/util/add-transition.js
-@@ -1,6 +1,6 @@
- import { useTransition } from 'stimulus-use';
- 
--export function addFadeTransition(controller, element) {
-+export function addFadeTransition(controller, element, options) {
-     useTransition(controller, {
-         element,
-         enterActive: 'fade-enter-active',
-@@ -10,5 +10,6 @@ export function addFadeTransition(controller, element) {
-         leaveFrom: 'fade-leave-from',
-         leaveTo: 'fade-leave-to',
-         hiddenClass: 'd-none',
-+        ...options
-     });
- }
 diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
 index d1d1c973c..1acb47640 100644
 --- a/templates/broadcast/Review.stream.html.twig

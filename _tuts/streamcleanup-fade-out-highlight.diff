@@ -1,9 +1,9 @@
 diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
 new file mode 100644
-index 000000000..d20b7bedc
+index 000000000..d37220001
 --- /dev/null
 +++ b/assets/controllers/streamed-item_controller.js
-@@ -0,0 +1,15 @@
+@@ -0,0 +1,11 @@
 +import { Controller } from 'stimulus';
 +
 +export default class extends Controller {
@@ -13,10 +13,6 @@ index 000000000..d20b7bedc
 +
 +    connect() {
 +        this.element.classList.add(this.classNameValue);
-+        setTimeout(() => {
-+            this.element.classList.add('fade-background');
-+            this.element.classList.remove(this.classNameValue);
-+        }, 5000);
 +    }
 +}
 diff --git a/assets/styles/app.css b/assets/styles/app.css

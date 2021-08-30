@@ -117,7 +117,7 @@ index e84524a84..4e6f03616 100644
          ]);
      }
 diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
-index fb60f5648..f9ecf4bd2 100644
+index 599175817..d48eeb3a0 100644
 --- a/src/Controller/ReviewAdminController.php
 +++ b/src/Controller/ReviewAdminController.php
 @@ -42,9 +42,9 @@ class ReviewAdminController extends AbstractController

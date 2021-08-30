@@ -1,0 +1,55 @@
+diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
+index fb60f5648..599175817 100644
+--- a/src/Controller/ReviewAdminController.php
++++ b/src/Controller/ReviewAdminController.php
+@@ -30,7 +30,7 @@ class ReviewAdminController extends AbstractController
+      */
+     public function new(Request $request): Response
+     {
+-        $review = new Review();
++        $review = new Review($this->getUser());
+         $form = $this->createForm(ReviewType::class, $review);
+         $form->handleRequest($request);
+ 
+diff --git a/src/Entity/Review.php b/src/Entity/Review.php
+index f41106219..c032783f0 100644
+--- a/src/Entity/Review.php
++++ b/src/Entity/Review.php
+@@ -35,7 +35,7 @@ class Review
+      * @ORM\ManyToOne(targetEntity=Product::class, inversedBy="reviews")
+      * @ORM\JoinColumn(nullable=false)
+      */
+-    private Product $product;
++    private ?Product $product;
+ 
+     /**
+      * @ORM\Column(type="integer")
+@@ -45,7 +45,7 @@ class Review
+      */
+     private ?int $stars;
+ 
+-    public function __construct(User $owner, Product $product)
++    public function __construct(User $owner, Product $product = null)
+     {
+         $this->owner = $owner;
+         $this->product = $product;
+@@ -82,11 +82,18 @@ class Review
+         return $this->owner;
+     }
+ 
+-    public function getProduct(): Product
++    public function getProduct(): ?Product
+     {
+         return $this->product;
+     }
+ 
++    public function setProduct(Product $product): self
++    {
++        $this->product = $product;
++
++        return $this;
++    }
++
+     public function getStars(): ?int
+     {
+         return $this->stars;
