@@ -19,10 +19,10 @@ index cb0dc9c00..5c369d18b 100644
      </div>
  </div>
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index f5bd9b0f7..52016490e 100644
+index f6f5cbe00..32b549d74 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
-@@ -8,7 +8,10 @@
+@@ -7,7 +7,10 @@
  <turbo-frame id="product-reviews-form">
  
  {% for flash in app.flashes('review_success') %}
