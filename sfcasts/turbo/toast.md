@@ -1,127 +1,149 @@
 # Toast Notifications
 
-Coming soon...
+We've made it to the *last* topic of the tutorial... so let's do something fun,
+like making it *super* easy to open "toast" notifications.
 
-You've made it to the last topic of the tutorial. One where we get to have a little
-fun by adding toast notifications, toast notifications, refer to little notification
-messages that pop up somewhere on your screen and bootstrap has support for them. Our
-goal is simple. I want to be able to return some HTML, either from a controller or
-inside of a turbo stream that causes a toasted suffocation to pop up, start breaking
-a new template, partial called_toast, .html.twig I'll paste in a structure that's
-from bootstraps documentation. What's make a few parts of this dynamic like {{ title.
-That's a variable we'll pass in about a {{ when variable that we default to just now
-and then down here for the body, a {{ body variable next open up product
-slash_reviews .html.twig after submitting a new review, we render a flash message.
-Now I want this to be a toast and notification. So very simply we only just include
-that template include_score that age twig. And then we'll pass in a couple of
-variables like for title we'll to say success and for body we'll set that to whatever
-the actual flash message is that we want to render.
+Toast notifications are those little messages that "pop up" like toast on the
+bottom - or top - of your screen. And Bootstrap has support for them. Our goal is
+simple but bold! I want to be able to trigger a toast notification from *any*
+template or from a Turbo Stream.
 
-If we stop now, nothing would happen. These toast elements here are invisible until
-you write some JavaScript that opens them onto the page to do that. We need a
-stimulus controller. So up in the assets /controllers directory, let's create a new
-file called toast,_controller.JS inside of here. We'll start our normal way by
-importing controller, exporting our controller and adding a connect method, which for
-now just concept a logs, a loaf of bread. Now over an_toast at age two months. Wait,
-I want to activate this controller whenever this toast element appears.
+## Creating the toast.html.twig Template
 
-So to do that, it's pretty easy. We'll just go on to this outer element and I'll say
-{{ stimulus controller toast. Okay. Are going to do it. Doesn't do anything yet, but
-let's at least make sure that it's connected. I'm going to head over to our site,
-refresh the page, make sure that my console is open and then go fill out a new
-review. Why did I submit? Yes. As soon as the toast aged him was rendered, our
-controller was initialized. Um, but as I mentioned, you can actually see the toast
-element and kind of see where it's taking up space, but it's not visible yet. So
-let's fix that by opening up the toast, the tablet controller import toast from
-bootstrap.
+Start by creating a new template partial: `_toast.html.twig`. I'll paste in
+a structure that's from Bootstrap's documentation. Then let's make a few parts of
+this dynamic like `{{ title }}` - that's a variable we'll pass in... `{{ when }}`
+that defaults to `just now` and... for the body, `{{ body }}`.
 
-And then the way this works is we say con's toast = new toast and facet this.element,
-which is our toast element. And then you say toast that show, that's it refresh again
-and fill a, another view this time. Sweet. That's super cool. And it means that we
-can have any time rendered this_toast that aged in twig template. And it will
-activate this behavior. Nope, the positioning was off it disappeared. Uh, those
-notifications automatically disappear after a few seconds, but it kind of loaded
-right in the middle of the page. But I was thinking that it'd be better fit loaded at
-the top right of the corner of the screen to do that. We just need to add a few
-classes to the toast element. Except if you think about it, it's possible that a user
-could see multiple toast notifications at the same time.
+Next, open up `product/_reviews.html.twig`. After submitting a new review, we render
+a flash message. *Now* I want this to be a toast notification! Cool! Include
+*that* template instead... and pass in a couple of variables like `title` set to
+`Success` and `body` set to the actual flash message content.
 
-The tow system totally supports this. It just stacks them on top of each other, up in
-whatever corner you have them. But in order for that to work, we need a single
-global, global toast element on the page that all other, all individual toast
-elements live inside of. If that doesn't make sense yet, don't worry. Go open up the
-templates /base that HTML, that twig really anywhere in here, but I'll put it up,
-bought them at a, at a div with ID equals. How about toast? Container? That could be
-anything. We're just going to use that in JavaScript in a second. And then class =
-toast container position fixed top zero and zero P dash three. So this toast
-container class is, is going to tell bootstrap how to stack the toast notifications
-inside of it. And then the rest of this just puts it at the upper right part of the
-screen.
+## The Toast Stimulus Controller
 
-Now, in order to get this to work, we need all the toast notification to actually go
-inside of this element. So basically we would need to render this, include this_toast
-.html.twig, and somehow get that inside of here. But I want to, I want to keep the
-flexibility of being able to render_toast, that agent from wherever I want, like
-randomly from inside of this template template parcel, I don't want to have to make
-sure that I'm rendering it into the toast container element to allow this let's have
-our stimulus controller find and move any toast elements into this, uh, element
-before popping it up.
+If we stopped now... congratulations! Absolutely nothing would happen. These toast
+elements are *invisible* until you execute some JavaScript that opens them on the
+page. To do *that*, we need a Stimulus controller!
 
-Check this out in the controller. The top of connect at a constant toast container =
-and say, document that get element by ID and pass it toast dash container. So that
-we'll find that element inside of the footer. And then basically we're going to do is
-as soon as the toast element is, uh, connected, we're going to instantly move it from
-wherever it is now into this toast container. So I'll say toast container that a pen
-child, this, that element, and now it will live inside of that element and we'll pop
-up like normal. Now there's only one kind of catch to this. When we initially load
-the toast element, we know it's going to load kind of like right here in the middle
-of the page, that's then going to, as soon as that happens, it's going to call the
-connect method inside of our controller.
+Up in the `assets/controllers/` directory, create a new file called, how about,
+`toast_controller.js`. Inside, give this the normal structure where we import
+`Controller` from `stimulus`, export *our* controller... and have a `connect()`
+method that, of course, logs a loaf of bread.
 
-And we're going to move it into the toast container element that's near the bottom of
-the page when that happens. That's actually going to cause yeah, when that happens,
-the original controller instance is going to be removed and a new controller instance
-is going to be created. In other words, this connect method is going to be called
-twice. Once when we originally render our toast element onto the page. And again,
-after it's been moved into toast container and we need to make, and to avoid a
-infinite loop here of constantly moving it into the toast container and having it
-happen again, we need to make sure that we only do this moving twice. As we can say,
-if this, that element that parent node does not equal toast container, that means it
-has not been moved yet. And we need to move it. If it has been moved, we'll move it
-and we'll just return.
+Over in `_toast.html.twig`, I want to activate this controller *whenever* this toast
+element appears on the page. No problemo: on the outer element, add
+`{{ stimulus_controller('toast') }}`.
 
-So the first time is executes. It will move it into toast, container and exit. The
-second time it's executes, it will go down here and pop open the toast element that
-should do it. Let's refresh the page. It was to review and beautiful. If I quickly
-kind of inspect that toast, you'll see that it's down inside of toast container. That
-was one last thing that I want to do. Whenever a new review is posted to a product. I
-want to open a toast notification on every user's screen that is currently viewed as
-viewing that product. Something that says, Hey, this product has a new review over in
-reviewed at stream that age tumor, that twig inside of the create block. Let's add a,
-another turbo stream here with action = UPenn and target = well, actually leave that
-target empty breath. Second, I'll talk about that in a minute. Then let's add the
-template element. And of course we will just include our toast pass in a couple of
-variables here, like title, how about new review? And then body say a new review was
-just posted for this product.
+Our controller doesn't do anything yet, but let's at *least* make sure that
+it's connected. Head over to our site, refresh the page... make sure that your
+console is open... and then go fill out a new review. When we submit... got it!
+As soon as the toast HTML was rendered onto the page, our controller
+was initialized. Though... like I mentioned, you can't actually *see* the toast
+element yet. It's taking up some space... but it's invisible.
 
-Very nice, but what should this target be? We could use toast dash container, right?
-That would append it to this element, but then the message would show up on every
-page. But we only want this message to show up if you're viewing this specific,
-right? So one way to handle this. We basically need an element that we need to put
-this into an element that's specific to this product. For example, in show
-.html.twig, right inside of the product body, I'm just going to add an empty div with
-ID = product dash {{ product, not ID dash toasts empty. Dave, that's just waiting for
-toast elements to go into it. That's specific to that product.
+Let's fix that! Back in the controller, import `toast` from `bootstrap`. Below
+add `const toast = new Toast()` and pass it `this.element`. To *open* the toast,
+say `toast.show()`.
 
-No, copy this and reviewed that stream to HTML twig. We'll use that except instead of
-product it's of course going to be an entity, that product, that ID, all right,
-testing time. Is that over? I'm going to refresh this page. And then I also wanted to
-open that same product in another tab to kind of mimic a different user. All right.
-So down here, fill, review and submit. Awesome. We have two toasts over here and as
-the other user sees the toast as well. That's beautiful. The twos, the two toast
-notifications, the first set is a bit weird, but I'll leave that for now. And we're
-done. Congratulations for making it through this huge tutorial. It was huge because
-well, turbo has a lot to offer. I hope you're as excited about the possibilities of
-stimulus and turbo as I am, let us know what you're building. And as always, if you
-have any questions, we're here for you in the comment section. All right, friends.
-See you next time.
+That's it! Refresh again and add another review. This time... that's super
+cool! And it means that we can, from *anywhere*, render the `_toast.html.twig`
+template and it will activate this behavior.
+
+## Grouping all the Toasts into One Container
+
+Though... the positioning isn't what I was imagining. Before it disappeared, it
+was open... right in the middle of the page. I was hoping to put it in the
+top right corner of the screen.
+
+To do that, we just need to add a few classes to the toast element. Except...
+there's one other minor problem. If you think about it, it's possible that a user
+could see *multiple* toast notifications at the same time. The toast system
+*totally* supports this.... it stacks them on top of each other. But for that
+to work, we need to have a single global "toast container" element on our page
+that all individual toasts live *inside* of.
+
+This might be easier to show. Open up `templates/base.html.twig`. Really, anywhere,
+but I'll go to the bottom, add a `<div>` with `id="toast-container`. That
+could be anything: we'll use this `id` to find this element in JavaScript.
+
+Also add `class="toast-container"` and a few other classes. `toast-container`
+helps Bootstrap *stack* any toasts inside of this... and everything else
+puts the toast in the upper right corner of the screen.
+
+Now, in order for this to work, we need all the toast notifications to physically
+live *inside* of this `toast-container` element. So basically, we need to render
+`_toast.html.twig`... and somehow get that HTML *inside* of the container.
+
+But... I don't want to do that! I want to keep the flexibility of being able to
+render `_toast.html.twig` from... *wherever* and have it work. And we can *still*
+have this with a little help from our Stimulus controller.
+
+Check it out: at the top of `connect()`, add `const toastContainer = `
+`document.getElementById()` and pass it `toast-container` to find the element
+that lives at the bottom of the page. Then... let's move *ourselves* *into*
+that: `toastContainer.appendChild(this.element)`.
+
+And now that it lives inside the container, we open it like normal!
+
+Though... there is one subtle "catch". When the toast HTML initially loads, it
+will live here in the middle of the page. Naturally, Stimulus *notices* this
+element, instantiates a new controller instance and calls `connect()`. Yay!
+But when we move `this.element` into `toast-container`, Stimulus destroys
+the original controller instance, creates a new one, and calls `connect()`
+a *second* time.
+
+In other words, the `connect()` method will be called twice: once when we originally
+render our toast element onto the page and again after we move into
+`toast-container`. Right now, that's going to cause an infinite loop where we
+call `appendChild()` over and over again.
+
+To avoid that, add, if `this.element.parentNode` does not equal `toastContainer`.
+So only if the element has *not* been moved yet, move it... and then return.
+The first time this executes, it will move the element and exit. The second time
+it executes, it will skip all of this and pop open the toast.
+
+Let's try this thing! Refresh the page, add another review and... beautiful! If you
+quickly inspect the toast element... yup! It lives down inside of `toast-container`.
+
+## Publishing a Toast through Mercure to All Users
+
+Ok, I have one last micro-challenge: whenever a new review is added to a product,
+I want to open a toast notification on *every* user's screen that's currently
+viewing the product. Something that says:
+
+> Hey! This product has a new review!
+
+Over in `Review.stream.html.twig`, in the `create` block, add another turbo stream
+with `action="append"` and `target=""`... well... leave that empty for a minute.
+Give this the `template` element, include `_toast.html.twig` and pass in a few
+variables: `title` set to `New Review` and `body` set to
+
+> A new review was just posted for this product.
+
+Very nice! But... what should the `target` be? We could use `toast-container`.
+That would append it to this element. But... then the message would show up on *every*
+page. We only want this message to show up if you're viewing *this* specific product.
+
+To do that, we need to target an element that *only* exists on *this* specific
+product's page. Open `show.html.twig`. Right inside of the `product_body` block,
+let's add an empty `div` with `id="product-{{ product.id }}-toasts"`
+
+A little empty element *just* for our toasts to go into. Copy this and, in
+`Review.stream.html.twig`, target it. Except that we need `entity.product.id`.
+
+Let's check it out! Refresh the page... and then open the same product in another
+tab to "mimic" what a *different* user would see. Scroll down, fill in a review
+and... submit. Awesome! We have two toasts over here and... the other user sees
+the *one* toast! The *two* toast notifications in our first tab *is* a bit weird,
+but I'll leave it for now.
+
+And... we're done! Woh! Congrats to you! You deserve a nice crisp high five... and
+maybe a short vacation for making it through this *huge* tutorial. It was huge
+because... well... Turbo has a lot to offer. I hope you're as excited about the
+possibilities of Stimulus and Turbo as I am.
+
+Let us know what you're building. And, as always, if you have any questions, we're
+here for you down in the comments section.
+
+All right, friends. See you next time!
