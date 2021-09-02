@@ -31,6 +31,8 @@ inside the update... and fix the formatting. Oh, also change this to `renderView
 `render()` returns a `Response` object... but all we need is the *string* from
 this template. That's what `renderView()` gives us.
 
+[[[ code('bebef52012')]]]
+
 Thanks to this, our controller will now redirect like it did before... but it
 will *also* publish a stream to Mercure along the way.
 
@@ -52,6 +54,8 @@ So probably we could stop streaming the `_reviews.html.twig` template... since
 the turbo-frame is taking care of that part of the page. *We* only need to focus
 on updating the quick stats.
 
+[[[ code('ad9239eadb') ]]]
+
 Let's try this again. Right now we have 16 reviews. Head down and add the 17th.
 Ah! Silly validation! Type a bit more and submit. Yes! It still works!
 The behavior *is* slightly different than before: it renders a new review form...
@@ -68,6 +72,8 @@ Mercure.
 
 But this is even cooler than it looks at first. In `reviews.stream.html.twig`,
 temporarily put *back* the `product-review` stream.
+
+[[[ code('38634b446b') ]]]
 
 Back at your browser, copy the URL and open this page in a second tab. Make
 sure both pages are refreshed. Ok: both show 17 reviews. In the original tab,
@@ -103,10 +109,16 @@ that every element that we target with a turbo stream has a dynamic part in it
 so that it's *specific* to that product. In the `id` attribute, change it to
 `product-{{ product.id }}-review`.
 
+[[[ code('6e33d32f6c') ]]]
+
 In `reviews.stream.html.twig`, do the same thing so they match. Repeat
 this for the quick stats, which lives in `show.html.twig`... here it is. Add
 `{{ product.id }}` inside the id. Copy that... and in the stream template,
 add it here too.
+
+[[[ code('b9c1528085') ]]]
+
+[[[ code('762ac381b1') ]]]
 
 Perfect. If two users are viewing two different products, they will *still* both
 be listening to the same Mercure topic. When a review is posted to the first
