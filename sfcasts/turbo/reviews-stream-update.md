@@ -34,6 +34,8 @@ Check it out: at the bottom of the reviews list, close that `<turbo-frame>`.
 Now, create a *new* `<turbo-frame>` with `id=""`, how about, `product-reviews-form`.
 We don't need a closing tag... because we already have one.
 
+[[[ code('3190932efe') ]]]
+
 Oh, and in this case, we *don't* need to make the `id` dynamic for each product
 because we're not going to update this with a Turbo Stream. So there's no risk of
 affecting the wrong page.
@@ -47,12 +49,18 @@ list *and* the form. To do that, we need to isolate the list into its own
 template. Copy that turbo frame and, inside `templates/product/`, create a new file
 called, how about, `_reviews_list.html.twig`. Paste the frame here.
 
+[[[ code('010642b78e') ]]]
+
 Back in the other template, include this.
+
+[[[ code('636954373c') ]]]
 
 Nice. Oh, but in the new template, we don't actually need this to be a Turbo frame
 anymore. Change this to be a `div`. Think about it: we're not using any Turbo
 frame features with this... we just need an element that we can target from our turbo
 stream. A `turbo-frame` *would* have worked... it just wasn't necessary.
+
+[[[ code('21155ea2ec') ]]]
 
 *Anyways*, stream this template instead: `_reviews_list.html.twig`.
 
@@ -74,9 +82,17 @@ First, over in `_reviews.html.twig`, on the `id`, I'm going to add a `-list` to
 the end. I'm doing this *just* to make its meaning more obvious: it's
 a *list*, not a single review. Repeat this in the stream template.
 
+[[[ code('85aeb003b3') ]]]
+
+[[[ code('3f4d0ff967') ]]]
+
 Now over in `_reviews_list.html.twig`, copy the `div` for a single review and
 isolate it into *its* own template: `_review.html.twig`. Back in the list, include
 that.
+
+[[[ code('7a5e1d9803') ]]]
+
+[[[ code('0266cffb60') ]]]
 
 So no changes yet, just some reorganization. But now, in the stream, change the
 action to `append`... and include the single review template.
@@ -86,6 +102,10 @@ That's nice! In `_review.html.twig`, this needs a `review` variable. In
 Also pass a `newReview` variable set to the review... which is `$form->getData()`.
 
 Back in the stream, pass in a `review` variable set to `newReview`.
+
+[[[ code('5ad91236f2') ]]]
+
+[[[ code('651ed3a58a') ]]]
 
 Let's try the *whole* flow. Refresh both tabs. We're filling in review
 number 23. Submit and... sweet! Three things just happened. First the form area
