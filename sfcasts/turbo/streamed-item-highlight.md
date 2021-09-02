@@ -7,15 +7,21 @@ To make this a bit more obvious, I want to highlight the new review as soon as i
 appears. And this is pretty easy. Start over in `assets/styles/app.css`.
 Add a `.streamed-new-item` style with a `background-color` set to `lightgreen`.
 
+[[[ code('caa0609ec4') ]]]
+
 ## Adding a Green Background to New Items
 
 Let's *add* this class to a new review *if* it's added via a stream. We
 can do this in `reviews.stream.html.twig`: pass a new variable into the template
 called `isNew` set to `true`.
 
+[[[ code('0a6b523fd8') ]]]
+
 Now, over in *that* template - `_review.html.twig` - at the end of the class list,
 use the ternary syntax: if `isNew` - and `default` this to `false` if the variable
 is *not* passed in - then print `streamed-new-item`.
+
+[[[ code('844fd7195b') ]]]
 
 That's it. The "else" is automatic: if `isNew` is false, this will print nothing.
 
@@ -29,6 +35,8 @@ fading out part: we need a new class that describes this transition. Add a
 `fade-background` class that declares that we want any `background-color` changes
 to happen gradually over 2000 milliseconds.
 
+[[[ code('46c3530807') ]]]
+
 ## A Stimulus Controller to Fade Out
 
 Before we try to use this somewhere directly, let's stop and think. If the goal is
@@ -38,6 +46,8 @@ In the `assets/controllers/` directory, create a new file called, how
 about, `streamed-item_controller.js`. I'll paste in the normal structure, which
 imports turbo, exports the controller and creates a `connect()` method.
 
+[[[ code('6ba1308996') ]]]
+
 Before we fill this in, go over to `_review.html.twig` and use this. I'll break this
 onto multiple lines.. cause it's getting kind of ugly. Copy the class name,
 but delete the custom logic. Replace it with a normal if statement: if
@@ -45,6 +55,8 @@ but delete the custom logic. Replace it with a normal if statement: if
 Do that with `{{ stimulus_controller('streamed-item') }}`. Oh, and pass a second
 argument, I want to pass a variable *into* the controller called `className` set
 to `streamed-new-item`.
+
+[[[ code('1344fbe728') ]]]
 
 I'm doing this for two reasons. First, it will now be the responsibility of the
 *controller* to add this class to the element. We'll do that in a minute. And
@@ -57,6 +69,8 @@ an object with `className` which will be a `String`.
 Cool. Down in `connect()`, add that class to the element: `this.element.classList.add()`
 and pass `this.classNameValue`.
 
+[[[ code('4cbaccbb4d') ]]]
+
 If we stopped right now... this would just be a really fancy way to add the
 `streamed-new-item` class to the element as soon as it pops onto the page.
 
@@ -66,6 +80,8 @@ if I steal some code... *remove* `this.classNameValue`.
 If we just did this, after five seconds, the green background would suddenly
 disappear. To activate the transition when the background is removed, add
 *another* class: `fade-background`.
+
+[[[ code('83e3b20c31') ]]]
 
 If you wanted to be really fancy, you could wait until the transition finishes
 and then remove this class to clean things up. But this will work fine.
