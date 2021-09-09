@@ -54,7 +54,7 @@ Let's fix that! Back in the controller, import `toast` from `bootstrap`. Below
 add `const toast = new Toast()` and pass it `this.element`. To *open* the toast,
 say `toast.show()`.
 
-[[[ code('633d61261b) ]]]
+[[[ code('633d61261b') ]]]
 
 That's it! Refresh again and add another review. This time... that's super
 cool! And it means that we can, from *anywhere*, render the `_toast.html.twig`
