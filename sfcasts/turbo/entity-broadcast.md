@@ -18,6 +18,8 @@ That is *totally* possible. Go into the entity where you want to activate this
 behavior. For us that's `src/Entity/Review.php`. Above the class, add
 `@Broadcast`.
 
+[[[ code('8c2a63ec1b') ]]]
+
 If you're using PHP 8, you can also use `Broadcast` as an attribute. Next, open
 `templates/products/_review.html.twig`. This is where we originally used
 `turbo_stream_listen()` to *listen* to the `product-reviews` Mercure topic.
@@ -25,6 +27,8 @@ If you're using PHP 8, you can also use `Broadcast` as an attribute. Next, open
 Copy that and, temporarily, *also* listen to a topic called `App\Entity\Review`.
 We need the double slashes to avoid escaping problems. Oh, and not *reviews*,
 just `Review`: the name of the class.
+
+[[[ code('f69301387c') ]]]
 
 Okay: whenever a `Review` is created, change or removed, an update will be sent to
 the `App\Entity\Review` topic on our Mercure hub. And now we're *listening* to that
@@ -59,6 +63,8 @@ created, the content in the `create` block is sent to Mercure. If a `Review` is
 updated, the `update` block is used. And if we delete a `Review`, the contents of
 the `remove` block are published to Mercure as an update.
 
+[[[ code('f2a4ed3998') ]]]
+
 We can see this immediately. Close the profiler tab, refresh this page... and
 add another review. When we submit, nothing looks different *here* yet. But check
 out the tab that's listening to Mercure. Yes! There it is! This published an update
@@ -68,6 +74,8 @@ and passed the contents from our `create` block as that update's *data*!
 
 *Now* we're dangerous. Go into the original `reviews.stream.html.twig` template,
 copy both streams and paste them into our `create` block.
+
+[[[ code('8893c049b3') ]]]
 
 Boom, done! We can now completely delete `reviews.stream.html.twig`. And inside of
 `ProductController`, we don't need to dispatch this update at *all* anymore. It
@@ -94,6 +102,8 @@ set to the `Review` object. We can use that to fix our template.
 So instead of `product.id`, we need `entity.product.id`. Do that in both places.
 And this template also needs a `product` variable... so pass that in set to
 `entity.product`. And down here, `review` is now `entity`.
+
+[[[ code('1bbfd7222b') ]]]
 
 Hopefully that's everything. Close the error, refresh the page... and add a new
 review. If all goes well, this will have the *same* behavior as before. Submit.
