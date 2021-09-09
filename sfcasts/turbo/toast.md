@@ -15,10 +15,14 @@ a structure that's from Bootstrap's documentation. Then let's make a few parts o
 this dynamic like `{{ title }}` - that's a variable we'll pass in... `{{ when }}`
 that defaults to `just now` and... for the body, `{{ body }}`.
 
+[[[ code('4a4c1754fa') ]]]
+
 Next, open up `product/_reviews.html.twig`. After submitting a new review, we render
 a flash message. *Now* I want this to be a toast notification! Cool! Include
 *that* template instead... and pass in a couple of variables like `title` set to
 `Success` and `body` set to the actual flash message content.
+
+[[[ code('46d4f10fa1') ]]]
 
 ## The Toast Stimulus Controller
 
@@ -31,9 +35,13 @@ Up in the `assets/controllers/` directory, create a new file called, how about,
 `Controller` from `stimulus`, export *our* controller... and have a `connect()`
 method that, of course, logs a loaf of bread.
 
+[[[ code('2a96fe0878') ]]]
+
 Over in `_toast.html.twig`, I want to activate this controller *whenever* this toast
 element appears on the page. No problemo: on the outer element, add
 `{{ stimulus_controller('toast') }}`.
+
+[[[ code('e397073cbe') ]]]
 
 Our controller doesn't do anything yet, but let's at *least* make sure that
 it's connected. Head over to our site, refresh the page... make sure that your
@@ -45,6 +53,8 @@ element yet. It's taking up some space... but it's invisible.
 Let's fix that! Back in the controller, import `toast` from `bootstrap`. Below
 add `const toast = new Toast()` and pass it `this.element`. To *open* the toast,
 say `toast.show()`.
+
+[[[ code('633d61261b) ]]]
 
 That's it! Refresh again and add another review. This time... that's super
 cool! And it means that we can, from *anywhere*, render the `_toast.html.twig`
@@ -70,6 +80,8 @@ could be anything: we'll use this `id` to find this element in JavaScript.
 Also add `class="toast-container"` and a few other classes. `toast-container`
 helps Bootstrap *stack* any toasts inside of this... and everything else
 puts the toast in the upper right corner of the screen.
+
+[[[ code('bd12d0ca4c') ]]]
 
 Now, in order for this to work, we need all the toast notifications to physically
 live *inside* of this `toast-container` element. So basically, we need to render
@@ -103,6 +115,8 @@ So only if the element has *not* been moved yet, move it... and then return.
 The first time this executes, it will move the element and exit. The second time
 it executes, it will skip all of this and pop open the toast.
 
+[[[ code('8e0d347de1') ]]]
+
 Let's try this thing! Refresh the page, add another review and... beautiful! If you
 quickly inspect the toast element... yup! It lives down inside of `toast-container`.
 
@@ -121,6 +135,8 @@ variables: `title` set to `New Review` and `body` set to
 
 > A new review was just posted for this product.
 
+[[[ code('6887115818') ]]]
+
 Very nice! But... what should the `target` be? We could use `toast-container`.
 That would append it to this element. But... then the message would show up on *every*
 page. We only want this message to show up if you're viewing *this* specific product.
@@ -128,6 +144,8 @@ page. We only want this message to show up if you're viewing *this* specific pro
 To do that, we need to target an element that *only* exists on *this* specific
 product's page. Open `show.html.twig`. Right inside of the `product_body` block,
 let's add an empty `div` with `id="product-{{ product.id }}-toasts"`
+
+[[[ code('39530becad') ]]]
 
 A little empty element *just* for our toasts to go into. Copy this and, in
 `Review.stream.html.twig`, target it. Except that we need `entity.product.id`.
