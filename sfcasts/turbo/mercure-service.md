@@ -22,6 +22,31 @@ As a reminder, *way* back at the start of this tutorial, we used the Symfony
 binary to run a local web server for us. Back at the browser, open a new tab
 and go to https://127.0.0.1:8000 - the URL to our site - then `/.well-known/mercure`.
 
+**TIP
+The latest `symfony` binary no longer embeds Mercure. But it's still easy
+to set up. First, add a `mercure` service to your `docker-compose.yaml` file:
+
+[[[ code('dd64be3c14') ]]]
+
+You can also copy the code block from the script below the video. Start the
+container by running:
+
+```terminal
+docker-compose up -d
+```
+
+That's it! But instead of being accessible at the URL you see in the tutorial,
+the Mercure hub will be exposed on a random port. To find it, run:
+
+```terminal
+symfony var:export --multiline
+```
+
+And look for the `MERCURE_URL` value - it should equal something similar to
+`http://127.0.0.1:64150/.well-known/mercure`. Put *this* into your address
+bar to see your Mercure Hub (you'll see the same error as in the video).
+***
+
 If everything is working... yes! You should see this error:
 
 > Missing "topic" parameter.
@@ -64,6 +89,11 @@ to the internet... as much fun as that would be.
 
 *Anyways*, this will run *before* the `.env` file is loaded, so it will only
 print *real* environment variables. Back over on our site, refresh!
+
+***TIP
+If you're using the `docker-compose.yaml` setup described earlier, you will
+only see 2 environment variables here... which are the only 2 you need anyways.
+***
 
 Yay! We see 4 environment variables including 2 we need! The first one is just
 a flag that tells us that the Symfony binary is running Mercure... and that last
