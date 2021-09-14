@@ -1611,6 +1611,11 @@
             "description": null
         },
         {
+            "id": "mercure-adding-docker-config",
+            "name": "Mercure: Adding docker config",
+            "description": null
+        },
+        {
             "id": "mercure-dd-server",
             "name": "Mercure: dd $_SERVER",
             "description": null
@@ -1781,5 +1786,5 @@
             "description": null
         }
     ],
-    "sha": "1a59867fe9481514fce60324753d461ecf4e24bb"
+    "sha": "692eb276bc03ed8f7cc17d652a3b5c010d5d7b91"
 }
