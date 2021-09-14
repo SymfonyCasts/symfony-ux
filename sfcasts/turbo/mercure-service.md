@@ -22,7 +22,7 @@ As a reminder, *way* back at the start of this tutorial, we used the Symfony
 binary to run a local web server for us. Back at the browser, open a new tab
 and go to https://127.0.0.1:8000 - the URL to our site - then `/.well-known/mercure`.
 
-**TIP
+***TIP
 The latest `symfony` binary no longer embeds Mercure. But it's still easy
 to set up. First, add a `mercure` service to your `docker-compose.yaml` file:
 
