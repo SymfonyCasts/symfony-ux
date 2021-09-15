@@ -54,7 +54,7 @@ a template called `Review.stream.html.twig`. We will create this in a moment.
 And third, whatever this template renders is published to Mercure... in a specific
 way.
 
-Let's go create that template. In the templates directory, add the `Broadcast`
+Let's go create that template. In the templates directory, add the `broadcast`
 directory... and inside, the new file: `Review.stream.html.twig`.
 
 These "broadcast" templates always look the same, and I'm going to paste in a
