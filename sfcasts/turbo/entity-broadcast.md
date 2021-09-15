@@ -21,7 +21,7 @@ behavior. For us that's `src/Entity/Review.php`. Above the class, add
 [[[ code('8c2a63ec1b') ]]]
 
 If you're using PHP 8, you can also use `Broadcast` as an attribute. Next, open
-`templates/products/_review.html.twig`. This is where we originally used
+`templates/products/_reviews.html.twig`. This is where we originally used
 `turbo_stream_listen()` to *listen* to the `product-reviews` Mercure topic.
 
 Copy that and, temporarily, *also* listen to a topic called `App\Entity\Review`.
