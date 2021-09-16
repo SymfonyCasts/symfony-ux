@@ -20,7 +20,7 @@ Give this element an id so that we can target it from a turbo stream, how about
 [[[ code('db959b6ede') ]]]
 
 Copy that value and, in `Review.stream.html.twig`, when the review is updated, let's
-add a new turbo stream: `<turbo-stream>` with `action="replace"` and `id=""` set
+add a new turbo stream: `<turbo-stream>` with `action="replace"` and `target=""` set
 to `product-review-{{ review.id }}`. Except that in *this* template, the variable
 is called `entity`.
 
