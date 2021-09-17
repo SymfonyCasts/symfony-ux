@@ -50,7 +50,7 @@ As soon as the toast HTML was rendered onto the page, our controller
 was initialized. Though... like I mentioned, you can't actually *see* the toast
 element yet. It's taking up some space... but it's invisible.
 
-Let's fix that! Back in the controller, import `toast` from `bootstrap`. Below
+Let's fix that! Back in the controller, import `Toast` from `bootstrap`. Below
 add `const toast = new Toast()` and pass it `this.element`. To *open* the toast,
 say `toast.show()`.
 
