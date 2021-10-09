@@ -116,4 +116,4 @@ Let's make sure I didn't break anything. Refresh, click red and click it again.
 All good!
 
 Next: there's one big feature of Stimulus that we haven't talked about and it's
-actually brand *new* to Stimulus! It's the value's API.
+actually brand *new* to Stimulus! It's the values API.
