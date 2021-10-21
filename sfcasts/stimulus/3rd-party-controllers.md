@@ -58,7 +58,7 @@ which holds a bunch of interesting patterns and best practices around Stimulus.
 need to install it! Copy the "yarn add" command, find your terminal and run:
 
 ```terminal
-yarn add stimulus-autocomplete --dev
+yarn add "stimulus-autocomplete@2" --dev
 ```
 
 ## Registering 3rd Party Controllers
