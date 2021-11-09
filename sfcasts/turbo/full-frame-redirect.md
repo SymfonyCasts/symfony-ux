@@ -48,6 +48,12 @@ three things. One: was the Ajax call redirected? Two: did this navigation happen
 *inside* of a Turbo frame? And three: does that frame have the
 `data-turbo-form-redirect` attribute?
 
+***TIP
+Starting in Turbo 7 RC4 (and so also in the stable Turbo 7), the `turbo:before-fetch-response` event
+*is* now passed which element the Ajax call was triggered on, as `event.target`. You could use this
+to find the "current turbo-frame" via `event.target.closest('turbo-frame')`.
+***
+
 The trickiest of these three is actually figuring out if this Ajax call is
 happening *inside* of a turbo frame. This event doesn't give us any indication of
 what *initiated* the Ajax call - like which link was clicked or which form was
