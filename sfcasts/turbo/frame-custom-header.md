@@ -56,7 +56,7 @@ Head over to the cart page, clear the console, then add an item to the cart. Ooh
 the event triggered *three* times. One was for the submit, one for the navigation
 to the next page and the last was for the weather widget that loaded on this page.
 
-## Detecting if the Frame Request as data-turbo-form-redirect
+## Detecting if the Frame Request has data-turbo-form-redirect
 
 Check out the first log, which is from the POST request when we submit the form
 into the frame. Ah, `event.detail` has a `fetchOptions` key! This is the collection
