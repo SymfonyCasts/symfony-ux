@@ -23,7 +23,7 @@ new controller *generic* so we can reuse it *anywhere*... like on the cart page!
 Head into `templates/product_admin/index.html.twig`: the template for the product
 list page. Let's see. The area that we need to refresh after submit is really just
 this table. But I'm going to add the new `data-controller` to the top level div.
-Let's break it on multiple lines... fix my *super* old  typo on `container` - no
+Let's break it on multiple lines... fix my *super* old typo on `container` - no
 wonder the page didn't look very good - then add `{{ stimulus_controller() }}`.
 Call the new controller, how about, `reload-content`.
 
