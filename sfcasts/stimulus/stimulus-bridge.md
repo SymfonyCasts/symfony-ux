@@ -72,7 +72,7 @@ directory and registers each as a Stimulus controller. Second, it reads our
 `controllers.json` file and also registers any controllers here as Stimulus
 controllers.
 
-Let me show you how that works. When `startStimulusApp()` parses this files and
+Let me show you how that works. When `startStimulusApp()` parses this file and
 sees the `@symfony/ux-chartjs` key, it finds that package in `node_modules/` and
 opens its `package.json`. Then it looks for a special key called `symfony` and
 then `controllers`.
