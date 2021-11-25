@@ -8,7 +8,7 @@ yarn watch
 ```
 
 This reads our `app.js` file and outputs the final files into a `public/build`
-directory - you can see that here. Once its done, it sits and watches for more
+directory - you can see that here. Once it's done, it sits and watches for more
 changes. If we modify any files, it will rebuild the assets.
 
 Let's try this! Find your browser and refresh! Woo! We have a gray background.

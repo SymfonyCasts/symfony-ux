@@ -95,7 +95,7 @@ Start by setting the value on the select:
 
 [[[ code('28865772c7') ]]]
 
-The only other thing that we need to do inside  here is a loop over the color
+The only other thing that we need to do inside here is a loop over the color
 squares to set the `selected` class correctly. Do that with
 `this.colorSquareTargets.forEach()` and pass this an arrow function with an
 `element` argument. Inside, we can use an if statement to figure out if we should
