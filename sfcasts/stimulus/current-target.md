@@ -38,7 +38,7 @@ Go refresh the page. There's our *stunning* button! Open up the console.
 First, click the text that's *directly* in the button. Nice! *both* `event.target`
 and `event.currentTarget` are the same thing: the `button` element.
 
-Now click the the *span* that's inside the button. Woh! This time they're different!
+Now click the *span* that's inside the button. Woh! This time they're different!
 The `target` is the `span` while `currentTarget` is *still* the button!
 
 This is not a Stimulus thing: this is just how DOM events work. `event.target`
