@@ -52,6 +52,11 @@ We are now listening to the `product-reviews` topic both in this browser tab
 and, apparently, from some JavaScript on this page thanks to the Stimulus controller
 we just activated. So... how can we publish messages *to* that topic?
 
+***TIP
+A *cooler* way to debug with Mercure is to go to `http://127.0.0.1:<random_port>/.well-known/mercure/ui/`
+to see an interactive, debugging Mercure dashboard where you can listen and publish messages.
+***
+
 Basically... by sending a POST request to our Mercure hub. Over in its documentation,
 go to the "Get Started" page and scroll down a bit down. Here we go: publishing.
 This shows an example of how you can publish a basic message to Mercure. Copy
