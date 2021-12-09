@@ -39,6 +39,16 @@ an element that tracks how many times we click it.
 Oh and this naming convention *is* important. All of our controller files will
 be `something_controller.js`. And you'll see why in a minute.
 
+***TIP
+If you start a new project today, you'll be using Stimulus 3. You can check by looking in your
+`package.json` file for `@hotwired/stimulus`. The *only* thing you need to change for Stimulus 3
+is the import statement. Use:
+
+```javascript
+import { Controller } from '@hotwired/stimulus';
+```
+***
+
 Inside the file, these always start the same way: `import {}` from `stimulus`
 and what we want to import is `Controller`. Then, `export default` a class
 that `extends Controller`. Inside the class, add a method called `connect()`

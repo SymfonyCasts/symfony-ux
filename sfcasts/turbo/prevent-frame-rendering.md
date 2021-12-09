@@ -51,6 +51,12 @@ This event is triggered right *after* the Ajax call finishes, actually after
 *both* Ajax calls have finished: the form submit POST *and* the second request to
 the redirected page. But at this point, the frame has *not* been re-rendered.
 
+***TIP
+Starting in Turbo 7 RC4 (and so also in the stable Turbo 7), the `turbo:before-fetch-response` event
+*is* now triggered from whatever element triggered the Ajax call. This means that you can
+now use `this.element.addEventListener` instead of attaching it to `document`. Nice!
+***
+
 This time, we *do* need to attach the event to `document` because this event is
 dispatched directly there - not on the form. For now, I'm going to *not* hide the
 modal.

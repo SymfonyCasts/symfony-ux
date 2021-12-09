@@ -15,7 +15,6 @@ features than fetch.
 
 Your second option is to "polyfill" `fetch()` so it works in all browsers. Github
 itself maintains a [polyfill for fetch](https://github.com/github/fetch).
-
 It's pretty simply to set up: `yarn add whatwg-fetch` then, in `webpack.config.js`,
 adapt your main entry to include it first:
 
