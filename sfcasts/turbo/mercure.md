@@ -41,7 +41,7 @@ To start, install a package that makes it easy to work with Mercure and Turbo.
 At the command line, run:
 
 ```terminal
-composer require symfony/ux-turbo-mercure
+composer require "symfony/ux-turbo-mercure:^1.3"
 ```
 
 This installs several things. First, a PHP library called mercure that helps
