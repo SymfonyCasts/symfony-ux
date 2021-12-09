@@ -44,9 +44,8 @@ If you start a new project today, you'll be using Stimulus 3. You can check by l
 `package.json` file for `@hotwired/stimulus`. The *only* thing you need to change for Stimulus 3
 is the import statement. Use:
 
-```diff
--import { Controller } from 'stimulus';
-+import { Controller } from '@hotwired/stimulus';
+```javascript
+import { Controller } from '@hotwired/stimulus';
 ```
 ***
 
