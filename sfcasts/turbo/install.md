@@ -12,7 +12,7 @@ package installed.
 Head back to your terminal, open a new tab and run:
 
 ```terminal
-composer require symfony/ux-turbo
+composer require "symfony/ux-turbo:^1.3"
 ```
 
 After this finishes... run: `git status` to see what its recipe did:
