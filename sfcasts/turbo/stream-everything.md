@@ -91,6 +91,20 @@ for that in the controller.
 Here's how it looks: wrap our stream render with if
 `TurboStreamResponse::STREAM_FORMAT` equals `$request->getPreferredFormat()`.
 
+***TIP
+In symfony/ux-turbo 2.1 and higher, this code has changed:
+
+```php
+if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
+    $request->setFormat(TurboBundle::STREAM_FORMAT);
+
+    return $this->render('product/reviews.stream.html.twig', [
+        'product' => $product,
+    ]);
+}
+```
+***
+
 [[[ code('eaa99b1e97') ]]]
 
 That's it. This preferred format thing basically looks at the `Accept` request header
