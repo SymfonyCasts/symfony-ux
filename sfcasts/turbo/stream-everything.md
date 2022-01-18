@@ -92,7 +92,7 @@ Here's how it looks: wrap our stream render with if
 `TurboStreamResponse::STREAM_FORMAT` equals `$request->getPreferredFormat()`.
 
 ***TIP
-In symfony/ux-turbo 2.1 and higher, this code has changed:
+In `symfony/ux-turbo` 2.1 and higher, this code has changed:
 
 ```php
 if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
