@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/reload-content_controller.js b/assets/controllers/reload-content_controller.js
 new file mode 100644
-index 000000000..8c13edf2d
+index 0000000..8c13edf
 --- /dev/null
 +++ b/assets/controllers/reload-content_controller.js
 @@ -0,0 +1,18 @@
@@ -23,7 +23,7 @@ index 000000000..8c13edf2d
 +    }
 +}
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index 0727b11a4..18fe40f99 100644
+index 0727b11..18fe40f 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -3,7 +3,10 @@

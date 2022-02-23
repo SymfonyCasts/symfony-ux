@@ -1,5 +1,5 @@
 diff --git a/src/Controller/AdminController.php b/src/Controller/AdminController.php
-index c3f871dd4..db1ec01f0 100644
+index c3f871d..db1ec01 100644
 --- a/src/Controller/AdminController.php
 +++ b/src/Controller/AdminController.php
 @@ -26,6 +26,15 @@ class AdminController extends AbstractController

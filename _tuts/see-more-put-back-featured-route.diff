@@ -1,5 +1,5 @@
 diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
-index 83079bae4..1c1b443f3 100644
+index 83079ba..1c1b443 100644
 --- a/src/Controller/CartController.php
 +++ b/src/Controller/CartController.php
 @@ -28,6 +28,9 @@ class CartController extends AbstractController
@@ -13,7 +13,7 @@ index 83079bae4..1c1b443f3 100644
      {
          $featuredProduct = $productRepository->findFeatured();
 diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
-index bd3f89ac6..a5196bf47 100644
+index bd3f89a..a5196bf 100644
 --- a/templates/cart/cart.html.twig
 +++ b/templates/cart/cart.html.twig
 @@ -9,7 +9,7 @@

@@ -1,5 +1,5 @@
 diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
-index fd148db95..2d64e39f8 100644
+index fd148db..2d64e39 100644
 --- a/templates/cart/_featuredSidebar.html.twig
 +++ b/templates/cart/_featuredSidebar.html.twig
 @@ -1,19 +1,21 @@

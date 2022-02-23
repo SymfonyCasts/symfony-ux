@@ -1,6 +1,6 @@
 diff --git a/templates/product/_quickStats.html.twig b/templates/product/_quickStats.html.twig
 new file mode 100644
-index 000000000..ab6e45070
+index 0000000..ab6e450
 --- /dev/null
 +++ b/templates/product/_quickStats.html.twig
 @@ -0,0 +1,5 @@
@@ -10,7 +10,7 @@ index 000000000..ab6e45070
 +<br/>
 +<strong>{{ product.averageStars }}/5</strong><i class="fas fa-star ms-2"></i>
 diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
-index 6c050c132..d2ab874c3 100644
+index 6c050c1..d2ab874 100644
 --- a/templates/product/show.html.twig
 +++ b/templates/product/show.html.twig
 @@ -31,11 +31,7 @@

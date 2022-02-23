@@ -1,5 +1,5 @@
 diff --git a/assets/styles/app.css b/assets/styles/app.css
-index 0c8a8f2f1..fea451c5e 100644
+index 0c8a8f2..fea451c 100644
 --- a/assets/styles/app.css
 +++ b/assets/styles/app.css
 @@ -179,3 +179,6 @@ h1 {
@@ -10,7 +10,7 @@ index 0c8a8f2f1..fea451c5e 100644
 +    background-color: lightgreen;
 +}
 diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
-index fc843f1b9..fd2e91e5f 100644
+index fc843f1..fd2e91e 100644
 --- a/templates/product/_review.html.twig
 +++ b/templates/product/_review.html.twig
 @@ -1,4 +1,4 @@
@@ -20,7 +20,7 @@ index fc843f1b9..fd2e91e5f 100644
      <div>
          {{ review.content }}
 diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
-index d1d0b9683..59e92ef2f 100644
+index d1d0b96..59e92ef 100644
 --- a/templates/product/reviews.stream.html.twig
 +++ b/templates/product/reviews.stream.html.twig
 @@ -8,6 +8,7 @@

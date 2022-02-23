@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
-index c90fc046d..d36f2446a 100644
+index c90fc04..d36f244 100644
 --- a/assets/controllers/counter_controller.js
 +++ b/assets/controllers/counter_controller.js
 @@ -1,5 +1,5 @@
@@ -28,7 +28,7 @@ index c90fc046d..d36f2446a 100644
              visit('/you-won');
          }
 diff --git a/templates/base.html.twig b/templates/base.html.twig
-index 8c81d8d7c..2d8861481 100644
+index 8c81d8d..2d88614 100644
 --- a/templates/base.html.twig
 +++ b/templates/base.html.twig
 @@ -67,6 +67,7 @@

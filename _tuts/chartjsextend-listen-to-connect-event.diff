@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/admin-chartjs_controller.js b/assets/controllers/admin-chartjs_controller.js
-index 8a35b8705..bdb183096 100644
+index 8a35b87..bdb1830 100644
 --- a/assets/controllers/admin-chartjs_controller.js
 +++ b/assets/controllers/admin-chartjs_controller.js
 @@ -1,7 +1,7 @@
@@ -13,7 +13,7 @@ index 8a35b8705..bdb183096 100644
      }
  }
 diff --git a/templates/admin/dashboard.html.twig b/templates/admin/dashboard.html.twig
-index a8cacec4e..5a161e7bd 100644
+index a8cacec..5a161e7 100644
 --- a/templates/admin/dashboard.html.twig
 +++ b/templates/admin/dashboard.html.twig
 @@ -102,7 +102,10 @@

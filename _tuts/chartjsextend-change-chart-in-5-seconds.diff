@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/admin-chartjs_controller.js b/assets/controllers/admin-chartjs_controller.js
-index bdb183096..20ee8b191 100644
+index bdb1830..20ee8b1 100644
 --- a/assets/controllers/admin-chartjs_controller.js
 +++ b/assets/controllers/admin-chartjs_controller.js
 @@ -2,6 +2,15 @@ import { Controller } from 'stimulus';

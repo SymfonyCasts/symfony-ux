@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 536e1ce3b..ffbe7c168 100644
+index 1373d98..5495686 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -88,6 +88,7 @@
+@@ -91,6 +91,7 @@
          "symfony/monolog-bundle": "^3.0",
          "symfony/stopwatch": "^5.2",
          "symfony/var-dumper": "^5.2",
@@ -12,7 +12,7 @@ index 536e1ce3b..ffbe7c168 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index 209727f13..a736b4ba1 100644
+index d612fad..cbfe9de 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -24,7 +24,7 @@ index 209727f13..a736b4ba1 100644
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -6980,6 +6980,71 @@
+@@ -6844,6 +6844,71 @@
              ],
              "time": "2020-11-14T09:36:49+00:00"
          },
@@ -96,7 +96,7 @@ index 209727f13..a736b4ba1 100644
          {
              "name": "monolog/monolog",
              "version": "2.2.0",
-@@ -7539,6 +7604,130 @@
+@@ -7403,6 +7468,130 @@
                  }
              ],
              "time": "2021-05-11T14:37:54+00:00"
@@ -228,7 +228,7 @@ index 209727f13..a736b4ba1 100644
      ],
      "aliases": [],
 diff --git a/config/bundles.php b/config/bundles.php
-index f8d5509e3..b0bfb47eb 100644
+index f8d5509..b0bfb47 100644
 --- a/config/bundles.php
 +++ b/config/bundles.php
 @@ -15,4 +15,5 @@ return [
@@ -238,7 +238,7 @@ index f8d5509e3..b0bfb47eb 100644
 +    Zenstruck\Foundry\ZenstruckFoundryBundle::class => ['dev' => true, 'test' => true],
  ];
 diff --git a/config/packages/security.yaml b/config/packages/security.yaml
-index d7645dc08..6e444d15d 100644
+index d7645dc..6e444d1 100644
 --- a/config/packages/security.yaml
 +++ b/config/packages/security.yaml
 @@ -40,3 +40,10 @@ security:
@@ -254,7 +254,7 @@ index d7645dc08..6e444d15d 100644
 +                algorithm: sha512
 diff --git a/config/packages/zenstruck_foundry.yaml b/config/packages/zenstruck_foundry.yaml
 new file mode 100644
-index 000000000..a7ab1084d
+index 0000000..a7ab108
 --- /dev/null
 +++ b/config/packages/zenstruck_foundry.yaml
 @@ -0,0 +1,9 @@
@@ -268,7 +268,7 @@ index 000000000..a7ab1084d
 +    zenstruck_foundry:
 +        auto_refresh_proxies: true
 diff --git a/src/DataFixtures/AppFixtures.php b/src/DataFixtures/AppFixtures.php
-index 7aab59d42..79d756ff8 100644
+index 7aab59d..79d756f 100644
 --- a/src/DataFixtures/AppFixtures.php
 +++ b/src/DataFixtures/AppFixtures.php
 @@ -7,6 +7,9 @@ use App\Entity\Color;
@@ -368,7 +368,7 @@ index 7aab59d42..79d756ff8 100644
          $fs = new Filesystem();
 diff --git a/src/Factory/ProductFactory.php b/src/Factory/ProductFactory.php
 new file mode 100644
-index 000000000..1710aca0a
+index 0000000..1710aca
 --- /dev/null
 +++ b/src/Factory/ProductFactory.php
 @@ -0,0 +1,59 @@
@@ -433,7 +433,7 @@ index 000000000..1710aca0a
 +}
 diff --git a/src/Factory/ReviewFactory.php b/src/Factory/ReviewFactory.php
 new file mode 100644
-index 000000000..6d293cba9
+index 0000000..6d293cb
 --- /dev/null
 +++ b/src/Factory/ReviewFactory.php
 @@ -0,0 +1,58 @@
@@ -497,7 +497,7 @@ index 000000000..6d293cba9
 +}
 diff --git a/src/Factory/UserFactory.php b/src/Factory/UserFactory.php
 new file mode 100644
-index 000000000..1a6c191d1
+index 0000000..1a6c191
 --- /dev/null
 +++ b/src/Factory/UserFactory.php
 @@ -0,0 +1,59 @@
@@ -561,7 +561,7 @@ index 000000000..1a6c191d1
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index 327354041..fe6e575d6 100644
+index 3273540..fe6e575 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -97,6 +97,9 @@

@@ -1,5 +1,5 @@
 diff --git a/assets/app.js b/assets/app.js
-index 6a303d442..be6a7b8bd 100644
+index 6a303d4..be6a7b8 100644
 --- a/assets/app.js
 +++ b/assets/app.js
 @@ -11,26 +11,4 @@ import './styles/app.css';
@@ -32,7 +32,7 @@ index 6a303d442..be6a7b8bd 100644
 +import './turbo/turbo-helper';
 diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
 new file mode 100644
-index 000000000..0dc9fd3fa
+index 0000000..0dc9fd3
 --- /dev/null
 +++ b/assets/turbo/turbo-helper.js
 @@ -0,0 +1,29 @@

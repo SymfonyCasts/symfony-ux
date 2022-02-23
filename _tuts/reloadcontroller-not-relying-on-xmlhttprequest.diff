@@ -1,5 +1,5 @@
 diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
-index b46735d64..f3ae6532d 100644
+index b46735d..f3ae653 100644
 --- a/src/Controller/ProductAdminController.php
 +++ b/src/Controller/ProductAdminController.php
 @@ -20,7 +20,7 @@ class ProductAdminController extends AbstractController
@@ -12,7 +12,7 @@ index b46735d64..f3ae6532d 100644
          return $this->render('product_admin/' . $template, [
              'products' => $productRepository->findBy([], ['id' => 'DESC']),
 diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
-index beae12feb..5f4686fdb 100644
+index beae12f..5f4686f 100644
 --- a/templates/product_admin/index.html.twig
 +++ b/templates/product_admin/index.html.twig
 @@ -6,7 +6,7 @@

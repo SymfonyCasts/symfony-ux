@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
-index d37220001..d20b7bedc 100644
+index d372200..d20b7be 100644
 --- a/assets/controllers/streamed-item_controller.js
 +++ b/assets/controllers/streamed-item_controller.js
 @@ -7,5 +7,9 @@ export default class extends Controller {

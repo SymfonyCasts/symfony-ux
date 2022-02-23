@@ -1,5 +1,5 @@
 diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
-index 774f929d0..dfd016688 100644
+index 774f929..dfd0166 100644
 --- a/templates/product/_cart_add_controls.html.twig
 +++ b/templates/product/_cart_add_controls.html.twig
 @@ -1,4 +1,7 @@

@@ -1,5 +1,5 @@
 diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
-index bff616af9..5a452bd3c 100644
+index bff616a..5a452bd 100644
 --- a/templates/product/_reviews.html.twig
 +++ b/templates/product/_reviews.html.twig
 @@ -1,17 +1,6 @@
@@ -23,7 +23,7 @@ index bff616af9..5a452bd3c 100644
  
 diff --git a/templates/product/_reviews_list.html.twig b/templates/product/_reviews_list.html.twig
 new file mode 100644
-index 000000000..831ab422f
+index 0000000..831ab42
 --- /dev/null
 +++ b/templates/product/_reviews_list.html.twig
 @@ -0,0 +1,12 @@

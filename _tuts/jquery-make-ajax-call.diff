@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index 10fa04d0d..bdbe49e10 100644
+index 10fa04d..bdbe49e 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -1,15 +1,17 @@
@@ -24,7 +24,7 @@ index 10fa04d0d..bdbe49e10 100644
      }
  }
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index 6161b48e4..550a93adf 100644
+index 6161b48..550a93a 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -12,7 +12,7 @@

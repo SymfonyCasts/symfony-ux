@@ -1,5 +1,5 @@
 diff --git a/docker-compose.yaml b/docker-compose.yaml
-index fc35b2a74..bf5903fae 100644
+index fc35b2a..bf5903f 100644
 --- a/docker-compose.yaml
 +++ b/docker-compose.yaml
 @@ -11,3 +11,11 @@ services:

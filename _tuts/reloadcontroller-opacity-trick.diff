@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/reload-content_controller.js b/assets/controllers/reload-content_controller.js
-index 337c38778..1b587c8ea 100644
+index 337c387..1b587c8 100644
 --- a/assets/controllers/reload-content_controller.js
 +++ b/assets/controllers/reload-content_controller.js
 @@ -7,7 +7,9 @@ export default class extends Controller {

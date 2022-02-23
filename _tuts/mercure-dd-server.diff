@@ -1,5 +1,5 @@
 diff --git a/public/index.php b/public/index.php
-index 9982c218d..73cea3d06 100644
+index 9982c21..73cea3d 100644
 --- a/public/index.php
 +++ b/public/index.php
 @@ -4,6 +4,10 @@ use App\Kernel;

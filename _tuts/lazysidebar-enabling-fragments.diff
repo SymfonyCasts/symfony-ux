@@ -1,5 +1,5 @@
 diff --git a/config/packages/framework.yaml b/config/packages/framework.yaml
-index 7853e9ed5..28d4aa12d 100644
+index 7853e9e..28d4aa1 100644
 --- a/config/packages/framework.yaml
 +++ b/config/packages/framework.yaml
 @@ -13,7 +13,7 @@ framework:

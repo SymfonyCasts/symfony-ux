@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/autocomplete-transition_controller.js b/assets/controllers/autocomplete-transition_controller.js
-index 63e48c678..10b530e0a 100644
+index 63e48c6..10b530e 100644
 --- a/assets/controllers/autocomplete-transition_controller.js
 +++ b/assets/controllers/autocomplete-transition_controller.js
 @@ -1,8 +1,11 @@
@@ -17,7 +17,7 @@ index 63e48c678..10b530e0a 100644
      toggle(event) {
 diff --git a/assets/util/add-transition.js b/assets/util/add-transition.js
 new file mode 100644
-index 000000000..698d67845
+index 0000000..698d678
 --- /dev/null
 +++ b/assets/util/add-transition.js
 @@ -0,0 +1,14 @@
@@ -36,7 +36,7 @@ index 000000000..698d67845
 +    });
 +}
 diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
-index 8ca16d745..3a6dbb896 100644
+index 8ca16d7..3a6dbb8 100644
 --- a/templates/product/index.html.twig
 +++ b/templates/product/index.html.twig
 @@ -58,6 +58,7 @@

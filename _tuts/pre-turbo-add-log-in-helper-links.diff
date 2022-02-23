@@ -1,6 +1,6 @@
 diff --git a/assets/controllers/form-filler_controller.js b/assets/controllers/form-filler_controller.js
 new file mode 100644
-index 000000000..a4d4bd2f6
+index 0000000..a4d4bd2
 --- /dev/null
 +++ b/assets/controllers/form-filler_controller.js
 @@ -0,0 +1,10 @@
@@ -15,7 +15,7 @@ index 000000000..a4d4bd2f6
 +    }
 +}
 diff --git a/templates/security/login.html.twig b/templates/security/login.html.twig
-index 1180589ef..3fe97afae 100644
+index 1180589..3fe97af 100644
 --- a/templates/security/login.html.twig
 +++ b/templates/security/login.html.twig
 @@ -15,20 +15,34 @@

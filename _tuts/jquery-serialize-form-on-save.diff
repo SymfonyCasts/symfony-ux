@@ -1,5 +1,5 @@
 diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
-index d51b37ec1..a92d888bb 100644
+index d51b37e..a92d888 100644
 --- a/assets/controllers/modal-form_controller.js
 +++ b/assets/controllers/modal-form_controller.js
 @@ -15,4 +15,9 @@ export default class extends Controller {
@@ -13,7 +13,7 @@ index d51b37ec1..a92d888bb 100644
 +    }
  }
 diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
-index 550a93adf..756851597 100644
+index 550a93a..7568515 100644
 --- a/templates/_modal.html.twig
 +++ b/templates/_modal.html.twig
 @@ -19,7 +19,7 @@
