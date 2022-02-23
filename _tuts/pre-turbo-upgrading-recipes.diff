@@ -52,7 +52,7 @@ index 8fe9d49..c933dc5 100755
 +    return new Application($kernel);
 +};
 diff --git a/composer.json b/composer.json
-index aaa3099..1373d98 100644
+index 7ec497e..11d9b6a 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -23,6 +23,7 @@

@@ -34,7 +34,7 @@ index 6f27124..b7f5fb5 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index 3025d38..3b9fbca 100644
+index 74f2b73..3b9fbca 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -28,6 +28,7 @@
@@ -45,16 +45,6 @@ index 3025d38..3b9fbca 100644
          "symfony/validator": "5.3.*",
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
-@@ -46,7 +47,8 @@
-             "php": "7.4.0"
-         },
-         "allow-plugins": {
--            "symfony/flex": true
-+            "symfony/flex": true,
-+            "symfony/runtime": true
-         }
-     },
-     "autoload": {
 diff --git a/composer.lock b/composer.lock
 index b541f5f..4f2ece9 100644
 --- a/composer.lock

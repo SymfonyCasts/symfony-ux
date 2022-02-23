@@ -1,8 +1,8 @@
 diff --git a/composer.json b/composer.json
-index 1373d98..5495686 100644
+index 11d9b6a..6029acc 100644
 --- a/composer.json
 +++ b/composer.json
-@@ -91,6 +91,7 @@
+@@ -92,6 +92,7 @@
          "symfony/monolog-bundle": "^3.0",
          "symfony/stopwatch": "^5.2",
          "symfony/var-dumper": "^5.2",

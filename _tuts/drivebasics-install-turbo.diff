@@ -16,7 +16,7 @@ index fbcedcd..6f27124 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index 5404aa4..fb5904c 100644
+index deeaba5..332e5dd 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
