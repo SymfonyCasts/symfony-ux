@@ -96,7 +96,7 @@ In `symfony/ux-turbo` 2.1 and higher, this code has changed:
 
 ```php
 if (TurboBundle::STREAM_FORMAT === $request->getPreferredFormat()) {
-    $request->setFormat(TurboBundle::STREAM_FORMAT);
+    $request->setRequestFormat(TurboBundle::STREAM_FORMAT);
 
     return $this->render('product/reviews.stream.html.twig', [
         'product' => $product,
