@@ -48,6 +48,18 @@ render a template called `product/reviews.stream.html.twig`. We don't need to pa
 any variables yet, but I'm going to pass an empty second argument because we *do*
 need to pass a third argument: a `new TurboStreamResponse()`.
 
+***TIP
+In `symfony/ux-turbo` 2.1 and higher, this code has changed. The `TurboStreamResponse`
+is no longer needed, but a `setRequestFormat()` call is:
+
+```php
+$request->setRequestFormat(TurboBundle::STREAM_FORMAT);
+
+return $this->render('product/reviews.stream.html.twig');
+```
+
+***
+
 [[[ code('e75b86c21e') ]]]
 
 Okay first: see the `.stream` in the template name? Yep. That has *no* technical
