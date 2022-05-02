@@ -25,6 +25,12 @@ We can use that to trigger our transition.
 
 ## Using my stimulus-autocomplete Fork
 
+***TIP
+You now *can* use the real library (not my fork) to accomplish this. It requires
+Stimulus version 3 and some updated libraries. See https://gist.github.com/weaverryan/b5e24b429a4c129f336dbb7b70b353a0
+for the full, final code example.
+***
+
 Before we jump in, to get this to work, we need a pull request to be merged into
 this library, which... at the time of this recording... is still *waiting* to be
 merged! Rats! Since it's *unmerged*, we'll use a *fork* of this library that
