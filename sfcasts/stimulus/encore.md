@@ -8,7 +8,7 @@ build system set up.
 Find your terminal and run:
 
 ```terminal
-composer require encore
+composer require "encore:^1.14"
 ```
 
 This *really* installs WebpackEncoreBundle, which will give us a few Twig helper
