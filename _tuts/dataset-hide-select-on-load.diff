@@ -1,0 +1,15 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index f121846..91e6872 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -3,6 +3,10 @@ import { Controller } from 'stimulus';
+ export default class extends Controller {
+     static targets = ['colorSquare', 'select']
+ 
++    connect() {
++        this.selectTarget.classList.add('d-none');
++    }
++
+     selectColor(event) {
+         this.colorSquareTargets.forEach((element) => {
+             element.classList.remove('selected');

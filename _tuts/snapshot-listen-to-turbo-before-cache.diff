@@ -1,0 +1,12 @@
+diff --git a/assets/app.js b/assets/app.js
+index bb0a6aa..a3f7727 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -10,3 +10,7 @@ import './styles/app.css';
+ 
+ // start the Stimulus application
+ import './bootstrap';
++
++document.addEventListener('turbo:before-cache', (event) => {
++    console.log(event);
++});

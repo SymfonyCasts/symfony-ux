@@ -1,0 +1,25 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index b2c1b1c..6206616 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -38,8 +38,4 @@ export default class extends Controller {
+             this.modalBodyTarget.innerHTML = e.responseText;
+         }
+     }
+-
+-    modalHidden() {
+-        console.log('it was hidden!');
+-    }
+ }
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index 70d64ef..113281f 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -17,7 +17,6 @@
+             {{ stimulus_controller('modal-form', {
+                 formUrl: path('product_admin_new')
+             }) }}
+-            data-action="hidden.bs.modal->modal-form#modalHidden"
+         >
+             <button
+                 class="btn btn-primary btn-sm"

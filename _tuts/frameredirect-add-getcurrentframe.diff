@@ -1,0 +1,15 @@
+diff --git a/assets/turbo/turbo-helper.js b/assets/turbo/turbo-helper.js
+index 38b4ee0..fe25b14 100644
+--- a/assets/turbo/turbo-helper.js
++++ b/assets/turbo/turbo-helper.js
+@@ -112,6 +112,10 @@ const TurboHelper = class {
+             Turbo.visit(fetchResponse.location);
+         }
+     }
++
++    getCurrentFrame() {
++        return document.querySelector('turbo-frame[busy]');
++    }
+ }
+ 
+ export default new TurboHelper();

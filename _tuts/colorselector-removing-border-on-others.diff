@@ -1,0 +1,15 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index 2449e7c..147068b 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -4,7 +4,9 @@ export default class extends Controller {
+     static targets = ['colorSquare']
+ 
+     selectColor(event) {
+-        console.log(this.colorSquareTargets);
++        this.colorSquareTargets.forEach((element) => {
++            element.classList.remove('selected');
++        });
+ 
+         event.currentTarget.classList.add('selected');
+     }

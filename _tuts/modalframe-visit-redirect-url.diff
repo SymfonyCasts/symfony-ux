@@ -1,0 +1,27 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 7a7a523..2c3750f 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -1,5 +1,6 @@
+ import { Controller } from 'stimulus';
+ import { Modal } from 'bootstrap';
++import * as Turbo from '@hotwired/turbo';
+ 
+ export default class extends Controller {
+     static targets = ['modal'];
+@@ -7,7 +8,6 @@ export default class extends Controller {
+ 
+     connect() {
+         document.addEventListener('turbo:before-fetch-response', (event) => {
+-            console.log(event);
+             if (!this.modal || !this.modal._isShown) {
+                 return;
+             }
+@@ -15,6 +15,7 @@ export default class extends Controller {
+             const fetchResponse = event.detail.fetchResponse;
+             if (fetchResponse.succeeded && fetchResponse.redirected) {
+                 event.preventDefault();
++                Turbo.visit(fetchResponse.location);
+                 this.modal.hide();
+             }
+         });

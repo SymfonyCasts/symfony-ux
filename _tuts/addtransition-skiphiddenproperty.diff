@@ -1,0 +1,14 @@
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 3a6dbb8..6184ce8 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -40,7 +40,8 @@
+                                 class="input-group"
+                                 {{ stimulus_controller({
+                                     'autocomplete': {
+-                                        url: path('app_homepage', { preview: 1 })
++                                        url: path('app_homepage', { preview: 1 }),
++                                        skipHiddenProperty: true
+                                     },
+                                     'autocomplete-transition': {}
+                                 }) }}

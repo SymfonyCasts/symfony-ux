@@ -1,0 +1,12 @@
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index 7e33a08..d5f1766 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -57,6 +57,7 @@ class ProductAdminController extends AbstractController
+         return $this->renderForm('product_admin/' . $template, [
+             'product' => $product,
+             'form' => $form,
++            'formTarget' => $request->headers->get('Turbo-Frame', '_top')
+         ]);
+     }
+ 

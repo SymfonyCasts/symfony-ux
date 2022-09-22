@@ -1,0 +1,22 @@
+diff --git a/assets/controllers/submit-confirm_controller.js b/assets/controllers/submit-confirm_controller.js
+index 2b6c224..ee62288 100644
+--- a/assets/controllers/submit-confirm_controller.js
++++ b/assets/controllers/submit-confirm_controller.js
+@@ -22,12 +22,15 @@ export default class extends Controller {
+             confirmButtonText: this.confirmButtonTextValue || 'Yes',
+             showLoaderOnConfirm: true,
+             preConfirm: () => {
+-                this.submitForm();
++                return this.submitForm();
+             }
+         });
+     }
+ 
+     submitForm() {
+-        console.log('submitting form!');
++        return fetch(this.element.action, {
++            method: this.element.method,
++            body: new URLSearchParams(new FormData(this.element)),
++        });
+     }
+ }

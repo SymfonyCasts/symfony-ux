@@ -1,0 +1,21 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index df9e99a..ae46e18 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -35,6 +35,16 @@ class CartController extends AbstractController
+         ]);
+     }
+ 
++    /**
++     * @Route("/cart/_list", name="_app_cart_list")
++     */
++    public function _shoppingCartList(CartStorage $cartStorage)
++    {
++        return $this->render('cart/_cartList.html.twig', [
++            'cart' => $cartStorage->getOrCreateCart(),
++        ]);
++    }
++
+     /**
+      * @Route("/product/{id}", name="app_cart_add_item", methods={"POST"})
+      */

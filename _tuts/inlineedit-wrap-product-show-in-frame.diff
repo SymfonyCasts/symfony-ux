@@ -1,0 +1,20 @@
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index af23ef8..0a26386 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -2,6 +2,7 @@
+ 
+ {% block productBody %}
+     <div class="row pt-3 product-show">
++        <turbo-frame id="product-info" target="_top">
+         <div class="col-4">
+             <img
+                 alt="{{ product.name }}"
+@@ -41,6 +42,7 @@
+                 </div>
+             </div>
+         </div>
++        </turbo-frame>
+     </div>
+ 
+     <hr>

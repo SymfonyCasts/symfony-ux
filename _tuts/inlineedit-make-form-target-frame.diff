@@ -1,0 +1,12 @@
+diff --git a/templates/product_admin/_form.html.twig b/templates/product_admin/_form.html.twig
+index eec6f04..f8d464b 100644
+--- a/templates/product_admin/_form.html.twig
++++ b/templates/product_admin/_form.html.twig
+@@ -1,4 +1,6 @@
+-{{ form_start(form) }}
++{{ form_start(form, {
++    attr: { 'data-turbo-frame': 'product-info' }
++}) }}
+     {{ form_widget(form) }}
+     <button class="btn btn-primary" formnovalidate>{{ button_label|default('Save') }}</button>
+ {{ form_end(form) }}

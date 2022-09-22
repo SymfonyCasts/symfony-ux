@@ -1,0 +1,42 @@
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index 8b2a946..18411e3 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -1,6 +1,6 @@
+ <div {{ turbo_stream_listen('product-reviews') }}></div>
+ 
+-<turbo-frame id="product-review">
++<turbo-frame id="product-{{ product.id }}-review">
+ {% for review in product.reviews %}
+     <div class="component-light my-3 p-3">
+         <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+index 2dbb367..4f965da 100644
+--- a/templates/product/reviews.stream.html.twig
++++ b/templates/product/reviews.stream.html.twig
+@@ -1,10 +1,10 @@
+-<turbo-stream action="update" target="product-quick-stats">
++<turbo-stream action="update" target="product-{{ product.id }}-quick-stats">
+     <template>
+         {{ include('product/_quickStats.html.twig') }}
+     </template>
+ </turbo-stream>
+ 
+-<turbo-stream action="replace" target="product-review">
++<turbo-stream action="replace" target="product-{{ product.id }}-review">
+     <template>
+         {{ include('product/_reviews.html.twig') }}
+     </template>
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index d2ab874..7af9306 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -30,7 +30,7 @@
+                 {{ product.description }}
+             </div>
+             <div class="p-3 mt-4 d-flex justify-content-between flex-wrap flex-lg-nowrap">
+-                <div id="product-quick-stats">
++                <div id="product-{{ product.id }}-quick-stats">
+                     {{ include('product/_quickStats.html.twig') }}
+                 </div>
+                 <div>

@@ -1,0 +1,16 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+index 221f524..76f4a13 100644
+--- a/assets/controllers/counter_controller.js
++++ b/assets/controllers/counter_controller.js
+@@ -3,5 +3,11 @@ import { Controller } from 'stimulus';
+ export default class extends Controller {
+     connect() {
+         this.element.innerHTML = 'You have clicked me 0 times 😢';
++        this.count = 0;
++
++        this.element.addEventListener('click', () => {
++            this.count++;
++            this.element.innerHTML = this.count;
++        });
+     }
+ }

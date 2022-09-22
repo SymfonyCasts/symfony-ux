@@ -1,0 +1,25 @@
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index f728197..e2fbcc7 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -1,14 +1,16 @@
+ {% block create %}
+-    <turbo-stream action="update" target="product-{{ product.id }}-quick-stats">
++    <turbo-stream action="update" target="product-{{ entity.product.id }}-quick-stats">
+         <template>
+-            {{ include('product/_quickStats.html.twig') }}
++            {{ include('product/_quickStats.html.twig', {
++                product: entity.product
++            }) }}
+         </template>
+     </turbo-stream>
+ 
+-    <turbo-stream action="append" target="product-{{ product.id }}-review-list">
++    <turbo-stream action="append" target="product-{{ entity.product.id }}-review-list">
+         <template>
+             {{ include('product/_review.html.twig', {
+-                review: newReview,
++                review: entity,
+                 isNew: true
+             }) }}
+         </template>

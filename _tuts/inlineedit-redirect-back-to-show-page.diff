@@ -1,0 +1,15 @@
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index a4e128d..a32024c 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -75,7 +75,9 @@ class ProductAdminController extends AbstractController
+         if ($form->isSubmitted() && $form->isValid()) {
+             $this->getDoctrine()->getManager()->flush();
+ 
+-            return $this->redirectToRoute('product_admin_index');
++            return $this->redirectToRoute('app_product', [
++                'id' => $product->getId(),
++            ]);
+         }
+ 
+         return $this->renderForm('product_admin/edit.html.twig', [

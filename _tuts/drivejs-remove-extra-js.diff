@@ -1,0 +1,31 @@
+diff --git a/assets/app.js b/assets/app.js
+index b054a2e..bb0a6aa 100644
+--- a/assets/app.js
++++ b/assets/app.js
+@@ -10,10 +10,3 @@ import './styles/app.css';
+ 
+ // start the Stimulus application
+ import './bootstrap';
+-
+-import $ from 'jquery';
+-
+-$(document).ready(() => {
+-    console.log('page is ready!');
+-})
+-console.log('script is done!');
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index ad70a34..66f4f91 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -79,11 +79,5 @@
+             {{ stimulus_controller('made-with-love') }}
+         >
+         </div>
+-
+-        <script>
+-        document.addEventListener('click', () => {
+-            console.log('document clicked!');
+-        })
+-        </script>
+     </body>
+ </html>

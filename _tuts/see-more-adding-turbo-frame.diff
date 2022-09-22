@@ -1,0 +1,15 @@
+diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
+index 9626c73..5bf1009 100644
+--- a/templates/cart/_featuredSidebar.html.twig
++++ b/templates/cart/_featuredSidebar.html.twig
+@@ -20,7 +20,9 @@
+             {% else %}
+                 {{ featuredProduct.description|u.truncate(25)|trim }}...
+ 
+-                <a href="{{ path('_app_cart_product_featured', {
++                <a
++                    data-turbo-frame="cart-sidebar"
++                    href="{{ path('_app_cart_product_featured', {
+                     description: true,
+                 }) }}">(read more)</a>
+             {% endif %}

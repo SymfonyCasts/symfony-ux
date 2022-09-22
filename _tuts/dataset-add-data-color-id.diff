@@ -1,0 +1,23 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index 147068b..250485d 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -9,5 +9,6 @@ export default class extends Controller {
+         });
+ 
+         event.currentTarget.classList.add('selected');
++        console.log(event.currentTarget.dataset.colorId);
+     }
+ }
+diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
+index 6a6b49d..7637f22 100644
+--- a/templates/product/_cart_add_controls.html.twig
++++ b/templates/product/_cart_add_controls.html.twig
+@@ -11,6 +11,7 @@
+                     type="button"
+                     data-action="color-square#selectColor"
+                     data-color-square-target="colorSquare"
++                    data-color-id="{{ color.id }}"
+                     style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+                 ></button>
+             {% endfor %}

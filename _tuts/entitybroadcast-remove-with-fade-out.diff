@@ -1,0 +1,82 @@
+diff --git a/assets/controllers/streamed-item_controller.js b/assets/controllers/streamed-item_controller.js
+index d20b7be..ced4123 100644
+--- a/assets/controllers/streamed-item_controller.js
++++ b/assets/controllers/streamed-item_controller.js
+@@ -1,15 +1,25 @@
+ import { Controller } from 'stimulus';
++import { addFadeTransition } from '../util/add-transition';
+ 
+ export default class extends Controller {
+     static values = {
+-        className: String
++        className: String,
++        removeElement: Boolean
+     }
+ 
+     connect() {
++        addFadeTransition(this, this.element, {
++            transitioned: true
++        });
++
+         this.element.classList.add(this.classNameValue);
+         setTimeout(() => {
+-            this.element.classList.add('fade-background');
+-            this.element.classList.remove(this.classNameValue);
++            if (this.removeElementValue) {
++                this.leave();
++            } else {
++                this.element.classList.add('fade-background');
++                this.element.classList.remove(this.classNameValue);
++            }
+         }, 5000);
+     }
+ }
+diff --git a/assets/styles/app.css b/assets/styles/app.css
+index 8382e76..204e37b 100644
+--- a/assets/styles/app.css
++++ b/assets/styles/app.css
+@@ -182,6 +182,9 @@ h1 {
+ .streamed-new-item {
+     background-color: lightgreen;
+ }
++.streamed-removed-item {
++    background-color: lightcoral;
++}
+ .fade-background {
+     transition: background-color 2000ms;
+ }
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index d1d1c97..1acb476 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -28,5 +28,12 @@
+ {% endblock %}
+ 
+ {% block remove %}
+-    <turbo-stream action="remove" target="product-review-{{ id }}"></turbo-stream>
++    <turbo-stream action="replace" target="product-review-{{ id }}">
++        <template>
++            {{ include('product/_review.html.twig', {
++                review: entity,
++                isRemoved: true
++            }) }}
++        </template>
++    </turbo-stream>
+ {% endblock %}
+diff --git a/templates/product/_review.html.twig b/templates/product/_review.html.twig
+index b30c55b..eb45b1a 100644
+--- a/templates/product/_review.html.twig
++++ b/templates/product/_review.html.twig
+@@ -6,6 +6,12 @@
+             className: 'streamed-new-item'
+         }) }}
+     {% endif %}
++    {% if isRemoved|default(false) %}
++        {{ stimulus_controller('streamed-item', {
++            className: 'streamed-removed-item',
++            removeElement: true
++        }) }}
++    {% endif %}
+ >
+     <p><i class="fas fa-user-circle me-2"></i>{{ review.owner.email }} <i class="fas fa-star ms-4"></i> {{ review.stars }}/5</p>
+     <div>

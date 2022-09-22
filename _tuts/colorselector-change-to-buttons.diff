@@ -1,0 +1,21 @@
+diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
+index 60b4029..7578dcf 100644
+--- a/templates/product/_cart_add_controls.html.twig
++++ b/templates/product/_cart_add_controls.html.twig
+@@ -6,11 +6,12 @@
+             {{ form_widget(addToCartForm.color) }}
+ 
+             {% for color in addToCartForm.vars.data.product.colors %}
+-                <span
+-                    class="color-square"
+-                    data-action="click->color-square#selectColor"
++                <button
++                    class="color-square btn"
++                    type="button"
++                    data-action="color-square#selectColor"
+                     style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+-                ></span>
++                ></button>
+             {% endfor %}
+         </div>
+     {% endif %}

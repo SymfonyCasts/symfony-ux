@@ -1,0 +1,12 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index c5e8102..7c460bd 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -44,6 +44,6 @@ export default class extends Controller {
+      * @return {Element|null}
+      */
+     findSelectedColorSquare() {
+-        return this.colorSquareTargets.find((element) => element.dataset.colorId === this.selectedColorId);
++        return this.colorSquareTargets.find((element) => element.dataset.colorId == this.selectedColorId);
+     }
+ }

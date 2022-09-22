@@ -1,0 +1,40 @@
+diff --git a/assets/controllers/reload-content_controller.js b/assets/controllers/reload-content_controller.js
+new file mode 100644
+index 0000000..8c13edf
+--- /dev/null
++++ b/assets/controllers/reload-content_controller.js
+@@ -0,0 +1,18 @@
++import { Controller } from 'stimulus';
++
++export default class extends Controller {
++    static values = {
++        cartRefreshUrl: String,
++    }
++
++    connect() {
++        console.log('🔁');
++    }
++
++    async removeItem(event) {
++        event.currentTarget.classList.add('removing');
++
++        const response = await fetch(this.cartRefreshUrlValue);
++        this.element.innerHTML = await response.text();
++    }
++}
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index 0727b11..18fe40f 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -3,7 +3,10 @@
+ {% block title %}Product index{% endblock %}
+ 
+ {% block body %}
+-<div class="container-fluid mt-4">
++<div
++    class="container-fluid mt-4"
++    {{ stimulus_controller('reload-content') }}
++>
+     <div class="d-flex flex-row">
+         <h1 class="me-3">Product index</h1>
+ 

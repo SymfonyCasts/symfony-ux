@@ -1,0 +1,14 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 2ecbb74..3a297d6 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -80,5 +80,9 @@
+             {{ stimulus_controller('made-with-love') }}
+         >
+         </div>
++
++        <script>
++        console.log('HIT!');
++        </script>
+     </body>
+ </html>

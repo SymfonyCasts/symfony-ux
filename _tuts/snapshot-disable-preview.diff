@@ -1,0 +1,27 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 66f4f91..2ecbb74 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -2,6 +2,7 @@
+ <html lang="en-US">
+     <head>
+         <meta charset="UTF-8">
++        {% block metas %}{% endblock %}
+         <title>{% block title %}MVP Office Supplies{% endblock %}</title>
+         {% block stylesheets %}
+             {{ encore_entry_link_tags('app') }}
+diff --git a/templates/registration/register.html.twig b/templates/registration/register.html.twig
+index 944d588..63d9446 100644
+--- a/templates/registration/register.html.twig
++++ b/templates/registration/register.html.twig
+@@ -2,6 +2,10 @@
+ 
+ {% block title %}Register{% endblock %}
+ 
++{% block metas %}
++    <meta name="turbo-cache-control" content="no-preview">
++{% endblock %}
++
+ {% block body %}
+     <div class="container" style="margin-top: 100px;">
+         <div class="row">

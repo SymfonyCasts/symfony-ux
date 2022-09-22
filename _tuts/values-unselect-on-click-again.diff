@@ -1,0 +1,14 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index 19b3e0a..51a1755 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -11,7 +11,8 @@ export default class extends Controller {
+     }
+ 
+     selectColor(event) {
+-        this.colorIdValue = event.currentTarget.dataset.colorId;
++        const clickedColor = event.currentTarget.dataset.colorId;
++        this.colorIdValue = clickedColor == this.colorIdValue ? null : clickedColor;
+     }
+ 
+     colorIdValueChanged() {

@@ -1,0 +1,30 @@
+diff --git a/assets/controllers/admin-chartjs_controller.js b/assets/controllers/admin-chartjs_controller.js
+index 8a35b87..bdb1830 100644
+--- a/assets/controllers/admin-chartjs_controller.js
++++ b/assets/controllers/admin-chartjs_controller.js
+@@ -1,7 +1,7 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+-    connect() {
+-        console.log('📈');
++    onChartConnect(event) {
++        console.log(event);
+     }
+ }
+diff --git a/templates/admin/dashboard.html.twig b/templates/admin/dashboard.html.twig
+index a8cacec..5a161e7 100644
+--- a/templates/admin/dashboard.html.twig
++++ b/templates/admin/dashboard.html.twig
+@@ -102,7 +102,10 @@
+             <div class="col-10 mt-4">
+                 <h1>Admin Dashboard</h1>
+ 
+-                {{ render_chart(chart, {'data-controller': 'admin-chartjs'}) }}
++                {{ render_chart(chart, {
++                    'data-controller': 'admin-chartjs',
++                    'data-action': 'chartjs:connect->admin-chartjs#onChartConnect'
++                }) }}
+             </div>
+         </div>
+     </div>

@@ -4,7 +4,1787 @@
             "id": "start",
             "name": "start",
             "description": null
+        },
+        {
+            "id": "installencore-install-encore",
+            "name": "InstallEncore: install encore",
+            "description": null
+        },
+        {
+            "id": "installencore-yarn-install",
+            "name": "InstallEncore: yarn install",
+            "description": null
+        },
+        {
+            "id": "installencore-add-encore-twig-functions",
+            "name": "InstallEncore: add Encore Twig functions",
+            "description": null
+        },
+        {
+            "id": "installencore-move-styles",
+            "name": "InstallEncore: move styles",
+            "description": null
+        },
+        {
+            "id": "installencore-add-bootstrap",
+            "name": "InstallEncore: add Bootstrap",
+            "description": null
+        },
+        {
+            "id": "installencore-import-bootstrap",
+            "name": "InstallEncore: import bootstrap",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-delete-hello-controller",
+            "name": "ControllerBasics: delete hello controller",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-create-first-controller",
+            "name": "ControllerBasics: create first controller",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-add-first-element",
+            "name": "ControllerBasics: add first element",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-add-2nd-element",
+            "name": "ControllerBasics: add 2nd element",
+            "description": null
+        },
+        {
+            "id": "controllerbasics-increment-on-click",
+            "name": "ControllerBasics: increment on click",
+            "description": null
+        },
+        {
+            "id": "targets-remove-2nd-element",
+            "name": "Targets: remove 2nd element",
+            "description": null
+        },
+        {
+            "id": "targets-add-span-element",
+            "name": "Targets: add span element",
+            "description": null
+        },
+        {
+            "id": "targets-add-target",
+            "name": "Targets: add target",
+            "description": null
+        },
+        {
+            "id": "actions-add-button",
+            "name": "Actions: add button",
+            "description": null
+        },
+        {
+            "id": "actions-add-data-action",
+            "name": "Actions: add data-action",
+            "description": null
+        },
+        {
+            "id": "actions-use-default-action",
+            "name": "Actions: use default action",
+            "description": null
+        },
+        {
+            "id": "actions-remove-connect",
+            "name": "Actions: remove connect()",
+            "description": null
+        },
+        {
+            "id": "colorselector-loop-and-print-out-hex",
+            "name": "ColorSelector: loop and print out hex",
+            "description": null
+        },
+        {
+            "id": "colorselector-render-color-boxes",
+            "name": "ColorSelector: render color boxes",
+            "description": null
+        },
+        {
+            "id": "colorselector-bootstrap-controller",
+            "name": "ColorSelector: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-action-to-squares",
+            "name": "ColorSelector: add action to squares",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-click",
+            "name": "ColorSelector: add click->",
+            "description": null
+        },
+        {
+            "id": "colorselector-change-to-buttons",
+            "name": "ColorSelector: change to buttons",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-selected-class",
+            "name": "ColorSelector: add \"selected\" class",
+            "description": null
+        },
+        {
+            "id": "colorselector-colorsquare-target",
+            "name": "ColorSelector: colorSquare target",
+            "description": null
+        },
+        {
+            "id": "colorselector-add-missing-static",
+            "name": "ColorSelector: add missing static",
+            "description": null
+        },
+        {
+            "id": "colorselector-removing-border-on-others",
+            "name": "ColorSelector: removing border on others",
+            "description": null
+        },
+        {
+            "id": "dataset-add-data-color-id",
+            "name": "Dataset: add data-color-id",
+            "description": null
+        },
+        {
+            "id": "dataset-set-selected-option",
+            "name": "Dataset: set selected option",
+            "description": null
+        },
+        {
+            "id": "dataset-hide-select-on-load",
+            "name": "Dataset: hide select on load",
+            "description": null
+        },
+        {
+            "id": "state-add-this-selectedcolorid",
+            "name": "State: add this.selectedColorId",
+            "description": null
+        },
+        {
+            "id": "state-unselect-on-2nd-click",
+            "name": "State: unselect on 2nd click",
+            "description": null
+        },
+        {
+            "id": "organization-create-setselectedcolor-method",
+            "name": "Organization: create setSelectedColor method",
+            "description": null
+        },
+        {
+            "id": "values-add-data-color-id-attribute",
+            "name": "Values: add data-color-id attribute",
+            "description": null
+        },
+        {
+            "id": "values-hello-values-api",
+            "name": "Values: hello values api",
+            "description": null
+        },
+        {
+            "id": "values-use-stimulus-controller",
+            "name": "Values: use stimulus_controller",
+            "description": null
+        },
+        {
+            "id": "values-value-names-are-normalized",
+            "name": "Values: value names are normalized",
+            "description": null
+        },
+        {
+            "id": "values-setting-initial-selected",
+            "name": "Values: setting initial selected",
+            "description": null
+        },
+        {
+            "id": "values-fixing-type-problem",
+            "name": "Values: fixing type problem",
+            "description": null
+        },
+        {
+            "id": "values-add-changed-hook",
+            "name": "Values: add \"changed\" hook",
+            "description": null
+        },
+        {
+            "id": "values-doing-all-the-work-in-the-hook",
+            "name": "Values: doing all the work in the hook",
+            "description": null
+        },
+        {
+            "id": "values-use-value-exclusively",
+            "name": "Values: use value exclusively",
+            "description": null
+        },
+        {
+            "id": "values-unselect-on-click-again",
+            "name": "Values: unselect on click again",
+            "description": null
+        },
+        {
+            "id": "searchpreview-bootstrap-controller",
+            "name": "SearchPreview: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-input-action",
+            "name": "SearchPreview: add input action",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-url-value",
+            "name": "SearchPreview: add url value",
+            "description": null
+        },
+        {
+            "id": "searchpreview-create-ajax-endpoint",
+            "name": "SearchPreview: create AJAX endpoint",
+            "description": null
+        },
+        {
+            "id": "searchpreview-make-ajax-call",
+            "name": "SearchPreview: make AJAX call",
+            "description": null
+        },
+        {
+            "id": "searchpreview-adding-await",
+            "name": "SearchPreview: adding await",
+            "description": null
+        },
+        {
+            "id": "searchpreview-add-target-and-fill-in",
+            "name": "SearchPreview: add target and fill in",
+            "description": null
+        },
+        {
+            "id": "searchpreview-make-it-prettier",
+            "name": "SearchPreview: make it prettier",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-install-it",
+            "name": "stimulus-use: install it",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-useclickoutside",
+            "name": "stimulus-use: useClickOutside",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-usedebounce",
+            "name": "stimulus-use: useDebounce",
+            "description": null
+        },
+        {
+            "id": "stimulus-use-refactor-to-method",
+            "name": "stimulus-use: refactor to method",
+            "description": null
+        },
+        {
+            "id": "sweetalert-add-submit-confirm-controller",
+            "name": "SweetAlert: add submit-confirm controller",
+            "description": null
+        },
+        {
+            "id": "sweetalert-install-sweetalert2",
+            "name": "SweetAlert: install sweetalert2",
+            "description": null
+        },
+        {
+            "id": "sweetalert-add-form-submit-action",
+            "name": "SweetAlert: add form submit action",
+            "description": null
+        },
+        {
+            "id": "sweetalert-paste-in-swal",
+            "name": "SweetAlert: paste in swal()",
+            "description": null
+        },
+        {
+            "id": "sweetalert-resubmit-on-success",
+            "name": "SweetAlert: resubmit on success",
+            "description": null
+        },
+        {
+            "id": "sweetalert-make-configurable",
+            "name": "SweetAlert: make configurable",
+            "description": null
+        },
+        {
+            "id": "sweetalert-use-preconfirm",
+            "name": "SweetAlert: use preConfirm",
+            "description": null
+        },
+        {
+            "id": "sweetalert-ajax-submit-form",
+            "name": "SweetAlert: AJAX submit form",
+            "description": null
+        },
+        {
+            "id": "sweetalert-option-to-submit-async",
+            "name": "SweetAlert: option to submit async",
+            "description": null
+        },
+        {
+            "id": "sweetalert-pass-value-to-submit-async",
+            "name": "SweetAlert: Pass value to submit async",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-add-cart-list-controller",
+            "name": "2ndController: add cart-list controller",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-dispatch-an-event",
+            "name": "2ndController: dispatch an event",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-remove-debug",
+            "name": "2ndController: remove debug",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-listen-to-event",
+            "name": "2ndController: listen to event",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-refactor-cart-to-partial",
+            "name": "2ndController: refactor cart to partial",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-route-controller-to-partial",
+            "name": "2ndController: route\/controller to partial",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-ajax-to-refresh-cart-list",
+            "name": "2ndController: AJAX to refresh cart list",
+            "description": null
+        },
+        {
+            "id": "2ndcontroller-css-fade-out",
+            "name": "2ndController: css fade out",
+            "description": null
+        },
+        {
+            "id": "chartjs-install-it",
+            "name": "ChartJs: install it",
+            "description": null
+        },
+        {
+            "id": "chartjs-yarn-install-force",
+            "name": "ChartJs: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "chartjs-render-chart",
+            "name": "ChartJs: render chart",
+            "description": null
+        },
+        {
+            "id": "chartjs-set-option",
+            "name": "ChartJs: set option",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-add-custom-controller",
+            "name": "ChartJsExtend: add custom controller",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-listen-to-connect-event",
+            "name": "ChartJsExtend: listen to connect event",
+            "description": null
+        },
+        {
+            "id": "chartjsextend-change-chart-in-5-seconds",
+            "name": "ChartJsExtend: change chart in 5 seconds",
+            "description": null
+        },
+        {
+            "id": "react-enable-the-preset",
+            "name": "React: enable the preset",
+            "description": null
+        },
+        {
+            "id": "react-install-react-preset",
+            "name": "React: install react preset",
+            "description": null
+        },
+        {
+            "id": "react-install-react",
+            "name": "React: install react",
+            "description": null
+        },
+        {
+            "id": "react-copy-in-component",
+            "name": "React: copy in component",
+            "description": null
+        },
+        {
+            "id": "react-bootstrap-controller",
+            "name": "React: bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "react-render-component",
+            "name": "React: render component",
+            "description": null
+        },
+        {
+            "id": "reactprops-copy-in-component",
+            "name": "ReactProps: copy in component",
+            "description": null
+        },
+        {
+            "id": "reactprops-add-controller",
+            "name": "ReactProps: add controller",
+            "description": null
+        },
+        {
+            "id": "reactprops-manually-pass-prop",
+            "name": "ReactProps: manually pass prop",
+            "description": null
+        },
+        {
+            "id": "reactprops-add-data-controller",
+            "name": "ReactProps: add data-controller",
+            "description": null
+        },
+        {
+            "id": "reactprops-pass-real-serialized-value",
+            "name": "ReactProps: pass real serialized value",
+            "description": null
+        },
+        {
+            "id": "laziness-install-webpack-bundle-analyzer",
+            "name": "Laziness: install webpack-bundle-analyzer",
+            "description": null
+        },
+        {
+            "id": "laziness-dynamic-import-react-dom",
+            "name": "Laziness: dynamic import react-dom",
+            "description": null
+        },
+        {
+            "id": "laziness-set-lazy-in-controllers-json",
+            "name": "Laziness: set lazy in controllers.json",
+            "description": null
+        },
+        {
+            "id": "laziness-lazy-controller",
+            "name": "Laziness: lazy controller",
+            "description": null
+        },
+        {
+            "id": "modal-upgrade-to-bootstrap5",
+            "name": "Modal: upgrade to bootstrap5",
+            "description": null
+        },
+        {
+            "id": "modal-make-crud-product",
+            "name": "Modal: make:crud Product",
+            "description": null
+        },
+        {
+            "id": "modal-change-url",
+            "name": "Modal: change URL",
+            "description": null
+        },
+        {
+            "id": "modal-add-container-div",
+            "name": "Modal: add container div",
+            "description": null
+        },
+        {
+            "id": "modal-category-tostring",
+            "name": "Modal: Category::__toString",
+            "description": null
+        },
+        {
+            "id": "modal-make-form-smaller",
+            "name": "Modal: make form smaller",
+            "description": null
+        },
+        {
+            "id": "modal-sort-newest-first",
+            "name": "Modal: sort newest first",
+            "description": null
+        },
+        {
+            "id": "modal-add-new-button",
+            "name": "Modal: Add new button",
+            "description": null
+        },
+        {
+            "id": "modal-bootstrap-stimulus-controller",
+            "name": "Modal: bootstrap Stimulus controller",
+            "description": null
+        },
+        {
+            "id": "modal-add-action-method",
+            "name": "Modal: add action method",
+            "description": null
+        },
+        {
+            "id": "modal-import-modal",
+            "name": "Modal: import modal",
+            "description": null
+        },
+        {
+            "id": "modal-install-popper",
+            "name": "Modal: install popper",
+            "description": null
+        },
+        {
+            "id": "modal-add-modal-partial",
+            "name": "Modal: add _modal partial",
+            "description": null
+        },
+        {
+            "id": "modal-open-modal",
+            "name": "Modal: open modal",
+            "description": null
+        },
+        {
+            "id": "modal-customize-modal-header-buttons",
+            "name": "Modal: customize modal header\/buttons",
+            "description": null
+        },
+        {
+            "id": "modal-add-formurl-value",
+            "name": "Modal: add formUrl value",
+            "description": null
+        },
+        {
+            "id": "jquery-install-it",
+            "name": "jQuery: install it",
+            "description": null
+        },
+        {
+            "id": "jquery-make-ajax-call",
+            "name": "jQuery: Make AJAX call",
+            "description": null
+        },
+        {
+            "id": "jquery-clear-modal-to-start",
+            "name": "jQuery: clear modal to start",
+            "description": null
+        },
+        {
+            "id": "jquery-return-form-partial",
+            "name": "jQuery: Return form partial",
+            "description": null
+        },
+        {
+            "id": "jquery-hide-button",
+            "name": "jQuery: hide button",
+            "description": null
+        },
+        {
+            "id": "jquery-serialize-form-on-save",
+            "name": "jQuery: serialize form on save",
+            "description": null
+        },
+        {
+            "id": "jquery-submit-form-ajax",
+            "name": "jQuery: submit form AJAX",
+            "description": null
+        },
+        {
+            "id": "jquery-use-formurlvalue",
+            "name": "jQuery: use formUrlValue",
+            "description": null
+        },
+        {
+            "id": "jquery-also-ajax-on-direct-form-submit",
+            "name": "jQuery: also AJAX on direct form submit",
+            "description": null
+        },
+        {
+            "id": "asyncform-return-422-or-200",
+            "name": "AsyncForm: return 422 or 200",
+            "description": null
+        },
+        {
+            "id": "asyncform-try-catch-on-ajax",
+            "name": "AsyncForm: try-catch on AJAX",
+            "description": null
+        },
+        {
+            "id": "asyncform-close-on-success",
+            "name": "AsyncForm: close on success",
+            "description": null
+        },
+        {
+            "id": "asyncform-listen-to-bs-event",
+            "name": "AsyncForm: listen to bs event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-bootstrap-controller",
+            "name": "ReloadController: Bootstrap controller",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-list-into-partial",
+            "name": "ReloadController: list into partial",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-partial-value",
+            "name": "ReloadController: partial & value",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-make-ajax-call",
+            "name": "ReloadController: make AJAX call",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-dispatch-event",
+            "name": "ReloadController: dispatch event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-listen-to-event",
+            "name": "ReloadController: listen to event",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-not-relying-on-xmlhttprequest",
+            "name": "ReloadController: not relying on XMLHttpRequest",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-opacity-trick",
+            "name": "ReloadController: opacity trick",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-re-use-on-cart",
+            "name": "ReloadController: re-use on cart",
+            "description": null
+        },
+        {
+            "id": "reloadcontroller-make-target-optional",
+            "name": "ReloadController: make target optional",
+            "description": null
+        },
+        {
+            "id": "transition-upgrade-package",
+            "name": "Transition: upgrade package",
+            "description": null
+        },
+        {
+            "id": "transition-use-behavior",
+            "name": "Transition: use behavior",
+            "description": null
+        },
+        {
+            "id": "transition-add-css",
+            "name": "Transition: add CSS",
+            "description": null
+        },
+        {
+            "id": "3rdparty-install-stimulus-autocomplete",
+            "name": "3rdParty: install stimulus-autocomplete",
+            "description": null
+        },
+        {
+            "id": "3rdparty-register-controller",
+            "name": "3rdParty: Register controller",
+            "description": null
+        },
+        {
+            "id": "3rdparty-using-controller",
+            "name": "3rdParty: using controller",
+            "description": null
+        },
+        {
+            "id": "3rdparty-sending-preview",
+            "name": "3rdParty: Sending ?preview=",
+            "description": null
+        },
+        {
+            "id": "3rdparty-role-option",
+            "name": "3rdParty: role=\"option\"",
+            "description": null
+        },
+        {
+            "id": "3rdparty-delete-old-controller",
+            "name": "3rdParty: delete old controller",
+            "description": null
+        },
+        {
+            "id": "3rdparty-make-controller-lazy",
+            "name": "3rdParty: make controller lazy",
+            "description": null
+        },
+        {
+            "id": "addtransition-use-my-fork",
+            "name": "AddTransition: use my fork",
+            "description": null
+        },
+        {
+            "id": "addtransition-create-new-controller",
+            "name": "AddTransition: create new controller",
+            "description": null
+        },
+        {
+            "id": "addtransition-add-the-toggle-action",
+            "name": "AddTransition: add the toggle action",
+            "description": null
+        },
+        {
+            "id": "addtransition-initialize-usetransition",
+            "name": "AddTransition: initialize useTransition",
+            "description": null
+        },
+        {
+            "id": "addtransition-calling-enter-leave",
+            "name": "AddTransition: calling enter\/leave",
+            "description": null
+        },
+        {
+            "id": "addtransition-skiphiddenproperty",
+            "name": "AddTransition: skipHiddenProperty",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-upgrade-deps",
+            "name": "PRE_TURBO: Upgrade deps",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-upgrade-yarn-deps",
+            "name": "PRE_TURBO: upgrade yarn deps",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-upgrading-recipes",
+            "name": "PRE_TURBO: upgrading recipes",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-use-new-security",
+            "name": "PRE_TURBO: use new security",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-various-minor-tweaks",
+            "name": "PRE_TURBO: Various minor tweaks",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-fix-deprecations",
+            "name": "PRE_TURBO: fix deprecations",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-add-more-types",
+            "name": "PRE_TURBO: Add more types",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-add-counting-page",
+            "name": "PRE_TURBO: Add \"counting\" page",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-adding-review-system",
+            "name": "PRE_TURBO: Adding review system",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-change-add-to-cart-url",
+            "name": "PRE_TURBO: change add to cart URL",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-review-admin",
+            "name": "PRE_TURBO: Review admin",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-making-entity-setters-relaxed",
+            "name": "PRE_TURBO: making entity setters relaxed",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-foundry",
+            "name": "PRE_TURBO: Foundry",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-styling-changes",
+            "name": "PRE_TURBO: Styling changes",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-add-log-in-helper-links",
+            "name": "PRE_TURBO: add log in helper links",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-empty-migrations",
+            "name": "PRE_TURBO: empty migrations",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-remove-modal-on-close",
+            "name": "PRE_TURBO: remove modal on close",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-updating-readme",
+            "name": "PRE_TURBO: updating README",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-tweak-review-flash-system",
+            "name": "PRE_TURBO: tweak review flash system",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-fixing-review-admin-area",
+            "name": "PRE_TURBO: Fixing review admin area",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-tweak-add-transition-module",
+            "name": "PRE_TURBO: tweak add transition module",
+            "description": null
+        },
+        {
+            "id": "pre-turbo-set-up-tutorial",
+            "name": "PRE_TURBO: set up tutorial\/",
+            "description": null
+        },
+        {
+            "id": "drivebasics-install-turbo",
+            "name": "DriveBasics: Install Turbo",
+            "description": null
+        },
+        {
+            "id": "drivebasics-yarn-install-force",
+            "name": "DriveBasics: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "drivebasics-add-sleep",
+            "name": "DriveBasics: Add sleep()",
+            "description": null
+        },
+        {
+            "id": "drivebasics-remove-sleep",
+            "name": "DriveBasics: remove sleep",
+            "description": null
+        },
+        {
+            "id": "drivejs-add-document-ready",
+            "name": "DriveJs: add document.ready()",
+            "description": null
+        },
+        {
+            "id": "drivejs-adding-js-to-body",
+            "name": "DriveJs: Adding js to body",
+            "description": null
+        },
+        {
+            "id": "drivejs-attaching-document-listener",
+            "name": "DriveJs: Attaching document listener",
+            "description": null
+        },
+        {
+            "id": "drivejs-remove-extra-js",
+            "name": "DriveJs: Remove extra js",
+            "description": null
+        },
+        {
+            "id": "disable-add-data-turbo-false",
+            "name": "Disable: add data-turbo=\"false\"",
+            "description": null
+        },
+        {
+            "id": "disable-re-enable-one-link",
+            "name": "Disable: re-enable one link",
+            "description": null
+        },
+        {
+            "id": "disable-remove-data-turbo",
+            "name": "Disable: remove data-turbo",
+            "description": null
+        },
+        {
+            "id": "forms-add-422-by-hand",
+            "name": "Forms: add 422 by hand",
+            "description": null
+        },
+        {
+            "id": "forms-renderform",
+            "name": "Forms: renderForm()",
+            "description": null
+        },
+        {
+            "id": "forms-updating-all-other-forms",
+            "name": "Forms: updating all other forms",
+            "description": null
+        },
+        {
+            "id": "snapshot-disable-preview",
+            "name": "Snapshot: disable preview",
+            "description": null
+        },
+        {
+            "id": "snapshot-lower-opacity-on-preview",
+            "name": "Snapshot: lower opacity on preview",
+            "description": null
+        },
+        {
+            "id": "snapshot-remove-opacity",
+            "name": "Snapshot: remove opacity",
+            "description": null
+        },
+        {
+            "id": "snapshot-listen-to-turbo-before-cache",
+            "name": "Snapshot: listen to turbo:before-cache",
+            "description": null
+        },
+        {
+            "id": "snapshot-close-modal",
+            "name": "Snapshot: Close modal",
+            "description": null
+        },
+        {
+            "id": "snapshot-complex-close-modal",
+            "name": "Snapshot: Complex close modal",
+            "description": null
+        },
+        {
+            "id": "snapshot-try-sweetalert",
+            "name": "Snapshot: Try SweetAlert",
+            "description": null
+        },
+        {
+            "id": "snapshot-remove-swal-animation",
+            "name": "Snapshot: remove Swal animation",
+            "description": null
+        },
+        {
+            "id": "snapshot-lazily-load-swal",
+            "name": "Snapshot: Lazily load Swal",
+            "description": null
+        },
+        {
+            "id": "snapshot-webpackmode-weak",
+            "name": "Snapshot: webpackMode: 'weak'",
+            "description": null
+        },
+        {
+            "id": "organization-create-turbo-helper-js",
+            "name": "Organization: create turbo-helper.js",
+            "description": null
+        },
+        {
+            "id": "organization-organize-into-methods",
+            "name": "Organization: organize into methods",
+            "description": null
+        },
+        {
+            "id": "widgets-log-in-body",
+            "name": "Widgets: log in body",
+            "description": null
+        },
+        {
+            "id": "widgets-remove-log",
+            "name": "Widgets: remove log",
+            "description": null
+        },
+        {
+            "id": "widgets-add-weather-widget",
+            "name": "Widgets: add weather widget",
+            "description": null
+        },
+        {
+            "id": "widgets-expand-widget-code",
+            "name": "Widgets: expand widget code",
+            "description": null
+        },
+        {
+            "id": "widgets-always-add-script",
+            "name": "Widgets: always add script",
+            "description": null
+        },
+        {
+            "id": "widgets-undo-on-every-page",
+            "name": "Widgets: undo on every page",
+            "description": null
+        },
+        {
+            "id": "widgets-log-on-turbo-before-render",
+            "name": "Widgets: log on turbo:before-render",
+            "description": null
+        },
+        {
+            "id": "widgets-remove-script-element",
+            "name": "Widgets: remove script element",
+            "description": null
+        },
+        {
+            "id": "widgets-turbo-render-function",
+            "name": "Widgets: turbo:render + function",
+            "description": null
+        },
+        {
+            "id": "widgets-refactor-to-method",
+            "name": "Widgets: refactor to method",
+            "description": null
+        },
+        {
+            "id": "assets-turn-on-versioning",
+            "name": "Assets: turn on versioning",
+            "description": null
+        },
+        {
+            "id": "assets-tweak-app-js",
+            "name": "Assets: tweak app.js",
+            "description": null
+        },
+        {
+            "id": "assets-activate-data-turbo-track",
+            "name": "Assets: activate data-turbo-track",
+            "description": null
+        },
+        {
+            "id": "assets-remove-log",
+            "name": "Assets: remove log",
+            "description": null
+        },
+        {
+            "id": "manualvisit-redirect-on-10-clicks",
+            "name": "ManualVisit: redirect on 10 clicks",
+            "description": null
+        },
+        {
+            "id": "manualvisit-navigate-with-turbo",
+            "name": "ManualVisit: navigate with Turbo",
+            "description": null
+        },
+        {
+            "id": "manualvisit-import-visit",
+            "name": "ManualVisit: import { visit }",
+            "description": null
+        },
+        {
+            "id": "manualvisit-use-global-turbo",
+            "name": "ManualVisit: use global Turbo",
+            "description": null
+        },
+        {
+            "id": "transitions-setup-initial-transition",
+            "name": "Transitions: setup initial transition",
+            "description": null
+        },
+        {
+            "id": "transitions-different-on-preview",
+            "name": "Transitions: different on preview",
+            "description": null
+        },
+        {
+            "id": "transitions-fix-restoration-visit",
+            "name": "Transitions: fix restoration visit",
+            "description": null
+        },
+        {
+            "id": "transitions-organize-to-method",
+            "name": "Transitions: organize to method",
+            "description": null
+        },
+        {
+            "id": "transitions-remove-slowness",
+            "name": "Transitions: remove slowness",
+            "description": null
+        },
+        {
+            "id": "prefetch-copy-prefetch-script",
+            "name": "Prefetch: copy prefetch script",
+            "description": null
+        },
+        {
+            "id": "prefetch-import-script",
+            "name": "Prefetch: import script",
+            "description": null
+        },
+        {
+            "id": "prefetch-remove-prefetch-import",
+            "name": "Prefetch: remove prefetch import",
+            "description": null
+        },
+        {
+            "id": "prefetch-manual-prefetch-link",
+            "name": "Prefetch: manual prefetch link",
+            "description": null
+        },
+        {
+            "id": "lazy-sidebar-upgrade-turbo",
+            "name": "Lazy Sidebar: upgrade Turbo",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-sidebar-controller",
+            "name": "LazySidebar: _sidebar controller",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-remove-extra-args-cart",
+            "name": "LazySidebar: remove extra args cart ",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-add-internal-turbo-frame",
+            "name": "LazySidebar: add internal turbo-frame",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-use-fragment-uri",
+            "name": "LazySidebar: use fragment_uri()",
+            "description": null
+        },
+        {
+            "id": "lazysidebar-enabling-fragments",
+            "name": "LazySidebar: enabling fragments",
+            "description": null
+        },
+        {
+            "id": "lazyframe-upgrade-turbo-again",
+            "name": "LazyFrame: upgrade turbo again",
+            "description": null
+        },
+        {
+            "id": "lazyframe-make-weather-page",
+            "name": "LazyFrame: make weather page",
+            "description": null
+        },
+        {
+            "id": "lazyframe-remove-extra-weather",
+            "name": "LazyFrame: remove extra weather",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-lazy-weather-frame",
+            "name": "LazyFrame: add lazy weather frame",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-frame-to-weather-tpl",
+            "name": "LazyFrame: add frame to weather tpl",
+            "description": null
+        },
+        {
+            "id": "lazyframe-make-it-lazy",
+            "name": "LazyFrame: make it lazy",
+            "description": null
+        },
+        {
+            "id": "lazyframe-add-2nd-frame-on-homepage",
+            "name": "LazyFrame: add 2nd frame on homepage",
+            "description": null
+        },
+        {
+            "id": "lazyframe-check-for-weatherwidget-init",
+            "name": "LazyFrame: check for __weatherwidget_init",
+            "description": null
+        },
+        {
+            "id": "lazyframe-bootstrap-stimulus-controller",
+            "name": "LazyFrame: bootstrap Stimulus controller",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-in-script",
+            "name": "LazyFrame: move in script",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-into-connect",
+            "name": "LazyFrame: move into connect()",
+            "description": null
+        },
+        {
+            "id": "lazyframe-move-weatherwidget-init-into-ctrl",
+            "name": "LazyFrame: move __weatherwidget_init into ctrl",
+            "description": null
+        },
+        {
+            "id": "targetting-add-target-top",
+            "name": "Targetting: add target=_top",
+            "description": null
+        },
+        {
+            "id": "targetting-also-add-to-internal-frame",
+            "name": "Targetting: also add to internal frame",
+            "description": null
+        },
+        {
+            "id": "see-more-add-truncated-description",
+            "name": "See More: add truncated description",
+            "description": null
+        },
+        {
+            "id": "see-more-install-twig-string-extra",
+            "name": "See More: install twig\/string-extra",
+            "description": null
+        },
+        {
+            "id": "see-more-put-back-featured-route",
+            "name": "See More: put back featured route",
+            "description": null
+        },
+        {
+            "id": "see-more-read-more-link",
+            "name": "See More: \"read more\" link",
+            "description": null
+        },
+        {
+            "id": "see-more-adding-turbo-frame",
+            "name": "See More: adding turbo-frame",
+            "description": null
+        },
+        {
+            "id": "framebusy-add-busy-css",
+            "name": "FrameBusy: add busy CSS",
+            "description": null
+        },
+        {
+            "id": "framebusy-conditional-loading",
+            "name": "FrameBusy: conditional loading",
+            "description": null
+        },
+        {
+            "id": "framebusy-set-low-opacity",
+            "name": "FrameBusy: set low opacity",
+            "description": null
+        },
+        {
+            "id": "framebusy-add-display-block",
+            "name": "FrameBusy: add display: block",
+            "description": null
+        },
+        {
+            "id": "framebusy-make-effect-less-dramatic",
+            "name": "FrameBusy: make effect less dramatic",
+            "description": null
+        },
+        {
+            "id": "framebusy-make-checkout-a-lazy-frame",
+            "name": "FrameBusy: make checkout a lazy frame",
+            "description": null
+        },
+        {
+            "id": "reviews-wrap-reviews-in-frame",
+            "name": "Reviews: wrap reviews in frame",
+            "description": null
+        },
+        {
+            "id": "reviews-fix-flash",
+            "name": "Reviews: fix flash",
+            "description": null
+        },
+        {
+            "id": "reviews-fix-log-in-target",
+            "name": "Reviews: fix log in target",
+            "description": null
+        },
+        {
+            "id": "reviews-log-inside-turbo-submit-start",
+            "name": "Reviews: log inside turbo:submit-start",
+            "description": null
+        },
+        {
+            "id": "reviews-disable-all-submit-buttons",
+            "name": "Reviews: disable all submit buttons",
+            "description": null
+        },
+        {
+            "id": "reviews-fix-disabled-buttons-on-back",
+            "name": "Reviews: fix disabled buttons on back",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-an-edit-button",
+            "name": "InlineEdit: add an edit button",
+            "description": null
+        },
+        {
+            "id": "inlineedit-wrap-product-show-in-frame",
+            "name": "InlineEdit: Wrap product show in frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-use-turbo-frame-for-row",
+            "name": "InlineEdit: use turbo-frame for row",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-frame-target-to-edit",
+            "name": "InlineEdit: add frame target to edit",
+            "description": null
+        },
+        {
+            "id": "inlineedit-wrap-form-in-frame",
+            "name": "InlineEdit: wrap form in frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-add-form-action",
+            "name": "InlineEdit: Add form action",
+            "description": null
+        },
+        {
+            "id": "inlineedit-redirect-back-to-show-page",
+            "name": "InlineEdit: redirect back to show page",
+            "description": null
+        },
+        {
+            "id": "inlineedit-make-form-target-frame",
+            "name": "InlineEdit: make form target frame",
+            "description": null
+        },
+        {
+            "id": "inlineedit-conditionally-add-form-target",
+            "name": "InlineEdit: conditionally add form target",
+            "description": null
+        },
+        {
+            "id": "modalframe-turn-modal-into-frame",
+            "name": "ModalFrame: turn modal into frame",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-modal-form-target",
+            "name": "ModalFrame: remove modal-form target",
+            "description": null
+        },
+        {
+            "id": "modalframe-add-id-to-frame",
+            "name": "ModalFrame: add id to frame",
+            "description": null
+        },
+        {
+            "id": "modalframe-add-turbo-frame-to-new",
+            "name": "ModalFrame: add turbo-frame to new",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-modal-footer",
+            "name": "ModalFrame: remove modal footer",
+            "description": null
+        },
+        {
+            "id": "modalframe-set-formtarget-in-new",
+            "name": "ModalFrame: set formTarget in new",
+            "description": null
+        },
+        {
+            "id": "modalframe-loading-lazy",
+            "name": "ModalFrame: loading=lazy",
+            "description": null
+        },
+        {
+            "id": "modalframe-remove-extra-stuff",
+            "name": "ModalFrame: remove extra stuff",
+            "description": null
+        },
+        {
+            "id": "modalframe-listen-to-submit-end",
+            "name": "ModalFrame: listen to submit-end",
+            "description": null
+        },
+        {
+            "id": "modalframe-hide-modal",
+            "name": "ModalFrame: hide modal",
+            "description": null
+        },
+        {
+            "id": "modalframe-redirect-to-reviews-page",
+            "name": "ModalFrame: redirect to reviews page",
+            "description": null
+        },
+        {
+            "id": "modalframe-listen-to-before-fetch-response",
+            "name": "ModalFrame: listen to before-fetch-response",
+            "description": null
+        },
+        {
+            "id": "modalframe-close-modal-on-success",
+            "name": "ModalFrame: close modal on success",
+            "description": null
+        },
+        {
+            "id": "modalframe-visit-redirect-url",
+            "name": "ModalFrame: visit redirect url",
+            "description": null
+        },
+        {
+            "id": "modalframe-no-need-to-hide-the-modal",
+            "name": "ModalFrame: no need to hide the modal",
+            "description": null
+        },
+        {
+            "id": "modalframe-extract-to-method",
+            "name": "ModalFrame: extract to method",
+            "description": null
+        },
+        {
+            "id": "modalframe-bind-the-method-to-this",
+            "name": "ModalFrame: bind the method to this",
+            "description": null
+        },
+        {
+            "id": "modalframe-disconnect-listener",
+            "name": "ModalFrame: disconnect() listener",
+            "description": null
+        },
+        {
+            "id": "modalframe-redirect-back-to-index",
+            "name": "ModalFrame: redirect back to index",
+            "description": null
+        },
+        {
+            "id": "frameredirect-move-listener-to-turbo-helper",
+            "name": "FrameRedirect: move listener to turbo-helper",
+            "description": null
+        },
+        {
+            "id": "frameredirect-add-data-turbo-form-redirect",
+            "name": "FrameRedirect: add data-turbo-form-redirect",
+            "description": null
+        },
+        {
+            "id": "frameredirect-add-getcurrentframe",
+            "name": "FrameRedirect: add getCurrentFrame()",
+            "description": null
+        },
+        {
+            "id": "frameredirect-finish-frame-function",
+            "name": "FrameRedirect: finish frame function",
+            "description": null
+        },
+        {
+            "id": "frameredirect-frame-around-cart-controls",
+            "name": "FrameRedirect: frame around cart-controls",
+            "description": null
+        },
+        {
+            "id": "frameredirect-data-turbo-form-redirect-again",
+            "name": "FrameRedirect: data-turbo-form-redirect again",
+            "description": null
+        },
+        {
+            "id": "frameredirect-clear-cache-manually",
+            "name": "FrameRedirect: clear cache manually",
+            "description": null
+        },
+        {
+            "id": "restorevisit-upgrade-turbo",
+            "name": "RestoreVisit: upgrade turbo",
+            "description": null
+        },
+        {
+            "id": "restorevisit-do-a-restore-visit",
+            "name": "RestoreVisit: do a restore visit",
+            "description": null
+        },
+        {
+            "id": "restorevisit-put-snapshot-into-cache",
+            "name": "RestoreVisit: put snapshot into cache",
+            "description": null
+        },
+        {
+            "id": "restorevisit-normal-visit-again",
+            "name": "RestoreVisit: normal visit again",
+            "description": null
+        },
+        {
+            "id": "fixredirect-listen-to-before-fetch-request",
+            "name": "FixRedirect: listen to before-fetch-request",
+            "description": null
+        },
+        {
+            "id": "fixredirect-add-request-header",
+            "name": "FixRedirect: Add request header",
+            "description": null
+        },
+        {
+            "id": "fixredirect-bootstrap-subscriber",
+            "name": "FixRedirect: Bootstrap subscriber",
+            "description": null
+        },
+        {
+            "id": "fixredirect-add-shouldwrapredirect",
+            "name": "FixRedirect: Add shouldWrapRedirect()",
+            "description": null
+        },
+        {
+            "id": "fixredirect-finish-subscriber",
+            "name": "FixRedirect: finish subscriber",
+            "description": null
+        },
+        {
+            "id": "fixredirect-read-header-in-js",
+            "name": "FixRedirect: read header in JS",
+            "description": null
+        },
+        {
+            "id": "fixredirect-redirect-on-login",
+            "name": "FixRedirect: redirect on login",
+            "description": null
+        },
+        {
+            "id": "streamstats-return-simple-stream",
+            "name": "StreamStats: Return simple stream",
+            "description": null
+        },
+        {
+            "id": "streamstats-refactor-to-quickstats-template",
+            "name": "StreamStats: refactor to _quickStats template",
+            "description": null
+        },
+        {
+            "id": "streamstats-include-template-in-stream",
+            "name": "StreamStats: include template in stream",
+            "description": null
+        },
+        {
+            "id": "streamstats-pass-in-product",
+            "name": "StreamStats: pass in product",
+            "description": null
+        },
+        {
+            "id": "streamstats-stream-reviews-html-twig",
+            "name": "StreamStats: stream _reviews.html.twig",
+            "description": null
+        },
+        {
+            "id": "streamstats-extra-flash",
+            "name": "StreamStats: Extra flash",
+            "description": null
+        },
+        {
+            "id": "streamstats-add-another-review",
+            "name": "StreamStats: add another review",
+            "description": null
+        },
+        {
+            "id": "streamstats-conditionally-stream",
+            "name": "StreamStats: conditionally stream",
+            "description": null
+        },
+        {
+            "id": "manualstream-stream-from-javascript",
+            "name": "ManualStream: Stream from JavaScript",
+            "description": null
+        },
+        {
+            "id": "manualstream-add-data-turbo-cache-false",
+            "name": "ManualStream: add data-turbo-cache=\"false\" ",
+            "description": null
+        },
+        {
+            "id": "mercure-install-symfony-ux-turbo-mercure",
+            "name": "Mercure: install symfony\/ux-turbo-mercure",
+            "description": null
+        },
+        {
+            "id": "mercure-yarn-install-force",
+            "name": "Mercure: yarn install --force",
+            "description": null
+        },
+        {
+            "id": "mercure-adding-docker-config",
+            "name": "Mercure: Adding docker config",
+            "description": null
+        },
+        {
+            "id": "mercure-dd-server",
+            "name": "Mercure: dd $_SERVER",
+            "description": null
+        },
+        {
+            "id": "mercure-remove-dd",
+            "name": "Mercure: remove dd()",
+            "description": null
+        },
+        {
+            "id": "mercure-add-turbo-stream-listen",
+            "name": "Mercure: add turbo_stream_listen()",
+            "description": null
+        },
+        {
+            "id": "mercure-publish-message",
+            "name": "Mercure: publish message",
+            "description": null
+        },
+        {
+            "id": "mercure-verify-peer-false",
+            "name": "Mercure: verify_peer: false",
+            "description": null
+        },
+        {
+            "id": "successstream-update-review-stream",
+            "name": "SuccessStream: Update review stream",
+            "description": null
+        },
+        {
+            "id": "successstream-renderview",
+            "name": "SuccessStream: renderView()",
+            "description": null
+        },
+        {
+            "id": "successstream-stop-streaming-reviews",
+            "name": "SuccessStream: stop streaming _reviews",
+            "description": null
+        },
+        {
+            "id": "successstream-put-back-reviews-html-twig",
+            "name": "SuccessStream: put back _reviews.html.twig",
+            "description": null
+        },
+        {
+            "id": "successstream-add-id-to-targets",
+            "name": "SuccessStream: add id to targets",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-separate-reviews-frame",
+            "name": "StreamCleanup: separate reviews frame",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-isolate-to-reviews-list-tpl",
+            "name": "StreamCleanup: isolate to _reviews_list tpl",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-change-frame-to-div",
+            "name": "StreamCleanup: change frame to div",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-only-stream-list",
+            "name": "StreamCleanup: only stream list",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-tweak-target-to-review-list",
+            "name": "StreamCleanup: tweak target to \"review-list\"",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-isolate-review-into-tpl",
+            "name": "StreamCleanup: isolate review into tpl",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-stream-append-review",
+            "name": "StreamCleanup: stream append _review",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-highlight-new-with-css",
+            "name": "StreamCleanup: highlight new with css",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-fade-out-highlight",
+            "name": "StreamCleanup: Fade out highlight",
+            "description": null
+        },
+        {
+            "id": "streamcleanup-remove-with-timeout",
+            "name": "StreamCleanup: remove with timeout",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-annotation",
+            "name": "EntityBroadcast: add annotation",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-listen-in-tpl",
+            "name": "EntityBroadcast: add listen in tpl",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-dummy-template",
+            "name": "EntityBroadcast: add dummy template",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-move-stream-to-new-tpl",
+            "name": "EntityBroadcast: move stream to new tpl",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-rename-variable-to-entity",
+            "name": "EntityBroadcast: rename variable to entity",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-update",
+            "name": "EntityBroadcast: add update",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-add-remove",
+            "name": "EntityBroadcast: add remove",
+            "description": null
+        },
+        {
+            "id": "entitybroadcast-remove-with-fade-out",
+            "name": "EntityBroadcast: remove with fade out",
+            "description": null
+        },
+        {
+            "id": "toast-add-toast-template",
+            "name": "Toast: add toast template",
+            "description": null
+        },
+        {
+            "id": "toast-include-customize",
+            "name": "Toast: include & customize",
+            "description": null
+        },
+        {
+            "id": "toast-creating-the-toast-controller",
+            "name": "Toast: creating the toast controller",
+            "description": null
+        },
+        {
+            "id": "toast-open-toast-in-js",
+            "name": "Toast: open toast in js",
+            "description": null
+        },
+        {
+            "id": "toast-move-into-toast-container",
+            "name": "Toast: move into toast-container",
+            "description": null
+        },
+        {
+            "id": "toast-broadcast-a-toast-also",
+            "name": "Toast: broadcast a toast also",
+            "description": null
         }
     ],
-    "sha": "d0d4a3dcf0a667dd064da6fe757def1664722d45"
+    "sha": "11a60bbeae632898fc6410090f5ccfec065d651d"
 }

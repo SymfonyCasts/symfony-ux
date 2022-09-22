@@ -1,0 +1,42 @@
+diff --git a/src/Controller/RegistrationController.php b/src/Controller/RegistrationController.php
+index 741f58d..7be2280 100644
+--- a/src/Controller/RegistrationController.php
++++ b/src/Controller/RegistrationController.php
+@@ -4,6 +4,7 @@ namespace App\Controller;
+ 
+ use App\Entity\User;
+ use App\Form\RegistrationFormType;
++use App\Repository\ProductRepository;
+ use App\Security\LoginFormAuthenticator;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+@@ -17,7 +18,7 @@ class RegistrationController extends AbstractController
+     /**
+      * @Route("/register", name="app_register")
+      */
+-    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator): Response
++    public function register(Request $request, UserPasswordEncoderInterface $passwordEncoder, GuardAuthenticatorHandler $guardHandler, LoginFormAuthenticator $authenticator, ProductRepository $productRepository): Response
+     {
+         $user = new User();
+         $form = $this->createForm(RegistrationFormType::class, $user);
+@@ -48,6 +49,7 @@ class RegistrationController extends AbstractController
+ 
+         return $this->render('registration/register.html.twig', [
+             'registrationForm' => $form->createView(),
++            'featuredProduct' => $productRepository->findFeatured(),
+         ]);
+     }
+ }
+diff --git a/templates/registration/register.html.twig b/templates/registration/register.html.twig
+index 366e0a5..4c5e5b7 100644
+--- a/templates/registration/register.html.twig
++++ b/templates/registration/register.html.twig
+@@ -8,7 +8,7 @@
+             <div
+                 class="col-sm-3"
+                 {{ stimulus_controller('featured-product-react', {
+-                    product: { id: 5, name: 'Lightly used toothbrush' }
++                    product: featuredProduct|serialize('json', { groups: 'product:read'})
+                 }) }}
+             ></div>
+             <div class="col-sm">

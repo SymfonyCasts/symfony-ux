@@ -1,0 +1,32 @@
+diff --git a/src/EventSubscriber/TurboFrameRedirectSubscriber.php b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
+index eee47c6..577ced6 100644
+--- a/src/EventSubscriber/TurboFrameRedirectSubscriber.php
++++ b/src/EventSubscriber/TurboFrameRedirectSubscriber.php
+@@ -14,6 +14,11 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+         if (!$this->shouldWrapRedirect($event->getRequest(), $event->getResponse())) {
+             return;
+         }
++
++        $response = new Response(null, 200, [
++            'Turbo-Location' => $event->getResponse()->headers->get('Location'),
++        ]);
++        $event->setResponse($response);
+     }
+ 
+     public static function getSubscribedEvents()
+@@ -29,14 +34,6 @@ class TurboFrameRedirectSubscriber implements EventSubscriberInterface
+             return false;
+         }
+ 
+-        if (!$request->headers->has('Turbo-Frame')) {
+-            return false;
+-        }
+-
+-        if ($request->headers->get('Turbo-Frame-Redirect')) {
+-            return true;
+-        }
+-
+-        return false;
++        return (bool) $request->headers->get('Turbo-Frame-Redirect');
+     }
+ }

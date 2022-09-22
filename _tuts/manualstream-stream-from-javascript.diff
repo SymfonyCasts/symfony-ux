@@ -1,0 +1,49 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+index c90fc04..d36f244 100644
+--- a/assets/controllers/counter_controller.js
++++ b/assets/controllers/counter_controller.js
+@@ -1,5 +1,5 @@
+ import { Controller } from 'stimulus';
+-import { visit } from '@hotwired/turbo';
++import { visit, renderStreamMessage } from '@hotwired/turbo';
+ 
+ export default class extends Controller {
+     count = 0;
+@@ -9,6 +9,17 @@ export default class extends Controller {
+         this.count++;
+         this.countTarget.innerText = this.count;
+ 
++        const streamMessage = `
++<turbo-stream action="update" target="flash-container">
++    <template>
++        <div class="alert alert-success">
++            Thanks for clicking ${this.count} times!
++        </div>
++    </template>
++</turbo-stream>
++        `;
++        renderStreamMessage(streamMessage);
++
+         if (this.count === 10) {
+             visit('/you-won');
+         }
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 8c81d8d..2d88614 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -67,6 +67,7 @@
+                 </nav>
+             </header>
+ 
++            <div id="flash-container">
+             {% for flash in app.session.flashBag.get('success') %}
+                 <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     {{ flash }}
+@@ -76,6 +77,7 @@
+                 </div>
+ 
+             {% endfor %}
++            </div>
+         </div>
+ 
+         {% block body %}{% endblock %}

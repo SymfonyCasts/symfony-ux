@@ -1,0 +1,14 @@
+diff --git a/README.md b/README.md
+index b89cba8..dc27bdc 100644
+--- a/README.md
++++ b/README.md
+@@ -1,7 +1,7 @@
+-# Symfony UX: Stimulus.js
++# Symfony UX: Turbo
+ 
+ Well hi there! This repository holds the code and script
+-for the [Symfony UX: Stimulus.js](https://symfonycasts.com/screencast/stimulus) course on SymfonyCasts.
++for the [Symfony UX: Turbo](https://symfonycasts.com/screencast/turbo) course on SymfonyCasts.
+ 
+ ## Setup
+ 

@@ -1,0 +1,26 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 9a4423e..6b1e278 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -1,7 +1,7 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+-    connect() {
+-        console.log('☕️');
++    openModal(event) {
++        console.log(event);
+     }
+ }
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index a5493b9..7449ffb 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -10,6 +10,7 @@
+         <div {{ stimulus_controller('modal-form') }}>
+             <button
+                 class="btn btn-primary btn-sm"
++                data-action="modal-form#openModal"
+             >Add+</button>
+         </div>
+     </div>

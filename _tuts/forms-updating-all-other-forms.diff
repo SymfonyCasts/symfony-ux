@@ -1,0 +1,146 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 13745e2..e6bdba1 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -28,10 +28,10 @@ class CartController extends AbstractController
+             'product' => $featuredProduct,
+         ]);
+ 
+-        return $this->render('cart/cart.html.twig', [
++        return $this->renderForm('cart/cart.html.twig', [
+             'cart' => $cartStorage->getOrCreateCart(),
+             'featuredProduct' => $featuredProduct,
+-            'addToCartForm' => $addToCartForm->createView()
++            'addToCartForm' => $addToCartForm,
+         ]);
+     }
+ 
+@@ -67,10 +67,10 @@ class CartController extends AbstractController
+             ]);
+         }
+ 
+-        return $this->render('product/show.html.twig', [
++        return $this->renderForm('product/show.html.twig', [
+             'product' => $product,
+             'categories' => $categoryRepository->findAll(),
+-            'addToCartForm' => $addToCartForm->createView()
++            'addToCartForm' => $addToCartForm,
+         ]);
+     }
+ 
+diff --git a/src/Controller/CheckoutController.php b/src/Controller/CheckoutController.php
+index 9dafd16..a5a4d64 100644
+--- a/src/Controller/CheckoutController.php
++++ b/src/Controller/CheckoutController.php
+@@ -44,10 +44,10 @@ class CheckoutController extends AbstractController
+             return $this->redirectToRoute('app_confirmation');
+         }
+ 
+-        return $this->render('checkout/checkout.html.twig', [
+-            'checkoutForm' => $checkoutForm->createView(),
++        return $this->renderForm('checkout/checkout.html.twig', [
++            'checkoutForm' => $checkoutForm,
+             'featuredProduct' => $featuredProduct,
+-            'addToCartForm' => $addToCartForm->createView(),
++            'addToCartForm' => $addToCartForm,
+         ]);
+     }
+ 
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index 2f347d2..39a247e 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -52,13 +52,10 @@ class ProductAdminController extends AbstractController
+ 
+         $template = $request->isXmlHttpRequest() ? '_form.html.twig' : 'new.html.twig';
+ 
+-        return $this->render('product_admin/' . $template, [
++        return $this->renderForm('product_admin/' . $template, [
+             'product' => $product,
+-            'form' => $form->createView(),
+-        ], new Response(
+-            null,
+-            $form->isSubmitted() && !$form->isValid() ? 422 : 200,
+-        ));
++            'form' => $form,
++        ]);
+     }
+ 
+     /**
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index e749f11..5eec9e1 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -57,12 +57,12 @@ class ProductController extends AbstractController
+             $reviewForm = $this->createForm(ReviewForm::class, new Review($this->getUser(), $product));
+         }
+ 
+-        return $this->render('product/show.html.twig', [
++        return $this->renderForm('product/show.html.twig', [
+             'product' => $product,
+             'currentCategory' => $product->getCategory(),
+             'categories' => $categoryRepository->findAll(),
+-            'addToCartForm' => $addToCartForm->createView(),
+-            'reviewForm' => $reviewForm ? $reviewForm->createView() : null,
++            'addToCartForm' => $addToCartForm,
++            'reviewForm' => $reviewForm ?: null,
+         ]);
+     }
+ 
+@@ -94,11 +94,11 @@ class ProductController extends AbstractController
+             }
+         }
+ 
+-        return $this->render('product/reviews.html.twig', [
++        return $this->renderForm('product/reviews.html.twig', [
+             'product' => $product,
+             'currentCategory' => $product->getCategory(),
+             'categories' => $categoryRepository->findAll(),
+-            'reviewForm' => $reviewForm ? $reviewForm->createView() : null,
++            'reviewForm' => $reviewForm?: null,
+         ]);
+     }
+ 
+diff --git a/src/Controller/RegistrationController.php b/src/Controller/RegistrationController.php
+index e84524a..4e6f036 100644
+--- a/src/Controller/RegistrationController.php
++++ b/src/Controller/RegistrationController.php
+@@ -46,8 +46,8 @@ class RegistrationController extends AbstractController
+             );
+         }
+ 
+-        return $this->render('registration/register.html.twig', [
+-            'registrationForm' => $form->createView(),
++        return $this->renderForm('registration/register.html.twig', [
++            'registrationForm' => $form,
+             'featuredProduct' => $productRepository->findFeatured(),
+         ]);
+     }
+diff --git a/src/Controller/ReviewAdminController.php b/src/Controller/ReviewAdminController.php
+index 5991758..d48eeb3 100644
+--- a/src/Controller/ReviewAdminController.php
++++ b/src/Controller/ReviewAdminController.php
+@@ -42,9 +42,9 @@ class ReviewAdminController extends AbstractController
+             return $this->redirectToRoute('review_admin_index');
+         }
+ 
+-        return $this->render('review_admin/new.html.twig', [
++        return $this->renderForm('review_admin/new.html.twig', [
+             'review' => $review,
+-            'form' => $form->createView(),
++            'form' => $form,
+         ]);
+     }
+ 
+@@ -62,9 +62,9 @@ class ReviewAdminController extends AbstractController
+             return $this->redirectToRoute('review_admin_index');
+         }
+ 
+-        return $this->render('review_admin/edit.html.twig', [
++        return $this->renderForm('review_admin/edit.html.twig', [
+             'review' => $review,
+-            'form' => $form->createView(),
++            'form' => $form,
+         ]);
+     }
+ 

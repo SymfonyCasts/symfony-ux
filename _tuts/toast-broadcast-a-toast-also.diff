@@ -1,0 +1,33 @@
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index 1acb476..69a9b2d 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -15,6 +15,15 @@
+             }) }}
+         </template>
+     </turbo-stream>
++
++    <turbo-stream action="append" target="product-{{ entity.product.id }}-toasts">
++        <template>
++            {{ include('_toast.html.twig', {
++                title: 'New Review!',
++                body: 'A new review was just posted for this product'
++            }) }}
++        </template>
++    </turbo-stream>
+ {% endblock %}
+ 
+ {% block update %}
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 7af9306..c65713d 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -1,6 +1,8 @@
+ {% extends 'product/productBase.html.twig' %}
+ 
+ {% block productBody %}
++    <div id="product-{{ product.id }}-toasts"></div>
++
+     <turbo-frame id="product-info" target="_top" class="row pt-3 product-show">
+         <div class="col-4">
+             <img

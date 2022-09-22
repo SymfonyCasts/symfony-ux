@@ -1,0 +1,27 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 1c1b443..83079ba 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -28,9 +28,6 @@ class CartController extends AbstractController
+         ]);
+     }
+ 
+-    /**
+-     * @Route("/cart/_featured", name="_app_cart_product_featured")
+-     */
+     public function _cartFeaturedProduct(ProductRepository $productRepository): Response
+     {
+         $featuredProduct = $productRepository->findFeatured();
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index 41545d0..087ace4 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -9,7 +9,7 @@
+     <div class="container-fluid container-xl mt-4">
+         <div class="row">
+             <aside class="col-12 col-md-4 order-2 order-md-1">
+-                <turbo-frame id="cart-sidebar" src="{{ path('_app_cart_product_featured') }}">
++                <turbo-frame id="cart-sidebar" src="{{ fragment_uri(controller('App\\Controller\\CartController::_cartFeaturedProduct')) }}">
+                     Loading...
+                 </turbo-frame>
+             </aside>

@@ -1,0 +1,10 @@
+diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
+index 2d64e39..da22a06 100644
+--- a/templates/cart/_featuredSidebar.html.twig
++++ b/templates/cart/_featuredSidebar.html.twig
+@@ -1,4 +1,4 @@
+-<turbo-frame id="cart-sidebar">
++<turbo-frame id="cart-sidebar" target="_top">
+     <div class="component-light product-show p-3 mb-5">
+         <h5 class="text-center">Featured Product!</h5>
+         <a href="{{ path('app_product', { id: featuredProduct.id }) }}">

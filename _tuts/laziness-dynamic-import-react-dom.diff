@@ -1,0 +1,50 @@
+diff --git a/assets/controllers/featured-product-react_controller.js b/assets/controllers/featured-product-react_controller.js
+index dbe3a63..907ef06 100644
+--- a/assets/controllers/featured-product-react_controller.js
++++ b/assets/controllers/featured-product-react_controller.js
+@@ -1,5 +1,4 @@
+ import { Controller } from 'stimulus';
+-import ReactDOM from 'react-dom';
+ import React from 'react';
+ import FeaturedProduct from '../components/FeaturedProduct';
+ 
+@@ -9,9 +8,11 @@ export default class extends Controller {
+     }
+ 
+     connect() {
+-        ReactDOM.render(
+-            <FeaturedProduct product={this.productValue} />,
+-            this.element
+-        )
++        import('react-dom').then((ReactDOM) => {
++            ReactDOM.default.render(
++                <FeaturedProduct product={this.productValue} />,
++                this.element
++            )
++        })
+     }
+ }
+diff --git a/assets/controllers/made-with-love_controller.js b/assets/controllers/made-with-love_controller.js
+index dbfe374..ca8dccb 100644
+--- a/assets/controllers/made-with-love_controller.js
++++ b/assets/controllers/made-with-love_controller.js
+@@ -1,13 +1,14 @@
+ import { Controller } from 'stimulus';
+-import ReactDOM from 'react-dom';
+ import React from 'react';
+ import MadeWithLove from '../components/MadeWithLove';
+ 
+ export default class extends Controller {
+     connect() {
+-        ReactDOM.render(
+-            <MadeWithLove />,
+-            this.element
+-        )
++        import('react-dom').then((ReactDOM) => {
++            ReactDOM.default.render(
++                <MadeWithLove />,
++                this.element
++            )
++        })
+     }
+ }

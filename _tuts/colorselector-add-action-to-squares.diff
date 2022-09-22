@@ -1,0 +1,26 @@
+diff --git a/assets/controllers/color-square_controller.js b/assets/controllers/color-square_controller.js
+index 8f84eb4..0b8aacd 100644
+--- a/assets/controllers/color-square_controller.js
++++ b/assets/controllers/color-square_controller.js
+@@ -1,7 +1,7 @@
+ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+-    connect() {
+-        console.log(this.element.innerHTML);
++    selectColor(event) {
++        console.log(event);
+     }
+ }
+diff --git a/templates/product/_cart_add_controls.html.twig b/templates/product/_cart_add_controls.html.twig
+index feeeafd..bc7d58c 100644
+--- a/templates/product/_cart_add_controls.html.twig
++++ b/templates/product/_cart_add_controls.html.twig
+@@ -8,6 +8,7 @@
+             {% for color in addToCartForm.vars.data.product.colors %}
+                 <span
+                     class="color-square"
++                    data-action="color-square#selectColor"
+                     style="background-color: rgb({{ color.red }}, {{ color.green }}, {{ color.blue }});"
+                 ></span>
+             {% endfor %}

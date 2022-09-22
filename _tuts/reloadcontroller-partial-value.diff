@@ -1,0 +1,50 @@
+diff --git a/assets/controllers/reload-content_controller.js b/assets/controllers/reload-content_controller.js
+index 8c13edf..55530b4 100644
+--- a/assets/controllers/reload-content_controller.js
++++ b/assets/controllers/reload-content_controller.js
+@@ -2,11 +2,7 @@ import { Controller } from 'stimulus';
+ 
+ export default class extends Controller {
+     static values = {
+-        cartRefreshUrl: String,
+-    }
+-
+-    connect() {
+-        console.log('🔁');
++        url: String,
+     }
+ 
+     async removeItem(event) {
+diff --git a/src/Controller/ProductAdminController.php b/src/Controller/ProductAdminController.php
+index 6a80f86..b46735d 100644
+--- a/src/Controller/ProductAdminController.php
++++ b/src/Controller/ProductAdminController.php
+@@ -18,9 +18,11 @@ class ProductAdminController extends AbstractController
+     /**
+      * @Route("/", name="product_admin_index", methods={"GET"})
+      */
+-    public function index(ProductRepository $productRepository): Response
++    public function index(ProductRepository $productRepository, Request $request): Response
+     {
+-        return $this->render('product_admin/index.html.twig', [
++        $template = $request->isXmlHttpRequest() ? '_list.html.twig' : 'index.html.twig';
++
++        return $this->render('product_admin/' . $template, [
+             'products' => $productRepository->findBy([], ['id' => 'DESC']),
+         ]);
+     }
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index 2c53b56..dbde87a 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -5,7 +5,9 @@
+ {% block body %}
+ <div
+     class="container-fluid mt-4"
+-    {{ stimulus_controller('reload-content') }}
++    {{ stimulus_controller('reload-content', {
++        url: path('product_admin_index')
++    }) }}
+ >
+     <div class="d-flex flex-row">
+         <h1 class="me-3">Product index</h1>

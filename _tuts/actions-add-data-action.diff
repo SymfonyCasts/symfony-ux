@@ -1,0 +1,35 @@
+diff --git a/assets/controllers/counter_controller.js b/assets/controllers/counter_controller.js
+index 1a95704..b814859 100644
+--- a/assets/controllers/counter_controller.js
++++ b/assets/controllers/counter_controller.js
+@@ -5,10 +5,10 @@ export default class extends Controller {
+ 
+     connect() {
+         this.count = 0;
++    }
+ 
+-        this.element.addEventListener('click', () => {
+-            this.count++;
+-            this.countTarget.innerText = this.count;
+-        });
++    increment() {
++        this.count++;
++        this.countTarget.innerText = this.count;
+     }
+ }
+diff --git a/templates/product/index.html.twig b/templates/product/index.html.twig
+index 90b523f..ff702cd 100644
+--- a/templates/product/index.html.twig
++++ b/templates/product/index.html.twig
+@@ -10,7 +10,10 @@
+             <div class="col-xs-12 col-9">
+ 
+                 <div data-controller="counter">
+-                    <button class="btn btn-primary btn-sm">
++                    <button
++                        data-action="click->counter#increment"
++                        class="btn btn-primary btn-sm"
++                    >
+                         Click me!
+                     </button>
+ 

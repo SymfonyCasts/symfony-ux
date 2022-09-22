@@ -1,0 +1,22 @@
+diff --git a/assets/controllers/hello_controller.js b/assets/controllers/hello_controller.js
+deleted file mode 100644
+index 8c79f65..0000000
+--- a/assets/controllers/hello_controller.js
++++ /dev/null
+@@ -1,16 +0,0 @@
+-import { Controller } from 'stimulus';
+-
+-/*
+- * This is an example Stimulus controller!
+- *
+- * Any element with a data-controller="hello" attribute will cause
+- * this controller to be executed. The name "hello" comes from the filename:
+- * hello_controller.js -> "hello"
+- *
+- * Delete this file or adapt it for your use!
+- */
+-export default class extends Controller {
+-    connect() {
+-        this.element.textContent = 'Hello Stimulus! Edit me in assets/controllers/hello_controller.js';
+-    }
+-}

@@ -1,0 +1,15 @@
+diff --git a/assets/controllers/modal-form_controller.js b/assets/controllers/modal-form_controller.js
+index 0ff9f84..292ae5f 100644
+--- a/assets/controllers/modal-form_controller.js
++++ b/assets/controllers/modal-form_controller.js
+@@ -11,6 +11,10 @@ export default class extends Controller {
+         document.addEventListener('turbo:before-fetch-response', this.boundBeforeFetchResponse);
+     }
+ 
++    disconnect() {
++        document.removeEventListener('turbo:before-fetch-response', this.boundBeforeFetchResponse);
++    }
++
+     async openModal(event) {
+         this.modal = new Modal(this.modalTarget);
+         this.modal.show();

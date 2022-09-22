@@ -1,0 +1,42 @@
+diff --git a/src/Controller/CartController.php b/src/Controller/CartController.php
+index 1c1b443..b32cfe2 100644
+--- a/src/Controller/CartController.php
++++ b/src/Controller/CartController.php
+@@ -31,7 +31,7 @@ class CartController extends AbstractController
+     /**
+      * @Route("/cart/_featured", name="_app_cart_product_featured")
+      */
+-    public function _cartFeaturedProduct(ProductRepository $productRepository): Response
++    public function _cartFeaturedProduct(ProductRepository $productRepository, Request $request): Response
+     {
+         $featuredProduct = $productRepository->findFeatured();
+         $addToCartForm = $this->createForm(AddItemToCartFormType::class, null, [
+@@ -41,6 +41,7 @@ class CartController extends AbstractController
+         return $this->renderForm('cart/_featuredSidebar.html.twig', [
+             'featuredProduct' => $featuredProduct,
+             'addToCartForm' => $addToCartForm,
++            'showDescription' => $request->query->get('description'),
+         ]);
+     }
+ 
+diff --git a/templates/cart/_featuredSidebar.html.twig b/templates/cart/_featuredSidebar.html.twig
+index 99d777b..9626c73 100644
+--- a/templates/cart/_featuredSidebar.html.twig
++++ b/templates/cart/_featuredSidebar.html.twig
+@@ -15,7 +15,15 @@
+                 {{ featuredProduct.priceString|format_currency('USD') }}
+             </h6>
+ 
+-            {{ featuredProduct.description|u.truncate(25)|trim }}...
++            {% if showDescription %}
++                {{ featuredProduct.description }}
++            {% else %}
++                {{ featuredProduct.description|u.truncate(25)|trim }}...
++
++                <a href="{{ path('_app_cart_product_featured', {
++                    description: true,
++                }) }}">(read more)</a>
++            {% endif %}
+ 
+             {{ include('product/_cart_add_controls.html.twig') }}
+         </div>

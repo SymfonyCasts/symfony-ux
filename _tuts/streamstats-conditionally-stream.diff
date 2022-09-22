@@ -1,0 +1,19 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index ffab1e2..a40755b 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -87,9 +87,11 @@ class ProductController extends AbstractController
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
+-                return $this->render('product/reviews.stream.html.twig', [
+-                    'product' => $product,
+-                ], new TurboStreamResponse());
++                if (TurboStreamResponse::STREAM_FORMAT === $request->getPreferredFormat()) {
++                    return $this->render('product/reviews.stream.html.twig', [
++                        'product' => $product,
++                    ], new TurboStreamResponse());
++                }
+ 
+                 $this->addFlash('review_success', 'Thanks for your review! I like you!');
+ 

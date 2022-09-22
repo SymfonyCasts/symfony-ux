@@ -1,0 +1,14 @@
+diff --git a/src/Entity/Category.php b/src/Entity/Category.php
+index f999ce8..4536c95 100644
+--- a/src/Entity/Category.php
++++ b/src/Entity/Category.php
+@@ -80,4 +80,9 @@ class Category
+ 
+         return $this;
+     }
++
++    public function __toString(): string
++    {
++        return (string) $this->getName();
++    }
+ }

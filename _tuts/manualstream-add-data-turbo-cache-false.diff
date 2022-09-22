@@ -1,0 +1,13 @@
+diff --git a/templates/base.html.twig b/templates/base.html.twig
+index 2d88614..337b871 100644
+--- a/templates/base.html.twig
++++ b/templates/base.html.twig
+@@ -67,7 +67,7 @@
+                 </nav>
+             </header>
+ 
+-            <div id="flash-container">
++            <div id="flash-container" data-turbo-cache="false">
+             {% for flash in app.session.flashBag.get('success') %}
+                 <div class="alert alert-success alert-dismissible fade show" role="alert">
+                     {{ flash }}

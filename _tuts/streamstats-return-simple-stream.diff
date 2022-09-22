@@ -1,0 +1,46 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 7431f91..479892e 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -14,6 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\HttpFoundation\Response;
++use Symfony\UX\Turbo\Stream\TurboStreamResponse;
+ 
+ class ProductController extends AbstractController
+ {
+@@ -86,6 +87,9 @@ class ProductController extends AbstractController
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
++                return $this->render('product/reviews.stream.html.twig', [
++                ], new TurboStreamResponse());
++
+                 $this->addFlash('review_success', 'Thanks for your review! I like you!');
+ 
+                 return $this->redirectToRoute('app_product_reviews', [
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+new file mode 100644
+index 0000000..a30620e
+--- /dev/null
++++ b/templates/product/reviews.stream.html.twig
+@@ -0,0 +1,5 @@
++<turbo-stream action="update" target="product-quick-stats">
++    <template>
++        Will this <strong>really</strong> work???
++    </template>
++</turbo-stream>
+diff --git a/templates/product/show.html.twig b/templates/product/show.html.twig
+index 419e0b9..6c050c1 100644
+--- a/templates/product/show.html.twig
++++ b/templates/product/show.html.twig
+@@ -30,7 +30,7 @@
+                 {{ product.description }}
+             </div>
+             <div class="p-3 mt-4 d-flex justify-content-between flex-wrap flex-lg-nowrap">
+-                <div>
++                <div id="product-quick-stats">
+                     <strong>{{ product.priceString|format_currency('USD') }}</strong>
+                     <br>
+                     <strong>{{ product.reviews|length }}</strong> Reviews

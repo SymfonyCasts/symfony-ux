@@ -1,0 +1,91 @@
+diff --git a/src/Controller/ProductController.php b/src/Controller/ProductController.php
+index 4fe5bf5..0c03a9b 100644
+--- a/src/Controller/ProductController.php
++++ b/src/Controller/ProductController.php
+@@ -12,8 +12,6 @@ use App\Repository\ProductRepository;
+ use Doctrine\ORM\EntityManagerInterface;
+ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+ use Symfony\Component\HttpFoundation\Request;
+-use Symfony\Component\Mercure\HubInterface;
+-use Symfony\Component\Mercure\Update;
+ use Symfony\Component\Routing\Annotation\Route;
+ use Symfony\Component\HttpFoundation\Response;
+ use Symfony\UX\Turbo\Stream\TurboStreamResponse;
+@@ -72,7 +70,7 @@ class ProductController extends AbstractController
+     /**
+      * @Route("/product/{id}/reviews", name="app_product_reviews")
+      */
+-    public function productReviews(Product $product, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $entityManager, HubInterface $mercureHub)
++    public function productReviews(Product $product, CategoryRepository $categoryRepository, Request $request, EntityManagerInterface $entityManager)
+     {
+         $reviewForm = null;
+ 
+@@ -89,15 +87,6 @@ class ProductController extends AbstractController
+                 $entityManager->persist($reviewForm->getData());
+                 $entityManager->flush();
+ 
+-                $update = new Update(
+-                    'product-reviews',
+-                    $this->renderView('product/reviews.stream.html.twig', [
+-                        'product' => $product,
+-                        'newReview' => $reviewForm->getData(),
+-                    ]),
+-                );
+-                $mercureHub->publish($update);
+-
+                 $this->addFlash('review_success', 'Thanks for your review! I like you!');
+ 
+                 return $this->redirectToRoute('app_product_reviews', [
+diff --git a/templates/broadcast/Review.stream.html.twig b/templates/broadcast/Review.stream.html.twig
+index b863f50..f728197 100644
+--- a/templates/broadcast/Review.stream.html.twig
++++ b/templates/broadcast/Review.stream.html.twig
+@@ -1,5 +1,18 @@
+ {% block create %}
+-    CREATE!
++    <turbo-stream action="update" target="product-{{ product.id }}-quick-stats">
++        <template>
++            {{ include('product/_quickStats.html.twig') }}
++        </template>
++    </turbo-stream>
++
++    <turbo-stream action="append" target="product-{{ product.id }}-review-list">
++        <template>
++            {{ include('product/_review.html.twig', {
++                review: newReview,
++                isNew: true
++            }) }}
++        </template>
++    </turbo-stream>
+ {% endblock %}
+ 
+ {% block update %}
+diff --git a/templates/product/_reviews.html.twig b/templates/product/_reviews.html.twig
+index f5bd9b0..f6f5cbe 100644
+--- a/templates/product/_reviews.html.twig
++++ b/templates/product/_reviews.html.twig
+@@ -1,4 +1,3 @@
+-<div {{ turbo_stream_listen('product-reviews') }}></div>
+ <div {{ turbo_stream_listen('App\\Entity\\Review') }}></div>
+ 
+ {{ include('product/_reviews_list.html.twig') }}
+diff --git a/templates/product/reviews.stream.html.twig b/templates/product/reviews.stream.html.twig
+deleted file mode 100644
+index 59e92ef..0000000
+--- a/templates/product/reviews.stream.html.twig
++++ /dev/null
+@@ -1,14 +0,0 @@
+-<turbo-stream action="update" target="product-{{ product.id }}-quick-stats">
+-    <template>
+-        {{ include('product/_quickStats.html.twig') }}
+-    </template>
+-</turbo-stream>
+-
+-<turbo-stream action="append" target="product-{{ product.id }}-review-list">
+-    <template>
+-        {{ include('product/_review.html.twig', {
+-            review: newReview,
+-            isNew: true
+-        }) }}
+-    </template>
+-</turbo-stream>

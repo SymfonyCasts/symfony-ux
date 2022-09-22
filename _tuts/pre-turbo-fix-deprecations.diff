@@ -1,0 +1,64 @@
+diff --git a/src/Service/CartStorage.php b/src/Service/CartStorage.php
+index 217fced..c1f323a 100644
+--- a/src/Service/CartStorage.php
++++ b/src/Service/CartStorage.php
+@@ -6,17 +6,18 @@ use App\Entity\Cart;
+ use App\Entity\CartItem;
+ use App\Repository\ColorRepository;
+ use App\Repository\ProductRepository;
++use Symfony\Component\HttpFoundation\RequestStack;
+ use Symfony\Component\HttpFoundation\Session\SessionInterface;
+ 
+ class CartStorage
+ {
+-    private $session;
++    private $requestStack;
+     private $productRepository;
+     private $colorRepository;
+ 
+-    public function __construct(SessionInterface $session, ProductRepository $productRepository, ColorRepository  $colorRepository)
++    public function __construct(RequestStack $requestStack, ProductRepository $productRepository, ColorRepository  $colorRepository)
+     {
+-        $this->session = $session;
++        $this->requestStack = $requestStack;
+         $this->productRepository = $productRepository;
+         $this->colorRepository = $colorRepository;
+     }
+@@ -24,10 +25,10 @@ class CartStorage
+     public function getCart(): ?Cart
+     {
+         $key = self::getKey();
+-        if (!$this->session->has($key)) {
++        if (!$this->getSession()->has($key)) {
+             return null;
+         }
+-        $cart = $this->session->get($key);
++        $cart = $this->getSession()->get($key);
+ 
+         if (!$cart instanceof Cart) {
+             throw new \InvalidArgumentException('Wrong cart type');
+@@ -55,16 +56,22 @@ class CartStorage
+ 
+     public function save(Cart $cart)
+     {
+-        $this->session->set(self::getKey(), $cart);
++        $this->getSession()->set(self::getKey(), $cart);
+     }
+ 
+     public function clearCart()
+     {
+-        $this->session->remove(self::getKey());
++        $this->getSession()->remove(self::getKey());
+     }
+ 
+     private static function getKey(): string
+     {
+         return sprintf('_cart_storage');
+     }
++
++    private function getSession(): SessionInterface
++    {
++        return $this->requestStack->getCurrentRequest()
++            ->getSession();
++    }
+ }

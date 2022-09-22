@@ -1,0 +1,33 @@
+diff --git a/templates/_modal.html.twig b/templates/_modal.html.twig
+index ae97d92..f893b54 100644
+--- a/templates/_modal.html.twig
++++ b/templates/_modal.html.twig
+@@ -12,13 +12,14 @@
+                         data-bs-dismiss="modal"
+                         aria-label="Close"></button>
+             </div>
+-            <div
++            <turbo-frame
+                 class="modal-body"
+                 data-modal-form-target="modalBody"
+                 data-action="submit->modal-form#submitForm"
++                src="{{ modalSrc }}"
+             >
+                 {{ modalContent|default('Loading...') }}
+-            </div>
++            </turbo-frame>
+             <div class="modal-footer">
+                 <button type="button" class="btn btn-secondary"
+                         data-bs-dismiss="modal">Cancel
+diff --git a/templates/product_admin/index.html.twig b/templates/product_admin/index.html.twig
+index 113281f..b1ff5b1 100644
+--- a/templates/product_admin/index.html.twig
++++ b/templates/product_admin/index.html.twig
+@@ -25,6 +25,7 @@
+ 
+             {{ include('_modal.html.twig', {
+                 modalTitle: 'Add a new Product',
++                modalSrc: path('product_admin_new'),
+             }) }}
+         </div>
+     </div>

@@ -1,0 +1,15 @@
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index c7d8676..a2e9ced 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -1,5 +1,10 @@
+ {% extends 'base.html.twig' %}
+ 
++{% block metas %}
++    {{ parent() }}
++    <link rel="prefetch" href="{{ path('app_checkout') }}">
++{% endblock %}
++
+ {% block body %}
+     <div class="container-fluid container-xl mt-4">
+         <div class="row">

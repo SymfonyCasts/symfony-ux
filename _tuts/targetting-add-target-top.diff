@@ -1,0 +1,13 @@
+diff --git a/templates/cart/cart.html.twig b/templates/cart/cart.html.twig
+index 087ace4..bd3f89a 100644
+--- a/templates/cart/cart.html.twig
++++ b/templates/cart/cart.html.twig
+@@ -9,7 +9,7 @@
+     <div class="container-fluid container-xl mt-4">
+         <div class="row">
+             <aside class="col-12 col-md-4 order-2 order-md-1">
+-                <turbo-frame id="cart-sidebar" src="{{ fragment_uri(controller('App\\Controller\\CartController::_cartFeaturedProduct')) }}">
++                <turbo-frame id="cart-sidebar" src="{{ fragment_uri(controller('App\\Controller\\CartController::_cartFeaturedProduct')) }}" target="_top">
+                     Loading...
+                 </turbo-frame>
+             </aside>
