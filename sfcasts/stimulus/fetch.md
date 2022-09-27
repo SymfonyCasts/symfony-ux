@@ -31,7 +31,7 @@ Encore
 
 *Anyways*, let's make the AJAX call!
 
-We need to do send 2 query parameters on the AJAX request: the value of
+We need to send 2 query parameters on the AJAX request: the value of
 the search box as a `q` query parameter and another one called `preview` so that
 our controller knows to render the preview HTML.
 
