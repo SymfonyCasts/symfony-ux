@@ -8,7 +8,7 @@ dropdown.
 
 But... the design team isn't happy, and I don't blame them! They want something
 more interesting where users can actually *see* what the color looks when they
-they choose it.
+choose it.
 
 So here's the goal: replace this `select` element with small "color square" boxes
 where we choose the color by clicking on the box. The strategy we're using here
