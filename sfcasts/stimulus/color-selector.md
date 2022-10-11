@@ -80,7 +80,7 @@ Inside the file, we always start the same way:
 `import { Controller } from 'stimulus'` and `export default class extends Controller`.
 
 I usually like to add a `connect()` method to make sure I've got everything
-hooked up correctly. Let's `console.log(this.element.innerHTML).`.
+hooked up correctly. Let's `console.log(this.element.innerHTML)`.
 
 [[[ code('1ebb14daf5') ]]]
 
