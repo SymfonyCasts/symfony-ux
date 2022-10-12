@@ -58,7 +58,7 @@ normal `connect()` method with `console.log()` a chart.
 
 ## Multiple Controllers on an Element
 
-Next, in the template, and a second controller to the element. But, hmm. The
+Next, in the template, add a second controller to the element. But, hmm. The
 `render_chart()` function is responsible for rendering this `<canvas>` element.
 Now we need to pass a second `data-controller` to this. How can we do that?
 
