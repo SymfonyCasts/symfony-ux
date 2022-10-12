@@ -65,7 +65,7 @@ I'll cheat and copy the top of my `submit-confirm` controller... paste it here,
 but we don't need sweetalert. Add the usual `connect()` method with
 `console.log()`... a shopping cart.
 
-[[[ code('cafbd15664') ]]]
+[[[ code('eaa6809a40') ]]]
 
 The job of this controller will be to hold any JavaScript needed for the cart area.
 So basically, any JavaScript for this `<div>`. In practice, this means its job
