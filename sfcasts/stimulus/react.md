@@ -123,7 +123,7 @@ That's it! Go back to the page and try it. Yes! That text is coming from our Rea
 component! And if we click the heart, it multiplies!
 
 So... yeah! Stimulus and frontend frameworks... are... oddly enough... kind of
-BFF's.
+BFF's ("best friends forever").
 
 Want to see something cooler? I'll inspect element on the footer and... hit
 "Edit as HTML". Right above this, I'll hack in another
