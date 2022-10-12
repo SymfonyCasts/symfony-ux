@@ -29,7 +29,7 @@ Start the normal way: `import { Controller } from 'stimulus'` and then
 `export default class extends Controller` with a `connect()` method to make sure
 everything is hooked up: `console.log()`... a dinosaur (🦖).
 
-[[[ code('575f934a09') ]]]
+[[[ code('2ef7dd1308') ]]]
 
 Next up, go activate this in the template. Adding it to the `form` tag should be
 fine: `{{ stimulus_controller('submit-confirm') }}`.
