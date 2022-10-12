@@ -49,7 +49,7 @@ component as a prop: `product={this.productValue}`.
 Beautiful. Now open the template for this page, which is
 `templates/registration/register.html.twig`. Above the `h1`, add a new div with
 a col class... and bind the controller right here:
-`{{ stimulus_controller()` }} with `featured-product-react`.
+`{{ stimulus_controller() }}` with `featured-product-react`.
 
 Give this a second argument so we can pass in the `product` value. Hmm, this will
 be an object. For now, let's hardcode some data. We know that our featured product
