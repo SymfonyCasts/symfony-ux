@@ -76,7 +76,7 @@ overkill. The fix for this is to *wait* for the user to *pause* for a moment - m
 for 200 milliseconds - before making an Ajax call. That's called debouncing. And
 there's a behavior for that: `useDebounce`.
 
-Let's try it! Scroll up to the example. Of course, we need start by importing it.
+Let's try it! Scroll up to the example. Of course, we need to start by importing it.
 Oh, and this `ApplicationController` thing? Don't worry about that: that's another,
 optional feature of this library, they're just mixing examples.
 
