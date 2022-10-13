@@ -319,7 +319,7 @@ index 0000000..418b4a0
 +    }
 +}
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index 23f03ea..f5d8f83 100644
+index 8ea9b06..80487d0 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -2,6 +2,8 @@
@@ -331,7 +331,7 @@ index 23f03ea..f5d8f83 100644
  use Doctrine\ORM\Mapping as ORM;
  use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-@@ -39,6 +41,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
+@@ -40,6 +42,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
       */
      private $password;
  
@@ -348,7 +348,7 @@ index 23f03ea..f5d8f83 100644
      public function getId(): ?int
      {
          return $this->id;
-@@ -116,4 +128,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
+@@ -117,4 +129,33 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
          // If you store any temporary, sensitive data on the user, clear it here
          // $this->plainPassword = null;
      }

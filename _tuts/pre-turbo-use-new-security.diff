@@ -114,7 +114,7 @@ index 5600637..abc1be9 100644
          /* OFFICE SUPPLIES */
          yield [
 diff --git a/src/Entity/User.php b/src/Entity/User.php
-index abdb02d..23f03ea 100644
+index 037745a..8ea9b06 100644
 --- a/src/Entity/User.php
 +++ b/src/Entity/User.php
 @@ -4,6 +4,7 @@ namespace App\Entity;
@@ -125,7 +125,7 @@ index abdb02d..23f03ea 100644
  use Symfony\Component\Security\Core\User\UserInterface;
  use Symfony\Component\Validator\Constraints as Assert;
  
-@@ -11,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
+@@ -12,7 +13,7 @@ use Symfony\Component\Validator\Constraints as Assert;
   * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
   * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
   */
@@ -134,7 +134,7 @@ index abdb02d..23f03ea 100644
  {
      /**
       * @ORM\Id()
-@@ -60,7 +61,7 @@ class User implements UserInterface
+@@ -61,7 +62,7 @@ class User implements UserInterface
       *
       * @see UserInterface
       */

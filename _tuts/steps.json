@@ -401,6 +401,11 @@
             "description": null
         },
         {
+            "id": "chartjsextend-add-custom-controller-2",
+            "name": "ChartJsExtend: add custom controller 2",
+            "description": null
+        },
+        {
             "id": "chartjsextend-listen-to-connect-event",
             "name": "ChartJsExtend: listen to connect event",
             "description": null
@@ -1786,5 +1791,5 @@
             "description": null
         }
     ],
-    "sha": "11a60bbeae632898fc6410090f5ccfec065d651d"
+    "sha": "f7c9f3a675fc9efd5008abe94a976345baf2d129"
 }
