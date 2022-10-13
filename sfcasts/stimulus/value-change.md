@@ -145,5 +145,5 @@ And look at it! It's less than *30* lines of code and is *incredibly* readable.
 *This* is how I want my JavaScript to look.
 
 Head back to the homepage of our site. This has a functional search... but it's
-*so* boring. Next: let's add an AJAX-powered "quick search" that shows
+*so* boring. Next: let's add an Ajax-powered "quick search" that shows
 matching results under the search box as we type.
