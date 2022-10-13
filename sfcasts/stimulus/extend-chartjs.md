@@ -54,7 +54,7 @@ about, `admin-chartjs_controller.js`. We'll start the same way as always. In fac
 let's cheat: copy the inside of `counter_controller.js` and paste. Then add our
 normal `connect()` method with `console.log()` a chart.
 
-[[[ code('1febdc123d') ]]]
+[[[ code('8eeb960088') ]]]
 
 ## Multiple Controllers on an Element
 
