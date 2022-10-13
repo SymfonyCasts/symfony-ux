@@ -1,4 +1,4 @@
-# HTML-Returning AJAX Endpoint
+# HTML-Returning Ajax Endpoint
 
 When we type in the box, we *are* now making an AJAX request back to the server.
 The response - which we can see in the log - is the *full* HTML of the homepage.
