@@ -63,7 +63,7 @@ one before... but now it's gone! What happened?
 Look back at the network tools. There are *two* new requests.
 
 The first is a POST request to `/reviews`. That processed our form, was successful,
-and returned a 302 redirect *back* to the same URL. This caused a *second* AJAX
+and returned a 302 redirect *back* to the same URL. This caused a *second* Ajax
 request to be made to `/reviews` and *this* is what was used to fill in the
 `turbo-frame`.
 

@@ -20,7 +20,7 @@ automatically happen via Ajax. My point is: Turbo will allow us to have a slick
 user interface... while writing *less* custom JavaScript. But if you *ever* want
 to do something extra, you are *completely* free to write custom JavaScript.
 
-## Let's Build an AJAX Form Modal!
+## Let's Build an Ajax Form Modal!
 
 In that spirit, after talking with a few of you wonderful people, I thought it might
 be good to show how we could submit a full form via Ajax, including handling

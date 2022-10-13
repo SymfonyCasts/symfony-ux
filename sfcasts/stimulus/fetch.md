@@ -3,13 +3,13 @@
 To make the Ajax request inside the controller, I'm going to use the `fetch()`
 function.
 
-## fetch() for AJAX
+## fetch() for Ajax
 
 If you don't know, `fetch()` is a built-in function for making Ajax calls that
 *most* browsers support. So basically... pretty much all browsers except for IE 11.
 
 If you *do* need to support IE 11, you have two options. First, the other library
-I really like for making AJAX requests is called Axios, which you can install
+I really like for making Ajax requests is called Axios, which you can install
 with `yarn add axios`. We use it in our Vue tutorial. It also has a few more
 features than fetch.
 
@@ -29,9 +29,9 @@ Encore
 
 ## Using URLSearchParams() & its Polyfill
 
-*Anyways*, let's make the AJAX call!
+*Anyways*, let's make the Ajax call!
 
-We need to send 2 query parameters on the AJAX request: the value of
+We need to send 2 query parameters on the Ajax request: the value of
 the search box as a `q` query parameter and another one called `preview` so that
 our controller knows to render the preview HTML.
 
@@ -78,9 +78,9 @@ Encore
 ```
 ***
 
-## Making the AJAX Request with fetch()
+## Making the Ajax Request with fetch()
 
-Ok, let's make the AJAX call: say `fetch()` then pass it the fancy ticks so we can
+Ok, let's make the Ajax call: say `fetch()` then pass it the fancy ticks so we can
 create a dynamic string. We need `${this.urlValue}` then a question mark and another
 `${}` with `params.toString()`. That builds the query string with the `&` symbols.
 
@@ -93,7 +93,7 @@ a callback.
 *Or*, we can use `await`... which I like because it looks simpler. Remove
 the `.then()` and instead say `const response = await fetch(...)`.
 
-This will *wait* for the AJAX call to finish and set the result to the `response`
+This will *wait* for the Ajax call to finish and set the result to the `response`
 variable. But as *soon* as you use `await`, you must add `async` before whatever
 function that you're inside of. Yup, that makes my build happy.
 
@@ -114,7 +114,7 @@ call, we - of course - need to await for it to finish. But even getting the
 body of the response - with `response.text()` - is an asynchronous operation that
 returns a `Promise`. That's... kind of odd... but ok: we just need to `await` it.
 
-Ok, testing time! Refresh and... type! Yes! I can already see new AJAX requests
+Ok, testing time! Refresh and... type! Yes! I can already see new Ajax requests
 popping into the web debug toolbar! *And* the console is dumping the HTML.
 
 The only problem is that this is the *full* HTML of the homepage... which isn't

@@ -34,7 +34,7 @@ always make them dynamic later.
 
 Let's make sure we didn't break anything. When I click the button, very nice!
 
-## Passing the Form AJAX URL to the Stimulus Controller
+## Passing the Form Ajax URL to the Stimulus Controller
 
 To get the new product form HTML, when the modal opens, we're going to make an Ajax
 call to an endpoint that will *return* that HTML.
@@ -120,7 +120,7 @@ equals `Loading...`.
 [[[ code('94960f6d81') ]]]
 
 That's a minor thing: if we open the modal twice, this will clear the contents
-before we start the AJAX call... so that we don't temporarily see an *old* form.
+before we start the Ajax call... so that we don't temporarily see an *old* form.
 
 ## The Form HTML Endpoint
 
