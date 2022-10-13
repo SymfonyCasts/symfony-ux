@@ -42,19 +42,19 @@ increments and prints in the element. And, most importantly, we can see that eac
 element is working independently. This proves that there are two separate objects
 with two separate `count` properties.
 
-## When data-controller Elements are Loaded via AJAX
+## When data-controller Elements are Loaded via Ajax
 
 This isn't even my favorite part of Stimulus. Down in your browser's inspector,
 right click on the div around one of our controllers and go to "Edit as HTML".
 Copy the `<div data-controller>` and paste to hack in a new one right above it.
 
 What I'm doing is imitating what happens when HTML is added to the page after
-it's done loading, like via an AJAX call. This is a *classic* problem with JavaScript.
+it's done loading, like via an Ajax call. This is a *classic* problem with JavaScript.
 Suppose you have some jQuery code that attaches a `click` event listener to all
 elements that have some class. Usually, that code runs when the page finishes
 loading.
 
-Now, what happens if you load *new* HTML onto the page later via AJAX and the
+Now, what happens if you load *new* HTML onto the page later via Ajax and the
 HTML contains an element with that class? Is the event listener automatically
 attached to it? Nope! It's not... unless you go to the hassle of manually re-calling
 your function that attaches the event listener.
@@ -65,7 +65,7 @@ So: can stimulus handle this? Can it somehow "notice" that a new element with
 When I click off to add the new element to the page... it works! Behind the
 scenes Stimulus actually *did* notice that a new element was added to the page and
 instantiated a brand new controller object for it. That's incredible! It's
-a game-changer! I can now write nice controller classes, return HTML via AJAX and
+a game-changer! I can now write nice controller classes, return HTML via Ajax and
 *not* have to worry about re-initializing behavior on that new HTML.
 
 And, of course, the controller works exactly like the other ones: it increments as

@@ -27,7 +27,7 @@ for the registration page. That means the snapshot was for a page that had
 filled-in form fields and validation errors.
 
 Then, when we clicked back to the registration page, that snapshot was restored
-with errors and all. A moment later, when the AJAX call finished, the fresh content -
+with errors and all. A moment later, when the Ajax call finished, the fresh content -
 with an empty form - replaced the snapshot.
 
 This is a known issue with submitted forms. And... well... maybe it's not really an

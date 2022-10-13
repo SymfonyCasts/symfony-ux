@@ -1,10 +1,10 @@
 # HTML-Returning Ajax Endpoint
 
-When we type in the box, we *are* now making an AJAX request back to the server.
+When we type in the box, we *are* now making an Ajax request back to the server.
 The response - which we can see in the log - is the *full* HTML of the homepage.
 That's... not what we want. But... what *do* we want?
 
-If you use something like React or Vue, your AJAX endpoints probably return JSON.
+If you use something like React or Vue, your Ajax endpoints probably return JSON.
 You then use that JSON to build the HTML in JavaScript. But we're using Stimulus!
 And Stimulus is *all* about building HTML on the server.
 
@@ -13,7 +13,7 @@ going to return an HTML *fragment*: *just* the HTML needed for the "search
 suggestions" area.
 
 Head over to `ProductController` and, before the return, add an if statement: if
-`$request->query->get('preview')`, then we know this is the suggestions AJAX request.
+`$request->query->get('preview')`, then we know this is the suggestions Ajax request.
 Inside, render a new template: `return $this->render()` and call it
 `product/_searchPreview.html.twig`.
 
@@ -53,9 +53,9 @@ Variable `products` does not exist. Because... in the controller, I forgot my "s
 Now... much better. I mean, it looks terrible *here*, but that's just because this
 page doesn't have any CSS. Head back to the homepage.
 
-## Adding the AJAX HTML to the Target
+## Adding the Ajax HTML to the Target
 
-The last step in Stimulus is to dump the HTML from the AJAX endpoint onto the page.
+The last step in Stimulus is to dump the HTML from the Ajax endpoint onto the page.
 To control exactly where it goes, let's add a new target element. In
 `index.html.twig`, I want the content to go right below the `input`. Add a
 `<div>`... with `class="search-preview"`. That's a class that already lives in our

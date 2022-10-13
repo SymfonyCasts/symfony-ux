@@ -36,7 +36,7 @@ you can choose from - and `confirmButtonText` set to "yes, remove it".
 Let's check it! Refresh and remove. That looks awesome! And more importantly, we
 can now properly re-use this on any form.
 
-## Submitting via AJAX
+## Submitting via Ajax
 
 While we're here, I want to add one more option to our controller: the ability to
 submit the form - after confirmation - via Ajax instead of a *normal* form submit.
@@ -50,7 +50,7 @@ any form via Ajax. So definitely check that out.
 But doing this with Stimulus will be a good exercise and *will* give us more
 control and flexibility over the process... which you sometimes need.
 
-## Setting up SweetAlert for the AJAX Submit
+## Setting up SweetAlert for the Ajax Submit
 
 Ok: to support submitting via Ajax, we need to tweak our SweetAlert config. Add
 a `showLoaderOnConfirm` key set to true. Then add a `preConfirm` option set to
@@ -70,7 +70,7 @@ modal will stay open and show a loading icon until that Ajax call finishes.
 
 Let's make sure we've got it hooked up. Refresh, and... yes! There's the log.
 
-## Submitting a Form via AJAX
+## Submitting a Form via Ajax
 
 Now let's actually *submit* that form via Ajax. Replace the `console.log()` with
 `return fetch()`. For the URL, `this.element` is a form... so we can use

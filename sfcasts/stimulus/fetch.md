@@ -114,7 +114,7 @@ call, we - of course - need to await for it to finish. But even getting the
 body of the response - with `response.text()` - is an asynchronous operation that
 returns a `Promise`. That's... kind of odd... but ok: we just need to `await` it.
 
-Ok, testing time! Refresh and... type! Yes! I can already see new AJAX requests
+Ok, testing time! Refresh and... type! Yes! I can already see new Ajax requests
 popping into the web debug toolbar! *And* the console is dumping the HTML.
 
 The only problem is that this is the *full* HTML of the homepage... which isn't

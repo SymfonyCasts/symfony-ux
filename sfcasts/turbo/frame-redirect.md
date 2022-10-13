@@ -60,7 +60,7 @@ frame. So when we click the edit link from the product show page, that Ajax requ
 *will* add a `Turbo-Frame` header. You can see it all the way down here under request
 headers... there it is: `Turbo-Frame: product-info`.
 
-But when navigate directly to the product admin area and look at *that* AJAX request,
+But when navigate directly to the product admin area and look at *that* Ajax request,
 down here, there is *no* `Turbo-Frame` header. This means we can detect whether
 a request is being loaded inside a turbo frame from inside of Symfony!
 
