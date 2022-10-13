@@ -43,7 +43,7 @@ mostly already very good, but we *will* see a few rough edges and missing featur
 along the way. But we won't let that stop us: Turbo's event system will give us
 the power to do almost anything.
 
-Before we dive in, I also need to mention that Stimulus And Turbo were both affected
+Before we dive in, I also need to mention that Stimulus and Turbo were both affected
 by a serious situation at the company Basecamp. This has left both libraries without
 their lead developers. Am I worried? It's not ideal... but I'm not too worried. The
 community is large and some big companies use this technology. And at the very least,
