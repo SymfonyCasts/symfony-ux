@@ -1,4 +1,4 @@
-# Magic with Events, Properties & HTML from AJAX
+# Magic with Events, Properties & HTML from Ajax
 
 To show off the power of this simple, controller-instance-bound-to-HTML-element
 concept, let's count how many times each element is clicked and print that inside
