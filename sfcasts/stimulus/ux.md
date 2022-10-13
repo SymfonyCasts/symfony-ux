@@ -36,7 +36,7 @@ of this concept.
 Ok: so what does this mean for us? Having a beautiful & interactive user interface
 requires two things. First, we need a way to write professional JavaScript... not
 1000 line long jQuery files, or one-off scripts. And we need that JavaScript to
-work... *even* if we load some HTML via AJAX. That's a classic problem with JavaScript:
+work... *even* if we load some HTML via Ajax. That's a classic problem with JavaScript:
 behavior isn't necessarily applied to HTML elements that arrive on the page later.
 
 This is all solved with Stimulus: a tiny JavaScript library *and* the topic of
@@ -47,7 +47,7 @@ That's handled by Turbo: the topic of the next tutorial.
 
 Put Stimulus and Turbo together and suddenly you can write clean JavaScript that
 always works *and* have a site where every link click and form submit loads via
-AJAX. So basically: the single page application experience... without the hassle of
+Ajax. So basically: the single page application experience... without the hassle of
 building a single page application.
 
 And if you're wondering: does this kill frontend frameworks like React or Vue?
