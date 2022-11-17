@@ -82,7 +82,7 @@ yarn watch
 As soon as this builds... perfect - spin over to your browser and head to
 https://127.0.0.1:8000 to see... MVP Office Supplies! Our store for selling minimally
 viable office products to trendy startups. This is the same project as the first
-tutorial though, I did make some changes, like adding a review system below each
+tutorial, though I did make some changes, like adding a review system below each
 product... and upgrading some libraries.
 
 Now that we have this running, let's install Turbo and activate Turbo Drive
