@@ -101,6 +101,11 @@ we can dispatch a custom event in one controller and listen to it from another.
 It's called `useDispatch`. You *can* dispatch events *without* this behavior...
 this just makes it easier.
 
+***TIP
+The `useDispatch()` is deprecated because dispatching events is now part of Stimulus!
+Just use `this.dispatch()`. For more details, see https://stimulus.hotwired.dev/reference/controllers#cross-controller-coordination-with-events
+***
+
 Here's how it works. Start the normal way. In `submit-confirm_controller.js`,
 import the behavior - `import { useDispatch } from 'stimulus-use'` then create a
 `connect()` method with `useDispatch(this)` inside. This time, pass an extra option
