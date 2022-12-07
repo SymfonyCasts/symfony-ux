@@ -45,7 +45,7 @@ your terminal, open a new tab so that `yarn watch` can keep doing its thing in t
 background. Run:
 
 ```terminal
-yarn add bootstrap --dev
+yarn add 'bootstrap@^4.6' --dev
 ```
 
 Two things. First, if you searched npmjs.com, you'd learn that the name of the
