@@ -80,7 +80,7 @@ from now.
 ***TIP
 Instead of a new section in this file, find the existing ``@symfony/ux-turbo`` section.
 It will have a key called `mercure-turbo-stream`. Change its `enabled` key to `true`
-to activate the Stimululs controller we'll be using.
+to activate the Stimulus controller we'll be using.
 ***
 
 This also enabled a bundle... and added a new library to our `package.json` file.
