@@ -44,6 +44,21 @@ At the command line, run:
 composer require "symfony/ux-turbo-mercure:^1.3"
 ```
 
+***TIP
+The `symfony/ux-turbo-mercure` is deprecated in favor of `symfony/ux-turbo` which already
+contains the cool Mercure stuff. Just install `symfony/mercure-bundle` to get it working:
+
+```terminal
+composer require symfony/mercure-bundle
+```
+
+Or to get the version used in the tutorial, continue with:
+
+```
+composer require "symfony/ux-turbo-mercure:^1.3"
+```
+***
+
 This installs several things. First, a PHP library called mercure that helps
 *talk* to the Mercure service in PHP. Second, a MercureBundle that makes that
 *even* easier in Symfony. And third, a `symfony/ux-turbo-mercure` library that
@@ -61,6 +76,12 @@ variables that will help us talk to Mercure. More about these in a few minutes. 
 recipe also modified `controllers.json`. Remember: this means that a new Stimulus
 controller is now available that lives inside this bundle. We'll use that 2 chapters
 from now.
+
+***TIP
+Instead of a new section in this file, find the existing ``@symfony/ux-turbo`` section.
+It will have a key called `mercure-turbo-stream`. Change its `enabled` key to `true`
+to activate the Stimululs controller we'll be using.
+***
 
 This also enabled a bundle... and added a new library to our `package.json` file.
 We've seen this several times before with UX packages: this adds a new package
