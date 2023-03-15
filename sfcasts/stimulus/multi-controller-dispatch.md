@@ -102,8 +102,11 @@ It's called `useDispatch`. You *can* dispatch events *without* this behavior...
 this just makes it easier.
 
 ***TIP
-The `useDispatch()` is deprecated because dispatching events is now part of Stimulus!
-Just use `this.dispatch()`. For more details, see https://stimulus.hotwired.dev/reference/controllers#cross-controller-coordination-with-events
+Stimulus itself now comes with the ability to dispatch events! Use it like:
+
+```js
+this.dispatch('async:submitted', { detail: { quantity: 1 } })
+```
 ***
 
 Here's how it works. Start the normal way. In `submit-confirm_controller.js`,
