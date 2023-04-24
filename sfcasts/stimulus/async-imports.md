@@ -25,6 +25,17 @@ These are the two files that use `react-dom`.
 module as an argument. Move the `ReactDOM.render()` stuff into this function...
 and the last thing we need to do is add `.default`.
 
+***TIP
+In React 18, the code to render a component is slightly different:
+
+```
+import('react-dom/client').then((ReactDOM) => {
+    ReactDOM.createRoot(this.element).render(<MadeWithLove/>)
+});
+```
+***
+
+
 [[[ code('070e2813db') ]]]
 
 That's it! This is called an async or dynamic import and we've talked about this
