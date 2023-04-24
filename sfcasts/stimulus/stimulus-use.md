@@ -110,6 +110,16 @@ Again, we're making this `async` because we have an `await` inside.
 For `onSearchInput`, we *don't* need the `async` anymore... and we can
 now call `this.search()` and pass it `event.currentTarget.value`. 
 
+***TIP
+Starting with `stimulus-use` 0.51.2, the code needs to change slightly to:
+
+```
+onSearchInput(event) {
+    this.search({params: event.currentTarget.value})
+}
+```
+***
+
 [[[ code('ab87ca911c') ]]]
 
 Below, set the `q` value to `query`.
