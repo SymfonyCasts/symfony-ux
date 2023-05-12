@@ -111,13 +111,9 @@ For `onSearchInput`, we *don't* need the `async` anymore... and we can
 now call `this.search()` and pass it `event.currentTarget.value`. 
 
 ***TIP
-Starting with `stimulus-use` 0.51.2, the code needs to change slightly to:
-
-```
-onSearchInput(event) {
-    this.search({params: event.currentTarget.value})
-}
-```
+Starting with `stimulus-use` 0.51.2, the debounce library contains a bug.
+See the comment from `cctaborin` that describes a nice workaround until it's
+fixed: https://bit.ly/use-debounce-workaround
 ***
 
 [[[ code('ab87ca911c') ]]]
