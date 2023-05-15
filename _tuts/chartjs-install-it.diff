@@ -16,7 +16,7 @@ index a1c6e90..fb0dbf0 100644
      "entrypoints": []
  }
 diff --git a/composer.json b/composer.json
-index 37745df..10fe8b5 100644
+index ccccb06..0637add 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -26,6 +26,7 @@
@@ -28,19 +28,19 @@ index 37745df..10fe8b5 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.2.*",
 diff --git a/composer.lock b/composer.lock
-index 2c37731..37572fa 100644
+index ed0d741..9eebdf3 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "7b64a7abe26e77d0ad0b3d13e56216e0",
-+    "content-hash": "b539d54a8e9c785c94304734127e9ab9",
+-    "content-hash": "383fda88bd22f09bd279a96abc0dcbe8",
++    "content-hash": "aed104b899bec0bf2dcfb7b66fbf235c",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -5675,6 +5675,88 @@
+@@ -5672,6 +5672,88 @@
              ],
              "time": "2021-01-27T10:15:41+00:00"
          },
@@ -140,7 +140,7 @@ index b0ce84c..f8d5509 100644
 +    Symfony\UX\Chartjs\ChartjsBundle::class => ['all' => true],
  ];
 diff --git a/package.json b/package.json
-index eabc294..105b26e 100644
+index eabc294..0567216 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,6 +1,7 @@
@@ -151,20 +151,13 @@ index eabc294..105b26e 100644
          "@symfony/webpack-encore": "^1.0.0",
          "bootstrap": "^4.6.0",
          "core-js": "^3.0.0",
-@@ -18,4 +19,4 @@
-         "watch": "encore dev --watch",
-         "build": "encore production --progress"
-     }
--}
-+}
-\ No newline at end of file
 diff --git a/symfony.lock b/symfony.lock
-index 0689685..3ee32be 100644
+index de47412..9a83692 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -396,6 +396,9 @@
-     "symfony/twig-pack": {
-         "version": "v1.0.1"
+@@ -375,6 +375,9 @@
+             "templates/base.html.twig"
+         ]
      },
 +    "symfony/ux-chartjs": {
 +        "version": "v1.1.0"

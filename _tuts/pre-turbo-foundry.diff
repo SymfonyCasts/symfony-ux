@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 11d9b6a..6029acc 100644
+index 52b06c9..128a12c 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -92,6 +92,7 @@
@@ -12,19 +12,19 @@ index 11d9b6a..6029acc 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index d612fad..cbfe9de 100644
+index c53d38b..5a9639e 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "ee6ab3f5a6a0751c72b2b9208e2e66c8",
-+    "content-hash": "249b2d1b0f44234410f57e6107046121",
+-    "content-hash": "e2d9e0ffae9abc066697acd0981438a6",
++    "content-hash": "894daed92051fab18a21d3044eb8226d",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -6844,6 +6844,71 @@
+@@ -6841,6 +6841,71 @@
              ],
              "time": "2020-11-14T09:36:49+00:00"
          },
@@ -96,7 +96,7 @@ index d612fad..cbfe9de 100644
          {
              "name": "monolog/monolog",
              "version": "2.2.0",
-@@ -7403,6 +7468,130 @@
+@@ -7400,6 +7465,130 @@
                  }
              ],
              "time": "2021-05-11T14:37:54+00:00"
@@ -561,7 +561,7 @@ index 0000000..1a6c191
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index 3273540..fe6e575 100644
+index 5862d9d..4d517f9 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -97,6 +97,9 @@
@@ -574,7 +574,7 @@ index 3273540..fe6e575 100644
      "friendsofphp/proxy-manager-lts": {
          "version": "v1.0.2"
      },
-@@ -477,5 +480,21 @@
+@@ -456,5 +459,21 @@
      },
      "webmozart/assert": {
          "version": "1.9.1"

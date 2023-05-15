@@ -87,7 +87,7 @@ index 0000000..cb33b13
 +    background-color: lightgray;
 +}
 diff --git a/composer.json b/composer.json
-index 0a3c67b..37745df 100644
+index 09791d3..ccccb06 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -99,19 +99,19 @@ index 0a3c67b..37745df 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index 75afa9d..2c37731 100644
+index c8bc89b..ed0d741 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "c86f2cc6aa9794b35f371a87ed63d1f4",
-+    "content-hash": "7b64a7abe26e77d0ad0b3d13e56216e0",
+-    "content-hash": "469ff020e9513654d6b062cfeafbb611",
++    "content-hash": "383fda88bd22f09bd279a96abc0dcbe8",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -5947,6 +5947,77 @@
+@@ -5944,6 +5944,77 @@
              ],
              "time": "2021-01-27T10:01:46+00:00"
          },
@@ -287,10 +287,73 @@ index 0000000..ba0e4f4
 +    }
 +}
 diff --git a/symfony.lock b/symfony.lock
-index cb203f4..0689685 100644
+index cb203f4..de47412 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -429,6 +429,28 @@
+@@ -99,12 +99,6 @@
+     "laminas/laminas-code": {
+         "version": "4.0.0"
+     },
+-    "laminas/laminas-eventmanager": {
+-        "version": "3.3.0"
+-    },
+-    "laminas/laminas-zendframework-bridge": {
+-        "version": "1.1.1"
+-    },
+     "monolog/monolog": {
+         "version": "2.2.0"
+     },
+@@ -180,9 +174,6 @@
+             "config/packages/dev/debug.yaml"
+         ]
+     },
+-    "symfony/debug-pack": {
+-        "version": "v1.0.9"
+-    },
+     "symfony/dependency-injection": {
+         "version": "v5.2.1"
+     },
+@@ -287,9 +278,6 @@
+     "symfony/options-resolver": {
+         "version": "v5.2.1"
+     },
+-    "symfony/orm-pack": {
+-        "version": "v2.1.0"
+-    },
+     "symfony/polyfill-intl-grapheme": {
+         "version": "v1.22.0"
+     },
+@@ -308,9 +296,6 @@
+     "symfony/polyfill-php80": {
+         "version": "v1.22.0"
+     },
+-    "symfony/profiler-pack": {
+-        "version": "v1.0.5"
+-    },
+     "symfony/property-access": {
+         "version": "v5.2.1"
+     },
+@@ -361,9 +346,6 @@
+     "symfony/serializer": {
+         "version": "v5.2.3"
+     },
+-    "symfony/serializer-pack": {
+-        "version": "v1.0.4"
+-    },
+     "symfony/service-contracts": {
+         "version": "v2.2.0"
+     },
+@@ -393,9 +375,6 @@
+             "templates/base.html.twig"
+         ]
+     },
+-    "symfony/twig-pack": {
+-        "version": "v1.0.1"
+-    },
+     "symfony/validator": {
+         "version": "4.3",
+         "recipe": {
+@@ -429,6 +408,28 @@
              "config/routes/dev/web_profiler.yaml"
          ]
      },

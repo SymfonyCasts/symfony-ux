@@ -52,7 +52,7 @@ index 8fe9d49..c933dc5 100755
 +    return new Application($kernel);
 +};
 diff --git a/composer.json b/composer.json
-index 7ec497e..11d9b6a 100644
+index 1b1d5f7..52b06c9 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -23,6 +23,7 @@
@@ -64,19 +64,19 @@ index 7ec497e..11d9b6a 100644
          "symfony/serializer": "5.3.*",
          "symfony/twig-bundle": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index e082575..d612fad 100644
+index abfdd1b..c53d38b 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "6ba98cd7ac74f3e02e0f1f2e11e397ca",
-+    "content-hash": "ee6ab3f5a6a0751c72b2b9208e2e66c8",
+-    "content-hash": "ba3f0e9aec5348484e9bbf3d0f42b53c",
++    "content-hash": "e2d9e0ffae9abc066697acd0981438a6",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -4795,6 +4795,83 @@
+@@ -4792,6 +4792,83 @@
              ],
              "time": "2021-05-16T13:08:56+00:00"
          },
@@ -319,7 +319,7 @@ index 3bcee0b..9982c21 100644
 +    return new Kernel($context['APP_ENV'], (bool) $context['APP_DEBUG']);
 +};
 diff --git a/symfony.lock b/symfony.lock
-index ea59cff..3273540 100644
+index 96f4492..5862d9d 100644
 --- a/symfony.lock
 +++ b/symfony.lock
 @@ -33,16 +33,17 @@
@@ -359,7 +359,7 @@ index ea59cff..3273540 100644
          },
          "files": [
              "config/packages/doctrine_migrations.yaml",
-@@ -160,12 +161,12 @@
+@@ -154,12 +155,12 @@
          "version": "v5.2.1"
      },
      "symfony/console": {
@@ -375,7 +375,7 @@ index ea59cff..3273540 100644
          },
          "files": [
              "bin/console"
-@@ -177,7 +178,7 @@
+@@ -171,7 +172,7 @@
              "repo": "github.com/symfony/recipes",
              "branch": "master",
              "version": "4.1",
@@ -384,7 +384,7 @@ index ea59cff..3273540 100644
          },
          "files": [
              "config/packages/dev/debug.yaml"
-@@ -229,19 +230,18 @@
+@@ -220,19 +221,18 @@
          "version": "v5.2.1"
      },
      "symfony/framework-bundle": {
@@ -408,7 +408,7 @@ index ea59cff..3273540 100644
              "config/services.yaml",
              "public/index.php",
              "src/Controller/.gitignore",
-@@ -273,12 +273,12 @@
+@@ -264,12 +264,12 @@
          "version": "v5.2.1"
      },
      "symfony/monolog-bundle": {
@@ -424,7 +424,7 @@ index ea59cff..3273540 100644
          },
          "files": [
              "config/packages/dev/monolog.yaml",
-@@ -340,13 +340,16 @@
+@@ -325,13 +325,16 @@
              "config/routes.yaml"
          ]
      },
@@ -444,7 +444,7 @@ index ea59cff..3273540 100644
          },
          "files": [
              "config/packages/security.yaml"
-@@ -444,7 +447,7 @@
+@@ -423,7 +426,7 @@
              "repo": "github.com/symfony/recipes",
              "branch": "master",
              "version": "1.9",

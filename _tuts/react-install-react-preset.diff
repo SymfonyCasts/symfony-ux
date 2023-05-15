@@ -1,5 +1,5 @@
 diff --git a/package.json b/package.json
-index 105b26e..82f4acb 100644
+index 0567216..82f4acb 100644
 --- a/package.json
 +++ b/package.json
 @@ -1,5 +1,6 @@
@@ -9,13 +9,6 @@ index 105b26e..82f4acb 100644
          "@symfony/stimulus-bridge": "^2.0.0",
          "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
          "@symfony/webpack-encore": "^1.0.0",
-@@ -19,4 +20,4 @@
-         "watch": "encore dev --watch",
-         "build": "encore production --progress"
-     }
--}
-\ No newline at end of file
-+}
 diff --git a/yarn.lock b/yarn.lock
 index 8366a62..78829e4 100644
 --- a/yarn.lock

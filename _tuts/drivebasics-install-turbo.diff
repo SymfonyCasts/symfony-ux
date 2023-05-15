@@ -16,7 +16,7 @@ index fbcedcd..6f27124 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index deeaba5..332e5dd 100644
+index 2d04c40..7e4c8bd 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -28,19 +28,19 @@ index deeaba5..332e5dd 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 891bb04..0f3a8c8 100644
+index 6180199..efe9e0c 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "853a1afcbb1d5dd53ba7458f50abc24c",
-+    "content-hash": "f1b088e7f4acc5eecb0cbf36351f78f0",
+-    "content-hash": "5ed8c36cf9d1acf08ad1920db1229e3b",
++    "content-hash": "5ef16ec9e2d0346385bcf570c8b074e2",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
-@@ -5737,6 +5737,106 @@
+@@ -5734,6 +5734,106 @@
              ],
              "time": "2021-05-20T17:58:12+00:00"
          },
@@ -174,10 +174,10 @@ index 79c2c4c..d375185 100644
          "bootstrap": "^5.0.0-beta2",
          "chart.js": "^2.9.4",
 diff --git a/symfony.lock b/symfony.lock
-index 5b7cdfb..7ab4df0 100644
+index e40a910..73f3f17 100644
 --- a/symfony.lock
 +++ b/symfony.lock
-@@ -395,6 +395,9 @@
+@@ -374,6 +374,9 @@
      "symfony/ux-chartjs": {
          "version": "v1.1.0"
      },
