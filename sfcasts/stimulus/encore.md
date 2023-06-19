@@ -11,6 +11,18 @@ Find your terminal and run:
 composer require "encore:^1.14"
 ```
 
+***TIP
+If you're using version 2 or higher of `symfony/webpack-encore-bundle`, be sure to also
+run:
+
+```terminal
+composer require symfony/stimulus-bundle
+```
+
+The recipe needed to integrate the Symfony UX libraries was moved to this
+new bundle.
+***
+
 This *really* installs WebpackEncoreBundle, which will give us a few Twig helper
 functions. But its *true* superpower is its recipe.
 
