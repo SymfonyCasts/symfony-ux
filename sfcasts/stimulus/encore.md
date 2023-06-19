@@ -15,7 +15,7 @@ composer require "encore:^1.14"
 If you're using version 2 or higher of `symfony/webpack-encore-bundle`, be sure to also
 run:
 
-```terminal
+```terminal skip-ci
 composer require symfony/stimulus-bundle
 ```
 
