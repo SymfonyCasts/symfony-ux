@@ -21,6 +21,11 @@ need to match the options structure: `scales` set to an array, then `yAxes`, thi
 is set to two arrays - you can see that in their JavaScript version - then `ticks`
 set to another array and `beginAtZero` set to `true`.
 
+***TIP
+In newer versions of Chart.js (versions 3 and up), `yAxes` should be set to a
+single array: `yAxes => [` instead of two arrays `yAxes => [[`.
+***
+
 [[[ code('f48ad9bdb1') ]]]
 
 Cool! Go back to our site. Our chart's y axis  *already* starts at zero...
