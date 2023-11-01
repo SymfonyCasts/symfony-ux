@@ -71,6 +71,11 @@ yup: we're passing an object with *one* controller set to the values for that
 controller. Now we can add our new controller name - `autocomplete-transition` -
 and... this doesn't need any values, so set it to an empty object.
 
+***TIP
+There's a new way to attach multiple Stimulus controllers to the same HTML element
+`{{ stimulus_controller('bar') | stimulus_controller('foo') }}`
+***
+
 [[[ code('9bd5a99549') ]]]
 
 Let's see if the new controller is connected! Find our site... I'll open my
