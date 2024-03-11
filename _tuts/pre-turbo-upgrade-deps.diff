@@ -69,7 +69,7 @@ index 0637add..1b1d5f7 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 9eebdf3..abfdd1b 100644
+index bda151d..1796aa8 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
