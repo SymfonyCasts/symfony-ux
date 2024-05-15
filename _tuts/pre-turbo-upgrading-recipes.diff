@@ -64,7 +64,7 @@ index 1b1d5f7..52b06c9 100644
          "symfony/serializer": "5.3.*",
          "symfony/twig-bundle": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 1796aa8..66fbd4b 100644
+index 51f1245..ce87970 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
