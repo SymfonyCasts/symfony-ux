@@ -26,6 +26,26 @@ In newer versions of Chart.js (versions 3 and up), `yAxes` should be set to a
 single array: `yAxes => [` instead of two arrays `yAxes => [[`.
 ***
 
+***TIP
+In newer versions of Chart.js (versions 3 and up), `beginAtZero` option should
+be set on the same level as `ticks`, not inside of them:
+```php
+class AdminController extends AbstractController
+{
+    public function dashboard(ChartBuilderInterface $chartBuilder)
+    {
+        $chart->setOptions([
+            'scales' => [
+                'yAxes' => [[
+                    'ticks' => [],
+                    'beginAtZero' => true,
+                ]]
+            ]
+        ]);
+    }
+```
+***
+
 [[[ code('f48ad9bdb1') ]]]
 
 Cool! Go back to our site. Our chart's y axis  *already* starts at zero...
