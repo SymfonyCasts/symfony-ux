@@ -26,20 +26,53 @@ and go to https://127.0.0.1:8000 - the URL to our site - then `/.well-known/merc
 The latest `symfony` binary no longer embeds Mercure. But it's still easy
 to set up. First, add a `mercure` service to your `docker-compose.yaml` file:
 
-[[[ code('dd64be3c14') ]]]
+```
+version: '3.7'
+services:
+# ...
+###> symfony/mercure-bundle ###
+    mercure:
+        image: dunglas/mercure
+        restart: unless-stopped
+        environment:
+            # Uncomment the following line to disable HTTPS,
+            SERVER_NAME: ':80'
+            MERCURE_PUBLISHER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+            MERCURE_SUBSCRIBER_JWT_KEY: '!ChangeThisMercureHubJWTSecretKey!'
+            # Set the URL of your Symfony project (without trailing slash!) as value of the cors_origins directive
+            MERCURE_EXTRA_DIRECTIVES: |
+                cors_origins http://127.0.0.1:8000
+        # Comment the following line to disable the development mode
+        command: /usr/bin/caddy run --config /etc/caddy/dev.Caddyfile
+        healthcheck:
+            test: ["CMD", "curl", "-f", "https://localhost/healthz"]
+            timeout: 5s
+            retries: 5
+            start_period: 60s
+        volumes:
+            - mercure_data:/data
+            - mercure_config:/config
+        ports: ['80']
+###< symfony/mercure-bundle ###
 
-You can also copy the code block from the script below the video. Start the
-container by running:
+volumes:
+###> symfony/mercure-bundle ###
+    mercure_data:
+    mercure_config:
+###< symfony/mercure-bundle ###
+```
+
+And start the container by running:
 
 ```terminal
-docker-compose up -d
+docker compose up -d
 ```
 
 That's it! But instead of being accessible at the URL you see in the tutorial,
 the Mercure hub will be exposed on a random port. To find it, run:
 
 ```terminal
-symfony var:export --multiline
+symfony var:export --multiline | grep MERCURE
 ```
 
 And look for the `MERCURE_URL` value - it should equal something similar to
