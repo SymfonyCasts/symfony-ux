@@ -26,7 +26,7 @@ and go to https://127.0.0.1:8000 - the URL to our site - then `/.well-known/merc
 The latest `symfony` binary no longer embeds Mercure. But it's still easy
 to set up. First, add a `mercure` service to your `docker-compose.yaml` file:
 
-```
+```yaml
 version: '3.7'
 services:
 # ...
