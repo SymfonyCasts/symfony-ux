@@ -62,7 +62,8 @@ volumes:
 ###< symfony/mercure-bundle ###
 ```
 
-And start the container by running:
+Also, notice that the config file now is `dev.Caddyfile` instead of `Caddyfile.dev`
+used in the tutorial! And now start the container by running:
 
 ```terminal
 docker compose up -d
