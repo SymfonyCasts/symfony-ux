@@ -46,7 +46,7 @@ index 5506330..b6c3604 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 5e8dce6..08b8a38 100644
+index 36d57ad..34ba4d5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -60,7 +60,7 @@ index 5e8dce6..08b8a38 100644
              "name": "composer/package-versions-deprecated",
 @@ -1388,6 +1388,141 @@
              ],
-             "time": "2023-10-18T10:00:55+00:00"
+             "time": "2024-11-20T13:15:13+00:00"
          },
 +        {
 +            "name": "lcobucci/clock",

@@ -11,7 +11,7 @@ index 128a12c..2d04c40 100644
          "phpdocumentor/reflection-docblock": "^5.2",
          "sensio/framework-extra-bundle": "^6.1",
 diff --git a/composer.lock b/composer.lock
-index d1ff8c5..b053935 100644
+index 30ae641..ddd9828 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@

@@ -69,7 +69,7 @@ index 0637add..1b1d5f7 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 4042e67..51f1245 100644
+index 1c52283..c863c83 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
@@ -3831,7 +3831,7 @@ index 4042e67..51f1245 100644
      "aliases": [],
 -    "minimum-stability": "dev",
 +    "minimum-stability": "beta",
-     "stability-flags": [],
+     "stability-flags": {},
      "prefer-stable": true,
      "prefer-lowest": false,
 diff --git a/package.json b/package.json
