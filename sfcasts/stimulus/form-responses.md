@@ -74,6 +74,11 @@ Symfony 5.3, there is a new `renderForm()` shortcut in your controller, which wi
 automatically set the `422` status code for you on error. That'll make this much
 cleaner.
 
+***NOTE
+If using Symfony 6+, `renderForm()` has been deprecated/removed. Just use `render()` as
+usual which now has this behaviour behind the scenes!
+***
+
 ## Try/Catch the Ajax Call
 
 Back in our Stimulus controller, now we have the info we need. When the form

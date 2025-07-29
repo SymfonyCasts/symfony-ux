@@ -78,6 +78,11 @@ hipster... but it really doesn't matter.
 
 ## Symfony 5.3's renderForm() Shortcut
 
+***NOTE
+If using Symfony 6+, `renderForm()` has been deprecated/removed. Just use `render()` as
+usual which now has this behaviour behind the scenes!
+***
+
 Okay, back to this 422 status code fix. If you're using Symfony 5.3 - and I am -
 then fixing this is even easier thanks to a new `renderForm()` controller shortcut.
 Here's how it works: change `render()` to `renderForm()`. Then, remove the
