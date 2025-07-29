@@ -76,7 +76,8 @@ cleaner.
 
 ***NOTE
 If using Symfony 6+, `renderForm()` has been deprecated/removed. Just use `render()` as
-usual which now has this behaviour behind the scenes!
+usual which now has this behaviour behind the scenes! Just make sure you pass `$form` as a
+parameter without calling `->createView()`.
 ***
 
 ## Try/Catch the Ajax Call
