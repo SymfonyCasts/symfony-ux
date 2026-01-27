@@ -87,7 +87,7 @@ index 0000000..cb33b13
 +    background-color: lightgray;
 +}
 diff --git a/composer.json b/composer.json
-index 09791d3..ccccb06 100644
+index 321a9a8..f31f1b6 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -99,15 +99,15 @@ index 09791d3..ccccb06 100644
          "twig/extra-bundle": "^2.12|^3.0",
          "twig/intl-extra": "^3.2",
 diff --git a/composer.lock b/composer.lock
-index d80d27e..b94735c 100644
+index 682bbaa..f16d493 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "469ff020e9513654d6b062cfeafbb611",
-+    "content-hash": "383fda88bd22f09bd279a96abc0dcbe8",
+-    "content-hash": "d668ef43df88bdcf6b47c455aaba268c",
++    "content-hash": "ef10d1b97cf18b9fd73811dea0d077cd",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
@@ -117,37 +117,37 @@ index d80d27e..b94735c 100644
          },
 +        {
 +            "name": "symfony/webpack-encore-bundle",
-+            "version": "v1.11.1",
++            "version": "v1.14.1",
 +            "source": {
 +                "type": "git",
 +                "url": "https://github.com/symfony/webpack-encore-bundle.git",
-+                "reference": "395b60a549ded8e7f77f0d551815d7555e2d9eb0"
++                "reference": "6b18be99bf2a5a402b80a2c00043fe0b365fe836"
 +            },
 +            "dist": {
 +                "type": "zip",
-+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/395b60a549ded8e7f77f0d551815d7555e2d9eb0",
-+                "reference": "395b60a549ded8e7f77f0d551815d7555e2d9eb0",
++                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/6b18be99bf2a5a402b80a2c00043fe0b365fe836",
++                "reference": "6b18be99bf2a5a402b80a2c00043fe0b365fe836",
 +                "shasum": ""
 +            },
 +            "require": {
 +                "php": ">=7.1.3",
-+                "symfony/asset": "^4.4 || ^5.0",
-+                "symfony/config": "^4.4 || ^5.0",
-+                "symfony/dependency-injection": "^4.4 || ^5.0",
-+                "symfony/http-kernel": "^4.4 || ^5.0",
-+                "symfony/service-contracts": "^1.0 || ^2.0"
++                "symfony/asset": "^4.4 || ^5.0 || ^6.0",
++                "symfony/config": "^4.4 || ^5.0 || ^6.0",
++                "symfony/dependency-injection": "^4.4 || ^5.0 || ^6.0",
++                "symfony/http-kernel": "^4.4 || ^5.0 || ^6.0",
++                "symfony/service-contracts": "^1.0 || ^2.0 || ^3.0"
 +            },
 +            "require-dev": {
-+                "symfony/framework-bundle": "^4.4 || ^5.0",
-+                "symfony/phpunit-bridge": "^4.4 || ^5.0",
-+                "symfony/twig-bundle": "^4.4 || ^5.0",
-+                "symfony/web-link": "^4.4 || ^5.0"
++                "symfony/framework-bundle": "^4.4 || ^5.0 || ^6.0",
++                "symfony/phpunit-bridge": "^5.3 || ^6.0",
++                "symfony/twig-bundle": "^4.4 || ^5.0 || ^6.0",
++                "symfony/web-link": "^4.4 || ^5.0 || ^6.0"
 +            },
 +            "type": "symfony-bundle",
 +            "extra": {
 +                "thanks": {
-+                    "name": "symfony/webpack-encore",
-+                    "url": "https://github.com/symfony/webpack-encore"
++                    "url": "https://github.com/symfony/webpack-encore",
++                    "name": "symfony/webpack-encore"
 +                }
 +            },
 +            "autoload": {
@@ -168,7 +168,7 @@ index d80d27e..b94735c 100644
 +            "description": "Integration with your Symfony app & Webpack Encore!",
 +            "support": {
 +                "issues": "https://github.com/symfony/webpack-encore-bundle/issues",
-+                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v1.11.1"
++                "source": "https://github.com/symfony/webpack-encore-bundle/tree/v1.14.1"
 +            },
 +            "funding": [
 +                {
@@ -184,7 +184,7 @@ index d80d27e..b94735c 100644
 +                    "type": "tidelift"
 +                }
 +            ],
-+            "time": "2021-02-17T13:45:51+00:00"
++            "time": "2022-05-03T17:55:32+00:00"
 +        },
          {
              "name": "symfony/yaml",

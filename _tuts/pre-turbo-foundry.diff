@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 52b06c9..128a12c 100644
+index 63ddfca..ca4ef1e 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -92,6 +92,7 @@
@@ -12,15 +12,15 @@ index 52b06c9..128a12c 100644
      }
  }
 diff --git a/composer.lock b/composer.lock
-index a536876..30ae641 100644
+index 599b404..8030af6 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "e2d9e0ffae9abc066697acd0981438a6",
-+    "content-hash": "894daed92051fab18a21d3044eb8226d",
+-    "content-hash": "c7262a265d18ca49d100e2c8253851d8",
++    "content-hash": "be5b2d6bbe51078eb9fc65d7e6560adc",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",

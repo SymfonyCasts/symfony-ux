@@ -1,5 +1,5 @@
 diff --git a/composer.json b/composer.json
-index 0637add..1b1d5f7 100644
+index e1a72bd..e17a7ff 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -1,7 +1,7 @@
@@ -10,7 +10,7 @@ index 0637add..1b1d5f7 100644
 +    "minimum-stability": "beta",
      "prefer-stable": true,
      "require": {
-         "php": ">=8.1",
+         "php": ">=8.2",
 @@ -13,23 +13,23 @@
          "doctrine/doctrine-migrations-bundle": "^3.0",
          "doctrine/orm": "^2.8",
@@ -50,7 +50,7 @@ index 0637add..1b1d5f7 100644
          "twig/intl-extra": "^3.2",
          "twig/twig": "^2.12|^3.0"
 @@ -44,7 +44,8 @@
-             "php": "8.1.0"
+             "php": "8.2.0"
          },
          "allow-plugins": {
 -            "symfony/flex": true
@@ -69,15 +69,15 @@ index 0637add..1b1d5f7 100644
      },
      "require-dev": {
 diff --git a/composer.lock b/composer.lock
-index 1c52283..c863c83 100644
+index b969a13..9707730 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "aed104b899bec0bf2dcfb7b66fbf235c",
-+    "content-hash": "ba3f0e9aec5348484e9bbf3d0f42b53c",
+-    "content-hash": "22ac1ff0c27f07a9a98c1476597c77ea",
++    "content-hash": "732731ca513a99e14003500231648f48",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",

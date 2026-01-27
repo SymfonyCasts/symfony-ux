@@ -16,7 +16,7 @@ index fbcedcd..6f27124 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index 2d04c40..7e4c8bd 100644
+index 2bbcb3a..94e96bf 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -27,6 +27,7 @@
@@ -28,15 +28,15 @@ index 2d04c40..7e4c8bd 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index ddd9828..c9e410e 100644
+index 1e643d6..df303bb 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "5ed8c36cf9d1acf08ad1920db1229e3b",
-+    "content-hash": "5ef16ec9e2d0346385bcf570c8b074e2",
+-    "content-hash": "d4b2d2d300ffe25ecae9f7b55d2277ac",
++    "content-hash": "50aaca05505d05c1063678e3672b4365",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",

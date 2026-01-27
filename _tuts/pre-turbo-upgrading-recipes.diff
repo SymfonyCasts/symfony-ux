@@ -52,7 +52,7 @@ index 8fe9d49..c933dc5 100755
 +    return new Application($kernel);
 +};
 diff --git a/composer.json b/composer.json
-index 1b1d5f7..52b06c9 100644
+index e17a7ff..63ddfca 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -23,6 +23,7 @@
@@ -64,15 +64,15 @@ index 1b1d5f7..52b06c9 100644
          "symfony/serializer": "5.3.*",
          "symfony/twig-bundle": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index c863c83..a536876 100644
+index 9707730..599b404 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "ba3f0e9aec5348484e9bbf3d0f42b53c",
-+    "content-hash": "e2d9e0ffae9abc066697acd0981438a6",
+-    "content-hash": "732731ca513a99e14003500231648f48",
++    "content-hash": "c7262a265d18ca49d100e2c8253851d8",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",

@@ -34,7 +34,7 @@ index 6f27124..b7f5fb5 100644
      },
      "entrypoints": []
 diff --git a/composer.json b/composer.json
-index 5506330..b6c3604 100644
+index 2d7e892..3e62b7f 100644
 --- a/composer.json
 +++ b/composer.json
 @@ -28,6 +28,7 @@
@@ -46,21 +46,21 @@ index 5506330..b6c3604 100644
          "symfony/webpack-encore-bundle": "^1.9",
          "symfony/yaml": "5.3.*",
 diff --git a/composer.lock b/composer.lock
-index 36d57ad..34ba4d5 100644
+index fc67ca2..f285ae5 100644
 --- a/composer.lock
 +++ b/composer.lock
 @@ -4,7 +4,7 @@
          "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
          "This file is @generated automatically"
      ],
--    "content-hash": "0c0f4c04f4b9acfaafef325a52ad4b7a",
-+    "content-hash": "7affe970887c92bb6f47f944d0566da5",
+-    "content-hash": "cee708980fbdc68f3d80d2c626d81a15",
++    "content-hash": "f410e1bb0efdfadd8bb4d9d8a05b8e8c",
      "packages": [
          {
              "name": "composer/package-versions-deprecated",
 @@ -1388,6 +1388,141 @@
              ],
-             "time": "2024-11-20T13:15:13+00:00"
+             "time": "2025-11-01T09:38:14+00:00"
          },
 +        {
 +            "name": "lcobucci/clock",
