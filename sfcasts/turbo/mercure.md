@@ -40,7 +40,7 @@ We're going to get Mercure rocking... and it's going to *really* make things fun
 To start, install a package that makes it easy to work with Mercure and Turbo.
 At the command line, run:
 
-```terminal
+```terminal skip-ci
 composer require "symfony/ux-turbo-mercure:^1.3"
 ```
 
@@ -48,13 +48,13 @@ composer require "symfony/ux-turbo-mercure:^1.3"
 The `symfony/ux-turbo-mercure` is deprecated in favor of `symfony/ux-turbo` which already
 contains the cool Mercure stuff. Just install `symfony/mercure-bundle` to get it working:
 
-```terminal
+```terminal skip-ci
 composer require symfony/mercure-bundle
 ```
 
 Or to get the version used in the tutorial, continue with:
 
-```
+```terminal skip-ci
 composer require "symfony/ux-turbo-mercure:^1.3"
 ```
 ***
